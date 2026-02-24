@@ -107,21 +107,58 @@ button:hover{
     and ecosystem-level identity mapping.
   </p>
 
-  <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
-    <label>Full Name</label>
-    <input type="text" name="name" required>
+<form id="briefingForm">
+  <label>Full Name</label>
+  <input type="text" name="name" required>
 
-    <label>Email</label>
-    <input type="email" name="email" required>
+  <label>Email</label>
+  <input type="email" name="email" required>
 
-    <label>Organization</label>
-    <input type="text" name="organization" required>
+  <label>Organization</label>
+  <input type="text" name="organization" required>
 
-    <label>Program Size / Context</label>
-    <textarea name="context" rows="5" required></textarea>
+  <label>Program Size / Context</label>
+  <textarea name="context" rows="5" required></textarea>
 
-    <button type="submit">Request Briefing</button>
-  </form>
+  <!-- optional honeypot -->
+  <input type="text" name="company" style="display:none" tabindex="-1" autocomplete="off">
+
+  <button type="submit">Request Briefing</button>
+  <div id="briefingStatus" style="margin-top:14px;color:#6B6B6B;"></div>
+</form>
+
+<script>
+  const briefingForm = document.getElementById("briefingForm");
+  const briefingStatus = document.getElementById("briefingStatus");
+
+  briefingForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    briefingStatus.textContent = "Sending…";
+
+    const fd = new FormData(briefingForm);
+    const payload = Object.fromEntries(fd.entries());
+    payload.form = "institutional_briefing";
+
+    try {
+      const r = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok || !data.ok) {
+        briefingStatus.textContent = "Failed to send. Email infra@svrnos.com.";
+        return;
+      }
+
+      briefingStatus.textContent = "Received. We’ll reply by email.";
+      briefingForm.reset();
+    } catch {
+      briefingStatus.textContent = "Failed to send. Email infra@svrnos.com.";
+    }
+  });
+</script>
 
   <div class="footer-link">
     <a href="/">← Back to SVRNOS</a>
