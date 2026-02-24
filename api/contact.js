@@ -1,52 +1,40 @@
-export default async function handler(req, res) {
-  if (req.method !== "POST") return res.status(405).json({ ok: false, error: "Method not allowed" });
+<form id="contactForm">
+  <input type="text" name="name" placeholder="Name" style="width:100%;padding:12px;margin:10px 0;border:1px solid #E2E2E2;background:#fff;">
+  <input type="email" name="email" placeholder="Email*" required style="width:100%;padding:12px;margin:10px 0;border:1px solid #E2E2E2;background:#fff;">
+  <textarea name="message" placeholder="What are you building / what pressure are you under?*" required rows="5" style="width:100%;padding:12px;margin:10px 0;border:1px solid #E2E2E2;background:#fff;"></textarea>
+  <button class="button" type="submit">Request Early Access</button>
+  <div id="formStatus" style="margin-top:14px;color:#6B6B6B;"></div>
+</form>
 
-  try {
-    const { name, email, message } = req.body || {};
+<script>
+  const form = document.getElementById("contactForm");
+  const statusEl = document.getElementById("formStatus");
 
-    if (!email || !message) {
-      return res.status(400).json({ ok: false, error: "Missing email or message" });
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    statusEl.textContent = "Sending…";
+
+    const fd = new FormData(form);
+    const payload = Object.fromEntries(fd.entries());
+
+    try {
+      const r = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await r.json().catch(() => ({}));
+
+      if (!r.ok || !data.ok) {
+        statusEl.textContent = "Failed to send. Try again or email infra@sim95.com.";
+        return;
+      }
+
+      statusEl.textContent = "Received. We’ll reply by email.";
+      form.reset();
+    } catch (err) {
+      statusEl.textContent = "Failed to send. Try again or email infra@sim95.com.";
     }
-
-    const RESEND_API_KEY = process.env.RESEND_API_KEY;
-    const TO_EMAIL = process.env.TO_EMAIL;
-    const FROM_EMAIL = process.env.FROM_EMAIL;
-
-    if (!RESEND_API_KEY || !TO_EMAIL || !FROM_EMAIL) {
-      return res.status(500).json({ ok: false, error: "Missing env vars (RESEND_API_KEY, TO_EMAIL, FROM_EMAIL)" });
-    }
-
-    const payload = {
-      from: FROM_EMAIL,
-      to: [TO_EMAIL],
-      subject: `SVRNOS — Early Access Request${name ? ` — ${name}` : ""}`,
-      reply_to: email,
-      text: [
-        `Name: ${name || "(not provided)"}`,
-        `Email: ${email}`,
-        "",
-        `Message:`,
-        message,
-      ].join("\n"),
-    };
-
-    const r = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${RESEND_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
-
-    const data = await r.json();
-
-    if (!r.ok) {
-      return res.status(500).json({ ok: false, error: data?.message || "Resend error", data });
-    }
-
-    return res.status(200).json({ ok: true });
-  } catch (e) {
-    return res.status(500).json({ ok: false, error: "Server error" });
-  }
-}
+  });
+</script>
