@@ -148,14 +148,14 @@ button:hover{
 
       const data = await r.json().catch(() => ({}));
       if (!r.ok || !data.ok) {
-        briefingStatus.textContent = "Failed to send. Email infra@svrnos.com.";
+        briefingStatus.textContent = "Failed to send. Email infra@sim95.com.";
         return;
       }
 
       briefingStatus.textContent = "Received. We’ll reply by email.";
       briefingForm.reset();
     } catch {
-      briefingStatus.textContent = "Failed to send. Email infra@svrnos.com.";
+      briefingStatus.textContent = "Failed to send. Email infra@sim95.com.";
     }
   });
 </script>
