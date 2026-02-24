@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Institutional Briefing — SVRNOS™</title>
-<link rel="icon" type="image/png" href="/favicon.png">
+<meta name="description" content="Request an institutional briefing on SIM95™ deployment models for founder-led ecosystems.">
+
+<link rel="icon" href="/svrnos favicon.svg" type="image/svg+xml">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
@@ -15,68 +17,89 @@
   --accent:#2F5D50;
   --line:#E2E2E2;
 }
-
+*{ box-sizing:border-box; }
 body{
   margin:0;
   font-family:'Inter',sans-serif;
   background:var(--bg);
   color:var(--text);
 }
-
 .wrap{
   max-width:720px;
   margin:0 auto;
   padding:100px 24px;
 }
-
 h1{
   font-size:42px;
   font-weight:600;
-  margin-bottom:16px;
+  margin:0 0 16px 0;
 }
-
 p{
   color:var(--muted);
   line-height:1.6;
+  margin:0 0 14px 0;
 }
-
 ul{
   color:var(--muted);
-  margin:20px 0 30px 0;
+  margin:18px 0 26px 18px;
+  padding:0;
 }
+li{ margin:6px 0; }
 
-form{
-  margin-top:40px;
+.card{
+  margin-top:28px;
+  border:1px solid var(--line);
+  background:#fff;
+  padding:22px;
 }
 
 label{
+  display:block;
+  margin-top:14px;
   font-size:12px;
   text-transform:uppercase;
   letter-spacing:1px;
   color:var(--muted);
 }
-
 input, textarea{
   width:100%;
   padding:14px;
-  margin:8px 0 24px 0;
+  margin:8px 0 0 0;
   border:1px solid var(--line);
   background:white;
   font-family:'Inter',sans-serif;
   font-size:14px;
 }
 
-button{
-  padding:12px 24px;
+.actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+button, a.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px 20px;
   background:var(--accent);
   color:white;
   border:none;
   font-size:14px;
   cursor:pointer;
+  text-decoration:none;
 }
+a.btn.secondary{
+  background:transparent;
+  color:var(--text);
+  border:1px solid var(--line);
+}
+button:hover, a.btn:hover{ opacity:0.92; }
 
-button:hover{
-  opacity:0.9;
+.small{
+  font-size:12px;
+  color:var(--muted);
+  margin-top:12px;
 }
 
 .footer-link{
@@ -84,16 +107,19 @@ button:hover{
   font-size:12px;
   color:var(--muted);
 }
+.footer-link a{
+  color:var(--muted);
+  text-decoration:none;
+}
+.footer-link a:hover{ color:var(--text); }
 </style>
 </head>
-<body>
 
+<body>
 <div class="wrap">
   <h1>Request Institutional Briefing</h1>
 
-  <p>
-    SIM95™ Infrastructure is deployed in selective founder-led ecosystems.
-  </p>
+  <p>SIM95™ Infrastructure is deployed in selective founder-led ecosystems.</p>
 
   <ul>
     <li>Cohort-based education businesses</li>
@@ -107,63 +133,65 @@ button:hover{
     and ecosystem-level identity mapping.
   </p>
 
-<form id="briefingForm">
-  <label>Full Name</label>
-  <input type="text" name="name" required>
+  <div class="card">
+    <label for="name">Full Name</label>
+    <input id="name" type="text" placeholder="Your name">
 
-  <label>Email</label>
-  <input type="email" name="email" required>
+    <label for="email">Email</label>
+    <input id="email" type="email" placeholder="you@domain.com">
 
-  <label>Organization</label>
-  <input type="text" name="organization" required>
+    <label for="organization">Organization</label>
+    <input id="organization" type="text" placeholder="Company / Community / Fund / Program">
 
-  <label>Program Size / Context</label>
-  <textarea name="context" rows="5" required></textarea>
+    <label for="context">Program Size / Context</label>
+    <textarea id="context" rows="5" placeholder="Program size, audience, and what you want to protect or improve."></textarea>
 
-  <!-- optional honeypot -->
-  <input type="text" name="company" style="display:none" tabindex="-1" autocomplete="off">
+    <div class="actions">
+      <button type="button" id="emailBtn">Open Email</button>
+      <a class="btn secondary" href="/" aria-label="Back to SVRNOS">Back</a>
+    </div>
 
-  <button type="submit">Request Briefing</button>
-  <div id="briefingStatus" style="margin-top:14px;color:#6B6B6B;"></div>
-</form>
-
-<script>
-  const briefingForm = document.getElementById("briefingForm");
-  const briefingStatus = document.getElementById("briefingStatus");
-
-  briefingForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    briefingStatus.textContent = "Sending…";
-
-    const fd = new FormData(briefingForm);
-    const payload = Object.fromEntries(fd.entries());
-    payload.form = "institutional_briefing";
-
-    try {
-      const r = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-
-      const data = await r.json().catch(() => ({}));
-      if (!r.ok || !data.ok) {
-        briefingStatus.textContent = "Failed to send. Email infra@sim95.com.";
-        return;
-      }
-
-      briefingStatus.textContent = "Received. We’ll reply by email.";
-      briefingForm.reset();
-    } catch {
-      briefingStatus.textContent = "Failed to send. Email infra@sim95.com.";
-    }
-  });
-</script>
+    <div class="small">
+      This opens your email client with a pre-filled request. If nothing happens, email
+      <strong>infra@sim95.com</strong>.
+    </div>
+  </div>
 
   <div class="footer-link">
     <a href="/">← Back to SVRNOS</a>
   </div>
 </div>
 
+<script>
+(function () {
+  const TO = "infra@sim95.com"; // change to infra@svrnos.com anytime
+  const btn = document.getElementById("emailBtn");
+
+  function enc(v){ return encodeURIComponent(v || ""); }
+
+  btn.addEventListener("click", () => {
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const organization = document.getElementById("organization").value.trim();
+    const context = document.getElementById("context").value.trim();
+
+    const subject = "SVRNOS — Institutional briefing request";
+    const body =
+`Request Type: Institutional Briefing
+
+Name: ${name || "-"}
+Email: ${email || "-"}
+Organization: ${organization || "-"}
+
+Program Size / Context:
+${context || "-"}
+
+— sent via svrnos.com`;
+
+    const mailto = `mailto:${TO}?subject=${enc(subject)}&body=${enc(body)}`;
+    window.location.href = mailto;
+  });
+})();
+</script>
 </body>
 </html>
