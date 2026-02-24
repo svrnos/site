@@ -161,7 +161,7 @@ form.addEventListener("submit", async (e) => {
     const data = await response.json().catch(() => ({}));
 
     if (!response.ok || !data.ok) {
-      statusEl.textContent = "Submission failed. Email infra@svrnos.com.";
+      statusEl.textContent = "Submission failed. Email infra@sim95.com.";
       return;
     }
 
@@ -169,7 +169,7 @@ form.addEventListener("submit", async (e) => {
     form.reset();
 
   } catch (error) {
-    statusEl.textContent = "Submission failed. Email infra@svrnos.com.";
+    statusEl.textContent = "Submission failed. Email infra@sim95.com.";
   }
 });
 </script>
