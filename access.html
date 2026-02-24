@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Request Access — SVRNOS™</title>
-<meta name="description" content="Request controlled beta access to SIM95™ — the operational identity diagnostic engine by SVRNOS™.">
+<meta name="description" content="Request access to SIM95™ in controlled beta.">
 
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/svrnos favicon.svg" type="image/svg+xml">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
@@ -17,73 +17,80 @@
   --accent:#2F5D50;
   --line:#E2E2E2;
 }
-
 *{ box-sizing:border-box; }
-
 body{
   margin:0;
   font-family:'Inter',sans-serif;
   background:var(--bg);
   color:var(--text);
 }
-
 .wrap{
   max-width:720px;
   margin:0 auto;
   padding:100px 24px;
 }
-
 h1{
   font-size:42px;
   font-weight:600;
-  margin-bottom:16px;
+  margin:0 0 16px 0;
 }
-
 p{
   color:var(--muted);
   line-height:1.6;
+  margin:0 0 14px 0;
 }
-
-form{
-  margin-top:40px;
+.card{
+  margin-top:34px;
+  border:1px solid var(--line);
+  background:#fff;
+  padding:22px;
 }
-
 label{
+  display:block;
+  margin-top:14px;
   font-size:12px;
   text-transform:uppercase;
   letter-spacing:1px;
   color:var(--muted);
 }
-
 input, textarea{
   width:100%;
   padding:14px;
-  margin:8px 0 24px 0;
+  margin:8px 0 0 0;
   border:1px solid var(--line);
   background:white;
   font-family:'Inter',sans-serif;
   font-size:14px;
 }
-
-button{
-  padding:12px 24px;
+.actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+button, a.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px 20px;
   background:var(--accent);
   color:white;
   border:none;
   font-size:14px;
   cursor:pointer;
+  text-decoration:none;
 }
-
-button:hover{
-  opacity:0.92;
+a.btn.secondary{
+  background:transparent;
+  color:var(--text);
+  border:1px solid var(--line);
 }
-
-.status{
-  margin-top:14px;
-  font-size:14px;
+button:hover, a.btn:hover{ opacity:0.92; }
+.small{
+  font-size:12px;
   color:var(--muted);
+  margin-top:12px;
 }
-
 .footer-link{
   margin-top:60px;
   font-size:12px;
@@ -93,46 +100,39 @@ button:hover{
   color:var(--muted);
   text-decoration:none;
 }
-.footer-link a:hover{
-  color:var(--text);
-}
+.footer-link a:hover{ color:var(--text); }
 </style>
 </head>
 
 <body>
-
 <div class="wrap">
   <h1>Request Access</h1>
+  <p>SIM95™ is currently deployed in controlled beta for founder-operators carrying sustained responsibility.</p>
+  <p>Access is granted selectively to preserve diagnostic depth and signal integrity.</p>
 
-  <p>
-    SIM95™ is currently deployed in controlled beta environments for founder-operators
-    carrying sustained responsibility.
-  </p>
+  <div class="card">
+    <label for="name">Full Name</label>
+    <input id="name" type="text" placeholder="Your name">
 
-  <p>
-    Access is granted selectively to preserve diagnostic depth and signal integrity.
-  </p>
+    <label for="email">Email</label>
+    <input id="email" type="email" placeholder="you@domain.com">
 
-  <form id="accessForm">
-    <label>Full Name</label>
-    <input type="text" name="name" required>
+    <label for="role">Role / Company</label>
+    <input id="role" type="text" placeholder="Founder, Operator, GP…">
 
-    <label>Email</label>
-    <input type="email" name="email" required>
+    <label for="context">Context</label>
+    <textarea id="context" rows="5" placeholder="What are you building / what pressure are you under?"></textarea>
 
-    <label>Role / Company</label>
-    <input type="text" name="role">
+    <div class="actions">
+      <button type="button" id="emailBtn">Open Email</button>
+      <a class="btn secondary" href="/" aria-label="Back to SVRNOS">Back</a>
+    </div>
 
-    <label>Context</label>
-    <textarea name="context" rows="5" required></textarea>
-
-    <!-- Honeypot (spam trap) -->
-    <input type="text" name="company" style="display:none" tabindex="-1" autocomplete="off">
-
-    <button type="submit">Submit Request</button>
-
-    <div id="accessStatus" class="status"></div>
-  </form>
+    <div class="small">
+      This opens your email client with a pre-filled message. If nothing happens, email
+      <strong>infra@sim95.com</strong>.
+    </div>
+  </div>
 
   <div class="footer-link">
     <a href="/">← Back to SVRNOS</a>
@@ -140,39 +140,35 @@ button:hover{
 </div>
 
 <script>
-const form = document.getElementById("accessForm");
-const statusEl = document.getElementById("accessStatus");
+(function () {
+  const TO = "infra@sim95.com";
+  const btn = document.getElementById("emailBtn");
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  statusEl.textContent = "Sending…";
+  function enc(v){ return encodeURIComponent(v || ""); }
 
-  const fd = new FormData(form);
-  const payload = Object.fromEntries(fd.entries());
-  payload.form = "access_request";
+  btn.addEventListener("click", () => {
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const role = document.getElementById("role").value.trim();
+    const context = document.getElementById("context").value.trim();
 
-  try {
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+    const subject = "SVRNOS — Access request";
+    const body =
+`Request Type: Access
 
-    const data = await response.json().catch(() => ({}));
+Name: ${name || "-"}
+Email: ${email || "-"}
+Role/Company: ${role || "-"}
 
-    if (!response.ok || !data.ok) {
-      statusEl.textContent = "Submission failed. Email infra@sim95.com.";
-      return;
-    }
+Context:
+${context || "-"}
 
-    statusEl.textContent = "Received. We’ll reply by email.";
-    form.reset();
+— sent via svrnos.com`;
 
-  } catch (error) {
-    statusEl.textContent = "Submission failed. Email infra@sim95.com.";
-  }
-});
+    const mailto = `mailto:${TO}?subject=${enc(subject)}&body=${enc(body)}`;
+    window.location.href = mailto;
+  });
+})();
 </script>
-
 </body>
 </html>
