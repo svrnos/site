@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SVRNOS™ — The Institute for Operational Identity</title>
-<meta name="description" content="SVRNOS™ formalizes Identity Architecture™ and develops SIM95™ — a patent-pending diagnostic engine for founders operating under sustained pressure.">
+<meta name="description" content="SVRNOS™ formalizes Identity Architecture™ — a diagnostic framework for understanding how founders and operators stabilize, distort, and reconstruct under sustained pressure.">
 
 <link rel="icon" href="/svrnos favicon.svg" type="image/svg+xml">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,12 +12,18 @@
 <style>
 :root{
   --bg:#F5F5F3;
+  --paper:#FFFFFF;
   --text:#111111;
   --muted:#6B6B6B;
   --accent:#2F5D50;
   --line:#E2E2E2;
+  --line2:#D2D2D2;
 }
+
 *{ box-sizing:border-box; }
+
+html,body{ height:100%; }
+
 body{
   margin:0;
   font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
@@ -25,133 +31,231 @@ body{
   color:var(--text);
   line-height:1.65;
 }
-.wrap{
+
+header{
   max-width:1100px;
   margin:0 auto;
-  padding:0 24px;
+  padding:28px 24px 0 24px;
 }
-header{
-  padding:28px 0;
-}
-.brand{
+
+.topbar{
   display:flex;
   justify-content:space-between;
   align-items:flex-start;
+  gap:24px;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--line);
 }
+
+.brand{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
 .wordmark{
-  height:32px;
+  height:30px;
+  width:auto;
+  display:block;
 }
+
 .brand-sub{
   font-size:11px;
-  letter-spacing:1px;
+  letter-spacing:1.2px;
   text-transform:uppercase;
   color:var(--muted);
 }
-main{
-  padding:72px 0 96px 0;
-}
-.kicker{
+
+nav{
+  display:flex;
+  gap:18px;
+  align-items:center;
   font-size:12px;
-  letter-spacing:1px;
+  letter-spacing:0.8px;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+
+nav a{
+  color:var(--muted);
+  text-decoration:none;
+  border-bottom:1px solid transparent;
+  padding-bottom:2px;
+}
+nav a:hover{
+  color:var(--text);
+  border-bottom-color:var(--line2);
+}
+
+.container{
+  max-width:1100px;
+  margin:0 auto;
+  padding:70px 24px 96px 24px;
+}
+
+.section-label{
+  font-size:12px;
+  letter-spacing:1.2px;
   text-transform:uppercase;
   color:var(--muted);
-  margin-bottom:10px;
+  margin:0 0 12px 0;
 }
+
 h1{
-  font-size:56px;
+  font-size:54px;
   font-weight:600;
+  line-height:1.08;
+  letter-spacing:-0.02em;
+  margin:0 0 16px 0;
+  max-width:900px;
+}
+
+h2{
+  font-size:32px;
+  font-weight:600;
+  line-height:1.18;
+  letter-spacing:-0.01em;
   margin:0 0 16px 0;
 }
-.lead{
-  max-width:780px;
+
+p{
   color:var(--muted);
-  font-size:17px;
+  max-width:760px;
+  margin:0 0 12px 0;
 }
+
 .meta{
-  margin-top:10px;
+  margin-top:14px;
   font-size:12px;
-  letter-spacing:1px;
+  letter-spacing:1.1px;
   text-transform:uppercase;
   color:var(--muted);
 }
-.cta-row{
-  margin-top:28px;
+
+.actions{
   display:flex;
-  gap:14px;
+  gap:12px;
   flex-wrap:wrap;
+  margin-top:26px;
 }
-.btn{
+
+.button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
   padding:12px 20px;
-  font-size:14px;
+  font-size:13px;
+  letter-spacing:0.6px;
+  text-transform:uppercase;
   text-decoration:none;
   border:1px solid transparent;
+  border-radius:0;
+  cursor:pointer;
 }
-.btn-primary{
+
+.button.primary{
   background:var(--accent);
-  color:#fff;
+  color:white;
 }
-.btn-ghost{
+.button.primary:hover{ opacity:0.92; }
+
+.button.ghost{
+  background:transparent;
   border-color:var(--line);
   color:var(--text);
 }
-.btn-primary:hover{ opacity:0.92; }
-.btn-ghost:hover{ border-color:#CFCFCF; }
+.button.ghost:hover{ border-color:var(--line2); }
 
 .divider{
   height:1px;
   background:var(--line);
-  margin:80px 0;
+  margin:78px 0;
 }
 
 .grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:64px;
+  gap:80px;
+  align-items:start;
 }
-h2{
-  font-size:32px;
+
+.features{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.card{
+  border:1px solid var(--line);
+  padding:18px;
+  background:transparent;
+}
+
+.feature-title{
   font-weight:600;
-  margin-bottom:14px;
+  margin:0 0 8px 0;
 }
-.copy{
+
+.card p{
+  margin:0;
   color:var(--muted);
 }
 
 ul.clean{
   list-style:none;
   padding:0;
-  margin-top:14px;
+  margin:14px 0 0 0;
   color:var(--muted);
 }
+
 ul.clean li{
   margin:10px 0;
+  padding-left:18px;
+  position:relative;
 }
 
-.cards{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
+ul.clean li:before{
+  content:"—";
+  position:absolute;
+  left:0;
+  color:#9A9A9A;
 }
-.card{
-  border:1px solid var(--line);
-  padding:20px;
+
+blockquote{
+  margin:18px 0 0 0;
+  padding:14px 16px;
+  border-left:2px solid var(--line2);
+  color:var(--muted);
 }
-.card-title{
-  font-weight:600;
-  margin-bottom:6px;
+
+.center{
+  text-align:center;
+}
+
+.center p{
+  margin-left:auto;
+  margin-right:auto;
 }
 
 footer{
-  border-top:1px solid var(--line);
-  padding:30px 0;
+  max-width:1100px;
+  margin:0 auto;
+  padding:28px 24px;
   font-size:12px;
   color:var(--muted);
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+  border-top:1px solid var(--line);
 }
 
 @media (max-width:900px){
+  .grid{ grid-template-columns:1fr; gap:36px; }
+  .features{ grid-template-columns:1fr; }
   h1{ font-size:42px; }
-  .grid{ grid-template-columns:1fr; }
-  .cards{ grid-template-columns:1fr; }
+  .topbar{ flex-direction:column; align-items:flex-start; }
+  nav{ flex-wrap:wrap; }
 }
 </style>
 </head>
@@ -159,92 +263,191 @@ footer{
 <body>
 
 <header>
-  <div class="wrap brand">
-    <div>
-      <img src="/svrnos-wordmark.svg" class="wordmark" alt="SVRNOS™">
+  <div class="topbar">
+    <div class="brand">
+      <img class="wordmark" src="/svrnos-wordmark.svg" alt="SVRNOS™">
       <div class="brand-sub">The Institute for Operational Identity</div>
     </div>
+
+    <nav aria-label="Primary">
+      <a href="#identity">Identity Architecture</a>
+      <a href="#sim95">SIM95</a>
+      <a href="#application">Application</a>
+      <a href="#cohorts">Cohorts</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </div>
 </header>
 
-<main>
-  <div class="wrap">
+<div class="container">
 
-    <div class="kicker">SVRNOS™</div>
-    <h1>Identity becomes visible under pressure.</h1>
-    <p class="lead">
-      SVRNOS™ formalizes Identity Architecture™ — a structural model for understanding how founders, operators, and leadership ecosystems stabilize, distort, and reconstruct under sustained load.
-    </p>
-    <div class="meta">SIM95™ • Patent Pending</div>
+  <!-- HERO (Founder-first, Institute umbrella) -->
+  <div class="section-label">SVRNOS™</div>
+  <h1>Identity becomes visible under pressure.</h1>
+  <p>
+    SVRNOS™ formalizes Identity Architecture™ — a diagnostic framework for understanding how founders and operators
+    stabilize, distort, and reconstruct under sustained load.
+  </p>
+  <p>
+    Most founders optimize strategy. Few understand how identity behaves under pressure —
+    until distortion reshapes execution.
+  </p>
+  <div class="meta">SIM95™ is our diagnostic engine • Patent pending</div>
 
-    <div class="cta-row">
-      <a class="btn btn-primary" href="https://sim95.com" target="_blank">Explore SIM95™</a>
-      <a class="btn btn-ghost" href="mailto:infra@sim95.com?subject=SVRNOS%20Inquiry">Contact</a>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="grid">
-      <div>
-        <div class="kicker">The Structural Problem</div>
-        <h2>Pressure reveals architecture.</h2>
-        <p class="copy">
-          Most performance systems focus on strategy, skill, communication, personality, or motivation.
-          Failure rarely originates there.
-        </p>
-        <ul class="clean">
-          <li>Decision bandwidth narrows</li>
-          <li>Urgency overrides judgment</li>
-          <li>Boundaries soften under demand</li>
-          <li>Overload becomes normalized</li>
-          <li>Execution rhythm destabilizes</li>
-        </ul>
-      </div>
-
-      <div>
-        <div class="kicker">What SVRNOS Builds</div>
-        <p class="copy">
-          This is not a skill deficit. It is architectural distortion under load.
-          SVRNOS models that layer — and builds diagnostic infrastructure to measure it before it compounds.
-        </p>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="grid">
-      <div>
-        <div class="kicker">SIM95™ Measures</div>
-        <h2>Operational identity under pressure.</h2>
-      </div>
-
-      <div class="cards">
-        <div class="card">
-          <div class="card-title">Collapse Patterns</div>
-          <div class="copy">Freeze · Fawn · Force sequences under sustained load.</div>
-        </div>
-        <div class="card">
-          <div class="card-title">Decision Distortion</div>
-          <div class="copy">Narrowing under urgency and escalation bias.</div>
-        </div>
-        <div class="card">
-          <div class="card-title">Boundary Integrity</div>
-          <div class="copy">Authority, limits, and structural clarity.</div>
-        </div>
-        <div class="card">
-          <div class="card-title">Stability & Momentum</div>
-          <div class="copy">Thresholds, recovery elasticity, execution volatility.</div>
-        </div>
-      </div>
-    </div>
-
+  <div class="actions">
+    <a class="button primary" href="https://sim95.com" target="_blank" rel="noopener">Explore SIM95™</a>
+    <a class="button ghost" href="mailto:infra@sim95.com?subject=SVRNOS%20Inquiry">Contact</a>
   </div>
-</main>
+
+  <div class="divider" id="identity"></div>
+
+  <!-- SECTION: Identity Architecture -->
+  <div class="grid">
+    <div>
+      <div class="section-label">Identity Architecture™</div>
+      <h2>Identity under load reveals structure.</h2>
+      <p>
+        When pressure rises, behavior shifts. What looks like burnout, indecision, aggression, withdrawal, or volatility
+        is rarely random.
+      </p>
+      <p>
+        It is architectural distortion under load — and it compounds quietly until outcomes degrade.
+      </p>
+    </div>
+
+    <div class="features">
+      <div class="card">
+        <div class="feature-title">Collapse Patterns</div>
+        <p>Freeze · Fawn · Force sequences under sustained stress.</p>
+      </div>
+
+      <div class="card">
+        <div class="feature-title">Boundary Integrity</div>
+        <p>Authority, limits, and structural clarity under demand.</p>
+      </div>
+
+      <div class="card">
+        <div class="feature-title">Emotional Bandwidth</div>
+        <p>Capacity to absorb volatility without fragmentation.</p>
+      </div>
+
+      <div class="card">
+        <div class="feature-title">Structural Maturity</div>
+        <p>Developmental depth and resilience under responsibility.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider" id="sim95"></div>
+
+  <!-- SECTION: SIM95 -->
+  <div class="grid">
+    <div>
+      <div class="section-label">SIM95™</div>
+      <h2>The Operational Identity Diagnostic Engine.</h2>
+      <div class="meta">Deterministic • Founder-built • Patent pending</div>
+    </div>
+    <div>
+      <p>
+        SIM95™ measures identity structure across collapse signatures, boundary topology, emotional bandwidth,
+        and structural maturity.
+      </p>
+      <blockquote>
+        SIM95™ does not describe personality. It maps operational identity — the structural posture your system defaults to when the stakes rise.
+      </blockquote>
+      <p style="margin-top:14px;">
+        This is not preference profiling. It is pressure-architecture modeling.
+      </p>
+    </div>
+  </div>
+
+  <div class="divider" id="application"></div>
+
+  <!-- SECTION: Application (Founder-first, future-legible) -->
+  <div class="grid">
+    <div>
+      <div class="section-label">Application</div>
+      <h2>Built for high-responsibility environments.</h2>
+    </div>
+    <div>
+      <p>
+        Founder-operators, solo owners, and leaders operating under sustained responsibility —
+        where pressure compresses decision cycles and exposes structural limits before failure becomes visible.
+      </p>
+      <p>
+        Founder visibility is the first layer. Institutional deployment follows.
+      </p>
+      <ul class="clean">
+        <li>See distortion early</li>
+        <li>Stabilize execution rhythm</li>
+        <li>Protect boundaries under demand</li>
+        <li>Recover cleanly without fragmentation</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divider" id="cohorts"></div>
+
+  <!-- SECTION: Ecosystem application (Completion Problem) -->
+  <div class="grid">
+    <div>
+      <div class="section-label">Ecosystem application</div>
+      <h2>The completion problem.</h2>
+      <p>
+        When founder identity distortion is multiplied across a room, cohort dynamics destabilize.
+      </p>
+    </div>
+
+    <div>
+      <p>Most cohort-based programs struggle with the same pattern:</p>
+      <ul class="clean" style="margin-top:10px;">
+        <li>Strong enthusiasm at entry</li>
+        <li>Early momentum</li>
+        <li>Mid-program volatility</li>
+        <li>Drop-offs under pressure</li>
+        <li>Inconsistent execution</li>
+      </ul>
+
+      <p style="margin-top:14px;">It is rarely intelligence.<br>It is rarely content quality.<br>It is rarely ambition.</p>
+      <p><strong style="color:#111;">It is structural misalignment under load.</strong></p>
+
+      <p>
+        Most programs admit anyone with motivation. Few screen for pressure behavior.
+        SIM95 isolates distortion patterns before they surface inside your cohort.
+      </p>
+
+      <p style="margin-top:14px;">
+        Operational Identity becomes infrastructure — not philosophy.
+      </p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CLOSE -->
+  <div class="center" id="contact">
+    <div class="section-label">Controlled access</div>
+    <h2>Measure identity before distortion compounds.</h2>
+    <p>
+      If you operate under sustained responsibility, structure matters.
+      SVRNOS is deployed selectively. We prioritize depth over scale.
+    </p>
+
+    <div class="actions" style="justify-content:center;">
+      <a class="button primary" href="mailto:infra@sim95.com?subject=SVRNOS%20—%20Institutional%20Inquiry">Open email</a>
+      <a class="button ghost" href="https://sim95.com" target="_blank" rel="noopener">SIM95™</a>
+    </div>
+
+    <p style="margin-top:18px; max-width:860px;">
+      Pressure does not create identity. It reveals structure. SVRNOS exists to make distortion visible before it reshapes outcomes.
+    </p>
+  </div>
+
+</div>
 
 <footer>
-  <div class="wrap">
-    © 2026 SVRNOS™ Institute. All rights reserved.
-  </div>
+  <div>© 2026 SVRNOS™ Institute. All rights reserved.</div>
+  <div>Diagnostics & Architecture</div>
 </footer>
 
 </body>
