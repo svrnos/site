@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Request Access — SVRNOS™</title>
-<link rel="icon" type="image/png" href="/favicon.png">
+<meta name="description" content="Request controlled beta access to SIM95™ — the operational identity diagnostic engine by SVRNOS™.">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
@@ -15,6 +17,8 @@
   --accent:#2F5D50;
   --line:#E2E2E2;
 }
+
+*{ box-sizing:border-box; }
 
 body{
   margin:0;
@@ -71,7 +75,13 @@ button{
 }
 
 button:hover{
-  opacity:0.9;
+  opacity:0.92;
+}
+
+.status{
+  margin-top:14px;
+  font-size:14px;
+  color:var(--muted);
 }
 
 .footer-link{
@@ -79,21 +89,31 @@ button:hover{
   font-size:12px;
   color:var(--muted);
 }
+.footer-link a{
+  color:var(--muted);
+  text-decoration:none;
+}
+.footer-link a:hover{
+  color:var(--text);
+}
 </style>
 </head>
+
 <body>
 
 <div class="wrap">
   <h1>Request Access</h1>
+
   <p>
-    SIM95™ is currently in controlled beta for founder-operators
+    SIM95™ is currently deployed in controlled beta environments for founder-operators
     carrying sustained responsibility.
   </p>
+
   <p>
-    Access is granted selectively to maintain diagnostic depth.
+    Access is granted selectively to preserve diagnostic depth and signal integrity.
   </p>
 
-  <form method="POST" action="/api/contact">
+  <form id="accessForm">
     <label>Full Name</label>
     <input type="text" name="name" required>
 
@@ -106,13 +126,53 @@ button:hover{
     <label>Context</label>
     <textarea name="context" rows="5" required></textarea>
 
+    <!-- Honeypot (spam trap) -->
+    <input type="text" name="company" style="display:none" tabindex="-1" autocomplete="off">
+
     <button type="submit">Submit Request</button>
+
+    <div id="accessStatus" class="status"></div>
   </form>
 
   <div class="footer-link">
     <a href="/">← Back to SVRNOS</a>
   </div>
 </div>
+
+<script>
+const form = document.getElementById("accessForm");
+const statusEl = document.getElementById("accessStatus");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  statusEl.textContent = "Sending…";
+
+  const fd = new FormData(form);
+  const payload = Object.fromEntries(fd.entries());
+  payload.form = "access_request";
+
+  try {
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    const data = await response.json().catch(() => ({}));
+
+    if (!response.ok || !data.ok) {
+      statusEl.textContent = "Submission failed. Email infra@svrnos.com.";
+      return;
+    }
+
+    statusEl.textContent = "Received. We’ll reply by email.";
+    form.reset();
+
+  } catch (error) {
+    statusEl.textContent = "Submission failed. Email infra@svrnos.com.";
+  }
+});
+</script>
 
 </body>
 </html>
