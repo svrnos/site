@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Institutional Briefing — SVRNOS™</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#F5F5F3;
+  --text:#111111;
+  --muted:#6B6B6B;
+  --accent:#2F5D50;
+  --line:#E2E2E2;
+}
+
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+.wrap{
+  max-width:720px;
+  margin:0 auto;
+  padding:100px 24px;
+}
+
+h1{
+  font-size:42px;
+  font-weight:600;
+  margin-bottom:16px;
+}
+
+p{
+  color:var(--muted);
+  line-height:1.6;
+}
+
+ul{
+  color:var(--muted);
+  margin:20px 0 30px 0;
+}
+
+form{
+  margin-top:40px;
+}
+
+label{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:var(--muted);
+}
+
+input, textarea{
+  width:100%;
+  padding:14px;
+  margin:8px 0 24px 0;
+  border:1px solid var(--line);
+  background:white;
+  font-family:'Inter',sans-serif;
+  font-size:14px;
+}
+
+button{
+  padding:12px 24px;
+  background:var(--accent);
+  color:white;
+  border:none;
+  font-size:14px;
+  cursor:pointer;
+}
+
+button:hover{
+  opacity:0.9;
+}
+
+.footer-link{
+  margin-top:60px;
+  font-size:12px;
+  color:var(--muted);
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <h1>Request Institutional Briefing</h1>
+
+  <p>
+    SIM95™ Infrastructure is deployed in selective founder-led ecosystems.
+  </p>
+
+  <ul>
+    <li>Cohort-based education businesses</li>
+    <li>Founder masterminds</li>
+    <li>Accelerators</li>
+    <li>Selective membership communities</li>
+  </ul>
+
+  <p>
+    Briefings outline deployment models, admission screening structures,
+    and ecosystem-level identity mapping.
+  </p>
+
+  <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+    <label>Full Name</label>
+    <input type="text" name="name" required>
+
+    <label>Email</label>
+    <input type="email" name="email" required>
+
+    <label>Organization</label>
+    <input type="text" name="organization" required>
+
+    <label>Program Size / Context</label>
+    <textarea name="context" rows="5" required></textarea>
+
+    <button type="submit">Request Briefing</button>
+  </form>
+
+  <div class="footer-link">
+    <a href="/">← Back to SVRNOS</a>
+  </div>
+</div>
+
+</body>
+</html>
