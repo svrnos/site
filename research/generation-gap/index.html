@@ -283,6 +283,9 @@
   article p { margin: 0 0 1.4em; }
   article p:first-of-type { margin-top: 0; }
 
+  /* Offset anchor jumps so the sticky top nav doesn't cover the target */
+  article h2[id], article h3[id], section[id] { scroll-margin-top: 80px; }
+
   article h2 {
     font-family: var(--font-serif);
     font-weight: 500;
