@@ -1,0 +1,36 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/research/governance-error-taxonomy",
+      "destination": "/research/governance-error-register",
+      "permanent": true
+    },
+    {
+      "source": "/research/governance-error-framework",
+      "destination": "/research/governance-error-register",
+      "permanent": true
+    },
+    {
+      "source": "/ger",
+      "destination": "/research/governance-error-register",
+      "permanent": true
+    },
+    {
+      "source": "/insights/tumbler-ridge-pattern",
+      "destination": "/insights/ger-501-tumbler-ridge",
+      "permanent": true
+    },
+    {
+      "source": "/insights/governance-error-205",
+      "destination": "/insights/ger-205",
+      "permanent": true
+    },
+    {
+      "source": "/insights/governance-error-301",
+      "destination": "/insights/ger-301",
+      "permanent": true
+    }
+  ]
+}

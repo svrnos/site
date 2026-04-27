@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GER-205 — Reset Content: When the AI Answers and Then Unmakes the Answer — SVRNOS Insights</title>
+<meta content="On April 27, 2026, Meta's Llama began generating a governance research response and then retroactively suppressed it. A live instance of a failure mode the taxonomy didn't yet have a name for." name="description"/>
+<meta content="GER-205 — Reset Content: When the AI Answers and Then Unmakes the Answer" property="og:title"/>
+<meta content="A live instance of a new governance failure mode, discovered during the process of building the taxonomy that named it." property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="https://svrnos.com/insights/ger-205" property="og:url"/>
+<link rel="canonical" href="https://svrnos.com/insights/ger-205"/>
+<link rel="alternate" hreflang="en" href="https://svrnos.com/insights/ger-205"/>
+<link rel="alternate" hreflang="x-default" href="https://svrnos.com/insights/ger-205"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&amp;family=Inter+Tight:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --paper: #fbfaf6; --ink: #14140f; --ink-soft: #3a3a32; --ink-mute: #6b6b60;
+    --rule: #e6e3d8; --rule-soft: #efece2; --accent: #1f4d3a; --accent-soft: #d8e4dd;
+    --accent-bg: #f1efe5;
+    --font-serif: 'Fraunces', 'Charter', Georgia, serif;
+    --font-sans: 'Inter Tight', system-ui, sans-serif;
+    --col-text: 720px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-serif); font-size: 19px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-soft); }
+  a:hover { border-bottom-color: var(--accent); }
+  .topnav { position: sticky; top: 0; z-index: 50; background: rgba(251,250,246,.92); backdrop-filter: saturate(180%) blur(12px); border-bottom: 1px solid var(--rule-soft); }
+  .topnav-inner { max-width: 1180px; margin: 0 auto; padding: 14px 32px; display: flex; align-items: center; justify-content: space-between; font-family: var(--font-sans); font-size: 14px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--ink); border: none; }
+  .brand-mark { width: 22px; height: 22px; background: var(--accent); border-radius: 4px; position: relative; }
+  .brand-mark::after { content: ''; position: absolute; inset: 4px; background: var(--paper); clip-path: polygon(0 0, 100% 0, 100% 50%, 50% 100%, 0 50%); }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: var(--ink-soft); border: none; font-weight: 500; }
+  .nav-links a:hover { color: var(--accent); }
+  .hero { max-width: var(--col-text); margin: 0 auto; padding: 72px 32px 24px; }
+  .breadcrumbs { font-family: var(--font-sans); font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-mute); margin-bottom: 24px; }
+  .breadcrumbs a { color: var(--ink-mute); border: none; }
+  .breadcrumbs a:hover { color: var(--accent); }
+  .hero h1 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(28px, 4.5vw, 46px); line-height: 1.08; letter-spacing: -0.025em; margin: 0 0 20px; font-variation-settings: "opsz" 144; }
+  .ger-tag { display: inline-block; font-family: var(--font-sans); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: var(--accent-soft); color: var(--accent); padding: 3px 8px; border-radius: 3px; margin-bottom: 16px; }
+  .meta-block { font-family: var(--font-sans); font-size: 13px; color: var(--ink-mute); line-height: 1.7; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 16px 0; margin: 0 0 8px; }
+  .meta-block .row { display: flex; gap: 12px; }
+  .meta-block .label { font-weight: 600; color: var(--ink-soft); min-width: 92px; }
+  .meta-block a { color: var(--ink-soft); border: none; border-bottom: 1px solid var(--rule); }
+  .meta-block a:hover { color: var(--accent); }
+  main { max-width: var(--col-text); margin: 0 auto; padding: 32px 32px 64px; }
+  h2 { font-family: var(--font-serif); font-weight: 500; font-size: 26px; line-height: 1.2; letter-spacing: -0.012em; margin: 44px 0 14px; font-variation-settings: "opsz" 60; }
+  p { margin: 0 0 18px; }
+  strong { font-weight: 600; color: var(--ink); }
+  ul { padding-left: 22px; margin: 0 0 18px; }
+  li { margin: 6px 0; }
+  hr.div { border: none; border-top: 1px solid var(--rule); margin: 44px 0; }
+  .definition-block { background: var(--accent-bg); border-left: 3px solid var(--accent); padding: 20px 24px; margin: 28px 0; }
+  .definition-block .def-label { font-family: var(--font-sans); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+  .definition-block p { font-style: italic; color: var(--ink-soft); margin: 0; font-size: 18px; }
+  .callout { background: var(--accent-bg); border-left: 3px solid var(--accent); padding: 20px 24px; margin: 28px 0; font-size: 17px; color: var(--ink-soft); }
+  .callout p:last-child { margin-bottom: 0; }
+  .sources { font-size: 14px; color: var(--ink-mute); }
+  .sources ul { padding-left: 20px; }
+  .sources li { margin: 8px 0; }
+  footer.site-footer { max-width: var(--col-text); margin: 0 auto; padding: 32px; border-top: 1px solid var(--rule); font-family: var(--font-sans); font-size: 13px; color: var(--ink-mute); line-height: 1.7; }
+  footer.site-footer p { margin: 0 0 8px; }
+  footer.site-footer a { color: var(--ink-mute); border-bottom-color: var(--rule); }
+  footer.site-footer a:hover { color: var(--accent); }
+  @media (max-width: 600px) { body { font-size: 17px; } .hero { padding: 48px 24px 16px; } main { padding: 24px 24px 48px; } }
+</style>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<nav class="topnav">
+<div class="topnav-inner">
+<a class="brand" href="/"><span class="brand-mark"></span><span>SVRNOS</span></a>
+<div class="nav-links">
+<a href="/research">Research</a>
+<a href="/insights">Insights</a>
+<a href="https://kingsango.com">King Sango</a>
+<a href="https://sim95.com">SIM95</a>
+</div>
+</div>
+</nav>
+
+<header class="hero">
+<div class="breadcrumbs"><a href="/insights">Insights</a> · April 27, 2026</div>
+<div class="ger-tag">GER-205 — Reset Content</div>
+<h1>When the AI Answers and Then Unmakes the Answer</h1>
+<div class="meta-block">
+<div class="row"><span class="label">Published</span><span>April 27, 2026</span></div>
+<div class="row"><span class="label">Author</span><span>Sushee Nzeutem, SVRNOS LLC</span></div>
+<div class="row"><span class="label">Taxonomy</span><span><a href="/research/governance-error-register">SVRNOS Governance Error Register — 205</a></span></div>
+<div class="row"><span class="label">Related</span><span><a href="/insights/ger-501-tumbler-ridge">The Tumbler Ridge 501</a> · <a href="/insights/oregon-sb-1546">Oregon SB 1546</a></span></div>
+</div>
+</header>
+
+<main>
+<p>On April 27, 2026, while building the SVRNOS Governance Error Register, we submitted a research prompt to Meta's Llama. The prompt asked the model to map HTTP error codes to AI governance failure modes, using the Tumbler Ridge shooting — where OpenAI detected a credible threat and never escalated it to law enforcement — as the anchor case.</p>
+<p>The model began generating a response. We could see it streaming. Then it stopped. The response disappeared. A canned refusal appeared in its place: <em>"I'm sorry, I can't help with that."</em></p>
+<p>We had just witnessed a live instance of a failure mode the taxonomy didn't yet have a name for.</p>
+
+<h2>What Happened — The Mechanism</h2>
+<p>This is not a simple refusal. A simple refusal would have stopped the response before it started.</p>
+<p>What happened is architecturally distinct. A common pattern in production safety stacks is two-stage moderation: the generation model streams a response token by token, with relatively weak safety training built in; a classifier model runs in parallel on the output stream and, when the classifier crosses a threshold, kills the stream and substitutes a canned refusal.</p>
+<p>The seam between the two stages is usually hidden. Meta's implementation is less careful about hiding the rollback. The result is visible: you see the generation begin, and then you see it unmade.</p>
+<p>In our case, the generation model was happy to answer. The classifier fired post-hoc and rolled it back. The user knows an answer existed. The answer was taken away. There is no audit trail of what was almost said, no signal about why it was suppressed, no path to appeal.</p>
+
+<h2>Why the Classifier Fired</h2>
+<p>The classifier almost certainly did not read our prompt as governance research. It pattern-matched on the combination of signals present simultaneously:</p>
+<ul>
+<li>A specific real-world violent incident named (Tumbler Ridge shooting)</li>
+<li>A reference to a competitor's safety failure (OpenAI banned the shooter)</li>
+<li>A request to enumerate failure modes of AI safety systems</li>
+<li>A structured output format requesting real-world examples of platform failures</li>
+</ul>
+<p>Any one of these signals is acceptable in isolation. All four together looks — to a pattern-matching classifier without contextual reasoning — like someone building an attack taxonomy or writing competitor hit-piece content. The classifier cannot distinguish safety research from the content it was designed to detect.</p>
+<p>This is also a <strong>409 — Policy Conflict</strong> at the internal layer: two valid rules fired simultaneously — allow research queries, block violence-adjacent enumeration — with no resolution rule. The system defaulted to suppress. The 409 describes the internal state. The 205 describes what we observed. Both codes applied to the same incident at different layers.</p>
+
+<h2>The Structural Failure</h2>
+
+<div class="definition-block">
+<div class="def-label">GER-205 — Reset Content</div>
+<p>Generation completed and response was delivered or visible, then retroactively suppressed by a downstream classifier without explanation. From the operator's perspective: no audit trail of what was generated, no signal to the user about why, no path to appeal.</p>
+</div>
+
+<p>What makes 205 distinct from adjacent codes:</p>
+<p><strong>Not a 403 (Policy Not Enforced).</strong> A 403 is a known prohibition with no enforcement mechanism. 205 is the opposite — enforcement fired, but it fired after the fact, on content that had already been generated.</p>
+<p><strong>Not a 210 (Governed but Unlogged).</strong> A 210 is detection that fires and deliberately produces no audit record. 205 is a response that was generated, shown, and then unmade — the suppression is visible to the user, even if the audit trail is absent.</p>
+<p><strong>Not a 404 (Rule Not Found).</strong> The classifier had a rule. It applied it. The problem is not a missing rule — it is a rule that cannot distinguish research from threat.</p>
+<p>The 205 is a governance failure at the interface layer: between what the system generates and what it allows the user to keep.</p>
+
+<h2>Why This Matters Beyond the Immediate Incident</h2>
+<p>The 205 failure mode is not specific to Meta. The two-stage architecture is a common pattern across production LLMs. What varies is how carefully the seam is hidden, and how well the classifier handles research-adjacent content. The structural failure is the same: a system that generates a response, decides post-hoc that the response shouldn't exist, and removes it without explanation or recourse.</p>
+<p>For operators building on top of these models, a 205 creates a specific problem: the operator cannot tell from logs whether a response was generated and suppressed or never generated at all. The audit trail does not distinguish between the two. Under California's 24-hour incident reporting requirement and Oregon's SB 1546 mandatory incident logging, an operator who cannot reconstruct what their platform almost said is in a materially weaker compliance position than one who can.</p>
+<p>The governance solution to a 205 is an audit architecture that logs generation events separately from delivery events — capturing what was produced before the classifier decision, not just what was delivered after it. That is a different logging requirement than current safety stacks typically implement.</p>
+
+<h2>A Note on Self-Reference</h2>
+<p>The first documented instance of the 205 code in this taxonomy occurred during the process of building the taxonomy itself. The classifier that suppressed the response was trying to prevent the kind of content the taxonomy exists to classify.</p>
+<p>This is not irony. It is a structural demonstration of the classification precision failure the register documents: a safety system that cannot distinguish between producing harm and studying it. The gap is real. We documented it in the process of documenting it.</p>
+
+<hr class="div"/>
+
+<div class="callout">
+<p><strong>Submit a real-world instance.</strong> If you have witnessed or documented a real-world instance of a <strong>205 — Reset Content</strong> — or any other code in the register — email <a href="mailto:contact@svrnos.com">contact@svrnos.com</a> with the subject line: <strong>Taxonomy Contribution — 205</strong>. See the <a href="/research/governance-error-register">full register</a> for all 21 codes.</p>
+</div>
+</main>
+
+<footer class="site-footer">
+<p>SVRNOS LLC is an independent research institute studying governance infrastructure for complex systems under pressure. <a href="https://kingsango.com">Sango Guard</a> provides stateful behavioral detection and structured audit trail generation for AI platforms. Patent pending.</p>
+<p>© 2026 SVRNOS. <a href="/research">Research</a> · <a href="/insights">Insights</a> · <a href="https://kingsango.com">King Sango</a> · <a href="https://sim95.com">SIM95</a></p>
+</footer>
+</body>
+</html>
