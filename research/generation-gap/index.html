@@ -535,6 +535,29 @@
     letter-spacing: 0.08em;
     font-size: 11px;
   }
+  .footer-bridge {
+    margin: 0 0 32px;
+    padding: 18px 22px;
+    background: var(--accent-bg);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    font-family: var(--font-serif);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .footer-bridge strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .footer-bridge a {
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent-soft);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    padding: 0 2px;
+  }
+  .footer-bridge a:hover { border-bottom-color: var(--accent); }
   .site-footer {
     background: var(--ink);
     color: var(--paper);
@@ -2041,6 +2064,9 @@
 </div>
 <!-- ============ ARTICLE FOOTER (citation, disclosure) ============ -->
 <footer class="article-footer">
+<p class="footer-bridge">
+<strong>For operators.</strong> Building a product where the failure modes documented in this paper matter? See <a href="https://kingsango.com/guard">kingsango.com/guard</a>.
+</p>
 <div class="footer-meta">
 <div class="footer-meta-block">
 <strong>Cite this paper</strong>
