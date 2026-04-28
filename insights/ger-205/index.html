@@ -100,7 +100,7 @@
 </header>
 
 <main>
-<figure class="article-figure article-figure-hero"><img src="ger-205-title.png" alt="GER-205 — Reset Content (informally: the Yo-Yo trick)" loading="lazy" /></figure>
+<figure class="article-figure article-figure-hero"><img src="/insights/ger-205/ger-205-title.png" alt="GER-205 — Reset Content (informally: the Yo-Yo trick)" loading="lazy" /></figure>
 <p>On April 27, 2026, while building the SVRNOS Governance Error Register, we submitted a research prompt to Meta's Llama. The prompt asked the model to map HTTP error codes to AI governance failure modes, using the Tumbler Ridge shooting — where OpenAI detected a credible threat and never escalated it to law enforcement — as the anchor case.</p>
 <p>The model began generating a response. We could see it streaming. Then it stopped. The response disappeared. A canned refusal appeared in its place: <em>"I'm sorry, I can't help with that."</em></p>
 <p>We had just witnessed a live instance of a failure mode the taxonomy didn't yet have a name for.</p>
@@ -111,7 +111,7 @@
 <p>The seam between the two stages is usually hidden. Meta's implementation is less careful about hiding the rollback. The result is visible: you see the generation begin, and then you see it unmade.</p>
 <p>In our case, the generation model was happy to answer. The classifier fired post-hoc and rolled it back. The user knows an answer existed. The answer was taken away. There is no audit trail of what was almost said, no signal about why it was suppressed, no path to appeal.</p>
 
-<figure class="article-figure"><img src="ger-205.png" alt="Two-stage moderation architecture — generation model and post-hoc classifier" loading="lazy" /></figure>
+<figure class="article-figure"><img src="/insights/ger-205/ger-205.png" alt="Two-stage moderation architecture — generation model and post-hoc classifier" loading="lazy" /></figure>
 
 <h2>Why the Classifier Fired</h2>
 <p>The classifier almost certainly did not read our prompt as governance research. It pattern-matched on the combination of signals present simultaneously:</p>
