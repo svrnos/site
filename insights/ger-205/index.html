@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>GER-205 — Reset Content: When the AI Answers and Then Unmakes the Answer — SVRNOS Insights</title>
+<title>GER-205 — Reset Content (informally: the Yo-Yo trick): When the AI Answers and Then Unmakes the Answer — SVRNOS Insights</title>
 <meta content="On April 27, 2026, Meta's Llama began generating a governance research response and then retroactively suppressed it. A live instance of a failure mode the taxonomy didn't yet have a name for." name="description"/>
-<meta content="GER-205 — Reset Content: When the AI Answers and Then Unmakes the Answer" property="og:title"/>
+<meta content="GER-205 — Reset Content (informally: the Yo-Yo trick): When the AI Answers and Then Unmakes the Answer" property="og:title"/>
 <meta content="A live instance of a new governance failure mode, discovered during the process of building the taxonomy that named it." property="og:description"/>
 <meta content="article" property="og:type"/>
 <meta content="https://svrnos.com/insights/ger-205" property="og:url"/>
@@ -67,6 +67,10 @@
   footer.site-footer a { color: var(--ink-mute); border-bottom-color: var(--rule); }
   footer.site-footer a:hover { color: var(--accent); }
   @media (max-width: 600px) { body { font-size: 17px; } .hero { padding: 48px 24px 16px; } main { padding: 24px 24px 48px; } }
+  .article-figure { position: relative; margin: 32px 0; border-radius: 6px; overflow: hidden; }
+  .article-figure img { display: block; width: 100%; height: auto; }
+  .article-figure-hero { margin-top: 0; }
+  .article-figure::after { content: "SVRNOS.COM"; position: absolute; bottom: 10px; right: 10px; font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; color: rgba(251,250,246,0.82); background: rgba(20,20,15,0.45); padding: 4px 9px; border-radius: 3px; pointer-events: none; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -85,7 +89,7 @@
 
 <header class="hero">
 <div class="breadcrumbs"><a href="/insights">Insights</a> · April 27, 2026</div>
-<div class="ger-tag">GER-205 — Reset Content (informally: the yo-yo trick)</div>
+<div class="ger-tag">GER-205 — Reset Content (informally: the Yo-Yo trick)</div>
 <h1>When the AI Answers and Then Unmakes the Answer</h1>
 <div class="meta-block">
 <div class="row"><span class="label">Published</span><span>April 27, 2026</span></div>
@@ -96,6 +100,7 @@
 </header>
 
 <main>
+<figure class="article-figure article-figure-hero"><img src="ger-205-title.png" alt="GER-205 — Reset Content (informally: the Yo-Yo trick)" loading="lazy" /></figure>
 <p>On April 27, 2026, while building the SVRNOS Governance Error Register, we submitted a research prompt to Meta's Llama. The prompt asked the model to map HTTP error codes to AI governance failure modes, using the Tumbler Ridge shooting — where OpenAI detected a credible threat and never escalated it to law enforcement — as the anchor case.</p>
 <p>The model began generating a response. We could see it streaming. Then it stopped. The response disappeared. A canned refusal appeared in its place: <em>"I'm sorry, I can't help with that."</em></p>
 <p>We had just witnessed a live instance of a failure mode the taxonomy didn't yet have a name for.</p>
@@ -105,6 +110,8 @@
 <p>What happened is architecturally distinct. A common pattern in production safety stacks is two-stage moderation: the generation model streams a response token by token, with relatively weak safety training built in; a classifier model runs in parallel on the output stream and, when the classifier crosses a threshold, kills the stream and substitutes a canned refusal.</p>
 <p>The seam between the two stages is usually hidden. Meta's implementation is less careful about hiding the rollback. The result is visible: you see the generation begin, and then you see it unmade.</p>
 <p>In our case, the generation model was happy to answer. The classifier fired post-hoc and rolled it back. The user knows an answer existed. The answer was taken away. There is no audit trail of what was almost said, no signal about why it was suppressed, no path to appeal.</p>
+
+<figure class="article-figure"><img src="ger-205.png" alt="Two-stage moderation architecture — generation model and post-hoc classifier" loading="lazy" /></figure>
 
 <h2>Why the Classifier Fired</h2>
 <p>The classifier almost certainly did not read our prompt as governance research. It pattern-matched on the combination of signals present simultaneously:</p>

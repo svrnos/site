@@ -63,6 +63,10 @@
   footer.site-footer a { color: var(--ink-mute); border-bottom-color: var(--rule); }
   footer.site-footer a:hover { color: var(--accent); }
   @media (max-width: 600px) { body { font-size: 17px; } .hero { padding: 48px 24px 16px; } main { padding: 24px 24px 48px; } }
+  .article-figure { position: relative; margin: 32px 0; border-radius: 6px; overflow: hidden; }
+  .article-figure img { display: block; width: 100%; height: auto; }
+  .article-figure-hero { margin-top: 0; }
+  .article-figure::after { content: "SVRNOS.COM"; position: absolute; bottom: 10px; right: 10px; font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; color: rgba(251,250,246,0.82); background: rgba(20,20,15,0.45); padding: 4px 9px; border-radius: 3px; pointer-events: none; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -90,6 +94,7 @@
 </header>
 
 <main>
+<figure class="article-figure article-figure-hero"><img src="oregon-sb-1546-title.png" alt="Oregon SB 1546 — A Technical Reading for Chatbot Operators" loading="lazy" /></figure>
 <p><a href="https://www.transparencycoalition.ai/news/oregon-lawmakers-pass-major-chatbot-bill-in-significant-win-for-kids-and-ai-safety">Governor Kotek signed Oregon SB 1546</a> on April 1, 2026. It is the first state law to impose mandatory incident reporting obligations specifically on chatbot operators. Most coverage has focused on what the law signals politically. This article focuses on what it requires technically — and what infrastructure operators now need to comply.</p>
 
 <h2>What the Law Actually Requires</h2>
@@ -110,6 +115,8 @@
 <p>Similarly, self-harm signal combined with suspected minority status is a compound condition. It requires holding both states simultaneously and detecting when they co-occur. Per-turn classification cannot hold state across turns by definition.</p>
 <p>Compliance with SB 1546 is a stateful problem. It requires stateful infrastructure.</p>
 <p><a href="https://kingsango.com">Sango Guard</a> is built on exactly this architecture: a structural behavioral firewall that tracks compound conditions across turns, injects governed responses when threshold states are met, and logs every decision in a structured, exportable audit trail. The annual incident report SB 1546 requires is a direct output of that real-time logging — not a separate compliance exercise.</p>
+
+<figure class="article-figure"><img src="oregon-sb-1546.png" alt="Per-turn classification vs stateful behavioral tracking — what SB 1546 requires" loading="lazy" /></figure>
 
 <h2>The Reporting Horizon</h2>
 <p>Oregon SB 1546 is the first, not the last. Washington State has parallel chatbot legislation now in force. <a href="https://www.cooley.com/news/insight/2026/2026-04-24-state-ai-laws-where-are-they-now">California and New York have active incident reporting regimes</a> for broader AI categories. As state-level AI legislation proliferates, the chatbot-specific reporting obligation Oregon created will become the template other states follow.</p>

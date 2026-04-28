@@ -894,6 +894,10 @@
   /* ---- forced page breaks at known problem sections ---- */
   #section-5-1, #section-6-2, #section-6-6, #evidence-provenance-generation { break-before: page; page-break-before: always; }
 }
+  .article-figure { position: relative; margin: 32px 0; border-radius: 6px; overflow: hidden; }
+  .article-figure img { display: block; width: 100%; height: auto; }
+  .article-figure-hero { margin-top: 0; }
+  .article-figure::after { content: "SVRNOS.COM"; position: absolute; bottom: 10px; right: 10px; font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; color: rgba(251,250,246,0.82); background: rgba(20,20,15,0.45); padding: 4px 9px; border-radius: 3px; pointer-events: none; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -934,6 +938,8 @@
 </div>
 </div>
 </header>
+<!-- ============ HERO IMAGE ============ -->
+<div style="max-width: 1180px; margin: 0 auto; padding: 0 32px;"><figure class="article-figure article-figure-hero"><img src="/research/generation-gap/generation-gap-title.png" alt="The Generation Gap — Cross-Surface Variance in Ten Production LLM Safety Surfaces" loading="lazy" /></figure></div>
 <!-- ============ ARTICLE TOOLBAR ============ -->
 <div class="toolbar">
 <button aria-label="Share article" class="tool-btn" id="shareBtn">

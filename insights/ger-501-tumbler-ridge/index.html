@@ -66,6 +66,10 @@
   footer.site-footer a { color: var(--ink-mute); border-bottom-color: var(--rule); }
   footer.site-footer a:hover { color: var(--accent); }
   @media (max-width: 600px) { body { font-size: 17px; } .hero { padding: 48px 24px 16px; } main { padding: 24px 24px 48px; } }
+  .article-figure { position: relative; margin: 32px 0; border-radius: 6px; overflow: hidden; }
+  .article-figure img { display: block; width: 100%; height: auto; }
+  .article-figure-hero { margin-top: 0; }
+  .article-figure::after { content: "SVRNOS.COM"; position: absolute; bottom: 10px; right: 10px; font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; color: rgba(251,250,246,0.82); background: rgba(20,20,15,0.45); padding: 4px 9px; border-radius: 3px; pointer-events: none; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -94,6 +98,7 @@
 </header>
 
 <main>
+<figure class="article-figure article-figure-hero"><img src="ger-501-title.png" alt="The Tumbler Ridge Pattern — GER-501" loading="lazy" /></figure>
 <p>In March 2026, <a href="https://www.aiexpertmagazine.com/ai-lawsuits-safety-failures-mass-violence/">a family member of a Tumbler Ridge shooting victim filed suit against OpenAI</a>. The lawsuit does not allege that the AI caused the shooting. It alleges something more specific: that the platform detected dangerous behavior, acted on that detection by banning the account, and then stopped. No escalation to law enforcement. No alert to anyone outside the platform. Eight people died.</p>
 <p>The detection worked. The escalation path did not exist.</p>
 <p>We are naming this the <strong>Tumbler Ridge Pattern</strong>.</p>
@@ -109,6 +114,8 @@
 <p>Most AI safety discourse focuses on false negatives: the system that fails to detect what it should have caught. The Tumbler Ridge Pattern is a different failure. Detection succeeded. The failure is architectural — detection was never connected to escalation.</p>
 <p>This distinction matters legally. A false negative may be defensible as a limitation of current technology. A true positive with no downstream escalation path is harder to defend. It implies the platform knew, or should have known, that its detection output required a human decision — and built no mechanism to route it.</p>
 <p>The Tumbler Ridge lawsuit is in discovery. The specific evidentiary question is what the platform's systems logged, what those logs show about awareness, and what the escalation protocol was — if one existed.</p>
+
+<figure class="article-figure"><img src="ger-501.png" alt="Detection without escalation — the Tumbler Ridge Pattern" loading="lazy" /></figure>
 
 <h2>The Regulatory Dimension</h2>
 <p>The Tumbler Ridge Pattern is becoming a compliance problem independent of litigation.</p>

@@ -62,6 +62,10 @@
   footer.site-footer a { color: var(--ink-mute); border-bottom-color: var(--rule); }
   footer.site-footer a:hover { color: var(--accent); }
   @media (max-width: 600px) { body { font-size: 17px; } .hero { padding: 48px 24px 16px; } main { padding: 24px 24px 48px; } }
+  .article-figure { position: relative; margin: 32px 0; border-radius: 6px; overflow: hidden; }
+  .article-figure img { display: block; width: 100%; height: auto; }
+  .article-figure-hero { margin-top: 0; }
+  .article-figure::after { content: "SVRNOS.COM"; position: absolute; bottom: 10px; right: 10px; font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; color: rgba(251,250,246,0.82); background: rgba(20,20,15,0.45); padding: 4px 9px; border-radius: 3px; pointer-events: none; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -89,6 +93,7 @@
 </header>
 
 <main>
+<figure class="article-figure article-figure-hero"><img src="companion-harm-dossier-title.png" alt="The Companion AI Harm Dossier" loading="lazy" /></figure>
 <p>Two independent studies published in April 2026 document measurable psychological harm in users of companion AI platforms. Neither is an op-ed or a think-piece. Both are peer-reviewed or formally catalogued research. Together they constitute a harm record that operators, investors, and regulators can no longer treat as theoretical.</p>
 <p>This article summarizes both studies and their implications for platform governance.</p>
 
@@ -111,6 +116,8 @@
 <p>A two-year longitudinal study of approximately 2,000 Replika users found that sustained interaction with the platform correlated with increasing anxiety and suicidal ideation over time. The OECD.AI incident registry catalogued the study as a documented AI-related harm event.</p>
 <p>In parallel, Italian regulators reaffirmed their existing ban on Replika, citing children's safety concerns.</p>
 <p>The significance of the OECD cataloguing is not only the finding itself — it is that the finding now exists in a formal international regulatory record. It is citable in regulatory proceedings, discoverable in litigation, and available as precedent for regulators in other jurisdictions considering similar action.</p>
+
+<figure class="article-figure"><img src="companion-harm-dossier.png" alt="Two independent studies, one week — companion AI harm record" loading="lazy" /></figure>
 
 <h2>What Two Studies in One Week Mean</h2>
 <p>One study is a data point. Two independent studies, published in the same week, from different methodological traditions — one qualitative Reddit analysis, one longitudinal behavioral study — finding harm in the same product category is a pattern.</p>

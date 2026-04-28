@@ -62,6 +62,10 @@
   footer.site-footer a { color: var(--ink-mute); border-bottom-color: var(--rule); }
   footer.site-footer a:hover { color: var(--accent); }
   @media (max-width: 600px) { body { font-size: 17px; } .hero { padding: 48px 24px 16px; } main { padding: 24px 24px 48px; } }
+  .article-figure { position: relative; margin: 32px 0; border-radius: 6px; overflow: hidden; }
+  .article-figure img { display: block; width: 100%; height: auto; }
+  .article-figure-hero { margin-top: 0; }
+  .article-figure::after { content: "SVRNOS.COM"; position: absolute; bottom: 10px; right: 10px; font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; color: rgba(251,250,246,0.82); background: rgba(20,20,15,0.45); padding: 4px 9px; border-radius: 3px; pointer-events: none; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -91,6 +95,7 @@
 </header>
 
 <main>
+<figure class="article-figure article-figure-hero"><img src="ger-301-title.png" alt="GER-301 — Risk Surface Retired" loading="lazy" /></figure>
 <p>In late 2025, following child safety lawsuits and mounting regulatory pressure, Character.AI permanently banned open-ended companion chat for users under 18. The feature that had defined the platform's appeal — unmoderated, character-driven conversation — was removed from the under-18 experience entirely, replaced with a moderated pathway.</p>
 <p>This is a textbook <strong>301 — Risk Surface Retired</strong>.</p>
 
@@ -110,6 +115,8 @@
 <p>The platform had implemented incremental safety features in response — age-specific models, content filters, crisis resource surfacing. But these were per-turn interventions on a surface that remained fundamentally open. The structural risk was not the content of individual messages. It was the existence of an unmoderated companion interaction surface accessible to minors.</p>
 <p>The late 2025 ban on open-ended companion chat for under-18 users was the structural response. It did not make the existing surface safer. It retired the surface.</p>
 <p>That distinction is the difference between a content moderation decision and a 301.</p>
+
+<figure class="article-figure"><img src="ger-301.png" alt="Surface retirement vs incremental filtering — two governance approaches" loading="lazy" /></figure>
 
 <h2>Why This Distinction Matters</h2>
 <p>Most AI safety interventions operate at the message level — filter this output, block that prompt, surface this crisis resource. These are per-turn decisions on a surface that remains live.</p>

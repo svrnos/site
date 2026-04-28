@@ -298,6 +298,10 @@
     .ger-table .col-distinct, .ger-table .col-example { width: auto; }
     .toc ol { columns: 1; }
   }
+  .article-figure { position: relative; margin: 32px 0; border-radius: 6px; overflow: hidden; }
+  .article-figure img { display: block; width: 100%; height: auto; }
+  .article-figure-hero { margin-top: 0; }
+  .article-figure::after { content: "SVRNOS.COM"; position: absolute; bottom: 10px; right: 10px; font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; color: rgba(251,250,246,0.82); background: rgba(20,20,15,0.45); padding: 4px 9px; border-radius: 3px; pointer-events: none; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -330,6 +334,7 @@
 </header>
 
 <main class="wide">
+<figure class="article-figure article-figure-hero"><img src="svrnos-gov-error-register-title.png" alt="SVRNOS Governance Error Register v0.1" loading="lazy" /></figure>
 <section class="body">
 
 <div class="toc">
