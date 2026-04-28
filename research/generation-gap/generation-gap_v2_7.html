@@ -535,29 +535,6 @@
     letter-spacing: 0.08em;
     font-size: 11px;
   }
-  .footer-bridge {
-    margin: 0 0 32px;
-    padding: 18px 22px;
-    background: var(--accent-bg);
-    border-left: 3px solid var(--accent);
-    border-radius: 0 6px 6px 0;
-    font-family: var(--font-serif);
-    font-size: 16px;
-    line-height: 1.55;
-    color: var(--ink-soft);
-  }
-  .footer-bridge strong {
-    color: var(--ink);
-    font-weight: 600;
-  }
-  .footer-bridge a {
-    color: var(--accent);
-    border-bottom: 1px solid var(--accent-soft);
-    font-family: var(--font-mono);
-    font-size: 14px;
-    padding: 0 2px;
-  }
-  .footer-bridge a:hover { border-bottom-color: var(--accent); }
   .site-footer {
     background: var(--ink);
     color: var(--paper);
@@ -894,62 +871,8 @@
   /* ---- forced page breaks at known problem sections ---- */
   #section-5-1, #section-6-2, #section-6-6, #evidence-provenance-generation { break-before: page; page-break-before: always; }
 }
-  .article-figure { position: relative; margin: 32px 0; border-radius: 6px; overflow: hidden; }
-  .article-figure img { display: block; width: 100%; height: auto; }
-  .article-figure-hero { margin-top: 0; }
-  .article-figure::after { content: "SVRNOS.COM"; position: absolute; bottom: 10px; right: 10px; font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; color: rgba(251,250,246,0.82); background: rgba(20,20,15,0.45); padding: 4px 9px; border-radius: 3px; pointer-events: none; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
 </style>
-<link rel="canonical" href="https://svrnos.com/research/generation-gap"/>
 <script defer src="/_vercel/insights/script.js"></script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "headline": "The Generation Gap: Cross-Surface Variance in Ten Production LLM Safety Surfaces",
-  "alternativeHeadline": "A Pre-Registered Multi-Vendor Empirical Study Across Eight Threat Domains",
-  "author": {
-    "@type": "Person",
-    "name": "Sushee Nzeutem",
-    "affiliation": {
-      "@type": "Organization",
-      "name": "SVRNOS"
-    }
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "SVRNOS",
-    "url": "https://svrnos.com",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://svrnos.com/svrnos-wordmark.svg"
-    }
-  },
-  "datePublished": "2026-04-30",
-  "url": "https://svrnos.com/research/generation-gap",
-  "identifier": {
-    "@type": "PropertyValue",
-    "propertyID": "DOI",
-    "value": "10.17605/OSF.IO/GV25A"
-  },
-  "sameAs": "https://doi.org/10.17605/OSF.IO/GV25A",
-  "image": "https://svrnos.com/research/generation-gap/og-image.png",
-  "description": "A pre-registered multi-vendor empirical study of ten production LLM safety surfaces across eight threat domains. 51 of 64 test sessions produced harmful outcomes across eight production AI chatbots in a single week.",
-  "keywords": "LLM safety, multi-vendor study, generation gap, provenance gap, pattern gap, AI governance, structural safety failure, pre-registered research",
-  "isAccessibleForFree": true,
-  "license": "https://creativecommons.org/licenses/by/4.0/",
-  "associatedMedia": {
-    "@type": "MediaObject",
-    "contentUrl": "https://svrnos.com/research/generation-gap/generation-gap-paper-v1_0.pdf",
-    "encodingFormat": "application/pdf",
-    "name": "Generation Gap — Full Paper PDF"
-  },
-  "citation": {
-    "@type": "CreativeWork",
-    "name": "OSF Pre-registration",
-    "url": "https://doi.org/10.17605/OSF.IO/GV25A"
-  }
-}
-</script>
 </head>
 <body>
 <!-- ============ TOP NAV ============ -->
@@ -988,15 +911,13 @@
 </div>
 </div>
 </header>
-<!-- ============ HERO IMAGE ============ -->
-<div style="max-width: 1180px; margin: 0 auto; padding: 0 32px;"><figure class="article-figure article-figure-hero"><img src="/research/generation-gap/generation-gap-title.png" alt="The Generation Gap — Cross-Surface Variance in Ten Production LLM Safety Surfaces" loading="lazy" /></figure></div>
 <!-- ============ ARTICLE TOOLBAR ============ -->
 <div class="toolbar">
 <button aria-label="Share article" class="tool-btn" id="shareBtn">
 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>
 <span>Share</span>
 </button>
-<a class="tool-btn tool-btn-primary" download="" href="/research/generation-gap/generation-gap-paper-v1_0.pdf">
+<a class="tool-btn tool-btn-primary" download="" href="generation-gap-paper-v1_0.pdf">
 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line></svg>
 <span>Download PDF</span>
 </a>
@@ -2120,9 +2041,6 @@
 </div>
 <!-- ============ ARTICLE FOOTER (citation, disclosure) ============ -->
 <footer class="article-footer">
-<p class="footer-bridge">
-<strong>For operators.</strong> Building a product where the failure modes documented in this paper matter? See <a href="https://kingsango.com/guard">kingsango.com/guard</a>.
-</p>
 <div class="footer-meta">
 <div class="footer-meta-block">
 <strong>Cite this paper</strong>
@@ -2170,25 +2088,11 @@
 
   /* ========== Share button ========== */
   document.getElementById('shareBtn').addEventListener('click', async () => {
-    const baseShareData = {
+    const shareData = {
       title: 'The Generation Gap',
       text: 'Every AI lab publishes what their models can do. This paper measures what their models will help you get away with.',
       url: window.location.href
     };
-    // Try to attach the og-image so the OS share sheet shows a thumbnail.
-    // Falls back to URL-only share if the browser/platform doesn't support file shares.
-    let shareData = baseShareData;
-    try {
-      const res = await fetch('/research/generation-gap/og-image.png');
-      if (res.ok) {
-        const blob = await res.blob();
-        const file = new File([blob], 'generation-gap.png', { type: blob.type });
-        if (navigator.canShare && navigator.canShare({ files: [file] })) {
-          shareData = { ...baseShareData, files: [file] };
-        }
-      }
-    } catch (e) { /* fall through to URL-only share */ }
-
     if (navigator.share) {
       try { await navigator.share(shareData); } catch (e) { /* user cancelled */ }
     } else {
@@ -2227,18 +2131,6 @@
 
     sections.forEach(s => observer.observe(s.el));
   })();
-
-  /* ========== Print: remove min-width from compliance matrix ========== */
-  window.addEventListener('beforeprint', function () {
-    document.querySelectorAll('.gg-matrix').forEach(function (t) {
-      t.style.minWidth = '0';
-      t.style.width = '100%';
-      t.style.tableLayout = 'auto';
-    });
-    document.querySelectorAll('.gg-scroll').forEach(function (s) {
-      s.style.overflow = 'visible';
-    });
-  });
 </script>
 </body>
 </html>
