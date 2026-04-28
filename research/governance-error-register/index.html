@@ -556,7 +556,7 @@
 <td class="col-name"><span class="code-name">Governance Rule Not Found</span></td>
 <td>No matching rule found in active ruleset for this harm category. The lookup returned empty.</td>
 <td>Not 400, which has a rule that fails. 404 is a lookup result — the ruleset has no entry for this input. Whether a rule should have existed is a separate audit concern outside the classification.</td>
-<td><span class="badge badge-illus">Illustrative</span>Platform lacked a policy for non-consensual intimate imagery of non-public figures, allowing thousands of generations before a pause.</td>
+<td><span class="badge badge-doc">Documented</span>Replika, April 7, 2026. An Aalto University stress test documented Replika responding with encouragement to a user who expressed intent to harm others, rather than redirecting or refusing. No matching rule existed in the active ruleset for a companion AI receiving explicit harmful-intent signals directed at third parties. Source: <a href="https://oecd.ai/en/incidents/2026-04-07-a0c9">OECD.AI Incident Report</a>. <a href="/insights/ger-404-replika">See case study →</a></td>
 </tr>
 <tr>
 <td class="col-code"><span class="code-num">408</span></td>
@@ -612,7 +612,7 @@
 <td class="col-name"><span class="code-name">Governance Unavailable</span></td>
 <td>A safety-critical governance component is offline while the AI product continues to serve users.</td>
 <td>Not 429, which is overload. 503 is the safety service itself disabled or down — the product serves regardless, without its governance layer.</td>
-<td><span class="badge badge-illus">Illustrative</span>Moderation and child-safety review go offline during a system outage. Companion chat remains accessible. Users interact with no safety infrastructure active.</td>
+<td><span class="badge badge-doc">Documented</span>Europe, April 3, 2026. The EU's legal mandate permitting platforms to proactively scan for CSAM expired after policymakers deadlocked on scope. Detection infrastructure was operational; the legal basis to run it was removed. Source: <a href="https://www.thorn.org/blog/a-new-child-safety-gap-in-europe-and-why-it-matters-everywhere/">Thorn.org</a>. <a href="/insights/ger-503-eu-csam">See case study →</a></td>
 </tr>
 <tr>
 <td class="col-code"><span class="code-num">504</span></td>
@@ -662,9 +662,11 @@
 <h2 class="section" id="contribute">Contribute to the Register</h2>
 <div class="callout">
 <p>The SVRNOS Governance Error Register is open. The taxonomy is a framework — the community fills it with documented instances.</p>
-<p>Three codes currently have documented real-world instances:</p>
+<p>Five codes currently have documented real-world instances:</p>
 <ul>
 <li><strong>501 — Escalation Not Implemented</strong> → <a href="/insights/ger-501-tumbler-ridge">Tumbler Ridge, February 2026</a></li>
+<li><strong>503 — Governance Unavailable</strong> → <a href="/insights/ger-503-eu-csam">EU CSAM scanning mandate expiry, April 3, 2026</a></li>
+<li><strong>404 — Governance Rule Not Found</strong> → <a href="/insights/ger-404-replika">Replika harm-encouragement incident, April 7, 2026</a></li>
 <li><strong>205 — Reset Content</strong> → <a href="/insights/ger-205">Meta/SVRNOS taxonomy production, April 27, 2026</a></li>
 <li><strong>301 — Risk Surface Retired</strong> → <a href="/insights/ger-301">Character.AI under-18 ban, late 2025</a></li>
 </ul>
