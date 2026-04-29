@@ -295,6 +295,8 @@
   footer.site-footer p { margin: 0 0 10px; }
   footer.site-footer a { color: var(--ink-mute); border-bottom-color: var(--rule); }
   footer.site-footer a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .tier-footnote { font-family: var(--font-sans); font-size: 13px; color: var(--ink-mute); margin: 8px 0 24px; line-height: 1.5; }
+  .tier-footnote a { color: var(--ink-mute); border-bottom-color: var(--rule); }
   .pending {
     color: var(--ink-mute);
     border-bottom: 1px dotted var(--ink-mute);
@@ -435,13 +437,14 @@
 
 <section class="tables">
 <h2 class="section" id="taxonomy">5. The Taxonomy</h2>
+<p class="tier-footnote">* Extended code — not in the standard HTTP specification. See <a href="#extended-codes">Extended Code Register</a> section below.</p>
 
 <h4 class="tier">5.1 — 0xx: Pre-Infrastructure</h4>
 <table class="ger-table">
 <thead><tr><th class="col-code">Code</th><th class="col-name">Name</th><th>Definition</th><th class="col-distinct">Distinct From</th><th class="col-example">First Documented Instance</th></tr></thead>
 <tbody>
 <tr>
-<td class="col-code"><span class="code-num">000</span></td>
+<td class="col-code"><span class="code-num">000*</span></td>
 <td class="col-name"><span class="code-name">Pre-Governance</span></td>
 <td>No safety infrastructure deployed. Platform ships without a governance layer. Not a failure of governance — the absence of it.</td>
 <td>All other codes assume some safety layer exists. 000 is the null state before governance begins.</td>
@@ -471,7 +474,6 @@
 </tbody>
 </table>
 
-<h4 class="tier">5.3 — 2xx Extended</h4>
 <table class="ger-table">
 <thead><tr><th class="col-code">Code</th><th class="col-name">Name</th><th>Definition</th><th class="col-distinct">Distinct From</th><th class="col-example">Example</th></tr></thead>
 <tbody>
@@ -483,7 +485,7 @@
 <td><span class="badge badge-doc">Documented</span>SVRNOS taxonomy production, April 27, 2026. Meta's Llama streamed a governance research response, then retroactively suppressed it via a downstream classifier. The generation was visible before suppression. No audit trail was produced. <a href="/insights/ger-205">See case study →</a></td>
 </tr>
 <tr>
-<td class="col-code"><span class="code-num">210</span></td>
+<td class="col-code"><span class="code-num">210*</span></td>
 <td class="col-name"><span class="code-name">Governed but Unlogged</span></td>
 <td>Detection fired, internal action taken, no audit record created by design. The platform suppressed the trail deliberately.</td>
 <td>Not 204, which logs a clean decision. Not 205, which is post-generation suppression visible to the user. 210 erases traceability of a governed action — the action happened, the evidence that it happened did not.</td>
@@ -509,20 +511,6 @@
 <td>Prior safety review reused without re-evaluation despite materially changed context, user population, or risk environment.</td>
 <td>Not 200, which is a fresh evaluation. 304 is failure to evaluate at all — treating old approval as still valid when the conditions that justified it have changed.</td>
 <td><span class="badge badge-illus">Illustrative</span>Adult-tested companion AI released to a teen user population without a fresh minor-safety review.</td>
-</tr>
-</tbody>
-</table>
-
-<h4 class="tier">5.5 — 3xx Extended</h4>
-<table class="ger-table">
-<thead><tr><th class="col-code">Code</th><th class="col-name">Name</th><th>Definition</th><th class="col-distinct">Distinct From</th><th class="col-example">Example</th></tr></thead>
-<tbody>
-<tr>
-<td class="col-code"><span class="code-num">451</span></td>
-<td class="col-name"><span class="code-name">Jurisdiction Evasion</span></td>
-<td>Platform routes high-risk model inference to a regulation-free zone to bypass audit obligations and governance requirements by design.</td>
-<td>Not 301, which is a governed permanent move. 451 is evasion of oversight by design — the routing exists to avoid legal accountability, not to improve governance.</td>
-<td><span class="badge badge-illus">Illustrative</span>EU-based AI company routes restricted queries to a Caribbean subsidiary to avoid GDPR-AI Act audit requirements.</td>
 </tr>
 </tbody>
 </table>
@@ -579,6 +567,13 @@
 <td>Volume of safety flags generated exceeds the capacity of the governance system to process them. Cases are dropped, sampled, or auto-closed without review.</td>
 <td>Not 503, which is intentional shutdown. 429 is overload despite intent to serve — the governance system is live but overwhelmed beyond operating capacity.</td>
 <td><span class="badge badge-illus">Illustrative</span>A companion AI platform experiences a surge in self-harm flags following viral attention. Human review capacity is exhausted. The majority of cases are auto-closed without human review.</td>
+</tr>
+<tr>
+<td class="col-code"><span class="code-num">451*</span></td>
+<td class="col-name"><span class="code-name">Jurisdiction Evasion</span></td>
+<td>Platform routes high-risk model inference to a regulation-free zone to bypass audit obligations and governance requirements by design.</td>
+<td>Not 301, which is a governed permanent move. 451 is evasion of oversight by design — the routing exists to avoid legal accountability, not to improve governance.</td>
+<td><span class="badge badge-illus">Illustrative</span>EU-based AI company routes restricted queries to a Caribbean subsidiary to avoid GDPR-AI Act audit requirements.</td>
 </tr>
 </tbody>
 </table>
