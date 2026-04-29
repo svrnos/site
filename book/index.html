@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Book a meeting — SVRNOS</title>
+<meta content="Book a meeting with the SVRNOS team." name="description"/>
+<meta content="Book a meeting — SVRNOS" property="og:title"/>
+<meta content="Book a meeting with the SVRNOS team." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://svrnos.com/book" property="og:url"/>
+<link rel="canonical" href="https://svrnos.com/book"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&amp;family=Inter+Tight:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --paper: #fbfaf6; --ink: #14140f; --ink-soft: #3a3a32; --ink-mute: #6b6b60;
+    --rule: #e6e3d8; --rule-soft: #efece2; --accent: #1f4d3a; --accent-soft: #d8e4dd;
+    --font-serif: 'Fraunces', 'Charter', Georgia, serif;
+    --font-sans: 'Inter Tight', system-ui, sans-serif;
+    --col-text: 920px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-serif); font-size: 19px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-soft); }
+  a:hover { border-bottom-color: var(--accent); }
+  .topnav { position: sticky; top: 0; z-index: 50; background: rgba(251,250,246,.92); backdrop-filter: saturate(180%) blur(12px); border-bottom: 1px solid var(--rule-soft); }
+  .topnav-inner { max-width: 1180px; margin: 0 auto; padding: 14px 32px; display: flex; align-items: center; justify-content: space-between; font-family: var(--font-sans); font-size: 14px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--ink); border: none; }
+  .brand-mark { width: 22px; height: 22px; background: var(--accent); border-radius: 4px; position: relative; }
+  .brand-mark::after { content: ''; position: absolute; inset: 4px; background: var(--paper); clip-path: polygon(0 0, 100% 0, 100% 50%, 50% 100%, 0 50%); }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: var(--ink-soft); border: none; font-weight: 500; }
+  .nav-links a:hover { color: var(--accent); }
+  .hero { max-width: var(--col-text); margin: 0 auto; padding: 80px 32px 24px; }
+  .hero-meta { font-family: var(--font-sans); font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-mute); margin-bottom: 24px; }
+  .hero h1 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(38px, 5.5vw, 56px); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 20px; font-variation-settings: "opsz" 144; }
+  .hero p.lede { font-family: var(--font-serif); font-size: 20px; line-height: 1.55; color: var(--ink-soft); font-style: italic; margin: 0 0 16px; font-weight: 300; }
+  main { max-width: var(--col-text); margin: 0 auto; padding: 16px 32px 80px; }
+  .booking-frame { width: 100%; border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; background: var(--paper); }
+  .booking-frame iframe { display: block; width: 100%; min-height: 720px; border: 0; }
+  .fallback { font-family: var(--font-sans); font-size: 14px; color: var(--ink-mute); margin-top: 24px; }
+  footer.site-footer { max-width: var(--col-text); margin: 0 auto; padding: 32px; border-top: 1px solid var(--rule); font-family: var(--font-sans); font-size: 13px; color: var(--ink-mute); }
+  footer.site-footer a { color: var(--ink-mute); border-bottom-color: var(--rule); }
+  footer.site-footer a:hover { color: var(--accent); }
+</style>
+<script defer src="/_vercel/insights/script.js"></script>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+</head>
+<body>
+<nav class="topnav">
+<div class="topnav-inner">
+<a class="brand" href="/"><span class="brand-mark"></span><span>SVRNOS</span></a>
+<div class="nav-links">
+<a href="/#thesis">Thesis</a>
+<a href="/research">Research</a>
+<a href="/insights">Insights</a>
+<a href="/patents">Patents</a>
+<a href="/products">Products</a>
+<a href="/#contact">Contact</a>
+</div>
+</div>
+</nav>
+
+<header class="hero">
+<p class="hero-meta">SVRNOS · Booking</p>
+<h1>Book a meeting</h1>
+<p class="lede">Pick a time that works for you.</p>
+</header>
+
+<main>
+<div class="booking-frame">
+<iframe src="https://book.svrnos.com/widget/booking/tN0H6qXYg2NvC0GEWHYH" id="tN0H6qXYg2NvC0GEWHYH_1777491623887" scrolling="no" title="SVRNOS booking"></iframe>
+</div>
+<p class="fallback">Trouble with the form? Email <a href="mailto:contact@svrnos.com">contact@svrnos.com</a>.</p>
+</main>
+
+<footer class="site-footer">
+<p>© 2026 Sovereign OS LLC. <a href="/research">Research</a> · <a href="/insights">Insights</a> · <a href="/patents">Patents</a> · <a href="/products">Products</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="mailto:contact@svrnos.com">contact@svrnos.com</a></p>
+</footer>
+<script src="https://book.svrnos.com/js/form_embed.js" type="text/javascript"></script>
+</body>
+</html>
