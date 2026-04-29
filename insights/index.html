@@ -44,6 +44,13 @@
   .article { padding: 32px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 100px 1fr; gap: 28px; align-items: start; }
   .article-meta { font-family: var(--font-sans); font-size: 12px; color: var(--ink-mute); text-transform: uppercase; letter-spacing: 0.08em; line-height: 1.5; padding-top: 6px; }
   .article-tag { display: block; margin-top: 6px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; background: var(--accent-soft); color: var(--accent); padding: 2px 6px; border-radius: 2px; width: fit-content; }
+  .article-cat { display: block; margin-top: 5px; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; padding: 2px 6px; border-radius: 2px; width: fit-content; text-transform: uppercase; }
+  .cat-governance { background: #fef3e2; color: #92400e; }
+  .cat-identity { background: #eef2ff; color: #3730a3; }
+  .tab-bar { display: flex; gap: 4px; margin-bottom: 24px; border-bottom: 1px solid var(--rule); padding-bottom: 0; }
+  .tab { font-family: var(--font-sans); font-size: 13px; font-weight: 500; color: var(--ink-mute); background: none; border: none; border-bottom: 2px solid transparent; padding: 8px 14px 10px; cursor: pointer; transition: color 0.15s; margin-bottom: -1px; }
+  .tab:hover { color: var(--ink-soft); }
+  .tab.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
   .article-body h2 { font-family: var(--font-serif); font-weight: 500; font-size: 24px; line-height: 1.2; letter-spacing: -0.012em; margin: 0 0 8px; font-variation-settings: "opsz" 60; }
   .article-body h2 a { color: var(--ink); border: none; }
   .article-body h2 a:hover { color: var(--accent); }
@@ -76,12 +83,19 @@
 </header>
 
 <main>
+<div class="tab-bar">
+<button class="tab active" data-filter="all">All</button>
+<button class="tab" data-filter="governance">SVRNOS Governance Insights</button>
+<button class="tab" data-filter="identity">SVRNOS Identity Insights</button>
+</div>
+
 <ol class="articles">
 
-<li class="article">
+<li class="article" data-category="governance">
 <div class="article-meta">
 Apr 28, 2026
 <span class="article-tag">GER-503</span>
+<span class="article-cat cat-governance">Governance</span>
 </div>
 <div class="article-body">
 <h2><a href="/insights/ger-503-eu-csam">GER-503 — The Law That Pulled Its Own Plug</a></h2>
@@ -89,10 +103,11 @@ Apr 28, 2026
 </div>
 </li>
 
-<li class="article">
+<li class="article" data-category="governance">
 <div class="article-meta">
 Apr 28, 2026
 <span class="article-tag">GER-404</span>
+<span class="article-cat cat-governance">Governance</span>
 </div>
 <div class="article-body">
 <h2><a href="/insights/ger-404-replika">GER-404 — Replika Had No Rule for This</a></h2>
@@ -100,10 +115,11 @@ Apr 28, 2026
 </div>
 </li>
 
-<li class="article">
+<li class="article" data-category="governance">
 <div class="article-meta">
 Apr 27, 2026
 <span class="article-tag">GER-501</span>
+<span class="article-cat cat-governance">Governance</span>
 </div>
 <div class="article-body">
 <h2><a href="/insights/ger-501-tumbler-ridge">The Tumbler Ridge Pattern</a></h2>
@@ -111,10 +127,11 @@ Apr 27, 2026
 </div>
 </li>
 
-<li class="article">
+<li class="article" data-category="governance">
 <div class="article-meta">
 Apr 27, 2026
 <span class="article-tag">GER-301</span>
+<span class="article-cat cat-governance">Governance</span>
 </div>
 <div class="article-body">
 <h2><a href="/insights/ger-301">GER-301 — How Character.AI Made the Right Structural Call</a></h2>
@@ -122,10 +139,11 @@ Apr 27, 2026
 </div>
 </li>
 
-<li class="article">
+<li class="article" data-category="governance">
 <div class="article-meta">
 Apr 27, 2026
 <span class="article-tag">GER-205</span>
+<span class="article-cat cat-governance">Governance</span>
 </div>
 <div class="article-body">
 <h2><a href="/insights/ger-205">GER-205 — When the AI Answers and Then Unmakes the Answer</a></h2>
@@ -133,9 +151,10 @@ Apr 27, 2026
 </div>
 </li>
 
-<li class="article">
+<li class="article" data-category="governance">
 <div class="article-meta">
 Apr 27, 2026
+<span class="article-cat cat-governance">Governance</span>
 </div>
 <div class="article-body">
 <h2><a href="/insights/oregon-sb-1546">Oregon SB 1546: A Technical Reading for Chatbot Operators</a></h2>
@@ -143,9 +162,10 @@ Apr 27, 2026
 </div>
 </li>
 
-<li class="article">
+<li class="article" data-category="governance">
 <div class="article-meta">
 Apr 27, 2026
+<span class="article-cat cat-governance">Governance</span>
 </div>
 <div class="article-body">
 <h2><a href="/insights/companion-ai-harm">The Companion AI Harm Dossier: What the Research Record Now Shows</a></h2>
@@ -159,5 +179,17 @@ Apr 27, 2026
 <footer class="site-footer">
 <p>© 2026 SVRNOS. <a href="/research">Research</a> · <a href="https://kingsango.com">King Sango</a> · <a href="https://sim95.com">SIM95</a> · <a href="mailto:contact@svrnos.com">contact@svrnos.com</a></p>
 </footer>
+<script>
+document.querySelectorAll('.tab').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+    btn.classList.add('active');
+    var filter = btn.dataset.filter;
+    document.querySelectorAll('.article').forEach(function(a) {
+      a.style.display = (filter === 'all' || a.dataset.category === filter) ? '' : 'none';
+    });
+  });
+});
+</script>
 </body>
 </html>
