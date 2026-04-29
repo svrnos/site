@@ -28,6 +28,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 48px;display:fl
 .nav-links{display:flex;gap:28px}
 .nav-links a{font-size:13px;color:var(--text-s);text-decoration:none;letter-spacing:0.3px;transition:color 0.3s}
 .nav-links a:hover{color:var(--text)}
+.annc{position:fixed;top:0;left:0;right:0;z-index:101;background:var(--green);color:#fff;font-family:var(--fb);font-size:13px;font-weight:400;letter-spacing:0.2px;padding:9px 20px;display:flex;justify-content:center;align-items:center;gap:14px;text-align:center}
+.annc .badge{font-family:var(--fm);font-size:10px;letter-spacing:2px;text-transform:uppercase;background:rgba(255,255,255,0.16);padding:3px 8px;border-radius:2px;flex-shrink:0}
+.annc-text{opacity:0.95}
+.annc a.annc-cta{color:#fff;font-weight:500;text-decoration:underline;text-decoration-color:rgba(255,255,255,0.5);text-underline-offset:3px;transition:text-decoration-color .2s}
+.annc a.annc-cta:hover{text-decoration-color:#fff}
+.annc-show nav{top:38px}
+@media(max-width:600px){.annc{font-size:12px;padding:8px 14px;flex-wrap:wrap;gap:8px}.annc-show nav{top:62px}}
 .ct{max-width:1100px;margin:0 auto;padding-left:48px;padding-right:48px}
 .hero{min-height:90vh;display:flex;flex-direction:column;justify-content:center;padding-top:140px;padding-bottom:100px}
 .ey{font-family:var(--fm);font-size:11px;letter-spacing:4px;color:var(--green);margin-bottom:28px;text-transform:uppercase}
@@ -125,7 +132,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 48px;display:fl
 .bcreds{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap}
 .bcred{font-family:var(--fm);font-size:10px;padding:5px 12px;border-radius:2px;background:var(--green-m);color:var(--green);letter-spacing:0.5px;font-weight:500}
 footer{padding:72px 0 40px;border-top:1px solid var(--border-l)}
-.fg{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:56px}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px}
 .fb p{font-size:14px;color:var(--text-s);line-height:1.7;max-width:300px;font-weight:300;margin-top:14px}
 .fc h4{font-size:11px;letter-spacing:2px;color:var(--text-t);text-transform:uppercase;margin-bottom:14px;font-weight:400}
 .fc a{display:block;font-size:14px;color:var(--text-s);text-decoration:none;padding:3px 0;transition:color 0.3s;font-weight:300}
@@ -182,7 +189,13 @@ footer{padding:72px 0 40px;border-top:1px solid var(--border-l)}
 }
 </script>
 </head>
-<body>
+<body class="annc-show">
+
+<div class="annc" role="region" aria-label="Site announcement">
+  <span class="badge">Just published</span>
+  <span class="annc-text">The Generation Gap: 10 safety surfaces across 8 LLM vendors</span>
+  <a class="annc-cta" href="/research/generation-gap">Read the paper &rarr;</a>
+</div>
 
 <nav>
   <a href="#" class="logo"><span class="brand-mark"></span><span>SVRNOS</span></a>
@@ -269,16 +282,15 @@ footer{padding:72px 0 40px;border-top:1px solid var(--border-l)}
       <span class="tag">10 Safety Surfaces</span>
       <span class="tag">Open Protocols</span>
     </div>
-    <div class="pub-date">Publication: April 30, 2026 <span>Forthcoming</span></div>
+    <div class="pub-date">Publication: April 30, 2026 <span>Published</span></div>
     <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
-      <a href="mailto:contact@svrnos.com?subject=Reading%20List%20-%20The%20Generation%20Gap" class="reading-list">Join the reading list &rarr;</a>
-      <a href="https://doi.org/10.17605/OSF.IO/GV25A" style="font-family:var(--fm);font-size:12px;color:var(--green);text-decoration:none;letter-spacing:0.5px">Protocols on OSF &rarr;</a>
+      <a href="/research/generation-gap" class="reading-list">Read the paper &rarr;</a>
     </div>
   </div>
 
   <div class="numbers">
     <div class="nc"><div class="v">8</div><div class="l">Provisional patents filed</div></div>
-    <div class="nc"><div class="v">283</div><div class="l">Claims</div></div>
+    <div class="nc"><div class="v">286</div><div class="l">Claims</div></div>
     <div class="nc"><div class="v">8</div><div class="l">Pre-registered studies</div></div>
     <div class="nc"><div class="v">40+</div><div class="l">Identity dimensions</div></div>
   </div>
@@ -327,7 +339,7 @@ footer{padding:72px 0 40px;border-top:1px solid var(--border-l)}
 <div class="ct sec" id="about">
   <div class="sl"></div>
   <div class="slb">About</div>
-  <div class="st">Sovereign OS, LLC</div>
+  <div class="st">Sovereign OS LLC</div>
 
   <div class="ab">
     <p>An independent research and engineering company studying how complex systems — human and artificial — behave under sustained pressure. We build governance infrastructure to make that behavior visible, measurable, and governable.</p>
@@ -341,7 +353,7 @@ footer{padding:72px 0 40px;border-top:1px solid var(--border-l)}
     </div>
     <div class="vc">
       <h4>Accuracy over speed</h4>
-      <p>Deterministic scoring, not inference. Pre-registered protocols, not post-hoc narratives. We filed 283 patent claims before launching a single product. If it isn't precise, it doesn't ship.</p>
+      <p>Deterministic scoring, not inference. Pre-registered protocols, not post-hoc narratives. We filed 286 patent claims before launching a single product. If it isn't precise, it doesn't ship.</p>
     </div>
   </div>
 
@@ -361,7 +373,7 @@ footer{padding:72px 0 40px;border-top:1px solid var(--border-l)}
       <div class="tlr"><div class="tld">Mar 2026</div><div class="tlt"><strong>SIM95 beta launch</strong> &middot; <strong>Sango Voice live</strong></div></div>
       <div class="tlr"><div class="tld">Apr 17 2026</div><div class="tlt"><strong>Sango Guard live</strong></div></div>
       <div class="tlr"><div class="tld">Apr 23 2026</div><div class="tlt"><strong>SIM95 live</strong> (B2B)</div></div>
-      <div class="tlr"><div class="tld">Apr 30 2026</div><div class="tlt"><strong>Generation Gap paper published</strong> &middot; <strong>283 claims filed</strong> across 8 provisionals</div></div>
+      <div class="tlr"><div class="tld">Apr 30 2026</div><div class="tlt"><strong>Generation Gap paper published</strong> &middot; <strong>286 claims filed</strong> across 8 provisionals</div></div>
     </div>
     <div class="tls">Five months from idea to institute.</div>
   </div>
@@ -370,7 +382,7 @@ footer{padding:72px 0 40px;border-top:1px solid var(--border-l)}
     <div class="bio-l">
       <div class="bl">Founder &amp; Sole Inventor</div>
       <div class="bn">Sushee Nzeutem</div>
-      <div class="bt">CEO, Sovereign OS, LLC</div>
+      <div class="bt">CEO, Sovereign OS LLC</div>
     </div>
     <div class="bio-r">
       <div class="bcreds">
@@ -380,7 +392,7 @@ footer{padding:72px 0 40px;border-top:1px solid var(--border-l)}
       </div>
       <p>20+ years in negotiation, crisis management, and high-stakes advisory across multiple continents.</p>
       <p>Built SIM95 (human identity diagnostics and operational screening), King Sango (AI runtime governance), and the Generation Gap research program (multi-vendor LLM safety testing).</p>
-      <p>Filed 8 provisional patent applications covering 283 claims across identity-state computation, AI behavioral governance, relational diagnostics, and structural safety gap detection. Designed and ran 8 pre-registered multi-vendor studies across structurally distinct threat domains.</p>
+      <p>Filed 8 provisional patent applications covering 286 claims across identity-state computation, AI behavioral governance, relational diagnostics, and structural safety gap detection. Designed and ran 8 pre-registered multi-vendor studies across structurally distinct threat domains.</p>
       <p style="margin-top:20px;font-style:italic;color:var(--text-t)">Forthcoming: "I Know The Guy: While They Aim the Bazooka, I Hear What the Target Is Actually Saying"</p>
     </div>
   </div>
@@ -403,12 +415,16 @@ footer{padding:72px 0 40px;border-top:1px solid var(--border-l)}
       </div>
       <div class="fc">
         <h4>Research &amp; Contact</h4>
-        <a href="https://doi.org/10.17605/OSF.IO/GV25A">OSF Protocols</a>
         <a href="mailto:contact@svrnos.com">contact@svrnos.com</a>
+      </div>
+      <div class="fc">
+        <h4>Legal</h4>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
       </div>
     </div>
     <div class="fbot">
-      <span>&copy; 2026 Sovereign OS, LLC. All rights reserved.</span>
+      <span>&copy; 2026 Sovereign OS LLC. All rights reserved.</span>
       <span>Chiang Mai, Thailand</span>
     </div>
   </div>
