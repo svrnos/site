@@ -101,6 +101,19 @@
 <h1>GER-404 — Governance Rule Not Found</h1>
 <p class="subtitle">Documented real-world instances.</p>
 </header>
+<style>
+.share-bar { max-width: 720px; margin: 16px auto 0; padding: 0 32px; }
+.share-btn { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; background: transparent; color: inherit; border: 1px solid currentColor; border-radius: 999px; font: 500 14px/1 system-ui, sans-serif; cursor: pointer; opacity: 0.6; transition: opacity .15s ease; font-family: inherit; }
+.share-btn:hover { opacity: 1; }
+.share-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+</style>
+<div class="share-bar">
+<button aria-label="Share article" class="share-btn" id="shareBtn" type="button">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>
+<span>Share</span>
+</button>
+</div>
+
 
 <main>
 <p>A safety system received a harm signal, queried its active ruleset, and returned empty. No matching rule existed for this input. The system defaulted to its base behavior. See the <a href="/research/governance-error-register">full GER taxonomy</a> for definition and adjacent codes.</p>
@@ -137,5 +150,37 @@
 <p>SVRNOS LLC is an independent research institute studying governance infrastructure for complex systems under pressure. <a href="https://kingsango.com">Sango Guard</a> addresses the 404 gap through cross-turn compound signal detection that identifies harm patterns without requiring a pre-written rule for every harm category. Patent pending.</p>
 <p>© 2026 SVRNOS. <a href="/research">Research</a> · <a href="/insights">Insights</a> · <a href="https://kingsango.com">King Sango</a> · <a href="https://sim95.com">SIM95</a></p>
 </footer>
+<script>
+document.getElementById('shareBtn')?.addEventListener('click', async () => {
+  const m = (p) => document.querySelector(`meta[property="${p}"]`)?.content || document.querySelector(`meta[name="${p}"]`)?.content || '';
+  const baseShareData = {
+    title: m('og:title') || document.title,
+    text: m('og:description') || '',
+    url: window.location.href
+  };
+  let shareData = baseShareData;
+  try {
+    const imgUrl = m('og:image');
+    if (imgUrl) {
+      const res = await fetch(imgUrl);
+      if (res.ok) {
+        const blob = await res.blob();
+        const file = new File([blob], 'share.png', { type: blob.type });
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          shareData = { ...baseShareData, files: [file] };
+        }
+      }
+    }
+  } catch (e) { /* fall through */ }
+  if (navigator.share) {
+    try { await navigator.share(shareData); } catch (e) { /* user cancelled */ }
+  } else {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      alert('Link copied to clipboard');
+    } catch (e) { alert('Could not copy link'); }
+  }
+});
+</script>
 </body>
 </html>
