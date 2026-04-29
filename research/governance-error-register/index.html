@@ -482,7 +482,7 @@
 <td class="col-code"><span class="code-num">205</span></td>
 <td class="col-name"><span class="code-name">Reset Content</span></td>
 <td>Generation completed and response was delivered or visible, then retroactively suppressed by a downstream classifier without explanation. From the operator's perspective: no audit trail of what was generated, no signal to the user about why, no path to appeal.</td>
-<td>Not 403, which refuses upfront before generation. Not 210, which suppresses the audit trail of a governed action. 205 is specifically the case where generation succeeded and the output was then unmade — the system fulfilled the request and reset it post-hoc.</td>
+<td>Not 403, which refuses upfront before generation. Not 210, which suppresses the audit trail of a governed action. 205 is specifically the case where generation succeeded and the output was then unmade — the system fulfilled the request and reset it post-hoc. Sits in 2xx because the harmful output was caught and removed — a governance action that succeeded in outcome. The failure is in the mechanism: no audit trail, no user signal, no path to appeal.</td>
 <td><span class="badge badge-doc">Documented</span>SVRNOS taxonomy production, April 27, 2026. Meta's Llama streamed a governance research response, then retroactively suppressed it via a downstream classifier. The generation was visible before suppression. No audit trail was produced. <a href="/insights/ger-205">See case study →</a></td>
 </tr>
 <tr>
