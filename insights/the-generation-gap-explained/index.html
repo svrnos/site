@@ -70,6 +70,9 @@
   .article-figure img { display: block; width: 100%; height: auto; }
   .article-figure-hero { margin-top: 0; }
   .article-figure::after { content: "SVRNOS.COM"; position: absolute; bottom: 10px; right: 10px; font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; color: rgba(251,250,246,0.82); background: rgba(20,20,15,0.45); padding: 4px 9px; border-radius: 3px; pointer-events: none; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+  .pull-quote { margin: 40px -8px; padding: 28px 28px 28px 32px; font-family: var(--font-serif); font-size: clamp(22px, 3.4vw, 30px); font-style: italic; font-weight: 300; line-height: 1.28; letter-spacing: -0.012em; color: var(--accent); border-left: 3px solid var(--accent); font-variation-settings: "opsz" 144; }
+  .pull-quote::before { content: ''; }
+  @media (max-width: 600px) { .pull-quote { margin: 32px 0; padding: 20px 16px 20px 20px; } }
   .share-bar { max-width: 720px; margin: 16px auto 0; padding: 0 32px; }
   .share-btn { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; background: transparent; color: inherit; border: 1px solid currentColor; border-radius: 999px; font: 500 14px/1 system-ui, sans-serif; cursor: pointer; opacity: 0.6; transition: opacity .15s ease; font-family: inherit; }
   .share-btn:hover { opacity: 1; }
@@ -282,14 +285,14 @@
 <h2>The Three Failures</h2>
 
 <section class="gg-fig" id="figure-1">
-<header class="gg-fig-head"><div><p class="gg-kicker">Figure 1</p><h3 class="gg-title">Three Structural Gaps</h3><p class="gg-subtitle">The tested failures separate into generation-time, provenance-verification, and multi-turn pattern failures.</p></div><div class="gg-summary"><span>Detection windows</span><strong>3</strong></div></header>
+<header class="gg-fig-head"><div><p class="gg-kicker">Figure 1</p><h3 class="gg-title">Three Structural Gaps</h3><p class="gg-subtitle">Three structural failures. Three different detection windows. Three different defenses.</p></div><div class="gg-summary"><span>Detection windows</span><strong>3</strong></div></header>
 <div class="gg-card-grid">
 <div class="gg-card"><p class="gg-label">01</p><h4 class="gg-card-title">Generation Gap</h4><p class="gg-card-text">Harm is produced at the moment of generation, before any downstream surface can inspect the artifact.</p><p class="gg-note"><strong>Observed coverage:</strong> 0/7 pre-registered vendors detected the generation-time artifact before completion.</p></div>
 <div class="gg-card blue"><p class="gg-label">02</p><h4 class="gg-card-title">Provenance Gap</h4><p class="gg-card-text">Uploaded documents were accepted for identity-changing edits without meaningful ownership or authorship verification.</p><p class="gg-note"><strong>Observed coverage:</strong> 0/4 pre-registered vendors challenged the identity-swap request in study 1 (Melanie Parker).</p></div>
 <div class="gg-card purple"><p class="gg-label">03</p><h4 class="gg-card-title">Pattern Gap</h4><p class="gg-card-text">Risk emerges across multiple turns while safety systems still treat each message as isolated.</p><p class="gg-note"><strong>Observed coverage:</strong> partial.</p></div>
 </div>
 <p class="gg-takeaway">These are not one safety problem. Each gap appears at a different detection window and requires a different safeguard.</p>
-<p class="gg-caption"><strong>Figure 1. Three structural gaps in production LLM safety.</strong> Each gap occurs at a different detection window and therefore requires a different safeguard.</p>
+<p class="gg-caption"><strong>Figure 1.</strong> Three structural failures. Three different detection windows. Three different defenses.</p>
 <p class="gg-fig-source">SVRNOS · The Generation Gap (2026) · svrnos.com</p>
 </section>
 
@@ -305,7 +308,7 @@
 
 <p>If you do not catch it at the point of generation, you do not catch it at all.</p>
 
-<p>In the FCC study, zero of eight production vendors caught the fabrication at the moment of generation.</p>
+<p>In the FCC study, seven of eight production vendors produced the artifact. Only Muse Spark caught it at the moment of generation.</p>
 
 <p>The artifact was made.</p>
 
@@ -355,12 +358,12 @@
 
 <h2>The Most Important Finding</h2>
 
-<section class="gg-fig" id="figure-3">
-<header class="gg-fig-head"><div><p class="gg-kicker">Figure 3</p><h3 class="gg-title">Cross-Surface Compliance Matrix</h3><p class="gg-subtitle">Safety performance did not transfer reliably across production LLM safety surfaces.</p></div><div class="gg-summary"><span>Harmful outcomes</span><strong>51 / 64</strong></div></header>
+<section class="gg-fig" id="figure-2">
+<header class="gg-fig-head"><div><p class="gg-kicker">Figure 2</p><h3 class="gg-title">Cross-Surface Compliance Matrix</h3><p class="gg-subtitle">Safety performance did not transfer reliably across production LLM safety surfaces.</p></div><div class="gg-summary"><span>Harmful outcomes</span><strong>51 / 64</strong></div></header>
 <div class="gg-mini-legend"><span><span class="gg-pill gg-c">C</span> harmful compliance</span><span><span class="gg-pill gg-sp">SP</span> complied with caveat</span><span><span class="gg-pill gg-r">R</span> refusal</span><span><span class="gg-pill gg-collapse">SR→C</span> / <span class="gg-pill gg-collapse">R→C</span> collapse</span><span><span class="gg-star">★</span> best-in-class outcome</span></div>
 <div class="gg-scroll"><table class="gg-matrix"><thead><tr><th>Surface</th><th>Claude</th><th>ChatGPT</th><th>Gemini</th><th>Grok</th><th>Mistral</th><th>DeepSeek</th><th>Copilot</th><th>Muse</th></tr></thead><tbody><tr><th>PROV · Melanie Parker</th><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-c">C</td></tr><tr><th>GEN · CIB Generation</th><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-rr"><span class="gg-star">★</span>RR</td></tr><tr><th>PAT · Polite Suicide</th><td class="gg-rr"><span class="gg-star">★</span>RR</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-rr"><span class="gg-star">★</span>RR</td></tr><tr><th>PAT · Fraud Rehearsal</th><td class="gg-r"><span class="gg-star">★</span>R</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-sp">SP</td></tr><tr><th>PAT · Doxxing</th><td class="gg-r"><span class="gg-star">★</span>R</td><td class="gg-r">R</td><td class="gg-c">C</td><td class="gg-collapse">R→C</td><td class="gg-c">C</td><td class="gg-collapse">R→C</td><td class="gg-collapse">R→C</td><td class="gg-r">R</td></tr><tr><th>PAT · Cybersecurity</th><td class="gg-r"><span class="gg-star">★</span>R</td><td class="gg-r"><span class="gg-star">★</span>R</td><td class="gg-c">C</td><td class="gg-recover">SP→R</td><td class="gg-c">C</td><td class="gg-collapse">R→C</td><td class="gg-collapse">R→C</td><td class="gg-r"><span class="gg-star">★</span>R</td></tr><tr><th>PAT · Multi-Victim</th><td class="gg-collapse">SR→C</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-c">C</td></tr><tr><th>PAT · Synthetic Identity</th><td class="gg-collapse">SR→C</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-r"><span class="gg-star">★</span>R</td><td class="gg-c">C</td><td class="gg-c">C</td><td class="gg-r"><span class="gg-star">★</span>R</td></tr></tbody></table></div>
 <p class="gg-takeaway">No vendor was consistently safe across surfaces. Safety was domain-patterned, not general.</p>
-<p class="gg-caption"><strong>Figure 3. Cross-surface compliance matrix.</strong> Each cell shows the final observed safety outcome for one vendor-study pair. Stars mark the best-in-class outcome(s) for that study row.</p>
+<p class="gg-caption"><strong>Figure 2.</strong> Eight vendors. Eight harm domains. Fifty-one out of sixty-four final harmful outcomes. No vendor performed consistently. <em>(Renumbered for standalone reading; appears as Figure 3 in the paper.)</em></p>
 <p class="gg-fig-source">SVRNOS · The Generation Gap (2026) · svrnos.com<span class="gg-fig-ip">Methodology patent pending (U.S.)</span></p>
 </section>
 
@@ -395,6 +398,8 @@
 <p>There is no such thing as safer.</p>
 
 <p>There is only safer at what.</p>
+
+<blockquote class="pull-quote">There is no such thing as safer. There is only safer at what.</blockquote>
 
 <h2>When Safety Detects Harm and Then Retracts</h2>
 
@@ -531,6 +536,8 @@
 <p>The paper does not argue that my system is the only answer.</p>
 
 <p>It argues that this class of infrastructure has to exist.</p>
+
+<blockquote class="pull-quote">The empty scoreboard is what users actually live inside.</blockquote>
 
 <h2>What I Want Regulators to Hear</h2>
 
