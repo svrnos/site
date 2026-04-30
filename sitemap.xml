@@ -106,4 +106,39 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://svrnos.com/insights/phenom-plum-behavioral-truth-stack</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://svrnos.com/insights/courts-pricing-the-generation-gap</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://svrnos.com/insights/wa-distress-routing-mandate</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://svrnos.com/insights/florida-ag-fsu-openai-criminal-probe</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://svrnos.com/insights/ccdh-eight-in-ten-chatbots-violent-planning</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
