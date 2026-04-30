@@ -1,0 +1,61 @@
+/* SVRNOS shared site chrome — responsive nav with hamburger.
+   Loaded on every nav-bearing page. Additive: doesn't restyle the
+   existing nav, only collapses the link list on small screens and
+   adds a toggle button. */
+
+.nav-toggle {
+  display: none;
+  appearance: none;
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 6px;
+  color: inherit;
+  cursor: pointer;
+  padding: 6px 9px;
+  line-height: 0;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.55;
+  transition: opacity .15s ease;
+}
+.nav-toggle:hover { opacity: 0.95; }
+.nav-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+.nav-toggle svg { width: 18px; height: 18px; display: block; }
+.nav-toggle .icon-close { display: none; }
+.nav-open .nav-toggle .icon-open { display: none; }
+.nav-open .nav-toggle .icon-close { display: block; }
+
+@media (max-width: 760px) {
+  .nav-toggle { display: inline-flex; }
+
+  /* Collapse the link list by default; reveal when nav is open. */
+  .nav-links {
+    display: none !important;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: var(--svrnos-nav-h, 56px);
+    flex-direction: column !important;
+    gap: 0 !important;
+    padding: 12px 20px 16px !important;
+    background: inherit;
+    background-color: rgba(251, 250, 246, 0.985);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid rgba(20, 20, 15, 0.08);
+    box-shadow: 0 6px 18px rgba(20, 20, 15, 0.06);
+    z-index: 49;
+  }
+  .nav-open .nav-links {
+    display: flex !important;
+  }
+  .nav-links a {
+    padding: 12px 4px !important;
+    font-size: 15px !important;
+    border-bottom: 1px solid rgba(20, 20, 15, 0.06) !important;
+  }
+  .nav-links a:last-child { border-bottom: 0 !important; }
+}
+
+/* Lock background scroll while the menu is open. */
+body.nav-open { overflow: hidden; }
