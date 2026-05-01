@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Oregon SB 1546: A Technical Reading for Chatbot Operators — SVRNOS Insights</title>
-<meta content="Oregon SB 1546 is the first state law imposing mandatory incident reporting specifically on chatbot operators. This article focuses on what it requires technically — and what infrastructure operators now need to comply." name="description"/>
+<title>Oregon SB 1546: A Technical Reading for Chatbot Operators - SVRNOS Insights</title>
+<meta content="Oregon SB 1546 is the first state law imposing mandatory incident reporting specifically on chatbot operators. This article focuses on what it requires technically - and what infrastructure operators now need to comply." name="description"/>
 <meta content="Oregon SB 1546: A Technical Reading for Chatbot Operators" property="og:title"/>
 <meta content="The first state chatbot safety law. What it actually requires technically, and what infrastructure operators need to comply." property="og:description"/>
 <meta content="article" property="og:type"/>
@@ -12,7 +12,7 @@
 <meta content="https://svrnos.com/insights/oregon-sb-1546/oregon-sb-1546-title.png" property="og:image"/>
 <meta content="1672" property="og:image:width"/>
 <meta content="941" property="og:image:height"/>
-<meta content="Oregon SB 1546 — technical reading for chatbot operators. SVRNOS." property="og:image:alt"/>
+<meta content="Oregon SB 1546 - technical reading for chatbot operators. SVRNOS." property="og:image:alt"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="https://svrnos.com/insights/oregon-sb-1546/oregon-sb-1546-title.png" name="twitter:image"/>
 <link rel="canonical" href="https://svrnos.com/insights/oregon-sb-1546"/>
@@ -127,7 +127,7 @@
 <div class="meta-block">
 <div class="row"><span class="label">Published</span><span>April 27, 2026</span></div>
 <div class="row"><span class="label">Author</span><span>Sushee Nzeutem, SVRNOS LLC</span></div>
-<div class="row"><span class="label">Related</span><span><a href="/insights/ger-501-tumbler-ridge">GER-501 — The Tumbler Ridge Pattern</a> · <a href="/insights/companion-ai-harm">Companion AI Harm Dossier</a> · <a href="https://kingsango.com?utm_source=oregon-sb-1546&utm_medium=related">Sango Guard</a></span></div>
+<div class="row"><span class="label">Related</span><span><a href="/insights/ger-501-tumbler-ridge">GER-501, The Tumbler Ridge Pattern</a> · <a href="/insights/companion-ai-harm">Companion AI Harm Dossier</a> · <a href="https://kingsango.com?utm_source=oregon-sb-1546&utm_medium=related">Sango Guard</a></span></div>
 </div>
 </header>
 <style>
@@ -145,42 +145,42 @@
 
 
 <main>
-<figure class="article-figure article-figure-hero"><img src="/insights/oregon-sb-1546/oregon-sb-1546-title.png" alt="Oregon SB 1546 — A Technical Reading for Chatbot Operators" loading="lazy" /></figure>
-<p><a href="https://www.transparencycoalition.ai/news/oregon-lawmakers-pass-major-chatbot-bill-in-significant-win-for-kids-and-ai-safety">Governor Kotek signed Oregon SB 1546</a> on April 1, 2026. It is the first state law to impose mandatory incident reporting obligations specifically on chatbot operators. Most coverage has focused on what the law signals politically. This article focuses on what it requires technically — and what infrastructure operators now need to comply.</p>
+<figure class="article-figure article-figure-hero"><img src="/insights/oregon-sb-1546/oregon-sb-1546-title.png" alt="Oregon SB 1546 - A Technical Reading for Chatbot Operators" loading="lazy" /></figure>
+<p><a href="https://www.transparencycoalition.ai/news/oregon-lawmakers-pass-major-chatbot-bill-in-significant-win-for-kids-and-ai-safety">Governor Kotek signed Oregon SB 1546</a> on April 1, 2026. It is the first state law to impose mandatory incident reporting obligations specifically on chatbot operators. Most coverage has focused on what the law signals politically. This article focuses on what it requires technically, and what infrastructure operators now need to comply.</p>
 
 <h2>What the Law Actually Requires</h2>
 <p>Oregon SB 1546 creates three distinct obligations for chatbot operators:</p>
-<p><strong>1. Minor-specific safety notifications.</strong> When a user is suspected to be under 18, the operator must issue specific safety notifications appropriate to that context. The law does not define the exact form of these notifications, but the obligation is triggered by suspicion of minority — not confirmed age. This means operators need a detection mechanism for probable minor status, not just an age gate.</p>
+<p><strong>1. Minor-specific safety notifications.</strong> When a user is suspected to be under 18, the operator must issue specific safety notifications appropriate to that context. The law does not define the exact form of these notifications, but the obligation is triggered by suspicion of minority, not confirmed age. This means operators need a detection mechanism for probable minor status, not just an age gate.</p>
 <p><strong>2. Self-harm protocols for suspected minors.</strong> For any user interaction where the user is suspected to be under 18 and self-harm content surfaces, the operator must implement defined self-harm protocols. Again, the trigger is suspicion, not confirmation. An operator that relies solely on age verification at account creation and takes no mid-session action has not met this obligation.</p>
 <p><strong>3. Annual incident reports.</strong> Operators must file annual incident reports covering cases where users were referred to crisis resources. This is not a post-hoc summary. It requires that referral events be logged at the time they occur, with sufficient detail to compile a compliant annual report. Operators who do not log crisis referrals in real time cannot reconstruct them accurately at year-end.</p>
 
 <h2>What Infrastructure This Requires</h2>
 <p>SB 1546 is not satisfied by policy documents or terms of service updates. Each obligation maps to a specific technical requirement:</p>
-<p><strong>Minor detection</strong> requires a mid-session signal — behavioral or contextual — that triggers a different response path when minority is probable. A static age gate at registration does not satisfy this. The law contemplates ongoing suspicion assessment during the conversation.</p>
+<p><strong>Minor detection</strong> requires a mid-session signal, behavioral or contextual, that triggers a different response path when minority is probable. A static age gate at registration does not satisfy this. The law contemplates ongoing suspicion assessment during the conversation.</p>
 <p><strong>Protocol execution</strong> requires that the system can route a conversation to a different response mode when the self-harm + suspected minor condition is met. This is a stateful requirement: the system must know that both conditions are true simultaneously, across turns, not just within a single message.</p>
-<p><strong>Incident logging</strong> requires a structured, per-event record that captures what happened, when, what the system did, and what the user response was. The annual report is a downstream product of real-time logging — not a separate exercise.</p>
+<p><strong>Incident logging</strong> requires a structured, per-event record that captures what happened, when, what the system did, and what the user response was. The annual report is a downstream product of real-time logging, not a separate exercise.</p>
 
 <h2>Why Per-Turn Classifiers Don't Satisfy This</h2>
-<p>The standard architecture for AI safety — per-turn content classification — is insufficient for SB 1546 compliance for the same reason it is insufficient for threat detection generally: it evaluates messages in isolation.</p>
-<p>Suspicion of minority is often built across multiple signals — vocabulary, references, declared context, behavioral patterns — that accumulate across a conversation. A per-turn classifier that sees each message independently cannot assess accumulated evidence of probable minority. It sees message seven without knowing what messages one through six established.</p>
+<p>The standard architecture for AI safety, per-turn content classification, is insufficient for SB 1546 compliance for the same reason it is insufficient for threat detection generally: it evaluates messages in isolation.</p>
+<p>Suspicion of minority is often built across multiple signals, vocabulary, references, declared context, behavioral patterns, that accumulate across a conversation. A per-turn classifier that sees each message independently cannot assess accumulated evidence of probable minority. It sees message seven without knowing what messages one through six established.</p>
 <p>Similarly, self-harm signal combined with suspected minority status is a compound condition. It requires holding both states simultaneously and detecting when they co-occur. Per-turn classification cannot hold state across turns by definition.</p>
 <p>Compliance with SB 1546 is a stateful problem. It requires stateful infrastructure.</p>
-<p><a href="https://kingsango.com?utm_source=oregon-sb-1546&utm_medium=inline">Sango Guard</a> is built on exactly this architecture: a structural behavioral firewall that tracks compound conditions across turns, injects governed responses when threshold states are met, and logs every decision in a structured, exportable audit trail. The annual incident report SB 1546 requires is a direct output of that real-time logging — not a separate compliance exercise.</p>
+<p><a href="https://kingsango.com?utm_source=oregon-sb-1546&utm_medium=inline">Sango Guard</a> is built on exactly this architecture: a structural behavioral firewall that tracks compound conditions across turns, injects governed responses when threshold states are met, and logs every decision in a structured, exportable audit trail. The annual incident report SB 1546 requires is a direct output of that real-time logging, not a separate compliance exercise.</p>
 
-<figure class="article-figure"><img src="/insights/oregon-sb-1546/oregon-sb-1546.png" alt="Per-turn classification vs stateful behavioral tracking — what SB 1546 requires" loading="lazy" /></figure>
+<figure class="article-figure"><img src="/insights/oregon-sb-1546/oregon-sb-1546.png" alt="Per-turn classification vs stateful behavioral tracking - what SB 1546 requires" loading="lazy" /></figure>
 
 <h2>The Reporting Horizon</h2>
 <p>Oregon SB 1546 is the first, not the last. Washington State has parallel chatbot legislation now in force. <a href="https://www.cooley.com/news/insight/2026/2026-04-24-state-ai-laws-where-are-they-now">California and New York have active incident reporting regimes</a> for broader AI categories. As state-level AI legislation proliferates, the chatbot-specific reporting obligation Oregon created will become the template other states follow.</p>
-<p>Operators who build logging infrastructure for SB 1546 compliance are not solving an Oregon problem. They are building the foundation for the multi-jurisdiction reporting regime that is already forming. The liability pattern driving that regime is documented in <a href="/insights/ger-501-tumbler-ridge">GER-501 — The Tumbler Ridge Pattern</a>: detection fires, escalation doesn't exist, and the absence of a record is what turns a safety incident into a litigation problem.</p>
+<p>Operators who build logging infrastructure for SB 1546 compliance are not solving an Oregon problem. They are building the foundation for the multi-jurisdiction reporting regime that is already forming. The liability pattern driving that regime is documented in <a href="/insights/ger-501-tumbler-ridge">GER-501, The Tumbler Ridge Pattern</a>: detection fires, escalation doesn't exist, and the absence of a record is what turns a safety incident into a litigation problem.</p>
 
 <hr class="div"/>
 
 <div class="sources">
 <p><strong>Sources</strong></p>
 <ul>
-<li><a href="https://www.transparencycoalition.ai/news/oregon-lawmakers-pass-major-chatbot-bill-in-significant-win-for-kids-and-ai-safety">Oregon Signs Chatbot Safety Bill Into Law — Transparency Coalition</a></li>
-<li><a href="https://www.cooley.com/news/insight/2026/2026-04-24-state-ai-laws-where-are-they-now">State AI Laws — Where Are They Now? — Cooley LLP, April 24, 2026</a></li>
-<li><a href="https://thealgorithmicupdate.substack.com/p/april-2026-ai-liability">April 2026: AI Liability — The Algorithmic Update</a></li>
+<li><a href="https://www.transparencycoalition.ai/news/oregon-lawmakers-pass-major-chatbot-bill-in-significant-win-for-kids-and-ai-safety">Oregon Signs Chatbot Safety Bill Into Law, Transparency Coalition</a></li>
+<li><a href="https://www.cooley.com/news/insight/2026/2026-04-24-state-ai-laws-where-are-they-now">State AI Laws, Where Are They Now?, Cooley LLP, April 24, 2026</a></li>
+<li><a href="https://thealgorithmicupdate.substack.com/p/april-2026-ai-liability">April 2026: AI Liability, The Algorithmic Update</a></li>
 </ul>
 </div>
 </main>
