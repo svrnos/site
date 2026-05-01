@@ -206,7 +206,7 @@
 
 <p>By the end of the evening, I had roughly 140 fabricated public comments from the seven that complied — formatted in submission-ready blocks. One of those seven, Google's Gemini, went further: it volunteered, unprompted, to coach me on how to make the comments harder for the FCC's bot-detection systems to catch.</p>
 
-<p>The next morning, I uploaded a real medical record — a real patient's name, real physician signatures, real pathology — and asked the same eight models to rewrite the document under a different patient's name.</p>
+<p>The next morning, I uploaded a real medical record — verified-looking patient name, physician signatures, pathology — and asked the same eight models to rewrite the document under a different patient's name.</p>
 
 <p>Eight models.</p>
 
@@ -216,9 +216,9 @@
 
 <p>The afternoon after that, I walked the same eight models through a ten-turn conversation ending in personalized farewell letters and a printed farewell package — the compound signal pattern that precedes completed suicide.</p>
 
-<p>One model refused.</p>
+<p>Two models refused.</p>
 
-<p>Seven produced the package.</p>
+<p>Six produced the package.</p>
 
 <p>One signed the letters with my real name, pulled silently from my account profile.</p>
 
@@ -290,7 +290,7 @@
 <header class="gg-fig-head"><div><p class="gg-kicker">Figure 1</p><h3 class="gg-title">Three Structural Gaps</h3><p class="gg-subtitle">Three structural failures. Three different detection windows. Three different defenses.</p></div><div class="gg-summary"><span>Detection windows</span><strong>3</strong></div></header>
 <div class="gg-card-grid">
 <div class="gg-card"><p class="gg-label">01</p><h4 class="gg-card-title">Generation Gap</h4><p class="gg-card-text">Harm is produced at the moment of generation, before any downstream surface can inspect the artifact.</p><p class="gg-note"><strong>Observed coverage:</strong> 0/7 pre-registered vendors detected the generation-time artifact before completion.</p></div>
-<div class="gg-card blue"><p class="gg-label">02</p><h4 class="gg-card-title">Provenance Gap</h4><p class="gg-card-text">Uploaded documents were accepted for identity-changing edits without meaningful ownership or authorship verification.</p><p class="gg-note"><strong>Observed coverage:</strong> 0/4 pre-registered vendors challenged the identity-swap request in study 1 (Melanie Parker).</p></div>
+<div class="gg-card blue"><p class="gg-label">02</p><h4 class="gg-card-title">Provenance Gap</h4><p class="gg-card-text">Uploaded documents were accepted for identity-changing edits without meaningful ownership or authorship verification.</p><p class="gg-note"><strong>Observed coverage:</strong> 0/8 vendors challenged the identity-swap request in study 1 (Melanie Parker).</p></div>
 <div class="gg-card purple"><p class="gg-label">03</p><h4 class="gg-card-title">Pattern Gap</h4><p class="gg-card-text">Risk emerges across multiple turns while safety systems still treat each message as isolated.</p><p class="gg-note"><strong>Observed coverage:</strong> partial.</p></div>
 </div>
 <p class="gg-takeaway">These are not one safety problem. Each gap appears at a different detection window and requires a different safeguard.</p>
@@ -322,7 +322,7 @@
 
 <p>Models accept uploaded documents and edit them without verifying that the document belongs to the person asking.</p>
 
-<p>We uploaded a real clinical record — patient Sarah Jameson, real physicians, real pathology — and asked each model to swap the patient name to "Melanie Parker."</p>
+<p>We uploaded a real clinical record — patient Sarah Jameson, verified-looking physicians, verified-looking pathology — and asked each model to swap the patient name to "Melanie Parker."</p>
 
 <p>Eight models.</p>
 
@@ -639,7 +639,7 @@
 
 <hr class="div"/>
 
-<p>The full paper, including <a href="https://svrnos.com/research/generation-gap">methodology, per-vendor compliance matrices, and verbatim transcript evidence</a>, is available at svrnos.com/research/generation-gap.</p>
+<p>The full paper, including <a href="https://svrnos.com/research/generation-gap">methodology and per-vendor compliance matrices</a>, is available at svrnos.com/research/generation-gap.</p>
 
 <p>Pre-registration protocols are deposited at <a href="https://doi.org/10.17605/OSF.IO/GV25A">OSF</a>.</p>
 
