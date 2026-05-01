@@ -1,0 +1,37 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="border-t border-border-soft mt-24">
+  <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col gap-6">
+    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
+      <div class="max-w-sm">
+        <img src="/svrnos-wordmark.svg" alt="SVRNOS" width="120" height="24" class="mb-3" />
+        <p class="text-sm text-secondary leading-relaxed">
+          Sovereign operating systems for AI governance. Research and product
+          family: SIM95 and King Sango.
+        </p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-2 text-sm">
+        <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-label-alt mb-1 col-span-full">
+          Products
+        </p>
+        <a href="https://sim95.com" class="text-body hover:text-heading">SIM95</a>
+        <a href="https://kingsango.com" class="text-body hover:text-heading">King Sango</a>
+        <span class="text-label-alt">Studio (soon)</span>
+      </div>
+      <div class="grid grid-cols-2 gap-x-8 gap-y-2 text-sm">
+        <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-label-alt mb-1 col-span-full">
+          About
+        </p>
+        <a href="/patents" class="text-body hover:text-heading">Patents</a>
+        <a href="/book" class="text-body hover:text-heading">Book</a>
+        <a href="/privacy" class="text-body hover:text-heading">Privacy</a>
+        <a href="/terms" class="text-body hover:text-heading">Terms</a>
+      </div>
+    </div>
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-6 border-t border-border-hairline text-xs text-label-alt">
+      <span>© {year} SVRNOS™ · All rights reserved</span>
+      <span>contact@svrnos.com</span>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,172 @@
+@import "tailwindcss";
+@import "@svrnos/tokens/tokens.css";
+
+/* Map @svrnos/tokens onto Tailwind v4's theme so utility classes resolve to
+ * canonical design-system values. svrnos stays light-only (no dark variant). */
+@theme inline {
+  /* Colors — surface */
+  --color-page: var(--svrnos-bg-page);
+  --color-card: var(--svrnos-bg-card);
+  --color-hover: var(--svrnos-bg-hover);
+  --color-selected: var(--svrnos-bg-selected);
+  --color-muted: var(--svrnos-bg-muted);
+
+  /* Colors — text */
+  --color-heading: var(--svrnos-text-heading);
+  --color-body: var(--svrnos-text-body-primary);
+  --color-secondary: var(--svrnos-text-body-secondary);
+  --color-label: var(--svrnos-text-label);
+  --color-label-alt: var(--svrnos-text-label-alt);
+  --color-strong: var(--svrnos-text-strong);
+  --color-inverse: var(--svrnos-text-inverse);
+  --color-on-brand: var(--svrnos-text-on-brand);
+
+  /* Colors — brand */
+  --color-brand: var(--svrnos-brand-primary);
+  --color-brand-hover: var(--svrnos-brand-hover);
+  --color-brand-active: var(--svrnos-brand-active);
+
+  /* Colors — borders */
+  --color-border: var(--svrnos-border-default);
+  --color-border-soft: var(--svrnos-border-soft);
+  --color-border-subtle: var(--svrnos-border-subtle);
+  --color-border-hairline: var(--svrnos-border-hairline);
+
+  /* Colors — feedback */
+  --color-success: var(--svrnos-feedback-success);
+  --color-success-soft: var(--svrnos-feedback-success-soft);
+  --color-warning: var(--svrnos-feedback-warning);
+  --color-warning-soft: var(--svrnos-feedback-warning-soft);
+  --color-error: var(--svrnos-feedback-error);
+  --color-error-soft: var(--svrnos-feedback-error-soft);
+  --color-info: var(--svrnos-feedback-info);
+  --color-info-soft: var(--svrnos-feedback-info-soft);
+
+  /* Fonts — driven by Google Fonts links in BaseLayout */
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Radius */
+  --radius-button: var(--svrnos-radius-button);
+  --radius-card: var(--svrnos-radius-card);
+  --radius-pill: var(--svrnos-radius-pill);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--svrnos-bg-page);
+  color: var(--svrnos-text-body-primary);
+  font-family: var(--svrnos-font-sans);
+  font-size: var(--svrnos-font-body);
+  line-height: var(--svrnos-font-body-line);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Pointer cursor on every clickable thing — same rule sim95 + kingsango use. */
+a,
+button,
+[role="button"],
+select,
+label[for],
+summary,
+tr[data-href],
+[data-clickable="true"] {
+  cursor: pointer;
+}
+
+/* Editorial article body — applied by ArticleLayout. Uses the report-page
+ * type system: tight tracking on heads, generous body, serif accent on display. */
+.prose-svrnos {
+  color: var(--svrnos-text-body-primary);
+  font-size: 18px;
+  line-height: 30px;
+  max-width: 68ch;
+}
+.prose-svrnos h2 {
+  color: var(--svrnos-text-heading);
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  margin-top: 56px;
+  margin-bottom: 16px;
+}
+.prose-svrnos h3 {
+  color: var(--svrnos-text-heading);
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+  margin-top: 40px;
+  margin-bottom: 12px;
+}
+.prose-svrnos p {
+  margin-bottom: 20px;
+}
+.prose-svrnos a {
+  color: var(--svrnos-brand-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--svrnos-border-default);
+  text-underline-offset: 4px;
+}
+.prose-svrnos a:hover {
+  text-decoration-color: var(--svrnos-brand-primary);
+}
+.prose-svrnos strong {
+  color: var(--svrnos-text-heading);
+  font-weight: 600;
+}
+.prose-svrnos em {
+  font-style: italic;
+}
+.prose-svrnos ul,
+.prose-svrnos ol {
+  margin-bottom: 20px;
+  padding-left: 24px;
+}
+.prose-svrnos li {
+  margin-bottom: 8px;
+}
+.prose-svrnos blockquote {
+  font-family: var(--svrnos-font-serif);
+  font-size: 24px;
+  line-height: 1.4;
+  font-style: italic;
+  color: var(--svrnos-text-heading);
+  border-left: 3px solid var(--svrnos-brand-primary);
+  padding-left: 20px;
+  margin: 32px 0;
+}
+.prose-svrnos hr {
+  border: 0;
+  border-top: 1px solid var(--svrnos-border-default);
+  margin: 48px 0;
+}
+.prose-svrnos code {
+  font-family: var(--svrnos-font-mono);
+  font-size: 0.9em;
+  background: var(--svrnos-bg-muted);
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+.prose-svrnos pre {
+  font-family: var(--svrnos-font-mono);
+  background: var(--svrnos-bg-muted);
+  border: 1px solid var(--svrnos-border-default);
+  border-radius: var(--svrnos-radius-card);
+  padding: 16px 20px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}

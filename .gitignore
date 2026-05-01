@@ -1,5 +1,16 @@
+# Build artifacts
+dist/
+.astro/
+node_modules/
+
+# Editor / OS
 .DS_Store
 *.tmp
-generation-gap_v2_7.html
+
+# Local Claude config (per-user)
+.claude/
+
+# Legacy backups (kept locally, not for git)
 *.bak
 *.pdf.bak*
+generation-gap_v2_7.html

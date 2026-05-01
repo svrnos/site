@@ -1,0 +1,86 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import JsonLd from "../components/JsonLd.astro";
+
+interface Props {
+  title: string;
+  dek?: string;
+  category?: string;
+  datePublished?: string;
+  readTimeMin?: number;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  jsonLd?: Record<string, unknown>;
+  current?: string;
+}
+
+const {
+  title,
+  dek,
+  category,
+  datePublished,
+  readTimeMin,
+  description,
+  canonical,
+  ogImage,
+  jsonLd,
+  current = "insights",
+} = Astro.props;
+---
+<BaseLayout
+  title={title}
+  description={description ?? dek}
+  canonical={canonical}
+  ogImage={ogImage}
+  current={current}
+>
+  {jsonLd && (
+    <Fragment slot="head">
+      <JsonLd data={jsonLd} />
+    </Fragment>
+  )}
+
+  <article class="max-w-6xl mx-auto px-6 pt-16 pb-12">
+    <header class="max-w-[68ch]">
+      <nav aria-label="Breadcrumb" class="font-mono text-[11px] uppercase tracking-[0.18em] text-label-alt mb-6">
+        <a href="/" class="hover:text-heading">SVRNOS</a>
+        <span class="mx-2">/</span>
+        <a href={`/${current}`} class="hover:text-heading">{current}</a>
+        {category && (
+          <>
+            <span class="mx-2">/</span>
+            <span class="text-secondary">{category}</span>
+          </>
+        )}
+      </nav>
+
+      <h1 class="font-serif text-4xl md:text-[56px] font-normal text-heading leading-[1.05] tracking-tight mb-5">
+        {title}
+      </h1>
+
+      {dek && (
+        <p class="text-xl leading-snug text-secondary italic font-light max-w-[58ch] mb-8">
+          {dek}
+        </p>
+      )}
+
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-label-alt mb-12">
+        {datePublished && (
+          <time datetime={datePublished}>
+            {new Date(datePublished).toLocaleDateString("en-US", {
+              month: "long",
+              day: "numeric",
+              year: "numeric",
+            })}
+          </time>
+        )}
+        {readTimeMin && <span>{readTimeMin} min read</span>}
+      </div>
+    </header>
+
+    <div class="prose-svrnos">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>
