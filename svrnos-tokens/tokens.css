@@ -1,0 +1,244 @@
+/* @svrnos/tokens — canonical design tokens
+ *
+ * Single source of truth for svrnos.com, sim95.com, and kingsango.com.
+ * Values lifted from sim95's existing token system (the design anchor).
+ * Light ramp + brand are sim95-derived; dark ramp is new (kingsango).
+ *
+ * Naming:
+ *   --svrnos-*    canonical, used by all sites
+ *   --sim95-*     legacy aliases inside sim95 only (mapped via consumer's globals.css)
+ */
+
+:root {
+  /* ────────── Brand ────────── */
+  --svrnos-brand-primary: #2f5d50;
+  --svrnos-brand-hover: #284f44;
+  --svrnos-brand-active: #22443a;
+  --svrnos-brand-ring: rgba(47, 93, 80, 0.25);
+  --svrnos-brand-disabled: #779b91;
+  --svrnos-brand-diagnostic: #2f6a4e;
+
+  /* ────────── Surface ramp — light ────────── */
+  --svrnos-bg-page: #fafaf9;
+  --svrnos-bg-card: #ffffff;
+  --svrnos-bg-hover: #f2f5f4;
+  --svrnos-bg-option-hover: #f4f6f7;
+  --svrnos-bg-selected: #eef3f1;
+  --svrnos-bg-idcard: #e9eef1;
+  --svrnos-bg-idcard-header: #dde5ea;
+  --svrnos-bg-muted: #f2f2ee;
+  --svrnos-bg-overlay: rgba(55, 65, 81, 0.6);
+  --svrnos-bg-overlay-solid: #797c7e;
+
+  /* ────────── Surface ramp — dark (kingsango) ────────── */
+  --svrnos-bg-page-dark: #0e1110;
+  --svrnos-bg-card-dark: #15191a;
+  --svrnos-bg-hover-dark: #1c2122;
+  --svrnos-bg-selected-dark: #1f2a26;
+  --svrnos-bg-muted-dark: #161a1a;
+  --svrnos-bg-elevated-dark: #1a1f1f;
+
+  /* ────────── Text ramp — light ────────── */
+  --svrnos-text-heading: #1a1a1a;
+  --svrnos-text-body-primary: #2c3943;
+  --svrnos-text-body-secondary: #61707c;
+  --svrnos-text-label: #64748b;
+  --svrnos-text-label-alt: #8a949b;
+  --svrnos-text-strong: #111827;
+  --svrnos-text-inverse: #ffffff;
+  /* text-on-brand is always white — for use on filled brand-primary surfaces
+   * (buttons, badges) regardless of light/dark theme. */
+  --svrnos-text-on-brand: #ffffff;
+  --svrnos-nav-link: #6b747b;
+  --svrnos-nav-link-hover: #1f2428;
+
+  /* ────────── Text ramp — dark (kingsango) ────────── */
+  --svrnos-text-heading-dark: #f2f4f3;
+  --svrnos-text-body-primary-dark: #cfd5d3;
+  --svrnos-text-body-secondary-dark: #8a948f;
+  --svrnos-text-label-dark: #6f7873;
+  --svrnos-text-label-alt-dark: #555c58;
+  --svrnos-text-strong-dark: #ffffff;
+  --svrnos-text-inverse-dark: #0e1110;
+  --svrnos-nav-link-dark: #8a948f;
+  --svrnos-nav-link-hover-dark: #f2f4f3;
+
+  /* ────────── Borders ────────── */
+  --svrnos-border-default: #e6e9ec;
+  --svrnos-border-soft: #e6eaed;
+  --svrnos-border-subtle: rgba(0, 0, 0, 0.12);
+  --svrnos-border-hairline: rgba(0, 0, 0, 0.05);
+  --svrnos-border-vertical: #d4d4d4;
+  --svrnos-card-board: rgba(0, 0, 0, 0.08);
+
+  /* Dark borders */
+  --svrnos-border-default-dark: #262c2c;
+  --svrnos-border-soft-dark: #1f2424;
+  --svrnos-border-subtle-dark: rgba(255, 255, 255, 0.10);
+  --svrnos-border-hairline-dark: rgba(255, 255, 255, 0.05);
+  --svrnos-border-vertical-dark: #2c3232;
+
+  /* ────────── Radii ────────── */
+  /* Cards intentionally less rounded than buttons (sim95 system rule). */
+  --svrnos-radius-button: 8px;
+  --svrnos-radius-input: 8px;
+  --svrnos-radius-card: 6px;
+  --svrnos-radius-pill: 999px;
+  --svrnos-radius-none: 0px;
+
+  /* ────────── Spacing scale ────────── */
+  --svrnos-space-1: 4px;
+  --svrnos-space-2: 8px;
+  --svrnos-space-3: 12px;
+  --svrnos-space-4: 16px;
+  --svrnos-space-5: 20px;
+  --svrnos-space-6: 24px;
+  --svrnos-space-8: 32px;
+  --svrnos-space-10: 40px;
+  --svrnos-space-12: 48px;
+  --svrnos-space-15: 60px;
+  --svrnos-space-18: 72px;
+  --svrnos-space-30: 120px;
+
+  /* ────────── Typography — families ──────────
+   * Inter is the body face across all three sites (sim95's anchor).
+   * Instrument Serif is the editorial accent — used sparingly for hero
+   * displays and article pull-quotes on svrnos, and for the rare product
+   * display moment on kingsango. Already in the brand on sim95.com homepage.
+   * Geist Mono for technical readouts (kingsango Replay, code, tabular nums).
+   */
+  --svrnos-font-sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, sans-serif;
+  --svrnos-font-serif: "Instrument Serif", "Iowan Old Style", Charter, Georgia,
+    "Times New Roman", serif;
+  --svrnos-font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, Consolas,
+    "JetBrains Mono", monospace;
+
+  /* ────────── Typography — weights ────────── */
+  --svrnos-font-weight-regular: 400;
+  --svrnos-font-weight-medium: 500;
+  --svrnos-font-weight-semibold: 600;
+  --svrnos-font-weight-bold: 700;
+
+  /* ────────── Typography — scale (sim95-aligned) ────────── */
+  /* Display: hero/section headers */
+  --svrnos-font-display: 32px;
+  --svrnos-font-display-line: 38px;
+  --svrnos-font-display-tracking: -0.64px;
+  --svrnos-font-display-weight: 500;
+
+  /* Editorial display (svrnos paper hero, kingsango product hero) — serif.
+   * Instrument Serif at light weight, tight tracking, generous size.
+   */
+  --svrnos-font-editorial: 56px;
+  --svrnos-font-editorial-line: 60px;
+  --svrnos-font-editorial-tracking: -1.4px;
+  --svrnos-font-editorial-weight: 400;
+
+  /* H2 */
+  --svrnos-font-h2: 24px;
+  --svrnos-font-h2-line: 32px;
+  --svrnos-font-h2-tracking: -0.24px;
+  --svrnos-font-h2-weight: 600;
+
+  /* 28 — between display and h2, used in product cards */
+  --svrnos-font-28: 28px;
+  --svrnos-font-28-line: 36px;
+
+  /* H3 */
+  --svrnos-font-h3: 18px;
+  --svrnos-font-h3-line: 27px;
+
+  /* Body */
+  --svrnos-font-body: 16px;
+  --svrnos-font-body-line: 26px;
+  --svrnos-font-body-tight-line: 24px;
+
+  /* Body — small */
+  --svrnos-font-body-sm: 14px;
+  --svrnos-font-body-sm-line: 21px;
+
+  /* Field text (inputs, table cells) */
+  --svrnos-font-field: 13px;
+  --svrnos-font-field-line: 20px;
+
+  /* Label (eyebrows, taxonomy chips) — uppercase, tracked */
+  --svrnos-font-label: 11px;
+  --svrnos-font-label-line: 16px;
+  --svrnos-font-label-tracking: 1.32px;
+  --svrnos-font-label-weight: 600;
+
+  /* ────────── Feedback ────────── */
+  --svrnos-feedback-success: #2f6a4e;
+  --svrnos-feedback-success-soft: #e8f3ed;
+  --svrnos-feedback-warning: #b07a00;
+  --svrnos-feedback-warning-soft: #faf3e0;
+  --svrnos-feedback-error: #b23a3a;
+  --svrnos-feedback-error-soft: #f8eaea;
+  --svrnos-feedback-info: #2f5d7a;
+  --svrnos-feedback-info-soft: #e9f1f6;
+  --svrnos-feedback-disabled: #a9b8b3;
+
+  /* Feedback — dark variants */
+  --svrnos-feedback-success-dark: #6dbf99;
+  --svrnos-feedback-success-soft-dark: #18302a;
+  --svrnos-feedback-warning-dark: #d9a64a;
+  --svrnos-feedback-warning-soft-dark: #2d2516;
+  --svrnos-feedback-error-dark: #e07878;
+  --svrnos-feedback-error-soft-dark: #2d1818;
+  --svrnos-feedback-info-dark: #6da7c4;
+  --svrnos-feedback-info-soft-dark: #182530;
+
+  /* ────────── Component tokens ────────── */
+  --svrnos-button-primary-height: 44px;
+  --svrnos-button-primary-padding-x: 24px;
+  --svrnos-shadow-focus-brand: 0 0 0 4px rgba(47, 93, 80, 0.25);
+  --svrnos-progress-height: 2px;
+  --svrnos-progress-track: var(--svrnos-border-default);
+  --svrnos-progress-fill: var(--svrnos-text-body-primary);
+
+  /* ────────── Motion ────────── */
+  --svrnos-motion-fast: 125ms;
+  --svrnos-motion-base: 200ms;
+  --svrnos-motion-slow: 320ms;
+  --svrnos-motion-ease: cubic-bezier(0.2, 0, 0.13, 1.5);
+}
+
+/* Dark-mode override.
+ * Sites that use Tailwind v4's @custom-variant dark (&:is(.dark *)) flip these
+ * by adding `class="dark"` to a parent (typically <html>).
+ * kingsango opts in globally; svrnos stays light-only.
+ */
+.dark,
+[data-theme="dark"] {
+  --svrnos-bg-page: var(--svrnos-bg-page-dark);
+  --svrnos-bg-card: var(--svrnos-bg-card-dark);
+  --svrnos-bg-hover: var(--svrnos-bg-hover-dark);
+  --svrnos-bg-selected: var(--svrnos-bg-selected-dark);
+  --svrnos-bg-muted: var(--svrnos-bg-muted-dark);
+
+  --svrnos-text-heading: var(--svrnos-text-heading-dark);
+  --svrnos-text-body-primary: var(--svrnos-text-body-primary-dark);
+  --svrnos-text-body-secondary: var(--svrnos-text-body-secondary-dark);
+  --svrnos-text-label: var(--svrnos-text-label-dark);
+  --svrnos-text-label-alt: var(--svrnos-text-label-alt-dark);
+  --svrnos-text-strong: var(--svrnos-text-strong-dark);
+  --svrnos-text-inverse: var(--svrnos-text-inverse-dark);
+  --svrnos-nav-link: var(--svrnos-nav-link-dark);
+  --svrnos-nav-link-hover: var(--svrnos-nav-link-hover-dark);
+
+  --svrnos-border-default: var(--svrnos-border-default-dark);
+  --svrnos-border-soft: var(--svrnos-border-soft-dark);
+  --svrnos-border-subtle: var(--svrnos-border-subtle-dark);
+  --svrnos-border-hairline: var(--svrnos-border-hairline-dark);
+  --svrnos-border-vertical: var(--svrnos-border-vertical-dark);
+
+  --svrnos-feedback-success: var(--svrnos-feedback-success-dark);
+  --svrnos-feedback-success-soft: var(--svrnos-feedback-success-soft-dark);
+  --svrnos-feedback-warning: var(--svrnos-feedback-warning-dark);
+  --svrnos-feedback-warning-soft: var(--svrnos-feedback-warning-soft-dark);
+  --svrnos-feedback-error: var(--svrnos-feedback-error-dark);
+  --svrnos-feedback-error-soft: var(--svrnos-feedback-error-soft-dark);
+  --svrnos-feedback-info: var(--svrnos-feedback-info-dark);
+  --svrnos-feedback-info-soft: var(--svrnos-feedback-info-soft-dark);
+}

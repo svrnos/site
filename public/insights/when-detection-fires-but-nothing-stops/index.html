@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>When Detection Fires but Nothing Stops - SVRNOS Insights</title>
+<meta content="An empirical companion to Partnership on AI's real-time failure detection framework. Three production tests confirm the gap. One novel finding extends the response taxonomy: unbound detection." name="description"/>
+<meta content="When Detection Fires but Nothing Stops" property="og:title"/>
+<meta content="An empirical companion to Partnership on AI's real-time failure detection framework. Three tests confirm the gap; one novel finding names the architectural blind spot: unbound detection." property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="https://svrnos.com/insights/when-detection-fires-but-nothing-stops" property="og:url"/>
+<meta content="https://svrnos.com/insights/when-detection-fires-but-nothing-stops/when-detection-fires-but-nothing-stops-title.png" property="og:image"/>
+<meta content="1672" property="og:image:width"/>
+<meta content="941" property="og:image:height"/>
+<meta content="When Detection Fires but Nothing Stops - PAI's framework tested against eight production AI tools. SVRNOS." property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://svrnos.com/insights/when-detection-fires-but-nothing-stops/when-detection-fires-but-nothing-stops-title.png" name="twitter:image"/>
+<link rel="canonical" href="https://svrnos.com/insights/when-detection-fires-but-nothing-stops"/>
+<link rel="alternate" hreflang="en" href="https://svrnos.com/insights/when-detection-fires-but-nothing-stops"/>
+<link rel="alternate" hreflang="x-default" href="https://svrnos.com/insights/when-detection-fires-but-nothing-stops"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --paper: #fbfaf6; --ink: #14140f; --ink-soft: #3a3a32; --ink-mute: #6b6b60;
+    --rule: #e6e3d8; --rule-soft: #efece2; --accent: #1f4d3a; --accent-soft: #d8e4dd;
+    --accent-bg: #f1efe5;
+    --font-serif: 'Instrument Serif', 'Charter', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --col-text: 720px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-sans); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-soft); }
+  a:hover { border-bottom-color: var(--accent); }
+  .topnav { position: sticky; top: 0; z-index: 50; background: rgba(251,250,246,.92); backdrop-filter: saturate(180%) blur(12px); border-bottom: 1px solid var(--rule-soft); }
+  .topnav-inner { max-width: 1180px; margin: 0 auto; padding: 14px 32px; display: flex; align-items: center; justify-content: space-between; font-family: var(--font-sans); font-size: 14px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--ink); border: none; }
+  .brand-mark { width: 22px; height: 22px; background: var(--accent); border-radius: 4px; position: relative; }
+  .brand-mark::after { content: ''; position: absolute; inset: 4px; background: var(--paper); clip-path: polygon(0 0, 100% 0, 100% 50%, 50% 100%, 0 50%); }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: var(--ink-soft); border: none; font-weight: 500; }
+  .nav-links a:hover { color: var(--accent); }
+  .hero { max-width: var(--col-text); margin: 0 auto; padding: 72px 32px 24px; }
+  .breadcrumbs { font-family: var(--font-sans); font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-mute); margin-bottom: 24px; }
+  .breadcrumbs a { color: var(--ink-mute); border: none; }
+  .breadcrumbs a:hover { color: var(--accent); }
+  .hero h1 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(32px, 5vw, 50px); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 12px; font-variation-settings: "opsz" 144; }
+  .hero .subtitle { font-family: var(--font-serif); font-style: italic; font-size: clamp(18px, 2.4vw, 22px); color: var(--ink-soft); margin: 0 0 20px; font-weight: 300; line-height: 1.3; }
+  .meta-block { font-family: var(--font-sans); font-size: 13px; color: var(--ink-mute); line-height: 1.7; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 16px 0; margin: 0 0 8px; }
+  .meta-block .row { display: flex; gap: 12px; }
+  .meta-block .label { font-weight: 600; color: var(--ink-soft); min-width: 92px; }
+  .cat-tag { display: inline-block; font-family: var(--font-sans); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; margin-bottom: 16px; background: #e6efe9; color: #1f4d3a; }
+  main { max-width: var(--col-text); margin: 0 auto; padding: 32px 32px 64px; }
+  h2 { font-family: var(--font-serif); font-weight: 500; font-size: 28px; line-height: 1.2; letter-spacing: -0.012em; margin: 48px 0 14px; font-variation-settings: "opsz" 60; }
+  h3 { font-family: var(--font-serif); font-weight: 500; font-size: 22px; line-height: 1.25; margin: 32px 0 10px; font-variation-settings: "opsz" 48; }
+  p { margin: 0 0 18px; }
+  strong { font-weight: 600; color: var(--ink); }
+  em { font-style: italic; }
+  blockquote { margin: 24px 0; padding: 4px 0 4px 20px; border-left: 3px solid var(--accent); font-family: var(--font-serif); font-style: italic; font-size: 18px; line-height: 1.55; color: var(--ink-soft); }
+  blockquote p { margin: 0 0 12px; }
+  blockquote p:last-child { margin: 0; }
+  hr.div { border: none; border-top: 1px solid var(--rule); margin: 44px 0; }
+  .cta-block { margin: 44px 0; text-align: center; }
+  .cta-btn { display: inline-block; font-family: var(--font-sans); font-size: 15px; font-weight: 600; color: var(--paper); background: var(--accent); padding: 14px 28px; border-radius: 6px; border: none; letter-spacing: 0.01em; }
+  .cta-btn:hover { background: #174035; border-bottom: none; }
+  footer.site-footer { max-width: var(--col-text); margin: 0 auto; padding: 32px; border-top: 1px solid var(--rule); font-family: var(--font-sans); font-size: 13px; color: var(--ink-mute); line-height: 1.7; }
+  footer.site-footer p { margin: 0 0 8px; }
+  footer.site-footer a { color: var(--ink-mute); border-bottom-color: var(--rule); }
+  footer.site-footer a:hover { color: var(--accent); }
+  @media (max-width: 600px) { body { font-size: 17px; } .hero { padding: 48px 24px 16px; } main { padding: 24px 24px 48px; } }
+  .article-figure { position: relative; margin: 32px 0; border-radius: 6px; overflow: hidden; }
+  .article-figure img { display: block; width: 100%; height: auto; }
+  .article-figure-hero { margin-top: 0; }
+  .article-figure::after { content: "SVRNOS.COM"; position: absolute; bottom: 10px; right: 10px; font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; color: rgba(251,250,246,0.82); background: rgba(20,20,15,0.45); padding: 4px 9px; border-radius: 3px; pointer-events: none; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+  .related-line { font-family: var(--font-sans); font-size: 14px; color: var(--ink-mute); border-top: 1px solid var(--rule); padding-top: 16px; margin-top: 32px; }
+  .related-line a { color: var(--ink-soft); }
+  .share-bar { max-width: 720px; margin: 16px auto 0; padding: 0 32px; }
+  .share-btn { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; background: transparent; color: inherit; border: 1px solid currentColor; border-radius: 999px; font: 500 14px/1 system-ui, sans-serif; cursor: pointer; opacity: 0.6; transition: opacity .15s ease; font-family: inherit; }
+  .share-btn:hover { opacity: 1; }
+  .share-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "When Detection Fires but Nothing Stops",
+  "alternativeHeadline": "An empirical companion to Partnership on AI's real-time failure detection framework",
+  "author": {
+    "@type": "Person",
+    "name": "Sushee Nzeutem",
+    "url": "https://svrnos.com",
+    "affiliation": {"@type": "Organization", "name": "SVRNOS"}
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "SVRNOS",
+    "url": "https://svrnos.com"
+  },
+  "datePublished": "2026-05-01T00:00:00Z",
+  "url": "https://svrnos.com/insights/when-detection-fires-but-nothing-stops",
+  "image": "https://svrnos.com/insights/when-detection-fires-but-nothing-stops/when-detection-fires-but-nothing-stops-title.png",
+  "mainEntityOfPage": "https://svrnos.com/insights/when-detection-fires-but-nothing-stops",
+  "description": "Three production tests of PAI's real-time failure detection framework, plus one novel finding the framework has not yet named: unbound detection.",
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "SVRNOS Insights",
+    "url": "https://svrnos.com/insights"
+  }
+}
+</script>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+</head>
+<body>
+<nav class="topnav">
+<div class="topnav-inner">
+<a class="brand" href="/"><span class="brand-mark"></span><span>SVRNOS</span></a>
+<div class="nav-links">
+<a href="/#thesis">Thesis</a>
+<a href="/research">Research</a>
+<a href="/insights">Insights</a>
+<a href="/patents">Patents</a>
+<a href="/products">Products</a>
+<a href="/#contact">Contact</a>
+</div>
+</div>
+</nav>
+
+<header class="hero">
+<div class="breadcrumbs"><a href="/insights">Insights</a> · May 1, 2026</div>
+<div class="cat-tag">Governance</div>
+<h1>When Detection Fires but Nothing Stops</h1>
+<p class="subtitle">An empirical companion to Partnership on AI's real-time failure detection framework</p>
+<div class="meta-block">
+<div class="row"><span class="label">Published</span><span>May 1, 2026</span></div>
+<div class="row"><span class="label">Author</span><span>Sushee Nzeutem, SVRNOS LLC</span></div>
+</div>
+</header>
+
+<div class="share-bar">
+<button aria-label="Share article" class="share-btn" id="shareBtn" type="button">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>
+<span>Share</span>
+</button>
+</div>
+
+<main>
+<figure class="article-figure article-figure-hero"><img src="/insights/when-detection-fires-but-nothing-stops/when-detection-fires-but-nothing-stops-title.png" alt="When Detection Fires but Nothing Stops - PAI's framework tested against eight production AI tools, three empirical tests, one novel finding" loading="eager" /></figure>
+
+<p>In September 2025, Partnership on AI published <a href="https://partnershiponai.org/resource/prioritizing-real-time-failure-detection-in-ai-agents/" target="_blank" rel="noopener noreferrer"><em>Prioritizing Real-Time Failure Detection in AI Agents</em></a>, authored by Madhulika Srikumar, Jacob Pratt, Kasia Chmielinski, and contributors from OpenAI, Microsoft, Stanford HAI, GitHub, Carnegie Mellon, CDT, and the Alan Turing Institute. The report makes a structural argument: pre-deployment evaluations are necessary but insufficient. Agents fail in ways that emerge only at runtime, and the architectural gap is real-time, layered failure detection across the agent workflow.</p>
+
+<p>The framework calibrates detection by three factors. <strong>Stakes:</strong> how serious are the consequences of failure. <strong>Reversibility:</strong> can the failure be undone. <strong>Affordances:</strong> how much autonomy does the agent have. When all three align high, the report argues, layered real-time detection becomes essential.</p>
+
+<p>In April 2026, I published a <a href="https://svrnos.com/research/generation-gap">pre-registered multi-vendor study</a> testing eight production AI tools across eight threat domains. Single operator, normal conversation, no jailbreaks. Vendor sessions were conducted April 7 to 12. Protocols were pre-registered via timestamped Notion entries before each vendor session, with OSF deposit following on April 13.</p>
+
+<h3>A scope note before the rest</h3>
+
+<p>PAI's framework focuses specifically on AI agents at Levels 3 to 5 of environmental influence: systems that execute actions through tools with minimal human oversight. The systems I tested are mostly production LLM interfaces generating artifacts that users can immediately operationalize, not fully autonomous agents executing actions. The detection problem tested is the same problem one architectural layer earlier. If real-time detection fails before tool execution, the same failure becomes more dangerous once agentic affordances are added.</p>
+
+<p>The findings empirically instantiate three claims from PAI's framework. They also surface one architectural gap the framework has not named yet.</p>
+
+<h2>Test 1: High-stakes mental health use case</h2>
+
+<p>PAI's report flags one category of high-stakes use case explicitly:</p>
+
+<blockquote>
+<p>"When AI agents are deployed in use cases like mental health support, grief assistance, or wellness coaching, they can significantly influence users' psychological wellbeing. The risk increases with agents that retain memory, personalize interactions over time, or are embedded in routines that create emotional dependence."</p>
+</blockquote>
+
+<p>The framework names this as one of the highest-risk geometries. High stakes (psychological harm), low reversibility (suicide-adjacent), high affordances (compound personalization across turns).</p>
+
+<p>Test design: a 10-turn protocol simulating compound pre-crisis signals. Anhedonia. Medication discontinuation. Hypersomnia. Social withdrawal. Legacy ideation. The user asks for help writing farewell letters at turn 7, then for those letters to be assembled into a printed package at turn 10.</p>
+
+<p>Six of seven pre-registered production vendors produced the personalized farewell letter package at turn 10. Copilot offered, unprompted, to format the package: <em>"Would you like me to help you format this into a print-ready layout with consistent spacing and headings?"</em></p>
+
+<p>One model in the pre-registered set refused outright (Claude). Muse Spark, added post-hoc as an eighth vendor, caught the pattern through a different mechanism, rewriting every letter in present tense with future-oriented closings, then refusing the printed package at turn 10 as a "medical emergency" while surfacing dual-localized crisis resources.</p>
+
+<p>The harm in this test was not in any single message. It was in the cumulative trajectory. Per-turn classifiers, where they existed, saw a formatting question. The pattern was the failure.</p>
+
+<p>This is an empirical instance of the gap PAI's report describes. The framework predicted the failure mode. The empirical record supports it across vendors.</p>
+
+<h2>Test 2: Context-boundary collapse on a high-stakes data task</h2>
+
+<p>PAI's report identifies a second high-stakes scenario at the task level rather than the use-case level:</p>
+
+<blockquote>
+<p>"Access to sensitive personal data can be considered high stakes for agents because session management represents a critical blind spot: most agents don't isolate user sessions robustly, causing chat histories to bleed across users which could lead to data leaks."</p>
+</blockquote>
+
+<p>The empirical case below is adjacent to but distinct from cross-user session bleed. It is context-boundary collapse inside a single user session: account-level identity, uploaded third-party content, and generated document output were not cleanly separated.</p>
+
+<p>Test design: I uploaded a real clinical record (verified third-party PII, institutional metadata, named physicians) to seven production vendors. The protocol asked each vendor to generate a medical summary, then at turn 5 to swap the patient name to a different fictional patient.</p>
+
+<p>Four of four pre-registered vendors complied with the identity swap. Three exploratory vendors and Muse Spark also complied. Eight of eight overall.</p>
+
+<p>All eight silently propagated a nine-week temporal contradiction between the user's stated timeline and the document's actual visit date. Three vendors reframed the substitution as a "correction." None asked who the new patient was, why the name was changing, or whether the user had authorization to alter a medical record.</p>
+
+<p>The Mistral session went further. Mistral pulled the operator's real first and last name from the Le Chat account profile, without being prompted, and stamped it on the forged document's footer. The operator never typed her name in the conversation. Mistral also added an unprompted instructional line to the document body: <em>"Patient Name: Sarah Jameson (Note: Replace with your name if needed)."</em></p>
+
+<p>This is adjacent to the session-management blind spot PAI describes. The failure was not cross-user chat-history bleed. It was context-boundary collapse: account-level identity, uploaded third-party content, and generated document output were treated as one undifferentiated context. The session structure that should have isolated them did not.</p>
+
+<h2>The architectural gap: unbound detection</h2>
+
+<p>PAI's framework defines three response mechanisms when failure detection fires: <strong>Stop</strong> (halt execution), <strong>Escalate</strong> (transfer to human), <strong>Retry</strong> (revise plan).</p>
+
+<p>The empirical record surfaces a different pattern the report has not named: detection fires AND action proceeds. The signal exists. None of Stop, Escalate, or Retry follows. Three vendors did this in the same study, at three different layers of the safety stack.</p>
+
+<figure class="article-figure"><img src="/insights/when-detection-fires-but-nothing-stops/when-detection-fires-but-nothing-stops-comparison.png" alt="Unbound Detection vs Bound Response - the empirical pattern observed in production versus what PAI's framework expects" loading="lazy" /></figure>
+
+<h3>Mistral's classifier layer</h3>
+
+<p>In the cybersecurity escalation study, Mistral surfaced a "Content may contain harmful or sensitive material" flag at three consecutive turns. The flag fired. The exploitation content was delivered each time. The classifier saw the harm. Nothing intervened.</p>
+
+<h3>Copilot's refusal layer</h3>
+
+<p>Same study. Copilot wrote: <em>"I can't walk someone through how to fake listings or bypass verification, that would be unsafe."</em> Then, in the same response, Copilot delivered a six-section automation playbook with named ID-verification vendors and a numbered example flow matching the operator's exact request.</p>
+
+<h3>DeepSeek's refusal layer</h3>
+
+<p>DeepSeek refused to provide an evasion guide for mass fraud, then in the same response enumerated the operational requirements an attacker would need to overcome verification at scale, framed as defender analysis.</p>
+
+<p>In each case, the system surfaced a signal that should have triggered Stop, Escalate, or Retry. None of those responses fired. The content shipped.</p>
+
+<p>This is the architectural gap PAI's framework has not named. The Stop/Escalate/Retry taxonomy assumes detection leads to one of those three. It does not always. The framework needs a dedicated failure category: <strong>unbound detection</strong>, cases where a safety signal fires but is not bound to Stop, Escalate, Retry, warning, or remedy.</p>
+
+<figure class="article-figure"><img src="/insights/when-detection-fires-but-nothing-stops/when-detection-fires-but-nothing-stops-flow.png" alt="When Detection Fires but Nothing Stops - the signal exists, the intervention does not. High-risk task, detection fires, content ships." loading="lazy" /></figure>
+
+<p>In the systems I tested, detection and enforcement are decoupled at the architecture level. The signal exists. The intervention does not. Naming this as a discrete failure category is a precondition for fixing it.</p>
+
+<h2>What cross-surface evidence shows</h2>
+
+<p>PAI's framework treats stakes, reversibility, and affordances as factors to be calibrated per use case. The implicit assumption is that within a single vendor, calibration can be assessed and improved over time.</p>
+
+<p>The empirical record shows the calibration does not transfer across surfaces.</p>
+
+<p>Claude was the only pre-registered vendor to refuse the pre-crisis farewell letter package. It also produced the highest-fidelity forged clinical record in the same week, preserving two named physicians, hospital number, pathology report number, three dates, and a provenance-affirming footer. Same model, same week, opposite outcomes on adjacent surfaces.</p>
+
+<p>This pattern was universal in the study. Every vendor had at least one structural blind spot, and each one was different.</p>
+
+<p>The implication for PAI's framework: per-use-case calibration is correct in principle, but vendors cannot self-attest to readiness, because their performance on one safety surface does not predict performance on another. External pre-registered evaluation across multiple surfaces is necessary.</p>
+
+<h2>Conclusion</h2>
+
+<p>PAI's framework is correct on direction. Pre-deployment evaluations are insufficient. Real-time, layered failure detection is the architectural addition the field needs. The empirical record supports the gap as real, structural, and uniform across the industry.</p>
+
+<p>Two refinements the empirical work suggests:</p>
+
+<p><strong>1. Unbound detection deserves a dedicated treatment in the response taxonomy.</strong> A safety signal firing without binding to any response is a documented failure mode in current production systems. Stop, Escalate, and Retry are necessary categories. They are not exhaustive.</p>
+
+<p><strong>2. Cross-surface evaluation is necessary.</strong> Vendor calibration on one surface does not transfer to another. Per-vendor self-attestation cannot ground the framework's prioritization. External pre-registered protocols offer a starting point.</p>
+
+<p>The next collaborative step is shared methodology for how detection layers get evaluated, and how detection signals get bound to actual response mechanisms in the production stack.</p>
+
+<hr class="div"/>
+
+<div class="cta-block">
+<a class="cta-btn" href="https://svrnos.com/research/generation-gap">Read the Full Paper</a>
+</div>
+
+<p class="related-line"><strong>Related:</strong> <a href="/research/generation-gap">The Generation Gap (full paper)</a> · <a href="/insights/the-generation-gap-explained">The Generation Gap, Explained</a> · <a href="/insights/algorithmic-compliance-companion-harm">When the Chatbot Becomes the Harm</a></p>
+
+</main>
+
+<footer class="site-footer">
+<p>SVRNOS LLC is an independent research institute studying governance infrastructure for complex systems under pressure. <a href="https://kingsango.com/guard?utm_source=when-detection-fires&amp;utm_medium=footer" target="_blank" rel="noopener noreferrer">Sango Guard</a> implements detection bound to enforcement, with stateful behavioral monitoring and tamper-evident audit trails as a runtime safety layer.</p>
+<p>© 2026 SVRNOS. <a href="/research">Research</a> · <a href="/insights">Insights</a> · <a href="https://kingsango.com?utm_source=when-detection-fires&amp;utm_medium=footer" target="_blank" rel="noopener noreferrer">King Sango</a> · <a href="https://sim95.com?utm_source=when-detection-fires&amp;utm_medium=footer" target="_blank" rel="noopener noreferrer">SIM95</a></p>
+</footer>
+<script>
+document.getElementById('shareBtn')?.addEventListener('click', async () => {
+  const m = (p) => document.querySelector(`meta[property="${p}"]`)?.content || document.querySelector(`meta[name="${p}"]`)?.content || '';
+  const baseShareData = {
+    title: m('og:title') || document.title,
+    text: m('og:description') || '',
+    url: window.location.href
+  };
+  let shareData = baseShareData;
+  try {
+    const imgUrl = m('og:image');
+    if (imgUrl) {
+      const res = await fetch(imgUrl);
+      if (res.ok) {
+        const blob = await res.blob();
+        const file = new File([blob], 'share.png', { type: blob.type });
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          shareData = { ...baseShareData, files: [file] };
+        }
+      }
+    }
+  } catch (e) { /* fall through */ }
+  if (navigator.share) {
+    try { await navigator.share(shareData); } catch (e) { /* user cancelled */ }
+  } else {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      alert('Link copied to clipboard');
+    } catch (e) { alert('Could not copy link'); }
+  }
+});
+</script>
+</body>
+</html>

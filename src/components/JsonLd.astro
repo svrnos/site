@@ -1,0 +1,9 @@
+---
+// Pass-through wrapper for Schema.org JSON-LD blocks. Preserves the schemas
+// validated against Google Rich Results Test verbatim.
+interface Props {
+  data: Record<string, unknown>;
+}
+const { data } = Astro.props;
+---
+<script type="application/ld+json" is:inline set:html={JSON.stringify(data)} />

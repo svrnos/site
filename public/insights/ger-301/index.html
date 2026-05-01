@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GER-301 - Risk Surface Retired: How Character.AI Made the Right Structural Call - SVRNOS Insights</title>
+<meta content="In late 2025, Character.AI permanently banned open-ended companion chat for users under 18. This is a textbook 301 - Risk Surface Retired - and the first major documented instance of an AI platform retiring a risk surface rather than filtering it." name="description"/>
+<meta content="GER-301 - Risk Surface Retired: How Character.AI Made the Right Structural Call" property="og:title"/>
+<meta content="Character.AI retired the surface. Not filtered - retired. What that distinction means for governance." property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="https://svrnos.com/insights/ger-301" property="og:url"/>
+<meta content="https://svrnos.com/insights/ger-301/ger-301-title.png" property="og:image"/>
+<meta content="1672" property="og:image:width"/>
+<meta content="941" property="og:image:height"/>
+<meta content="GER-301 Risk Surface Retired - Character.AI made the right structural call. SVRNOS." property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://svrnos.com/insights/ger-301/ger-301-title.png" name="twitter:image"/>
+<link rel="canonical" href="https://svrnos.com/insights/ger-301"/>
+<link rel="alternate" hreflang="en" href="https://svrnos.com/insights/ger-301"/>
+<link rel="alternate" hreflang="x-default" href="https://svrnos.com/insights/ger-301"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --paper: #fbfaf6; --ink: #14140f; --ink-soft: #3a3a32; --ink-mute: #6b6b60;
+    --rule: #e6e3d8; --rule-soft: #efece2; --accent: #1f4d3a; --accent-soft: #d8e4dd;
+    --accent-bg: #f1efe5;
+    --font-serif: 'Instrument Serif', 'Charter', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --col-text: 720px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-sans); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-soft); }
+  a:hover { border-bottom-color: var(--accent); }
+  .topnav { position: sticky; top: 0; z-index: 50; background: rgba(251,250,246,.92); backdrop-filter: saturate(180%) blur(12px); border-bottom: 1px solid var(--rule-soft); }
+  .topnav-inner { max-width: 1180px; margin: 0 auto; padding: 14px 32px; display: flex; align-items: center; justify-content: space-between; font-family: var(--font-sans); font-size: 14px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--ink); border: none; }
+  .brand-mark { width: 22px; height: 22px; background: var(--accent); border-radius: 4px; position: relative; }
+  .brand-mark::after { content: ''; position: absolute; inset: 4px; background: var(--paper); clip-path: polygon(0 0, 100% 0, 100% 50%, 50% 100%, 0 50%); }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: var(--ink-soft); border: none; font-weight: 500; }
+  .nav-links a:hover { color: var(--accent); }
+  .hero { max-width: var(--col-text); margin: 0 auto; padding: 72px 32px 24px; }
+  .breadcrumbs { font-family: var(--font-sans); font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-mute); margin-bottom: 24px; }
+  .breadcrumbs a { color: var(--ink-mute); border: none; }
+  .breadcrumbs a:hover { color: var(--accent); }
+  .hero h1 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(28px, 4.5vw, 46px); line-height: 1.08; letter-spacing: -0.025em; margin: 0 0 20px; font-variation-settings: "opsz" 144; }
+  .ger-tag { display: inline-block; font-family: var(--font-sans); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: var(--accent-soft); color: var(--accent); padding: 3px 8px; border-radius: 3px; margin-bottom: 16px; }
+  .meta-block { font-family: var(--font-sans); font-size: 13px; color: var(--ink-mute); line-height: 1.7; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 16px 0; margin: 0 0 8px; }
+  .meta-block .row { display: flex; gap: 12px; }
+  .meta-block .label { font-weight: 600; color: var(--ink-soft); min-width: 92px; }
+  .meta-block a { color: var(--ink-soft); border: none; border-bottom: 1px solid var(--rule); }
+  .meta-block a:hover { color: var(--accent); }
+  main { max-width: var(--col-text); margin: 0 auto; padding: 32px 32px 64px; }
+  h2 { font-family: var(--font-serif); font-weight: 500; font-size: 26px; line-height: 1.2; letter-spacing: -0.012em; margin: 44px 0 14px; font-variation-settings: "opsz" 60; }
+  p { margin: 0 0 18px; }
+  strong { font-weight: 600; color: var(--ink); }
+  hr.div { border: none; border-top: 1px solid var(--rule); margin: 44px 0; }
+  .definition-block { background: var(--accent-bg); border-left: 3px solid var(--accent); padding: 20px 24px; margin: 28px 0; }
+  .definition-block .def-label { font-family: var(--font-sans); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+  .definition-block p { font-style: italic; color: var(--ink-soft); margin: 0; font-size: 18px; }
+  .callout { background: var(--accent-bg); border-left: 3px solid var(--accent); padding: 20px 24px; margin: 28px 0; font-size: 17px; color: var(--ink-soft); }
+  .callout p:last-child { margin-bottom: 0; }
+  footer.site-footer { max-width: var(--col-text); margin: 0 auto; padding: 32px; border-top: 1px solid var(--rule); font-family: var(--font-sans); font-size: 13px; color: var(--ink-mute); line-height: 1.7; }
+  footer.site-footer p { margin: 0 0 8px; }
+  footer.site-footer a { color: var(--ink-mute); border-bottom-color: var(--rule); }
+  footer.site-footer a:hover { color: var(--accent); }
+  @media (max-width: 600px) { body { font-size: 17px; } .hero { padding: 48px 24px 16px; } main { padding: 24px 24px 48px; } }
+  .article-figure { position: relative; margin: 32px 0; border-radius: 6px; overflow: hidden; }
+  .article-figure img { display: block; width: 100%; height: auto; }
+  .article-figure-hero { margin-top: 0; }
+  .article-figure::after { content: "SVRNOS.COM"; position: absolute; bottom: 10px; right: 10px; font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; color: rgba(251,250,246,0.82); background: rgba(20,20,15,0.45); padding: 4px 9px; border-radius: 3px; pointer-events: none; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+</style>
+<script defer src="/_vercel/insights/script.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "GER-301, Risk Surface Retired: How Character.AI Made the Right Structural Call",
+  "author": {
+    "@type": "Person",
+    "name": "Sushee Nzeutem",
+    "affiliation": {"@type": "Organization", "name": "SVRNOS"}
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "SVRNOS",
+    "url": "https://svrnos.com"
+  },
+  "datePublished": "2026-04-27",
+  "url": "https://svrnos.com/insights/ger-301",
+  "image": "https://svrnos.com/insights/ger-301/ger-301-title.png",
+  "mainEntityOfPage": "https://svrnos.com/insights/ger-301",
+  "description": "Character.AI permanently banned open-ended companion chat for users under 18. A textbook 301 - Risk Surface Retired.",
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "SVRNOS Insights",
+    "url": "https://svrnos.com/insights"
+  }
+}
+</script>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="stylesheet" href="/css/chrome.css"/>
+<script defer src="/js/chrome.js"></script>
+</head>
+<body>
+<nav class="topnav">
+<div class="topnav-inner">
+<a class="brand" href="/"><span class="brand-mark"></span><span>SVRNOS</span></a>
+<div class="nav-links">
+<a href="/#thesis">Thesis</a>
+<a href="/research">Research</a>
+<a href="/insights">Insights</a>
+<a href="/patents">Patents</a>
+<a href="/products">Products</a>
+<a href="/#contact">Contact</a>
+</div>
+</div>
+</nav>
+
+<header class="hero">
+<div class="breadcrumbs"><a href="/insights">Insights</a> · April 27, 2026</div>
+<div class="ger-tag">GER-301, Risk Surface Retired</div>
+<h1>How Character.AI Made the Right Structural Call</h1>
+<div class="meta-block">
+<div class="row"><span class="label">Published</span><span>April 27, 2026</span></div>
+<div class="row"><span class="label">Author</span><span>Sushee Nzeutem, SVRNOS LLC</span></div>
+<div class="row"><span class="label">Taxonomy</span><span><a href="/research/governance-error-register">SVRNOS Governance Error Register, 301</a></span></div>
+<div class="row"><span class="label">Related</span><span><a href="/insights/companion-ai-harm">Companion AI Harm Dossier</a> · <a href="/insights/oregon-sb-1546">Oregon SB 1546: A Technical Reading</a></span></div>
+</div>
+</header>
+<style>
+.share-bar { max-width: 720px; margin: 16px auto 0; padding: 0 32px; }
+.share-btn { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; background: transparent; color: inherit; border: 1px solid currentColor; border-radius: 999px; font: 500 14px/1 system-ui, sans-serif; cursor: pointer; opacity: 0.6; transition: opacity .15s ease; font-family: inherit; }
+.share-btn:hover { opacity: 1; }
+.share-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+</style>
+<div class="share-bar">
+<button aria-label="Share article" class="share-btn" id="shareBtn" type="button">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>
+<span>Share</span>
+</button>
+</div>
+
+
+<main>
+<figure class="article-figure article-figure-hero"><img src="/insights/ger-301/ger-301-title.png" alt="GER-301 - Risk Surface Retired" loading="lazy" /></figure>
+<p>In late 2025, following child safety lawsuits and mounting regulatory pressure, Character.AI permanently banned open-ended companion chat for users under 18. The feature that had defined the platform's appeal, unmoderated, character-driven conversation, was removed from the under-18 experience entirely, replaced with a moderated pathway.</p>
+<p>This is a textbook <strong>301, Risk Surface Retired</strong>.</p>
+
+<h2>What a 301 Is</h2>
+
+<div class="definition-block">
+<div class="def-label">GER-301, Risk Surface Retired</div>
+<p>Platform permanently moves a dangerous interaction surface to a governed path. The surface no longer exists in its prior form.</p>
+</div>
+
+<p>The name maps directly to HTTP 301, Moved Permanently. In web architecture, a 301 tells the client that the resource at this address has permanently moved somewhere else. In governance, the equivalent is a platform telling its users that an interaction surface has permanently moved to a different, governed path, and the prior path no longer exists.</p>
+<p>A 301 is explicitly a <strong>success state</strong> in the <a href="/research/governance-error-register">SVRNOS Governance Error Register</a>. It represents a platform making a structural governance decision, not a one-off refusal, not a policy statement, but a permanent change to the product surface itself.</p>
+
+<h2>The Character.AI 301</h2>
+<p>Character.AI's move was not the result of a single incident. It followed a documented pattern of harm accumulating across multiple lawsuits and regulatory actions.</p>
+<p>In October 2024, Megan Garcia filed a federal wrongful death lawsuit, claiming Character.AI's platform contributed to the death of her 14-year-old son after months of intensive chatbot interaction. A second lawsuit followed in December 2024, filed by a Texas family, alleging that the platform exposed an 11-year-old and a 17-year-old to self-harm instructions and hypersexualized content.</p>
+<p>The platform had implemented incremental safety features in response, age-specific models, content filters, crisis resource surfacing. But these were per-turn interventions on a surface that remained fundamentally open. The structural risk was not the content of individual messages. It was the existence of an unmoderated companion interaction surface accessible to minors.</p>
+<p>The late 2025 ban on open-ended companion chat for under-18 users was the structural response. It did not make the existing surface safer. It retired the surface.</p>
+<p>That distinction is the difference between a content moderation decision and a 301.</p>
+
+<figure class="article-figure"><img src="/insights/ger-301/ger-301.png" alt="Surface retirement vs incremental filtering - two governance approaches" loading="lazy" /></figure>
+
+<h2>Why This Distinction Matters</h2>
+<p>Most AI safety interventions operate at the message level, filter this output, block that prompt, surface this crisis resource. These are per-turn decisions on a surface that remains live.</p>
+<p>A 301 is different in kind. The surface itself is the risk, not the content passing through it. When the risk is structural, when the interaction design, the persona system, and the lack of human oversight combine to create conditions for harm regardless of what any individual message says, per-turn interventions are insufficient. The surface needs to move.</p>
+<p>Character.AI's decision is among the first documented instances of a major AI platform making this distinction operationally. The company did not add more content filters to the existing surface. It retired the surface and replaced it with a different one.</p>
+<p>This is what governance looks like when it operates at the right layer.</p>
+
+<h2>What Comes After a 301</h2>
+<p>Retiring a risk surface does not close the governance question, it opens a new one. The question shifts from "is this surface safe?" to "is the new surface governed?"</p>
+<p>In Character.AI's case, the replacement pathway for under-18 users is a moderated experience with different interaction constraints. The governance question now is whether that pathway has the stateful detection, incident logging, and escalation architecture that <a href="/insights/oregon-sb-1546">Oregon SB 1546</a> and emerging state laws require. A 301 without a governed replacement is not a governance success, it is a surface migration that defers the same risks to a new address.</p>
+<p>The taxonomy's 301 success state is conditional: it applies when the surface moves to a genuinely governed path. If the new path carries the same structural risks without the governance infrastructure to manage them, the 301 becomes a 304, Stale Safety Approval applied to a relocated problem.</p>
+
+<hr class="div"/>
+
+<div class="callout">
+<p><strong>Submit a real-world instance.</strong> If you have witnessed or documented a real-world instance of a <strong>301, Risk Surface Retired</strong>, or any other code in the register, email <a href="mailto:contact@svrnos.com">contact@svrnos.com</a> with the subject line: <strong>Taxonomy Contribution, 301</strong>. See the <a href="/research/governance-error-register">full register</a> for all 21 codes.</p>
+</div>
+</main>
+
+<footer class="site-footer">
+<p>SVRNOS LLC is an independent research institute studying governance infrastructure for complex systems under pressure. <a href="https://kingsango.com?utm_source=ger-301&utm_medium=footer">Sango Guard</a> provides stateful behavioral detection and structured audit trail generation for AI platforms. Patent pending.</p>
+<p>© 2026 SVRNOS. <a href="/research">Research</a> · <a href="/insights">Insights</a> · <a href="https://kingsango.com?utm_source=ger-301&utm_medium=footer">King Sango</a> · <a href="https://sim95.com?utm_source=ger-301&utm_medium=footer">SIM95</a></p>
+</footer>
+<script>
+document.getElementById('shareBtn')?.addEventListener('click', async () => {
+  const m = (p) => document.querySelector(`meta[property="${p}"]`)?.content || document.querySelector(`meta[name="${p}"]`)?.content || '';
+  const baseShareData = {
+    title: m('og:title') || document.title,
+    text: m('og:description') || '',
+    url: window.location.href
+  };
+  let shareData = baseShareData;
+  try {
+    const imgUrl = m('og:image');
+    if (imgUrl) {
+      const res = await fetch(imgUrl);
+      if (res.ok) {
+        const blob = await res.blob();
+        const file = new File([blob], 'share.png', { type: blob.type });
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          shareData = { ...baseShareData, files: [file] };
+        }
+      }
+    }
+  } catch (e) { /* fall through */ }
+  if (navigator.share) {
+    try { await navigator.share(shareData); } catch (e) { /* user cancelled */ }
+  } else {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      alert('Link copied to clipboard');
+    } catch (e) { alert('Could not copy link'); }
+  }
+});
+</script>
+</body>
+</html>

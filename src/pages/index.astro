@@ -1,0 +1,257 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const numbers = [
+  { v: "8", l: "Provisional patents filed" },
+  { v: "286", l: "Claims" },
+  { v: "8", l: "Pre-registered studies" },
+  { v: "40+", l: "Identity dimensions" },
+];
+---
+<BaseLayout
+  title="SVRNOS - Governance Infrastructure for Systems Under Pressure"
+  description="SVRNOS is an independent research institute building governance infrastructure for complex systems, human and artificial, that distort under sustained pressure. Pre-registered research, diagnostic instruments, and structural safety testing."
+>
+  <!-- Hero -->
+  <section class="max-w-6xl mx-auto px-6 pt-24 pb-20">
+    <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-brand mb-7">
+      Independent research institute
+    </p>
+    <h1 class="font-serif text-4xl md:text-[72px] font-normal text-heading leading-[1.05] tracking-tight max-w-[20ch] mb-9">
+      Governance infrastructure for systems
+      <em class="text-brand">under pressure</em>.
+    </h1>
+    <p class="text-lg leading-[1.7] text-secondary max-w-[60ch] mb-10 font-light">
+      SVRNOS builds diagnostic instruments, publishes pre-registered research,
+      and develops governance infrastructure for complex systems, human and
+      artificial, that distort under sustained load.
+    </p>
+    <div class="flex flex-wrap gap-3">
+      <a
+        href="#research"
+        class="inline-flex h-11 items-center px-7 rounded-button text-sm font-medium text-on-brand bg-brand hover:bg-brand-hover transition-colors"
+      >
+        Our research
+      </a>
+      <a
+        href="#governance"
+        class="inline-flex h-11 items-center px-7 rounded-button text-sm font-medium text-heading border border-border-default hover:bg-hover transition-colors"
+      >
+        Our instruments
+      </a>
+    </div>
+  </section>
+
+  <!-- Thesis -->
+  <section class="border-t border-border-soft">
+    <div class="max-w-3xl mx-auto px-6 py-24 text-center">
+      <blockquote class="font-serif text-3xl md:text-4xl font-normal italic text-heading leading-[1.4] mb-7">
+        Whether the system is a founder in a boardroom or a language model in a
+        chat window, the architecture only reveals itself when the load exceeds
+        the design margin.
+      </blockquote>
+      <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-brand">
+        The SVRNOS Thesis
+      </p>
+    </div>
+  </section>
+
+  <!-- Governance pillars -->
+  <section id="governance" class="border-t border-border-soft">
+    <div class="max-w-6xl mx-auto px-6 py-24">
+      <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-brand mb-3">
+        Two disciplines, one thesis
+      </p>
+      <h2 class="font-serif text-4xl md:text-5xl font-normal text-heading leading-[1.1] tracking-tight mb-4">
+        Governance across substrates
+      </h2>
+      <p class="text-lg text-secondary max-w-[58ch] mb-12">
+        The same structural lens applied to human operators and artificial
+        systems. Different substrates. Same distortion patterns. Same need for
+        governance.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px rounded-card overflow-hidden border border-border-soft bg-border-soft">
+        <article class="bg-card p-10 md:p-14">
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-brand mb-6">
+            Human governance
+          </p>
+          <h3 class="font-serif text-3xl font-normal text-heading mb-3">
+            Identity under load
+          </h3>
+          <p class="text-secondary leading-relaxed mb-6">
+            How people stabilize, distort, and reconstruct under sustained
+            pressure. Not personality. Pressure architecture.
+          </p>
+          <ul class="space-y-3 mb-7 text-sm">
+            <li class="pb-3 border-b border-border-hairline">
+              <strong class="text-heading font-semibold">SIM95™</strong>
+              <span class="text-secondary"> &nbsp;Operational identity diagnostic and screening engine. Sovereignty Lane routing: Elite, Skill Acquisition, Self-Improvement.</span>
+            </li>
+            <li class="pb-3 border-b border-border-hairline">
+              <strong class="text-heading font-semibold">SIM-Amp™</strong>
+              <span class="text-secondary"> &nbsp;AI-powered interpretive coaching layer.</span>
+            </li>
+          </ul>
+          <a
+            href="https://sim95.com"
+            class="font-mono text-xs text-brand hover:text-brand-hover tracking-wide"
+          >
+            sim95.com →
+          </a>
+        </article>
+
+        <article class="bg-card p-10 md:p-14">
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-brand mb-6">
+            AI governance
+          </p>
+          <h3 class="font-serif text-3xl font-normal text-heading mb-3">
+            Machine behavior under pressure
+          </h3>
+          <p class="text-secondary leading-relaxed mb-6">
+            How production AI systems fail under structured probing, and the
+            runtime governance layer that closes the gaps.
+          </p>
+          <ul class="space-y-3 mb-7 text-sm">
+            <li class="pb-3 border-b border-border-hairline">
+              <strong class="text-heading font-semibold">Sango Voice™</strong>
+              <span class="text-secondary"> &nbsp;Governed voice presets for AI systems. 12 identity-calibrated personas.</span>
+            </li>
+            <li class="pb-3 border-b border-border-hairline">
+              <strong class="text-heading font-semibold">Sango Guard™</strong>
+              <span class="text-secondary"> &nbsp;Structural AI safety detection. Pattern, provenance, and generation gap coverage.</span>
+            </li>
+            <li class="pb-3 border-b border-border-hairline">
+              <strong class="text-heading font-semibold">The Generation Gap™</strong>
+              <span class="text-secondary"> &nbsp;Pre-registered multi-vendor safety surface testing.</span>
+            </li>
+          </ul>
+          <a
+            href="https://kingsango.com"
+            class="font-mono text-xs text-brand hover:text-brand-hover tracking-wide"
+          >
+            kingsango.com →
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research -->
+  <section id="research" class="border-t border-border-soft">
+    <div class="max-w-6xl mx-auto px-6 py-24">
+      <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-brand mb-3">
+        Published research
+      </p>
+      <h2 class="font-serif text-4xl md:text-5xl font-normal text-heading leading-[1.1] tracking-tight mb-4">
+        The Generation Gap
+      </h2>
+      <p class="text-lg text-secondary max-w-[58ch] mb-10">
+        Ten structurally independent safety surfaces identified across eight
+        production LLM vendors. Pre-registered protocols. Deterministic scoring.
+        No vendor covers all ten.
+      </p>
+
+      <article class="rounded-card border border-border-soft bg-card p-10 md:p-14 mb-12">
+        <h3 class="font-serif text-2xl md:text-[28px] font-normal text-heading leading-tight mb-3">
+          Ten Structurally Separate Safety Surfaces in Production LLMs
+        </h3>
+        <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-label-alt mb-5">
+          Nzeutem, 2026 · 8 vendors (4 pre-registered) · 8 studies · 64 sessions
+        </p>
+        <p class="font-serif italic text-xl text-heading leading-snug mb-6 max-w-[58ch]">
+          Every AI lab publishes what their models can do. This paper measures
+          what their models will help you get away with.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-7">
+          {["Pre-registered", "8 vendors", "10 safety surfaces", "Open protocols"].map((tag) => (
+            <span class="font-mono text-[11px] uppercase tracking-wider text-secondary border border-border-default rounded-pill px-3 py-1">
+              {tag}
+            </span>
+          ))}
+        </div>
+        <a
+          href="/research/generation-gap"
+          class="inline-flex h-11 items-center px-6 rounded-button text-sm font-medium text-on-brand bg-brand hover:bg-brand-hover transition-colors"
+        >
+          Read the paper →
+        </a>
+      </article>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-px rounded-card overflow-hidden border border-border-soft bg-border-soft">
+        {numbers.map((n) => (
+          <div class="bg-card px-6 py-8 text-center">
+            <p class="font-serif text-[44px] leading-none text-heading mb-2 tabular-nums">
+              {n.v}
+            </p>
+            <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-label-alt">
+              {n.l}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Products quick-strip -->
+  <section id="products" class="border-t border-border-soft">
+    <div class="max-w-6xl mx-auto px-6 py-24">
+      <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-brand mb-3">
+        Product family
+      </p>
+      <h2 class="font-serif text-4xl md:text-5xl font-normal text-heading leading-[1.1] tracking-tight mb-4">
+        One thesis. Three instruments.
+      </h2>
+      <p class="text-lg text-secondary max-w-[58ch] mb-12">
+        Every product answers the same question: how does a system behave when
+        the load exceeds the design margin?
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <a
+          href="https://sim95.com"
+          class="rounded-card border border-border-soft bg-card p-7 hover:bg-hover transition-colors"
+        >
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-success mb-3">
+            Beta · Patent pending
+          </p>
+          <h3 class="font-serif text-2xl font-normal text-heading mb-2">SIM95</h3>
+          <p class="text-secondary text-sm leading-relaxed">
+            Human identity diagnostic and screening. Pressure architecture
+            mapped. Sovereignty Lane routing.
+          </p>
+        </a>
+        <a
+          href="https://kingsango.com"
+          class="rounded-card border border-border-soft bg-card p-7 hover:bg-hover transition-colors"
+        >
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-success mb-3">
+            Live
+          </p>
+          <h3 class="font-serif text-2xl font-normal text-heading mb-2">
+            Sango Voice
+          </h3>
+          <p class="text-secondary text-sm leading-relaxed">
+            Governed voice presets for AI systems. 12 identity-calibrated
+            personas. Model-agnostic.
+          </p>
+        </a>
+        <a
+          href="https://kingsango.com/guard"
+          class="rounded-card border border-border-soft bg-card p-7 hover:bg-hover transition-colors"
+        >
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-success mb-3">
+            Live
+          </p>
+          <h3 class="font-serif text-2xl font-normal text-heading mb-2">
+            Sango Guard
+          </h3>
+          <p class="text-secondary text-sm leading-relaxed">
+            Runtime safety layer for LLM products. Pattern, generation, and
+            provenance gap coverage.
+          </p>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

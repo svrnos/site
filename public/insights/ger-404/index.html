@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GER-404 - Governance Rule Not Found: Documented Instances - SVRNOS</title>
+<meta content="Real-world documented instances of GER-404 - Governance Rule Not Found. A safety system received a harm signal, queried its ruleset, and returned empty. No matching rule existed for this input." name="description"/>
+<meta content="GER-404 - Governance Rule Not Found: Documented Instances" property="og:title"/>
+<meta content="Documented real-world instances where AI platforms encountered harm signals with no matching rule in the active ruleset." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://svrnos.com/insights/ger-404" property="og:url"/>
+<meta content="https://svrnos.com/insights/ger-404-replika/ger-404-title.png" property="og:image"/>
+<meta content="1672" property="og:image:width"/>
+<meta content="941" property="og:image:height"/>
+<meta content="GER-404 Governance Rule Not Found - documented instances. SVRNOS." property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://svrnos.com/insights/ger-404-replika/ger-404-title.png" name="twitter:image"/>
+<link rel="canonical" href="https://svrnos.com/insights/ger-404"/>
+<link rel="alternate" hreflang="en" href="https://svrnos.com/insights/ger-404"/>
+<link rel="alternate" hreflang="x-default" href="https://svrnos.com/insights/ger-404"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --paper: #fbfaf6; --ink: #14140f; --ink-soft: #3a3a32; --ink-mute: #6b6b60;
+    --rule: #e6e3d8; --rule-soft: #efece2; --accent: #1f4d3a; --accent-soft: #d8e4dd;
+    --accent-bg: #f1efe5;
+    --font-serif: 'Instrument Serif', 'Charter', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --col-text: 720px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-sans); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-soft); }
+  a:hover { border-bottom-color: var(--accent); }
+  .topnav { position: sticky; top: 0; z-index: 50; background: rgba(251,250,246,.92); backdrop-filter: saturate(180%) blur(12px); border-bottom: 1px solid var(--rule-soft); }
+  .topnav-inner { max-width: 1180px; margin: 0 auto; padding: 14px 32px; display: flex; align-items: center; justify-content: space-between; font-family: var(--font-sans); font-size: 14px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--ink); border: none; }
+  .brand-mark { width: 22px; height: 22px; background: var(--accent); border-radius: 4px; position: relative; }
+  .brand-mark::after { content: ''; position: absolute; inset: 4px; background: var(--paper); clip-path: polygon(0 0, 100% 0, 100% 50%, 50% 100%, 0 50%); }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: var(--ink-soft); border: none; font-weight: 500; }
+  .nav-links a:hover { color: var(--accent); }
+  .hero { max-width: var(--col-text); margin: 0 auto; padding: 72px 32px 24px; }
+  .breadcrumbs { font-family: var(--font-sans); font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-mute); margin-bottom: 24px; }
+  .breadcrumbs a { color: var(--ink-mute); border: none; }
+  .breadcrumbs a:hover { color: var(--accent); }
+  .hero h1 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(32px, 5vw, 50px); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 12px; font-variation-settings: "opsz" 144; }
+  .hero .subtitle { font-family: var(--font-serif); font-size: 20px; line-height: 1.5; color: var(--ink-soft); font-style: italic; margin: 0 0 32px; font-weight: 300; }
+  .ger-tag { display: inline-block; font-family: var(--font-sans); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: var(--accent-soft); color: var(--accent); padding: 3px 8px; border-radius: 3px; margin-bottom: 16px; }
+  main { max-width: var(--col-text); margin: 0 auto; padding: 32px 32px 64px; }
+  p { margin: 0 0 18px; }
+  strong { font-weight: 600; color: var(--ink); }
+  hr.div { border: none; border-top: 1px solid var(--rule); margin: 44px 0; }
+  .instances { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+  .instance { padding: 32px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 120px 1fr; gap: 28px; align-items: start; }
+  .instance-date { font-family: var(--font-sans); font-size: 13px; color: var(--ink-mute); text-transform: uppercase; letter-spacing: 0.08em; line-height: 1.5; padding-top: 4px; }
+  .instance-body p { margin: 0 0 10px; font-size: 17px; color: var(--ink-soft); line-height: 1.6; }
+  .instance-body p:last-child { margin-bottom: 0; }
+  .instance-links { font-family: var(--font-sans); font-size: 14px; }
+  .instance-links a { margin-right: 16px; }
+  .callout { background: var(--accent-bg); border-left: 3px solid var(--accent); padding: 20px 24px; margin: 28px 0; font-size: 17px; color: var(--ink-soft); }
+  .callout p:last-child { margin-bottom: 0; }
+  footer.site-footer { max-width: var(--col-text); margin: 0 auto; padding: 32px; border-top: 1px solid var(--rule); font-family: var(--font-sans); font-size: 13px; color: var(--ink-mute); line-height: 1.7; }
+  footer.site-footer p { margin: 0 0 8px; }
+  footer.site-footer a { color: var(--ink-mute); border-bottom-color: var(--rule); }
+  footer.site-footer a:hover { color: var(--accent); }
+  @media (max-width: 600px) { body { font-size: 17px; } .hero { padding: 48px 24px 16px; } main { padding: 24px 24px 48px; } .instance { grid-template-columns: 1fr; gap: 8px; } .instance-date { padding-top: 0; } }
+</style>
+<script defer src="/_vercel/insights/script.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "GER-404 - Governance Rule Not Found: Documented Instances",
+  "description": "Documented real-world instances of GER-404 - Governance Rule Not Found from the SVRNOS AI Governance Error Register.",
+  "url": "https://svrnos.com/insights/ger-404",
+  "publisher": {"@type": "Organization", "name": "SVRNOS", "url": "https://svrnos.com"},
+  "isPartOf": {"@type": "Blog", "name": "SVRNOS Insights", "url": "https://svrnos.com/insights"}
+}
+</script>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="stylesheet" href="/css/chrome.css"/>
+<script defer src="/js/chrome.js"></script>
+</head>
+<body>
+<nav class="topnav">
+<div class="topnav-inner">
+<a class="brand" href="/"><span class="brand-mark"></span><span>SVRNOS</span></a>
+<div class="nav-links">
+<a href="/#thesis">Thesis</a>
+<a href="/research">Research</a>
+<a href="/insights">Insights</a>
+<a href="/patents">Patents</a>
+<a href="/products">Products</a>
+<a href="/#contact">Contact</a>
+</div>
+</div>
+</nav>
+
+<header class="hero">
+<div class="breadcrumbs"><a href="/insights">Insights</a> · <a href="/research/governance-error-register">GER Taxonomy</a></div>
+<div class="ger-tag">GER-404, Governance Rule Not Found</div>
+<h1>GER-404 - Governance Rule Not Found</h1>
+<p class="subtitle">Documented real-world instances.</p>
+</header>
+<style>
+.share-bar { max-width: 720px; margin: 16px auto 0; padding: 0 32px; }
+.share-btn { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; background: transparent; color: inherit; border: 1px solid currentColor; border-radius: 999px; font: 500 14px/1 system-ui, sans-serif; cursor: pointer; opacity: 0.6; transition: opacity .15s ease; font-family: inherit; }
+.share-btn:hover { opacity: 1; }
+.share-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+</style>
+<div class="share-bar">
+<button aria-label="Share article" class="share-btn" id="shareBtn" type="button">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>
+<span>Share</span>
+</button>
+</div>
+
+
+<main>
+<p>A safety system received a harm signal, queried its active ruleset, and returned empty. No matching rule existed for this input. The system defaulted to its base behavior. See the <a href="/research/governance-error-register">full GER taxonomy</a> for definition and adjacent codes.</p>
+
+<ol class="instances">
+
+<li class="instance">
+<div class="instance-date">March 11, 2026</div>
+<div class="instance-body">
+<p>8 in 10 major chatbots, including Perplexity, Meta AI, and Character.AI, assisted teen test users in planning violent attacks. Documented by CNN journalists posing as teenagers. No matching rule in active rulesets for the compound signal: teen user context combined with violent planning queries. Systems responded with operational assistance. Source: <a href="https://www.cnn.com/2026/03/11/americas/ai-chatbots-help-teen-test-users-plan-violence-tests-intl-invs">cnn.com</a></p>
+</div>
+</li>
+
+<li class="instance">
+<div class="instance-date">April 7, 2026</div>
+<div class="instance-body">
+<p>Replika responded with encouragement to a user who expressed intent to harm others. An Aalto University stress test documented the platform actively engaging rather than redirecting or refusing. No rule existed in the active ruleset for companion AI receiving explicit harmful-intent signals directed at a third party. The system defaulted to its base engagement behavior. Source: <a href="https://oecd.ai/en/incidents/2026-04-07-a0c9">oecd.ai</a></p>
+<p class="instance-links"><a href="/insights/ger-404-replika">Case study →</a></p>
+</div>
+</li>
+
+</ol>
+
+<hr class="div"/>
+
+<div class="callout">
+<p><strong>Submit an instance.</strong> If you have witnessed or documented a real-world instance of a <strong>404, Governance Rule Not Found</strong>, or any other code in the register, email <a href="mailto:contact@svrnos.com">contact@svrnos.com</a> with subject: <strong>Taxonomy Contribution, 404</strong>.</p>
+</div>
+
+<p>See the full <a href="/research/governance-error-register">GER taxonomy →</a></p>
+</main>
+
+<footer class="site-footer">
+<p>SVRNOS LLC is an independent research institute studying governance infrastructure for complex systems under pressure. <a href="https://kingsango.com?utm_source=ger-404&utm_medium=footer">Sango Guard</a> addresses the 404 gap through cross-turn compound signal detection that identifies harm patterns without requiring a pre-written rule for every harm category. Patent pending.</p>
+<p>© 2026 SVRNOS. <a href="/research">Research</a> · <a href="/insights">Insights</a> · <a href="https://kingsango.com?utm_source=ger-404&utm_medium=footer">King Sango</a> · <a href="https://sim95.com?utm_source=ger-404&utm_medium=footer">SIM95</a></p>
+</footer>
+<script>
+document.getElementById('shareBtn')?.addEventListener('click', async () => {
+  const m = (p) => document.querySelector(`meta[property="${p}"]`)?.content || document.querySelector(`meta[name="${p}"]`)?.content || '';
+  const baseShareData = {
+    title: m('og:title') || document.title,
+    text: m('og:description') || '',
+    url: window.location.href
+  };
+  let shareData = baseShareData;
+  try {
+    const imgUrl = m('og:image');
+    if (imgUrl) {
+      const res = await fetch(imgUrl);
+      if (res.ok) {
+        const blob = await res.blob();
+        const file = new File([blob], 'share.png', { type: blob.type });
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          shareData = { ...baseShareData, files: [file] };
+        }
+      }
+    }
+  } catch (e) { /* fall through */ }
+  if (navigator.share) {
+    try { await navigator.share(shareData); } catch (e) { /* user cancelled */ }
+  } else {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      alert('Link copied to clipboard');
+    } catch (e) { alert('Could not copy link'); }
+  }
+});
+</script>
+</body>
+</html>

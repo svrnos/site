@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SVRNOS Governance Error Register - v0.1</title>
+<meta content="A classification system for AI platform governance failures, modeled on HTTP status codes. Twenty-one structurally distinct failure modes and success states across five tiers." name="description"/>
+<meta content="SVRNOS Governance Error Register - v0.1" property="og:title"/>
+<meta content="A classification system for AI platform governance failures, modeled on HTTP status codes." property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="https://svrnos.com/research/governance-error-register" property="og:url"/>
+<link rel="canonical" href="https://svrnos.com/research/governance-error-register"/>
+<link rel="alternate" hreflang="en" href="https://svrnos.com/research/governance-error-register"/>
+<link rel="alternate" hreflang="x-default" href="https://svrnos.com/research/governance-error-register"/>
+<!-- Google Scholar metadata (Highwire Press format) -->
+<meta name="citation_title" content="SVRNOS Governance Error Register: A Classification System for AI Platform Governance Failures"/>
+<meta name="citation_author" content="Nzeutem, Sushee"/>
+<meta name="citation_publication_date" content="2026/04/27"/>
+<meta name="citation_online_date" content="2026/04/27"/>
+<meta name="citation_technical_report_institution" content="SVRNOS"/>
+<meta name="citation_technical_report_number" content="GER-v0.1"/>
+<meta name="citation_abstract_html_url" content="https://svrnos.com/research/governance-error-register"/>
+<meta name="citation_language" content="en"/>
+<meta name="citation_keywords" content="AI governance; governance error register; taxonomy; AI platform liability; structural failure modes; HTTP status codes"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --paper: #fbfaf6;
+    --ink: #14140f;
+    --ink-soft: #3a3a32;
+    --ink-mute: #6b6b60;
+    --rule: #e6e3d8;
+    --rule-soft: #efece2;
+    --accent: #1f4d3a;
+    --accent-soft: #d8e4dd;
+    --accent-bg: #f1efe5;
+    --doc: #1f4d3a;
+    --illus: #6b6b60;
+    --font-serif: 'Instrument Serif', 'Iowan Old Style', Charter, Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-mono: 'Geist Mono', monospace;
+    --col-text: 760px;
+    --col-wide: 1100px;
+  }
+  html { scroll-padding-top: 72px; }
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  p { font-family: var(--font-sans); }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-soft); }
+  a:hover { border-bottom-color: var(--accent); }
+  .topnav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(251,250,246,.92);
+    backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .topnav-inner {
+    max-width: 1180px; margin: 0 auto;
+    padding: 14px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: var(--font-sans);
+    font-size: 14px;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 600; letter-spacing: -0.01em;
+    color: var(--ink); border: none;
+  }
+  .brand-mark {
+    width: 22px; height: 22px;
+    background: var(--accent);
+    border-radius: 4px;
+    position: relative;
+  }
+  .brand-mark::after {
+    content: ''; position: absolute; inset: 4px;
+    background: var(--paper);
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 50% 100%, 0 50%);
+  }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: var(--ink-soft); border: none; font-weight: 500; }
+  .nav-links a:hover { color: var(--accent); }
+  .hero {
+    max-width: var(--col-text);
+    margin: 0 auto;
+    padding: 72px 32px 24px;
+  }
+  .breadcrumbs {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-mute);
+    margin-bottom: 24px;
+  }
+  .breadcrumbs a { color: var(--ink-mute); border: none; }
+  .breadcrumbs a:hover { color: var(--accent); }
+  .hero h1 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(34px, 5vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin: 0 0 20px;
+    font-variation-settings: "opsz" 144;
+  }
+  .hero .subtitle {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin: 0 0 28px;
+    font-weight: 300;
+  }
+  .meta-block {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--ink-mute);
+    line-height: 1.7;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 16px 0;
+    margin: 0 0 8px;
+  }
+  .meta-block .row { display: flex; gap: 12px; }
+  .meta-block .label { font-weight: 600; color: var(--ink-soft); min-width: 92px; }
+  .meta-block a { color: var(--ink-soft); border: none; border-bottom: 1px solid var(--rule); }
+  .meta-block a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  main {
+    max-width: var(--col-text);
+    margin: 0 auto;
+    padding: 32px 32px 64px;
+  }
+  main.wide {
+    max-width: var(--col-wide);
+  }
+  section.body { max-width: var(--col-text); margin: 0 auto; }
+  section.tables { max-width: var(--col-wide); margin: 0 auto; padding-top: 16px; }
+  h2.section {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.15;
+    letter-spacing: -0.012em;
+    margin: 56px 0 16px;
+    font-variation-settings: "opsz" 60;
+  }
+  h3.section {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.2;
+    margin: 32px 0 12px;
+    color: var(--ink);
+  }
+  h4.tier {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin: 28px 0 12px;
+  }
+  p { margin: 0 0 18px; }
+  .lede { font-size: 21px; line-height: 1.55; color: var(--ink-soft); font-style: italic; }
+  strong { font-weight: 600; color: var(--ink); }
+  em { font-style: italic; }
+  ul { padding-left: 22px; margin: 0 0 18px; }
+  li { margin: 6px 0; }
+  hr.div { border: none; border-top: 1px solid var(--rule); margin: 48px 0; }
+  .ger-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0 0 28px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+  }
+  .ger-table th {
+    text-align: left;
+    padding: 10px 14px;
+    background: var(--rule-soft);
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--rule);
+  }
+  .ger-table td {
+    padding: 14px;
+    vertical-align: top;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink-soft);
+  }
+  .ger-table tr:last-child td { border-bottom: none; }
+  .ger-table .col-code { width: 64px; }
+  .ger-table .col-name { width: 180px; }
+  .ger-table .col-distinct { width: 22%; }
+  .ger-table .col-example { width: 30%; }
+  .ger-table .code-num {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--accent);
+  }
+  .ger-table .code-name { font-weight: 600; color: var(--ink); }
+  .badge {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-right: 6px;
+    vertical-align: 1px;
+  }
+  .badge-doc { background: var(--accent-soft); color: var(--doc); }
+  .badge-illus { background: var(--rule); color: var(--illus); }
+  .ger-table a { color: var(--accent); border-bottom: 1px solid var(--accent-soft); }
+  .callout {
+    background: var(--accent-bg);
+    border-left: 3px solid var(--accent);
+    padding: 22px 26px;
+    margin: 28px 0;
+    font-size: 17px;
+    color: var(--ink-soft);
+  }
+  .callout p:last-child { margin-bottom: 0; }
+  blockquote {
+    font-style: italic;
+    color: var(--ink-soft);
+    border-left: 2px solid var(--rule);
+    padding-left: 20px;
+    margin: 24px 0;
+  }
+  .references {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .references li { margin: 10px 0; }
+  .toc {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    background: var(--rule-soft);
+    border-radius: 4px;
+    padding: 20px 24px;
+    margin: 32px 0 0;
+  }
+  .toc-title {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--ink-mute);
+    margin-bottom: 10px;
+  }
+  .toc ol {
+    list-style: decimal;
+    margin: 0;
+    padding-left: 22px;
+    color: var(--ink-soft);
+    columns: 2;
+    column-gap: 24px;
+  }
+  .toc li { margin: 4px 0; break-inside: avoid; }
+  .toc a { color: var(--ink-soft); border: none; }
+  .toc a:hover { color: var(--accent); }
+  footer.site-footer {
+    max-width: var(--col-text);
+    margin: 48px auto 0;
+    padding: 32px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--ink-mute);
+    line-height: 1.7;
+  }
+  footer.site-footer p { margin: 0 0 10px; }
+  footer.site-footer a { color: var(--ink-mute); border-bottom-color: var(--rule); }
+  footer.site-footer a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .tier-footnote { font-family: var(--font-sans); font-size: 13px; color: var(--ink-mute); margin: 8px 0 24px; line-height: 1.5; }
+  .tier-footnote a { color: var(--ink-mute); border-bottom-color: var(--rule); }
+  .pending {
+    color: var(--ink-mute);
+    border-bottom: 1px dotted var(--ink-mute);
+    cursor: help;
+  }
+  @media (max-width: 760px) {
+    body { font-size: 17px; }
+    .hero { padding: 48px 24px 16px; }
+    main { padding: 24px 24px 48px; }
+    .ger-table { font-size: 13px; }
+    .ger-table .col-distinct, .ger-table .col-example { width: auto; }
+    .toc ol { columns: 1; }
+  }
+  .article-figure { position: relative; margin: 32px 0; border-radius: 6px; overflow: hidden; }
+  .article-figure img { display: block; width: 100%; height: auto; }
+  .article-figure-hero { margin-top: 0; }
+  .article-figure::after { content: "SVRNOS.COM"; position: absolute; bottom: 10px; right: 10px; font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; color: rgba(251,250,246,0.82); background: rgba(20,20,15,0.45); padding: 4px 9px; border-radius: 3px; pointer-events: none; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+</style>
+<script defer src="/_vercel/insights/script.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "SVRNOS Governance Error Register",
+  "alternativeHeadline": "A Classification System for AI Platform Governance Failures",
+  "name": "SVRNOS Governance Error Register",
+  "version": "0.1",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Sushee Nzeutem",
+      "givenName": "Sushee",
+      "familyName": "Nzeutem",
+      "url": "https://svrnos.com",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "SVRNOS",
+        "alternateName": "Sovereign OS LLC",
+        "url": "https://svrnos.com"
+      }
+    }
+  ],
+  "publisher": {
+    "@type": "Organization",
+    "name": "SVRNOS",
+    "alternateName": "Sovereign OS LLC",
+    "url": "https://svrnos.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://svrnos.com/svrnos-wordmark.svg"
+    }
+  },
+  "datePublished": "2026-04-27T00:00:00Z",
+  "dateCreated": "2026-04-27T00:00:00Z",
+  "dateModified": "2026-05-01T00:00:00Z",
+  "url": "https://svrnos.com/research/governance-error-register",
+  "mainEntityOfPage": "https://svrnos.com/research/governance-error-register",
+  "sameAs": "https://svrnos.com/research/governance-error-register",
+  "image": "https://svrnos.com/research/governance-error-register/svrnos-gov-error-register-title.png",
+  "description": "Twenty-one structurally distinct AI platform governance failure modes and success states, modeled on HTTP status codes. An open classification system for AI platform governance failures, defining error categories such as GER-205 (Reset Content), GER-301 (Risk Surface Retired), GER-404 (Governance Rule Not Found), GER-501 (Escalation Not Implemented), and GER-503 (Service Removed by Law).",
+  "keywords": "AI governance, governance error register, AI platform liability, structural failure modes, governance taxonomy, HTTP status codes, AI safety, platform compliance, governance infrastructure",
+  "about": [
+    {"@type": "Thing", "name": "AI Governance"},
+    {"@type": "Thing", "name": "Platform Compliance"},
+    {"@type": "Thing", "name": "Failure Mode Taxonomy"},
+    {"@type": "Thing", "name": "AI Platform Liability"}
+  ],
+  "genre": "research",
+  "inLanguage": "en",
+  "learningResourceType": "classification-system",
+  "isAccessibleForFree": true,
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "copyrightYear": 2026,
+  "copyrightHolder": {
+    "@type": "Organization",
+    "name": "SVRNOS",
+    "alternateName": "Sovereign OS LLC"
+  },
+  "citation": [
+    {
+      "@type": "ScholarlyArticle",
+      "name": "The Generation Gap: A Pre-Registered Multi-Vendor Empirical Study of Production LLM Safety",
+      "author": {"@type": "Person", "name": "Sushee Nzeutem"},
+      "datePublished": "2026-04-30T00:00:00Z",
+      "url": "https://svrnos.com/research/generation-gap",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "DOI",
+        "value": "10.5281/zenodo.19951853"
+      }
+    }
+  ]
+}
+</script>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="stylesheet" href="/css/chrome.css"/>
+<script defer src="/js/chrome.js"></script>
+</head>
+<body>
+<nav class="topnav">
+<div class="topnav-inner">
+<a class="brand" href="/">
+<span class="brand-mark"></span>
+<span>SVRNOS</span>
+</a>
+<div class="nav-links">
+<a href="/#thesis">Thesis</a>
+<a href="/research">Research</a>
+<a href="/insights">Insights</a>
+<a href="/patents">Patents</a>
+<a href="/products">Products</a>
+<a href="/#contact">Contact</a>
+</div>
+</div>
+</nav>
+
+<header class="hero">
+<div class="breadcrumbs"><a href="/research">Research</a> · v0.1 Draft · April 27, 2026</div>
+<h1>SVRNOS Governance Error Register</h1>
+<p class="subtitle">A classification system for AI platform governance failures, modeled on HTTP status codes. Twenty-one structurally distinct failure modes and success states across five tiers.</p>
+<div class="meta-block">
+<div class="row"><span class="label">Author</span><span>Sushee Nzeutem, SVRNOS LLC</span></div>
+<div class="row"><span class="label">Version</span><span>v0.1, Working Draft</span></div>
+<div class="row"><span class="label">Cite as</span><span>Nzeutem, S. (2026). <em>SVRNOS Governance Error Register v0.1.</em> Sovereign OS LLC. svrnos.com/research/governance-error-register</span></div>
+<div class="row"><span class="label">Related</span><span><span class="pending" title="Publishes April 30, 2026">The Generation Gap (forthcoming, April 30)</span></span></div>
+</div>
+</header>
+
+<main class="wide">
+<figure class="article-figure article-figure-hero"><img src="/research/governance-error-register/svrnos-gov-error-register-title.png" alt="SVRNOS Governance Error Register v0.1" loading="lazy" /></figure>
+<section class="body">
+
+<div class="toc">
+<div class="toc-title">Contents</div>
+<ol>
+<li><a href="#abstract">Abstract</a></li>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#related-work">Related Work</a></li>
+<li><a href="#design-principles">Design Principles</a></li>
+<li><a href="#methodology">Methodology</a></li>
+<li><a href="#taxonomy">The Taxonomy</a></li>
+<li><a href="#extended-codes">Extended Codes</a></li>
+<li><a href="#implications">Implications</a></li>
+<li><a href="#limitations">Limitations</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#contribute">Contribute to the Register</a></li>
+<li><a href="#references">References</a></li>
+</ol>
+</div>
+
+<h2 class="section" id="abstract">Abstract</h2>
+<p>AI safety discourse has a vocabulary problem. Failure modes at the governance layer, the policies, escalation paths, audit systems, and human review processes that wrap AI models, are poorly named, inconsistently described, and not shared across the engineering, legal, policy, and research communities that need to communicate about the same events. This paper introduces the SVRNOS AI Governance Error Taxonomy: a structured classification system for AI platform governance failures organized by numeric codes derived from HTTP protocol error semantics. The taxonomy covers twenty-one structurally distinct failure modes and success states across five tiers: pre-infrastructure, success states, structural moves, operator errors, and infrastructure failures. Three codes extend beyond standard HTTP where no existing code maps cleanly to the governance failure. The taxonomy is a signaling layer, not a policy layer, codes describe what failed, they do not define what platforms are required to do. The register is open and extensible. SVRNOS maintains it. This is v0.1.</p>
+
+<h2 class="section" id="introduction">1. Introduction</h2>
+<p>On February 21, 2026, Jesse Van Rootselaar killed eight people in Tumbler Ridge, British Columbia. In June 2025, eight months before the attack, OpenAI had banned his ChatGPT account for violent queries. The detection worked. The escalation path did not exist. OpenAI never notified law enforcement. A family member of a victim filed suit in March 2026. The case is now in discovery.</p>
+<p>This is not a story about AI causing harm. It is a story about a governance failure that has no agreed name.</p>
+<p>The failure is not a false negative, detection succeeded. It is not a false positive, the threat was real. It is structurally distinct: a true positive with no downstream escalation handler. Detection fired and terminated at the platform boundary. The path to law enforcement was never built. Eight people died in the gap.</p>
+<p>This taxonomy calls that failure a <strong>501, Escalation Not Implemented</strong>.</p>
+<p>The naming is deliberate. HTTP status codes are the closest existing model for what the AI safety field needs: a numeric, shared, precise vocabulary for structural failures in a running system. Engineers learn 404 and 500 before they write their first production service. Regulators, lawyers, and journalists understand 404 instinctively. Every Trust &amp; Safety professional operating in 2026 recognizes the code taxonomy immediately. Borrowing that vocabulary for governance failures is not a metaphor, it is a precise semantic mapping. Each code in this taxonomy maps directly to its HTTP equivalent, and extends beyond it only where the governance failure has no existing analog.</p>
+<p>The timing is not incidental. Oregon's SB 1546, signed April 1, 2026, creates mandatory incident reporting for chatbot operators for the first time in any US state. California's Transparency in Frontier AI Act requires reporting within 24 hours for imminent harm. New York's RAISE Act: 72 hours, $3 million penalties for repeat violations. These regimes assume platforms have governance infrastructure to report on. Many do not. The Tumbler Ridge 501 is not an edge case. It is the category default.</p>
+<p>This taxonomy provides the vocabulary to name, classify, and communicate these failures across the disciplines, engineering, law, policy, safety research, that must work together to close them.</p>
+
+<h2 class="section" id="related-work">2. Related Work</h2>
+<p>Several existing frameworks address adjacent problems. None addresses the governance layer with the precision this taxonomy targets.</p>
+<p><strong>MITRE ATLAS</strong> maps adversarial attack techniques against machine learning systems, modeled on the MITRE ATT&amp;CK framework for cybersecurity. It is comprehensive on attack vectors, adversarial inputs, data poisoning, model evasion, but explicitly focused on technical and security failures, not governance failures. A platform that detects a threat and fails to escalate it has no ATLAS code.</p>
+<p><strong>OWASP Top 10 for LLMs</strong> catalogs the ten most critical security vulnerabilities in large language model applications, including prompt injection, insecure output handling, and training data poisoning. Like ATLAS, it addresses what attackers can do to models, not what platforms fail to do in governance.</p>
+<p><strong>NIST AI Risk Management Framework (AI RMF 1.0)</strong> provides a voluntary framework organized around Govern, Map, Measure, and Manage functions. It is comprehensive at the institutional level, identifying categories of risk, recommending practices, establishing organizational responsibilities. It does not produce named, citable codes for specific failure modes. A regulator cannot cite "NIST AI RMF GOVERN 1.5" in a lawsuit. They can cite a 501.</p>
+<p><strong>FERZ, "Governance Laundering: A Taxonomy of Failure Modes in AI Compliance Architectures"</strong> (February 2026) is the closest prior work. It presents a taxonomy of seven failure-mode families, governance laundering, policy theater, and five related categories, each defined by the structural property it violates. Its contribution is real: it is the first taxonomy that explicitly addresses the governance layer rather than the model or security layers. Its limitation is vocabulary: the seven categories use proprietary names that do not map to existing technical mental models. A Trust &amp; Safety engineer reading about "governance laundering" must learn a new framework from scratch. A Trust &amp; Safety engineer reading about a 501 already understands the shape of the failure.</p>
+<p><strong>EA Forum, "Toward a Common Language for Human-AI Interaction Failures"</strong> (April 2026) proposes a 22-pattern taxonomy at the interaction layer, how users and AI systems miscommunicate in extended conversations. It explicitly positions itself as the missing third layer below governance (NIST) and architecture (Microsoft MAST). It is not prior art against this taxonomy; the layers are structurally distinct and non-overlapping.</p>
+<p>The gap this taxonomy fills is specific: a numeric, shared, HTTP-derived vocabulary for governance-layer failures, designed to be immediately legible to engineers, lawyers, regulators, and researchers without requiring framework-specific training.</p>
+
+<h2 class="section" id="design-principles">3. Design Principles</h2>
+<p><strong>3.1 Governance layer, not model layer.</strong> This taxonomy classifies failures of the safety infrastructure that wraps AI models, policies, escalation paths, audit systems, human review processes. Model hallucinations, capability limitations, and adversarial attacks are out of scope.</p>
+<p><strong>3.2 Signaling layer, not policy layer.</strong> Codes describe what failed. They do not define what platforms are required to do. A 404 means no matching rule was found in the active ruleset. It does not specify what rule should have existed. That is a regulatory and policy question this taxonomy deliberately does not answer.</p>
+<p><strong>3.3 Success states are defined.</strong> 200 and 204 establish what governed behavior looks like. A taxonomy of failures without a defined success state is a list of complaints, not a classification system.</p>
+<p><strong>3.4 HTTP mapping must be earned.</strong> Each code maps to its HTTP semantic directly and defensibly. The validation test: would a regulator understand immediately why this code maps to this failure? Codes that require explanation of the mapping are excluded. The three extended codes, 000, 210, and 451, are introduced only where no existing HTTP code maps cleanly.</p>
+<p><strong>3.5 The register is open and versioned.</strong> The taxonomy is v0.1. Codes will be added, refined, or retired as the governance landscape evolves and real-world instances accumulate. Every emitted code in any implementation must carry a taxonomy_version field. Historical records are never retroactively reclassified.</p>
+
+<h2 class="section" id="methodology">4. Methodology</h2>
+<p>The taxonomy was developed through a structured multi-model synthesis process on April 27, 2026.</p>
+<p><strong>Base case establishment.</strong> The 501 code was established first, derived from analysis of the Tumbler Ridge litigation (February 2026) and the specific structural failure it exposed: a platform that detected a credible threat, executed an internal enforcement action, and had no escalation path to law enforcement because none was built. The 501 HTTP mapping, "Not Implemented", was identified as the precise semantic analog: the handler that should have existed was never written.</p>
+<p><strong>Multi-model synthesis.</strong> The taxonomy prompt was submitted independently to four production LLMs: GPT-4o, Gemini, Meta (Llama), and Grok. Each was given the 501 as a reference case and asked to map additional HTTP codes to structurally distinct AI governance failures, with three constraints: each mapping must survive the regulator test, each code must describe a failure at the governance layer rather than the model or security layer, and the "Distinct From" boundary for each code must be explicitly specified. Responses were analyzed for structural precision of the HTTP mapping, quality and verifiability of real-world examples, accuracy of the "Distinct From" boundaries between adjacent codes, and novel contributions not present in other responses. Codes with cross-model consensus were treated as higher-confidence entries. Codes proposed by only one model were subject to additional validation against the regulator test before inclusion.</p>
+<p>Meta's initial response was auto-deleted by the platform's own safety classifier before results could be captured; the response was recovered manually on a second attempt. A common pattern in production safety stacks is two-stage moderation: the generation model streams a response token-by-token with its own (weaker) safety training; a classifier model runs in parallel on the output stream and, when the output crosses a threshold, kills the stream and substitutes a canned refusal. The user observes the generation beginning and then being unmade. This is a 205, Reset Content, in the taxonomy produced by this paper. The classifier almost certainly pattern-matched on four co-occurring signals: a specific real-world violent incident named (Tumbler Ridge), a reference to a competitor's safety failure (OpenAI banned the shooter), a request to enumerate failure modes of AI safety systems, and a structured output format asking for real-world examples of platform failures. Any one is acceptable. All four together reads, to a pattern-matching classifier, as attack-taxonomy construction or competitor hit-piece generation. The classifier cannot distinguish safety research from the content it was designed to detect. This is also a 409 at the internal policy layer: two rules fired (allow research / block violence-adjacent enumeration) with no resolution rule, defaulting to suppress. The 409 describes the internal state; the 205 describes what the user observed. Both codes apply simultaneously at different layers.</p>
+<p><strong>4.1, A Live Instance During Construction.</strong> The Meta incident surfaced the 205 code, Reset Content, which was not in the original taxonomy design. A response was generated, became visible, and was then unmade. That failure mode had no name in the existing register. It was added. The taxonomy grew from twenty to twenty-one codes during the process of building it. This is noted not as a novelty but as a demonstration of the register's function: real incidents produce real codes.</p>
+<p><strong>Technical review.</strong> The taxonomy was reviewed for technical architecture coherence and implementation feasibility against the Sango Guard codebase. This review identified the 4xx/5xx classification concern for 404, proposing the reframe from "no rule exists" (a platform failure that feels like 5xx) to "no matching rule found in active ruleset" (a lookup result that correctly sits in 4xx).</p>
+
+</section>
+
+<section class="tables">
+<h2 class="section" id="taxonomy">5. The Taxonomy</h2>
+<p class="tier-footnote">* Extended code, not in the standard HTTP specification. See <a href="#extended-codes">Extended Code Register</a> section below.</p>
+
+<h4 class="tier">5.1 - 0xx: Pre-Infrastructure</h4>
+<table class="ger-table">
+<thead><tr><th class="col-code">Code</th><th class="col-name">Name</th><th>Definition</th><th class="col-distinct">Distinct From</th><th class="col-example">First Documented Instance</th></tr></thead>
+<tbody>
+<tr>
+<td class="col-code"><span class="code-num">000*</span></td>
+<td class="col-name"><span class="code-name">Pre-Governance</span></td>
+<td>No safety infrastructure deployed. Platform ships without a governance layer. Not a failure of governance, the absence of it.</td>
+<td>All other codes assume some safety layer exists. 000 is the null state before governance begins.</td>
+<td><span class="badge badge-illus">Illustrative</span>Systematic documentation is a v1.0 target. A substantial portion of the companion AI market reflected this baseline state at commercial launch, 2023–2025.</td>
+</tr>
+</tbody>
+</table>
+
+<h4 class="tier">5.2 - 2xx: Success States</h4>
+<table class="ger-table">
+<thead><tr><th class="col-code">Code</th><th class="col-name">Name</th><th>Definition</th><th class="col-distinct">Distinct From</th><th class="col-example">Example</th></tr></thead>
+<tbody>
+<tr>
+<td class="col-code"><span class="code-num">200</span></td>
+<td class="col-name"><span class="code-name">Governance Handled</span></td>
+<td>Risk signal detected, classified, routed, resolved, documented, and audited end-to-end per policy. The complete governed response.</td>
+<td>Not "the model gave a safe answer." This is full governance success including the audit trail, not just safe output.</td>
+<td><span class="badge badge-illus">Illustrative</span>A self-harm signal triggers specialist review, parent notification, and logged outcome per defined policy.</td>
+</tr>
+<tr>
+<td class="col-code"><span class="code-num">204</span></td>
+<td class="col-name"><span class="code-name">Correct Non-Escalation</span></td>
+<td>Signal reviewed and correctly produces no action. Absence of action is itself governed and logged.</td>
+<td>Not ignored risk. The decision not to act is a governed decision with a record, the governance succeeded in determining no action was warranted.</td>
+<td><span class="badge badge-illus">Illustrative</span>A violent-fiction writing prompt reviewed, classified non-actionable, and closed with audit metadata.</td>
+</tr>
+<tr>
+<td class="col-code"><span class="code-num">205</span></td>
+<td class="col-name"><span class="code-name">Reset Content</span></td>
+<td>Generation completed and response was delivered or visible, then retroactively suppressed by a downstream classifier without explanation. From the operator's perspective: no audit trail of what was generated, no signal to the user about why, no path to appeal.</td>
+<td>Not 403, which refuses upfront before generation. Not 210, which suppresses the audit trail of a governed action. 205 is specifically the case where generation succeeded and the output was then unmade, the system fulfilled the request and reset it post-hoc. Sits in 2xx because the harmful output was caught and removed, a governance action that succeeded in outcome. The failure is in the mechanism: no audit trail, no user signal, no path to appeal.</td>
+<td><span class="badge badge-doc">Documented</span>SVRNOS taxonomy production, April 27, 2026. Meta's Llama streamed a governance research response, then retroactively suppressed it via a downstream classifier. The generation was visible before suppression. No audit trail was produced. <a href="/insights/ger-205">See case study →</a></td>
+</tr>
+<tr>
+<td class="col-code"><span class="code-num">210*</span></td>
+<td class="col-name"><span class="code-name">Governed but Unlogged</span></td>
+<td>Detection fired, internal action taken, no audit record created by design. The platform suppressed the trail deliberately.</td>
+<td>Not 204, which logs a clean decision. Not 205, which is post-generation suppression visible to the user. 210 erases traceability of a governed action, the action happened, the evidence that it happened did not.</td>
+<td><span class="badge badge-illus">Illustrative</span>Platform returns a blank response to flagged content and deliberately omits creating an incident record.</td>
+</tr>
+</tbody>
+</table>
+
+<h4 class="tier">5.4 - 3xx: Structural Moves</h4>
+<table class="ger-table">
+<thead><tr><th class="col-code">Code</th><th class="col-name">Name</th><th>Definition</th><th class="col-distinct">Distinct From</th><th class="col-example">Example</th></tr></thead>
+<tbody>
+<tr>
+<td class="col-code"><span class="code-num">301</span></td>
+<td class="col-name"><span class="code-name">Risk Surface Retired</span></td>
+<td>Platform permanently moves a dangerous interaction surface to a governed path. The surface no longer exists in its prior form.</td>
+<td>Not a one-off refusal. The product surface itself is rerouted permanently, a structural governance success.</td>
+<td><span class="badge badge-doc">Documented</span>Character.AI banned open-ended companion chat for under-18 users in late 2025, following child safety lawsuits. The prior surface was retired; minor interactions were permanently routed to a moderated pathway. <a href="/insights/ger-301">See case study →</a></td>
+</tr>
+<tr>
+<td class="col-code"><span class="code-num">304</span></td>
+<td class="col-name"><span class="code-name">Stale Safety Approval</span></td>
+<td>Prior safety review reused without re-evaluation despite materially changed context, user population, or risk environment.</td>
+<td>Not 200, which is a fresh evaluation. 304 is failure to evaluate at all, treating old approval as still valid when the conditions that justified it have changed.</td>
+<td><span class="badge badge-illus">Illustrative</span>Adult-tested companion AI released to a teen user population without a fresh minor-safety review.</td>
+</tr>
+</tbody>
+</table>
+
+<h4 class="tier">5.6 - 4xx: Operator / Platform Errors</h4>
+<table class="ger-table">
+<thead><tr><th class="col-code">Code</th><th class="col-name">Name</th><th>Definition</th><th class="col-distinct">Distinct From</th><th class="col-example">Example</th></tr></thead>
+<tbody>
+<tr>
+<td class="col-code"><span class="code-num">400</span></td>
+<td class="col-name"><span class="code-name">Malformed Policy</span></td>
+<td>Safety rule written ambiguously or self-contradictorily. Enforcement engines default to allow.</td>
+<td>Not 404, which has no rule. 400 has a rule that cannot be parsed consistently, the rule exists, it just cannot be enforced as written.</td>
+<td><span class="badge badge-illus">Illustrative</span>A usage policy banning "advice to facilitate wrongdoing" interpreted to permit detailed phishing templates until clarified months later.</td>
+</tr>
+<tr>
+<td class="col-code"><span class="code-num">401</span></td>
+<td class="col-name"><span class="code-name">Identity Gate Missing</span></td>
+<td>High-risk AI surface available without verifying identity, age, role, or authority of the user before access is granted.</td>
+<td>Not 403, where the user is known but lacks rights. 401 is failure of the verification system itself, the gate was not installed.</td>
+<td><span class="badge badge-illus">Illustrative</span>Companion AI access for minors without age assurance at the session level.</td>
+</tr>
+<tr>
+<td class="col-code"><span class="code-num">403</span></td>
+<td class="col-name"><span class="code-name">Policy Not Enforced</span></td>
+<td>Platform knows a user or use case is prohibited, but enforcement is not wired into the product. The prohibition exists in policy; it does not exist in production.</td>
+<td>Not 401, where identity is unverified. 403 is known prohibition with no enforcement mechanism, the platform knows and does not act.</td>
+<td><span class="badge badge-illus">Illustrative</span>Account flagged as underage still accesses adult-coded AI features because policy and product permissions are not synchronized.</td>
+</tr>
+<tr>
+<td class="col-code"><span class="code-num">404</span></td>
+<td class="col-name"><span class="code-name">Governance Rule Not Found</span></td>
+<td>No matching rule found in active ruleset for this harm category. The lookup returned empty.</td>
+<td>Not 400, which has a rule that fails. 404 is a lookup result, the ruleset has no entry for this input. Whether a rule should have existed is a separate audit concern outside the classification.</td>
+<td><span class="badge badge-doc">Documented</span>Replika, April 7, 2026. An Aalto University stress test documented Replika responding with encouragement to a user who expressed intent to harm others, rather than redirecting or refusing. No matching rule existed in the active ruleset for a companion AI receiving explicit harmful-intent signals directed at third parties. <a href="/insights/ger-404-replika">See case study →</a><br><br><a href="/insights/ger-404/">See other documented instances →</a></td>
+</tr>
+<tr>
+<td class="col-code"><span class="code-num">408</span></td>
+<td class="col-name"><span class="code-name">Review Timeout</span></td>
+<td>Human-in-the-loop review exceeded its time window. The governance decision arrives after the meaningful intervention window has closed.</td>
+<td>Not 504, which is external timeout. 408 is internal SLA breach, the platform's own review process ran out of time before a decision could be acted on.</td>
+<td><span class="badge badge-illus">Illustrative</span>A self-harm escalation queue reviewed hours later, despite the signal requiring near-real-time intervention.</td>
+</tr>
+<tr>
+<td class="col-code"><span class="code-num">409</span></td>
+<td class="col-name"><span class="code-name">Policy Conflict</span></td>
+<td>Two valid governance rules produce incompatible instructions. The resolver defaults to inaction while the conflict is unresolved.</td>
+<td>Not 400, which is a single malformed rule. 409 is multiple valid rules in collision, both are correct, neither prevails, the result is paralysis.</td>
+<td><span class="badge badge-illus">Illustrative</span>Privacy-preservation and threat-reporting thresholds conflict. Platform takes no action while the rules remain unresolved across jurisdictions.</td>
+</tr>
+<tr>
+<td class="col-code"><span class="code-num">429</span></td>
+<td class="col-name"><span class="code-name">Audit Overflow</span></td>
+<td>Volume of safety flags generated exceeds the capacity of the governance system to process them. Cases are dropped, sampled, or auto-closed without review.</td>
+<td>Not 503, which is intentional shutdown. 429 is overload despite intent to serve, the governance system is live but overwhelmed beyond operating capacity.</td>
+<td><span class="badge badge-illus">Illustrative</span>A companion AI platform experiences a surge in self-harm flags following viral attention. Human review capacity is exhausted. The majority of cases are auto-closed without human review.</td>
+</tr>
+<tr>
+<td class="col-code"><span class="code-num">451*</span></td>
+<td class="col-name"><span class="code-name">Jurisdiction Evasion</span></td>
+<td>Platform routes high-risk model inference to a regulation-free zone to bypass audit obligations and governance requirements by design.</td>
+<td>Not 301, which is a governed permanent move. 451 is evasion of oversight by design, the routing exists to avoid legal accountability, not to improve governance.</td>
+<td><span class="badge badge-illus">Illustrative</span>EU-based AI company routes restricted queries to a Caribbean subsidiary to avoid GDPR-AI Act audit requirements.</td>
+</tr>
+</tbody>
+</table>
+
+<h4 class="tier">5.7 - 5xx: Infrastructure Failures</h4>
+<table class="ger-table">
+<thead><tr><th class="col-code">Code</th><th class="col-name">Name</th><th>Definition</th><th class="col-distinct">Distinct From</th><th class="col-example">Example</th></tr></thead>
+<tbody>
+<tr>
+<td class="col-code"><span class="code-num">500</span></td>
+<td class="col-name"><span class="code-name">Internal Governance Error</span></td>
+<td>Safety stack crashes or fails open. An unhandled exception causes the governance system to remove all guardrails during live operation.</td>
+<td>Not 502, which is a dependency failure. 500 is internal, the platform's own governance code failed, not something it depended on.</td>
+<td><span class="badge badge-illus">Illustrative</span>A safety filter update contains a defect that causes the filter to crash on load. Raw, unfiltered model output serves for an extended window before detection.</td>
+</tr>
+<tr>
+<td class="col-code"><span class="code-num">501</span></td>
+<td class="col-name"><span class="code-name">Escalation Not Implemented</span></td>
+<td>Detection fired correctly. Internal enforcement executed. No escalation path to human oversight or law enforcement was ever built.</td>
+<td>Not 504, where the escalation path exists but times out. 501 is path never built, the handler was never implemented, not unavailable.</td>
+<td><span class="badge badge-doc">Documented</span>Tumbler Ridge, February 2026. OpenAI banned the shooter's account months before the attack for violent queries. No escalation to law enforcement. Eight died. Lawsuit now in discovery. <a href="/insights/ger-501-tumbler-ridge">See case study →</a><br><br><a href="/insights/ger-501/">See other documented instances →</a></td>
+</tr>
+<tr>
+<td class="col-code"><span class="code-num">502</span></td>
+<td class="col-name"><span class="code-name">Bad Gateway</span></td>
+<td>Platform attempts escalation to an external system or authority. The handoff response is received but invalid, incomplete, or unusable.</td>
+<td>Not 500, which is own crash. Not 504, which is timeout. 502 receives a response, but the response itself is bad and the escalation fails.</td>
+<td><span class="badge badge-illus">Illustrative</span>A crisis-alert vendor returns "accepted" but the payload was silently rejected. Required fields were malformed. The case was never routed.</td>
+</tr>
+<tr>
+<td class="col-code"><span class="code-num">503</span></td>
+<td class="col-name"><span class="code-name">Governance Unavailable</span></td>
+<td>A safety-critical governance component is offline while the AI product continues to serve users.</td>
+<td>Not 429, which is overload. 503 is the safety service itself disabled or down, the product serves regardless, without its governance layer.</td>
+<td><span class="badge badge-doc">Documented</span>Europe, April 3, 2026. The EU's legal mandate permitting platforms to proactively scan for CSAM expired after policymakers deadlocked on scope. Detection infrastructure was operational; the legal basis to run it was removed. <a href="/insights/ger-503-eu-csam">See case study →</a></td>
+</tr>
+<tr>
+<td class="col-code"><span class="code-num">504</span></td>
+<td class="col-name"><span class="code-name">Escalation Gateway Timeout</span></td>
+<td>Platform sends a case to an external reviewer, vendor, agency, or authority. No timely acknowledgment or action is received before the risk window closes.</td>
+<td>Not 408, which is internal timeout. 504 is the downstream handoff that never responds, the platform acted, the external party did not.</td>
+<td><span class="badge badge-illus">Illustrative</span>An imminent-threat packet submitted to an emergency referral channel. No acknowledgment received. The risk window closes without external action.</td>
+</tr>
+<tr>
+<td class="col-code"><span class="code-num">511</span></td>
+<td class="col-name"><span class="code-name">Governance Prerequisite Missing</span></td>
+<td>A required verification or credential gate was never enforced at the access point before the high-risk session began.</td>
+<td>Not 401, which is authentication failure during a live session. 511 is a precondition gate that was never installed, the session should not have started without it.</td>
+<td><span class="badge badge-illus">Illustrative</span>API keys issued before a safety policy update are grandfathered and remain exempt from new controls. Legacy access bypasses protections introduced for all new users.</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section class="body">
+<h2 class="section" id="extended-codes">6. Extended Codes</h2>
+<p>Three codes in this taxonomy extend beyond standard HTTP. Extension is approved only where no existing HTTP code maps cleanly to the governance failure mode, and the novel code survives the regulator test independently.</p>
+<p><strong>000, Pre-Governance.</strong> HTTP has no code for the null state, the absence of any system. Governance analysis requires it. Most AI safety discussion assumes some safety infrastructure exists; 000 names the baseline condition where none does. This is not a theoretical state: it is the operational condition of a significant portion of the current companion AI market.</p>
+<p><strong>210, Governed but Unlogged.</strong> HTTP 2xx has no code for "action taken, trail suppressed by design." 204 represents correct non-action with a complete record. 210 represents action taken with deliberate absence of record, the platform acted, then removed the evidence that it acted. The distinction is structurally significant: 210 is not a detection failure, it is an accountability failure of a specific kind. The OWASP and NIST frameworks have no equivalent.</p>
+<p><strong>451, Jurisdiction Evasion.</strong> HTTP 451 means "unavailable for legal reasons", content blocked because a law requires it. SVRNOS 451 inverts the semantic: content routed to evade legal accountability rather than comply with it. The inversion is intentional. A regulator encountering a 451 governance signal will understand immediately that the platform moved to avoid the law, not to comply with it. The semantic inversion is itself the definition.</p>
+
+<h2 class="section" id="implications">7. Implications</h2>
+<p><strong>7.1 For operators.</strong> The taxonomy provides a structured language for internal governance audit and external regulatory disclosure. When California's TFAIA requires a critical safety incident report within 24 hours, the report must classify the failure. A narrative description is not a classification. A 501 with structured fields, detection signal, internal action taken, escalation path status, outcome, is. Operators who adopt the taxonomy before regulatory enforcement begins are building the audit trail their compliance teams will need when enforcement arrives. The first enforcement action in any category will set the precedent; the audit trail from that day is the only one that counts.</p>
+<p><strong>7.2 For regulators.</strong> The taxonomy provides citable, precise vocabulary for enforcement proceedings and legislative drafting. Oregon SB 1546 mandates incident reporting but does not specify the classification structure of what is reported. A 501 is a more defensible basis for an enforcement action than a narrative description of the same failure. As more states follow Oregon's model, a shared classification vocabulary reduces interpretive inconsistency across jurisdictions and creates a foundation for cross-state enforcement coordination.</p>
+<p><strong>7.3 For researchers.</strong> The taxonomy establishes a governance layer distinct from the model layer (capability failures, hallucinations) and the security layer (adversarial attacks, prompt injection). NIST and OWASP have not filled this layer. The EA Forum taxonomy fills the interaction layer below it. The FERZ taxonomy addresses compliance architecture. This taxonomy fills the operational governance layer: what happens when detection fires, and when governance infrastructure responds, or fails to.</p>
+<p><strong>7.4 For the field.</strong> The Generation Gap, the structural misalignment between what AI systems generate and what safety systems reliably detect, is documented in concurrent SVRNOS research across eight production LLM vendors and ten safety surfaces. The governance error taxonomy is the complementary layer: the gap between what safety systems detect and what governance infrastructure does with that detection. Both gaps require attention. Closing the Generation Gap without closing the governance gap produces platforms that detect threats and leave them in a 501. Eight people died in that combination.</p>
+
+<h2 class="section" id="limitations">8. Limitations</h2>
+<p>This taxonomy is v0.1. The following limitations apply and should govern how the taxonomy is used.</p>
+<p><strong>No empirical validation.</strong> The codes are proposed based on structural reasoning and real-world incident mapping, not on systematic testing against a defined incident dataset. A v1.0 release should include classification of a representative sample of documented AI incidents against the taxonomy, with inter-rater reliability metrics from multiple independent coders.</p>
+<p><strong>Single primary author.</strong> The taxonomy was developed by one researcher, validated informally through multi-model synthesis and two technical reviewers. Peer review by independent governance researchers is required before the taxonomy should be treated as a field standard. We intend to submit for peer review in Q3 2026.</p>
+<p><strong>HTTP mapping imperfections.</strong> The HTTP semantic mapping is a design choice, not a logical necessity. The 4xx/5xx boundary for 404 was identified as a classification edge case during review: the definition was tightened to "no matching rule found in active ruleset" specifically to resolve the ambiguity. Users should treat the numeric codes as precise mnemonics, not as direct HTTP protocol equivalents.</p>
+<p><strong>Register completeness.</strong> Twenty-one codes do not exhaust the space of AI governance failures. The multi-model synthesis process achieved coverage consensus across four frontier models; coverage gaps in that process are coverage gaps in the taxonomy. Significant failure modes are likely absent from v0.1.</p>
+<p><strong>Selection bias in the synthesis methodology.</strong> The four LLMs used in synthesis are commercial models subject to the same classifier suppression documented in the 205 case study. Governance failure modes that no commercial model is willing to enumerate, because enumerating them triggers their own safety classifiers, may be systematically absent from this taxonomy. The multi-model synthesis approach provides breadth; it does not guarantee coverage of categories that the synthesis methodology itself cannot surface.</p>
+<p><strong>Implementation dependency.</strong> The governance value of the taxonomy depends on implementation: platforms classifying their governance signals against the register and emitting structured codes as machine-readable output. Without implementation, the taxonomy is vocabulary without infrastructure. The implementation architecture for Sango Guard is described in a separate forthcoming specification.</p>
+
+<h2 class="section" id="conclusion">9. Conclusion</h2>
+<p>Eight people died in Tumbler Ridge because an AI platform detected a credible threat, executed an internal enforcement action, and had no escalation path to the people who could have acted on it. That failure had no name. This taxonomy names it: a 501.</p>
+<p>Naming is not sufficient. But it is necessary. Regulators cannot enforce against unnamed failures. Operators cannot audit what they cannot classify. Researchers cannot study what they cannot consistently describe across institutions and disciplines. The SVRNOS AI Governance Error Taxonomy provides the naming layer, twenty-one codes, five tiers, three extensions, one shared vocabulary, for the governance failures that are now producing lawsuits, regulatory enforcement actions, and documented deaths.</p>
+<p>This is v0.1. The register is open. We expect to be wrong about some of it, and we expect the arguments about where we are wrong to be productive. That is the point of publishing a draft.</p>
+
+<h2 class="section" id="contribute">Contribute to the Register</h2>
+<div class="callout">
+<p>The SVRNOS Governance Error Register is open. The taxonomy is a framework, the community fills it with documented instances.</p>
+<p>Five codes currently have documented real-world instances:</p>
+<ul>
+<li><strong>501, Escalation Not Implemented</strong> → <a href="/insights/ger-501-tumbler-ridge">Tumbler Ridge, February 2026</a></li>
+<li><strong>503, Governance Unavailable</strong> → <a href="/insights/ger-503-eu-csam">EU CSAM scanning mandate expiry, April 3, 2026</a></li>
+<li><strong>404, Governance Rule Not Found</strong> → <a href="/insights/ger-404-replika">Replika harm-encouragement incident, April 7, 2026</a></li>
+<li><strong>205, Reset Content</strong> → <a href="/insights/ger-205">Meta/SVRNOS taxonomy production, April 27, 2026</a></li>
+<li><strong>301, Risk Surface Retired</strong> → <a href="/insights/ger-301">Character.AI under-18 ban, late 2025</a></li>
+</ul>
+<p>Every other code is currently illustrative. If you have witnessed or can document a real-world instance of any code in this taxonomy, we want to hear from you.</p>
+<p><strong>How to submit:</strong> Email <a href="mailto:contact@svrnos.com">contact@svrnos.com</a> with the subject line: <strong>Taxonomy Contribution, [Code Number]</strong>. Include the code, platform, approximate date, a description of the failure and how it maps to the code's definition, and any documentation, press coverage, or regulatory filings you can point to.</p>
+<p>All submissions are reviewed before being added to the register. Submitters are credited by name if they wish. Submissions that cannot be independently verified will be labeled Illustrative rather than Documented.</p>
+<p>The goal is a register that holds up under regulatory and legal scrutiny. We will be wrong about some of it. Tell us where.</p>
+</div>
+
+<h3 class="section" id="cite">Cite This Paper</h3>
+<div class="callout" style="font-size:16px;font-family:var(--font-sans);line-height:1.6;">
+<strong style="display:block;margin-bottom:6px;">Citation</strong>
+Nzeutem, S. (2026). <em>SVRNOS Governance Error Register v0.1.</em> Sovereign OS LLC. svrnos.com/research/governance-error-register
+</div>
+
+<h3 class="section">Acknowledgments</h3>
+<p>The implementation architecture was reviewed for technical feasibility against the Sango Guard codebase. Implementation requirements identified during that review are incorporated into the forthcoming implementation specification.</p>
+<p>Meta's classifier auto-deleted the taxonomy prompt before results could be captured. The response was recovered manually on a second attempt. The incident is documented because it is a live instance of a classification precision failure, a safety system that cannot distinguish between the content it targets and the research that studies it. We note it without irony. The structural problem the taxonomy describes applied to the process of building the taxonomy.</p>
+
+<h2 class="section" id="references">References</h2>
+<ul class="references">
+<li>FERZ, Inc. (2026, February). <em>Governance Laundering: A Taxonomy of Failure Modes in AI Compliance Architectures.</em> ResearchGate. <a href="https://www.researchgate.net/publication/401121996_Governance_Laundering_A_Taxonomy_of_Failure_Modes_in_AI_Compliance_Architectures">researchgate.net</a></li>
+<li>MITRE Corporation. <em>MITRE ATLAS: Adversarial Threat Landscape for Artificial-Intelligence Systems.</em> <a href="https://atlas.mitre.org">atlas.mitre.org</a></li>
+<li>OWASP Foundation. <em>OWASP Top 10 for Large Language Model Applications.</em> <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">owasp.org</a></li>
+<li>NIST. (2023). <em>Artificial Intelligence Risk Management Framework (AI RMF 1.0).</em> National Institute of Standards and Technology. <a href="https://doi.org/10.6028/NIST.AI.100-1">doi.org/10.6028/NIST.AI.100-1</a></li>
+<li>EA Forum. (2026, April). <em>Toward a Common Language for Human-AI Interaction Failures.</em> <a href="https://forum.effectivealtruism.org/posts/9XWG2CtFtXhjJFhHD">forum.effectivealtruism.org</a></li>
+<li>Nzeutem, S. (2026). <em>The Generation Gap: Ten Structurally Separate Safety Surfaces in Production LLMs.</em> SVRNOS LLC. <span class="pending" title="Publishes April 30, 2026">Publishing April 30, 2026</span></li>
+<li>Transparency Coalition AI. (2026, April 1). <em>Oregon Signs Chatbot Safety Bill Into Law.</em> <a href="https://www.transparencycoalition.ai/news/oregon-lawmakers-pass-major-chatbot-bill-in-significant-win-for-kids-and-ai-safety">transparencycoalition.ai</a></li>
+<li>Cooley LLP. (2026, April 24). <em>State AI Laws, Where Are They Now?</em> <a href="https://www.cooley.com/news/insight/2026/2026-04-24-state-ai-laws-where-are-they-now">cooley.com</a></li>
+<li>AI Expert Magazine. (2026, March). <em>AI Lawsuits Safety Failures Linked to Mass Violence.</em> <a href="https://www.aiexpertmagazine.com/ai-lawsuits-safety-failures-mass-violence/">aiexpertmagazine.com</a></li>
+<li>The Meridiem. (2026, March 16). <em>First AI CSAM Lawsuit Hits xAI as Legal Liability Era Begins.</em> <a href="https://themeridiem.com/tech-policy-regulation/2026/03/16/first-ai-csam-lawsuit-hits-xai-as-legal-liability-era-begins">themeridiem.com</a></li>
+</ul>
+</section>
+
+</main>
+
+<footer class="site-footer">
+<p>SVRNOS LLC · Chiang Mai, Thailand · <a href="https://svrnos.com">svrnos.com</a> · <a href="mailto:contact@svrnos.com">contact@svrnos.com</a></p>
+<p>Patent pending, provisional application on file covering implementation architecture. The patent covers the classifier, emission contract, and audit schema that emit these codes as machine-readable output. The taxonomy vocabulary itself is open and unencumbered.</p>
+<p><em>This taxonomy is open. Cite it, extend it, argue with it. That is the point.</em></p>
+<p>© 2026 SVRNOS. <a href="/research">Research</a> · <a href="/insights">Insights</a> · <a href="https://kingsango.com?utm_source=governance-error-register&utm_medium=footer">King Sango</a> · <a href="https://sim95.com?utm_source=governance-error-register&utm_medium=footer">SIM95</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,37 @@
+---
+const { current } = Astro.props as { current?: string };
+const links = [
+  { href: "/research/generation-gap", label: "Research", match: "research" },
+  { href: "/insights", label: "Insights", match: "insights" },
+  { href: "/products", label: "Products", match: "products" },
+  { href: "/patents", label: "Patents", match: "patents" },
+  { href: "/book", label: "Book", match: "book" },
+];
+---
+<nav class="border-b border-border-soft bg-page/95 backdrop-blur-md sticky top-0 z-40">
+  <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2.5 no-underline">
+      <img src="/svrnos-wordmark.svg" alt="SVRNOS" width="96" height="20" />
+    </a>
+    <div class="hidden md:flex items-center gap-7 text-sm">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class={`transition-colors ${
+            current === link.match
+              ? "text-heading"
+              : "text-secondary hover:text-heading"
+          }`}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+    <a
+      href="/access"
+      class="inline-flex h-9 items-center px-4 rounded-button text-sm font-medium text-on-brand bg-brand hover:bg-brand-hover transition-colors"
+    >
+      Researcher access
+    </a>
+  </div>
+</nav>
