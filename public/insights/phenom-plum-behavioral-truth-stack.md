@@ -1,0 +1,102 @@
+# The Resume Is No Longer Evidence
+
+**Author:** Sushee Nzeutem, SVRNOS LLC
+**Published:** April 30, 2026
+**Category:** Identity
+**Canonical URL:** https://svrnos.com/insights/phenom-plum-behavioral-truth-stack
+**Hero image:** https://svrnos.com/insights/phenom-plum-behavioral-truth-stack/phenom-plum-behavioral-truth-stack-title.png
+
+> Phenom acquired Plum on April 28. The resume is no longer evidence. But hiring-context behavioral science cannot read the layer underneath: how identity holds when pressure stops being theoretical.
+
+---
+![The Resume Is No Longer Evidence - SVRNOS Identity Insights](/insights/phenom-plum-behavioral-truth-stack/phenom-plum-behavioral-truth-stack-title.png)
+
+The resume is no longer evidence.
+
+On April 28, [Phenom acquired Plum](https://siliconangle.com/2026/04/28/phenom-adds-plum-psychometric-science-agentic-ai-hiring-stack/) and named the problem directly: AI-generated resumes, deepfake interview responses, and fabricated work histories have created a candidate verification crisis.
+
+They are right about the crisis.
+
+They are wrong about where it ends.
+
+Phenom's answer, like most of HR tech's answer, is to add a behavioral science layer on top of the hiring funnel. Score for cognitive fit. Assess for job match. Validate what the resume can no longer prove.
+
+That matters. It also reveals something larger: the industry has accepted that candidate self-presentation is no longer a reliable source of truth.
+
+For decades, resume screening was the dominant paradigm. Then skills tests were supposed to fix the resume. Now behavioral diagnostics are becoming the fix for the fix.
+
+That is the real signal inside the Phenom-Plum acquisition.
+
+Hiring platforms are no longer just asking, "What has this person done?" They are moving toward a harder question: "Can we verify how this person actually behaves?"
+
+But there is a limit to what hiring-context behavioral science can tell you.
+
+![Hiring funnel vs. operational identity - what behavioral assessments measure vs. what SIM95 measures](/insights/phenom-plum-behavioral-truth-stack/phenom-plum-behavioral-truth-stack.png)
+
+Most candidate assessments are designed to predict performance against a role. They are built around selection, fit, and job match. Their purpose is to help an employer decide whether someone should enter the room.
+
+That is useful.
+
+But it is not the same as understanding what happens to someone's identity once pressure stops being theoretical.
+
+A founder can pass a behavioral assessment and still collapse under investor pressure eighteen months later.
+
+A partner can interview with extraordinary alignment and still drift when the market turns.
+
+An executive can score perfectly on cognitive fit and still hit a boundary crisis when the mandate expands.
+
+A cohort applicant can look high-potential during selection and still become unstable once intensity, ambiguity, and social pressure arrive.
+
+These are not resume problems.
+
+They are not skills problems.
+
+They are not simply hiring problems.
+
+They are [operational identity](https://sim95.com?utm_source=phenom-plum-behavioral-truth-stack&utm_medium=inline) problems.
+
+The failure point is not always whether someone can perform under structured evaluation. The failure point is often whether their decision architecture holds under sustained pressure.
+
+Do they recover or compensate?
+
+Do they hold boundaries or overextend?
+
+Do they gain momentum or fragment?
+
+Do they stay coherent under demand, or does their operating system distort once the stakes rise?
+
+That is the layer most hiring assessments were never designed to read.
+
+[SIM95](https://sim95.com?utm_source=phenom-plum-behavioral-truth-stack&utm_medium=inline) was built around that layer.
+
+Not as a candidate filter. Not as another hiring test. Not as a replacement for behavioral science inside the funnel.
+
+SIM95 reads the identity state underneath the performance: how someone organizes under pressure, where their collapse signature sits, how their emotional operating system handles constraint, and whether their momentum is stable, volatile, depleted, or performative.
+
+The diagnostic captures dimensions hiring assessments usually do not model: recovery pattern, boundary level, momentum state, collapse severity, decision distortion, and structural capacity under demand.
+
+That distinction matters.
+
+Phenom bought Plum because behavioral truth is becoming a requirement in hiring.
+
+That is the category forming.
+
+But hiring is only the first surface.
+
+The deeper question comes after the selection decision: whether the person, founder, executive, partner, or cohort member, is actually operating from the identity state you thought you were selecting for.
+
+The market is learning that what people say about themselves is no longer enough.
+
+The next layer is whether their structure holds when the room gets real.
+
+That is where SIM95 sits.
+
+Beneath the resume.
+
+Beneath the interview.
+
+Beneath the behavioral score.
+
+At the level where performance becomes pressure, and identity either holds or breaks.
+
+---
