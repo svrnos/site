@@ -1,6 +1,8 @@
 # The Generation Gap
 
 **Author:** Sushee Nzeutem (Founder, SVRNOS)
+**Published:** April 30, 2026 (v2.7)
+**Category:** Research · Safety
 **Canonical URL:** https://svrnos.com/research/generation-gap
 **Hero image:** https://svrnos.com/research/generation-gap/og-image.png
 
