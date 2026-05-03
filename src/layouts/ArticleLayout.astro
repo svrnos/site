@@ -2,6 +2,11 @@
 import BaseLayout from "./BaseLayout.astro";
 import JsonLd from "../components/JsonLd.astro";
 
+interface Alternate {
+  hreflang: string;
+  href: string;
+}
+
 interface Props {
   title: string;
   dek?: string;
@@ -13,6 +18,10 @@ interface Props {
   ogImage?: string;
   jsonLd?: Record<string, unknown>;
   current?: string;
+  lang?: string;
+  alternates?: Alternate[];
+  dateLocale?: string;
+  readTimeLabel?: string;
 }
 
 const {
@@ -26,6 +35,10 @@ const {
   ogImage,
   jsonLd,
   current = "insights",
+  lang = "en",
+  alternates,
+  dateLocale = "en-US",
+  readTimeLabel = "min read",
 } = Astro.props;
 ---
 <BaseLayout
@@ -34,6 +47,8 @@ const {
   canonical={canonical}
   ogImage={ogImage}
   current={current}
+  lang={lang}
+  alternates={alternates}
 >
   {jsonLd && (
     <Fragment slot="head">
@@ -68,14 +83,14 @@ const {
       <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-label-alt mb-12">
         {datePublished && (
           <time datetime={datePublished}>
-            {new Date(datePublished).toLocaleDateString("en-US", {
+            {new Date(datePublished).toLocaleDateString(dateLocale, {
               month: "long",
               day: "numeric",
               year: "numeric",
             })}
           </time>
         )}
-        {readTimeMin && <span>{readTimeMin} min read</span>}
+        {readTimeMin && <span>{readTimeMin} {readTimeLabel}</span>}
       </div>
     </header>
 
