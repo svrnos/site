@@ -1,4 +1,83 @@
+# SVRNOS — robots.txt
+# Search engines: indexing welcome (gated content excluded).
+# AI crawlers: explicitly allowed so research and insights surface in
+# AI assistants. Same gating rules apply.
+
 User-agent: *
+Allow: /
+Disallow: /access
+Disallow: /briefing
+
+# OpenAI (ChatGPT, Atlas, search.chatgpt.com)
+User-agent: GPTBot
+Allow: /
+Disallow: /access
+Disallow: /briefing
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /access
+Disallow: /briefing
+
+# Anthropic (Claude, claude.ai)
+User-agent: ClaudeBot
+Allow: /
+Disallow: /access
+Disallow: /briefing
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /access
+Disallow: /briefing
+
+User-agent: Claude-Web
+Allow: /
+Disallow: /access
+Disallow: /briefing
+
+# Google AI (Gemini, AI Overviews)
+User-agent: Google-Extended
+Allow: /
+Disallow: /access
+Disallow: /briefing
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+Disallow: /access
+Disallow: /briefing
+
+# Common Crawl (feeds many open-source models)
+User-agent: CCBot
+Allow: /
+Disallow: /access
+Disallow: /briefing
+
+# Meta (Llama, Meta AI)
+User-agent: Meta-ExternalAgent
+Allow: /
+Disallow: /access
+Disallow: /briefing
+
+User-agent: FacebookBot
+Allow: /
+Disallow: /access
+Disallow: /briefing
+
+# Apple (Apple Intelligence)
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /access
+Disallow: /briefing
+
+# Mistral
+User-agent: MistralAI-User
+Allow: /
+Disallow: /access
+Disallow: /briefing
+
+# Cohere
+User-agent: cohere-ai
 Allow: /
 Disallow: /access
 Disallow: /briefing

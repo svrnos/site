@@ -18,6 +18,7 @@ interface Props {
   showFooter?: boolean;
   lang?: string;
   alternates?: Alternate[];
+  markdownAlternate?: string;
 }
 
 const {
@@ -30,7 +31,12 @@ const {
   showFooter = true,
   lang = "en",
   alternates,
+  markdownAlternate,
 } = Astro.props;
+
+const markdownAlternateURL = markdownAlternate
+  ? new URL(markdownAlternate, Astro.site).toString()
+  : undefined;
 
 const canonicalURL = canonical
   ? new URL(canonical, Astro.site).toString()
@@ -52,6 +58,9 @@ const resolvedAlternates = alternates?.map((a) => ({
     {resolvedAlternates?.map((a) => (
       <link rel="alternate" hreflang={a.hreflang} href={a.href} />
     ))}
+    {markdownAlternateURL && (
+      <link rel="alternate" type="text/markdown" href={markdownAlternateURL} title="Markdown version (for AI assistants)" />
+    )}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
