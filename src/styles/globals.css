@@ -113,13 +113,13 @@ tr[data-href],
 .prose-svrnos p {
   margin-bottom: 20px;
 }
-.prose-svrnos a {
+.prose-svrnos :where(a):not(.not-prose, .not-prose *) {
   color: var(--svrnos-brand-primary);
   text-decoration: underline;
   text-decoration-color: var(--svrnos-border-default);
   text-underline-offset: 4px;
 }
-.prose-svrnos a:hover {
+.prose-svrnos :where(a):not(.not-prose, .not-prose *):hover {
   text-decoration-color: var(--svrnos-brand-primary);
 }
 .prose-svrnos strong {
