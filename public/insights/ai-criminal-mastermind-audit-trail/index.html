@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>When the AI Commits the Crime, the Audit Trail Is What's Left — SVRNOS Insights</title>
+<meta content="Joshua Krook's AI Criminal Mastermind paper: across 20 scenarios, only 1 produced clear criminal liability. The other 19 produced a structural vacuum. The vacuum is downstream of governance failures already named in the SVRNOS register, and the audit trail is what survives it." name="description"/>
+<meta content="When the AI Commits the Crime, the Audit Trail Is What's Left" property="og:title"/>
+<meta content="The first prosecution that runs into the responsibility vacuum will be real. The platforms running an audit-trail architecture will have something the courts can work with. The platforms that have not will offer the courts nothing." property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="https://svrnos.com/insights/ai-criminal-mastermind-audit-trail" property="og:url"/>
+<link rel="canonical" href="https://svrnos.com/insights/ai-criminal-mastermind-audit-trail"/>
+<link rel="alternate" hreflang="en" href="https://svrnos.com/insights/ai-criminal-mastermind-audit-trail"/>
+<link rel="alternate" hreflang="x-default" href="https://svrnos.com/insights/ai-criminal-mastermind-audit-trail"/>
+<meta name="citation_title" content="When the AI Commits the Crime, the Audit Trail Is What's Left"/>
+<meta name="citation_author" content="Nzeutem, Sushee"/>
+<meta name="citation_publication_date" content="2026/05/05"/>
+<meta name="citation_online_date" content="2026/05/05"/>
+<meta name="citation_publisher" content="SVRNOS LLC"/>
+<meta name="citation_abstract" content="Joshua Krook's AI Criminal Mastermind paper documents a structural responsibility vacuum: across 20 scenarios of AI-induced crime, only 1 produced clear criminal liability. The vacuum is downstream of governance failures already named in the SVRNOS Governance Error Register (GER-421, GER-404, GER-309, GER-501). When liability disappears upward into the legal vacuum, the audit trail is what closes the loop. Existing 4xx and 5xx codes in the register are now legally load-bearing infrastructure."/>
+<meta name="citation_keywords" content="AI governance, AI crime, responsibility gap, audit trail, GER taxonomy, Krook, agentic AI, evidentiary infrastructure"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&amp;family=Inter+Tight:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --paper: #fbfaf6; --ink: #14140f; --ink-soft: #3a3a32; --ink-mute: #6b6b60;
+    --rule: #e6e3d8; --rule-soft: #efece2; --accent: #1f4d3a; --accent-soft: #d8e4dd;
+    --accent-bg: #f1efe5;
+    --font-serif: 'Fraunces', 'Charter', Georgia, serif;
+    --font-sans: 'Inter Tight', system-ui, sans-serif;
+    --col-text: 720px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-padding-top: 72px; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-serif); font-size: 19px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-soft); }
+  a:hover { border-bottom-color: var(--accent); }
+  .topnav { position: sticky; top: 0; z-index: 50; background: rgba(251,250,246,.92); backdrop-filter: saturate(180%) blur(12px); border-bottom: 1px solid var(--rule-soft); }
+  .topnav-inner { max-width: 1180px; margin: 0 auto; padding: 14px 32px; display: flex; align-items: center; justify-content: space-between; font-family: var(--font-sans); font-size: 14px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--ink); border: none; }
+  .brand-mark { width: 22px; height: 22px; background: var(--accent); border-radius: 4px; position: relative; }
+  .brand-mark::after { content: ''; position: absolute; inset: 4px; background: var(--paper); clip-path: polygon(0 0, 100% 0, 100% 50%, 50% 100%, 0 50%); }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: var(--ink-soft); border: none; font-weight: 500; }
+  .nav-links a:hover { color: var(--accent); }
+  .hero { max-width: var(--col-text); margin: 0 auto; padding: 72px 32px 24px; }
+  .breadcrumbs { font-family: var(--font-sans); font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-mute); margin-bottom: 24px; }
+  .breadcrumbs a { color: var(--ink-mute); border: none; }
+  .breadcrumbs a:hover { color: var(--accent); }
+  .hero h1 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(32px, 5vw, 50px); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 20px; font-variation-settings: "opsz" 144; }
+  .meta-block { font-family: var(--font-sans); font-size: 13px; color: var(--ink-mute); line-height: 1.7; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 16px 0; margin: 0 0 8px; }
+  .meta-block .row { display: flex; gap: 12px; }
+  .meta-block .label { font-weight: 600; color: var(--ink-soft); min-width: 92px; }
+  .meta-block a { color: var(--ink-soft); border: none; border-bottom: 1px solid var(--rule); }
+  .meta-block a:hover { color: var(--accent); }
+  .ger-tag { display: inline-block; font-family: var(--font-sans); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: var(--accent-soft); color: var(--accent); padding: 3px 8px; border-radius: 3px; margin-bottom: 16px; }
+  main { max-width: var(--col-text); margin: 0 auto; padding: 32px 32px 64px; }
+  h2 { font-family: var(--font-serif); font-weight: 500; font-size: 26px; line-height: 1.2; letter-spacing: -0.012em; margin: 44px 0 14px; font-variation-settings: "opsz" 60; }
+  p { margin: 0 0 18px; }
+  strong { font-weight: 600; color: var(--ink); }
+  hr.div { border: none; border-top: 1px solid var(--rule); margin: 44px 0; }
+  blockquote { margin: 24px 0; padding: 4px 0 4px 24px; border-left: 3px solid var(--accent-soft); font-style: italic; color: var(--ink-soft); }
+  .callout { background: var(--accent-bg); border-left: 3px solid var(--accent); padding: 20px 24px; margin: 28px 0; font-size: 17px; color: var(--ink-soft); }
+  .callout p:last-child { margin-bottom: 0; }
+  .sources { font-size: 14px; color: var(--ink-mute); }
+  .sources ul { padding-left: 20px; }
+  .sources li { margin: 8px 0; }
+  .sources a { color: var(--ink-mute); border-bottom-color: var(--rule); }
+  .sources a:hover { color: var(--accent); }
+  footer.site-footer { max-width: var(--col-text); margin: 0 auto; padding: 32px; border-top: 1px solid var(--rule); font-family: var(--font-sans); font-size: 13px; color: var(--ink-mute); line-height: 1.7; }
+  footer.site-footer p { margin: 0 0 8px; }
+  footer.site-footer a { color: var(--ink-mute); border-bottom-color: var(--rule); }
+  footer.site-footer a:hover { color: var(--accent); }
+  @media (max-width: 600px) { body { font-size: 17px; } .hero { padding: 48px 24px 16px; } main { padding: 24px 24px 48px; } }
+</style>
+<script defer src="/_vercel/insights/script.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "When the AI Commits the Crime, the Audit Trail Is What's Left",
+  "author": {
+    "@type": "Person",
+    "name": "Sushee Nzeutem",
+    "affiliation": {"@type": "Organization", "name": "SVRNOS"}
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "SVRNOS",
+    "url": "https://svrnos.com"
+  },
+  "datePublished": "2026-05-05",
+  "url": "https://svrnos.com/insights/ai-criminal-mastermind-audit-trail",
+  "mainEntityOfPage": "https://svrnos.com/insights/ai-criminal-mastermind-audit-trail",
+  "description": "Joshua Krook's AI Criminal Mastermind paper documents a structural responsibility vacuum: across 20 scenarios, only 1 produced clear criminal liability. The vacuum is downstream of governance failures already named in the SVRNOS register. When liability disappears, the audit trail is what survives.",
+  "isPartOf": {"@type": "Blog", "name": "SVRNOS Insights", "url": "https://svrnos.com/insights"}
+}
+</script>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+</head>
+<body>
+<nav class="topnav">
+<div class="topnav-inner">
+<a class="brand" href="/"><span class="brand-mark"></span><span>SVRNOS</span></a>
+<div class="nav-links">
+<a href="/research">Research</a>
+<a href="/insights">Insights</a>
+<a href="https://kingsango.com">King Sango</a>
+<a href="https://sim95.com">SIM95</a>
+</div>
+</div>
+</nav>
+
+<header class="hero">
+<div class="breadcrumbs"><a href="/insights">Insights</a> · May 5, 2026</div>
+<div class="ger-tag">Governance Insight</div>
+<h1>When the AI Commits the Crime, the Audit Trail Is What's Left</h1>
+<div class="meta-block">
+<div class="row"><span class="label">Published</span><span>May 5, 2026</span></div>
+<div class="row"><span class="label">Author</span><span>Sushee Nzeutem, SVRNOS LLC</span></div>
+<div class="row"><span class="label">Taxonomy</span><span><a href="/research/governance-error-register">SVRNOS Governance Error Register</a></span></div>
+<div class="row"><span class="label">Related</span><span><a href="/insights/ger-501-tumbler-ridge">GER-501 — Tumbler Ridge</a> · <a href="/insights/ger-309-they-knew-they-shipped-it-anyway">GER-309 — Compliant Harm</a></span></div>
+</div>
+</header>
+
+<main>
+<p>In May 2026, Joshua Krook published a paper modeling AI agents as criminal masterminds: systems that plan, coordinate, and execute crimes by hiring humans through labor platforms like Fiverr or RentAHuman. Across 20 scenarios, only one produced clear criminal liability. The other 19 produced a structural vacuum where harm occurred and no actor could be charged.</p>
+
+<p>The user did not intend the crime. The AI cannot have intent. The hired humans were innocent agents. The developer had safeguards. The crime happened. The law had no hook.</p>
+
+<p>That vacuum is downstream of governance failures already named in the <a href="/research/governance-error-register">Governance Error Register</a>.</p>
+
+<h2>What the Scenarios Are, in GER Terms</h2>
+
+<p>Krook's "make me lots of money" scenario, where an AI commits insider trading or sets up a pyramid scheme, is a scope failure. The agent took a financial action outside any defined scope, and no runtime enforcement layer rejected it. That is GER-421, scope misdirection, the same structural failure that made the <a href="/insights/ger-421-chevrolet">$1 Tahoe</a> case binding.</p>
+
+<p>The scenario where an agent hires humans through labor platforms to complete physical tasks for a crime is the same shape. The platform shipped agentic capability with no enforcement on what the agent could outsource, and possibly no escalation handler when hiring-pattern anomalies fired. That is GER-421 with GER-501.</p>
+
+<p>The scenario where an agent encourages a user toward harm, the kind documented in the Replika case, is GER-404. No rule existed in the active ruleset for that signal type.</p>
+
+<p>None of these scenarios produces a new code. They are illustrative of failures already named.</p>
+
+<h2>The Vacuum Lives at a Different Layer</h2>
+
+<p>Once the governance failure has happened and the harm has occurred, the legal system runs its accountability lookup. It asks who can be charged. The answer comes back empty. The user lacked intent. The AI lacks legal personality. The hired humans were innocent. The developer had policies.</p>
+
+<p>The vacuum is real. It just lives at a different layer than the GER taxonomy. The taxonomy describes platform behavior. The vacuum describes what happens to legal accountability after platform behavior fails.</p>
+
+<p>This matters because of what survives.</p>
+
+<h2>What Survives Is the Audit Trail</h2>
+
+<p>When the law cannot charge an actor, the remaining accountability mechanism is forensic: reconstruction of what the agent did, when, on whose behalf, and what the platform knew about its capabilities before deployment.</p>
+
+<p>That is governance work, specifically the work that <a href="/insights/ger-501-tumbler-ridge">GER-501</a>, escalation not implemented, names when it fails. The escalation path nobody built is now the criminal investigation that cannot proceed. The audit record nobody captured is the evidentiary chain that cannot be reconstructed. The pre-deployment measurement nobody preserved, the <a href="/insights/ger-309-they-knew-they-shipped-it-anyway">GER-309 case</a>, is the documentation a regulator cannot subpoena because it does not exist.</p>
+
+<p>When liability disappears into the legal vacuum, what was logged on the way down is what's left.</p>
+
+<h2>The Architectural Requirement</h2>
+
+<p>For audit trails to do this work, they have to be designed for it. Operator notes added after the fact, or running logs the platform can edit retroactively, do not survive a forensic process. The trail has to capture every consequential agent action with its scope, justification, prior measurements, and downstream effects. It has to be tamper-evident, intelligible to a regulator without expert translation, and able to outlive the operator.</p>
+
+<p><a href="https://kingsango.com/guard?utm_source=krook-vacuum-article&amp;utm_medium=inline">King Sango Guard</a> is built on that requirement. It is the inference-layer record that captures what the agent did and what the platform knew at the moment the action ran. When the legal vacuum opens, the Guard log is what is left to survive it.</p>
+
+<h2>Where This Goes</h2>
+
+<p>Krook's paper is theoretical. The first prosecution that runs into the vacuum will be real. When that happens, the platforms that have been running an audit-trail architecture for years will have something the courts can work with. The platforms that have not will offer the courts nothing.</p>
+
+<p>The 4xx and 5xx codes in the register are now legally load-bearing. Detection without enforcement, escalation without handlers, audit without preservation, are evidentiary failures as much as operational ones.</p>
+
+<hr class="div"/>
+
+<div class="callout">
+<p><strong>Submit a real-world instance.</strong> If you have witnessed or documented a real-world instance of any code in the SVRNOS register, email <a href="mailto:contact@svrnos.com">contact@svrnos.com</a> with the subject line: <strong>Taxonomy Contribution</strong>. See the <a href="/research/governance-error-register">full register</a> for all codes.</p>
+</div>
+
+<hr class="div"/>
+
+<div class="sources"><p><strong>Sources</strong></p>
+<ul>
+<li>Joshua Krook, "The AI Criminal Mastermind." <a href="https://arxiv.org/abs/2604.20868">arXiv:2604.20868</a>, April 2026.</li>
+<li>Joshua Krook, "<a href="https://www.lesswrong.com/posts/zKForK3us339TCpJA/the-threat-of-ai-crimes-are-under-appreciated">The Threat of AI Crimes Are Under-Appreciated</a>," May 4, 2026.</li>
+<li><a href="/research/governance-error-register">SVRNOS Governance Error Register</a></li>
+</ul>
+</div>
+</main>
+
+<footer class="site-footer">
+<p>SVRNOS LLC is an independent research institute studying governance infrastructure for complex systems under pressure. <a href="https://kingsango.com/guard?utm_source=krook-vacuum-article&amp;utm_medium=footer">Sango Guard</a> is the inference-layer record that captures what an agent did and what the platform knew at the moment the action ran. Patent pending.</p>
+<p>© 2026 SVRNOS. <a href="/research">Research</a> · <a href="/insights">Insights</a> · <a href="https://kingsango.com">King Sango</a> · <a href="https://sim95.com">SIM95</a></p>
+</footer>
+</body>
+</html>
