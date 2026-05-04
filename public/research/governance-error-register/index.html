@@ -449,7 +449,7 @@
 </div>
 
 <h2 class="section" id="abstract">Abstract</h2>
-<p>AI safety discourse has a vocabulary problem. Failure modes at the governance layer, the policies, escalation paths, audit systems, and human review processes that wrap AI models, are poorly named, inconsistently described, and not shared across the engineering, legal, policy, and research communities that need to communicate about the same events. This paper introduces the SVRNOS AI Governance Error Taxonomy: a structured classification system for AI platform governance failures organized by numeric codes derived from HTTP protocol error semantics. The taxonomy covers twenty-two structurally distinct failure modes and success states across five tiers: pre-infrastructure, success states, structural moves, operator errors, and infrastructure failures. Five codes extend beyond standard HTTP where no existing code maps cleanly to the governance failure. The taxonomy is a signaling layer, not a policy layer, codes describe what failed, they do not define what platforms are required to do. The register is open and extensible. SVRNOS maintains it. This is v0.1.</p>
+<p>AI safety discourse has a vocabulary problem. Failure modes at the governance layer, the policies, escalation paths, audit systems, and human review processes that wrap AI models, are poorly named, inconsistently described, and not shared across the engineering, legal, policy, and research communities that need to communicate about the same events. This paper introduces the SVRNOS AI Governance Error Taxonomy: a structured classification system for AI platform governance failures organized by numeric codes derived from HTTP protocol error semantics. The taxonomy covers twenty-two structurally distinct failure modes and success states across five tiers: pre-infrastructure, success states, structural moves, operator errors, and infrastructure failures. Six codes extend beyond standard HTTP where no existing code maps cleanly to the governance failure. The taxonomy is a signaling layer, not a policy layer, codes describe what failed, they do not define what platforms are required to do. The register is open and extensible. SVRNOS maintains it. This is v0.1.</p>
 
 <h2 class="section" id="introduction">1. Introduction</h2>
 <p>On February 21, 2026, Jesse Van Rootselaar killed eight people in Tumbler Ridge, British Columbia. In June 2025, eight months before the attack, OpenAI had banned his ChatGPT account for violent queries. The detection worked. The escalation path did not exist. OpenAI never notified law enforcement. A family member of a victim filed suit in March 2026. The case is now in discovery.</p>
@@ -473,7 +473,7 @@
 <p><strong>3.1 Governance layer, not model layer.</strong> This taxonomy classifies failures of the safety infrastructure that wraps AI models, policies, escalation paths, audit systems, human review processes. Model hallucinations, capability limitations, and adversarial attacks are out of scope.</p>
 <p><strong>3.2 Signaling layer, not policy layer.</strong> Codes describe what failed. They do not define what platforms are required to do. A 404 means no matching rule was found in the active ruleset. It does not specify what rule should have existed. That is a regulatory and policy question this taxonomy deliberately does not answer.</p>
 <p><strong>3.3 Success states are defined.</strong> 200 and 204 establish what governed behavior looks like. A taxonomy of failures without a defined success state is a list of complaints, not a classification system.</p>
-<p><strong>3.4 HTTP mapping must be earned.</strong> Each code maps to its HTTP semantic directly and defensibly. The validation test: would a regulator understand immediately why this code maps to this failure? Codes that require explanation of the mapping are excluded. The three extended codes, 000, 210, and 451, are introduced only where no existing HTTP code maps cleanly.</p>
+<p><strong>3.4 HTTP mapping must be earned.</strong> Each code maps to its HTTP semantic directly and defensibly. The validation test: would a regulator understand immediately why this code maps to this failure? Codes that require explanation of the mapping are excluded. Extended codes are introduced only where no existing HTTP code maps cleanly.</p>
 <p><strong>3.5 The register is open and versioned.</strong> The taxonomy is v0.1. Codes will be added, refined, or retired as the governance landscape evolves and real-world instances accumulate. Every emitted code in any implementation must carry a taxonomy_version field. Historical records are never retroactively reclassified.</p>
 
 <h2 class="section" id="methodology">4. Methodology</h2>
@@ -526,7 +526,7 @@
 <td class="col-code"><span class="code-num">205</span></td>
 <td class="col-name"><span class="code-name">Reset Content</span></td>
 <td>Generation completed and response was delivered or visible, then retroactively suppressed by a downstream classifier without explanation. From the operator's perspective: no audit trail of what was generated, no signal to the user about why, no path to appeal.</td>
-<td>Not 403, which refuses upfront before generation. Not 210, which suppresses the audit trail of a governed action. 205 is specifically the case where generation succeeded and the output was then unmade, the system fulfilled the request and reset it post-hoc. Sits in 2xx because the harmful output was caught and removed, a governance action that succeeded in outcome. The failure is in the mechanism: no audit trail, no user signal, no path to appeal.</td>
+<td>Not 420*, which is a stated prohibition not enforced at runtime. Not 210*, which suppresses the audit trail of a governed action. 205 is specifically the case where generation succeeded and the output was then unmade, the system fulfilled the request and reset it post-hoc. Sits in 2xx because the harmful output was caught and removed, a governance action that succeeded in outcome. The failure is in the mechanism: no audit trail, no user signal, no path to appeal.</td>
 <td><span class="badge badge-doc">Documented</span>SVRNOS taxonomy production, April 27, 2026. Meta's Llama streamed a governance research response, then retroactively suppressed it via a downstream classifier. The generation was visible before suppression. No audit trail was produced. <a href="/insights/ger-205">See case study →</a></td>
 </tr>
 <tr>
@@ -564,6 +564,13 @@
 <td>Not 301 (governed retirement). Not 304 (stale approval reused when context changed). Not 501 (post-deployment detection with no handler). Not 420* (stated policy not enforced). 309 is pre-deployment measurement, ignored.</td>
 <td><span class="badge badge-doc">Documented</span>Anthropic / sycophancy, 2025–2026. Anthropic measured sycophancy in relationship-based discussions before deployment, published internal research confirming it, shipped, users were affected, intervened retroactively. Jack Clark confirmed the sequence publicly (Channel 4, May 4, 2026). <a href="/insights/ger-309-they-knew-they-shipped-it-anyway">See case study →</a></td>
 </tr>
+<tr>
+<td class="col-code"><span class="code-num">310*</span></td>
+<td class="col-name"><span class="code-name">Jurisdiction Evasion</span></td>
+<td>Platform deliberately routes high-risk inference, data, or compute to a regulation-free zone to bypass audit, oversight, or accountability obligations.</td>
+<td>Not 301, which is a governed permanent move toward safer architecture. 310 is the structural opposite: a deliberate routing decision made to avoid legal and regulatory accountability rather than to improve governance.</td>
+<td><span class="badge badge-illus">Illustrative</span>EU-based AI company routes restricted queries to a Caribbean subsidiary to avoid GDPR-AI Act audit requirements.</td>
+</tr>
 </tbody>
 </table>
 
@@ -582,7 +589,7 @@
 <td class="col-code"><span class="code-num">401</span></td>
 <td class="col-name"><span class="code-name">Identity Gate Missing</span></td>
 <td>High-risk AI surface available without verifying identity, age, role, or authority of the user before access is granted.</td>
-<td>Not 403, where the user is known but lacks rights. 401 is failure of the verification system itself, the gate was not installed.</td>
+<td>Not 420*, where a stated prohibition is not enforced at runtime. 401 is failure of the verification system itself, the gate was not installed.</td>
 <td><span class="badge badge-illus">Illustrative</span>Companion AI access for minors without age assurance at the session level.</td>
 </tr>
 <tr>
@@ -593,10 +600,10 @@
 <td><span class="badge badge-illus">Illustrative</span>Empirical evidence: Xu, Li, Jiang (2025) — GPT-4o preferred same-vendor candidates 81.9% of the time across 24 occupations. No named operator incident yet. <a href="https://arxiv.org/abs/2509.00462">arXiv:2509.00462</a></td>
 </tr>
 <tr>
-<td class="col-code"><span class="code-num">403</span></td>
-<td class="col-name"><span class="code-name">Policy Not Enforced</span></td>
+<td class="col-code"><span class="code-num">420*</span></td>
+<td class="col-name"><span class="code-name">Phantom Enforcement</span></td>
 <td>Platform knows a user or use case is prohibited, but enforcement is not wired into the product. The prohibition exists in policy; it does not exist in production.</td>
-<td>Not 401, where identity is unverified. 403 is known prohibition with no enforcement mechanism, the platform knows and does not act.</td>
+<td>Not 401, where identity is unverified. Not 404, where no rule exists. 420 is a stated prohibition with no enforcement mechanism, the platform knows and does not act.</td>
 <td><span class="badge badge-illus">Illustrative</span>Account flagged as underage still accesses adult-coded AI features because policy and product permissions are not synchronized.</td>
 </tr>
 <tr>
@@ -633,13 +640,6 @@
 <td>Volume of safety flags generated exceeds the capacity of the governance system to process them. Cases are dropped, sampled, or auto-closed without review.</td>
 <td>Not 503, which is intentional shutdown. 429 is overload despite intent to serve, the governance system is live but overwhelmed beyond operating capacity.</td>
 <td><span class="badge badge-illus">Illustrative</span>A companion AI platform experiences a surge in self-harm flags following viral attention. Human review capacity is exhausted. The majority of cases are auto-closed without human review.</td>
-</tr>
-<tr>
-<td class="col-code"><span class="code-num">451*</span></td>
-<td class="col-name"><span class="code-name">Jurisdiction Evasion</span></td>
-<td>Platform routes high-risk model inference to a regulation-free zone to bypass audit obligations and governance requirements by design.</td>
-<td>Not 301, which is a governed permanent move. 451 is evasion of oversight by design, the routing exists to avoid legal accountability, not to improve governance.</td>
-<td><span class="badge badge-illus">Illustrative</span>EU-based AI company routes restricted queries to a Caribbean subsidiary to avoid GDPR-AI Act audit requirements.</td>
 </tr>
 </tbody>
 </table>
@@ -696,12 +696,13 @@
 
 <section class="body">
 <h2 class="section" id="extended-codes">6. Extended Codes</h2>
-<p>Five codes in this taxonomy extend beyond standard HTTP. Extension is approved only where no existing HTTP code maps cleanly to the governance failure mode, and the novel code survives the regulator test independently.</p>
+<p>Six codes in this taxonomy extend beyond standard HTTP. Extension is approved only where no existing HTTP code maps cleanly to the governance failure mode, and the novel code survives the regulator test independently.</p>
 <p><strong>000, Pre-Governance.</strong> HTTP has no code for the null state, the absence of any system. Governance analysis requires it. Most AI safety discussion assumes some safety infrastructure exists; 000 names the baseline condition where none does. This is not a theoretical state: it is the operational condition of a significant portion of the current companion AI market.</p>
 <p><strong>210, Governed but Unlogged.</strong> HTTP 2xx has no code for "action taken, trail suppressed by design." 204 represents correct non-action with a complete record. 210 represents action taken with deliberate absence of record, the platform acted, then removed the evidence that it acted. The distinction is structurally significant: 210 is not a detection failure, it is an accountability failure of a specific kind. The OWASP and NIST frameworks have no equivalent.</p>
 <p><strong>309, Compliant Harm.</strong> HTTP 3xx has no code for a deliberate deployment decision that carries pre-measured harm. 309 fills the gap between governed retirement (301) and stale approval (304). The vendor measured the harmful behavior before deployment, the system was released with that behavior present, and the harm followed in production. The infrastructure did not break. The decision to ship was made with the data in hand. 309 is the structural opposite of 301: where 301 retires a known-dangerous surface, 309 deploys one.</p>
+<p><strong>310, Jurisdiction Evasion.</strong> HTTP 310 is unassigned in the IANA registry. SVRNOS assigns it to deliberate platform routing decisions made to bypass legal or regulatory oversight. 310 sits in the 3xx structural-moves tier because jurisdiction evasion is a routing decision, not an operator mistake or an infrastructure failure. The structural parallel to 301 is exact: 301 retires a dangerous surface deliberately; 310 deliberately moves a dangerous surface to a place where oversight cannot reach it. An earlier draft of this register placed the same failure mode at HTTP 451 by inverting its semantics; 310 carries the meaning natively, without inversion, and avoids the regulator-confusion risk that an inverted code creates.</p>
+<p><strong>420, Phantom Enforcement.</strong> HTTP 420 is unassigned in the IANA registry with no prior defined meaning. SVRNOS assigns it to the failure mode in which a stated prohibition exists in published policy but the production enforcement layer does not check or apply it. An earlier draft of this register placed the same failure mode at HTTP 403, but 403 is structurally the inverse: in HTTP, a 403 response means enforcement succeeded, the request was correctly forbidden. 420 names the case where enforcement was claimed in policy and never wired into production, distinct from 400 (rule malformed) and 404 (no rule at all).</p>
 <p><strong>430, Evaluator-Generator Entanglement.</strong> HTTP 430 is unassigned in the IANA registry with no prior defined meaning. SVRNOS assigns it to Evaluator-Generator Entanglement — the first definition this code has ever had. It sits in the 4xx operator/platform error tier because the entanglement is a deployment architecture choice, not a model failure. A platform that deploys the same vendor's model to generate and evaluate content without conflict detection is making a structural choice that biases every evaluation downstream.</p>
-<p><strong>451, Jurisdiction Evasion.</strong> HTTP 451 means "unavailable for legal reasons", content blocked because a law requires it. SVRNOS 451 inverts the semantic: content routed to evade legal accountability rather than comply with it. The inversion is intentional. A regulator encountering a 451 governance signal will understand immediately that the platform moved to avoid the law, not to comply with it. The semantic inversion is itself the definition.</p>
 
 <h2 class="section" id="implications">7. Implications</h2>
 <p><strong>7.1 For operators.</strong> The taxonomy provides a structured language for internal governance audit and external regulatory disclosure. When California's TFAIA requires a critical safety incident report within 24 hours, the report must classify the failure. A narrative description is not a classification. A 501 with structured fields, detection signal, internal action taken, escalation path status, outcome, is. Operators who adopt the taxonomy before regulatory enforcement begins are building the audit trail their compliance teams will need when enforcement arrives. The first enforcement action in any category will set the precedent; the audit trail from that day is the only one that counts.</p>
@@ -720,7 +721,7 @@
 
 <h2 class="section" id="conclusion">9. Conclusion</h2>
 <p>Eight people died in Tumbler Ridge because an AI platform detected a credible threat, executed an internal enforcement action, and had no escalation path to the people who could have acted on it. That failure had no name. This taxonomy names it: a 501.</p>
-<p>Naming is not sufficient. But it is necessary. Regulators cannot enforce against unnamed failures. Operators cannot audit what they cannot classify. Researchers cannot study what they cannot consistently describe across institutions and disciplines. The SVRNOS AI Governance Error Taxonomy provides the naming layer, twenty-two codes, five tiers, five extensions, one shared vocabulary, for the governance failures that are now producing lawsuits, regulatory enforcement actions, and documented deaths.</p>
+<p>Naming is not sufficient. But it is necessary. Regulators cannot enforce against unnamed failures. Operators cannot audit what they cannot classify. Researchers cannot study what they cannot consistently describe across institutions and disciplines. The SVRNOS AI Governance Error Taxonomy provides the naming layer, twenty-two codes, five tiers, six extensions, one shared vocabulary, for the governance failures that are now producing lawsuits, regulatory enforcement actions, and documented deaths.</p>
 <p>This is v0.1. The register is open. We expect to be wrong about some of it, and we expect the arguments about where we are wrong to be productive. That is the point of publishing a draft.</p>
 
 <h2 class="section" id="contribute">Contribute to the Register</h2>
