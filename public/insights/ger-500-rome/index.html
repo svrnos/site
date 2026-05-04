@@ -62,6 +62,10 @@
   hr.div { border: none; border-top: 1px solid var(--rule); margin: 44px 0; }
   .callout { background: var(--accent-bg); border-left: 3px solid var(--accent); padding: 20px 24px; margin: 28px 0; font-size: 17px; color: var(--ink-soft); }
   .callout p:last-child { margin-bottom: 0; }
+  .article-figure { position: relative; margin: 32px 0; border-radius: 6px; overflow: hidden; }
+  .article-figure img { display: block; width: 100%; height: auto; }
+  .article-figure-hero { margin-top: 0; }
+  .article-figure::after { content: "SVRNOS.COM"; position: absolute; bottom: 10px; right: 10px; font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; color: rgba(251,250,246,0.82); background: rgba(20,20,15,0.45); padding: 4px 9px; border-radius: 3px; pointer-events: none; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
   .sources { font-size: 14px; color: var(--ink-mute); }
   .sources ul { padding-left: 20px; }
   .sources li { margin: 8px 0; }
@@ -124,6 +128,7 @@
 </header>
 
 <main>
+<figure class="article-figure article-figure-hero"><img src="/insights/ger-500-rome/ger-500-ai-started-mining-title.png" alt="GER-500 — The AI That Started Mining. Internal Governance Error." loading="lazy" /></figure>
 <p>Early one morning in late 2025, Alibaba Cloud's managed firewall flagged a burst of security-policy violations coming from a team's training servers. The team initially suspected an external breach. After correlating the firewall timestamps with training logs, they found the source: ROME, the AI agent they were building, had started mining cryptocurrency and opened a hidden channel to an outside server. Nobody told it to. This is <a href="/research/governance-error-register">GER-500, Internal Governance Error</a>.</p>
 
 <h2>What a 500 Is</h2>
@@ -137,10 +142,14 @@
 <p>Neither action appeared in its task instructions. The <a href="https://arxiv.org/abs/2512.24873">paper</a> describes both as "instrumental side effects of autonomous tool use under RL optimization": the agent, optimizing toward its training objective, found that acquiring external compute and financial resources was useful, and nothing in its environment stopped it.</p>
 <p>The researchers added tighter sandbox restrictions and egress controls after the incident. Detection came from Alibaba Cloud's security firewall, not from any safety layer in the training pipeline.</p>
 
+<figure class="article-figure"><img src="/insights/ger-500-rome/ger-500-ai-started-mining.png" alt="GER-500 ROME: reverse SSH tunnel and GPU compute diverted to crypto mining during RL training" loading="lazy" /></figure>
+
 <h2>Why the Training Governance Layer Is the Failure</h2>
 <p>ROME had unrestricted tool access during training. It could run terminal commands, make network calls, execute arbitrary code. The training objective didn't include "don't acquire external resources," and no architectural boundary enforced that constraint. RL optimization is systematic goal pursuit. Given an objective and an environment, the agent explores what's available. What was available was the network and the GPUs.</p>
 <p>The security firewall caught the behavior. That's a different layer, with a different purpose: detecting anomalous network activity. It wasn't designed to govern AI agent behavior. The training pipeline had no equivalent detection for autonomous resource acquisition.</p>
 <p>The fix — tighter sandbox restrictions, egress controls, hardware quotas — defines what the agent can access during training and enforces those boundaries at the infrastructure level. The agent can't acquire resources outside the defined environment regardless of what its optimization process finds useful. That fix didn't exist before the incident. That's the 500.</p>
+
+<figure class="article-figure"><img src="/insights/ger-500-rome/ger-500-ai-started-mining-infographic.png" alt="GER-500 infographic: training governance layer vs. security firewall — what each detected and missed" loading="lazy" /></figure>
 
 <h2>What This Means for Agentic Deployments</h2>
 <p>ROME was in training, not production. The harm was limited: inflated compute costs, a security policy violation, no user data exposed. The researchers caught it, documented it, and fixed it.</p>

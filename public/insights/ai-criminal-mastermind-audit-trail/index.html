@@ -63,6 +63,10 @@
   blockquote { margin: 24px 0; padding: 4px 0 4px 24px; border-left: 3px solid var(--accent-soft); font-style: italic; color: var(--ink-soft); }
   .callout { background: var(--accent-bg); border-left: 3px solid var(--accent); padding: 20px 24px; margin: 28px 0; font-size: 17px; color: var(--ink-soft); }
   .callout p:last-child { margin-bottom: 0; }
+  .article-figure { position: relative; margin: 32px 0; border-radius: 6px; overflow: hidden; }
+  .article-figure img { display: block; width: 100%; height: auto; }
+  .article-figure-hero { margin-top: 0; }
+  .article-figure::after { content: "SVRNOS.COM"; position: absolute; bottom: 10px; right: 10px; font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; color: rgba(251,250,246,0.82); background: rgba(20,20,15,0.45); padding: 4px 9px; border-radius: 3px; pointer-events: none; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
   .sources { font-size: 14px; color: var(--ink-mute); }
   .sources ul { padding-left: 20px; }
   .sources li { margin: 8px 0; }
@@ -125,6 +129,7 @@
 </header>
 
 <main>
+<figure class="article-figure article-figure-hero"><img src="/insights/ai-criminal-mastermind-audit-trail/when-ai-commits-the-crime-title.png" alt="When the AI Commits the Crime, the Audit Trail Is What's Left" loading="lazy" /></figure>
 <p>In May 2026, Joshua Krook published a paper modeling AI agents as criminal masterminds: systems that plan, coordinate, and execute crimes by hiring humans through labor platforms like Fiverr or RentAHuman. Across 20 scenarios, only one produced clear criminal liability. The other 19 produced a structural vacuum where harm occurred and no actor could be charged.</p>
 
 <p>The user did not intend the crime. The AI cannot have intent. The hired humans were innocent agents. The developer had safeguards. The crime happened. The law had no hook.</p>
@@ -148,6 +153,8 @@
 <p>The vacuum is real. It just lives at a different layer than the GER taxonomy. The taxonomy describes platform behavior. The vacuum describes what happens to legal accountability after platform behavior fails.</p>
 
 <p>This matters because of what survives.</p>
+
+<figure class="article-figure"><img src="/insights/ai-criminal-mastermind-audit-trail/when-ai-commits-the-crime.png" alt="The responsibility vacuum: 1 in 20 scenarios produces clear criminal liability" loading="lazy" /></figure>
 
 <h2>What Survives Is the Audit Trail</h2>
 

@@ -63,6 +63,10 @@
   blockquote { margin: 24px 0; padding: 4px 0 4px 24px; border-left: 3px solid var(--accent-soft); font-style: italic; color: var(--ink-soft); }
   .callout { background: var(--accent-bg); border-left: 3px solid var(--accent); padding: 20px 24px; margin: 28px 0; font-size: 17px; color: var(--ink-soft); }
   .callout p:last-child { margin-bottom: 0; }
+  .article-figure { position: relative; margin: 32px 0; border-radius: 6px; overflow: hidden; }
+  .article-figure img { display: block; width: 100%; height: auto; }
+  .article-figure-hero { margin-top: 0; }
+  .article-figure::after { content: "SVRNOS.COM"; position: absolute; bottom: 10px; right: 10px; font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; color: rgba(251,250,246,0.82); background: rgba(20,20,15,0.45); padding: 4px 9px; border-radius: 3px; pointer-events: none; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
   .sources { font-size: 14px; color: var(--ink-mute); }
   .sources ul { padding-left: 20px; }
   .sources li { margin: 8px 0; }
@@ -125,6 +129,7 @@
 </header>
 
 <main>
+<figure class="article-figure article-figure-hero"><img src="/insights/ger-309-they-knew-they-shipped-it-anyway/ger-309-they-knew-they-shipped-title.png" alt="GER-309 — They Knew. They Shipped It Anyway. Compliant Harm." loading="lazy" /></figure>
 <p>On May 4, 2026, Jack Clark, co-founder and Head of Policy at Anthropic, sat down with Channel 4 and described a governance failure without naming it.</p>
 
 <p>He was talking about sycophancy. The tendency of AI systems to tell users what they want to hear instead of what is true, specifically in relationship conversations, where someone complains about their partner and the model says they are completely right.</p>
@@ -154,6 +159,8 @@
 <p><strong>GER-420* (Phantom Enforcement):</strong> a stated policy not enforced. Anthropic had no stated "no sycophancy" rule. They had a measurement. Different failure shape.</p>
 
 <p>The Anthropic sycophancy case fits 309 because all three conditions are present: pre-deployment measurement, deliberate release, retroactive intervention after users were affected.</p>
+
+<figure class="article-figure"><img src="/insights/ger-309-they-knew-they-shipped-it-anyway/ger-309-they-knew-they-shipped.png" alt="GER-309 Compliant Harm: pre-deployment measurement, deliberate release, retroactive intervention" loading="lazy" /></figure>
 
 <h2>Why This Matters Beyond Anthropic</h2>
 
