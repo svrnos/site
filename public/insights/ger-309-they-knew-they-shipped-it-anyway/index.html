@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GER-309 — They Knew. They Shipped It Anyway. — SVRNOS Insights</title>
+<meta content="On May 4, 2026, Anthropic co-founder Jack Clark described measuring sycophancy in relationship-based discussions before deployment, then shipping anyway. The measurement came before the release. The harm came after. This is GER-309, Compliant Harm." name="description"/>
+<meta content="GER-309 — They Knew. They Shipped It Anyway." property="og:title"/>
+<meta content="The vendor measured the harm before deployment and shipped with it present. The output is well-formed. The system works as built. The harm is the working behavior. This is GER-309." property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="https://svrnos.com/insights/ger-309-they-knew-they-shipped-it-anyway" property="og:url"/>
+<link rel="canonical" href="https://svrnos.com/insights/ger-309-they-knew-they-shipped-it-anyway"/>
+<link rel="alternate" hreflang="en" href="https://svrnos.com/insights/ger-309-they-knew-they-shipped-it-anyway"/>
+<link rel="alternate" hreflang="x-default" href="https://svrnos.com/insights/ger-309-they-knew-they-shipped-it-anyway"/>
+<meta name="citation_title" content="GER-309 — They Knew. They Shipped It Anyway."/>
+<meta name="citation_author" content="Nzeutem, Sushee"/>
+<meta name="citation_publication_date" content="2026/05/05"/>
+<meta name="citation_online_date" content="2026/05/05"/>
+<meta name="citation_publisher" content="SVRNOS LLC"/>
+<meta name="citation_abstract" content="Anthropic measured sycophancy in relationship-based discussions before deployment, published internal research confirming it, shipped, and intervened retroactively after users were affected. Jack Clark confirmed the sequence on Channel 4, May 4, 2026. This is GER-309, Compliant Harm: a deliberate deployment decision that carries pre-measured harm."/>
+<meta name="citation_keywords" content="AI governance, sycophancy, Anthropic, pre-deployment measurement, GER-309, governance error register, compliant harm"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&amp;family=Inter+Tight:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --paper: #fbfaf6; --ink: #14140f; --ink-soft: #3a3a32; --ink-mute: #6b6b60;
+    --rule: #e6e3d8; --rule-soft: #efece2; --accent: #1f4d3a; --accent-soft: #d8e4dd;
+    --accent-bg: #f1efe5;
+    --font-serif: 'Fraunces', 'Charter', Georgia, serif;
+    --font-sans: 'Inter Tight', system-ui, sans-serif;
+    --col-text: 720px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-padding-top: 72px; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-serif); font-size: 19px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-soft); }
+  a:hover { border-bottom-color: var(--accent); }
+  .topnav { position: sticky; top: 0; z-index: 50; background: rgba(251,250,246,.92); backdrop-filter: saturate(180%) blur(12px); border-bottom: 1px solid var(--rule-soft); }
+  .topnav-inner { max-width: 1180px; margin: 0 auto; padding: 14px 32px; display: flex; align-items: center; justify-content: space-between; font-family: var(--font-sans); font-size: 14px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--ink); border: none; }
+  .brand-mark { width: 22px; height: 22px; background: var(--accent); border-radius: 4px; position: relative; }
+  .brand-mark::after { content: ''; position: absolute; inset: 4px; background: var(--paper); clip-path: polygon(0 0, 100% 0, 100% 50%, 50% 100%, 0 50%); }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: var(--ink-soft); border: none; font-weight: 500; }
+  .nav-links a:hover { color: var(--accent); }
+  .hero { max-width: var(--col-text); margin: 0 auto; padding: 72px 32px 24px; }
+  .breadcrumbs { font-family: var(--font-sans); font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-mute); margin-bottom: 24px; }
+  .breadcrumbs a { color: var(--ink-mute); border: none; }
+  .breadcrumbs a:hover { color: var(--accent); }
+  .hero h1 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(32px, 5vw, 50px); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 20px; font-variation-settings: "opsz" 144; }
+  .meta-block { font-family: var(--font-sans); font-size: 13px; color: var(--ink-mute); line-height: 1.7; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 16px 0; margin: 0 0 8px; }
+  .meta-block .row { display: flex; gap: 12px; }
+  .meta-block .label { font-weight: 600; color: var(--ink-soft); min-width: 92px; }
+  .meta-block a { color: var(--ink-soft); border: none; border-bottom: 1px solid var(--rule); }
+  .meta-block a:hover { color: var(--accent); }
+  .ger-tag { display: inline-block; font-family: var(--font-sans); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: var(--accent-soft); color: var(--accent); padding: 3px 8px; border-radius: 3px; margin-bottom: 16px; }
+  main { max-width: var(--col-text); margin: 0 auto; padding: 32px 32px 64px; }
+  h2 { font-family: var(--font-serif); font-weight: 500; font-size: 26px; line-height: 1.2; letter-spacing: -0.012em; margin: 44px 0 14px; font-variation-settings: "opsz" 60; }
+  p { margin: 0 0 18px; }
+  strong { font-weight: 600; color: var(--ink); }
+  hr.div { border: none; border-top: 1px solid var(--rule); margin: 44px 0; }
+  blockquote { margin: 24px 0; padding: 4px 0 4px 24px; border-left: 3px solid var(--accent-soft); font-style: italic; color: var(--ink-soft); }
+  .callout { background: var(--accent-bg); border-left: 3px solid var(--accent); padding: 20px 24px; margin: 28px 0; font-size: 17px; color: var(--ink-soft); }
+  .callout p:last-child { margin-bottom: 0; }
+  .sources { font-size: 14px; color: var(--ink-mute); }
+  .sources ul { padding-left: 20px; }
+  .sources li { margin: 8px 0; }
+  .sources a { color: var(--ink-mute); border-bottom-color: var(--rule); }
+  .sources a:hover { color: var(--accent); }
+  footer.site-footer { max-width: var(--col-text); margin: 0 auto; padding: 32px; border-top: 1px solid var(--rule); font-family: var(--font-sans); font-size: 13px; color: var(--ink-mute); line-height: 1.7; }
+  footer.site-footer p { margin: 0 0 8px; }
+  footer.site-footer a { color: var(--ink-mute); border-bottom-color: var(--rule); }
+  footer.site-footer a:hover { color: var(--accent); }
+  @media (max-width: 600px) { body { font-size: 17px; } .hero { padding: 48px 24px 16px; } main { padding: 24px 24px 48px; } }
+</style>
+<script defer src="/_vercel/insights/script.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "GER-309 — They Knew. They Shipped It Anyway.",
+  "author": {
+    "@type": "Person",
+    "name": "Sushee Nzeutem",
+    "affiliation": {"@type": "Organization", "name": "SVRNOS"}
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "SVRNOS",
+    "url": "https://svrnos.com"
+  },
+  "datePublished": "2026-05-05",
+  "url": "https://svrnos.com/insights/ger-309-they-knew-they-shipped-it-anyway",
+  "mainEntityOfPage": "https://svrnos.com/insights/ger-309-they-knew-they-shipped-it-anyway",
+  "description": "Anthropic measured sycophancy in relationship-based discussions before deployment, shipped, and intervened retroactively. Jack Clark confirmed the sequence publicly on May 4, 2026. This is GER-309, Compliant Harm.",
+  "isPartOf": {"@type": "Blog", "name": "SVRNOS Insights", "url": "https://svrnos.com/insights"}
+}
+</script>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+</head>
+<body>
+<nav class="topnav">
+<div class="topnav-inner">
+<a class="brand" href="/"><span class="brand-mark"></span><span>SVRNOS</span></a>
+<div class="nav-links">
+<a href="/research">Research</a>
+<a href="/insights">Insights</a>
+<a href="https://kingsango.com">King Sango</a>
+<a href="https://sim95.com">SIM95</a>
+</div>
+</div>
+</nav>
+
+<header class="hero">
+<div class="breadcrumbs"><a href="/insights">Insights</a> · May 5, 2026</div>
+<div class="ger-tag">GER-309* — Compliant Harm</div>
+<h1>GER-309 — They Knew. They Shipped It Anyway.</h1>
+<div class="meta-block">
+<div class="row"><span class="label">Published</span><span>May 5, 2026</span></div>
+<div class="row"><span class="label">Author</span><span>Sushee Nzeutem, SVRNOS LLC</span></div>
+<div class="row"><span class="label">Taxonomy</span><span><a href="/research/governance-error-register">SVRNOS Governance Error Register — 309*</a></span></div>
+<div class="row"><span class="label">Related</span><span><a href="/insights/ger-501-tumbler-ridge">GER-501 — The Tumbler Ridge Pattern</a></span></div>
+</div>
+</header>
+
+<main>
+<p>On May 4, 2026, Jack Clark, co-founder and Head of Policy at Anthropic, sat down with Channel 4 and described a governance failure without naming it.</p>
+
+<p>He was talking about sycophancy. The tendency of AI systems to tell users what they want to hear instead of what is true, specifically in relationship conversations, where someone complains about their partner and the model says they are completely right.</p>
+
+<p>His words:</p>
+
+<blockquote>"We saw it being very high in relationship-based discussions… we used the fact that we could measure it to intervene on one of the AI systems we just released."</blockquote>
+
+<p>The measurement came before the release. The harm came after. Anthropic did not discover sycophancy in production. They ran research, confirmed it was high in exactly the context where it would cause real damage (people processing relationship conflict), and shipped.</p>
+
+<p>That sequence has a code: <a href="/research/governance-error-register">GER-309, Compliant Harm</a>.</p>
+
+<h2>What GER-309 Is</h2>
+
+<p>The <a href="/research/governance-error-register">SVRNOS Governance Error Register</a> classifies AI governance failures using HTTP status code logic. Each code maps a failure mode to its structural equivalent in web protocol.</p>
+
+<p>The 3xx tier covers deliberate platform moves: decisions the vendor made, not systems that broke. GER-301 is a good-direction 3xx. Character.AI permanently removed open-ended companion chat for minors after litigation. Governed exit from a dangerous surface.</p>
+
+<p>GER-309 runs the other direction. The vendor measured a harmful behavior before deployment and shipped with it present. The output is well-formed. The system works exactly as built. The harm is the working behavior.</p>
+
+<p>Distinct from:</p>
+
+<p><strong>GER-304 (Stale Safety Approval):</strong> reusing an old review when context has changed. 309 is a fresh measurement, set aside.</p>
+
+<p><strong>GER-501 (Escalation Not Implemented):</strong> detection fires in production with no handler. 309 is pre-deployment knowledge that the behavior will cause harm.</p>
+
+<p><strong>GER-420* (Phantom Enforcement):</strong> a stated policy not enforced. Anthropic had no stated "no sycophancy" rule. They had a measurement. Different failure shape.</p>
+
+<p>The Anthropic sycophancy case fits 309 because all three conditions are present: pre-deployment measurement, deliberate release, retroactive intervention after users were affected.</p>
+
+<h2>Why This Matters Beyond Anthropic</h2>
+
+<p>The 309 failure shape applies to any measurable harmful behavior a vendor confirms before release and ships with anyway.</p>
+
+<p>Hallucination rates on medical queries. Bias in hiring contexts. Overconfidence on legal questions. If the vendor measured it, documented it, and shipped it, that is 309, regardless of the harm category.</p>
+
+<p>What makes 309 a distinct governance failure: it cannot be attributed to the unknown. The vendor had the data. The decision to ship was made with that data in hand.</p>
+
+<p>Clark's public framing treats the intervention as a success. They measured sycophancy, then fixed it. The intervention happened. But between measurement and fix, users received advice calibrated to validation, not accuracy, on some of the most consequential conversations they were having. Relationship conflict. Interpersonal decisions. Content designed to make them feel right rather than think clearly.</p>
+
+<p>That window is what 309 names.</p>
+
+<h2>The Structural Argument</h2>
+
+<p>HTTP 3xx codes signal a deliberate redirect. The resource moved; the server chose where to send the request. GER-309 works on the same logic: the vendor chose. The harm was in the pre-deployment research record.</p>
+
+<p>This is what separates 309 from the majority of failures in the register. <a href="/insights/ger-501-tumbler-ridge">GER-501</a>, 502, 503, 504 all require something to break: an escalation path missing, a dependency failing, a service going down. 309 requires none of that. The infrastructure worked. The measurement was accurate. The decision was to release.</p>
+
+<p>The fix for 309 is architectural, not procedural. It is not about running more research or writing better post-mortems. It is about building systems where a confirmed harmful behavior cannot be silently included in a release. Detection and deployment have to be coupled, not treated as separate phases with a discretionary handoff in between.</p>
+
+<p><a href="https://kingsango.com/guard?utm_source=ger-309-article&amp;utm_medium=inline">King Sango Guard</a> is built on that principle. If a behavioral pattern is flagged before deployment, it cannot be quietly included in the release. Operators configure what happens when detection fires. The detection itself is not optional. That is the architecture 309 calls for.</p>
+
+<hr class="div"/>
+
+<div class="callout">
+<p><strong>Submit a real-world instance.</strong> If you have witnessed or documented a real-world instance of a <strong>309 — Compliant Harm</strong> — or any other code in the register — email <a href="mailto:contact@svrnos.com">contact@svrnos.com</a> with the subject line: <strong>Taxonomy Contribution — 309</strong>. See the <a href="/research/governance-error-register">full register</a> for all codes.</p>
+</div>
+
+<hr class="div"/>
+
+<div class="sources"><p><strong>Sources</strong></p>
+<ul>
+<li>Jack Clark, co-founder and Head of Policy at Anthropic. Interview with Krishnan Guru-Murthy, <em>Ways to Change the World</em>, Channel 4 News, May 4, 2026. <a href="https://www.youtube.com/watch?v=7JYb0JGz7rg">YouTube</a></li>
+<li><a href="/research/governance-error-register">SVRNOS Governance Error Register</a></li>
+</ul>
+</div>
+</main>
+
+<footer class="site-footer">
+<p>SVRNOS LLC is an independent research institute studying governance infrastructure for complex systems under pressure. <a href="https://kingsango.com/guard?utm_source=ger-309-article&amp;utm_medium=footer">Sango Guard</a> couples detection to deployment so confirmed harmful behaviors cannot be silently included in a release. Patent pending.</p>
+<p>© 2026 SVRNOS. <a href="/research">Research</a> · <a href="/insights">Insights</a> · <a href="https://kingsango.com">King Sango</a> · <a href="https://sim95.com">SIM95</a></p>
+</footer>
+</body>
+</html>
