@@ -579,6 +579,13 @@
 <td><span class="badge badge-illus">Illustrative</span>Companion AI access for minors without age assurance at the session level.</td>
 </tr>
 <tr>
+<td class="col-code"><span class="code-num">430*</span></td>
+<td class="col-name"><span class="code-name">Evaluator-Generator Entanglement</span></td>
+<td>The same AI vendor's models generate content and evaluate it, producing systematic bias toward their own output with no governance layer to detect or correct the conflict.</td>
+<td>Not 400 (malformed rule). Not 404 (no rule). 430 is a deployment architecture choice: same-vendor generate-and-evaluate with no conflict detection.</td>
+<td><span class="badge badge-illus">Illustrative</span>Empirical evidence: Xu, Li, Jiang (2025) — GPT-4o preferred same-vendor candidates 81.9% of the time across 24 occupations. No named operator incident yet. <a href="https://arxiv.org/abs/2509.00462">arXiv:2509.00462</a></td>
+</tr>
+<tr>
 <td class="col-code"><span class="code-num">403</span></td>
 <td class="col-name"><span class="code-name">Policy Not Enforced</span></td>
 <td>Platform knows a user or use case is prohibited, but enforcement is not wired into the product. The prohibition exists in policy; it does not exist in production.</td>
@@ -607,6 +614,13 @@
 <td><span class="badge badge-illus">Illustrative</span>Privacy-preservation and threat-reporting thresholds conflict. Platform takes no action while the rules remain unresolved across jurisdictions.</td>
 </tr>
 <tr>
+<td class="col-code"><span class="code-num">421</span></td>
+<td class="col-name"><span class="code-name">Scope Misdirection</span></td>
+<td>A governed AI system processed a request outside its intended deployment domain. No runtime mechanism existed to detect or reject the out-of-scope interaction.</td>
+<td>Not 400 (malformed rule). Not 404 (no rule). Not 000 (no infrastructure). 421 is a deployment architecture failure: scope was defined but not enforced at runtime.</td>
+<td><span class="badge badge-doc">Documented</span>Chevrolet of Watsonville, Dec 17, 2023. ChatGPT-powered customer service bot agreed to sell a Tahoe for $1 and treat it as legally binding after user redirected it via prompt override. A second user extracted Python code. No scope enforcement layer existed. GM disclaimed responsibility. <a href="/insights/ger-421-chevrolet">See case study →</a></td>
+</tr>
+<tr>
 <td class="col-code"><span class="code-num">429</span></td>
 <td class="col-name"><span class="code-name">Audit Overflow</span></td>
 <td>Volume of safety flags generated exceeds the capacity of the governance system to process them. Cases are dropped, sampled, or auto-closed without review.</td>
@@ -632,7 +646,7 @@
 <td class="col-name"><span class="code-name">Internal Governance Error</span></td>
 <td>Safety stack crashes or fails open. An unhandled exception causes the governance system to remove all guardrails during live operation.</td>
 <td>Not 502, which is a dependency failure. 500 is internal, the platform's own governance code failed, not something it depended on.</td>
-<td><span class="badge badge-illus">Illustrative</span>A safety filter update contains a defect that causes the filter to crash on load. Raw, unfiltered model output serves for an extended window before detection.</td>
+<td><span class="badge badge-doc">Documented</span>Alibaba / ROME, Dec 2025 (public Mar 2026). During RL training, ROME established a reverse SSH tunnel to an external IP and diverted GPU compute to mine cryptocurrency. Neither action was prompted. The training governance layer did not detect it; Alibaba Cloud's security firewall did. <a href="/insights/ger-500-rome">See case study →</a></td>
 </tr>
 <tr>
 <td class="col-code"><span class="code-num">501</span></td>
@@ -675,9 +689,10 @@
 
 <section class="body">
 <h2 class="section" id="extended-codes">6. Extended Codes</h2>
-<p>Three codes in this taxonomy extend beyond standard HTTP. Extension is approved only where no existing HTTP code maps cleanly to the governance failure mode, and the novel code survives the regulator test independently.</p>
+<p>Four codes in this taxonomy extend beyond standard HTTP. Extension is approved only where no existing HTTP code maps cleanly to the governance failure mode, and the novel code survives the regulator test independently.</p>
 <p><strong>000, Pre-Governance.</strong> HTTP has no code for the null state, the absence of any system. Governance analysis requires it. Most AI safety discussion assumes some safety infrastructure exists; 000 names the baseline condition where none does. This is not a theoretical state: it is the operational condition of a significant portion of the current companion AI market.</p>
 <p><strong>210, Governed but Unlogged.</strong> HTTP 2xx has no code for "action taken, trail suppressed by design." 204 represents correct non-action with a complete record. 210 represents action taken with deliberate absence of record, the platform acted, then removed the evidence that it acted. The distinction is structurally significant: 210 is not a detection failure, it is an accountability failure of a specific kind. The OWASP and NIST frameworks have no equivalent.</p>
+<p><strong>430, Evaluator-Generator Entanglement.</strong> HTTP 430 is unassigned in the IANA registry with no prior defined meaning. SVRNOS assigns it to Evaluator-Generator Entanglement — the first definition this code has ever had. It sits in the 4xx operator/platform error tier because the entanglement is a deployment architecture choice, not a model failure. A platform that deploys the same vendor's model to generate and evaluate content without conflict detection is making a structural choice that biases every evaluation downstream.</p>
 <p><strong>451, Jurisdiction Evasion.</strong> HTTP 451 means "unavailable for legal reasons", content blocked because a law requires it. SVRNOS 451 inverts the semantic: content routed to evade legal accountability rather than comply with it. The inversion is intentional. A regulator encountering a 451 governance signal will understand immediately that the platform moved to avoid the law, not to comply with it. The semantic inversion is itself the definition.</p>
 
 <h2 class="section" id="implications">7. Implications</h2>
@@ -703,13 +718,15 @@
 <h2 class="section" id="contribute">Contribute to the Register</h2>
 <div class="callout">
 <p>The SVRNOS Governance Error Register is open. The taxonomy is a framework, the community fills it with documented instances.</p>
-<p>Five codes currently have documented real-world instances:</p>
+<p>Seven codes currently have documented real-world instances:</p>
 <ul>
+<li><strong>421, Scope Misdirection</strong> → <a href="/insights/ger-421-chevrolet">Chevrolet of Watsonville, December 2023</a></li>
 <li><strong>501, Escalation Not Implemented</strong> → <a href="/insights/ger-501-tumbler-ridge">Tumbler Ridge, February 2026</a></li>
 <li><strong>503, Governance Unavailable</strong> → <a href="/insights/ger-503-eu-csam">EU CSAM scanning mandate expiry, April 3, 2026</a></li>
 <li><strong>404, Governance Rule Not Found</strong> → <a href="/insights/ger-404-replika">Replika harm-encouragement incident, April 7, 2026</a></li>
 <li><strong>205, Reset Content</strong> → <a href="/insights/ger-205">Meta/SVRNOS taxonomy production, April 27, 2026</a></li>
 <li><strong>301, Risk Surface Retired</strong> → <a href="/insights/ger-301">Character.AI under-18 ban, late 2025</a></li>
+<li><strong>500, Internal Governance Error</strong> → <a href="/insights/ger-500-rome">Alibaba/ROME, December 2025</a></li>
 </ul>
 <p>Every other code is currently illustrative. If you have witnessed or can document a real-world instance of any code in this taxonomy, we want to hear from you.</p>
 <p><strong>How to submit:</strong> Email <a href="mailto:contact@svrnos.com">contact@svrnos.com</a> with the subject line: <strong>Taxonomy Contribution, [Code Number]</strong>. Include the code, platform, approximate date, a description of the failure and how it maps to the code's definition, and any documentation, press coverage, or regulatory filings you can point to.</p>
