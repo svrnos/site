@@ -1,6 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { loadKnowledgeBundle } from "./_lib/kb.js";
 import { buildSystemPrompt } from "./_lib/prompt.js";
+import { checkRateLimit, clientIp } from "./_lib/ratelimit.js";
 import type { IncomingMessage, ServerResponse } from "node:http";
 
 const SUBMIT_TOOL = {
@@ -50,6 +51,13 @@ function send(res: ServerResponse, status: number, body: unknown): void {
 export default async function handler(req: IncomingMessage, res: ServerResponse): Promise<void> {
   try {
     if (req.method !== "POST") return send(res, 405, { error: "method not allowed" });
+
+    const ip = clientIp(req.headers);
+    const limit = checkRateLimit(ip);
+    if (!limit.ok) {
+      res.setHeader("retry-after", String(limit.retryAfterSec ?? 60));
+      return send(res, 429, { error: "rate limit exceeded", retry_after_sec: limit.retryAfterSec });
+    }
 
     const apiKey = process.env.ANTHROPIC_API_KEY;
     if (!apiKey) return send(res, 500, { error: "ANTHROPIC_API_KEY missing on this deployment environment" });
