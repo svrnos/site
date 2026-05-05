@@ -22,7 +22,7 @@ Behavioral truth measures observable behavior in simulated tasks. SIM95 measures
 
 **Sango Guard.** Existing AI safety operates per-prompt: does this single message pass the classifier? Sango Guard operates per-trajectory: does the conversation arc itself constitute harm? Most production safety stacks fire detection without binding it to enforcement — that gap is GER-501, documented across deployed incidents. Sango Guard closes the detection-to-action gap as runtime infrastructure, not policy.
 
-**Sango Voice.** Voice synthesis raced ahead of voice authentication. Sango Voice binds provenance into the voice itself — authentication isn't a downstream check, it's part of the signal. Existing tools assume voice authentication is something you do *after* the voice exists. Sango Voice treats authentication as a generation-time property.
+**King Sango Voice.** "System prompts are not identity. They're wishes. King Sango is governance." Existing AI agents rely on system prompts to hold character — and system prompts have a half-life. Voice drifts. Jailbreaks land. Sango Voice replaces wishful prompting with structurally enforced identity: 12-dimension identity artifacts that govern how an agent thinks, speaks, and holds under pressure. Voice holds at turn 1 and turn 1,000. Same conceptual frame as SIM95 (identity-under-pressure architecture), applied to AI agents instead of humans.
 
 **SIM95.** Personality measurement is decades old. Behavioral truth assessment is newer. Both measure the layer above identity-under-pressure. SIM95 measures the structural identity architecture itself: the dimensions that determine which way someone breaks when the environment forces a choice. Existing tools predict behavior in baseline conditions; SIM95 predicts behavior at the breaking point.
 
@@ -36,7 +36,7 @@ Behavioral truth measures observable behavior in simulated tasks. SIM95 measures
 
 **SIM95.** Identity-under-pressure is hard to measure synthetically. Personality tests scaled because they're cheap and self-report. SIM95 requires structural diagnostics, which are slower and need theoretical underpinning the field didn't have until recently. The Generation Gap research provides that underpinning.
 
-**Sango Voice.** Voice synthesis vendors and voice authentication vendors are different companies. Building authentication *into* the voice requires owning both ends of the pipeline. Most vendors own one end and partner for the other. Sango Voice owns both.
+**Sango Voice.** Vendors treated agent identity as a prompt-engineering problem — instruction tuning, system prompt iteration, LangChain-style scaffolding. Treating it as a structural enforcement layer requires a model of identity itself (which SIM95 provides), and a runtime that enforces it across turns. The pairing — identity model + enforcement runtime — didn't exist. Sango Voice is the operational expression of the SIM95 identity architecture, applied to AI agents.
 
 **The Generation Gap research.** Academic AI safety focused on alignment. Product AI safety focused on red-teaming. Cross-vendor empirical testing — pre-registered, multi-domain, structurally documented — fell between those stools. Required someone willing to do the slow, methodical work without an obvious academic or product home.
 
@@ -49,6 +49,6 @@ Behavioral truth measures observable behavior in simulated tasks. SIM95 measures
 If pressed for a generic shape:
 - **Sango Guard**: deploys as runtime middleware between the model and the user/action boundary. Does not require retraining. Integrates via standard request/response interception.
 - **SIM95**: deployed as a pre-engagement diagnostic, typically run before founder partnerships, leadership transitions, or institutional placements where pressure scenarios are foreseeable.
-- **Sango Voice**: deployed as a generation-time component. Provenance binding is part of the synthesis pipeline; can't be added after the fact.
+- **Sango Voice**: drop-in replacement for your LLM call. Same integration pattern; swap your provider endpoint for \`api.kingsango.com/v1/chat\`. Identity is server-side governed (the user never sees the prompt). 12 pre-built identity archetypes (Commander, Counselor, Spark, Architect, etc.) or custom voice via consultation. Currently in private beta.
 
 But the actual integration depends on specifics. Route the user to the team rather than improvise architecture in chat.`;
