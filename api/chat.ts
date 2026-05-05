@@ -75,7 +75,7 @@ async function recordSubmission(args: SubmissionArgs): Promise<{ ok: boolean; id
     method: "POST",
     headers: { authorization: `Bearer ${resendKey}`, "content-type": "application/json" },
     body: JSON.stringify({
-      from: "SVRNOS Bot <onboarding@resend.dev>",
+      from: "SVRNOS Submissions <submissions@svrnos.com>",
       to: [to],
       reply_to: args.contributor_email,
       subject,
