@@ -1,6 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
-import { loadKnowledgeBundle } from "./_lib/kb";
-import { buildSystemPrompt } from "./_lib/prompt";
+import { loadKnowledgeBundle } from "./_lib/kb.js";
+import { buildSystemPrompt } from "./_lib/prompt.js";
 
 const SUBMIT_TOOL = {
   name: "submit_observation",
