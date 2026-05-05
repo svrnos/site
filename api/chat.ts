@@ -35,8 +35,6 @@ async function writeToNotion(_args: Record<string, unknown>): Promise<{ ok: true
   return { ok: true, id: `pending-${Date.now()}` };
 }
 
-export const config = { runtime: "edge" };
-
 export default async function handler(req: Request): Promise<Response> {
   if (req.method !== "POST") return new Response("method not allowed", { status: 405 });
 
