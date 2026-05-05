@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ask SVRNOS</title>
+<meta content="Ask the SVRNOS assistant about our research, the Governance Error Register, or our products. Or contribute an observation." name="description"/>
+<meta content="Ask SVRNOS" property="og:title"/>
+<meta content="Ask the SVRNOS assistant about our research, the Governance Error Register, or our products." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://svrnos.com/ask" property="og:url"/>
+<link rel="canonical" href="https://svrnos.com/ask"/>
+<meta name="robots" content="noindex"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&amp;family=Inter+Tight:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --paper: #fbfaf6; --ink: #14140f; --ink-soft: #3a3a32; --ink-mute: #6b6b60;
+    --rule: #e6e3d8; --rule-soft: #efece2; --accent: #1f4d3a; --accent-soft: #d8e4dd;
+    --font-serif: 'Fraunces', 'Charter', Georgia, serif;
+    --font-sans: 'Inter Tight', system-ui, sans-serif;
+    --col-text: 920px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-serif); font-size: 19px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-soft); }
+  a:hover { border-bottom-color: var(--accent); }
+  .topnav { position: sticky; top: 0; z-index: 50; background: rgba(251,250,246,.92); backdrop-filter: saturate(180%) blur(12px); border-bottom: 1px solid var(--rule-soft); }
+  .topnav-inner { max-width: 1180px; margin: 0 auto; padding: 14px 32px; display: flex; align-items: center; justify-content: space-between; font-family: var(--font-sans); font-size: 14px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--ink); border: none; }
+  .brand-mark { width: 22px; height: 22px; background: var(--accent); border-radius: 4px; position: relative; }
+  .brand-mark::after { content: ''; position: absolute; inset: 4px; background: var(--paper); clip-path: polygon(0 0, 100% 0, 100% 50%, 50% 100%, 0 50%); }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: var(--ink-soft); border: none; font-weight: 500; }
+  .nav-links a:hover { color: var(--accent); }
+  .hero { max-width: var(--col-text); margin: 0 auto; padding: 80px 32px 24px; }
+  .hero-meta { font-family: var(--font-sans); font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-mute); margin-bottom: 24px; }
+  .hero h1 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(38px, 5.5vw, 56px); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 20px; font-variation-settings: "opsz" 144; }
+  .hero p.lede { font-family: var(--font-serif); font-size: 20px; line-height: 1.55; color: var(--ink-soft); font-style: italic; margin: 0 0 16px; font-weight: 300; }
+  main { max-width: var(--col-text); margin: 0 auto; padding: 16px 32px 80px; }
+  .chat { display: flex; flex-direction: column; gap: 0; min-height: 420px; }
+  .messages { display: flex; flex-direction: column; gap: 28px; padding: 8px 0 32px; }
+  .msg { display: flex; flex-direction: column; gap: 6px; }
+  .msg-label { font-family: var(--font-sans); font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-mute); }
+  .msg-user .msg-label { color: var(--accent); }
+  .msg-body { font-family: var(--font-serif); font-size: 18px; line-height: 1.6; color: var(--ink); }
+  .msg-body p { margin: 0 0 12px; }
+  .msg-body p:last-child { margin-bottom: 0; }
+  .msg-body strong { font-weight: 600; }
+  .msg-body code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 0.9em; background: var(--rule-soft); padding: 1px 5px; border-radius: 3px; }
+  .msg-body ul, .msg-body ol { margin: 0 0 12px; padding-left: 22px; }
+  .msg-body li { margin-bottom: 4px; }
+  .msg-body blockquote { border-left: 3px solid var(--accent-soft); margin: 0 0 12px; padding: 4px 0 4px 16px; color: var(--ink-soft); font-style: italic; }
+  .thinking { font-family: var(--font-sans); font-size: 14px; color: var(--ink-mute); font-style: italic; }
+  .thinking::after { content: '...'; display: inline-block; animation: dots 1.4s infinite; }
+  @keyframes dots { 0%, 20% { content: '.'; } 40% { content: '..'; } 60%, 100% { content: '...'; } }
+  .compose { border-top: 1px solid var(--rule); padding-top: 20px; display: flex; flex-direction: column; gap: 12px; }
+  .compose textarea { width: 100%; min-height: 80px; padding: 14px 16px; border: 1px solid var(--rule); border-radius: 4px; background: var(--paper); color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 1.5; resize: vertical; outline: none; }
+  .compose textarea:focus { border-color: var(--accent); }
+  .compose textarea:disabled { opacity: 0.5; cursor: not-allowed; }
+  .compose-row { display: flex; align-items: center; justify-content: space-between; font-family: var(--font-sans); font-size: 13px; color: var(--ink-mute); }
+  .compose button { font-family: var(--font-sans); font-size: 14px; font-weight: 500; padding: 10px 22px; background: var(--accent); color: var(--paper); border: none; border-radius: 4px; cursor: pointer; transition: background 0.15s; }
+  .compose button:hover:not(:disabled) { background: #163d2e; }
+  .compose button:disabled { opacity: 0.5; cursor: not-allowed; }
+  .empty { padding: 40px 0; text-align: center; font-family: var(--font-serif); font-style: italic; color: var(--ink-mute); }
+  .error { padding: 12px 16px; background: #f5e8e3; border: 1px solid #d4a89a; border-radius: 4px; color: #6b2d1a; font-family: var(--font-sans); font-size: 14px; }
+  footer.site-footer { max-width: var(--col-text); margin: 0 auto; padding: 32px; border-top: 1px solid var(--rule); font-family: var(--font-sans); font-size: 13px; color: var(--ink-mute); }
+  footer.site-footer a { color: var(--ink-mute); border-bottom-color: var(--rule); }
+  footer.site-footer a:hover { color: var(--accent); }
+</style>
+<script defer src="/_vercel/insights/script.js"></script>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="stylesheet" href="/css/chrome.css"/>
+<script defer src="/js/chrome.js"></script>
+</head>
+<body>
+<nav class="topnav">
+<div class="topnav-inner">
+<a class="brand" href="/"><span class="brand-mark"></span><span>SVRNOS</span></a>
+<div class="nav-links">
+<a href="/#thesis">Thesis</a>
+<a href="/research">Research</a>
+<a href="/insights">Insights</a>
+<a href="/patents">Patents</a>
+<a href="/products">Products</a>
+<a href="/#contact">Contact</a>
+</div>
+</div>
+</nav>
+
+<header class="hero">
+<p class="hero-meta">SVRNOS · Ask</p>
+<h1>Ask the assistant</h1>
+<p class="lede">Questions about our research, the Governance Error Register, or our products. If you've observed a governance failure in the wild, you can describe it here too — the assistant will tell you whether it fits an existing code.</p>
+</header>
+
+<main>
+<section class="chat">
+  <div class="messages" id="messages">
+    <div class="empty">Start a conversation.</div>
+  </div>
+  <form class="compose" id="compose">
+    <textarea id="input" placeholder="Ask a question, or describe a governance-failure observation…" autocomplete="off"></textarea>
+    <div class="compose-row">
+      <span id="hint">Replies are not stored. Submissions to the GER are reviewed editorially.</span>
+      <button type="submit" id="send">Send</button>
+    </div>
+  </form>
+</section>
+</main>
+
+<footer class="site-footer">
+<p>© 2026 Sovereign OS LLC. <a href="/research">Research</a> · <a href="/insights">Insights</a> · <a href="/patents">Patents</a> · <a href="/products">Products</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="mailto:contact@svrnos.com">contact@svrnos.com</a></p>
+</footer>
+
+<script>
+(() => {
+  const messagesEl = document.getElementById('messages');
+  const form = document.getElementById('compose');
+  const input = document.getElementById('input');
+  const sendBtn = document.getElementById('send');
+  const hintEl = document.getElementById('hint');
+
+  const history = [];
+  let thinkingEl = null;
+
+  function escapeHtml(s) {
+    return s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+
+  // Minimal markdown: headings → bold, **bold**, `code`, [text](url), paragraphs, > blockquote, lists.
+  function renderMarkdown(text) {
+    const escaped = escapeHtml(text);
+    const lines = escaped.split('\n');
+    const out = [];
+    let listType = null;
+    let para = [];
+
+    const flushPara = () => {
+      if (para.length) {
+        out.push('<p>' + inline(para.join(' ')) + '</p>');
+        para = [];
+      }
+    };
+    const flushList = () => {
+      if (listType) { out.push('</' + listType + '>'); listType = null; }
+    };
+
+    function inline(s) {
+      return s
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.+?)\*/g, '<em>$1</em>')
+        .replace(/`([^`]+)`/g, '<code>$1</code>')
+        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+    }
+
+    for (const raw of lines) {
+      const line = raw.trimEnd();
+      if (!line.trim()) { flushPara(); flushList(); continue; }
+      if (/^#{1,6}\s/.test(line)) { flushPara(); flushList(); out.push('<p><strong>' + inline(line.replace(/^#+\s+/, '')) + '</strong></p>'); continue; }
+      if (/^>\s/.test(line)) { flushPara(); flushList(); out.push('<blockquote>' + inline(line.replace(/^>\s+/, '')) + '</blockquote>'); continue; }
+      const ul = line.match(/^[-*]\s+(.*)/);
+      const ol = line.match(/^\d+\.\s+(.*)/);
+      if (ul) { flushPara(); if (listType !== 'ul') { flushList(); out.push('<ul>'); listType = 'ul'; } out.push('<li>' + inline(ul[1]) + '</li>'); continue; }
+      if (ol) { flushPara(); if (listType !== 'ol') { flushList(); out.push('<ol>'); listType = 'ol'; } out.push('<li>' + inline(ol[1]) + '</li>'); continue; }
+      flushList();
+      para.push(line);
+    }
+    flushPara(); flushList();
+    return out.join('');
+  }
+
+  function appendMessage(role, body) {
+    const empty = messagesEl.querySelector('.empty');
+    if (empty) empty.remove();
+    const wrap = document.createElement('div');
+    wrap.className = 'msg msg-' + role;
+    const label = document.createElement('div');
+    label.className = 'msg-label';
+    label.textContent = role === 'user' ? 'You' : 'SVRNOS';
+    const content = document.createElement('div');
+    content.className = 'msg-body';
+    if (role === 'user') {
+      content.textContent = body;
+    } else {
+      content.innerHTML = renderMarkdown(body);
+    }
+    wrap.appendChild(label);
+    wrap.appendChild(content);
+    messagesEl.appendChild(wrap);
+    wrap.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    return wrap;
+  }
+
+  function showThinking() {
+    const wrap = document.createElement('div');
+    wrap.className = 'msg msg-assistant';
+    wrap.innerHTML = '<div class="msg-label">SVRNOS</div><div class="thinking">thinking</div>';
+    messagesEl.appendChild(wrap);
+    wrap.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    thinkingEl = wrap;
+  }
+
+  function clearThinking() {
+    if (thinkingEl) { thinkingEl.remove(); thinkingEl = null; }
+  }
+
+  function showError(msg) {
+    clearThinking();
+    const err = document.createElement('div');
+    err.className = 'error';
+    err.textContent = msg;
+    messagesEl.appendChild(err);
+    err.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  }
+
+  async function send(text) {
+    history.push({ role: 'user', content: text });
+    appendMessage('user', text);
+    showThinking();
+    sendBtn.disabled = true;
+    input.disabled = true;
+
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ messages: history, product: 'svrnos' }),
+      });
+
+      if (res.status === 429) {
+        const data = await res.json().catch(() => ({}));
+        showError('Slow down — too many requests. Try again in ' + (data.retry_after_sec ?? 60) + 's.');
+        history.pop();
+        return;
+      }
+      if (!res.ok) {
+        showError('Something went wrong. Please try again, or email contact@svrnos.com.');
+        history.pop();
+        return;
+      }
+
+      const data = await res.json();
+      clearThinking();
+      const reply = data.message ?? '';
+      history.push({ role: 'assistant', content: reply });
+      appendMessage('assistant', reply);
+    } catch (e) {
+      showError('Network error. Please try again.');
+      history.pop();
+    } finally {
+      sendBtn.disabled = false;
+      input.disabled = false;
+      input.focus();
+    }
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
+    input.value = '';
+    send(text);
+  });
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
+      e.preventDefault();
+      form.requestSubmit();
+    }
+  });
+
+  input.focus();
+})();
+</script>
+</body>
+</html>

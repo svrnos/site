@@ -194,7 +194,7 @@ Five codes currently have documented real-world instances:
 
 Every other code is currently illustrative. If you have witnessed or can document a real-world instance of any code in this taxonomy, we want to hear from you.
 
-**How to submit:** Email [contact@svrnos.com](mailto:contact@svrnos.com) with the subject line: **Taxonomy Contribution, [Code Number]**. Include the code, platform, approximate date, a description of the failure and how it maps to the code's definition, and any documentation, press coverage, or regulatory filings you can point to.
+**How to submit:** [click here to submit ›](/ask). The assistant will classify your observation against the register, collect the relevant detail (platform, date, evidence trail), and route it for editorial review.
 
 All submissions are reviewed before being added to the register. Submitters are credited by name if they wish. Submissions that cannot be independently verified will be labeled Illustrative rather than Documented.
 

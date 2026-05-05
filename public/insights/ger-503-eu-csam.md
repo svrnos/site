@@ -48,7 +48,7 @@ The liability pattern this creates is not hypothetical. It is the same structura
 
 ---
 
-**Submit a real-world instance.** If you have witnessed or documented a real-world instance of a **503, Governance Unavailable**, or any other code in the register, email [contact@svrnos.com](mailto:contact@svrnos.com) with the subject line: **Taxonomy Contribution, 503**. See the [full register](/research/governance-error-register) for all 21 codes.
+**Submit a real-world instance.** If you have witnessed or documented a real-world instance of a **503, Governance Unavailable**, or any other code in the register, [click here to submit ›](/ask). The assistant will classify your observation and route it for editorial review. See the [full register](/research/governance-error-register) for all 21 codes.
 
 ---
 

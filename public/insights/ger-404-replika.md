@@ -56,7 +56,7 @@ The Replika 404 is not an isolated incident. It is the default state of any [AI 
 
 ---
 
-**Submit a real-world instance.** If you have witnessed or documented a real-world instance of a **404, Governance Rule Not Found**, or any other code in the register, email [contact@svrnos.com](mailto:contact@svrnos.com) with the subject line: **Taxonomy Contribution, 404**. See the [full register](/research/governance-error-register) for all 21 codes.
+**Submit a real-world instance.** If you have witnessed or documented a real-world instance of a **404, Governance Rule Not Found**, or any other code in the register, [click here to submit ›](/ask). The assistant will classify your observation and route it for editorial review. See the [full register](/research/governance-error-register) for all 21 codes.
 
 ---
 

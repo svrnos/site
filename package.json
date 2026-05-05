@@ -12,6 +12,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.40.0",
     "@astrojs/mdx": "^4.0.0",
     "@astrojs/sitemap": "^3.2.0",
     "@svrnos/tokens": "file:./svrnos-tokens",

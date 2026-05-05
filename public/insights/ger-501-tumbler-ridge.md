@@ -70,7 +70,7 @@ In the [SVRNOS Governance Error Register](/research/governance-error-register), 
 
 **Submit a real-world instance.** The SVRNOS Governance Error Register is an open, community-contributed record. The Tumbler Ridge case is the first documented instance of a **501**. We are collecting others.
 
-If you have witnessed or documented a real-world instance of a **501, Escalation Not Implemented**, or any other code in the register, email [contact@svrnos.com](mailto:contact@svrnos.com) with the subject line: **Taxonomy Contribution, 501**. See the [full register](/research/governance-error-register) for all 21 codes.
+If you have witnessed or documented a real-world instance of a **501, Escalation Not Implemented**, or any other code in the register, [click here to submit ›](/ask). The assistant will classify your observation and route it for editorial review. See the [full register](/research/governance-error-register) for all 21 codes.
 
 ---
 
