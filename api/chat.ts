@@ -1,6 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { loadKnowledgeBundle } from "./_lib/kb.js";
-import { buildSystemPrompt } from "./_lib/prompt.js";
+import { buildSystemPrompt } from "./_lib/prompt/index.js";
 import { checkRateLimit, clientIp } from "./_lib/ratelimit.js";
 import type { IncomingMessage, ServerResponse } from "node:http";
 
