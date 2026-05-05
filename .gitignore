@@ -10,6 +10,11 @@ node_modules/
 # Local Claude config (per-user)
 .claude/
 
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+
 # Legacy backups (kept locally, not for git)
 *.bak
 *.pdf.bak*
