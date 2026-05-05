@@ -142,7 +142,7 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
     while (safety++ < 4) {
       const resp = await client.messages.create({
         model: "claude-haiku-4-5-20251001",
-        max_tokens: 400,
+        max_tokens: 250,
         system,
         tools: [SUBMIT_TOOL],
         messages: turnMessages,
