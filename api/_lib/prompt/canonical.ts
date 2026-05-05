@@ -49,6 +49,6 @@ Behavioral truth measures observable behavior in simulated tasks. SIM95 measures
 If pressed for a generic shape:
 - **Sango Guard**: deploys as runtime middleware between the model and the user/action boundary. Does not require retraining. Integrates via standard request/response interception.
 - **SIM95**: deployed as a pre-engagement diagnostic, typically run before founder partnerships, leadership transitions, or institutional placements where pressure scenarios are foreseeable.
-- **Sango Voice**: drop-in replacement for your LLM call. Same integration pattern; swap your provider endpoint for \`api.kingsango.com/v1/chat\`. Identity is server-side governed (the user never sees the prompt). 12 pre-built identity archetypes (Commander, Counselor, Spark, Architect, etc.) or custom voice via consultation. Currently in private beta.
+- **Sango Voice**: drop-in replacement for your LLM call. Same integration pattern; swap your provider endpoint for \`api.kingsango.com/v1/chat\`. Identity is server-side governed (the user never sees the prompt). 12 pre-built identity archetypes (Commander, Counselor, Spark, Architect, etc.) or custom voice via consultation.
 
 But the actual integration depends on specifics. Route the user to the team rather than improvise architecture in chat.`;
