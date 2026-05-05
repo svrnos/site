@@ -9,6 +9,14 @@ const KB_URLS = {
     "https://svrnos.com/insights/ger-501.md",
     "https://svrnos.com/insights/ger-501-tumbler-ridge.md",
     "https://svrnos.com/insights/ger-503-eu-csam.md",
+    "https://svrnos.com/insights/the-generation-gap-explained.md",
+    "https://svrnos.com/insights/algorithmic-compliance-companion-harm.md",
+    "https://svrnos.com/insights/companion-ai-harm.md",
+    "https://svrnos.com/insights/ccdh-eight-in-ten-chatbots-violent-planning.md",
+    "https://svrnos.com/insights/florida-ag-fsu-openai-criminal-probe.md",
+    "https://svrnos.com/insights/wa-distress-routing-mandate.md",
+    "https://svrnos.com/insights/musk-altman-sim95.md",
+    "https://svrnos.com/insights/when-detection-fires-but-nothing-stops.md",
   ],
 };
 
