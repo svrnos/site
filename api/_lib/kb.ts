@@ -18,6 +18,9 @@ const KB_URLS = {
     "https://svrnos.com/insights/musk-altman-sim95.md",
     "https://svrnos.com/insights/when-detection-fires-but-nothing-stops.md",
   ],
+  products: [
+    "https://kingsango.com/guard/integration.md",
+  ],
 };
 
 let cached: { text: string; fetchedAt: number } | null = null;
@@ -32,16 +35,21 @@ async function fetchText(url: string): Promise<string> {
 export async function loadKnowledgeBundle(): Promise<string> {
   if (cached && Date.now() - cached.fetchedAt < TTL_MS) return cached.text;
 
-  const [llms, ger, ...insights] = await Promise.all([
+  const insightCount = KB_URLS.insights.length;
+  const [llms, ger, ...rest] = await Promise.all([
     fetchText(KB_URLS.llms),
     fetchText(KB_URLS.ger),
     ...KB_URLS.insights.map(fetchText),
+    ...KB_URLS.products.map(fetchText),
   ]);
+  const insights = rest.slice(0, insightCount);
+  const products = rest.slice(insightCount);
 
   const sections = [
     "# llms.txt\n\n" + llms,
     "# Governance Error Register (canonical)\n\n" + ger,
     ...KB_URLS.insights.map((url, i) => `# ${url}\n\n${insights[i]}`),
+    ...KB_URLS.products.map((url, i) => `# ${url}\n\n${products[i]}`),
   ];
 
   const text = sections.join("\n\n---\n\n");
