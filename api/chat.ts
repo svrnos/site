@@ -26,6 +26,27 @@ const SUBMIT_TOOL = {
   },
 };
 
+const INQUIRY_TOOL = {
+  name: "submit_inquiry",
+  description:
+    "Forward a general contact inquiry to the SVRNOS team. Use this when a visitor wants to reach the team about something OTHER than a GER incident submission — sales/integration questions, press requests, partnership/research interest, or general contact. Call ONLY after the visitor has explicitly said yes to being contacted AND has provided a name AND a contact email AND you have a clear summary of what they want.",
+  input_schema: {
+    type: "object" as const,
+    properties: {
+      contact_name: { type: "string", description: "Visitor's name, or 'anonymous'" },
+      contact_email: { type: "string", description: "Visitor's contact email" },
+      contact_company: { type: "string", description: "Company or organization, or empty" },
+      kind: {
+        type: "string",
+        enum: ["sales", "press", "partnership", "research", "general"],
+        description: "Best classification of the inquiry intent",
+      },
+      summary: { type: "string", description: "Concise summary of what the visitor wants, in their own words" },
+    },
+    required: ["contact_name", "contact_email", "kind", "summary"],
+  },
+};
+
 type Msg = { role: "user" | "assistant"; content: string };
 
 type SubmissionArgs = {
@@ -35,6 +56,14 @@ type SubmissionArgs = {
   ger_code?: string;
   summary: string;
   sources_cited?: string;
+};
+
+type InquiryArgs = {
+  contact_name: string;
+  contact_email: string;
+  contact_company?: string;
+  kind: "sales" | "press" | "partnership" | "research" | "general";
+  summary: string;
 };
 
 function escapeHtml(s: string): string {
@@ -47,16 +76,37 @@ function classificationLabel(c: SubmissionArgs["classification"]): string {
   return "No match — manual review";
 }
 
-async function recordSubmission(args: SubmissionArgs): Promise<{ ok: boolean; id: string }> {
-  console.log("[contribute]", JSON.stringify(args));
-
+async function sendEmail(opts: { subject: string; html: string; replyTo: string }): Promise<{ ok: boolean; id: string }> {
   const resendKey = process.env.RESEND_API_KEY;
   const to = process.env.SUBMISSION_EMAIL;
   if (!resendKey || !to) return { ok: false, id: "no-mail-config" };
 
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { authorization: `Bearer ${resendKey}`, "content-type": "application/json" },
+    body: JSON.stringify({
+      from: "SVRNOS Submissions <submissions@svrnos.com>",
+      to: [to],
+      reply_to: opts.replyTo,
+      subject: opts.subject,
+      html: opts.html,
+    }),
+  });
+
+  if (!res.ok) {
+    const errBody = await res.text();
+    console.error("[chat] resend failed:", res.status, errBody);
+    return { ok: false, id: `mail-failed-${res.status}` };
+  }
+  const out = (await res.json()) as { id?: string };
+  return { ok: true, id: out.id ?? "sent" };
+}
+
+async function recordSubmission(args: SubmissionArgs): Promise<{ ok: boolean; id: string }> {
+  console.log("[contribute]", JSON.stringify(args));
+
   const codeTag = args.ger_code ? `GER-${args.ger_code}` : "no-match";
   const subject = `[${codeTag} · ${classificationLabel(args.classification)}] ${args.contributor_name} — submission`;
-
   const html = `
     <div style="font-family: system-ui, -apple-system, sans-serif; max-width: 640px; line-height: 1.5; color: #14140f;">
       <h2 style="margin: 0 0 16px;">SVRNOS — new GER submission</h2>
@@ -70,26 +120,27 @@ async function recordSubmission(args: SubmissionArgs): Promise<{ ok: boolean; id
       <p style="color: #6b6b60; font-size: 13px; margin: 24px 0 0;">Submitted via svrnos.com/ask · ${new Date().toISOString()}</p>
     </div>
   `;
+  return sendEmail({ subject, html, replyTo: args.contributor_email });
+}
 
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: { authorization: `Bearer ${resendKey}`, "content-type": "application/json" },
-    body: JSON.stringify({
-      from: "SVRNOS Submissions <submissions@svrnos.com>",
-      to: [to],
-      reply_to: args.contributor_email,
-      subject,
-      html,
-    }),
-  });
+async function recordInquiry(args: InquiryArgs): Promise<{ ok: boolean; id: string }> {
+  console.log("[inquiry]", JSON.stringify(args));
 
-  if (!res.ok) {
-    const errBody = await res.text();
-    console.error("[contribute] resend failed:", res.status, errBody);
-    return { ok: false, id: `mail-failed-${res.status}` };
-  }
-  const out = (await res.json()) as { id?: string };
-  return { ok: true, id: out.id ?? "sent" };
+  const subject = `[Inquiry · ${args.kind}] ${args.contact_name}${args.contact_company ? ` (${args.contact_company})` : ""} — message`;
+  const html = `
+    <div style="font-family: system-ui, -apple-system, sans-serif; max-width: 640px; line-height: 1.5; color: #14140f;">
+      <h2 style="margin: 0 0 16px;">SVRNOS — new inquiry</h2>
+      <table style="width: 100%; border-collapse: collapse; margin: 0 0 24px;">
+        <tr><td style="padding: 6px 12px 6px 0; color: #6b6b60; vertical-align: top; width: 160px;">Kind</td><td style="padding: 6px 0;">${escapeHtml(args.kind)}</td></tr>
+        <tr><td style="padding: 6px 12px 6px 0; color: #6b6b60; vertical-align: top;">Contact</td><td style="padding: 6px 0;">${escapeHtml(args.contact_name)} &lt;<a href="mailto:${escapeHtml(args.contact_email)}">${escapeHtml(args.contact_email)}</a>&gt;</td></tr>
+        ${args.contact_company ? `<tr><td style="padding: 6px 12px 6px 0; color: #6b6b60; vertical-align: top;">Company</td><td style="padding: 6px 0;">${escapeHtml(args.contact_company)}</td></tr>` : ""}
+      </table>
+      <h3 style="margin: 0 0 8px;">Message</h3>
+      <div style="white-space: pre-wrap; padding: 12px 16px; background: #fbfaf6; border: 1px solid #e6e3d8; border-radius: 4px;">${escapeHtml(args.summary)}</div>
+      <p style="color: #6b6b60; font-size: 13px; margin: 24px 0 0;">Sent via svrnos.com/ask · ${new Date().toISOString()}</p>
+    </div>
+  `;
+  return sendEmail({ subject, html, replyTo: args.contact_email });
 }
 
 function readBody(req: IncomingMessage): Promise<string> {
@@ -144,7 +195,7 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
         model: "claude-haiku-4-5-20251001",
         max_tokens: 400,
         system,
-        tools: [SUBMIT_TOOL],
+        tools: [SUBMIT_TOOL, INQUIRY_TOOL],
         messages: turnMessages,
       });
 
@@ -154,7 +205,10 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
         return send(res, 200, { message: text, stop_reason: resp.stop_reason });
       }
 
-      const result = await recordSubmission(toolUse.input as SubmissionArgs);
+      const result =
+        toolUse.name === "submit_inquiry"
+          ? await recordInquiry(toolUse.input as InquiryArgs)
+          : await recordSubmission(toolUse.input as SubmissionArgs);
 
       turnMessages = [
         ...turnMessages,

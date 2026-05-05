@@ -5,6 +5,7 @@ import { CHALLENGE } from "./challenge.js";
 import { ROUTING } from "./routing.js";
 import { CONTRIBUTION } from "./contribution.js";
 import { CANONICAL } from "./canonical.js";
+import { INQUIRY } from "./inquiry.js";
 import type { Product } from "./types.js";
 
 const KB_HEADER = `# Knowledge base
@@ -22,6 +23,7 @@ export function buildSystemPrompt(kb: string, product: Product): string {
     ROUTING,
     CANONICAL,
     CONTRIBUTION,
+    INQUIRY,
     KB_HEADER + kb,
   ].join("\n\n");
 }
