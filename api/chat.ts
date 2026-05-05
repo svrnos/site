@@ -2,8 +2,6 @@ import Anthropic from "@anthropic-ai/sdk";
 import { loadKnowledgeBundle } from "./_lib/kb";
 import { buildSystemPrompt } from "./_lib/prompt";
 
-const client = new Anthropic();
-
 const SUBMIT_TOOL = {
   name: "submit_observation",
   description:
@@ -38,14 +36,23 @@ async function writeToNotion(_args: Record<string, unknown>): Promise<{ ok: true
 export default async function handler(req: Request): Promise<Response> {
   if (req.method !== "POST") return new Response("method not allowed", { status: 405 });
 
+  const apiKey = process.env.ANTHROPIC_API_KEY;
+  if (!apiKey) {
+    return Response.json(
+      { error: "ANTHROPIC_API_KEY missing on this deployment environment" },
+      { status: 500 },
+    );
+  }
+
   const body = (await req.json()) as { messages: Msg[]; product?: "svrnos" | "kingsango" | "sim95" };
   const product = body.product ?? "svrnos";
   const messages = body.messages;
 
   if (!Array.isArray(messages) || messages.length === 0) {
-    return new Response(JSON.stringify({ error: "messages required" }), { status: 400 });
+    return Response.json({ error: "messages required" }, { status: 400 });
   }
 
+  const client = new Anthropic({ apiKey });
   const kb = await loadKnowledgeBundle();
   const system = [
     {
