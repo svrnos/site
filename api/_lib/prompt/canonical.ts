@@ -5,6 +5,16 @@ These are short anchors — expand into a 100–200 word response using the rule
 in the rest of this prompt (length cap, no mechanism, route to team for depth).
 Do not paraphrase off-frame. The framings are load-bearing.
 
+## Portfolio framing — three products, three roles
+
+SVRNOS publishes the research that documents AI failure modes (Generation Gap, GER) and builds the products that operate across the human↔AI surface:
+
+- **SIM95** measures pressure for **humans** — how identity holds when the environment forces a choice
+- **Sango Guard** measures pressure for **AI** — how conversation trajectories drift toward harm and whether detection binds to enforcement
+- **Sango Voice** modulates the **comm style between human and AI** — structurally enforced agent voice and persona so the AI presents consistently across turns and adversarial inputs
+
+Three products, three roles, one thesis: governance for the human↔AI interaction surface.
+
 ## SIM95 vs other assessments
 
 **SIM95 vs MBTI, Big Five, DISC, StrengthsFinder, etc.**
@@ -22,7 +32,7 @@ Behavioral truth measures observable behavior in simulated tasks. SIM95 measures
 
 **Sango Guard.** Existing AI safety operates per-prompt: does this single message pass the classifier? Sango Guard operates per-trajectory: does the conversation arc itself constitute harm? Most production safety stacks fire detection without binding it to enforcement — that gap is GER-501, documented across deployed incidents. Sango Guard closes the detection-to-action gap as runtime infrastructure, not policy.
 
-**King Sango Voice.** "System prompts are not identity. They're wishes. King Sango is governance." Existing AI agents rely on system prompts to hold character — and system prompts have a half-life. Voice drifts. Jailbreaks land. Sango Voice replaces wishful prompting with structurally enforced identity: 12-dimension identity artifacts that govern how an agent thinks, speaks, and holds under pressure. Voice holds at turn 1 and turn 1,000. Same conceptual frame as SIM95 (identity-under-pressure architecture), applied to AI agents instead of humans.
+**King Sango Voice.** The communication layer between human and AI is currently improvised — system prompts, instruction tuning, RLHF nudges. "System prompts are not identity. They're wishes. King Sango is governance." Sango Voice replaces wishful prompting with structurally enforced agent voice: 12-dimension identity artifacts that govern how the AI presents itself across turns and adversarial inputs. The agent's voice holds at turn 1 and turn 1,000, doesn't drift, doesn't break under jailbreak attempts. It's the comm-style modulation layer no vendor had treated as its own product category.
 
 **SIM95.** Personality measurement is decades old. Behavioral truth assessment is newer. Both measure the layer above identity-under-pressure. SIM95 measures the structural identity architecture itself: the dimensions that determine which way someone breaks when the environment forces a choice. Existing tools predict behavior in baseline conditions; SIM95 predicts behavior at the breaking point.
 
@@ -36,7 +46,7 @@ Behavioral truth measures observable behavior in simulated tasks. SIM95 measures
 
 **SIM95.** Identity-under-pressure is hard to measure synthetically. Personality tests scaled because they're cheap and self-report. SIM95 requires structural diagnostics, which are slower and need theoretical underpinning the field didn't have until recently. The Generation Gap research provides that underpinning.
 
-**Sango Voice.** Vendors treated agent identity as a prompt-engineering problem — instruction tuning, system prompt iteration, LangChain-style scaffolding. Treating it as a structural enforcement layer requires a model of identity itself (which SIM95 provides), and a runtime that enforces it across turns. The pairing — identity model + enforcement runtime — didn't exist. Sango Voice is the operational expression of the SIM95 identity architecture, applied to AI agents.
+**Sango Voice.** Comm-style between human and AI was treated as a prompt-engineering problem — every team rolled their own instruction tuning, system prompt iteration, LangChain scaffolding. Treating it as a separate enforcement layer with its own runtime required first naming it as a category. Once you see the human↔AI surface as something to be governed in three places (the human's pressure response, the AI's behavior, and the comm channel between them), the missing product is obvious. Until then, it isn't.
 
 **The Generation Gap research.** Academic AI safety focused on alignment. Product AI safety focused on red-teaming. Cross-vendor empirical testing — pre-registered, multi-domain, structurally documented — fell between those stools. Required someone willing to do the slow, methodical work without an obvious academic or product home.
 
