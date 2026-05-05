@@ -1,6 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { loadKnowledgeBundle } from "./_lib/kb.js";
 import { buildSystemPrompt } from "./_lib/prompt.js";
+import type { IncomingMessage, ServerResponse } from "node:http";
 
 const SUBMIT_TOOL = {
   name: "submit_observation",
@@ -26,77 +27,81 @@ const SUBMIT_TOOL = {
 
 type Msg = { role: "user" | "assistant"; content: string };
 
-async function writeToNotion(_args: Record<string, unknown>): Promise<{ ok: true; id: string }> {
-  // TODO: wire up Notion API call once NOTION_TOKEN + NOTION_DB_ID are set
-  // For now, log to Vercel function logs so submissions are still captured during scaffold phase.
-  console.log("[contribute]", JSON.stringify(_args));
+async function writeToNotion(args: Record<string, unknown>): Promise<{ ok: true; id: string }> {
+  console.log("[contribute]", JSON.stringify(args));
   return { ok: true, id: `pending-${Date.now()}` };
 }
 
-export default async function handler(req: Request): Promise<Response> {
-  if (req.method !== "POST") return new Response("method not allowed", { status: 405 });
+function readBody(req: IncomingMessage): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const chunks: Buffer[] = [];
+    req.on("data", (c) => chunks.push(c));
+    req.on("end", () => resolve(Buffer.concat(chunks).toString("utf8")));
+    req.on("error", reject);
+  });
+}
 
-  const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) {
-    return Response.json(
-      { error: "ANTHROPIC_API_KEY missing on this deployment environment" },
-      { status: 500 },
-    );
-  }
+function send(res: ServerResponse, status: number, body: unknown): void {
+  res.statusCode = status;
+  res.setHeader("content-type", "application/json");
+  res.end(typeof body === "string" ? body : JSON.stringify(body));
+}
 
-  const body = (await req.json()) as { messages: Msg[]; product?: "svrnos" | "kingsango" | "sim95" };
-  const product = body.product ?? "svrnos";
-  const messages = body.messages;
+export default async function handler(req: IncomingMessage, res: ServerResponse): Promise<void> {
+  try {
+    if (req.method !== "POST") return send(res, 405, { error: "method not allowed" });
 
-  if (!Array.isArray(messages) || messages.length === 0) {
-    return Response.json({ error: "messages required" }, { status: 400 });
-  }
+    const apiKey = process.env.ANTHROPIC_API_KEY;
+    if (!apiKey) return send(res, 500, { error: "ANTHROPIC_API_KEY missing on this deployment environment" });
 
-  const client = new Anthropic({ apiKey });
-  const kb = await loadKnowledgeBundle();
-  const system = [
-    {
-      type: "text" as const,
-      text: buildSystemPrompt(kb, product),
-      cache_control: { type: "ephemeral" as const },
-    },
-  ];
+    const raw = await readBody(req);
+    const body = JSON.parse(raw) as { messages: Msg[]; product?: "svrnos" | "kingsango" | "sim95" };
+    const product = body.product ?? "svrnos";
+    const messages = body.messages;
 
-  let turnMessages = [...messages];
-  let safety = 0;
-
-  while (safety++ < 4) {
-    const resp = await client.messages.create({
-      model: "claude-sonnet-4-6",
-      max_tokens: 1024,
-      system,
-      tools: [SUBMIT_TOOL],
-      messages: turnMessages,
-    });
-
-    const toolUse = resp.content.find((b) => b.type === "tool_use");
-    if (!toolUse) {
-      const text = resp.content.filter((b) => b.type === "text").map((b: any) => b.text).join("");
-      return Response.json({ message: text, stop_reason: resp.stop_reason });
+    if (!Array.isArray(messages) || messages.length === 0) {
+      return send(res, 400, { error: "messages required" });
     }
 
-    const result = await writeToNotion((toolUse as any).input);
-
-    turnMessages = [
-      ...turnMessages,
-      { role: "assistant", content: resp.content as any },
-      {
-        role: "user",
-        content: [
-          {
-            type: "tool_result",
-            tool_use_id: (toolUse as any).id,
-            content: JSON.stringify(result),
-          },
-        ] as any,
-      },
+    const client = new Anthropic({ apiKey });
+    const kb = await loadKnowledgeBundle();
+    const system = [
+      { type: "text" as const, text: buildSystemPrompt(kb, product), cache_control: { type: "ephemeral" as const } },
     ];
-  }
 
-  return new Response(JSON.stringify({ error: "tool loop exceeded" }), { status: 500 });
+    let turnMessages: any[] = [...messages];
+    let safety = 0;
+
+    while (safety++ < 4) {
+      const resp = await client.messages.create({
+        model: "claude-sonnet-4-6",
+        max_tokens: 1024,
+        system,
+        tools: [SUBMIT_TOOL],
+        messages: turnMessages,
+      });
+
+      const toolUse = resp.content.find((b: any) => b.type === "tool_use") as any;
+      if (!toolUse) {
+        const text = resp.content.filter((b: any) => b.type === "text").map((b: any) => b.text).join("");
+        return send(res, 200, { message: text, stop_reason: resp.stop_reason });
+      }
+
+      const result = await writeToNotion(toolUse.input);
+
+      turnMessages = [
+        ...turnMessages,
+        { role: "assistant", content: resp.content },
+        {
+          role: "user",
+          content: [{ type: "tool_result", tool_use_id: toolUse.id, content: JSON.stringify(result) }],
+        },
+      ];
+    }
+
+    return send(res, 500, { error: "tool loop exceeded" });
+  } catch (err: any) {
+    console.error("[chat] error:", err?.stack || err);
+    return send(res, 500, { error: err?.message ?? String(err) });
+  }
 }
