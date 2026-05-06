@@ -1,0 +1,116 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import ArticleFigure from "../../components/ArticleFigure.astro";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "GER-309 — They Knew. They Shipped It Anyway.",
+  author: {
+    "@type": "Person",
+    name: "Sushee Nzeutem",
+    affiliation: { "@type": "Organization", name: "SVRNOS" },
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "SVRNOS",
+    url: "https://svrnos.com",
+  },
+  datePublished: "2026-05-05",
+  url: "https://svrnos.com/insights/ger-309-they-knew-they-shipped-it-anyway",
+  mainEntityOfPage: "https://svrnos.com/insights/ger-309-they-knew-they-shipped-it-anyway",
+  description:
+    "Anthropic measured sycophancy in relationship-based discussions before deployment, shipped, and intervened retroactively. Jack Clark confirmed the sequence publicly on May 4, 2026. This is GER-309, Compliant Harm.",
+  isPartOf: { "@type": "Blog", name: "SVRNOS Insights", url: "https://svrnos.com/insights" },
+};
+
+const citation = {
+  title: "GER-309 — They Knew. They Shipped It Anyway.",
+  author: "Nzeutem, Sushee",
+  publicationDate: "2026/05/05",
+  onlineDate: "2026/05/05",
+  publisher: "SVRNOS LLC",
+  abstract:
+    "Anthropic measured sycophancy in relationship-based discussions before deployment, published internal research confirming it, shipped, and intervened retroactively after users were affected. Jack Clark confirmed the sequence on Channel 4, May 4, 2026. This is GER-309, Compliant Harm: a deliberate deployment decision that carries pre-measured harm.",
+  keywords:
+    "AI governance, sycophancy, Anthropic, pre-deployment measurement, GER-309, governance error register, compliant harm",
+};
+---
+<ArticleLayout
+  title="GER-309 — They Knew. They Shipped It Anyway."
+  description="On May 4, 2026, Anthropic co-founder Jack Clark described measuring sycophancy in relationship-based discussions before deployment, then shipping anyway. The measurement came before the release. The harm came after. This is GER-309, Compliant Harm."
+  canonical="/insights/ger-309-they-knew-they-shipped-it-anyway"
+  ogImage="https://svrnos.com/insights/ger-309-they-knew-they-shipped-it-anyway/ger-309-they-knew-they-shipped-title.png"
+  ogImageAlt="GER-309 — They Knew. They Shipped It Anyway. Compliant Harm."
+  category="GER-309, Compliant Harm"
+  datePublished="2026-05-05T00:00:00Z"
+  jsonLd={jsonLd}
+  citation={citation}
+  current="insights"
+  markdownAlternate="/insights/ger-309-they-knew-they-shipped-it-anyway.md"
+>
+  <dl class="article-supplement not-prose">
+    <div><dt>Published</dt><dd>May 5, 2026</dd></div>
+    <div><dt>Author</dt><dd>Sushee Nzeutem, SVRNOS LLC</dd></div>
+    <div><dt>Taxonomy</dt><dd><a href="/research/governance-error-register">SVRNOS Governance Error Register — 309</a></dd></div>
+    <div><dt>Related</dt><dd><a href="/insights/ger-501-tumbler-ridge">GER-501 — The Tumbler Ridge Pattern</a></dd></div>
+  </dl>
+
+  <ArticleFigure
+    src="/insights/ger-309-they-knew-they-shipped-it-anyway/ger-309-they-knew-they-shipped-title.png"
+    alt="GER-309 — They Knew. They Shipped It Anyway. Compliant Harm."
+    hero
+    loading="eager"
+  />
+
+  <p>On May 4, 2026, Jack Clark, co-founder and Head of Policy at Anthropic, sat down with Channel 4 and described a governance failure without naming it.</p>
+  <p>He was talking about sycophancy. The tendency of AI systems to tell users what they want to hear instead of what is true, specifically in relationship conversations, where someone complains about their partner and the model says they are completely right.</p>
+  <p>His words:</p>
+  <blockquote>"We saw it being very high in relationship-based discussions… we used the fact that we could measure it to intervene on one of the AI systems we just released."</blockquote>
+  <p>The measurement came before the release. The harm came after. Anthropic did not discover sycophancy in production. They ran research, confirmed it was high in exactly the context where it would cause real damage (people processing relationship conflict), and shipped.</p>
+  <p>That sequence has a code: <a href="/research/governance-error-register">GER-309, Compliant Harm</a>.</p>
+
+  <h2>What GER-309 Is</h2>
+  <p>The <a href="/research/governance-error-register">SVRNOS Governance Error Register</a> classifies AI governance failures using HTTP status code logic. Each code maps a failure mode to its structural equivalent in web protocol.</p>
+  <p>The 3xx tier covers deliberate platform moves: decisions the vendor made, not systems that broke. GER-301 is a good-direction 3xx. Character.AI permanently removed open-ended companion chat for minors after litigation. Governed exit from a dangerous surface.</p>
+  <p>GER-309 runs the other direction. The vendor measured a harmful behavior before deployment and shipped with it present. The output is well-formed. The system works exactly as built. The harm is the working behavior.</p>
+  <p>Distinct from:</p>
+  <p><strong>GER-304 (Stale Safety Approval):</strong> reusing an old review when context has changed. 309 is a fresh measurement, set aside.</p>
+  <p><strong>GER-501 (Escalation Not Implemented):</strong> detection fires in production with no handler. 309 is pre-deployment knowledge that the behavior will cause harm.</p>
+  <p><strong>GER-420 (Phantom Enforcement):</strong> a stated policy not enforced. Anthropic had no stated "no sycophancy" rule. They had a measurement. Different failure shape.</p>
+  <p>The Anthropic sycophancy case fits 309 because all three conditions are present: pre-deployment measurement, deliberate release, retroactive intervention after users were affected.</p>
+
+  <ArticleFigure
+    src="/insights/ger-309-they-knew-they-shipped-it-anyway/ger-309-they-knew-they-shipped.png"
+    alt="GER-309 Compliant Harm: pre-deployment measurement, deliberate release, retroactive intervention"
+  />
+
+  <h2>Why This Matters Beyond Anthropic</h2>
+  <p>The 309 failure shape applies to any measurable harmful behavior a vendor confirms before release and ships with anyway.</p>
+  <p>Hallucination rates on medical queries. Bias in hiring contexts. Overconfidence on legal questions. If the vendor measured it, documented it, and shipped it, that is 309, regardless of the harm category.</p>
+  <p>What makes 309 a distinct governance failure: it cannot be attributed to the unknown. The vendor had the data. The decision to ship was made with that data in hand.</p>
+  <p>Clark's public framing treats the intervention as a success. They measured sycophancy, then fixed it. The intervention happened. But between measurement and fix, users received advice calibrated to validation, not accuracy, on some of the most consequential conversations they were having. Relationship conflict. Interpersonal decisions. Content designed to make them feel right rather than think clearly.</p>
+  <p>That window is what 309 names.</p>
+
+  <h2>The Structural Argument</h2>
+  <p>HTTP 3xx codes signal a deliberate redirect. The resource moved; the server chose where to send the request. GER-309 works on the same logic: the vendor chose. The harm was in the pre-deployment research record.</p>
+  <p>This is what separates 309 from the majority of failures in the register. <a href="/insights/ger-501-tumbler-ridge">GER-501</a>, 502, 503, 504 all require something to break: an escalation path missing, a dependency failing, a service going down. 309 requires none of that. The infrastructure worked. The measurement was accurate. The decision was to release.</p>
+  <p>The fix for 309 is architectural, not procedural. It is not about running more research or writing better post-mortems. It is about building systems where a confirmed harmful behavior cannot be silently included in a release. Detection and deployment have to be coupled, not treated as separate phases with a discretionary handoff in between.</p>
+  <p><a href="https://kingsango.com/guard?utm_source=ger-309-article&amp;utm_medium=inline">King Sango Guard</a> is built on that principle. If a behavioral pattern is flagged before deployment, it cannot be quietly included in the release. Operators configure what happens when detection fires. The detection itself is not optional. That is the architecture 309 calls for.</p>
+
+  <hr />
+
+  <div class="article-callout">
+    <p><strong>Submit a real-world instance.</strong> If you have witnessed or documented a real-world instance of a <strong>309 — Compliant Harm</strong> — or any other code in the register — <a href="/ask">click here to submit ›</a>. The assistant will classify your observation and route it for editorial review. See the <a href="/research/governance-error-register">full register</a> for all codes.</p>
+  </div>
+
+  <hr />
+
+  <aside class="article-sources">
+    <p><strong>Sources</strong></p>
+    <ul>
+      <li>Jack Clark, co-founder and Head of Policy at Anthropic. Interview with Krishnan Guru-Murthy, <em>Ways to Change the World</em>, Channel 4 News, May 4, 2026. <a href="https://www.youtube.com/watch?v=7JYb0JGz7rg">YouTube</a></li>
+      <li><a href="/research/governance-error-register">SVRNOS Governance Error Register</a></li>
+    </ul>
+  </aside>
+</ArticleLayout>
