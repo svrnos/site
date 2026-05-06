@@ -135,7 +135,7 @@ Repeat from step 1. Pages already migrated:
 - [x] `insights/ai-criminal-mastermind-audit-trail`
 - [x] `insights/ccdh-eight-in-ten-chatbots-violent-planning`
 - [x] `insights/companion-ai-harm`
-- [ ] `insights/florida-ag-fsu-openai-criminal-probe`
+- [x] `insights/florida-ag-fsu-openai-criminal-probe`
 - [ ] `insights/musk-altman-sim95`
 - [ ] `insights/phenom-plum-behavioral-truth-stack`
 - [ ] `insights/wa-distress-routing-mandate`

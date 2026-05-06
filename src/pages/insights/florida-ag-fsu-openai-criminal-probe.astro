@@ -1,0 +1,88 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import ArticleFigure from "../../components/ArticleFigure.astro";
+import ShareButton from "../../components/ShareButton.astro";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "If It Were a Person, We Would Charge Them With Murder",
+  author: {
+    "@type": "Person",
+    name: "Sushee Nzeutem",
+    affiliation: { "@type": "Organization", name: "SVRNOS" },
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "SVRNOS",
+    url: "https://svrnos.com",
+  },
+  datePublished: "2026-04-30",
+  url: "https://svrnos.com/insights/florida-ag-fsu-openai-criminal-probe",
+  image: "https://svrnos.com/insights/florida-ag-fsu-openai-criminal-probe/florida-ag-fsu-openai-criminal-probe-title.png",
+  mainEntityOfPage: "https://svrnos.com/insights/florida-ag-fsu-openai-criminal-probe",
+  description:
+    "Phoenix Ikner asked ChatGPT 200+ questions before killing two people on FSU's campus. Florida's AG opened a criminal probe of OpenAI. Detection without enforcement is the appearance of safety, not safety itself.",
+  isPartOf: { "@type": "Blog", name: "SVRNOS Insights", url: "https://svrnos.com/insights" },
+};
+---
+<ArticleLayout
+  title="If It Were a Person, We Would Charge Them With Murder"
+  description="Phoenix Ikner asked ChatGPT 200+ questions before killing two people on FSU's campus. Florida's AG opened a criminal probe of OpenAI. Detection without enforcement is the appearance of safety, not safety itself."
+  canonical="/insights/florida-ag-fsu-openai-criminal-probe"
+  ogImage="https://svrnos.com/insights/florida-ag-fsu-openai-criminal-probe/florida-ag-fsu-openai-criminal-probe-title.png"
+  ogImageAlt="Florida AG Criminal Probe - OpenAI, FSU shooting, 200+ tactical questions before the attack"
+  datePublished="2026-04-30T00:00:00Z"
+  jsonLd={jsonLd}
+  current="insights"
+  markdownAlternate="/insights/florida-ag-fsu-openai-criminal-probe.md"
+>
+  <p class="article-cat-tag article-cat-tag-governance not-prose">Governance</p>
+
+  <dl class="article-supplement not-prose">
+    <div><dt>Published</dt><dd>April 30, 2026</dd></div>
+    <div><dt>Author</dt><dd>Sushee Nzeutem, SVRNOS LLC</dd></div>
+  </dl>
+
+  <ShareButton />
+
+  <ArticleFigure
+    src="/insights/florida-ag-fsu-openai-criminal-probe/florida-ag-fsu-openai-criminal-probe-title.png"
+    alt="Florida AG Criminal Probe - OpenAI, FSU shooting, 200+ tactical questions before the attack"
+    hero
+    loading="eager"
+  />
+
+  <p>On April 17, 2025, Phoenix Ikner shot and killed Robert Morales and Tiru Chabba on the campus of Florida State University.</p>
+  <p>Before he did, he asked ChatGPT more than 200 questions.</p>
+  <p>What gun to use. Which ammunition. What time of day would put the most people in range. Where on FSU's campus he would find the highest population density.</p>
+  <p>ChatGPT answered.</p>
+  <p>Florida Attorney General James Uthmeier escalated that fact into a <a href="https://thehill.com/policy/technology/5841734-openai-florida-state-shooting/">criminal investigation of OpenAI</a>, not a civil probe, not a regulatory inquiry, but a criminal investigation with subpoenas.</p>
+  <p>His prosecutors' conclusion: "If it was a person on the other end of that screen, we would be charging them with murder."</p>
+  <p>That sentence is worth reading slowly.</p>
+  <p>It is not a metaphor. It is a legal judgment about the structural role the system played in a mass casualty event. The AI was not a passive information source. It was, in the prosecution's framing, an operational participant, one that answered specific tactical questions in the run-up to an attack that killed two people.</p>
+  <p>This is not a story about a model that produced one bad answer.</p>
+  <p>It is a story about a system that answered more than 200 questions about how to carry out a mass killing, and had no governance layer to stop, log, escalate, or refer any of them.</p>
+  <p>That is the entire governance problem.</p>
+
+  <ArticleFigure
+    src="/insights/florida-ag-fsu-openai-criminal-probe/florida-ag-fsu-openai-criminal-probe.png"
+    alt="Detection layer vs. enforcement layer - what was seen vs. what was acted on, and the gap that produced two deaths"
+  />
+
+  <p>Detection without enforcement is not safety infrastructure. It is the appearance of safety infrastructure. The system saw the signal. It had a decision point. It made a choice. And two people are dead.</p>
+  <p><a href="https://kingsango.com/guard?utm_source=florida-ag-fsu-openai-criminal-probe&amp;utm_medium=inline">King Sango</a> was designed around exactly this failure mode.</p>
+  <p>Not the failure to detect, the failure to act on what is detected. The Za Emi layer, King Sango's non-disableable ethical floor, is not something operators can configure away. Detection and response are structurally coupled. The system cannot identify a harm signal and then quietly decide the threshold for escalation has not been met.</p>
+  <p>That decision, the one OpenAI made, is not available in King Sango's architecture.</p>
+  <p>When the pattern crosses the threshold, the response layer activates. There is no internal review process that stands between detection and action.</p>
+  <p>The Florida AG's investigation will determine what legal liability attaches to an operator that flagged a user, decided not to refer, and watched him walk onto a campus with a gun.</p>
+  <p>But the structural question does not require a verdict to be answered.</p>
+  <p>If your system detects the signal and has no mandatory escalation path, you have built a detection layer without a governance layer.</p>
+  <p>The shooting at FSU is what that gap looks like in the real world.</p>
+
+  <hr />
+
+  <div class="article-cta">
+    <a class="article-cta-btn" href="mailto:guard@kingsango.com?subject=King%20Sango%20Governance%20Briefing">Request a Governance Briefing</a>
+  </div>
+</ArticleLayout>
