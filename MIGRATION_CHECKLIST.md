@@ -139,7 +139,7 @@ Repeat from step 1. Pages already migrated:
 - [x] `insights/musk-altman-sim95`
 - [x] `insights/phenom-plum-behavioral-truth-stack`
 - [x] `insights/wa-distress-routing-mandate`
-- [ ] `insights/when-detection-fires-but-nothing-stops`
+- [x] `insights/when-detection-fires-but-nothing-stops`
 
 NOT to be migrated:
 - `research/generation-gap` — frozen for OSF/Zenodo citation integrity
