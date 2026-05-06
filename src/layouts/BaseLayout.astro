@@ -13,12 +13,16 @@ interface Props {
   description?: string;
   canonical?: string;
   ogImage?: string;
+  ogImageAlt?: string;
+  ogType?: "website" | "article";
   current?: string;
   showNav?: boolean;
   showFooter?: boolean;
   lang?: string;
   alternates?: Alternate[];
   markdownAlternate?: string;
+  articlePublishedTime?: string;
+  articleAuthor?: string;
 }
 
 const {
@@ -26,12 +30,16 @@ const {
   description = "SVRNOS — Sovereign operating systems for AI governance.",
   canonical,
   ogImage,
+  ogImageAlt,
+  ogType = "website",
   current,
   showNav = true,
   showFooter = true,
   lang = "en",
   alternates,
   markdownAlternate,
+  articlePublishedTime,
+  articleAuthor,
 } = Astro.props;
 
 const markdownAlternateURL = markdownAlternate
@@ -61,12 +69,24 @@ const resolvedAlternates = alternates?.map((a) => ({
     {markdownAlternateURL && (
       <link rel="alternate" type="text/markdown" href={markdownAlternateURL} title="Markdown version (for AI assistants)" />
     )}
+    <meta property="og:site_name" content="SVRNOS" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     {ogImage && <meta property="og:image" content={ogImage} />}
+    {ogImage && ogImageAlt && <meta property="og:image:alt" content={ogImageAlt} />}
+    {ogType === "article" && articlePublishedTime && (
+      <meta property="article:published_time" content={articlePublishedTime} />
+    )}
+    {ogType === "article" && articleAuthor && (
+      <meta property="article:author" content={articleAuthor} />
+    )}
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
+    {ogImage && ogImageAlt && <meta name="twitter:image:alt" content={ogImageAlt} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

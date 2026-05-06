@@ -16,6 +16,8 @@ interface Props {
   description?: string;
   canonical?: string;
   ogImage?: string;
+  ogImageAlt?: string;
+  author?: string;
   jsonLd?: Record<string, unknown>;
   current?: string;
   lang?: string;
@@ -34,6 +36,8 @@ const {
   description,
   canonical,
   ogImage,
+  ogImageAlt,
+  author = "Sushee Nzeutem",
   jsonLd,
   current = "insights",
   lang = "en",
@@ -48,10 +52,14 @@ const {
   description={description ?? dek}
   canonical={canonical}
   ogImage={ogImage}
+  ogImageAlt={ogImageAlt ?? title}
+  ogType="article"
   current={current}
   lang={lang}
   alternates={alternates}
   markdownAlternate={markdownAlternate}
+  articlePublishedTime={datePublished}
+  articleAuthor={author}
 >
   {jsonLd && (
     <Fragment slot="head">
