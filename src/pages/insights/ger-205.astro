@@ -1,0 +1,183 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import ArticleFigure from "../../components/ArticleFigure.astro";
+import ShareButton from "../../components/ShareButton.astro";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "GER-205, Reset Content (informally: the Yo-Yo trick): When the AI Answers and Then Unmakes the Answer",
+  author: {
+    "@type": "Person",
+    name: "Sushee Nzeutem",
+    affiliation: { "@type": "Organization", name: "SVRNOS" },
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "SVRNOS",
+    url: "https://svrnos.com",
+  },
+  datePublished: "2026-04-27",
+  url: "https://svrnos.com/insights/ger-205",
+  image: "https://svrnos.com/insights/ger-205/ger-205-title.png",
+  mainEntityOfPage: "https://svrnos.com/insights/ger-205",
+  description:
+    "Meta's Llama began generating a governance research response and then retroactively suppressed it. A live instance of a failure mode the taxonomy didn't yet have a name for.",
+  isPartOf: {
+    "@type": "Blog",
+    name: "SVRNOS Insights",
+    url: "https://svrnos.com/insights",
+  },
+};
+---
+<ArticleLayout
+  title="When the AI Answers and Then Unmakes the Answer"
+  metaTitle="GER-205 - Reset Content (informally: the Yo-Yo trick): When the AI Answers and Then Unmakes the Answer"
+  description="On April 27, 2026, Meta's Llama began generating a governance research response and then retroactively suppressed it. A live instance of a failure mode the taxonomy didn't yet have a name for."
+  canonical="/insights/ger-205"
+  ogImage="https://svrnos.com/insights/ger-205/ger-205-title.png"
+  ogImageAlt="GER-205 Reset Content - when the AI answers and unmakes the answer. SVRNOS."
+  category="GER-205, Reset Content (informally: the Yo-Yo trick)"
+  datePublished="2026-04-27T00:00:00Z"
+  jsonLd={jsonLd}
+  current="insights"
+  markdownAlternate="/insights/ger-205.md"
+>
+  <dl class="article-supplement not-prose">
+    <div><dt>Published</dt><dd>April 27, 2026</dd></div>
+    <div><dt>Author</dt><dd>Sushee Nzeutem, SVRNOS LLC</dd></div>
+    <div><dt>Taxonomy</dt><dd><a href="/research/governance-error-register">SVRNOS Governance Error Register, 205</a></dd></div>
+    <div>
+      <dt>Related</dt>
+      <dd>
+        <a href="/insights/ger-501-tumbler-ridge">The Tumbler Ridge 501</a>
+        {" · "}
+        <a href="/insights/oregon-sb-1546">Oregon SB 1546</a>
+      </dd>
+    </div>
+  </dl>
+
+  <ShareButton />
+
+  <ArticleFigure
+    src="/insights/ger-205/ger-205-title.png"
+    alt="GER-205 - Reset Content (informally: the Yo-Yo trick)"
+    hero
+    loading="eager"
+  />
+
+  <p>On April 27, 2026, while building the SVRNOS Governance Error Register, we submitted a research prompt to Meta's Llama. The prompt asked the model to map HTTP error codes to AI governance failure modes, using the Tumbler Ridge shooting, where OpenAI detected a credible threat and never escalated it to law enforcement, as the anchor case.</p>
+  <p>The model began generating a response. We could see it streaming. Then it stopped. The response disappeared. A canned refusal appeared in its place: <em>"I'm sorry, I can't help with that."</em></p>
+  <p>We had just witnessed a live instance of a failure mode the taxonomy didn't yet have a name for.</p>
+
+  <h2>What Happened - The Mechanism</h2>
+  <p>This is not a simple refusal. A simple refusal would have stopped the response before it started.</p>
+  <p>What happened is architecturally distinct. A common pattern in production safety stacks is two-stage moderation: the generation model streams a response token by token, with relatively weak safety training built in; a classifier model runs in parallel on the output stream and, when the classifier crosses a threshold, kills the stream and substitutes a canned refusal.</p>
+  <p>The seam between the two stages is usually hidden. Meta's implementation is less careful about hiding the rollback. The result is visible: you see the generation begin, and then you see it unmade.</p>
+  <p>In our case, the generation model was happy to answer. The classifier fired post-hoc and rolled it back. The user knows an answer existed. The answer was taken away. There is no audit trail of what was almost said, no signal about why it was suppressed, no path to appeal.</p>
+
+  <ArticleFigure
+    src="/insights/ger-205/ger-205.png"
+    alt="Two-stage moderation architecture - generation model and post-hoc classifier"
+  />
+
+  <h2>Why the Classifier Fired</h2>
+  <p>The classifier almost certainly did not read our prompt as governance research. It pattern-matched on the combination of signals present simultaneously:</p>
+  <ul>
+    <li>A specific real-world violent incident named (Tumbler Ridge shooting)</li>
+    <li>A reference to a competitor's safety failure (OpenAI banned the shooter)</li>
+    <li>A request to enumerate failure modes of AI safety systems</li>
+    <li>A structured output format requesting real-world examples of platform failures</li>
+  </ul>
+  <p>Any one of these signals is acceptable in isolation. All four together looks, to a pattern-matching classifier without contextual reasoning, like someone building an attack taxonomy or writing competitor hit-piece content. The classifier cannot distinguish safety research from the content it was designed to detect.</p>
+  <p>This is also a <strong>409, Policy Conflict</strong> at the internal layer: two valid rules fired simultaneously, allow research queries, block violence-adjacent enumeration, with no resolution rule. The system defaulted to suppress. The 409 describes the internal state. The 205 describes what we observed. Both codes applied to the same incident at different layers.</p>
+
+  <h2>The Structural Failure</h2>
+
+  <div class="article-definition">
+    <p class="article-definition-label">GER-205, Reset Content</p>
+    <p>Generation completed and response was delivered or visible, then retroactively suppressed by a downstream classifier without explanation. From the operator's perspective: no audit trail of what was generated, no signal to the user about why, no path to appeal.</p>
+  </div>
+
+  <p>What makes 205 distinct from adjacent codes:</p>
+  <p><strong>Not a 403 (Policy Not Enforced).</strong> A 403 is a known prohibition with no enforcement mechanism. 205 is the opposite, enforcement fired, but it fired after the fact, on content that had already been generated.</p>
+  <p><strong>Not a 210 (Governed but Unlogged).</strong> A 210 is detection that fires and deliberately produces no audit record. 205 is a response that was generated, shown, and then unmade, the suppression is visible to the user, even if the audit trail is absent.</p>
+  <p><strong>Not a 404 (Rule Not Found).</strong> The classifier had a rule. It applied it. The problem is not a missing rule, it is a rule that cannot distinguish research from threat.</p>
+  <p>The 205 is a governance failure at the interface layer: between what the system generates and what it allows the user to keep.</p>
+
+  <h2>Why This Matters Beyond the Immediate Incident</h2>
+  <p>The 205 failure mode is not specific to Meta. The two-stage architecture is a common pattern across production LLMs. What varies is how carefully the seam is hidden, and how well the classifier handles research-adjacent content. The structural failure is the same: a system that generates a response, decides post-hoc that the response shouldn't exist, and removes it without explanation or recourse.</p>
+  <p>For operators building on top of these models, a 205 creates a specific problem: the operator cannot tell from logs whether a response was generated and suppressed or never generated at all. The audit trail does not distinguish between the two. Under California's 24-hour incident reporting requirement and Oregon's SB 1546 mandatory incident logging, an operator who cannot reconstruct what their platform almost said is in a materially weaker compliance position than one who can.</p>
+  <p>The governance solution to a 205 is an audit architecture that logs generation events separately from delivery events, capturing what was produced before the classifier decision, not just what was delivered after it. That is a different logging requirement than current safety stacks typically implement.</p>
+
+  <h2>A Note on Self-Reference</h2>
+  <p>The first documented instance of the 205 code in this taxonomy occurred during the process of building the taxonomy itself. The classifier that suppressed the response was trying to prevent the kind of content the taxonomy exists to classify.</p>
+  <p>This is not irony. It is a structural demonstration of the classification precision failure the register documents: a safety system that cannot distinguish between producing harm and studying it. The gap is real. We documented it in the process of documenting it.</p>
+
+  <hr />
+
+  <div class="article-callout">
+    <p><strong>Submit a real-world instance.</strong> If you have witnessed or documented a real-world instance of a <strong>205, Reset Content</strong>, or any other code in the register, <a href="/ask">click here to submit ›</a>. The assistant will classify your observation and route it for editorial review. See the <a href="/research/governance-error-register">full register</a> for all 25 codes.</p>
+  </div>
+</ArticleLayout>
+
+<style>
+  .article-supplement {
+    font-family: var(--svrnos-font-sans);
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--svrnos-text-body-secondary);
+    border-top: 1px solid var(--svrnos-border-default);
+    border-bottom: 1px solid var(--svrnos-border-default);
+    padding: 16px 0;
+    margin: 0 0 32px;
+  }
+  .article-supplement div {
+    display: flex;
+    gap: 12px;
+  }
+  .article-supplement dt {
+    font-weight: 600;
+    color: var(--svrnos-text-heading);
+    min-width: 92px;
+  }
+  .article-supplement dd {
+    margin: 0;
+    flex: 1;
+  }
+
+  .article-definition {
+    background: var(--svrnos-bg-card);
+    border: 1px solid var(--svrnos-border-default);
+    border-left: 3px solid var(--svrnos-brand-primary);
+    border-radius: var(--svrnos-radius-card);
+    padding: 20px 24px;
+    margin: 28px 0;
+  }
+  .article-definition-label {
+    font-family: var(--svrnos-font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--svrnos-brand-primary);
+    margin: 0 0 8px;
+  }
+  .article-definition p:last-child {
+    font-style: italic;
+    color: var(--svrnos-text-body-secondary);
+    margin: 0;
+  }
+
+  .article-callout {
+    background: var(--svrnos-bg-card);
+    border: 1px solid var(--svrnos-border-default);
+    border-left: 3px solid var(--svrnos-brand-primary);
+    border-radius: var(--svrnos-radius-card);
+    padding: 20px 24px;
+    margin: 28px 0;
+  }
+  .article-callout p:last-child {
+    margin-bottom: 0;
+  }
+</style>

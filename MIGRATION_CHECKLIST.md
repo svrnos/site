@@ -37,7 +37,9 @@ Path: `src/pages/insights/<slug>.astro`
   - `import ShareButton from "../../components/ShareButton.astro";` (if the original had it)
   - Define `jsonLd` object preserving all fields from the original (headline, author, publisher, datePublished, url, image, mainEntityOfPage, description, isPartOf)
 - [ ] `<ArticleLayout>` opening tag with props:
-  - `title`, `dek` (skip if no subtitle), `description` (or default to dek)
+  - `title` — the visible h1 (short, descriptive)
+  - `metaTitle` — optional. If the original `<title>`/`og:title` was longer than the h1 (typical for GER pages where the GER code appears in meta but not h1), pass the full long version here. Used for `<title>`, `og:title`, `twitter:title`. Defaults to `title` if not set.
+  - `dek` (skip if no subtitle), `description` (or default to dek)
   - `canonical` — relative path, e.g. `/insights/<slug>`
   - `ogImage` — full URL to title PNG
   - `ogImageAlt` — descriptive alt text
@@ -111,9 +113,9 @@ Path: `src/pages/insights/<slug>.astro`
 Repeat from step 1. Pages already migrated:
 
 - [x] `research/governance-error-register` (the GER taxonomy itself)
-- [ ] `insights/ger-503-eu-csam` ← reference page
+- [x] `insights/ger-503-eu-csam` ← reference page
 - [ ] `insights/courts-pricing-the-generation-gap`
-- [ ] `insights/ger-205`
+- [x] `insights/ger-205`
 - [ ] `insights/ger-301`
 - [ ] `insights/ger-309-they-knew-they-shipped-it-anyway`
 - [ ] `insights/ger-404`

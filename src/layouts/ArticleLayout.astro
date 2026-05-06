@@ -9,6 +9,7 @@ interface Alternate {
 
 interface Props {
   title: string;
+  metaTitle?: string;
   dek?: string;
   category?: string;
   datePublished?: string;
@@ -29,6 +30,7 @@ interface Props {
 
 const {
   title,
+  metaTitle,
   dek,
   category,
   datePublished,
@@ -48,7 +50,7 @@ const {
 } = Astro.props;
 ---
 <BaseLayout
-  title={title}
+  title={metaTitle ?? title}
   description={description ?? dek}
   canonical={canonical}
   ogImage={ogImage}
