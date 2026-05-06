@@ -57,7 +57,12 @@ Path: `src/pages/insights/<slug>.astro`
   - Inline figures: `<ArticleFigure src="..." alt="..." />`
   - Callout boxes: `<div class="article-callout">...</div>` with scoped styles
   - Sources section: `<aside class="article-sources">...</aside>` with scoped styles
-- [ ] Scoped `<style>` block at the bottom for ONLY page-specific elements that aren't covered by globals or shared components: meta supplement, callout, sources, GER-tag pill if present.
+- [ ] Scoped `<style>` block ONLY for elements truly unique to this page. The recurring article elements live in `globals.css` and don't need re-declaration:
+  - `.article-supplement` — Author/Taxonomy/Related dl
+  - `.article-definition` + `.article-definition-label` — formal GER definition box
+  - `.article-callout` — boxed CTA
+  - `.article-sources` — small sources list
+  Use these classes; do NOT redeclare them.
 
 ## 3. Local render verification
 
@@ -116,6 +121,7 @@ Repeat from step 1. Pages already migrated:
 - [x] `insights/ger-503-eu-csam` ← reference page
 - [ ] `insights/courts-pricing-the-generation-gap`
 - [x] `insights/ger-205`
+- [x] `insights/ger-301`
 - [ ] `insights/ger-301`
 - [ ] `insights/ger-309-they-knew-they-shipped-it-anyway`
 - [ ] `insights/ger-404`

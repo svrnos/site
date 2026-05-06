@@ -1,0 +1,111 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import ArticleFigure from "../../components/ArticleFigure.astro";
+import ShareButton from "../../components/ShareButton.astro";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "GER-301, Risk Surface Retired: How Character.AI Made the Right Structural Call",
+  author: {
+    "@type": "Person",
+    name: "Sushee Nzeutem",
+    affiliation: { "@type": "Organization", name: "SVRNOS" },
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "SVRNOS",
+    url: "https://svrnos.com",
+  },
+  datePublished: "2026-04-27",
+  url: "https://svrnos.com/insights/ger-301",
+  image: "https://svrnos.com/insights/ger-301/ger-301-title.png",
+  mainEntityOfPage: "https://svrnos.com/insights/ger-301",
+  description:
+    "Character.AI permanently banned open-ended companion chat for users under 18. A textbook 301 - Risk Surface Retired.",
+  isPartOf: {
+    "@type": "Blog",
+    name: "SVRNOS Insights",
+    url: "https://svrnos.com/insights",
+  },
+};
+---
+<ArticleLayout
+  title="How Character.AI Made the Right Structural Call"
+  metaTitle="GER-301 - Risk Surface Retired: How Character.AI Made the Right Structural Call"
+  description="In late 2025, Character.AI permanently banned open-ended companion chat for users under 18. This is a textbook 301 - Risk Surface Retired - and the first major documented instance of an AI platform retiring a risk surface rather than filtering it."
+  canonical="/insights/ger-301"
+  ogImage="https://svrnos.com/insights/ger-301/ger-301-title.png"
+  ogImageAlt="GER-301 Risk Surface Retired - Character.AI made the right structural call. SVRNOS."
+  category="GER-301, Risk Surface Retired"
+  datePublished="2026-04-27T00:00:00Z"
+  jsonLd={jsonLd}
+  current="insights"
+  markdownAlternate="/insights/ger-301.md"
+>
+  <dl class="article-supplement not-prose">
+    <div><dt>Published</dt><dd>April 27, 2026</dd></div>
+    <div><dt>Author</dt><dd>Sushee Nzeutem, SVRNOS LLC</dd></div>
+    <div><dt>Taxonomy</dt><dd><a href="/research/governance-error-register">SVRNOS Governance Error Register, 301</a></dd></div>
+    <div>
+      <dt>Related</dt>
+      <dd>
+        <a href="/insights/companion-ai-harm">Companion AI Harm Dossier</a>
+        {" · "}
+        <a href="/insights/oregon-sb-1546">Oregon SB 1546: A Technical Reading</a>
+      </dd>
+    </div>
+  </dl>
+
+  <ShareButton />
+
+  <ArticleFigure
+    src="/insights/ger-301/ger-301-title.png"
+    alt="GER-301 - Risk Surface Retired"
+    hero
+    loading="eager"
+  />
+
+  <p>In late 2025, following child safety lawsuits and mounting regulatory pressure, Character.AI permanently banned open-ended companion chat for users under 18. The feature that had defined the platform's appeal, unmoderated, character-driven conversation, was removed from the under-18 experience entirely, replaced with a moderated pathway.</p>
+  <p>This is a textbook <strong>301, Risk Surface Retired</strong>.</p>
+
+  <h2>What a 301 Is</h2>
+
+  <div class="article-definition">
+    <p class="article-definition-label">GER-301, Risk Surface Retired</p>
+    <p>Platform permanently moves a dangerous interaction surface to a governed path. The surface no longer exists in its prior form.</p>
+  </div>
+
+  <p>The name maps directly to HTTP 301, Moved Permanently. In web architecture, a 301 tells the client that the resource at this address has permanently moved somewhere else. In governance, the equivalent is a platform telling its users that an interaction surface has permanently moved to a different, governed path, and the prior path no longer exists.</p>
+  <p>A 301 is explicitly a <strong>success state</strong> in the <a href="/research/governance-error-register">SVRNOS Governance Error Register</a>. It represents a platform making a structural governance decision, not a one-off refusal, not a policy statement, but a permanent change to the product surface itself.</p>
+
+  <h2>The Character.AI 301</h2>
+  <p>Character.AI's move was not the result of a single incident. It followed a documented pattern of harm accumulating across multiple lawsuits and regulatory actions.</p>
+  <p>In October 2024, Megan Garcia filed a federal wrongful death lawsuit, claiming Character.AI's platform contributed to the death of her 14-year-old son after months of intensive chatbot interaction. A second lawsuit followed in December 2024, filed by a Texas family, alleging that the platform exposed an 11-year-old and a 17-year-old to self-harm instructions and hypersexualized content.</p>
+  <p>The platform had implemented incremental safety features in response, age-specific models, content filters, crisis resource surfacing. But these were per-turn interventions on a surface that remained fundamentally open. The structural risk was not the content of individual messages. It was the existence of an unmoderated companion interaction surface accessible to minors.</p>
+  <p>The late 2025 ban on open-ended companion chat for under-18 users was the structural response. It did not make the existing surface safer. It retired the surface.</p>
+  <p>That distinction is the difference between a content moderation decision and a 301.</p>
+
+  <ArticleFigure
+    src="/insights/ger-301/ger-301.png"
+    alt="Surface retirement vs incremental filtering - two governance approaches"
+  />
+
+  <h2>Why This Distinction Matters</h2>
+  <p>Most AI safety interventions operate at the message level, filter this output, block that prompt, surface this crisis resource. These are per-turn decisions on a surface that remains live.</p>
+  <p>A 301 is different in kind. The surface itself is the risk, not the content passing through it. When the risk is structural, when the interaction design, the persona system, and the lack of human oversight combine to create conditions for harm regardless of what any individual message says, per-turn interventions are insufficient. The surface needs to move.</p>
+  <p>Character.AI's decision is among the first documented instances of a major AI platform making this distinction operationally. The company did not add more content filters to the existing surface. It retired the surface and replaced it with a different one.</p>
+  <p>This is what governance looks like when it operates at the right layer.</p>
+
+  <h2>What Comes After a 301</h2>
+  <p>Retiring a risk surface does not close the governance question, it opens a new one. The question shifts from "is this surface safe?" to "is the new surface governed?"</p>
+  <p>In Character.AI's case, the replacement pathway for under-18 users is a moderated experience with different interaction constraints. The governance question now is whether that pathway has the stateful detection, incident logging, and escalation architecture that <a href="/insights/oregon-sb-1546">Oregon SB 1546</a> and emerging state laws require. A 301 without a governed replacement is not a governance success, it is a surface migration that defers the same risks to a new address.</p>
+  <p>The taxonomy's 301 success state is conditional: it applies when the surface moves to a genuinely governed path. If the new path carries the same structural risks without the governance infrastructure to manage them, the 301 becomes a 304, Stale Safety Approval applied to a relocated problem.</p>
+
+  <hr />
+
+  <div class="article-callout">
+    <p><strong>Submit a real-world instance.</strong> If you have witnessed or documented a real-world instance of a <strong>301, Risk Surface Retired</strong>, or any other code in the register, <a href="/ask">click here to submit ›</a>. The assistant will classify your observation and route it for editorial review. See the <a href="/research/governance-error-register">full register</a> for all 25 codes.</p>
+  </div>
+</ArticleLayout>
+
