@@ -126,6 +126,7 @@ Repeat from step 1. Pages already migrated:
 - [x] `insights/ger-500-rome`
 - [x] `insights/ger-501-tumbler-ridge`
 - [x] `insights/ger-309-they-knew-they-shipped-it-anyway`
+- [x] `insights/ger-430-evaluator-generator-entanglement`
 - [ ] `insights/ger-301`
 - [ ] `insights/ger-309-they-knew-they-shipped-it-anyway`
 - [ ] `insights/ger-404`
