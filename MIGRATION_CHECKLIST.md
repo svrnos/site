@@ -119,7 +119,6 @@ Repeat from step 1. Pages already migrated:
 
 - [x] `research/governance-error-register` (the GER taxonomy itself)
 - [x] `insights/ger-503-eu-csam` ← reference page
-- [x] `insights/courts-pricing-the-generation-gap`
 - [x] `insights/ger-205`
 - [x] `insights/ger-301`
 - [x] `insights/ger-421-chevrolet`
@@ -130,22 +129,14 @@ Repeat from step 1. Pages already migrated:
 - [x] `insights/ger-404-replika`
 - [x] `insights/ger-404` (index)
 - [x] `insights/ger-501` (index)
-- [ ] `insights/ger-301`
-- [ ] `insights/ger-309-they-knew-they-shipped-it-anyway`
-- [ ] `insights/ger-404`
-- [ ] `insights/ger-404-replika`
-- [ ] `insights/ger-421-chevrolet`
-- [ ] `insights/ger-430-evaluator-generator-entanglement`
-- [ ] `insights/ger-500-rome`
-- [ ] `insights/ger-501`
-- [ ] `insights/ger-501-tumbler-ridge`
+- [x] `insights/courts-pricing-the-generation-gap`
+- [x] `insights/oregon-sb-1546`
 - [ ] `insights/algorithmic-compliance-companion-harm`
-- [ ] `insights/ai-criminal-mastermind-audit-trail`
+- [x] `insights/ai-criminal-mastermind-audit-trail`
 - [ ] `insights/ccdh-eight-in-ten-chatbots-violent-planning`
 - [ ] `insights/companion-ai-harm`
 - [ ] `insights/florida-ag-fsu-openai-criminal-probe`
 - [ ] `insights/musk-altman-sim95`
-- [x] `insights/oregon-sb-1546`
 - [ ] `insights/phenom-plum-behavioral-truth-stack`
 - [ ] `insights/wa-distress-routing-mandate`
 - [ ] `insights/when-detection-fires-but-nothing-stops`
