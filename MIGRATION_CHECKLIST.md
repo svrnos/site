@@ -137,7 +137,7 @@ Repeat from step 1. Pages already migrated:
 - [x] `insights/companion-ai-harm`
 - [x] `insights/florida-ag-fsu-openai-criminal-probe`
 - [x] `insights/musk-altman-sim95`
-- [ ] `insights/phenom-plum-behavioral-truth-stack`
+- [x] `insights/phenom-plum-behavioral-truth-stack`
 - [ ] `insights/wa-distress-routing-mandate`
 - [ ] `insights/when-detection-fires-but-nothing-stops`
 
