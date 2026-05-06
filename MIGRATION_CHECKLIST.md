@@ -133,7 +133,7 @@ Repeat from step 1. Pages already migrated:
 - [x] `insights/oregon-sb-1546`
 - [x] `insights/algorithmic-compliance-companion-harm`
 - [x] `insights/ai-criminal-mastermind-audit-trail`
-- [ ] `insights/ccdh-eight-in-ten-chatbots-violent-planning`
+- [x] `insights/ccdh-eight-in-ten-chatbots-violent-planning`
 - [ ] `insights/companion-ai-harm`
 - [ ] `insights/florida-ag-fsu-openai-criminal-probe`
 - [ ] `insights/musk-altman-sim95`
