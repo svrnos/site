@@ -8,6 +8,16 @@ interface Alternate {
   href: string;
 }
 
+interface ScholarCitation {
+  title: string;
+  author: string;
+  publicationDate: string;
+  onlineDate?: string;
+  publisher?: string;
+  abstract?: string;
+  keywords?: string;
+}
+
 interface Props {
   title: string;
   description?: string;
@@ -23,6 +33,7 @@ interface Props {
   markdownAlternate?: string;
   articlePublishedTime?: string;
   articleAuthor?: string;
+  citation?: ScholarCitation;
 }
 
 const {
@@ -40,6 +51,7 @@ const {
   markdownAlternate,
   articlePublishedTime,
   articleAuthor,
+  citation,
 } = Astro.props;
 
 const markdownAlternateURL = markdownAlternate
@@ -68,6 +80,25 @@ const resolvedAlternates = alternates?.map((a) => ({
     ))}
     {markdownAlternateURL && (
       <link rel="alternate" type="text/markdown" href={markdownAlternateURL} title="Markdown version (for AI assistants)" />
+    )}
+    {citation && (
+      <>
+        <meta name="citation_title" content={citation.title} />
+        <meta name="citation_author" content={citation.author} />
+        <meta name="citation_publication_date" content={citation.publicationDate} />
+        {citation.onlineDate && (
+          <meta name="citation_online_date" content={citation.onlineDate} />
+        )}
+        {citation.publisher && (
+          <meta name="citation_publisher" content={citation.publisher} />
+        )}
+        {citation.abstract && (
+          <meta name="citation_abstract" content={citation.abstract} />
+        )}
+        {citation.keywords && (
+          <meta name="citation_keywords" content={citation.keywords} />
+        )}
+      </>
     )}
     <meta property="og:site_name" content="SVRNOS" />
     <meta property="og:title" content={title} />

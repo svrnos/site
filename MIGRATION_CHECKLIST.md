@@ -122,6 +122,7 @@ Repeat from step 1. Pages already migrated:
 - [ ] `insights/courts-pricing-the-generation-gap`
 - [x] `insights/ger-205`
 - [x] `insights/ger-301`
+- [x] `insights/ger-421-chevrolet`
 - [ ] `insights/ger-301`
 - [ ] `insights/ger-309-they-knew-they-shipped-it-anyway`
 - [ ] `insights/ger-404`

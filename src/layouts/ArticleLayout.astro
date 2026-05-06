@@ -7,6 +7,16 @@ interface Alternate {
   href: string;
 }
 
+interface ScholarCitation {
+  title: string;
+  author: string;
+  publicationDate: string;
+  onlineDate?: string;
+  publisher?: string;
+  abstract?: string;
+  keywords?: string;
+}
+
 interface Props {
   title: string;
   metaTitle?: string;
@@ -26,6 +36,7 @@ interface Props {
   dateLocale?: string;
   readTimeLabel?: string;
   markdownAlternate?: string;
+  citation?: ScholarCitation;
 }
 
 const {
@@ -47,6 +58,7 @@ const {
   dateLocale = "en-US",
   readTimeLabel = "min read",
   markdownAlternate,
+  citation,
 } = Astro.props;
 ---
 <BaseLayout
@@ -62,6 +74,7 @@ const {
   markdownAlternate={markdownAlternate}
   articlePublishedTime={datePublished}
   articleAuthor={author}
+  citation={citation}
 >
   {jsonLd && (
     <Fragment slot="head">

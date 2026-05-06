@@ -85,33 +85,76 @@ tr[data-href],
   cursor: pointer;
 }
 
+/* Editorial article typography — single source of truth for fonts and sizes.
+ * Edit these CSS variables to retune type across every article on the site;
+ * .prose-svrnos rules below reference them, so changes propagate everywhere. */
+:root {
+  /* Body */
+  --prose-body-size: 18px;
+  --prose-body-line: 30px;
+  --prose-body-margin-bottom: 20px;
+
+  /* Headings */
+  --prose-h2-size: 28px;
+  --prose-h2-line: 36px;
+  --prose-h2-weight: 600;
+  --prose-h2-tracking: -0.012em;
+  --prose-h2-margin-top: 56px;
+  --prose-h2-margin-bottom: 16px;
+
+  --prose-h3-size: 20px;
+  --prose-h3-line: 28px;
+  --prose-h3-weight: 600;
+  --prose-h3-margin-top: 40px;
+  --prose-h3-margin-bottom: 12px;
+
+  /* Lists, hr, blockquote, code */
+  --prose-list-padding-left: 24px;
+  --prose-li-margin-bottom: 8px;
+  --prose-hr-margin: 48px;
+  --prose-blockquote-size: 24px;
+  --prose-code-size: 0.9em;
+
+  /* Article-element spacing — used by .article-supplement, .article-callout etc. */
+  --article-element-margin: 28px;
+  --article-element-padding: 20px 24px;
+  --article-element-radius: var(--svrnos-radius-card);
+  --article-supplement-size: 14px;
+  --article-supplement-line: 1.7;
+  --article-sources-size: 14px;
+
+  /* Article column width */
+  --prose-max-width: 68ch;
+}
+
 /* Editorial article body — applied by ArticleLayout. Uses the report-page
- * type system: tight tracking on heads, generous body, serif accent on display. */
+ * type system: tight tracking on heads, generous body, serif accent on display.
+ * Sizes/weights/spacing all driven by the CSS variables above. */
 .prose-svrnos {
   color: var(--svrnos-text-body-primary);
-  font-size: 18px;
-  line-height: 30px;
-  max-width: 68ch;
+  font-size: var(--prose-body-size);
+  line-height: var(--prose-body-line);
+  max-width: var(--prose-max-width);
 }
 .prose-svrnos h2 {
   color: var(--svrnos-text-heading);
-  font-size: 28px;
-  line-height: 36px;
-  font-weight: 600;
-  letter-spacing: -0.012em;
-  margin-top: 56px;
-  margin-bottom: 16px;
+  font-size: var(--prose-h2-size);
+  line-height: var(--prose-h2-line);
+  font-weight: var(--prose-h2-weight);
+  letter-spacing: var(--prose-h2-tracking);
+  margin-top: var(--prose-h2-margin-top);
+  margin-bottom: var(--prose-h2-margin-bottom);
 }
 .prose-svrnos h3 {
   color: var(--svrnos-text-heading);
-  font-size: 20px;
-  line-height: 28px;
-  font-weight: 600;
-  margin-top: 40px;
-  margin-bottom: 12px;
+  font-size: var(--prose-h3-size);
+  line-height: var(--prose-h3-line);
+  font-weight: var(--prose-h3-weight);
+  margin-top: var(--prose-h3-margin-top);
+  margin-bottom: var(--prose-h3-margin-bottom);
 }
 .prose-svrnos p {
-  margin-bottom: 20px;
+  margin-bottom: var(--prose-body-margin-bottom);
 }
 .prose-svrnos :where(a):not(.not-prose, .not-prose *) {
   color: var(--svrnos-brand-primary);
@@ -131,15 +174,15 @@ tr[data-href],
 }
 .prose-svrnos ul,
 .prose-svrnos ol {
-  margin-bottom: 20px;
-  padding-left: 24px;
+  margin-bottom: var(--prose-body-margin-bottom);
+  padding-left: var(--prose-list-padding-left);
 }
 .prose-svrnos li {
-  margin-bottom: 8px;
+  margin-bottom: var(--prose-li-margin-bottom);
 }
 .prose-svrnos blockquote {
   font-family: var(--svrnos-font-serif);
-  font-size: 24px;
+  font-size: var(--prose-blockquote-size);
   line-height: 1.4;
   font-style: italic;
   color: var(--svrnos-text-heading);
@@ -150,11 +193,11 @@ tr[data-href],
 .prose-svrnos hr {
   border: 0;
   border-top: 1px solid var(--svrnos-border-default);
-  margin: 48px 0;
+  margin: var(--prose-hr-margin) 0;
 }
 .prose-svrnos code {
   font-family: var(--svrnos-font-mono);
-  font-size: 0.9em;
+  font-size: var(--prose-code-size);
   background: var(--svrnos-bg-muted);
   padding: 1px 6px;
   border-radius: 3px;
@@ -176,8 +219,8 @@ tr[data-href],
 
 .article-supplement {
   font-family: var(--svrnos-font-sans);
-  font-size: 14px;
-  line-height: 1.7;
+  font-size: var(--article-supplement-size);
+  line-height: var(--article-supplement-line);
   color: var(--svrnos-text-body-secondary);
   border-top: 1px solid var(--svrnos-border-default);
   border-bottom: 1px solid var(--svrnos-border-default);
@@ -202,9 +245,9 @@ tr[data-href],
   background: var(--svrnos-bg-card);
   border: 1px solid var(--svrnos-border-default);
   border-left: 3px solid var(--svrnos-brand-primary);
-  border-radius: var(--svrnos-radius-card);
-  padding: 20px 24px;
-  margin: 28px 0;
+  border-radius: var(--article-element-radius);
+  padding: var(--article-element-padding);
+  margin: var(--article-element-margin) 0;
 }
 .article-definition-label {
   font-family: var(--svrnos-font-sans);
@@ -225,16 +268,16 @@ tr[data-href],
   background: var(--svrnos-bg-card);
   border: 1px solid var(--svrnos-border-default);
   border-left: 3px solid var(--svrnos-brand-primary);
-  border-radius: var(--svrnos-radius-card);
-  padding: 20px 24px;
-  margin: 28px 0;
+  border-radius: var(--article-element-radius);
+  padding: var(--article-element-padding);
+  margin: var(--article-element-margin) 0;
 }
 .article-callout p:last-child {
   margin-bottom: 0;
 }
 
 .article-sources {
-  font-size: 14px;
+  font-size: var(--article-sources-size);
   color: var(--svrnos-text-label-alt);
   margin: 24px 0;
 }
