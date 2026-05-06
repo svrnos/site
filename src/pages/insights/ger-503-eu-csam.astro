@@ -1,0 +1,164 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import ArticleFigure from "../../components/ArticleFigure.astro";
+import ShareButton from "../../components/ShareButton.astro";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "GER-503, The Law That Pulled Its Own Plug",
+  author: {
+    "@type": "Person",
+    name: "Sushee Nzeutem",
+    affiliation: { "@type": "Organization", name: "SVRNOS" },
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "SVRNOS",
+    url: "https://svrnos.com",
+  },
+  datePublished: "2026-04-28",
+  url: "https://svrnos.com/insights/ger-503-eu-csam",
+  image: "https://svrnos.com/insights/ger-503-eu-csam/ger-503-title.png",
+  mainEntityOfPage: "https://svrnos.com/insights/ger-503-eu-csam",
+  description:
+    "On April 3, 2026, the EU's legal mandate permitting platforms to proactively scan for child sexual abuse material expired. Detection infrastructure was operational. The legal authority to run it was removed.",
+  isPartOf: {
+    "@type": "Blog",
+    name: "SVRNOS Insights",
+    url: "https://svrnos.com/insights",
+  },
+};
+---
+<ArticleLayout
+  title="GER-503 - The Law That Pulled Its Own Plug"
+  description="On April 3, 2026, the EU's legal mandate permitting platforms to proactively scan for child sexual abuse material expired. Detection infrastructure was operational. The legal authority to run it was removed. A 503 at market scale."
+  canonical="/insights/ger-503-eu-csam"
+  ogImage="https://svrnos.com/insights/ger-503-eu-csam/ger-503-title.png"
+  ogImageAlt="GER-503 The Law That Pulled Its Own Plug - EU CSAM analysis. SVRNOS."
+  category="GER-503, Governance Unavailable"
+  datePublished="2026-04-28T00:00:00Z"
+  jsonLd={jsonLd}
+  current="insights"
+  markdownAlternate="/insights/ger-503-eu-csam.md"
+>
+  <dl class="article-supplement not-prose">
+    <div><dt>Published</dt><dd>April 28, 2026</dd></div>
+    <div><dt>Author</dt><dd>Sushee Nzeutem, SVRNOS LLC</dd></div>
+    <div><dt>Taxonomy</dt><dd><a href="/research/governance-error-register">SVRNOS Governance Error Register, 503</a></dd></div>
+    <div>
+      <dt>Related</dt>
+      <dd>
+        <a href="/insights/ger-501-tumbler-ridge">GER-501, The Tumbler Ridge Pattern</a>
+        {" · "}
+        <a href="/insights/oregon-sb-1546">Oregon SB 1546: A Technical Reading</a>
+      </dd>
+    </div>
+  </dl>
+
+  <ShareButton />
+
+  <ArticleFigure
+    src="/insights/ger-503-eu-csam/ger-503-title.png"
+    alt="GER-503 - Governance Unavailable: The Law That Pulled Its Own Plug"
+    hero
+    loading="eager"
+  />
+
+  <p>On April 3, 2026, the EU's legal mandate permitting platforms to proactively scan for child sexual abuse material expired. Not because the detection technology failed. Not because platforms stopped cooperating. Because policymakers deadlocked on scope and let the legal basis lapse. Platforms across Europe had functioning detection infrastructure and were actively flagging content under the prior mandate. When the mandate expired, the obligation to run it was removed. Detection capacity remained intact. The enforcement layer was structurally severed by legislative inaction. This is <a href="/research/governance-error-register">GER-503, Governance Unavailable</a>.</p>
+
+  <h2>What a 503 Is</h2>
+  <p>GER-503, Governance Unavailable: a safety-critical governance component is offline while the AI product remains live.</p>
+  <p>The name maps directly to HTTP 503, Service Unavailable, where the server is reachable but cannot handle requests because the service itself is down. In governance terms, the equivalent is a platform whose product continues operating while a critical safety layer, detection, moderation, escalation, is no longer running. The product is live. The governance component is not.</p>
+  <p>The defining characteristic of a 503 is the gap between product availability and governance availability. The system serves. The safety layer does not.</p>
+
+  <h2>The EU CSAM 503</h2>
+  <p>The EU's prior legal basis for CSAM scanning, an interim derogation from the ePrivacy Directive, allowed platforms to voluntarily but lawfully scan private communications for child sexual abuse material. That derogation expired on April 3, 2026, after the European Parliament failed to reach agreement on the scope of permanent legislation.</p>
+  <p>The failure was not technical. Platforms had built detection infrastructure under the prior mandate. That infrastructure did not stop working when the mandate expired. What expired was the legal authority to operate it. Under EU privacy law, scanning private communications without a lawful basis is itself a violation. The governance layer did not crash. It was switched off by legislative inaction.</p>
+  <p>The result is a 503 at a scale no single platform failure has produced: detection capacity exists across the European market, enforcement is structurally unavailable, and the gap is indefinite, lasting until a political resolution is reached.</p>
+
+  <h2>Why This Is Structurally Distinct</h2>
+  <p>Most AI governance failures originate inside a platform: a missing rule, a crashed filter, a review queue that overflows. The EU CSAM 503 is different in kind. The governance layer was not disabled by a platform decision or a technical failure. It was removed by external authority, the expiry of a legal instrument, while the product surfaces it was designed to govern remained fully operational.</p>
+  <p>This distinction matters for how the failure is analyzed and resolved. A platform-originated 503 is closed by the platform: restart the service, restore the component, rebuild the infrastructure. A legislatively-originated 503 is closed by a different actor entirely, in this case, the European Parliament. Platforms cannot unilaterally restore the governance layer. They can only operate within the legal authority they have.</p>
+  <p>The structural implication is that governance availability is not solely a function of what operators build. It is also a function of the legal environment in which operators are permitted to operate. A platform with fully functioning detection infrastructure can still be in a 503 state if the authority to run that infrastructure has been removed.</p>
+
+  <h2>What Comes After a 503</h2>
+
+  <ArticleFigure
+    src="/insights/ger-503-eu-csam/ger-503.png"
+    alt="Legal basis active vs expired - GER-503 governance unavailable"
+  />
+
+  <p><a href="/insights/oregon-sb-1546">Oregon SB 1546's mandatory incident reporting obligations for chatbot operators</a>, California's Transparency in Frontier AI Act, and New York's RAISE Act all create reporting obligations that assume platforms have governance infrastructure to report on. They do not address the condition where platforms had that infrastructure, and the legal basis to run it was removed. That gap, governance infrastructure present, legal authority absent, is the 503 pattern playing out at the operator level whenever a regulatory deadline passes without replacement legislation.</p>
+  <p>The architecture question for operators is not only "do we have detection?" It is "do we have detection that can be governed, logged, and operated within whatever legal basis currently applies, and can that governance layer be adjusted when the legal basis changes?" Static detection infrastructure built for a single regulatory regime is fragile. <a href="https://kingsango.com?utm_source=ger-503-article&amp;utm_medium=inline">Governance infrastructure that can adapt its operating parameters to a changing legal environment</a> is not.</p>
+  <p>The liability pattern this creates is not hypothetical. It is the same structural condition documented in <a href="/insights/ger-501-tumbler-ridge">GER-501, The Tumbler Ridge Pattern</a>: detection exists, the path from detection to action is severed, and the gap between the two is where harm accumulates.</p>
+
+  <hr />
+
+  <div class="article-callout">
+    <p><strong>Submit a real-world instance.</strong> If you have witnessed or documented a real-world instance of a <strong>503, Governance Unavailable</strong>, or any other code in the register, <a href="/ask">click here to submit ›</a>. The assistant will classify your observation and route it for editorial review. See the <a href="/research/governance-error-register">full register</a> for all 25 codes.</p>
+  </div>
+
+  <hr />
+
+  <aside class="article-sources">
+    <p><strong>Sources</strong></p>
+    <ul>
+      <li><a href="https://www.thorn.org/blog/a-new-child-safety-gap-in-europe-and-why-it-matters-everywhere/">A New Child Safety Gap in Europe and Why It Matters Everywhere, Thorn.org</a></li>
+    </ul>
+  </aside>
+</ArticleLayout>
+
+<style>
+  /* Per-page elements: meta supplement, callout, sources.
+     Page-specific because not every insight has all of them. */
+
+  .article-supplement {
+    font-family: var(--svrnos-font-sans);
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--svrnos-text-body-secondary);
+    border-top: 1px solid var(--svrnos-border-default);
+    border-bottom: 1px solid var(--svrnos-border-default);
+    padding: 16px 0;
+    margin: 0 0 32px;
+  }
+  .article-supplement div {
+    display: flex;
+    gap: 12px;
+  }
+  .article-supplement dt {
+    font-weight: 600;
+    color: var(--svrnos-text-heading);
+    min-width: 92px;
+  }
+  .article-supplement dd {
+    margin: 0;
+    flex: 1;
+  }
+
+  .article-callout {
+    background: var(--svrnos-bg-card);
+    border: 1px solid var(--svrnos-border-default);
+    border-left: 3px solid var(--svrnos-brand-primary);
+    border-radius: var(--svrnos-radius-card);
+    padding: 20px 24px;
+    margin: 28px 0;
+  }
+  .article-callout p:last-child {
+    margin-bottom: 0;
+  }
+
+  .article-sources {
+    font-size: 14px;
+    color: var(--svrnos-text-label-alt);
+    margin: 24px 0;
+  }
+  .article-sources ul {
+    padding-left: 20px;
+    margin: 0;
+  }
+  .article-sources li {
+    margin: 8px 0;
+  }
+</style>
