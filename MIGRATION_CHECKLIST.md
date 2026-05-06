@@ -145,7 +145,7 @@ Repeat from step 1. Pages already migrated:
 - [ ] `insights/companion-ai-harm`
 - [ ] `insights/florida-ag-fsu-openai-criminal-probe`
 - [ ] `insights/musk-altman-sim95`
-- [ ] `insights/oregon-sb-1546`
+- [x] `insights/oregon-sb-1546`
 - [ ] `insights/phenom-plum-behavioral-truth-stack`
 - [ ] `insights/wa-distress-routing-mandate`
 - [ ] `insights/when-detection-fires-but-nothing-stops`
