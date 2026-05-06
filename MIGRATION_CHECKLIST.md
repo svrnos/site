@@ -123,6 +123,7 @@ Repeat from step 1. Pages already migrated:
 - [x] `insights/ger-205`
 - [x] `insights/ger-301`
 - [x] `insights/ger-421-chevrolet`
+- [x] `insights/ger-500-rome`
 - [ ] `insights/ger-301`
 - [ ] `insights/ger-309-they-knew-they-shipped-it-anyway`
 - [ ] `insights/ger-404`
