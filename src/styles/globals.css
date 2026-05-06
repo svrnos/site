@@ -288,3 +288,54 @@ tr[data-href],
 .article-sources li {
   margin: 8px 0;
 }
+
+/* Documented-instances list — used by GER-404 and GER-501 index pages.
+ * Two-column layout (date + body) on desktop, stacked on mobile. */
+.article-instance-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--svrnos-border-default);
+}
+.article-instance {
+  padding: 32px 0;
+  border-bottom: 1px solid var(--svrnos-border-default);
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.article-instance-date {
+  font-family: var(--svrnos-font-sans);
+  font-size: 13px;
+  color: var(--svrnos-text-label-alt);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  padding-top: 4px;
+}
+.article-instance-body p {
+  margin: 0 0 10px;
+  font-size: 17px;
+  color: var(--svrnos-text-body-secondary);
+  line-height: 1.6;
+}
+.article-instance-body p:last-child {
+  margin-bottom: 0;
+}
+.article-instance-links {
+  font-family: var(--svrnos-font-sans);
+  font-size: 14px;
+}
+.article-instance-links a {
+  margin-right: 16px;
+}
+@media (max-width: 600px) {
+  .article-instance {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .article-instance-date {
+    padding-top: 0;
+  }
+}

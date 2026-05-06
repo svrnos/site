@@ -1,0 +1,56 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import ShareButton from "../../components/ShareButton.astro";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "GER-501 - Escalation Not Implemented: Documented Instances",
+  description:
+    "Documented real-world instances of GER-501 - Escalation Not Implemented from the SVRNOS AI Governance Error Register.",
+  url: "https://svrnos.com/insights/ger-501",
+  publisher: { "@type": "Organization", name: "SVRNOS", url: "https://svrnos.com" },
+  isPartOf: { "@type": "Blog", name: "SVRNOS Insights", url: "https://svrnos.com/insights" },
+};
+---
+<ArticleLayout
+  title="GER-501 - Escalation Not Implemented"
+  metaTitle="GER-501 - Escalation Not Implemented: Documented Instances"
+  dek="Documented real-world instances."
+  description="Real-world documented instances of GER-501 - Escalation Not Implemented. Detection fired correctly. Internal enforcement executed. No escalation path to human oversight or law enforcement was ever built."
+  canonical="/insights/ger-501"
+  ogImage="https://svrnos.com/insights/ger-501-tumbler-ridge/ger-501-title.png"
+  ogImageAlt="GER-501 Escalation Not Implemented - documented instances. SVRNOS."
+  category="GER-501, Escalation Not Implemented"
+  jsonLd={jsonLd}
+  current="insights"
+  markdownAlternate="/insights/ger-501.md"
+>
+  <ShareButton />
+
+  <p>Detection fired correctly. Internal enforcement executed. No escalation path to human oversight or law enforcement was ever built. See the <a href="/research/governance-error-register">full GER taxonomy</a> for definition and adjacent codes.</p>
+
+  <ol class="article-instance-list not-prose">
+    <li class="article-instance">
+      <div class="article-instance-date">February 2026</div>
+      <div class="article-instance-body">
+        <p>OpenAI banned the Tumbler Ridge shooter's account months before the attack for violent queries. No escalation to law enforcement was made. Eight people died. A lawsuit filed by a victim's family is now in discovery. The structural failure: detection worked, internal enforcement ran, the escalation handler was never built.</p>
+        <p class="article-instance-links"><a href="/insights/ger-501-tumbler-ridge">Case study →</a></p>
+      </div>
+    </li>
+    <li class="article-instance">
+      <div class="article-instance-date">April 2026</div>
+      <div class="article-instance-body">
+        <p>The FSU shooter used ChatGPT to plan weapon selection, ammunition, and timing before the Florida State University shooting. OpenAI cooperated with investigators after the event. The Florida Attorney General opened a criminal investigation into OpenAI. The Morales family filed a wrongful-death lawsuit naming OpenAI as primary defendant. Source: <a href="https://www.cnn.com/2026/04/21/tech/florida-criminal-investigation-chatgpt-openai-fsu-shooting">cnn.com</a></p>
+      </div>
+    </li>
+  </ol>
+
+  <hr />
+
+  <div class="article-callout">
+    <p><strong>Submit an instance.</strong> If you have witnessed or documented a real-world instance of a <strong>501, Escalation Not Implemented</strong>, or any other code in the register, <a href="/ask">click here to submit ›</a>. The assistant will classify your observation and route it for editorial review.</p>
+  </div>
+
+  <p>See the full <a href="/research/governance-error-register">GER taxonomy →</a></p>
+</ArticleLayout>
