@@ -4,9 +4,9 @@
 
 When editing any published page on svrnos.com, **also update the corresponding markdown alternate and `public/llms.txt`** in the same commit. The site has three parallel surfaces that must stay aligned:
 
-1. **HTML page** (e.g. `public/research/governance-error-register/index.html`) — what visitors see
-2. **Markdown alternate** (e.g. `public/research/governance-error-register.md`) — what AI assistants and the svrnos.com/ask bot fetch
-3. **`public/llms.txt`** — index that points crawlers to (1) and (2); update if the page is new, retitled, or its scope changed
+1. **Page source** — either an HTML file at `public/<path>/index.html` or an Astro component at `src/pages/<path>.astro`. Most insights and research pages use `.astro`; the GER and a few legacy pages use raw HTML in `public/`. What visitors see.
+2. **Markdown alternate** at `public/<path>.md` — what AI assistants and the svrnos.com/ask bot fetch.
+3. **`public/llms.txt`** — index that points crawlers to (1) and (2); update if the page is new, retitled, or its scope changed.
 
 A change to any one surface without the others creates drift between what visitors read and what bots quote. The /ask bot caches the markdown alternates with a 30-min TTL, so HTML-only edits silently misalign the bot's answers until the next deploy + cache flush.
 
