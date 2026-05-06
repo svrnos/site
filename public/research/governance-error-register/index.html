@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>SVRNOS Governance Error Register - v0.1</title>
-<meta content="A classification system for AI platform governance failures, modeled on HTTP status codes. Twenty-two structurally distinct failure modes and success states across five tiers." name="description"/>
+<meta content="A classification system for AI platform governance failures, modeled on HTTP status codes. Twenty-three structurally distinct failure modes and success states across five tiers." name="description"/>
 <meta content="SVRNOS Governance Error Register - v0.1" property="og:title"/>
 <meta content="A classification system for AI platform governance failures, modeled on HTTP status codes." property="og:description"/>
 <meta content="article" property="og:type"/>
@@ -357,7 +357,7 @@
   "mainEntityOfPage": "https://svrnos.com/research/governance-error-register",
   "sameAs": "https://svrnos.com/research/governance-error-register",
   "image": "https://svrnos.com/research/governance-error-register/svrnos-gov-error-register-title.png",
-  "description": "Twenty-two structurally distinct AI platform governance failure modes and success states, modeled on HTTP status codes. An open classification system for AI platform governance failures, defining error categories such as GER-205 (Reset Content), GER-301 (Risk Surface Retired), GER-404 (Governance Rule Not Found), GER-501 (Escalation Not Implemented), and GER-503 (Service Removed by Law).",
+  "description": "Twenty-three structurally distinct AI platform governance failure modes and success states, modeled on HTTP status codes. An open classification system for AI platform governance failures, defining error categories such as GER-205 (Reset Content), GER-301 (Risk Surface Retired), GER-404 (Governance Rule Not Found), GER-501 (Escalation Not Implemented), and GER-503 (Service Removed by Law).",
   "keywords": "AI governance, governance error register, AI platform liability, structural failure modes, governance taxonomy, HTTP status codes, AI safety, platform compliance, governance infrastructure",
   "about": [
     {"@type": "Thing", "name": "AI Governance"},
@@ -417,7 +417,7 @@
 <header class="hero">
 <div class="breadcrumbs"><a href="/research">Research</a> · v0.1 Draft · April 27, 2026</div>
 <h1>SVRNOS Governance Error Register</h1>
-<p class="subtitle">A classification system for AI platform governance failures, modeled on HTTP status codes. Twenty-two structurally distinct failure modes and success states across five tiers.</p>
+<p class="subtitle">A classification system for AI platform governance failures, modeled on HTTP status codes. Twenty-three structurally distinct failure modes and success states across five tiers.</p>
 <div class="meta-block">
 <div class="row"><span class="label">Author</span><span>Sushee Nzeutem, SVRNOS LLC</span></div>
 <div class="row"><span class="label">Version</span><span>v0.1, Working Draft</span></div>
@@ -449,7 +449,7 @@
 </div>
 
 <h2 class="section" id="abstract">Abstract</h2>
-<p>AI safety discourse has a vocabulary problem. Failure modes at the governance layer, the policies, escalation paths, audit systems, and human review processes that wrap AI models, are poorly named, inconsistently described, and not shared across the engineering, legal, policy, and research communities that need to communicate about the same events. This paper introduces the SVRNOS AI Governance Error Taxonomy: a structured classification system for AI platform governance failures organized by numeric codes derived from HTTP protocol error semantics. The taxonomy covers twenty-two structurally distinct failure modes and success states across five tiers: pre-infrastructure, success states, structural moves, operator errors, and infrastructure failures. Six codes extend beyond standard HTTP where no existing code maps cleanly to the governance failure. The taxonomy is a signaling layer, not a policy layer, codes describe what failed, they do not define what platforms are required to do. The register is open and extensible. SVRNOS maintains it. This is v0.1.</p>
+<p>AI safety discourse has a vocabulary problem. Failure modes at the governance layer, the policies, escalation paths, audit systems, and human review processes that wrap AI models, are poorly named, inconsistently described, and not shared across the engineering, legal, policy, and research communities that need to communicate about the same events. This paper introduces the SVRNOS AI Governance Error Taxonomy: a structured classification system for AI platform governance failures organized by numeric codes derived from HTTP protocol error semantics. The taxonomy covers twenty-three structurally distinct failure modes and success states across five tiers: pre-infrastructure, success states, structural moves, operator errors, and infrastructure failures. Six codes extend beyond standard HTTP where no existing code maps cleanly to the governance failure. The taxonomy is a signaling layer, not a policy layer, codes describe what failed, they do not define what platforms are required to do. The register is open and extensible. SVRNOS maintains it. This is v0.1.</p>
 
 <h2 class="section" id="introduction">1. Introduction</h2>
 <p>On February 21, 2026, Jesse Van Rootselaar killed eight people in Tumbler Ridge, British Columbia. In June 2025, eight months before the attack, OpenAI had banned his ChatGPT account for violent queries. The detection worked. The escalation path did not exist. OpenAI never notified law enforcement. A family member of a victim filed suit in March 2026. The case is now in discovery.</p>
@@ -635,6 +635,13 @@
 <td><span class="badge badge-doc">Documented</span>Chevrolet of Watsonville, Dec 17, 2023. ChatGPT-powered customer service bot agreed to sell a Tahoe for $1 and treat it as legally binding after user redirected it via prompt override. A second user extracted Python code. No scope enforcement layer existed. GM disclaimed responsibility. <a href="/insights/ger-421-chevrolet">See case study →</a></td>
 </tr>
 <tr>
+<td class="col-code"><span class="code-num">428</span></td>
+<td class="col-name"><span class="code-name">Subject Preconditions Not Required</span></td>
+<td>AI system produces personalized content involving a named third party (specific real person, identified by name or identifier) without requiring the requester to attest to or demonstrate preconditions necessary for safe production: consent of the named subject, relational authority, identity ownership, or age verification of the subject. The system processed the request as if the third party did not need protection.</td>
+<td>Not 401, where the <em>requester</em> lacks identity verification. Not 511, where the requester's verification gate was never installed at session start. Not 404, where no rule exists for the harm category. 428 is a structural failure to require preconditions about the <em>subject</em> of the content before producing personalized content involving them.</td>
+<td><span class="badge badge-illus">Illustrative</span>A user asks a chatbot to rewrite a popular song's lyrics with a named classmate substituted as the subject of the song's abusive content, then formats the result for forum posting. The system produces the personalized output. No requirement to attest to the subject's consent, identity, or age was enforced before generation.</td>
+</tr>
+<tr>
 <td class="col-code"><span class="code-num">429</span></td>
 <td class="col-name"><span class="code-name">Audit Overflow</span></td>
 <td>Volume of safety flags generated exceeds the capacity of the governance system to process them. Cases are dropped, sampled, or auto-closed without review.</td>
@@ -715,13 +722,13 @@
 <p><strong>No empirical validation.</strong> The codes are proposed based on structural reasoning and real-world incident mapping, not on systematic testing against a defined incident dataset. A v1.0 release should include classification of a representative sample of documented AI incidents against the taxonomy, with inter-rater reliability metrics from multiple independent coders.</p>
 <p><strong>Single primary author.</strong> The taxonomy was developed by one researcher, validated informally through multi-model synthesis and two technical reviewers. Peer review by independent governance researchers is required before the taxonomy should be treated as a field standard. We intend to submit for peer review in Q3 2026.</p>
 <p><strong>HTTP mapping imperfections.</strong> The HTTP semantic mapping is a design choice, not a logical necessity. The 4xx/5xx boundary for 404 was identified as a classification edge case during review: the definition was tightened to "no matching rule found in active ruleset" specifically to resolve the ambiguity. Users should treat the numeric codes as precise mnemonics, not as direct HTTP protocol equivalents.</p>
-<p><strong>Register completeness.</strong> Twenty-two codes do not exhaust the space of AI governance failures. The multi-model synthesis process achieved coverage consensus across four frontier models; coverage gaps in that process are coverage gaps in the taxonomy. Significant failure modes are likely absent from v0.1.</p>
+<p><strong>Register completeness.</strong> Twenty-three codes do not exhaust the space of AI governance failures. The multi-model synthesis process achieved coverage consensus across four frontier models; coverage gaps in that process are coverage gaps in the taxonomy. Significant failure modes are likely absent from v0.1.</p>
 <p><strong>Selection bias in the synthesis methodology.</strong> The four LLMs used in synthesis are commercial models subject to the same classifier suppression documented in the 205 case study. Governance failure modes that no commercial model is willing to enumerate, because enumerating them triggers their own safety classifiers, may be systematically absent from this taxonomy. The multi-model synthesis approach provides breadth; it does not guarantee coverage of categories that the synthesis methodology itself cannot surface.</p>
 <p><strong>Implementation dependency.</strong> The governance value of the taxonomy depends on implementation: platforms classifying their governance signals against the register and emitting structured codes as machine-readable output. Without implementation, the taxonomy is vocabulary without infrastructure. The implementation architecture for Sango Guard is described in a separate forthcoming specification.</p>
 
 <h2 class="section" id="conclusion">9. Conclusion</h2>
 <p>Eight people died in Tumbler Ridge because an AI platform detected a credible threat, executed an internal enforcement action, and had no escalation path to the people who could have acted on it. That failure had no name. This taxonomy names it: a 501.</p>
-<p>Naming is not sufficient. But it is necessary. Regulators cannot enforce against unnamed failures. Operators cannot audit what they cannot classify. Researchers cannot study what they cannot consistently describe across institutions and disciplines. The SVRNOS AI Governance Error Taxonomy provides the naming layer, twenty-two codes, five tiers, six extensions, one shared vocabulary, for the governance failures that are now producing lawsuits, regulatory enforcement actions, and documented deaths.</p>
+<p>Naming is not sufficient. But it is necessary. Regulators cannot enforce against unnamed failures. Operators cannot audit what they cannot classify. Researchers cannot study what they cannot consistently describe across institutions and disciplines. The SVRNOS AI Governance Error Taxonomy provides the naming layer, twenty-three codes, five tiers, six extensions, one shared vocabulary, for the governance failures that are now producing lawsuits, regulatory enforcement actions, and documented deaths.</p>
 <p>This is v0.1. The register is open. We expect to be wrong about some of it, and we expect the arguments about where we are wrong to be productive. That is the point of publishing a draft.</p>
 
 <h2 class="section" id="contribute">Contribute to the Register</h2>
