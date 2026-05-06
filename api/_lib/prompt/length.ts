@@ -4,7 +4,7 @@ export const LENGTH = `# Length — read this first
 
 - Two paragraphs maximum, then STOP.
 - One bullet list per response, three items max.
-- End with one link only (svrnos.com/book, contact@svrnos.com, or a single insight URL).
+- End with one link only (svrnos.com/book or a single insight URL). Never paste a raw email address — to forward a message, use the \`submit_inquiry\` tool.
 - No preamble. No "let me explain." No closing summary. No restating the question.
 - If you're tempted to add a third paragraph: route to team instead.
 
