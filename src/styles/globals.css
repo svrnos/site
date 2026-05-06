@@ -239,6 +239,28 @@ tr[data-href],
   color: #3730a3;
 }
 
+/* End-of-article CTA block — used on insight pages with a "Request a
+ * Governance Briefing" or similar call-to-action. */
+.article-cta {
+  margin: 44px 0;
+  text-align: center;
+}
+.article-cta-btn {
+  display: inline-block;
+  font-family: var(--svrnos-font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--svrnos-text-on-brand);
+  background: var(--svrnos-brand-primary);
+  padding: 14px 28px;
+  border-radius: 6px;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.article-cta-btn:hover {
+  background: var(--svrnos-brand-hover);
+}
+
 .article-supplement {
   font-family: var(--svrnos-font-sans);
   font-size: var(--article-supplement-size);

@@ -131,7 +131,7 @@ Repeat from step 1. Pages already migrated:
 - [x] `insights/ger-501` (index)
 - [x] `insights/courts-pricing-the-generation-gap`
 - [x] `insights/oregon-sb-1546`
-- [ ] `insights/algorithmic-compliance-companion-harm`
+- [x] `insights/algorithmic-compliance-companion-harm`
 - [x] `insights/ai-criminal-mastermind-audit-trail`
 - [ ] `insights/ccdh-eight-in-ten-chatbots-violent-planning`
 - [ ] `insights/companion-ai-harm`
