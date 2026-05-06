@@ -217,6 +217,28 @@ tr[data-href],
 /* Editorial article elements — used across insight and research pages.
  * These are page-content elements, not page-chrome. Pair with .prose-svrnos. */
 
+/* Category badge — small uppercase pill above the meta supplement on
+ * non-GER insight pages (Governance, Identity, etc.). */
+.article-cat-tag {
+  display: inline-block;
+  font-family: var(--svrnos-font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 3px;
+  margin-bottom: 16px;
+}
+.article-cat-tag-governance {
+  background: #fef3e2;
+  color: #92400e;
+}
+.article-cat-tag-identity {
+  background: #eef2ff;
+  color: #3730a3;
+}
+
 .article-supplement {
   font-family: var(--svrnos-font-sans);
   font-size: var(--article-supplement-size);

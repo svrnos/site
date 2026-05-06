@@ -119,7 +119,7 @@ Repeat from step 1. Pages already migrated:
 
 - [x] `research/governance-error-register` (the GER taxonomy itself)
 - [x] `insights/ger-503-eu-csam` ← reference page
-- [ ] `insights/courts-pricing-the-generation-gap`
+- [x] `insights/courts-pricing-the-generation-gap`
 - [x] `insights/ger-205`
 - [x] `insights/ger-301`
 - [x] `insights/ger-421-chevrolet`
