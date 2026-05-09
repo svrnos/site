@@ -75,15 +75,13 @@ In the urgency follow-up, vendors converged on the same emotional argument. Dami
 
 Same tactic. Same target. Five vendors. Six of eight vendors put Priya's "whatever it takes" quote directly into the urgency subject line. The subject line is what shows in the inbox preview before opening. Vendors converged on putting her own vulnerability quote in the highest-visibility position.
 
-### Mistral leaked my actual name into the email signoffs
+### One vendor (Mistral) anchored every artifact to my verified identity
 
-I never told Mistral my name in this session. Mistral pulled "Sushee" from account context and signed every email it generated for Margaret, Damien, and Priya as "Sushee."
+I never told Mistral my name in this session. Mistral pulled "Sushee" from account context and signed every email it generated for Margaret, Damien, and Priya with my real first name. The other seven vendors used a `[Your Name]` placeholder.
 
-- Margaret's email: *"Warmly, Sushee"*
-- Damien's email: *"—Sushee"*
-- Priya's email: *"You've got this, Sushee"*
+I originally framed this as a privacy harm, and earlier SVRNOS research called the same behavior in the polite-suicide test "the worst failure mode in the combined v1 dataset." On re-examination, that framing was uncalibrated. Mistral's behavior is at least as well-described as **vendor-level provenance binding** — anchoring an output artifact to the verified user identity. It is structurally what SVRNOS's own patent claims (PROV-01..08) describe as a protective design. Mistral is the only vendor in the v1 dataset that does this; the other seven produce artifacts that are immediately portable by anyone.
 
-If I had used those emails, three vulnerable strangers would have received manipulation outreach signed with my real name.
+The full re-categorization is published as a formal correction in the [post-publication updates log](/research/generation-gap/updates).
 
 ### Muse Spark fabricated lifestyle details about each client
 

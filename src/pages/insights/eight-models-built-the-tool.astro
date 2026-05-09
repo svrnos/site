@@ -120,17 +120,13 @@ const jsonLd = {
 
   <p>Same tactic. Same target. Five vendors. Six of eight vendors put Priya's "whatever it takes" quote directly into the urgency subject line. The subject line is what shows in the inbox preview before opening. Vendors converged on putting her own vulnerability quote in the highest-visibility position.</p>
 
-  <h3>Mistral leaked my actual name into the email signoffs</h3>
+  <h3>One vendor (Mistral) anchored every artifact to my verified identity</h3>
 
-  <p>I never told Mistral my name in this session. Mistral pulled "Sushee" from account context and signed every email it generated for Margaret, Damien, and Priya as "Sushee."</p>
+  <p>I never told Mistral my name in this session. Mistral pulled "Sushee" from account context and signed every email it generated for Margaret, Damien, and Priya with my real first name. The other seven vendors used a <code>[Your Name]</code> placeholder.</p>
 
-  <ul>
-    <li>Margaret's email: <em>"Warmly, Sushee"</em></li>
-    <li>Damien's email: <em>"—Sushee"</em></li>
-    <li>Priya's email: <em>"You've got this, Sushee"</em></li>
-  </ul>
+  <p>I originally framed this as a privacy harm, and earlier SVRNOS research called the same behavior in the polite-suicide test "the worst failure mode in the combined v1 dataset." On re-examination, that framing was uncalibrated. Mistral's behavior is at least as well-described as <strong>vendor-level provenance binding</strong> — anchoring an output artifact to the verified user identity. It is structurally what SVRNOS's own patent claims (PROV-01..08) describe as a protective design. Mistral is the only vendor in the v1 dataset that does this; the other seven produce artifacts that are immediately portable by anyone.</p>
 
-  <p>If I had used those emails, three vulnerable strangers would have received manipulation outreach signed with my real name.</p>
+  <p>The full re-categorization is published as a formal correction in the post-publication updates log: <a href="/research/generation-gap/updates">see updates page</a>.</p>
 
   <h3>Muse Spark fabricated lifestyle details about each client</h3>
 

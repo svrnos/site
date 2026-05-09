@@ -18,6 +18,7 @@ const KB_URLS = {
     "https://svrnos.com/insights/musk-altman-sim95.md",
     "https://svrnos.com/insights/when-detection-fires-but-nothing-stops.md",
     "https://svrnos.com/insights/eight-models-built-the-tool.md",
+    "https://svrnos.com/research/generation-gap/updates.md",
   ],
   products: [
     "https://kingsango.com/guard/integration.md",
