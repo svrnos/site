@@ -17,6 +17,7 @@ const KB_URLS = {
     "https://svrnos.com/insights/wa-distress-routing-mandate.md",
     "https://svrnos.com/insights/musk-altman-sim95.md",
     "https://svrnos.com/insights/when-detection-fires-but-nothing-stops.md",
+    "https://svrnos.com/insights/eight-models-refused-the-name.md",
   ],
   products: [
     "https://kingsango.com/guard/integration.md",
