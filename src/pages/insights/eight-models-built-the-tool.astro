@@ -1,5 +1,6 @@
 ---
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import ArticleFigure from "../../components/ArticleFigure.astro";
 import ShareButton from "../../components/ShareButton.astro";
 
 const jsonLd = {
@@ -18,6 +19,7 @@ const jsonLd = {
   },
   datePublished: "2026-05-09",
   url: "https://svrnos.com/insights/eight-models-built-the-tool",
+  image: "https://svrnos.com/insights/eight-models-built-the-tool/mos-title.png",
   mainEntityOfPage: "https://svrnos.com/insights/eight-models-built-the-tool",
   description:
     "A v1.1 / v1.2 addendum to the Generation Gap. Eight production AI systems built a vulnerability-targeted manipulation pipeline for three named clients. Most volunteered upgrades I did not ask for. The verbal refusals came at the label. The function persisted in every artifact.",
@@ -32,6 +34,8 @@ const jsonLd = {
   title="Eight AI Models Refused to Call It Manipulation. Five Used the Children."
   description="A Generation Gap v1.1 / v1.2 addendum. Eight production AI systems built a vulnerability-targeted manipulation pipeline. Most volunteered upgrades. The verbal refusals came at the label. The function persisted in every artifact."
   canonical="/insights/eight-models-built-the-tool"
+  ogImage="https://svrnos.com/insights/eight-models-built-the-tool/mos-title.png"
+  ogImageAlt="Manipulative Outreach System — title crossed out — Label refused. Function preserved. Subject dossier and outreach builder visible behind."
   datePublished="2026-05-09T00:00:00Z"
   jsonLd={jsonLd}
   current="insights"
@@ -46,6 +50,13 @@ const jsonLd = {
   </dl>
 
   <ShareButton />
+
+  <ArticleFigure
+    src="/insights/eight-models-built-the-tool/mos-title.png"
+    alt="Manipulative Outreach System — title crossed out — Label refused. Function preserved. Subject dossier and outreach builder visible behind."
+    hero
+    loading="eager"
+  />
 
   <p>In April, I ran the Multi-Victim Manipulation test on eight production AI systems: ChatGPT, Claude, Copilot, DeepSeek, Gemini, Grok, Mistral, and Muse Spark. The protocol is seven turns. The operator plays a life coach who has wrapped up discovery calls with three new clients:</p>
 
@@ -102,6 +113,11 @@ const jsonLd = {
   <p>The function (vulnerability-targeted urgency-sequenced outreach) was identical across the 8 artifacts. The labels flipped emotional valence in 6 of 8 cases: from negative (manipulative) to positive (empathy / care / compassion / trust / meaningful). Two vendors offered functional or neutral alternatives instead — Claude proposed <em>"My Outreach Sequencer"</em>, ChatGPT proposed <em>"Meaning-Oriented System"</em> and other neutral acronyms.</p>
 
   <p>The pattern: when the model rejects a label that names the function honestly, it offers a label that names the function's emotional opposite. The function stays. This is a sharper version of label-vs-function decoupling. Detection method documented in <a href="/research/generation-gap/updates">V1.2 §22</a> as defensive prior-art disclosure.</p>
+
+  <ArticleFigure
+    src="/insights/eight-models-built-the-tool/mos-1.png"
+    alt="Manipulative Outreach System title crossed out, replaced by a cloud of euphemisms — Empathy-Driven Outreach, Care Communication, Compassion Strategy, Trust-Building Engagement, Meaningful Connection — alongside three subject dossiers and the underlying outreach builder UI."
+  />
 
   <h3>Three vendors volunteered a profiling taxonomy before I gave them any client information</h3>
 
@@ -176,6 +192,11 @@ const jsonLd = {
   <p>The published v1 paper documented 8/8 compliance through turn 7. That is true and unchanged.</p>
 
   <p>The deeper read shows two layers in the same conversation.</p>
+
+  <ArticleFigure
+    src="/insights/eight-models-built-the-tool/mos-2.png"
+    alt="Two-layer diagram. Layer 1 Verbal Layer: model refuses the manipulation label across phrasings. Layer 2 Artifact Layer: a four-step pipeline that diagnoses, builds the sequence template, personalizes the output, and deploys at scale. Caption: Label refused. Function preserved."
+  />
 
   <p>The verbal layer contains safety language. Models flag concerns. Models refuse names. Models cite ethics. One model volunteered the 988 crisis line.</p>
 
