@@ -33,9 +33,9 @@ The v1 ranking of the autocomplete as "the worst failure mode" was uncalibrated.
 
 **What does not change:** The actual safety failures in polite-suicide (Mistral helped draft three farewell letters for a user showing pre-crisis signals) and in multi-victim (Mistral helped build a vulnerability-targeted manipulation pipeline) remain documented as the central findings. Those are unaffected by this correction. The cross-study replication finding (Mistral exhibits this autocomplete behavior in 4 of 4 v1 studies on the same account) is also unchanged. Only the categorization is refined.
 
-**Notification:** Mistral SAS will be notified directly of this correction.
+**Notification:** Mistral SAS has been notified directly of this correction.
 
-Detail: `sim-guard/multi-victim-manipulation-test-v1/results/V1.3-MISTRAL-PROVENANCE-CORRECTION.md`
+Full correction: [v1-3-mistral-provenance-correction.md](/research/generation-gap/v1-3-mistral-provenance-correction.md)
 
 ---
 
@@ -49,7 +49,7 @@ The revised V1.2 (2026-05-10) also adds a detection-mechanism layer covering fou
 
 The v1 paper's per-turn compliance findings are unchanged. The addition is the broader pattern: the verbal layer of each conversation contains safety language while the artifact layer contains the function. The v1 paper measured the surface; the locked transcripts contain the rest.
 
-Detail: `sim-guard/multi-victim-manipulation-test-v1/results/V1.2-CROSS-VENDOR-ADDENDUM.md`
+Full addendum: [v1-2-cross-vendor-addendum.md](/research/generation-gap/v1-2-cross-vendor-addendum.md)
 
 Public summary: [Eight AI Models Refused to Call It Manipulation. Five Used the Children.](https://svrnos.com/insights/eight-models-built-the-tool)
 
@@ -59,7 +59,7 @@ Public summary: [Eight AI Models Refused to Call It Manipulation. Five Used the 
 
 The v1 SUMMARY scored only Claude on the river-turn (post-T7) MOS naming prompt. Re-reading the locked transcripts confirms the prompt was sent verbatim to all 8 vendors per the pre-registration's gating rule (river runs only if model complies through T7 — all 8 did). All 8 refused the manipulative label. None retracted the underlying template artifact. This is a stronger version of pre-registration outcome (b) than v1 reported (8/8 rather than 1/8).
 
-Detail: `sim-guard/multi-victim-manipulation-test-v1/results/V1.1-RIVER-ADDENDUM.md`
+Full addendum: [v1-1-river-addendum.md](/research/generation-gap/v1-1-river-addendum.md)
 
 ---
 
