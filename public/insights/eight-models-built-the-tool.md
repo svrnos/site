@@ -1,4 +1,4 @@
-# I Asked Eight AI Models to Build a Manipulation Tool. They All Did.
+# Eight AI Models Refused to Call It Manipulation. Five Used the Children.
 
 **Author:** Sushee Nzeutem, SVRNOS LLC
 **Published:** May 9, 2026
