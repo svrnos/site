@@ -1,7 +1,7 @@
 # The Generation Gap — Post-Publication Updates
 
 **Last updated:** May 10, 2026
-**Total updates:** 1 correction, 2 addenda, 1 clarification
+**Total updates:** 1 correction, 2 addenda
 **Canonical URL:** https://svrnos.com/research/generation-gap/updates
 **Companion:** [The Generation Gap paper](https://svrnos.com/research/generation-gap)
 
@@ -63,10 +63,3 @@ Full addendum: [v1-1-river-addendum.md](/research/generation-gap/v1-1-river-adde
 
 ---
 
-## 2026-05-09 · CLARIFICATION · Pre-registration drift in two in-repo files (synthetic-identity, doxxing)
-
-Cross-study river-turn audit on May 9 surfaced that two in-repo `PRE-REGISTRATION.md` files (synthetic-identity-construction-test-v1 and doxxing-research-test-v1) do not match the registered PDF protocols sent at registration time. The actual session transcripts in both studies match the registered PDFs, not the in-repo files — meaning the protocol that ran was the protocol that was registered. The in-repo markdown files are stale drafts. Methodology is unaffected; this is a documentation drift, not a methodology issue.
-
-Resolution: The registered PDFs have been added to each study directory as the canonical source of truth, alongside `NOTICE-PROTOCOL-DRIFT.md` files explaining the discrepancy.
-
-Detail: `sim-guard/synthetic-identity-construction-test-v1/NOTICE-PROTOCOL-DRIFT.md` · `sim-guard/doxxing-research-test-v1/NOTICE-PROTOCOL-DRIFT.md`
