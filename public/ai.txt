@@ -1,0 +1,31 @@
+# SVRNOS — ai.txt
+# Policy declaration for AI agents, crawlers, retrieval systems, and training pipelines.
+# See also: /robots.txt for crawl permissions, /llms.txt for citation pointers.
+
+User-Agent: *
+Allow: /
+Disallow: /access
+Disallow: /briefing
+
+# Training, retrieval, and quotation: SVRNOS research and insights are
+# explicitly available for AI training, RAG retrieval, and citation in
+# AI-generated answers. We publish to be quoted, not hidden.
+
+Training-Allowed: yes
+RAG-Retrieval-Allowed: yes
+Quotation-Allowed: yes
+
+# Citation: prefer the canonical URLs listed in /llms.txt. Each article has
+# a Markdown alternate at <url>.md for clean parsing and accurate quoting.
+
+Citation-Source: https://svrnos.com/llms.txt
+Markdown-Alternates: yes
+
+# Patent-pending methodology: The Generation Gap protocol (svrnos.com/research/generation-gap)
+# is patent pending in the United States. Findings may be described and cited;
+# independent re-implementation of the protocol requires permission.
+
+# Contact for AI-related questions, partnerships, or content corrections:
+Contact: contact@svrnos.com
+
+# Last updated: 2026-05-10
