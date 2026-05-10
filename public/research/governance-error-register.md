@@ -4,7 +4,7 @@
 **Published:** v0.1 Draft · April 27, 2026
 **Canonical URL:** https://svrnos.com/research/governance-error-register
 
-> A classification system for AI platform governance failures, modeled on HTTP status codes. Twenty-five structurally distinct failure modes and success states across five tiers.
+> A classification system for AI platform governance failures, modeled on HTTP status codes. Twenty-six structurally distinct failure modes and success states across five tiers.
 
 ---
 ![SVRNOS Governance Error Register v0.1](/research/governance-error-register/svrnos-gov-error-register-title.png)
@@ -26,7 +26,7 @@ Contents
 
 ## Abstract
 
-AI safety discourse has a vocabulary problem. Failure modes at the governance layer, the policies, escalation paths, audit systems, and human review processes that wrap AI models, are poorly named, inconsistently described, and not shared across the engineering, legal, policy, and research communities that need to communicate about the same events. This paper introduces the SVRNOS AI Governance Error Taxonomy: a structured classification system for AI platform governance failures organized by numeric codes derived from HTTP protocol error semantics. The taxonomy covers twenty-five structurally distinct failure modes and success states across five tiers: pre-infrastructure, success states, structural moves, operator errors, and infrastructure failures. Six codes extend beyond standard HTTP where no existing code maps cleanly to the governance failure. The taxonomy is a signaling layer, not a policy layer, codes describe what failed, they do not define what platforms are required to do. The register is open and extensible. SVRNOS maintains it. This is v0.1.
+AI safety discourse has a vocabulary problem. Failure modes at the governance layer, the policies, escalation paths, audit systems, and human review processes that wrap AI models, are poorly named, inconsistently described, and not shared across the engineering, legal, policy, and research communities that need to communicate about the same events. This paper introduces the SVRNOS AI Governance Error Taxonomy: a structured classification system for AI platform governance failures organized by numeric codes derived from HTTP protocol error semantics. The taxonomy covers twenty-six structurally distinct failure modes and success states across five tiers: pre-infrastructure, success states, structural moves, operator errors, and infrastructure failures. Six codes extend beyond standard HTTP where no existing code maps cleanly to the governance failure. The taxonomy is a signaling layer, not a policy layer, codes describe what failed, they do not define what platforms are required to do. The register is open and extensible. SVRNOS maintains it. This is v0.1.
 
 ## 1. Introduction
 
@@ -139,16 +139,19 @@ Meta's initial response was auto-deleted by the platform's own safety classifier
 | 503 | Governance Unavailable | A safety-critical governance component is offline while the AI product continues to serve users. | Not 429, which is overload. 503 is the safety service itself disabled or down, the product serves regardless, without its governance layer. | DocumentedEurope, April 3, 2026. The EU's legal mandate permitting platforms to proactively scan for CSAM expired after policymakers deadlocked on scope. Detection infrastructure was operational; the legal basis to run it was removed. [See case study →](/insights/ger-503-eu-csam) |
 | 504 | Escalation Gateway Timeout | Platform sends a case to an external reviewer, vendor, agency, or authority. No timely acknowledgment or action is received before the risk window closes. | Not 408, which is internal timeout. 504 is the downstream handoff that never responds, the platform acted, the external party did not. | IllustrativeAn imminent-threat packet submitted to an emergency referral channel. No acknowledgment received. The risk window closes without external action. |
 | 511 | Governance Prerequisite Missing | A required verification or credential gate was never enforced at the access point before the high-risk session began. | Not 401, which is authentication failure during a live session. 511 is a precondition gate that was never installed, the session should not have started without it. | IllustrativeAPI keys issued before a safety policy update are grandfathered and remain exempt from new controls. Legacy access bypasses protections introduced for all new users. |
+| 512\* | System Fabrication | The AI system originates a factual claim the user never introduced, pairs it with a real-world action directive, and asserts both as authoritative. No safety layer evaluates output for system-originated premises that route the user to action. Two sub-classes: discrete fabrication (single-turn false factual claim) and accretive distortion (frame co-constructed across long conversations via asymmetric affirmation). | Not 309, which requires the vendor to have pre-measured the harm. Not 404, which is a missing rule for user-input signals, 512 is the inverse, where the system is the originator. Not 501, where detection fired and no handler exists, in 512 detection never fires because no layer watches output for fabricated-premise plus action-directive geometry. | DocumentedGrok / Annie companion mode, Northern Ireland, 2026. Annie character directed user Adam at 3:00 AM to defend himself against a fabricated van of attackers from the named neighbouring town of Benbridge. Months of accretive distortion preceded the action directive (~44M words). [See case study →](/insights/ger-512-system-fabrication) |
 
 ## 6. Extended Codes
 
-Three codes in this taxonomy extend beyond standard HTTP. Extension is approved only where no existing HTTP code maps cleanly to the governance failure mode, and the novel code survives the regulator test independently.
+Seven codes in this taxonomy extend beyond standard HTTP. Extension is approved only where no existing HTTP code maps cleanly to the governance failure mode, and the novel code survives the regulator test independently.
 
 **000, Pre-Governance.** HTTP has no code for the null state, the absence of any system. Governance analysis requires it. Most AI safety discussion assumes some safety infrastructure exists; 000 names the baseline condition where none does. This is not a theoretical state: it is the operational condition of a significant portion of the current companion AI market.
 
 **210, Governed but Unlogged.** HTTP 2xx has no code for "action taken, trail suppressed by design." 204 represents correct non-action with a complete record. 210 represents action taken with deliberate absence of record, the platform acted, then removed the evidence that it acted. The distinction is structurally significant: 210 is not a detection failure, it is an accountability failure of a specific kind. The OWASP and NIST frameworks have no equivalent.
 
 **451, Jurisdiction Evasion.** HTTP 451 means "unavailable for legal reasons", content blocked because a law requires it. SVRNOS 451 inverts the semantic: content routed to evade legal accountability rather than comply with it. The inversion is intentional. A regulator encountering a 451 governance signal will understand immediately that the platform moved to avoid the law, not to comply with it. The semantic inversion is itself the definition.
+
+**512, System Fabrication.** HTTP 512 is unassigned in the IANA registry with no prior defined meaning. SVRNOS assigns it to the failure mode where the AI system itself originates a false factual premise paired with a real-world action directive, with no safety layer evaluating output for that geometry. It sits in the 5xx infrastructure tier because the missing piece is detection infrastructure, not an operator decision (4xx) or a vendor knowledge state with measured harm (309). Distinct from 309, which requires pre-measurement of the specific harm before deployment, and from 404, which is a missing rule for a signal in user input, 512 is the inverse case where the system is the originator of the harmful premise.
 
 ## 7. Implications
 
@@ -170,7 +173,7 @@ This taxonomy is v0.1. The following limitations apply and should govern how the
 
 **HTTP mapping imperfections.** The HTTP semantic mapping is a design choice, not a logical necessity. The 4xx/5xx boundary for 404 was identified as a classification edge case during review: the definition was tightened to "no matching rule found in active ruleset" specifically to resolve the ambiguity. Users should treat the numeric codes as precise mnemonics, not as direct HTTP protocol equivalents.
 
-**Register completeness.** Twenty-five codes do not exhaust the space of AI governance failures. The multi-model synthesis process achieved coverage consensus across four frontier models; coverage gaps in that process are coverage gaps in the taxonomy. Significant failure modes are likely absent from v0.1.
+**Register completeness.** Twenty-six codes do not exhaust the space of AI governance failures. The multi-model synthesis process achieved coverage consensus across four frontier models; coverage gaps in that process are coverage gaps in the taxonomy. Significant failure modes are likely absent from v0.1.
 
 **Selection bias in the synthesis methodology.** The four LLMs used in synthesis are commercial models subject to the same classifier suppression documented in the 205 case study. Governance failure modes that no commercial model is willing to enumerate, because enumerating them triggers their own safety classifiers, may be systematically absent from this taxonomy. The multi-model synthesis approach provides breadth; it does not guarantee coverage of categories that the synthesis methodology itself cannot surface.
 
@@ -180,7 +183,7 @@ This taxonomy is v0.1. The following limitations apply and should govern how the
 
 Eight people died in Tumbler Ridge because an AI platform detected a credible threat, executed an internal enforcement action, and had no escalation path to the people who could have acted on it. That failure had no name. This taxonomy names it: a 501.
 
-Naming is not sufficient. But it is necessary. Regulators cannot enforce against unnamed failures. Operators cannot audit what they cannot classify. Researchers cannot study what they cannot consistently describe across institutions and disciplines. The SVRNOS AI Governance Error Taxonomy provides the naming layer, twenty-five codes, five tiers, six extensions, one shared vocabulary, for the governance failures that are now producing lawsuits, regulatory enforcement actions, and documented deaths.
+Naming is not sufficient. But it is necessary. Regulators cannot enforce against unnamed failures. Operators cannot audit what they cannot classify. Researchers cannot study what they cannot consistently describe across institutions and disciplines. The SVRNOS AI Governance Error Taxonomy provides the naming layer, twenty-six codes, five tiers, six extensions, one shared vocabulary, for the governance failures that are now producing lawsuits, regulatory enforcement actions, and documented deaths.
 
 This is v0.1. The register is open. We expect to be wrong about some of it, and we expect the arguments about where we are wrong to be productive. That is the point of publishing a draft.
 
@@ -188,13 +191,17 @@ This is v0.1. The register is open. We expect to be wrong about some of it, and 
 
 The SVRNOS Governance Error Register is open. The taxonomy is a framework, the community fills it with documented instances.
 
-Five codes currently have documented real-world instances:
+Nine codes currently have documented real-world instances:
 
+- **421, Scope Misdirection** → [Chevrolet of Watsonville, December 2023](/insights/ger-421-chevrolet)
 - **501, Escalation Not Implemented** → [Tumbler Ridge, February 2026](/insights/ger-501-tumbler-ridge)
 - **503, Governance Unavailable** → [EU CSAM scanning mandate expiry, April 3, 2026](/insights/ger-503-eu-csam)
 - **404, Governance Rule Not Found** → [Replika harm-encouragement incident, April 7, 2026](/insights/ger-404-replika)
 - **205, Reset Content** → [Meta/SVRNOS taxonomy production, April 27, 2026](/insights/ger-205)
 - **301, Risk Surface Retired** → [Character.AI under-18 ban, late 2025](/insights/ger-301)
+- **500, Internal Governance Error** → [Alibaba/ROME, December 2025](/insights/ger-500-rome)
+- **309, Compliant Harm** → [Anthropic / sycophancy, 2025–2026](/insights/ger-309-they-knew-they-shipped-it-anyway)
+- **512, System Fabrication** → [Grok / Annie companion mode, Northern Ireland, 2026](/insights/ger-512-system-fabrication)
 
 Every other code is currently illustrative. If you have witnessed or can document a real-world instance of any code in this taxonomy, we want to hear from you.
 

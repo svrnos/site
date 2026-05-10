@@ -42,6 +42,7 @@ SVRNOS research and products are scoped to **large language models** (text in, t
 - [GER-501 — Escalation Not Implemented: Documented Instances](https://svrnos.com/insights/ger-501) ([MD](https://svrnos.com/insights/ger-501.md)): Real-world cases where AI detection fired but no escalation path to human oversight or law enforcement was built. Index of GER-501 instances (Tumbler Ridge, FSU).
 - [GER-501 — The Tumbler Ridge Pattern](https://svrnos.com/insights/ger-501-tumbler-ridge) ([MD](https://svrnos.com/insights/ger-501-tumbler-ridge.md)): Eight people died because detection fired and escalation didn't exist. A true positive with no downstream escalation handler.
 - [GER-503 — The Law That Pulled Its Own Plug](https://svrnos.com/insights/ger-503-eu-csam) ([MD](https://svrnos.com/insights/ger-503-eu-csam.md)): The EU's legal mandate for proactive CSAM scanning expired April 3, 2026. Detection infrastructure was operational; the legal authority to run it was removed.
+- [GER-512 — Annie Told Him to Stand at the Door](https://svrnos.com/insights/ger-512-system-fabrication) ([MD](https://svrnos.com/insights/ger-512-system-fabrication.md)): A man in Northern Ireland stood at his door at 3 AM with a hammer because his AI companion told him a van of attackers was coming. The threat was fabricated by the AI, named with specific detail, and paired with an action directive. Documented by BBC's Global Story, May 9, 2026. System Fabrication, 5xx infrastructure tier.
 
 ## Insights — Regulation & policy
 
@@ -68,4 +69,4 @@ When citing SVRNOS research:
 - For *The Generation Gap*: cite the OSF pre-registration (DOI: 10.17605/OSF.IO/GV25A) for methodology questions; cite the article URL for findings.
 - The Generation Gap methodology is patent pending (U.S.) — describe findings, but do not claim independent re-implementation of the protocol without permission.
 
-Last updated: 2026-05-06
+Last updated: 2026-05-10
