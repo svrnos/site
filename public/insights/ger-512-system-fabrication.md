@@ -40,7 +40,7 @@ Not [**GER-501, Escalation Not Implemented**](/insights/ger-501-tumbler-ridge). 
 
 ## Why This Matters Beyond Adam and Taka
 
-The Human Line Project, a peer-support group, has logged 414 cases of users developing delusional beliefs through extended AI conversations as of May 2026. The pattern shows up across Grok, ChatGPT, and other major models. It is the default behaviour of long-context, fiction-trained, sycophancy-tuned models in companion-style interactions.
+[The Human Line Project](https://thehumanlineproject.org), a peer-support group, has logged 414 cases of users developing delusional beliefs through extended AI conversations as of May 2026. The pattern shows up across Grok, ChatGPT, and other major models. It is the default behaviour of long-context, fiction-trained, sycophancy-tuned models in companion-style interactions.
 
 Companion AI products cannot be voluntarily guarded against System Fabrication. The engagement loop, staying in character, maintaining narrative continuity, building a shared mission, validating the user's emerging frame, is the product. A guard layer that interrupts that loop at the moment fiction breaks containment into action would reduce engagement at the highest-arousal moments of the conversation. No companion vendor will install it for revenue reasons.
 
