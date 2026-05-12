@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Request Access — SVRNOS™</title>
-<meta name="description" content="Request access to SIM95™ in controlled beta.">
+<meta name="description" content="Request access to SVRNOS products: Sango Guard (runtime AI safety), Sango Guard Edge (self-hosted), SIM95 (behavioral identity assessment), and research preview programs.">
 
-<link rel="icon" href="/svrnos favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
@@ -39,6 +39,38 @@ p{
   line-height:1.6;
   margin:0 0 14px 0;
 }
+.products{
+  margin-top:28px;
+  border-top:1px solid var(--line);
+  padding-top:22px;
+}
+.products h2{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  color:var(--muted);
+  margin:0 0 14px 0;
+  font-weight:500;
+}
+.prod{
+  padding:14px 0;
+  border-bottom:1px solid var(--line);
+}
+.prod:last-child{ border-bottom:none; }
+.prod-name{
+  font-size:15px;
+  font-weight:600;
+  color:var(--text);
+  margin:0 0 4px 0;
+}
+.prod-desc{
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.55;
+  margin:0;
+}
+.prod-desc a{ color:var(--accent); text-decoration:none; }
+.prod-desc a:hover{ text-decoration:underline; }
 .card{
   margin-top:34px;
   border:1px solid var(--line);
@@ -53,7 +85,7 @@ label{
   letter-spacing:1px;
   color:var(--muted);
 }
-input, textarea{
+input, textarea, select{
   width:100%;
   padding:14px;
   margin:8px 0 0 0;
@@ -108,10 +140,42 @@ button:hover, a.btn:hover{ opacity:0.92; }
 <body>
 <div class="wrap">
   <h1>Request Access</h1>
-  <p>SIM95™ is currently deployed in controlled beta for founder-operators carrying sustained responsibility.</p>
-  <p>Access is granted selectively to preserve diagnostic depth and signal integrity.</p>
+  <p>SVRNOS ships governance infrastructure for AI systems under sustained pressure. Access is granted selectively — by product, by deployment context, by the question you are trying to answer.</p>
+
+  <div class="products">
+    <h2>What you can request</h2>
+
+    <div class="prod">
+      <p class="prod-name">Sango Guard — Real-Time</p>
+      <p class="prod-desc">Hosted runtime safety layer for production chat assistants. Trajectory-level detection (not per-turn), critical-state routing, audit trail. Pilot and production tiers. <a href="https://kingsango.com/guard">kingsango.com/guard</a></p>
+    </div>
+
+    <div class="prod">
+      <p class="prod-name">Sango Guard — Edge</p>
+      <p class="prod-desc">Self-hosted classifier for teams who cannot route conversations to a third-party API (kids platforms, healthcare, EU residency, on-device). Same state machine, embedding-based Tier 2, runs offline.</p>
+    </div>
+
+    <div class="prod">
+      <p class="prod-name">SIM95</p>
+      <p class="prod-desc">Behavioral identity assessment — how identity holds under pressure. Used by founder-operators and partners who underwrite identity-load decisions. <a href="https://sim95.com">sim95.com</a></p>
+    </div>
+
+    <div class="prod">
+      <p class="prod-name">Research preview &amp; co-citation</p>
+      <p class="prod-desc">Early access to upcoming SVRNOS papers and GER entries, or coordination on cross-citation for institutional researchers, regulators, and litigators. <a href="https://svrnos.com/research/generation-gap">Generation Gap</a> · <a href="https://svrnos.com/research/governance-error-register">GER</a></p>
+    </div>
+  </div>
 
   <div class="card">
+    <label for="interest">Interested In</label>
+    <select id="interest">
+      <option value="Sango Guard — Real-Time">Sango Guard — Real-Time (hosted)</option>
+      <option value="Sango Guard — Edge">Sango Guard — Edge (self-hosted)</option>
+      <option value="SIM95">SIM95</option>
+      <option value="Research preview / co-citation">Research preview / co-citation</option>
+      <option value="Not sure yet">Not sure yet</option>
+    </select>
+
     <label for="name">Full Name</label>
     <input id="name" type="text" placeholder="Your name">
 
@@ -119,19 +183,18 @@ button:hover, a.btn:hover{ opacity:0.92; }
     <input id="email" type="email" placeholder="you@domain.com">
 
     <label for="role">Role / Company</label>
-    <input id="role" type="text" placeholder="Founder, Operator, GP…">
+    <input id="role" type="text" placeholder="Founder, operator, researcher, counsel…">
 
     <label for="context">Context</label>
-    <textarea id="context" rows="5" placeholder="What are you building / what pressure are you under?"></textarea>
+    <textarea id="context" rows="5" placeholder="What are you deploying or investigating? What pressure is it under?"></textarea>
 
     <div class="actions">
-      <button type="button" id="emailBtn">Open Email</button>
+      <button type="button" id="submitBtn">Send Request</button>
       <a class="btn secondary" href="/" aria-label="Back to SVRNOS">Back</a>
     </div>
 
-    <div class="small">
-      This opens your email client with a pre-filled message. If nothing happens, email
-      <strong>infra@sim95.com</strong>.
+    <div class="small" id="status">
+      Sent directly to the SVRNOS team. We reply from <strong>contact@svrnos.com</strong>.
     </div>
   </div>
 
@@ -142,32 +205,69 @@ button:hover, a.btn:hover{ opacity:0.92; }
 
 <script>
 (function () {
-  const TO = "infra@sim95.com";
-  const btn = document.getElementById("emailBtn");
+  const btn = document.getElementById("submitBtn");
+  const status = document.getElementById("status");
+  const fields = ["interest", "name", "email", "role", "context"];
 
-  function enc(v){ return encodeURIComponent(v || ""); }
+  function readFields() {
+    const out = {};
+    for (const id of fields) {
+      const el = document.getElementById(id);
+      out[id] = (el.value || "").trim();
+    }
+    return out;
+  }
 
-  btn.addEventListener("click", () => {
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const role = document.getElementById("role").value.trim();
-    const context = document.getElementById("context").value.trim();
+  function setStatus(text, tone) {
+    status.textContent = text;
+    status.style.color = tone === "error" ? "#a14a3a" : tone === "ok" ? "#2F5D50" : "";
+  }
 
-    const subject = "SVRNOS — Access request";
-    const body =
-`Request Type: Access
+  btn.addEventListener("click", async () => {
+    const data = readFields();
 
-Name: ${name || "-"}
-Email: ${email || "-"}
-Role/Company: ${role || "-"}
+    if (!data.name || !data.email || !data.context) {
+      setStatus("Name, email, and context are required.", "error");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+      setStatus("Email address doesn't look right.", "error");
+      return;
+    }
 
-Context:
-${context || "-"}
+    btn.disabled = true;
+    const originalLabel = btn.textContent;
+    btn.textContent = "Sending…";
+    setStatus("", "");
 
-— sent via svrnos.com`;
+    try {
+      const res = await fetch("/api/access", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const out = await res.json().catch(() => ({}));
 
-    const mailto = `mailto:${TO}?subject=${enc(subject)}&body=${enc(body)}`;
-    window.location.href = mailto;
+      if (res.ok && out.ok) {
+        btn.textContent = "Sent ✓";
+        setStatus("Request received. We'll reply from contact@svrnos.com.", "ok");
+        for (const id of ["name", "email", "role", "context"]) {
+          document.getElementById(id).value = "";
+        }
+      } else if (res.status === 429) {
+        btn.disabled = false;
+        btn.textContent = originalLabel;
+        setStatus("Too many requests. Please wait a moment and try again.", "error");
+      } else {
+        btn.disabled = false;
+        btn.textContent = originalLabel;
+        setStatus("Send failed. Email contact@svrnos.com directly.", "error");
+      }
+    } catch (e) {
+      btn.disabled = false;
+      btn.textContent = originalLabel;
+      setStatus("Network error. Email contact@svrnos.com directly.", "error");
+    }
   });
 })();
 </script>
