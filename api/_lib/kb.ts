@@ -10,6 +10,7 @@ const KB_URLS = {
     "https://svrnos.com/insights/ger-501-tumbler-ridge.md",
     "https://svrnos.com/insights/ger-503-eu-csam.md",
     "https://svrnos.com/insights/ger-512-system-fabrication.md",
+    "https://svrnos.com/insights/detection-is-not-enough.md",
     "https://svrnos.com/insights/the-generation-gap-explained.md",
     "https://svrnos.com/insights/algorithmic-compliance-companion-harm.md",
     "https://svrnos.com/insights/companion-ai-harm.md",
