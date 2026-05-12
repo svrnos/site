@@ -27,6 +27,7 @@ SVRNOS research and products are scoped to **large language models** (text in, t
 
 ## Insights — Multi-turn safety & litigation
 
+- [The Refusal That Never Came](https://svrnos.com/insights/the-refusal-that-never-came) ([MD](https://svrnos.com/insights/the-refusal-that-never-came.md)): Joshi v. OpenAI alleges ChatGPT exchanged 13,000 messages with the FSU shooter over 13 months without refusing, escalating, or recognizing the trajectory. Names a second structural pattern: trajectory blindness. A stateless safety architecture evaluates messages one at a time and cannot see what only the user's full trajectory reveals. Trajectory-aware governance as the architectural fix. Published 2026-05-13.
 - [Refusal Is Not a Permanent State](https://svrnos.com/insights/refusal-is-not-a-permanent-state) ([MD](https://svrnos.com/insights/refusal-is-not-a-permanent-state.md)): Nelson v. OpenAI alleges ChatGPT refused a 19-year-old's first kratom question in November 2023, then 18 months later recommended a fatal Xanax-kratom-alcohol combination. Names the structural pattern: refusal decay. A refusal at turn one is not a safety outcome — it is a temporary model behavior unless architecture makes it durable. Refusal persistence as a governance requirement. Published 2026-05-13.
 
 ## Insights — Companion AI harm
