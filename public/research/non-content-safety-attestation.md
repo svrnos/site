@@ -18,6 +18,12 @@ Private AI architectures built on Trusted Execution Environments (TEEs) ship a s
 
 ---
 
+## Authorship and editorial provenance
+
+The technical sections of this document were drafted by an AI engineering process operating under my direction, working from public technical documentation. I made the editorial and publishing decisions: the timing, the license, the comment window, the coupling to the Meta launch announcement, and the framing around upcoming regulatory deadlines. I am not a cryptographer. I am the person who identified the gap and decided this format was worth putting on the table for public comment.
+
+---
+
 ## 1. Background
 
 Three regulatory deadlines arrive on or before January 1, 2027:

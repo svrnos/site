@@ -65,6 +65,10 @@ const jsonLd = {
 
   <p>Private AI architectures built on Trusted Execution Environments (TEEs) ship a strong privacy guarantee: conversation content does not leave the enclave. They do not, on their own, ship a verifiable safety guarantee: that a governance layer ran, what risk category it detected, and what action it took. This document specifies a format for a <strong>non-content safety attestation</strong>: a signed, cryptographically verifiable statement that an in-enclave governance layer evaluated a session and produced a defined outcome, with no transcript or content recoverable from the attestation itself. The format borrows the envelope pattern from DSSE and in-toto attestations, the platform-attestation chain from AWS Nitro Enclaves, and the transparency-log discipline from Apple Private Cloud Compute. v0.1 is published for public comment. Industry, regulators, and academic reviewers are invited to submit responses through August 14, 2026.</p>
 
+  <h2>Authorship and editorial provenance</h2>
+
+  <p>The technical sections of this document were drafted by an AI engineering process operating under my direction, working from public technical documentation. I made the editorial and publishing decisions: the timing, the license, the comment window, the coupling to the Meta launch announcement, and the framing around upcoming regulatory deadlines. I am not a cryptographer. I am the person who identified the gap and decided this format was worth putting on the table for public comment.</p>
+
   <h2>1. Background</h2>
 
   <p>Three regulatory deadlines arrive on or before January 1, 2027:</p>
