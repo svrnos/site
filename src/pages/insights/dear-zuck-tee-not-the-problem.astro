@@ -67,7 +67,7 @@ const jsonLd = {
 
   <p>Mark,</p>
 
-  <p>Yesterday you announced Incognito Chat for WhatsApp and the Meta AI app. The infrastructure is real. Trusted Execution Environment inference is real. End-to-end encryption is real. I am not arguing against private AI.</p>
+  <p>Yesterday <a href="https://www.facebook.com/share/1HAM67meB2/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">you announced Incognito Chat</a> for WhatsApp and the Meta AI app. The infrastructure is real. Trusted Execution Environment inference is real. End-to-end encryption is real. I am not arguing against private AI.</p>
 
   <p>I am writing because you shipped privacy without shipping verifiable governance. They are different layers, and the second one does not survive the way you described the first.</p>
 
@@ -85,9 +85,9 @@ const jsonLd = {
 
   <p>A governance layer can run inside the same boundary. It can read every turn, evaluate the trajectory, detect crisis, log signed metadata, and route to intervention. The conversation content never leaves. What leaves is a signed attestation: proof that governed safety logic ran, which category of risk it detected, what action it took, with no transcript attached.</p>
 
-  <p>Apple Private Cloud Compute already publishes verifiable attestations from inside its TEEs. AWS Nitro Enclaves do the same. Banks use this pattern for confidential computing. Healthcare uses it for HIPAA-bound inference. The infrastructure is available.</p>
+  <p><a href="https://security.apple.com/blog/private-cloud-compute/" target="_blank" rel="noopener noreferrer">Apple Private Cloud Compute</a> already publishes verifiable attestations from inside its TEEs. <a href="https://aws.amazon.com/ec2/nitro/nitro-enclaves/" target="_blank" rel="noopener noreferrer">AWS Nitro Enclaves</a> do the same. Banks use this pattern for confidential computing. Healthcare uses it for HIPAA-bound inference. The infrastructure is available.</p>
 
-  <p>Your own Private Processing documentation describes attested encrypted communications and confidential compute hardware. Attestation is the mechanism that lets an outside party verify what workload ran without seeing the private input. The architectural primitive exists in your stack. The safety attestation built on top of it is not publicly specified.</p>
+  <p>Your own <a href="https://engineering.fb.com/2025/04/29/security/whatsapp-private-processing-ai-tools/" target="_blank" rel="noopener noreferrer">Private Processing documentation</a> describes attested encrypted communications and confidential compute hardware. Attestation is the mechanism that lets an outside party verify what workload ran without seeing the private input. The architectural primitive exists in your stack. The safety attestation built on top of it is not publicly specified.</p>
 
   <ArticleFigure
     src="/insights/dear-zuck-tee-not-the-problem/governance-in-the-enclave.png"
@@ -100,19 +100,19 @@ const jsonLd = {
 
   <p>The gap is different. There is no publicly specified, operator-verifiable record of what the safety layer detected across the trajectory of a private session, what state it entered, and what intervention it produced. From outside the enclave, the system is asked to be trusted on behavior, not verified on it.</p>
 
-  <p>That distinction matters when a session goes wrong. If the model refuses correctly, you have a safety success that no operator-verifiable record can demonstrate. If the model fails, you have a Tumbler Ridge with no transcript, no audit trail, no path for the family to learn what happened, and no path for a regulator to test whether the same failure exists at scale. The model failed in private. The product remains private. The architecture removes the question.</p>
+  <p>That distinction matters when a session goes wrong. If the model refuses correctly, you have a safety success that no operator-verifiable record can demonstrate. If the model fails, you have <a href="/insights/ger-501-tumbler-ridge">a Tumbler Ridge</a> with no transcript, no audit trail, no path for the family to learn what happened, and no path for a regulator to test whether the same failure exists at scale. The model failed in private. The product remains private. The architecture removes the question.</p>
 
   <p>You moved the safety floor from the operator layer to the model layer, with no publicly verifiable check on whether the model held it.</p>
 
   <h2>The regulatory collision</h2>
 
-  <p>Washington HB 2225 takes effect January 1, 2027. It requires AI companion chatbot operators to maintain and publicly disclose protocols for detecting and responding to suicidal ideation, self-harm signals, and eating-disorder content; to route users to crisis resources; and to report annually on crisis referral notifications.</p>
+  <p><a href="https://app.leg.wa.gov/billsummary?BillNumber=2225&Year=2025" target="_blank" rel="noopener noreferrer">Washington HB 2225</a> takes effect January 1, 2027. It requires AI companion chatbot operators to maintain and publicly disclose protocols for detecting and responding to suicidal ideation, self-harm signals, and eating-disorder content; to route users to crisis resources; and to report annually on crisis referral notifications.</p>
 
   <p>If Incognito Chat is available to Washington residents on January 2, 2027, and a self-harm trajectory appears in a session Meta cannot observe, your team has three options. Run trajectory detection inside the TEE and publish the attestation format that proves it ran, which contradicts nothing about the privacy claim. Skip detection, which violates HB 2225. Argue Incognito Chat is not a companion product under the statute, which is a legal position, not a technical answer.</p>
 
-  <p>The EU AI Act Article 50 transparency obligations apply on August 2, 2026. They are a disclosure mandate, not a crisis-detection mandate, but they tighten the disclosure floor in parallel.</p>
+  <p>The <a href="https://digital-strategy.ec.europa.eu/en/consultations/consultation-draft-guidelines-transparency-obligations-under-ai-act" target="_blank" rel="noopener noreferrer">EU AI Act Article 50 transparency obligations</a> apply on August 2, 2026. They are a disclosure mandate, not a crisis-detection mandate, but they tighten the disclosure floor in parallel.</p>
 
-  <p>New York's RAISE Act, applicable to frontier developers from January 1, 2027, sets penalties at up to $1 million for a first violation and $3 million for subsequent violations, and points toward an incident-reporting regime that distinguishes "what was your policy" from "what did your system actually do."</p>
+  <p>New York's <a href="https://en.wikipedia.org/wiki/Responsible_AI_Safety_and_Education_Act" target="_blank" rel="noopener noreferrer">RAISE Act</a>, applicable to frontier developers from January 1, 2027, sets penalties at up to $1 million for a first violation and $3 million for subsequent violations, and points toward an incident-reporting regime that distinguishes "what was your policy" from "what did your system actually do."</p>
 
   <p>The direction is consistent. Regulators are moving from policy review to system attestation. A private architecture that cannot answer "what did your safety layer detect, when, and what did it do" will collide with that direction.</p>
 
@@ -142,12 +142,14 @@ const jsonLd = {
   <aside class="article-sources">
     <p><strong>Sources</strong></p>
     <ul>
-      <li>Meta, Incognito Chat announcement and Private Processing whitepaper: TEE inference, end-to-end encryption, in-enclave classification, attested encrypted communications, optional transparency reports.</li>
-      <li>AP, Incognito Chat coverage: safeguards that refuse certain topics, steer users toward helpful information, and at threshold stop interacting.</li>
-      <li>Washington HB 2225 (effective January 1, 2027): AI companion chatbot operator obligations for detection, crisis routing, and annual reporting.</li>
-      <li>EU AI Act Article 50 (applicable August 2, 2026): user disclosure and generated-content marking obligations.</li>
-      <li>New York RAISE Act (frontier developer framework, applicable January 1, 2027): penalty structure up to $1M first violation, $3M subsequent.</li>
-      <li>Apple Private Cloud Compute (2024): published attestation pattern for TEE-resident workloads. AWS Nitro Enclaves: confidential computing pattern with attested workloads.</li>
+      <li>Mark Zuckerberg, <a href="https://www.facebook.com/share/1HAM67meB2/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">Incognito Chat announcement</a>, Facebook, May 13, 2026.</li>
+      <li>Meta Engineering, <a href="https://engineering.fb.com/2025/04/29/security/whatsapp-private-processing-ai-tools/" target="_blank" rel="noopener noreferrer">Building Private Processing for AI tools on WhatsApp</a>, April 29, 2025: TEE inference, end-to-end encryption, attested encrypted communications, confidential compute hardware.</li>
+      <li>AP News, Meta launches WhatsApp 'incognito' mode: safeguards that refuse certain topics, steer users toward helpful information, and at threshold stop interacting.</li>
+      <li>Washington State Legislature, <a href="https://app.leg.wa.gov/billsummary?BillNumber=2225&Year=2025" target="_blank" rel="noopener noreferrer">HB 2225 — Regulating artificial intelligence companion chatbots</a>, signed March 24, 2026 (Chapter 168, 2026 Laws), effective January 1, 2027: operator obligations for detection, crisis routing, and annual reporting.</li>
+      <li>European Commission, <a href="https://digital-strategy.ec.europa.eu/en/consultations/consultation-draft-guidelines-transparency-obligations-under-ai-act" target="_blank" rel="noopener noreferrer">Consultation on draft guidelines for transparency obligations under the AI Act</a>: Article 50 user-disclosure and generated-content marking obligations, applicable August 2, 2026.</li>
+      <li><a href="https://en.wikipedia.org/wiki/Responsible_AI_Safety_and_Education_Act" target="_blank" rel="noopener noreferrer">New York RAISE Act</a>, signed by Governor Hochul December 19, 2025, expected effective January 1, 2027: penalty structure up to $1M first violation, $3M subsequent, enforced by the NY Attorney General.</li>
+      <li>Apple, <a href="https://security.apple.com/blog/private-cloud-compute/" target="_blank" rel="noopener noreferrer">Private Cloud Compute</a>: published attestation pattern for TEE-resident workloads.</li>
+      <li>Amazon Web Services, <a href="https://aws.amazon.com/ec2/nitro/nitro-enclaves/" target="_blank" rel="noopener noreferrer">Nitro Enclaves</a>: confidential computing pattern with attested workloads.</li>
     </ul>
   </aside>
 </ArticleLayout>
