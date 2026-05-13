@@ -2,7 +2,9 @@
 
 **Author:** Sushee Nzeutem, SVRNOS LLC
 **Published:** v0.1 Draft · April 27, 2026
+**Last updated:** May 13, 2026 · 26 codes documented
 **Canonical URL:** https://svrnos.com/research/governance-error-register
+**Cite as:** Nzeutem, S. (2026). *SVRNOS Governance Error Register* (living document, accessed [date]). Sovereign OS LLC. svrnos.com/research/governance-error-register
 
 > A classification system for AI platform governance failures, modeled on HTTP status codes. Twenty-six structurally distinct failure modes and success states across five tiers.
 
