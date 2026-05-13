@@ -68,7 +68,7 @@ You have the platform reach to set the standard. The technical primitive exists 
 The TEE is not the problem. What runs inside it is.
 
 — Sushee Nzeutem
-Founder, SVRNOS · [King Sango Guard](https://kingsango.com/guard)
+Founder, SVRNOS · [Sango Guard](https://kingsango.com/guard)
 
 ---
 
