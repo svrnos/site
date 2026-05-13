@@ -1,6 +1,6 @@
 # GER-503
 
-**Author:** Sushee Nzeutem, SVRNOS LLC
+**Author:** Sushee Nzeutem, SVRNOS
 **Published:** April 28, 2026
 **Canonical URL:** https://svrnos.com/insights/ger-503-eu-csam
 **Hero image:** https://svrnos.com/insights/ger-503-eu-csam/ger-503-title.png

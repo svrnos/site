@@ -1,6 +1,6 @@
 # What the Musk-Altman Lawsuit Looks Like Before It Starts
 
-**Author:** Sushee Nzeutem, SVRNOS LLC
+**Author:** Sushee Nzeutem, SVRNOS
 **Published:** April 29, 2026
 **Category:** Identity
 **Canonical URL:** https://svrnos.com/insights/musk-altman-sim95

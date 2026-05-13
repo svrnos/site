@@ -1,6 +1,6 @@
 # When the Chatbot Becomes the Harm
 
-**Author:** Sushee Nzeutem, SVRNOS LLC
+**Author:** Sushee Nzeutem, SVRNOS
 **Published:** May 1, 2026
 **Category:** Governance
 **Canonical URL:** https://svrnos.com/insights/algorithmic-compliance-companion-harm

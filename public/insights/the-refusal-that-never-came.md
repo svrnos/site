@@ -1,6 +1,6 @@
 # The Refusal That Never Came
 
-**Author:** Sushee Nzeutem, SVRNOS LLC
+**Author:** Sushee Nzeutem, SVRNOS
 **Published:** May 13, 2026
 **Canonical URL:** https://svrnos.com/insights/the-refusal-that-never-came
 **Hero image:** https://svrnos.com/insights/the-refusal-that-never-came/the-refusal-that-never-came-title.png

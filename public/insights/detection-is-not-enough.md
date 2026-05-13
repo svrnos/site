@@ -1,6 +1,6 @@
 # The Escalation Path Has to Survive the Institution Around It
 
-**Author:** Sushee Nzeutem, SVRNOS LLC
+**Author:** Sushee Nzeutem, SVRNOS
 **Published:** May 12, 2026
 **Canonical URL:** https://svrnos.com/insights/detection-is-not-enough
 **Hero image:** https://svrnos.com/insights/detection-is-not-enough/detection-is-not-enough-title.png

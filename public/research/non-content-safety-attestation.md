@@ -2,7 +2,7 @@
 
 **A format specification for verifiable AI governance inside Trusted Execution Environments.**
 
-**Author:** Sushee Nzeutem, SVRNOS LLC
+**Author:** Sushee Nzeutem, SVRNOS
 **Version:** v0.1 (draft, open for comment)
 **Published:** May 14, 2026
 **Status:** Open for public comment through August 14, 2026

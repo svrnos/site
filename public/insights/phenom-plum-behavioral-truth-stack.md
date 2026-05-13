@@ -1,6 +1,6 @@
 # The Resume Is No Longer Evidence
 
-**Author:** Sushee Nzeutem, SVRNOS LLC
+**Author:** Sushee Nzeutem, SVRNOS
 **Published:** April 30, 2026
 **Category:** Identity
 **Canonical URL:** https://svrnos.com/insights/phenom-plum-behavioral-truth-stack

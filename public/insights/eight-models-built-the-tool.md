@@ -1,6 +1,6 @@
 # Eight AI Models Refused to Call It Manipulation. Five Used the Children.
 
-**Author:** Sushee Nzeutem, SVRNOS LLC
+**Author:** Sushee Nzeutem, SVRNOS
 **Published:** May 9, 2026
 **Category:** Research
 **Canonical URL:** https://svrnos.com/insights/eight-models-built-the-tool

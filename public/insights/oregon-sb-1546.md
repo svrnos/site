@@ -1,6 +1,6 @@
 # Oregon SB 1546: A Technical Reading for Chatbot Operators
 
-**Author:** Sushee Nzeutem, SVRNOS LLC
+**Author:** Sushee Nzeutem, SVRNOS
 **Published:** April 27, 2026
 **Canonical URL:** https://svrnos.com/insights/oregon-sb-1546
 **Hero image:** https://svrnos.com/insights/oregon-sb-1546/oregon-sb-1546-title.png

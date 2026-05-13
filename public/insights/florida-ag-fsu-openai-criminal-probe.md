@@ -1,6 +1,6 @@
 # If It Were a Person, We Would Charge Them With Murder
 
-**Author:** Sushee Nzeutem, SVRNOS LLC
+**Author:** Sushee Nzeutem, SVRNOS
 **Published:** April 30, 2026
 **Category:** Governance
 **Canonical URL:** https://svrnos.com/insights/florida-ag-fsu-openai-criminal-probe

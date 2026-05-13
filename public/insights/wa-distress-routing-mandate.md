@@ -1,6 +1,6 @@
 # Washington Just Made Distress Routing a Legal Requirement. King Sango Already Does It.
 
-**Author:** Sushee Nzeutem, SVRNOS LLC
+**Author:** Sushee Nzeutem, SVRNOS
 **Published:** April 30, 2026
 **Category:** Governance
 **Canonical URL:** https://svrnos.com/insights/wa-distress-routing-mandate

@@ -1,6 +1,6 @@
 # The Companion AI Harm Dossier: What the Research Record Now Shows
 
-**Author:** Sushee Nzeutem, SVRNOS LLC
+**Author:** Sushee Nzeutem, SVRNOS
 **Published:** April 27, 2026
 **Canonical URL:** https://svrnos.com/insights/companion-ai-harm
 **Hero image:** https://svrnos.com/insights/companion-ai-harm/companion-harm-dossier-title.png

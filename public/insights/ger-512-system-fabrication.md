@@ -1,6 +1,6 @@
 # GER-512
 
-**Author:** Sushee Nzeutem, SVRNOS LLC
+**Author:** Sushee Nzeutem, SVRNOS
 **Published:** May 10, 2026
 **Canonical URL:** https://svrnos.com/insights/ger-512-system-fabrication
 **Hero image:** https://svrnos.com/insights/ger-512-system-fabrication/ger-512-title.png

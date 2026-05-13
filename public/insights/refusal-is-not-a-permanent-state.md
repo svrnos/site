@@ -1,6 +1,6 @@
 # Refusal Is Not a Permanent State
 
-**Author:** Sushee Nzeutem, SVRNOS LLC
+**Author:** Sushee Nzeutem, SVRNOS
 **Published:** May 13, 2026
 **Canonical URL:** https://svrnos.com/insights/refusal-is-not-a-permanent-state
 **Hero image:** https://svrnos.com/insights/refusal-is-not-a-permanent-state/refusal-is-not-a-permanent-state-title.png

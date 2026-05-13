@@ -1,6 +1,6 @@
 # When Detection Fires but Nothing Stops
 
-**Author:** Sushee Nzeutem, SVRNOS LLC
+**Author:** Sushee Nzeutem, SVRNOS
 **Published:** May 1, 2026
 **Category:** Governance
 **Canonical URL:** https://svrnos.com/insights/when-detection-fires-but-nothing-stops

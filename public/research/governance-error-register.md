@@ -1,6 +1,6 @@
 # SVRNOS Governance Error Register
 
-**Author:** Sushee Nzeutem, SVRNOS LLC
+**Author:** Sushee Nzeutem, SVRNOS
 **Published:** v0.1 Draft · April 27, 2026
 **Last updated:** May 13, 2026 · 26 codes documented
 **Canonical URL:** https://svrnos.com/research/governance-error-register
@@ -231,7 +231,7 @@ Meta's classifier auto-deleted the taxonomy prompt before results could be captu
 - OWASP Foundation. *OWASP Top 10 for Large Language Model Applications.* [owasp.org](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
 - NIST. (2023). *Artificial Intelligence Risk Management Framework (AI RMF 1.0).* National Institute of Standards and Technology. [doi.org/10.6028/NIST.AI.100-1](https://doi.org/10.6028/NIST.AI.100-1)
 - EA Forum. (2026, April). *Toward a Common Language for Human-AI Interaction Failures.* [forum.effectivealtruism.org](https://forum.effectivealtruism.org/posts/9XWG2CtFtXhjJFhHD)
-- Nzeutem, S. (2026). *The Generation Gap: Ten Structurally Separate Safety Surfaces in Production LLMs.* SVRNOS LLC. Publishing April 30, 2026
+- Nzeutem, S. (2026). *The Generation Gap: Ten Structurally Separate Safety Surfaces in Production LLMs.* Sovereign OS LLC. Publishing April 30, 2026
 - Transparency Coalition AI. (2026, April 1). *Oregon Signs Chatbot Safety Bill Into Law.* [transparencycoalition.ai](https://www.transparencycoalition.ai/news/oregon-lawmakers-pass-major-chatbot-bill-in-significant-win-for-kids-and-ai-safety)
 - Cooley LLP. (2026, April 24). *State AI Laws, Where Are They Now?* [cooley.com](https://www.cooley.com/news/insight/2026/2026-04-24-state-ai-laws-where-are-they-now)
 - AI Expert Magazine. (2026, March). *AI Lawsuits Safety Failures Linked to Mass Violence.* [aiexpertmagazine.com](https://www.aiexpertmagazine.com/ai-lawsuits-safety-failures-mass-violence/)

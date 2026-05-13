@@ -1,6 +1,6 @@
 # GER-501
 
-**Author:** Sushee Nzeutem, SVRNOS LLC
+**Author:** Sushee Nzeutem, SVRNOS
 **Published:** April 27, 2026
 **Canonical URL:** https://svrnos.com/insights/ger-501-tumbler-ridge
 **Hero image:** https://svrnos.com/insights/ger-501-tumbler-ridge/ger-501-title.png

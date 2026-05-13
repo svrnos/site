@@ -1,6 +1,6 @@
 # GER-404
 
-**Author:** Sushee Nzeutem, SVRNOS LLC
+**Author:** Sushee Nzeutem, SVRNOS
 **Published:** April 28, 2026
 **Canonical URL:** https://svrnos.com/insights/ger-404-replika
 **Hero image:** https://svrnos.com/insights/ger-404-replika/ger-404-title.png

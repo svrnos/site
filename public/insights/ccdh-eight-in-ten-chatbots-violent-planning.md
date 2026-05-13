@@ -1,6 +1,6 @@
 # The Guardrails Exist. Eight in Ten Companies Are Choosing Not to Use Them.
 
-**Author:** Sushee Nzeutem, SVRNOS LLC
+**Author:** Sushee Nzeutem, SVRNOS
 **Published:** April 30, 2026
 **Category:** Governance
 **Canonical URL:** https://svrnos.com/insights/ccdh-eight-in-ten-chatbots-violent-planning
