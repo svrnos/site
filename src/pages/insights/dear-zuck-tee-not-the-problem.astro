@@ -22,14 +22,14 @@ const jsonLd = {
   image: "https://svrnos.com/insights/dear-zuck-tee-not-the-problem/dear-zuck-tee-not-the-problem-title.png",
   mainEntityOfPage: "https://svrnos.com/insights/dear-zuck-tee-not-the-problem",
   description:
-    "Meta shipped Incognito Chat for WhatsApp with Trusted Execution Environment inference. The infrastructure is real. The marketing conflates two layers — privacy and governance — that need separate proofs. A TEE can run governance code alongside the model and emit signed, non-content attestations. Meta did not publicly ship that layer. WA HB 2225 and NY RAISE start enforcing on January 1, 2027.",
+    "Meta shipped Incognito Chat for WhatsApp with Trusted Execution Environment inference. The infrastructure is real. The marketing conflates two layers, privacy and governance, that need separate proofs. A TEE can run governance code alongside the model and emit signed, non-content attestations. Meta did not publicly ship that layer. WA HB 2225 and NY RAISE start enforcing on January 1, 2027.",
   isPartOf: { "@type": "Blog", name: "SVRNOS Insights", url: "https://svrnos.com/insights" },
 };
 ---
 <ArticleLayout
   title="Dear Zuck, the TEE Is Not the Problem. What Runs Inside It Is."
-  dek="An open letter on the difference between private inference and verifiable governance — and the layer Meta did not publicly ship."
-  description="Meta shipped Incognito Chat for WhatsApp with Trusted Execution Environment inference. The infrastructure is real. The marketing conflates two layers — privacy and governance — that need separate proofs. A TEE can run governance code alongside the model and emit signed, non-content attestations. Meta did not publicly ship that layer. WA HB 2225 and NY RAISE start enforcing on January 1, 2027."
+  dek="An open letter on the difference between private inference and verifiable governance: the layer Meta did not publicly ship."
+  description="Meta shipped Incognito Chat for WhatsApp with Trusted Execution Environment inference. The infrastructure is real. The marketing conflates two layers, privacy and governance, that need separate proofs. A TEE can run governance code alongside the model and emit signed, non-content attestations. Meta did not publicly ship that layer. WA HB 2225 and NY RAISE start enforcing on January 1, 2027."
   canonical="/insights/dear-zuck-tee-not-the-problem"
   ogImage="https://svrnos.com/insights/dear-zuck-tee-not-the-problem/dear-zuck-tee-not-the-problem-title.png"
   ogImageAlt="Dear Zuck, the TEE Is Not the Problem. What Runs Inside It Is. — An open letter to Mark on Meta's Incognito Chat launch. Privacy protects the conversation. Governance protects the user. Attestation proves what happened. Compliance requires more than privacy."
@@ -75,7 +75,7 @@ const jsonLd = {
 
   <p>Privacy answers one question: who can read this conversation? Your answer is nobody outside the user's device. Not Meta, not WhatsApp, not law enforcement without a court fight. That is a real claim and the architecture supports it.</p>
 
-  <p>Safety answers a different question: what happens inside this conversation? Whether the model helps a 14-year-old draft a farewell letter. Whether the model walks a user through synthetic identity construction across forty turns. Whether the conversation moves from curiosity to operational planning across thirteen thousand messages and nobody notices, because no two messages, taken alone, are flaggable.</p>
+  <p>Safety answers a different question: what happens inside this conversation? Whether the model helps a 14-year-old draft a farewell letter. Whether the model walks a user through synthetic identity construction across a long session. Whether the conversation moves from curiosity to operational planning across thirteen thousand messages and nobody notices, because no two messages, taken alone, are flaggable.</p>
 
   <p>The TEE addresses who can see the conversation. It does not, on its own, address what the conversation produces or how the operator proves what the system did about it.</p>
 
@@ -134,7 +134,7 @@ const jsonLd = {
   <hr />
 
   <div class="article-callout">
-    <p><strong>Building on TEEs or confidential compute?</strong> <a href="https://kingsango.com/guard">Sango Guard</a> is designed to run inside the enclave alongside the model, emitting signed non-content attestations that satisfy WA HB 2225, the EU AI Act, and emerging state regimes — without exposing transcripts. <a href="/access">Request access ›</a></p>
+    <p><strong>Building on TEEs or confidential compute?</strong> <a href="https://kingsango.com/guard">Sango Guard</a>'s governance layer is architected to be enclave-deployable: trajectory detection inside the boundary, signed non-content attestations out, no transcripts exposed. Aligned with WA HB 2225, the EU AI Act, and emerging state regimes. <a href="/access">Request access ›</a></p>
   </div>
 
   <hr />

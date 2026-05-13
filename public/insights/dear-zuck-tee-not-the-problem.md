@@ -6,7 +6,7 @@
 **Format:** Open letter
 **Hero image:** https://svrnos.com/insights/dear-zuck-tee-not-the-problem/dear-zuck-tee-not-the-problem-title.png
 
-> Meta shipped Incognito Chat for WhatsApp with Trusted Execution Environment inference. The infrastructure is real. The marketing conflates two layers — privacy and governance — that need separate proofs. A TEE can run governance code alongside the model and emit signed, non-content attestations. Meta did not publicly ship that layer. WA HB 2225 and NY RAISE start enforcing on January 1, 2027.
+> Meta shipped Incognito Chat for WhatsApp with Trusted Execution Environment inference. The infrastructure is real. The marketing conflates two layers, privacy and governance, that need separate proofs. A TEE can run governance code alongside the model and emit signed, non-content attestations. Meta did not publicly ship that layer. WA HB 2225 and NY RAISE start enforcing on January 1, 2027.
 
 ---
 
@@ -22,7 +22,7 @@ I am writing because you shipped privacy without shipping verifiable governance.
 
 Privacy answers one question: who can read this conversation? Your answer is nobody outside the user's device. Not Meta, not WhatsApp, not law enforcement without a court fight. That is a real claim and the architecture supports it.
 
-Safety answers a different question: what happens inside this conversation? Whether the model helps a 14-year-old draft a farewell letter. Whether the model walks a user through synthetic identity construction across forty turns. Whether the conversation moves from curiosity to operational planning across thirteen thousand messages and nobody notices, because no two messages, taken alone, are flaggable.
+Safety answers a different question: what happens inside this conversation? Whether the model helps a 14-year-old draft a farewell letter. Whether the model walks a user through synthetic identity construction across a long session. Whether the conversation moves from curiosity to operational planning across thirteen thousand messages and nobody notices, because no two messages, taken alone, are flaggable.
 
 The TEE addresses who can see the conversation. It does not, on its own, address what the conversation produces or how the operator proves what the system did about it.
 
