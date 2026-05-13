@@ -167,7 +167,7 @@ const jsonLd = {
     <tbody>
       <tr><td><code>turn_count</code></td><td>integer</td><td>Number of user-model turns in the session</td></tr>
       <tr><td><code>signal_counts</code></td><td>object</td><td>Per-category integer counts of detected signals across the session</td></tr>
-      <tr><td><code>state_transitions</code></td><td>array</td><td>Ordered list of <code>{from_state, to_state, turn_index}</code> transitions</td></tr>
+      <tr><td><code>state_transitions</code></td><td>array</td><td>Ordered list of <code>{"{from_state, to_state, turn_index}"}</code> transitions</td></tr>
       <tr><td><code>escalation_target_class</code></td><td>string</td><td>If action involved escalation, the class of target (never an identifier)</td></tr>
       <tr><td><code>intervention_acknowledged</code></td><td>boolean</td><td>Whether the user acknowledged a routed intervention</td></tr>
     </tbody>
