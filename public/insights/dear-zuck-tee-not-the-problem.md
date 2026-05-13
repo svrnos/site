@@ -30,7 +30,7 @@ The TEE addresses who can see the conversation. It does not, on its own, address
 
 A Trusted Execution Environment is an enclave. Code runs inside it. The user's input goes in, the model's response comes out, the conversation never leaves. The TEE does not require that the code inside it ignore the conversation. The TEE requires that whatever the code does with the conversation, the result stays inside the enclave.
 
-A governance layer can run inside the same boundary. It can read every turn, evaluate the trajectory, detect crisis, log signed metadata, and route to intervention. The conversation content never leaves. What leaves is a signed attestation: proof that governed safety logic ran, which category of risk it detected, what action it took, with no transcript attached.
+A governance layer can run inside the same boundary. It can read every turn, evaluate the trajectory, detect crisis, log signed metadata, and route to intervention. The conversation content never leaves. What leaves is a [signed non-content attestation](/research/non-content-safety-attestation): proof that governed safety logic ran, which category of risk it detected, what action it took, with no transcript attached.
 
 [Apple Private Cloud Compute](https://security.apple.com/blog/private-cloud-compute/) already publishes verifiable attestations from inside its TEEs. [AWS Nitro Enclaves](https://aws.amazon.com/ec2/nitro/nitro-enclaves/) do the same. Banks use this pattern for confidential computing. Healthcare uses it for HIPAA-bound inference. The infrastructure is available.
 
@@ -87,3 +87,4 @@ Founder, SVRNOS · [Sango Guard](https://kingsango.com/guard)
 - [New York RAISE Act](https://en.wikipedia.org/wiki/Responsible_AI_Safety_and_Education_Act), signed by Governor Hochul December 19, 2025, expected effective January 1, 2027: penalty structure up to $1M first violation, $3M subsequent, enforced by the NY Attorney General.
 - Apple, [Private Cloud Compute](https://security.apple.com/blog/private-cloud-compute/): published attestation pattern for TEE-resident workloads.
 - Amazon Web Services, [Nitro Enclaves](https://aws.amazon.com/ec2/nitro/nitro-enclaves/): confidential computing pattern with attested workloads.
+- Nzeutem, S. (2026). [*Non-Content Safety Attestation v0.1: A Format Specification for Verifiable AI Governance Inside Trusted Execution Environments*](/research/non-content-safety-attestation), SVRNOS. The technical companion spec to this letter; open for public comment through August 14, 2026.

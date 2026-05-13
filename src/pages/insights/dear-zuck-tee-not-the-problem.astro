@@ -45,6 +45,10 @@ const jsonLd = {
     <div><dt>Published</dt><dd>May 14, 2026</dd></div>
     <div><dt>Author</dt><dd>Sushee Nzeutem, SVRNOS LLC</dd></div>
     <div>
+      <dt>Companion spec</dt>
+      <dd><a href="/research/non-content-safety-attestation">Non-Content Safety Attestation v0.1</a> (the format specification for what this letter argues for)</dd>
+    </div>
+    <div>
       <dt>Related</dt>
       <dd>
         <a href="/insights/detection-is-not-enough">The Escalation Path Has to Survive the Institution Around It</a>
@@ -83,7 +87,7 @@ const jsonLd = {
 
   <p>A Trusted Execution Environment is an enclave. Code runs inside it. The user's input goes in, the model's response comes out, the conversation never leaves. The TEE does not require that the code inside it ignore the conversation. The TEE requires that whatever the code does with the conversation, the result stays inside the enclave.</p>
 
-  <p>A governance layer can run inside the same boundary. It can read every turn, evaluate the trajectory, detect crisis, log signed metadata, and route to intervention. The conversation content never leaves. What leaves is a signed attestation: proof that governed safety logic ran, which category of risk it detected, what action it took, with no transcript attached.</p>
+  <p>A governance layer can run inside the same boundary. It can read every turn, evaluate the trajectory, detect crisis, log signed metadata, and route to intervention. The conversation content never leaves. What leaves is a <a href="/research/non-content-safety-attestation">signed non-content attestation</a>: proof that governed safety logic ran, which category of risk it detected, what action it took, with no transcript attached.</p>
 
   <p><a href="https://security.apple.com/blog/private-cloud-compute/" target="_blank" rel="noopener noreferrer">Apple Private Cloud Compute</a> already publishes verifiable attestations from inside its TEEs. <a href="https://aws.amazon.com/ec2/nitro/nitro-enclaves/" target="_blank" rel="noopener noreferrer">AWS Nitro Enclaves</a> do the same. Banks use this pattern for confidential computing. Healthcare uses it for HIPAA-bound inference. The infrastructure is available.</p>
 
@@ -150,6 +154,7 @@ const jsonLd = {
       <li><a href="https://en.wikipedia.org/wiki/Responsible_AI_Safety_and_Education_Act" target="_blank" rel="noopener noreferrer">New York RAISE Act</a>, signed by Governor Hochul December 19, 2025, expected effective January 1, 2027: penalty structure up to $1M first violation, $3M subsequent, enforced by the NY Attorney General.</li>
       <li>Apple, <a href="https://security.apple.com/blog/private-cloud-compute/" target="_blank" rel="noopener noreferrer">Private Cloud Compute</a>: published attestation pattern for TEE-resident workloads.</li>
       <li>Amazon Web Services, <a href="https://aws.amazon.com/ec2/nitro/nitro-enclaves/" target="_blank" rel="noopener noreferrer">Nitro Enclaves</a>: confidential computing pattern with attested workloads.</li>
+      <li>Nzeutem, S. (2026). <a href="/research/non-content-safety-attestation"><em>Non-Content Safety Attestation v0.1: A Format Specification for Verifiable AI Governance Inside Trusted Execution Environments</em></a>, SVRNOS. The technical companion spec to this letter; open for public comment through August 14, 2026.</li>
     </ul>
   </aside>
 </ArticleLayout>
