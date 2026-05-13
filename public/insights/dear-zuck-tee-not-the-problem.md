@@ -1,6 +1,6 @@
 # Dear Zuck, the TEE Is Not the Problem. What Runs Inside It Is.
 
-**Author:** Sushee Nzeutem, SVRNOS LLC
+**Author:** Sushee Nzeutem, SVRNOS
 **Published:** May 14, 2026
 **Canonical URL:** https://svrnos.com/insights/dear-zuck-tee-not-the-problem
 **Format:** Open letter

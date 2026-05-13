@@ -80,6 +80,10 @@ It MAY contain:
 
 A field that does not clearly fall into the MAY category is presumed disallowed.
 
+### 3.2 Aggregation note
+
+A single attestation is low-risk. The non-content guarantee is a per-attestation property. Implementers should be aware that *aggregating* attestations across millions of sessions can leak population-level statistics that no single attestation reveals. Distributions over `signal_counts`, `turn_count`, and `state_transitions` across a large population can support inferences about user demographics, conversational tendencies, or environmental conditions that the per-session guarantee does not address. Operators publishing aggregate statistics derived from attestations SHOULD apply differential-privacy techniques (noise injection, k-anonymity grouping, or formal DP mechanisms). v1.0 may codify specific guidance; v0.1 flags this as deployment responsibility.
+
 ## 4. Attestation document
 
 ### 4.1 Required fields
@@ -138,6 +142,8 @@ TERMINATE_SESSION        session closed by the governance layer
 ```
 
 Operators MAY extend.
+
+**`intervention_acknowledged`**: a one-bit summary derived from the in-enclave governance layer's observation of the user's subsequent input. The flag MUST be computed inside the enclave; the underlying user input MUST NOT be exported in any form. If the governance layer has no mechanism to observe subsequent input (e.g., one-shot session, no follow-up turn before timeout), the field SHOULD be omitted rather than guessed.
 
 ## 5. Signing envelope
 
@@ -314,6 +320,8 @@ The format does not invent new cryptography. It assembles primitives that alread
 
 These are deliberately left unresolved in v0.1 and invite comment.
 
+- **Multi-session attestation.** v0.1 is per-session. A user with intent can open new sessions until one produces the desired output, and each session's attestation remains "clean." This reproduces the Pattern Gap at the session boundary. v1.0 should address how cross-session correlation is attested without breaking the privacy guarantee. Probably involves identity-bound but content-free session linkage, or operator-level rate-of-state-transition attestations across populations.
+- **Vocabulary registry.** §4.3 permits operators to extend `outcome_state` and `action_taken` enumerations. Flexibility is intentional, but if every operator defines a private vocabulary, cross-operator verification breaks. v1.0 should specify either a canonical registry (IANA-style assigned values) or an interoperability profile defining minimum required values plus extension semantics.
 - **Operator key rotation.** Should the spec require a key-rotation policy, or leave it to operator discretion?
 - **Multi-party signing.** Some regulators may require a counter-signature from an external auditor before an attestation is treated as evidence. The DSSE envelope supports this. Should v1.0 specify when?
 - **Long-tail retention.** WA HB 2225 requires annual reporting. Should attestations be retained for a defined minimum period? Where?
