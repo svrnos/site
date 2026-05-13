@@ -14,7 +14,7 @@
 
 Mark,
 
-Yesterday [you announced Incognito Chat](https://www.facebook.com/share/1HAM67meB2/?mibextid=wwXIfr) for WhatsApp and the Meta AI app. The infrastructure is real. Trusted Execution Environment inference is real. End-to-end encryption is real. I am not arguing against private AI.
+Today [you announced Incognito Chat](https://www.facebook.com/share/1HAM67meB2/?mibextid=wwXIfr) for WhatsApp and the Meta AI app. The infrastructure is real. Trusted Execution Environment inference is real. End-to-end encryption is real. I am not arguing against private AI.
 
 I am writing because you shipped privacy without shipping verifiable governance. They are different layers, and the second one does not survive the way you described the first.
 
@@ -79,7 +79,7 @@ Founder, SVRNOS · [Sango Guard](https://kingsango.com/guard)
 
 **Sources**
 
-- Mark Zuckerberg, [Incognito Chat announcement](https://www.facebook.com/share/1HAM67meB2/?mibextid=wwXIfr), Facebook, May 13, 2026.
+- Mark Zuckerberg, [Incognito Chat announcement](https://www.facebook.com/share/1HAM67meB2/?mibextid=wwXIfr), Facebook, May 14, 2026.
 - Meta Engineering, [Building Private Processing for AI tools on WhatsApp](https://engineering.fb.com/2025/04/29/security/whatsapp-private-processing-ai-tools/), April 29, 2025: TEE inference, end-to-end encryption, attested encrypted communications, confidential compute hardware.
 - AP News, Meta launches WhatsApp 'incognito' mode: safeguards that refuse certain topics, steer users toward helpful information, and at threshold stop interacting.
 - Washington State Legislature, [HB 2225 — Regulating artificial intelligence companion chatbots](https://app.leg.wa.gov/billsummary?BillNumber=2225&Year=2025), signed March 24, 2026 (Chapter 168, 2026 Laws), effective January 1, 2027: operator obligations for detection, crisis routing, and annual reporting.
