@@ -13,6 +13,7 @@ const KB_URLS = {
     "https://svrnos.com/insights/detection-is-not-enough.md",
     "https://svrnos.com/insights/refusal-is-not-a-permanent-state.md",
     "https://svrnos.com/insights/the-refusal-that-never-came.md",
+    "https://svrnos.com/insights/dear-zuck-tee-not-the-problem.md",
     "https://svrnos.com/insights/the-generation-gap-explained.md",
     "https://svrnos.com/insights/algorithmic-compliance-companion-harm.md",
     "https://svrnos.com/insights/companion-ai-harm.md",
