@@ -9,7 +9,9 @@
     "start": "astro build && astro preview --port 3002",
     "build": "astro build",
     "preview": "astro preview --port 3002",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "bash scripts/post-deploy-check.sh",
+    "check:preview": "bash scripts/post-deploy-check.sh --base"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.40.0",

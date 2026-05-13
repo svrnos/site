@@ -20,6 +20,18 @@ A change to any one surface without the others creates drift between what visito
 
 **Common pitfall:** the GER (`research/governance-error-register/`) has both a root-tracked HTML copy and the `public/` copy. The `public/` copy is the served canonical (Astro serves from `public/`); the root copy is legacy and not deployed. Edit `public/`, not the root.
 
+## Post-deploy canary
+
+After `git push origin main`, wait ~60 seconds for Vercel to deploy, then run:
+
+```
+npm run check
+```
+
+This is `scripts/post-deploy-check.sh` — a 5-second curl-based health check across the 11 critical URLs (home, insights index, research index, the four published research artifacts, the four flagship insight pieces, and /access). It verifies HTTP 200, expected title/content markers, and scans for the bug class that has burned us before: stray HTML from Astro JSX errors (`</table><code>`, `<p>{"`, ReferenceError text, etc.).
+
+To check a Vercel preview deploy: `npm run check:preview https://<preview-url>`. Exit code 0 = healthy, non-zero = something regressed. Add new URLs to the `CHECKS` array in `scripts/post-deploy-check.sh` when shipping new pages.
+
 ## Bot knowledge bundle
 
 The /ask bot's knowledge base is composed in `api/_lib/kb.ts`. It fetches `llms.txt`, the GER, all `insights/*.md`, and any `products` URLs. New canonical pages should be added to `kb.ts` so the bot picks them up; if you add a new insight or research piece, also add it to `llms.txt`.
