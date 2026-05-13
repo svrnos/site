@@ -27,6 +27,7 @@ const KB_URLS = {
     "https://svrnos.com/research/generation-gap/v1-1-river-addendum.md",
     "https://svrnos.com/research/generation-gap/v1-2-cross-vendor-addendum.md",
     "https://svrnos.com/research/generation-gap/v1-3-mistral-provenance-correction.md",
+    "https://svrnos.com/research/non-content-safety-attestation.md",
   ],
   products: [
     "https://kingsango.com/guard/integration.md",

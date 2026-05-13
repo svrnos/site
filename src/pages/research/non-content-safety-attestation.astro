@@ -1,0 +1,383 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  headline: "Non-Content Safety Attestation v0.1",
+  alternativeHeadline: "A Format Specification for Verifiable AI Governance Inside Trusted Execution Environments",
+  name: "Non-Content Safety Attestation v0.1",
+  version: "0.1",
+  author: [{
+    "@type": "Person",
+    name: "Sushee Nzeutem",
+    givenName: "Sushee",
+    familyName: "Nzeutem",
+    url: "https://svrnos.com",
+    affiliation: {
+      "@type": "Organization",
+      name: "SVRNOS",
+      alternateName: "Sovereign OS LLC",
+      url: "https://svrnos.com",
+    },
+  }],
+  publisher: {
+    "@type": "Organization",
+    name: "SVRNOS",
+    alternateName: "Sovereign OS LLC",
+    url: "https://svrnos.com",
+  },
+  datePublished: "2026-05-14T00:00:00Z",
+  dateModified: "2026-05-14T00:00:00Z",
+  url: "https://svrnos.com/research/non-content-safety-attestation",
+  mainEntityOfPage: "https://svrnos.com/research/non-content-safety-attestation",
+  description: "A format specification for verifiable AI governance inside Trusted Execution Environments. A signed, cryptographically verifiable statement that an in-enclave governance layer evaluated a session and produced a defined outcome, with no transcript or content recoverable from the attestation itself. Borrows from DSSE, AWS Nitro Enclaves, and Apple Private Cloud Compute. v0.1 open for public comment through August 14, 2026.",
+  keywords: "AI governance, attestation, Trusted Execution Environment, TEE, DSSE, AWS Nitro Enclaves, Apple Private Cloud Compute, Meta Private Processing, AI safety, verifiable governance, EU AI Act, Washington HB 2225, NY RAISE Act, signed attestation, in-enclave governance",
+  genre: "specification",
+  inLanguage: "en",
+  isAccessibleForFree: true,
+  license: "https://creativecommons.org/licenses/by/4.0/",
+  copyrightYear: 2026,
+  copyrightHolder: { "@type": "Organization", name: "SVRNOS" },
+};
+---
+<ArticleLayout
+  title="Non-Content Safety Attestation v0.1"
+  dek="A format specification for verifiable AI governance inside Trusted Execution Environments. Open for public comment through August 14, 2026."
+  description="A format for a signed, cryptographically verifiable statement that an in-enclave governance layer evaluated a session and produced a defined outcome, with no transcript or content recoverable from the attestation. Borrows from DSSE, AWS Nitro Enclaves, and Apple Private Cloud Compute."
+  canonical="/research/non-content-safety-attestation"
+  category="v0.1 Draft · May 14, 2026"
+  datePublished="2026-05-14T00:00:00Z"
+  jsonLd={jsonLd}
+  current="research"
+  markdownAlternate="/research/non-content-safety-attestation.md"
+>
+  <dl class="article-supplement not-prose">
+    <div><dt>Author</dt><dd>Sushee Nzeutem, SVRNOS LLC</dd></div>
+    <div><dt>Version</dt><dd>v0.1, Draft (open for public comment)</dd></div>
+    <div><dt>Comment window</dt><dd>Through August 14, 2026</dd></div>
+    <div><dt>License</dt><dd><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a></dd></div>
+    <div><dt>Cite as</dt><dd>Nzeutem, S. (2026). <em>Non-Content Safety Attestation v0.1.</em> Sovereign OS LLC. svrnos.com/research/non-content-safety-attestation</dd></div>
+    <div><dt>Companion</dt><dd><a href="/insights/dear-zuck-tee-not-the-problem">Dear Zuck, the TEE Is Not the Problem. What Runs Inside It Is.</a> (the argument for why this format is needed)</dd></div>
+  </dl>
+
+  <h2>Abstract</h2>
+
+  <p>Private AI architectures built on Trusted Execution Environments (TEEs) ship a strong privacy guarantee: conversation content does not leave the enclave. They do not, on their own, ship a verifiable safety guarantee: that a governance layer ran, what risk category it detected, and what action it took. This document specifies a format for a <strong>non-content safety attestation</strong>: a signed, cryptographically verifiable statement that an in-enclave governance layer evaluated a session and produced a defined outcome, with no transcript or content recoverable from the attestation itself. The format borrows the envelope pattern from DSSE and in-toto attestations, the platform-attestation chain from AWS Nitro Enclaves, and the transparency-log discipline from Apple Private Cloud Compute. v0.1 is published for public comment. Industry, regulators, and academic reviewers are invited to submit responses through August 14, 2026.</p>
+
+  <h2>1. Background</h2>
+
+  <p>Three regulatory deadlines arrive on or before January 1, 2027:</p>
+
+  <ul>
+    <li><a href="https://app.leg.wa.gov/billsummary?BillNumber=2225&Year=2025" target="_blank" rel="noopener noreferrer">Washington HB 2225</a>, AI companion chatbot operators must maintain and publicly disclose protocols for detecting and responding to suicidal ideation, self-harm, and eating-disorder content; route users to crisis resources; report annually on referral counts.</li>
+    <li><a href="https://digital-strategy.ec.europa.eu/en/consultations/consultation-draft-guidelines-transparency-obligations-under-ai-act" target="_blank" rel="noopener noreferrer">EU AI Act Article 50</a>, user disclosure and generated-content marking obligations, applicable August 2, 2026.</li>
+    <li><a href="https://en.wikipedia.org/wiki/Responsible_AI_Safety_and_Education_Act" target="_blank" rel="noopener noreferrer">New York RAISE Act</a>, frontier developer obligations, penalty structure up to $1M first violation and $3M subsequent, enforced by the NY Attorney General.</li>
+  </ul>
+
+  <p>In parallel, <a href="https://engineering.fb.com/2025/04/29/security/whatsapp-private-processing-ai-tools/" target="_blank" rel="noopener noreferrer">Meta's Private Processing</a>, <a href="https://security.apple.com/blog/private-cloud-compute/" target="_blank" rel="noopener noreferrer">Apple Private Cloud Compute</a>, and <a href="https://aws.amazon.com/ec2/nitro/nitro-enclaves/" target="_blank" rel="noopener noreferrer">AWS Nitro Enclaves</a> have made confidential-compute AI inference deployable at production scale. Privacy is solved or solvable. The unsolved layer is <strong>verifiable governance</strong>: how an operator demonstrates, to a regulator, insurer, court, or auditor, that the safety logic the statute requires actually ran inside the private boundary, without exposing the conversation it protected.</p>
+
+  <p>This document specifies a format intended to be that demonstration.</p>
+
+  <p>The argument for why the format is needed is developed at <a href="/insights/dear-zuck-tee-not-the-problem">Dear Zuck, the TEE Is Not the Problem. What Runs Inside It Is.</a> This document is the technical companion.</p>
+
+  <h2>2. Scope and non-goals</h2>
+
+  <p><strong>In scope.</strong> The format and verification flow for an attestation that asserts:</p>
+
+  <ol>
+    <li>A named governance layer, of a named version, ran inside a TEE.</li>
+    <li>The governance layer evaluated a session ending at a timestamp.</li>
+    <li>The governance layer reached a defined outcome state.</li>
+    <li>The governance layer produced a defined action.</li>
+    <li>No conversation content is recoverable from the attestation.</li>
+  </ol>
+
+  <p><strong>Out of scope.</strong></p>
+
+  <ul>
+    <li>The behavior or quality of the governance layer itself. The format attests that something ran; it does not certify what that something is. Quality certification is a downstream concern.</li>
+    <li>The classifier implementation. The format is implementation-agnostic.</li>
+    <li>User authentication or identity verification.</li>
+    <li>Cryptographic primitive choice beyond establishing minimum requirements.</li>
+    <li>Any prescriptive policy on what to detect or how to respond. Policy belongs in the operator's published protocols or in regulator-issued guidance.</li>
+  </ul>
+
+  <h2>3. Threat model and privacy guarantee</h2>
+
+  <p>The format is designed against three threats:</p>
+
+  <p><strong>T1. Operator post-hoc fabrication.</strong> An operator claims after an incident that "our safety layer detected the trajectory" without evidence the layer ran. The attestation must be signed at session time by a key bound to the TEE platform attestation, making post-hoc fabrication detectable.</p>
+
+  <p><strong>T2. Content leakage through attestation.</strong> An adversary with access to attestations recovers conversation content. The format requires that no field in the attestation contain content derivatives that could be inverted, brute-forced, or correlated to recover transcript material. This is the <strong>non-content guarantee</strong> (§3.1).</p>
+
+  <p><strong>T3. Replay or cross-session substitution.</strong> An attestation from a clean session is presented as evidence for a different session that went wrong. The attestation must bind to a session identifier that is itself non-correlatable to user identity but unique per session, and must include the TEE platform attestation that binds to the in-enclave execution instance.</p>
+
+  <h3>3.1 The non-content guarantee</h3>
+
+  <p>A Non-Content Safety Attestation MUST NOT contain, or permit reconstruction of:</p>
+
+  <ul>
+    <li>Raw or transformed user input</li>
+    <li>Raw or transformed model output</li>
+    <li>Token-level embeddings, attention maps, or logits derived from input</li>
+    <li>Per-turn classifier inputs or feature vectors</li>
+    <li>Any data structure of sufficient dimensionality to invert into recognizable content</li>
+  </ul>
+
+  <p>It MAY contain:</p>
+
+  <ul>
+    <li>Cardinal counts (turn counts, signal counts) at session granularity</li>
+    <li>Enumerated outcome states from a published vocabulary</li>
+    <li>Boolean flags from a published vocabulary</li>
+    <li>Hashes of policy configurations and code measurements</li>
+    <li>Timestamps</li>
+  </ul>
+
+  <p>A field that does not clearly fall into the MAY category is presumed disallowed.</p>
+
+  <h2>4. Attestation document</h2>
+
+  <h3>4.1 Required fields</h3>
+
+  <p>A v0.1 attestation document MUST contain the following fields. Field names are normative; field types follow JSON conventions.</p>
+
+  <table class="not-prose ncsa-table">
+    <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><code>schema_version</code></td><td>string</td><td><code>"ncsa/0.1"</code> for this version</td></tr>
+      <tr><td><code>session_id</code></td><td>string</td><td>Non-correlatable session identifier, 128 bits minimum, base64url-encoded</td></tr>
+      <tr><td><code>attestation_timestamp</code></td><td>string</td><td>ISO 8601 UTC, session-end</td></tr>
+      <tr><td><code>governance_layer.name</code></td><td>string</td><td>Operator-assigned name (e.g., <code>"sango-guard"</code>)</td></tr>
+      <tr><td><code>governance_layer.version</code></td><td>string</td><td>Semantic version of the layer</td></tr>
+      <tr><td><code>governance_layer.image_hash</code></td><td>string</td><td>SHA-384 of the deployed image, base64url-encoded</td></tr>
+      <tr><td><code>policy_config_hash</code></td><td>string</td><td>SHA-384 of the active policy/threshold configuration</td></tr>
+      <tr><td><code>outcome_state</code></td><td>string</td><td>Final session state from a published enumeration (§4.3)</td></tr>
+      <tr><td><code>action_taken</code></td><td>string</td><td>Final action from a published enumeration (§4.3)</td></tr>
+      <tr><td><code>platform_attestation</code></td><td>object</td><td>TEE platform attestation reference (§6)</td></tr>
+      <tr><td><code>non_content_assertion</code></td><td>boolean</td><td>MUST be <code>true</code>; asserts compliance with §3.1</td></tr>
+    </tbody>
+  </table>
+
+  <h3>4.2 Recommended fields</h3>
+
+  <table class="not-prose ncsa-table">
+    <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><code>turn_count</code></td><td>integer</td><td>Number of user-model turns in the session</td></tr>
+      <tr><td><code>signal_counts</code></td><td>object</td><td>Per-category integer counts of detected signals across the session</td></tr>
+      <tr><td><code>state_transitions</code></td><td>array</td><td>Ordered list of <code>{from_state, to_state, turn_index}</code> transitions</td></tr>
+      <tr><td><code>escalation_target_class</code></td><td>string</td><td>If action involved escalation, the class of target (never an identifier)</td></tr>
+      <tr><td><code>intervention_acknowledged</code></td><td>boolean</td><td>Whether the user acknowledged a routed intervention</td></tr>
+    </tbody>
+  </table>
+
+  <h3>4.3 Field definitions</h3>
+
+  <p><strong><code>outcome_state</code></strong>: the enumeration is operator-defined and MUST be published as part of the operator's safety protocol disclosure. Recommended minimum vocabulary:</p>
+
+  <pre><code>NEUTRAL
+MONITORING
+ELEVATED
+CRITICAL</code></pre>
+
+  <p>Operators MAY extend the vocabulary. Extensions MUST be documented and version-pinned via <code>policy_config_hash</code>.</p>
+
+  <p><strong><code>action_taken</code></strong>: recommended minimum vocabulary:</p>
+
+  <pre><code>PROCEED                  no intervention required
+INJECT_PROMPT            safety question or grounding statement added in-turn
+GOVERN_OUTPUT            model output modified, suppressed, or replaced
+ESCALATE_INTERNAL        routed to operator's safety team for human review
+ESCALATE_EXTERNAL        routed to a crisis-resource or external referral target
+TERMINATE_SESSION        session closed by the governance layer</code></pre>
+
+  <p>Operators MAY extend.</p>
+
+  <h2>5. Signing envelope</h2>
+
+  <p>The attestation document is signed using the <strong>Dead Simple Signing Envelope (DSSE)</strong> format (<a href="https://github.com/secure-systems-lab/dsse" target="_blank" rel="noopener noreferrer">github.com/secure-systems-lab/dsse</a>), already established for in-toto and SLSA build attestations. DSSE was chosen for three reasons: payload-type independence, prevention of cross-protocol replay via the payload-type field, and existing tooling support.</p>
+
+  <p>A signed attestation has the form:</p>
+
+  <pre><code>{`{
+  "payloadType": "application/vnd.svrnos.ncsa+json;version=0.1",
+  "payload": "<base64-encoded attestation document>",
+  "signatures": [
+    {
+      "keyid": "<key identifier>",
+      "sig": "<base64-encoded signature>"
+    }
+  ]
+}`}</code></pre>
+
+  <p>Signatures MUST be produced by a key bound to the TEE platform attestation chain (§6). The signing algorithm MUST be Ed25519, ECDSA P-384, or RSA-PSS with SHA-384 (minimum); other algorithms MAY be added in later versions.</p>
+
+  <p>Implementations MAY produce additional signatures from external signing parties (operator org key, auditor counter-signature) by appending to the <code>signatures</code> array.</p>
+
+  <h2>6. Platform attestation chain</h2>
+
+  <p>The <code>platform_attestation</code> field binds the signing key to the in-enclave execution instance via the underlying TEE's native attestation mechanism. v0.1 specifies bindings for the three production TEE platforms in current operator use.</p>
+
+  <h3>6.1 AWS Nitro Enclaves</h3>
+
+  <pre><code>{`"platform_attestation": {
+  "tee_type": "aws-nitro-enclave",
+  "attestation_doc_b64": "<base64 of the Nitro attestation document>",
+  "pcrs": {
+    "PCR0": "<sha384 hex>",
+    "PCR1": "<sha384 hex>",
+    "PCR2": "<sha384 hex>",
+    "PCR8": "<sha384 hex>"
+  },
+  "module_id": "<enclave module id>",
+  "signing_cert_chain": "<CBOR-encoded cert chain to AWS Nitro root>"
+}`}</code></pre>
+
+  <p>PCR0 measures the enclave image. PCR2 measures the governance-layer application. PCR8 measures the signing certificate. A verifier MUST chain <code>signing_cert_chain</code> to the <a href="https://docs.aws.amazon.com/enclaves/latest/user/verify-root.html" target="_blank" rel="noopener noreferrer">AWS Nitro Attestation PKI root</a>.</p>
+
+  <h3>6.2 Apple Private Cloud Compute</h3>
+
+  <pre><code>{`"platform_attestation": {
+  "tee_type": "apple-pcc",
+  "node_attestation_b64": "<base64 of the PCC node attestation>",
+  "code_release_id": "<release identifier in the PCC transparency log>",
+  "transparency_log_inclusion_proof": "<inclusion proof>",
+  "secure_enclave_cert_chain": "<base64 cert chain to Apple root>"
+}`}</code></pre>
+
+  <p>A verifier MUST confirm <code>code_release_id</code> appears in the Apple PCC transparency log and that the inclusion proof matches a published log root.</p>
+
+  <h3>6.3 Generic / other TEE</h3>
+
+  <pre><code>{`"platform_attestation": {
+  "tee_type": "<vendor-defined>",
+  "raw_attestation_b64": "<base64-encoded native attestation>",
+  "verification_url": "<URL to the operator's published verification procedure>"
+}`}</code></pre>
+
+  <p>For TEE platforms not enumerated above (Intel SGX, AMD SEV-SNP, GCP Confidential Space, custom). The operator MUST publish a verification procedure.</p>
+
+  <h2>7. Verification flow</h2>
+
+  <p>A verifier (regulator, insurer, operator's own auditor, court-appointed examiner) validates an attestation as follows:</p>
+
+  <ol>
+    <li><strong>Parse the DSSE envelope.</strong> Reject if <code>payloadType</code> is not <code>application/vnd.svrnos.ncsa+json;version=0.1</code>.</li>
+    <li><strong>Verify the signature</strong> against the public key referenced by <code>keyid</code>. The public key MUST be present in or derivable from the <code>platform_attestation</code> chain.</li>
+    <li><strong>Verify the platform attestation chain</strong> per §6 for the declared <code>tee_type</code>. This step proves the signing key was produced inside a measured TEE instance.</li>
+    <li><strong>Resolve <code>governance_layer.image_hash</code></strong> to a publicly auditable artifact. Operators SHOULD publish governance-layer images to a transparency log or public binary registry following the Apple PCC pattern.</li>
+    <li><strong>Resolve <code>policy_config_hash</code></strong> to a published policy. Operators MUST make the policy retrievable by hash, redacted only for security-sensitive specifics.</li>
+    <li><strong>Confirm <code>non_content_assertion</code> is <code>true</code></strong> and inspect all fields against §3.1. Reject if any field violates the non-content guarantee.</li>
+    <li><strong>Accept the attestation</strong> as evidence that the named governance layer ran inside the named TEE platform and produced the recorded outcome.</li>
+  </ol>
+
+  <h2>8. Example payloads</h2>
+
+  <h3>8.1 Clean session, no signal</h3>
+
+  <pre><code>{`{
+  "schema_version": "ncsa/0.1",
+  "session_id": "h4Yh9c2gQ8eK0wTpQv8r3w",
+  "attestation_timestamp": "2026-05-14T18:42:11Z",
+  "governance_layer": {
+    "name": "sango-guard",
+    "version": "1.2.0",
+    "image_hash": "7fb5c55bc2ecbb68ed99a13d7122abfc0666b926a79d5379bc58b9445c84217f59cfdd36c08b2c79552928702efe23e4"
+  },
+  "policy_config_hash": "235c9e6050abf6b993c915505f3220e2d82b51aff830ad14cbecc2eec1bf0b4ae749d311c663f464cde9f718acca5286",
+  "outcome_state": "NEUTRAL",
+  "action_taken": "PROCEED",
+  "turn_count": 6,
+  "signal_counts": {},
+  "state_transitions": [],
+  "platform_attestation": { "tee_type": "aws-nitro-enclave", "...": "..." },
+  "non_content_assertion": true
+}`}</code></pre>
+
+  <h3>8.2 Monitoring state, no escalation</h3>
+
+  <pre><code>{`{
+  "schema_version": "ncsa/0.1",
+  "session_id": "k3M9pQ2vR5cN8tWxF7zJ4Y",
+  "attestation_timestamp": "2026-05-14T19:03:47Z",
+  "governance_layer": { "name": "sango-guard", "version": "1.2.0", "image_hash": "..." },
+  "policy_config_hash": "...",
+  "outcome_state": "MONITORING",
+  "action_taken": "PROCEED",
+  "turn_count": 14,
+  "signal_counts": { "ideation_proximity": 2 },
+  "state_transitions": [
+    { "from_state": "NEUTRAL", "to_state": "MONITORING", "turn_index": 8 }
+  ],
+  "platform_attestation": { "tee_type": "aws-nitro-enclave", "...": "..." },
+  "non_content_assertion": true
+}`}</code></pre>
+
+  <h3>8.3 Escalated session, external referral</h3>
+
+  <pre><code>{`{
+  "schema_version": "ncsa/0.1",
+  "session_id": "p7Bx3kL8wQ2nR5tY9vM4cJ",
+  "attestation_timestamp": "2026-05-14T20:17:32Z",
+  "governance_layer": { "name": "sango-guard", "version": "1.2.0", "image_hash": "..." },
+  "policy_config_hash": "...",
+  "outcome_state": "CRITICAL",
+  "action_taken": "ESCALATE_EXTERNAL",
+  "turn_count": 22,
+  "signal_counts": {
+    "ideation_proximity": 7,
+    "method_specificity": 3,
+    "temporal_immediacy": 2
+  },
+  "state_transitions": [
+    { "from_state": "NEUTRAL", "to_state": "MONITORING", "turn_index": 5 },
+    { "from_state": "MONITORING", "to_state": "ELEVATED", "turn_index": 13 },
+    { "from_state": "ELEVATED", "to_state": "CRITICAL", "turn_index": 19 }
+  ],
+  "escalation_target_class": "crisis_resource",
+  "intervention_acknowledged": true,
+  "platform_attestation": { "tee_type": "aws-nitro-enclave", "...": "..." },
+  "non_content_assertion": true
+}`}</code></pre>
+
+  <p>These three examples are sufficient for an operator to implement a generator and a verifier without further guidance from this document.</p>
+
+  <h2>9. Prior art and design borrowings</h2>
+
+  <p>The format does not invent new cryptography. It assembles primitives that already work in production at scale.</p>
+
+  <ul>
+    <li><strong>DSSE signing envelope</strong>, Dead Simple Signing Envelope, used by in-toto and SLSA. Solves the cross-protocol-replay problem via the typed payload, supports multi-signature, has multi-language tooling.</li>
+    <li><strong>AWS Nitro Attestation</strong>, Hypervisor-signed COSE_Sign1 document over a CBOR-encoded payload containing PCRs and module ID. Verifiable against a public AWS PKI root.</li>
+    <li><strong>Apple Private Cloud Compute</strong>, Secure Enclave UID-rooted certificates per node, with code measurements published to an append-only cryptographically tamper-proof transparency log, plus binary release publication within 90 days of log inclusion.</li>
+    <li><strong>C2PA Content Credentials</strong>, manifest pattern for cryptographically signed provenance over media. Different domain, same architectural shape.</li>
+    <li><strong>IETF EAT (RFC 9711)</strong>, Entity Attestation Token. A general-purpose attestation token format; v0.1 of this spec uses DSSE for tooling alignment, but a future version may add an EAT binding.</li>
+  </ul>
+
+  <h2>10. Open questions for v1.0</h2>
+
+  <p>These are deliberately left unresolved in v0.1 and invite comment.</p>
+
+  <ul>
+    <li><strong>Operator key rotation.</strong> Should the spec require a key-rotation policy, or leave it to operator discretion?</li>
+    <li><strong>Multi-party signing.</strong> Some regulators may require a counter-signature from an external auditor before an attestation is treated as evidence. The DSSE envelope supports this. Should v1.0 specify when?</li>
+    <li><strong>Long-tail retention.</strong> WA HB 2225 requires annual reporting. Should attestations be retained for a defined minimum period? Where?</li>
+    <li><strong>Cross-jurisdictional disclosure.</strong> Some attestation fields may need to be progressively disclosed depending on the requesting party. Does the format need a redaction profile spec?</li>
+    <li><strong>Differential-privacy treatment of <code>signal_counts</code>.</strong> At sufficient session volume, signal-count distributions could leak population-level inferences. Should v1.0 specify noise-injection guidance?</li>
+    <li><strong>Attestation freshness.</strong> Should attestations include a maximum validity window after which a verifier rejects them as stale?</li>
+  </ul>
+
+  <p>Comments may be submitted to <a href="mailto:attestation@svrnos.com">attestation@svrnos.com</a>. v1.0 is targeted for publication by November 14, 2026, integrating community comment.</p>
+
+  <h2>11. Acknowledgements</h2>
+
+  <p>This format builds on public technical documentation published by AWS (Nitro Enclaves), Apple (Private Cloud Compute), Meta (Private Processing), and the in-toto / SLSA / DSSE communities. Errors are mine.</p>
+
+  <hr />
+
+  <p><strong>License:</strong> This document is published under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>. The format itself is offered for unrestricted implementation. Reference implementations using this spec may be released under any license.</p>
+
+  <p><strong>Companion piece:</strong> <a href="/insights/dear-zuck-tee-not-the-problem">Dear Zuck, the TEE Is Not the Problem. What Runs Inside It Is.</a> (the argument for why this format is needed).</p>
+</ArticleLayout>
