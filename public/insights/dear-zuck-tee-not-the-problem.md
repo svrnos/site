@@ -32,7 +32,7 @@ A Trusted Execution Environment is an enclave. Code runs inside it. The user's i
 
 A governance layer can run inside the same boundary. It can read every turn, evaluate the trajectory, detect crisis, log signed metadata, and route to intervention. The conversation content never leaves. What leaves is a signed non-content attestation: proof that governed safety logic ran, which category of risk it detected, what action it took, with no transcript attached.
 
-[Apple Private Cloud Compute](https://security.apple.com/blog/private-cloud-compute/) already publishes verifiable attestations from inside its TEEs. [AWS Nitro Enclaves](https://aws.amazon.com/ec2/nitro/nitro-enclaves/) do the same. Banks use this pattern for confidential computing. Healthcare uses it for HIPAA-bound inference. The infrastructure is available.
+[Apple Private Cloud Compute](https://security.apple.com/blog/private-cloud-compute/) already publishes verifiable attestations from inside its TEEs. AWS Nitro Enclaves do the same. Banks use this pattern for confidential computing. Healthcare uses it for HIPAA-bound inference. The infrastructure is available.
 
 Your own [Private Processing documentation](https://engineering.fb.com/2025/04/29/security/whatsapp-private-processing-ai-tools/) describes attested encrypted communications and confidential compute hardware. Attestation is the mechanism that lets an outside party verify what workload ran without seeing the private input. The architectural primitive exists in your stack. The safety attestation built on top of it is not publicly specified.
 
