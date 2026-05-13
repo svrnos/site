@@ -44,7 +44,7 @@ You have not shipped a product with no safety logic. Press reports of Incognito 
 
 The gap is different. There is no publicly specified, operator-verifiable record of what the safety layer detected across the trajectory of a private session, what state it entered, and what intervention it produced. From outside the enclave, the system is asked to be trusted on behavior, not verified on it.
 
-That distinction matters when a session goes wrong. If the model refuses correctly, you have a safety success that no operator-verifiable record can demonstrate. If the model fails, you have [a Tumbler Ridge](/insights/ger-501-tumbler-ridge) with no transcript, no audit trail, no path for the family to learn what happened, and no path for a regulator to test whether the same failure exists at scale. The model failed in private. The product remains private. The architecture removes the question.
+That distinction matters when a session goes wrong. If the model refuses correctly, you have a safety success that no operator-verifiable record can demonstrate. If the model fails, you have a Tumbler Ridge with no transcript, no audit trail, no path for the family to learn what happened, and no path for a regulator to test whether the same failure exists at scale. The model failed in private. The product remains private. The architecture removes the question.
 
 You moved the safety floor from the operator layer to the model layer, with no publicly verifiable check on whether the model held it.
 
@@ -73,7 +73,7 @@ You have the platform reach to set the standard. The technical primitive exists 
 The TEE is not the problem. What runs inside it is.
 
 — Sushee Nzeutem
-Founder, SVRNOS · [Sango Guard](https://kingsango.com/guard)
+Founder, SVRNOS
 
 ---
 
