@@ -4,12 +4,15 @@
 **Published:** May 14, 2026
 **Canonical URL:** https://svrnos.com/insights/dear-zuck-tee-not-the-problem
 **Format:** Open letter
+**Hero image:** https://svrnos.com/insights/dear-zuck-tee-not-the-problem/dear-zuck-tee-not-the-problem-title.png
 
 > Meta shipped Incognito Chat for WhatsApp with Trusted Execution Environment inference. The infrastructure is real. The marketing conflates two layers — privacy and governance — that need separate proofs. A TEE can run governance code alongside the model and emit signed, non-content attestations. Meta did not publicly ship that layer. WA HB 2225 and NY RAISE start enforcing on January 1, 2027.
 
 ---
 
-Zuck,
+![Dear Zuck, the TEE Is Not the Problem. What Runs Inside It Is. — An open letter to Mark. Privacy protects the conversation. Governance protects the user. Attestation proves what happened. Compliance requires more than privacy.](/insights/dear-zuck-tee-not-the-problem/dear-zuck-tee-not-the-problem-title.png)
+
+Mark,
 
 Yesterday you announced Incognito Chat for WhatsApp and the Meta AI app. The infrastructure is real. Trusted Execution Environment inference is real. End-to-end encryption is real. I am not arguing against private AI.
 
@@ -32,6 +35,8 @@ A governance layer can run inside the same boundary. It can read every turn, eva
 Apple Private Cloud Compute already publishes verifiable attestations from inside its TEEs. AWS Nitro Enclaves do the same. Banks use this pattern for confidential computing. Healthcare uses it for HIPAA-bound inference. The infrastructure is available.
 
 Your own Private Processing documentation describes attested encrypted communications and confidential compute hardware. Attestation is the mechanism that lets an outside party verify what workload ran without seeing the private input. The architectural primitive exists in your stack. The safety attestation built on top of it is not publicly specified.
+
+![Governance in the Enclave — Run safety and governance code inside the TEE. Only signed attestations leave the boundary. The user's private conversation never leaves the enclave; model inference, safety and crisis detection, audit log, and attestation signing all run inside. Signed attestations (no content) flow to verifiers (regulators, insurers, operators). Why the Sequence Is the Risk: harm emerges across turns, not in a single answer.](/insights/dear-zuck-tee-not-the-problem/governance-in-the-enclave.png)
 
 ## The verifiability gap
 

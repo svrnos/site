@@ -1,5 +1,6 @@
 ---
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import ArticleFigure from "../../components/ArticleFigure.astro";
 import ShareButton from "../../components/ShareButton.astro";
 
 const jsonLd = {
@@ -18,6 +19,7 @@ const jsonLd = {
   },
   datePublished: "2026-05-14",
   url: "https://svrnos.com/insights/dear-zuck-tee-not-the-problem",
+  image: "https://svrnos.com/insights/dear-zuck-tee-not-the-problem/dear-zuck-tee-not-the-problem-title.png",
   mainEntityOfPage: "https://svrnos.com/insights/dear-zuck-tee-not-the-problem",
   description:
     "Meta shipped Incognito Chat for WhatsApp with Trusted Execution Environment inference. The infrastructure is real. The marketing conflates two layers — privacy and governance — that need separate proofs. A TEE can run governance code alongside the model and emit signed, non-content attestations. Meta did not publicly ship that layer. WA HB 2225 and NY RAISE start enforcing on January 1, 2027.",
@@ -29,6 +31,8 @@ const jsonLd = {
   dek="An open letter on the difference between private inference and verifiable governance — and the layer Meta did not publicly ship."
   description="Meta shipped Incognito Chat for WhatsApp with Trusted Execution Environment inference. The infrastructure is real. The marketing conflates two layers — privacy and governance — that need separate proofs. A TEE can run governance code alongside the model and emit signed, non-content attestations. Meta did not publicly ship that layer. WA HB 2225 and NY RAISE start enforcing on January 1, 2027."
   canonical="/insights/dear-zuck-tee-not-the-problem"
+  ogImage="https://svrnos.com/insights/dear-zuck-tee-not-the-problem/dear-zuck-tee-not-the-problem-title.png"
+  ogImageAlt="Dear Zuck, the TEE Is Not the Problem. What Runs Inside It Is. — An open letter to Mark on Meta's Incognito Chat launch. Privacy protects the conversation. Governance protects the user. Attestation proves what happened. Compliance requires more than privacy."
   category="Open letter"
   datePublished="2026-05-14T00:00:00Z"
   jsonLd={jsonLd}
@@ -54,7 +58,14 @@ const jsonLd = {
 
   <ShareButton />
 
-  <p>Zuck,</p>
+  <ArticleFigure
+    src="/insights/dear-zuck-tee-not-the-problem/dear-zuck-tee-not-the-problem-title.png"
+    alt="Dear Zuck, the TEE Is Not the Problem. What Runs Inside It Is. — An open letter to Mark. Incognito Chat ships privacy. It does not ship governance. Privacy protects the conversation. Governance protects the user. Attestation proves what happened. Compliance requires more than privacy."
+    hero
+    loading="eager"
+  />
+
+  <p>Mark,</p>
 
   <p>Yesterday you announced Incognito Chat for WhatsApp and the Meta AI app. The infrastructure is real. Trusted Execution Environment inference is real. End-to-end encryption is real. I am not arguing against private AI.</p>
 
@@ -77,6 +88,11 @@ const jsonLd = {
   <p>Apple Private Cloud Compute already publishes verifiable attestations from inside its TEEs. AWS Nitro Enclaves do the same. Banks use this pattern for confidential computing. Healthcare uses it for HIPAA-bound inference. The infrastructure is available.</p>
 
   <p>Your own Private Processing documentation describes attested encrypted communications and confidential compute hardware. Attestation is the mechanism that lets an outside party verify what workload ran without seeing the private input. The architectural primitive exists in your stack. The safety attestation built on top of it is not publicly specified.</p>
+
+  <ArticleFigure
+    src="/insights/dear-zuck-tee-not-the-problem/governance-in-the-enclave.png"
+    alt="Governance in the Enclave — Run safety and governance code inside the TEE. Only signed attestations leave the boundary. The user's private conversation flows in solid blue and never leaves the enclave. Model inference, safety and crisis detection, audit log, and attestation signing all run inside. Signed attestations (no content) flow in dashed green to verifiers (regulators, insurers, operators). Below: Why the Sequence Is the Risk — harm emerges across turns, not in a single answer. Single turn looks safe. Across turns, trajectory forms. System view: risk detected, intervention triggered."
+  />
 
   <h2>The verifiability gap</h2>
 
