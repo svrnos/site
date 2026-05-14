@@ -142,6 +142,17 @@ const resolvedAlternates = alternates?.map((a) => ({
         </noscript>
       </Fragment>
     )}
+    {import.meta.env.PUBLIC_GA4_MEASUREMENT_ID && (
+      <Fragment>
+        <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.PUBLIC_GA4_MEASUREMENT_ID}`}></script>
+        <script is:inline define:vars={{ measurementId: import.meta.env.PUBLIC_GA4_MEASUREMENT_ID }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', measurementId, { anonymize_ip: true });
+        </script>
+      </Fragment>
+    )}
   </head>
   <body>
     {showNav && <Nav current={current} />}
