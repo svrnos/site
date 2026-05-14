@@ -126,6 +126,16 @@ const resolvedAlternates = alternates?.map((a) => ({
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400;500&display=swap"
     />
     <slot name="head" />
+    {import.meta.env.PUBLIC_COOKIEBOT_ID && (
+      <script
+        id="Cookiebot"
+        src="https://consent.cookiebot.com/uc.js"
+        data-cbid={import.meta.env.PUBLIC_COOKIEBOT_ID}
+        data-blockingmode="auto"
+        type="text/javascript"
+        async
+      ></script>
+    )}
     <script defer src="/_vercel/insights/script.js"></script>
     {import.meta.env.PUBLIC_LINKEDIN_PARTNER_ID && (
       <Fragment>
