@@ -7,6 +7,7 @@
 **Published:** May 14, 2026
 **Status:** Open for public comment through August 14, 2026
 **Canonical URL:** https://svrnos.com/research/non-content-safety-attestation
+**Hero image:** https://svrnos.com/research/non-content-safety-attestation/non-content-safety-attestation-title.png
 **License:** CC BY 4.0
 **Cite as:** Nzeutem, S. (2026). *Non-Content Safety Attestation v0.1: A Format Specification for Verifiable AI Governance Inside Trusted Execution Environments.* Sovereign OS LLC. svrnos.com/research/non-content-safety-attestation
 
