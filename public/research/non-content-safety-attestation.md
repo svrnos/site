@@ -13,6 +13,8 @@
 
 ---
 
+![Non-Content Safety Attestation v0.1 — A format specification for verifiable AI governance inside Trusted Execution Environments. Open for public comment through August 14, 2026.](/research/non-content-safety-attestation/non-content-safety-attestation-title.png)
+
 ## Abstract
 
 Private AI architectures built on Trusted Execution Environments (TEEs) ship a strong privacy guarantee: conversation content does not leave the enclave. They do not, on their own, ship a verifiable safety guarantee: that a governance layer ran, what risk category it detected, and what action it took. This document specifies a format for a **non-content safety attestation**: a signed, cryptographically verifiable statement that an in-enclave governance layer evaluated a session and produced a defined outcome, with no transcript or content recoverable from the attestation itself. The format borrows the envelope pattern from DSSE and in-toto attestations, the platform-attestation chain from AWS Nitro Enclaves, and the transparency-log discipline from Apple Private Cloud Compute. v0.1 is published for public comment. Industry, regulators, and academic reviewers are invited to submit responses through August 14, 2026.

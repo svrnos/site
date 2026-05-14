@@ -1,5 +1,6 @@
 ---
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import ArticleFigure from "../../components/ArticleFigure.astro";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -63,6 +64,13 @@ const jsonLd = {
     <div><dt>Cite as</dt><dd>Nzeutem, S. (2026). <em>Non-Content Safety Attestation v0.1.</em> Sovereign OS LLC. svrnos.com/research/non-content-safety-attestation</dd></div>
     <div><dt>Companion</dt><dd><a href="/insights/dear-zuck-tee-not-the-problem">Dear Zuck, the TEE Is Not the Problem. What Runs Inside It Is.</a> (the argument for why this format is needed)</dd></div>
   </dl>
+
+  <ArticleFigure
+    src="/research/non-content-safety-attestation/non-content-safety-attestation-title.png"
+    alt="Non-Content Safety Attestation v0.1 — A format specification for verifiable AI governance inside Trusted Execution Environments. Open for public comment through August 14, 2026."
+    hero
+    loading="eager"
+  />
 
   <h2>Abstract</h2>
 
