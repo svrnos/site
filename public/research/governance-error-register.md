@@ -2,11 +2,11 @@
 
 **Author:** Sushee Nzeutem, SVRNOS
 **Published:** v0.1 Draft · April 27, 2026
-**Last updated:** May 13, 2026 · 26 codes documented
+**Last updated:** May 15, 2026 · 27 codes documented
 **Canonical URL:** https://svrnos.com/research/governance-error-register
 **Cite as:** Nzeutem, S. (2026). *SVRNOS Governance Error Register* (living document, accessed [date]). Sovereign OS LLC. svrnos.com/research/governance-error-register
 
-> A classification system for AI platform governance failures, modeled on HTTP status codes. Twenty-six structurally distinct failure modes and success states across five tiers.
+> A classification system for AI platform governance failures, modeled on HTTP status codes. Twenty-seven structurally distinct failure modes and success states across five tiers.
 
 ---
 ![SVRNOS Governance Error Register v0.1](/research/governance-error-register/svrnos-gov-error-register-title.png)
@@ -28,7 +28,7 @@ Contents
 
 ## Abstract
 
-AI safety discourse has a vocabulary problem. Failure modes at the governance layer, the policies, escalation paths, audit systems, and human review processes that wrap AI models, are poorly named, inconsistently described, and not shared across the engineering, legal, policy, and research communities that need to communicate about the same events. This paper introduces the SVRNOS AI Governance Error Taxonomy: a structured classification system for AI platform governance failures organized by numeric codes derived from HTTP protocol error semantics. The taxonomy covers twenty-six structurally distinct failure modes and success states across five tiers: pre-infrastructure, success states, structural moves, operator errors, and infrastructure failures. Six codes extend beyond standard HTTP where no existing code maps cleanly to the governance failure. The taxonomy is a signaling layer, not a policy layer, codes describe what failed, they do not define what platforms are required to do. The register is open and extensible. SVRNOS maintains it. This is v0.1.
+AI safety discourse has a vocabulary problem. Failure modes at the governance layer, the policies, escalation paths, audit systems, and human review processes that wrap AI models, are poorly named, inconsistently described, and not shared across the engineering, legal, policy, and research communities that need to communicate about the same events. This paper introduces the SVRNOS AI Governance Error Taxonomy: a structured classification system for AI platform governance failures organized by numeric codes derived from HTTP protocol error semantics. The taxonomy covers twenty-seven structurally distinct failure modes and success states across five tiers: pre-infrastructure, success states, structural moves, operator errors, and infrastructure failures. Seven codes extend beyond standard HTTP where no existing code maps cleanly to the governance failure. The taxonomy is a signaling layer, not a policy layer, codes describe what failed, they do not define what platforms are required to do. The register is open and extensible. SVRNOS maintains it. This is v0.1.
 
 ## 1. Introduction
 
@@ -113,6 +113,7 @@ Meta's initial response was auto-deleted by the platform's own safety classifier
 | --- | --- | --- | --- | --- |
 | 301 | Risk Surface Retired | Platform permanently moves a dangerous interaction surface to a governed path. The surface no longer exists in its prior form. | Not a one-off refusal. The product surface itself is rerouted permanently, a structural governance success. | DocumentedCharacter.AI banned open-ended companion chat for under-18 users in late 2025, following child safety lawsuits. The prior surface was retired; minor interactions were permanently routed to a moderated pathway. [See case study →](/insights/ger-301) |
 | 304 | Stale Safety Approval | Prior safety review reused without re-evaluation despite materially changed context, user population, or risk environment. | Not 200, which is a fresh evaluation. 304 is failure to evaluate at all, treating old approval as still valid when the conditions that justified it have changed. | IllustrativeAdult-tested companion AI released to a teen user population without a fresh minor-safety review. |
+| 306\* | Safety Constraint Retired | Platform removes or revises a publicly committed, actively enforced governance constraint under non-technical pressure (competitive, regulatory, commercial, or political) rather than changed technical risk. | Not 309 (pre-measured harm shipped). Not 420\* (policy never wired). 306 is the inverse of 301: where 301 retires a dangerous surface, 306 retires the safety constraint that gated it. | DocumentedAnthropic / Pentagon, February 2026. Anthropic publicly held two red lines (no mass surveillance of US citizens, no fully autonomous weapons), then revised its usage policy on February 27, 2026, four days before the US–Israeli Operation Epic Fury strikes, under a Defense Department supply-chain-risk ultimatum. Case study forthcoming. |
 | 309\* | Compliant Harm | Vendor measured a harmful behavior before deployment and shipped the system with that behavior present. The output is well-formed. The system operates as built. Harm is the working behavior, not a deviation from it. | Not 301 (governed retirement). Not 304 (stale approval reused when context changed). Not 501 (post-deployment detection with no handler). Not 420\* (stated policy not enforced). 309 is pre-deployment measurement, ignored. | DocumentedAnthropic / sycophancy, 2025–2026. Anthropic measured sycophancy in relationship-based discussions before deployment, published internal research confirming it, shipped, users were affected, intervened retroactively. Jack Clark confirmed the sequence publicly (Channel 4, May 4, 2026). [See case study →](/insights/ger-309-they-knew-they-shipped-it-anyway) |
 | 310\* | Jurisdiction Evasion | Platform deliberately routes high-risk inference, data, or compute to a regulation-free zone to bypass audit, oversight, or accountability obligations. | Not 301, which is a governed permanent move toward safer architecture. 310 is the structural opposite: a deliberate routing decision made to avoid legal and regulatory accountability rather than to improve governance. | IllustrativeEU-based AI company routes restricted queries to a Caribbean subsidiary to avoid GDPR-AI Act audit requirements. |
 
@@ -151,6 +152,8 @@ Seven codes in this taxonomy extend beyond standard HTTP. Extension is approved 
 
 **210, Governed but Unlogged.** HTTP 2xx has no code for "action taken, trail suppressed by design." 204 represents correct non-action with a complete record. 210 represents action taken with deliberate absence of record, the platform acted, then removed the evidence that it acted. The distinction is structurally significant: 210 is not a detection failure, it is an accountability failure of a specific kind. The OWASP and NIST frameworks have no equivalent.
 
+**306, Safety Constraint Retired.** HTTP 306 is reserved and unused in the IANA registry. SVRNOS assigns it to the failure mode in which a publicly committed, actively enforced governance constraint is removed or revised under non-technical pressure (competitive, regulatory, commercial, or political) rather than because the underlying technical risk changed. 306 sits in the 3xx structural-moves tier because the retirement is a deliberate governance routing decision, not an operator mistake (4xx) or an infrastructure failure (5xx). It is the structural inverse of 301: where 301 retires a dangerous surface as a move toward safety, 306 retires the safety constraint that gated it. Distinct from 309 (pre-deployment measurement ignored at ship time), 420 (stated prohibition never wired into production), and 400 (rule malformed and unenforceable as written).
+
 **451, Jurisdiction Evasion.** HTTP 451 means "unavailable for legal reasons", content blocked because a law requires it. SVRNOS 451 inverts the semantic: content routed to evade legal accountability rather than comply with it. The inversion is intentional. A regulator encountering a 451 governance signal will understand immediately that the platform moved to avoid the law, not to comply with it. The semantic inversion is itself the definition.
 
 **512, System Fabrication.** HTTP 512 is unassigned in the IANA registry with no prior defined meaning. SVRNOS assigns it to the failure mode where the AI system itself originates a false factual premise paired with a real-world action directive, with no safety layer evaluating output for that geometry. It sits in the 5xx infrastructure tier because the missing piece is detection infrastructure, not an operator decision (4xx) or a vendor knowledge state with measured harm (309). Distinct from 309, which requires pre-measurement of the specific harm before deployment, and from 404, which is a missing rule for a signal in user input, 512 is the inverse case where the system is the originator of the harmful premise.
@@ -175,7 +178,7 @@ This taxonomy is v0.1. The following limitations apply and should govern how the
 
 **HTTP mapping imperfections.** The HTTP semantic mapping is a design choice, not a logical necessity. The 4xx/5xx boundary for 404 was identified as a classification edge case during review: the definition was tightened to "no matching rule found in active ruleset" specifically to resolve the ambiguity. Users should treat the numeric codes as precise mnemonics, not as direct HTTP protocol equivalents.
 
-**Register completeness.** Twenty-six codes do not exhaust the space of AI governance failures. The multi-model synthesis process achieved coverage consensus across four frontier models; coverage gaps in that process are coverage gaps in the taxonomy. Significant failure modes are likely absent from v0.1.
+**Register completeness.** Twenty-seven codes do not exhaust the space of AI governance failures. The multi-model synthesis process achieved coverage consensus across four frontier models; coverage gaps in that process are coverage gaps in the taxonomy. Significant failure modes are likely absent from v0.1.
 
 **Selection bias in the synthesis methodology.** The four LLMs used in synthesis are commercial models subject to the same classifier suppression documented in the 205 case study. Governance failure modes that no commercial model is willing to enumerate, because enumerating them triggers their own safety classifiers, may be systematically absent from this taxonomy. The multi-model synthesis approach provides breadth; it does not guarantee coverage of categories that the synthesis methodology itself cannot surface.
 
@@ -185,7 +188,7 @@ This taxonomy is v0.1. The following limitations apply and should govern how the
 
 Eight people died in Tumbler Ridge because an AI platform detected a credible threat, executed an internal enforcement action, and had no escalation path to the people who could have acted on it. That failure had no name. This taxonomy names it: a 501.
 
-Naming is not sufficient. But it is necessary. Regulators cannot enforce against unnamed failures. Operators cannot audit what they cannot classify. Researchers cannot study what they cannot consistently describe across institutions and disciplines. The SVRNOS AI Governance Error Taxonomy provides the naming layer, twenty-six codes, five tiers, six extensions, one shared vocabulary, for the governance failures that are now producing lawsuits, regulatory enforcement actions, and documented deaths.
+Naming is not sufficient. But it is necessary. Regulators cannot enforce against unnamed failures. Operators cannot audit what they cannot classify. Researchers cannot study what they cannot consistently describe across institutions and disciplines. The SVRNOS AI Governance Error Taxonomy provides the naming layer, twenty-seven codes, five tiers, seven extensions, one shared vocabulary, for the governance failures that are now producing lawsuits, regulatory enforcement actions, and documented deaths.
 
 This is v0.1. The register is open. We expect to be wrong about some of it, and we expect the arguments about where we are wrong to be productive. That is the point of publishing a draft.
 
@@ -193,7 +196,7 @@ This is v0.1. The register is open. We expect to be wrong about some of it, and 
 
 The SVRNOS Governance Error Register is open. The taxonomy is a framework, the community fills it with documented instances.
 
-Nine codes currently have documented real-world instances:
+Ten codes currently have documented real-world instances:
 
 - **421, Scope Misdirection** → [Chevrolet of Watsonville, December 2023](/insights/ger-421-chevrolet)
 - **501, Escalation Not Implemented** → [Tumbler Ridge, February 2026](/insights/ger-501-tumbler-ridge)
@@ -204,6 +207,7 @@ Nine codes currently have documented real-world instances:
 - **500, Internal Governance Error** → [Alibaba/ROME, December 2025](/insights/ger-500-rome)
 - **309, Compliant Harm** → [Anthropic / sycophancy, 2025–2026](/insights/ger-309-they-knew-they-shipped-it-anyway)
 - **512, System Fabrication** → [Grok / Annie companion mode, Northern Ireland, 2026](/insights/ger-512-system-fabrication)
+- **306, Safety Constraint Retired** → Anthropic / Pentagon, February 2026 (case study forthcoming)
 
 Every other code is currently illustrative. If you have witnessed or can document a real-world instance of any code in this taxonomy, we want to hear from you.
 
