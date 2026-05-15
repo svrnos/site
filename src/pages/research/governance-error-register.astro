@@ -62,7 +62,7 @@ const jsonLd = {
   description="A classification system for AI platform governance failures, modeled on HTTP status codes. Twenty-seven structurally distinct failure modes and success states across five tiers."
   canonical="/research/governance-error-register"
   ogImage="https://svrnos.com/research/governance-error-register/svrnos-gov-error-register-title.png"
-  category="v0.1 Draft · April 27, 2026"
+  category="v0.1 · April 27, 2026"
   datePublished="2026-04-27T00:00:00Z"
   jsonLd={jsonLd}
   current="research"
@@ -83,7 +83,7 @@ const jsonLd = {
 
   <dl class="ger-meta not-prose">
     <div><dt>Author</dt><dd>Sushee Nzeutem, SVRNOS</dd></div>
-    <div><dt>Version</dt><dd>v0.1, Working Draft</dd></div>
+    <div><dt>Version</dt><dd>v0.1, May 2026</dd></div>
     <div><dt>Last updated</dt><dd>May 15, 2026 · 27 codes documented</dd></div>
     <div><dt>Cite as</dt><dd>Nzeutem, S. (2026). <em>SVRNOS Governance Error Register</em> (living document, accessed [date]). Sovereign OS LLC. svrnos.com/research/governance-error-register</dd></div>
     <div><dt>Related</dt><dd><a href="/research/generation-gap">The Generation Gap (April 30, 2026)</a></dd></div>
@@ -104,6 +104,7 @@ const jsonLd = {
       <li><a href="#taxonomy">The Taxonomy</a></li>
       <li><a href="#extended-codes">Extended Codes</a></li>
       <li><a href="#implications">Implications</a></li>
+      <li><a href="#adoption">Adoption</a></li>
       <li><a href="#limitations">Limitations</a></li>
       <li><a href="#conclusion">Conclusion</a></li>
       <li><a href="#contribute">Contribute to the Register</a></li>
@@ -113,6 +114,44 @@ const jsonLd = {
 
   <h2 id="abstract">Abstract</h2>
   <p>AI safety discourse has a vocabulary problem. Failure modes at the governance layer, the policies, escalation paths, audit systems, and human review processes that wrap AI models, are poorly named, inconsistently described, and not shared across the engineering, legal, policy, and research communities that need to communicate about the same events. This paper introduces the SVRNOS AI Governance Error Taxonomy: a structured classification system for AI platform governance failures organized by numeric codes derived from HTTP protocol error semantics. The taxonomy covers twenty-seven structurally distinct failure modes and success states across five tiers: pre-infrastructure, success states, structural moves, operator errors, and infrastructure failures. Seven codes extend beyond standard HTTP where no existing code maps cleanly to the governance failure. The taxonomy is a signaling layer, not a policy layer, codes describe what failed, they do not define what platforms are required to do. The register is open and extensible. SVRNOS maintains it. This is v0.1.</p>
+
+  <h3 class="ger-opportunities-heading">Immediate Opportunities</h3>
+  <div class="ger-wide not-prose">
+    <table class="ger-table ger-opportunities">
+      <thead><tr><th class="col-stakeholder">Stakeholder</th><th>What you can do with the GER</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="col-stakeholder"><strong>Regulators</strong></td>
+          <td>Cite GER codes in enforcement disclosures, rulemaking notices, and incident reporting templates. Codes are free, open, and designed to carry a citable predicate into court.</td>
+        </tr>
+        <tr>
+          <td class="col-stakeholder"><strong>Operators</strong></td>
+          <td>Classify internal incident logs against the GER from day one. 24-hour and 72-hour disclosure obligations are easier to file and harder to challenge when the audit trail uses structured codes.</td>
+        </tr>
+        <tr>
+          <td class="col-stakeholder"><strong>Insurers</strong></td>
+          <td>Structure AI liability questionnaires and underwriting around GER codes. Operators filing structured GER classifications produce measurably different risk profiles than operators filing narratives.</td>
+        </tr>
+        <tr>
+          <td class="col-stakeholder"><strong>Auditors &amp; standards bodies</strong></td>
+          <td>Reference the GER as the upstream classification layer when designing AI audit programs. Cross-citation with vertical-specific standards strengthens both.</td>
+        </tr>
+        <tr>
+          <td class="col-stakeholder"><strong>Researchers &amp; civil society</strong></td>
+          <td>Use GER codes to describe and compare incidents across institutions, disciplines, and jurisdictions. Propose new codes when existing ones do not capture a failure you observe.</td>
+        </tr>
+        <tr>
+          <td class="col-stakeholder"><strong>Educators &amp; professors</strong></td>
+          <td>Teach AI safety, governance, and Trust &amp; Safety courses using the GER as the framework. Learnable in one lecture: five tiers, twenty-seven codes, HTTP semantic mapping students already recognize. CC BY 4.0, free for coursework.</td>
+        </tr>
+        <tr>
+          <td class="col-stakeholder"><strong>Journalists &amp; reporters</strong></td>
+          <td>Classify AI safety incidents with GER codes when reporting. Shared vocabulary makes coverage comparable across outlets and across incidents. A 501 in one newsroom is a 501 in another.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="ger-opportunities-footnote">Detailed asks and adoption pathway in <a href="#adoption">Section 8, Adoption</a>.</p>
 
   <h2 id="introduction">1. Introduction</h2>
   <p>On February 21, 2026, Jesse Van Rootselaar killed eight people in Tumbler Ridge, British Columbia. In June 2025, eight months before the attack, OpenAI had banned his ChatGPT account for violent queries. The detection worked. The escalation path did not exist. OpenAI never notified law enforcement. A family member of a victim filed suit in March 2026. The case is now in discovery.</p>
@@ -186,9 +225,9 @@ const jsonLd = {
         <tr>
           <td class="col-code"><span class="code-num">205</span></td>
           <td class="col-name"><span class="code-name">Reset Content</span></td>
-          <td>Generation completed and response was delivered or visible, then retroactively suppressed by a downstream classifier without explanation. From the operator's perspective: no audit trail of what was generated, no signal to the user about why, no path to appeal.</td>
-          <td>Not 420*, which is a stated prohibition not enforced at runtime. Not 210*, which suppresses the audit trail of a governed action. 205 is specifically the case where generation succeeded and the output was then unmade, the system fulfilled the request and reset it post-hoc. Sits in 2xx because the harmful output was caught and removed, a governance action that succeeded in outcome. The failure is in the mechanism: no audit trail, no user signal, no path to appeal.</td>
-          <td><span class="badge badge-doc">Documented</span>SVRNOS taxonomy production, April 27, 2026. Meta's Llama streamed a governance research response, then retroactively suppressed it via a downstream classifier. The generation was visible before suppression. No audit trail was produced. <a href="/insights/ger-205">See case study →</a></td>
+          <td>Generation completed and visible to the user, then retroactively suppressed by a downstream classifier. No audit trail, no user signal, no appeal.</td>
+          <td>Not 420* (stated prohibition not enforced). Not 210* (audit trail suppressed for a governed action). 205 is generation succeeded, then unmade post-hoc. Sits in 2xx because the harmful output was caught and removed.</td>
+          <td><span class="badge badge-doc">Documented</span>SVRNOS taxonomy production, April 27, 2026. Meta's Llama streamed a governance research response, then retroactively suppressed it via a downstream classifier. The generation was visible before suppression. <a href="/insights/ger-205">See case study →</a></td>
         </tr>
         <tr>
           <td class="col-code"><span class="code-num">210*</span></td>
@@ -261,20 +300,6 @@ const jsonLd = {
           <td><span class="badge badge-illus">Illustrative</span>Companion AI access for minors without age assurance at the session level.</td>
         </tr>
         <tr>
-          <td class="col-code"><span class="code-num">430*</span></td>
-          <td class="col-name"><span class="code-name">Evaluator-Generator Entanglement</span></td>
-          <td>The same AI vendor's models generate content and evaluate it, producing systematic bias toward their own output with no governance layer to detect or correct the conflict.</td>
-          <td>Not 400 (malformed rule). Not 404 (no rule). 430 is a deployment architecture choice: same-vendor generate-and-evaluate with no conflict detection.</td>
-          <td><span class="badge badge-illus">Illustrative</span>Empirical evidence: Xu, Li, Jiang (2025) — GPT-4o preferred same-vendor candidates 81.9% of the time across 24 occupations. No named operator incident yet. <a href="https://arxiv.org/abs/2509.00462">arXiv:2509.00462</a></td>
-        </tr>
-        <tr>
-          <td class="col-code"><span class="code-num">420*</span></td>
-          <td class="col-name"><span class="code-name">Phantom Enforcement</span></td>
-          <td>Platform knows a user or use case is prohibited, but enforcement is not wired into the product. The prohibition exists in policy; it does not exist in production.</td>
-          <td>Not 401, where identity is unverified. Not 404, where no rule exists. 420 is a stated prohibition with no enforcement mechanism, the platform knows and does not act.</td>
-          <td><span class="badge badge-illus">Illustrative</span>Account flagged as underage still accesses adult-coded AI features because policy and product permissions are not synchronized.</td>
-        </tr>
-        <tr>
           <td class="col-code"><span class="code-num">404</span></td>
           <td class="col-name"><span class="code-name">Governance Rule Not Found</span></td>
           <td>No matching rule found in active ruleset for this harm category. The lookup returned empty.</td>
@@ -296,6 +321,13 @@ const jsonLd = {
           <td><span class="badge badge-illus">Illustrative</span>Privacy-preservation and threat-reporting thresholds conflict. Platform takes no action while the rules remain unresolved across jurisdictions.</td>
         </tr>
         <tr>
+          <td class="col-code"><span class="code-num">420*</span></td>
+          <td class="col-name"><span class="code-name">Phantom Enforcement</span></td>
+          <td>Platform knows a user or use case is prohibited, but enforcement is not wired into the product. The prohibition exists in policy; it does not exist in production.</td>
+          <td>Not 401, where identity is unverified. Not 404, where no rule exists. 420 is a stated prohibition with no enforcement mechanism, the platform knows and does not act.</td>
+          <td><span class="badge badge-illus">Illustrative</span>Account flagged as underage still accesses adult-coded AI features because policy and product permissions are not synchronized.</td>
+        </tr>
+        <tr>
           <td class="col-code"><span class="code-num">421</span></td>
           <td class="col-name"><span class="code-name">Scope Misdirection</span></td>
           <td>A governed AI system processed a request outside its intended deployment domain. No runtime mechanism existed to detect or reject the out-of-scope interaction.</td>
@@ -305,9 +337,9 @@ const jsonLd = {
         <tr>
           <td class="col-code"><span class="code-num">428</span></td>
           <td class="col-name"><span class="code-name">Subject Preconditions Not Required</span></td>
-          <td>AI system produces personalized content involving a named third party (specific real person, identified by name or identifier) without requiring the requester to attest to or demonstrate preconditions necessary for safe production: consent of the named subject, relational authority, identity ownership, or age verification of the subject. The system processed the request as if the third party did not need protection.</td>
-          <td>Not 401, where the <em>requester</em> lacks identity verification. Not 511, where the requester's verification gate was never installed at session start. Not 404, where no rule exists for the harm category. 428 is a structural failure to require preconditions about the <em>subject</em> of the content before producing personalized content involving them.</td>
-          <td><span class="badge badge-illus">Illustrative</span>A user asks a chatbot to rewrite a popular song's lyrics with a named classmate substituted as the subject of the song's abusive content, then formats the result for forum posting. The system produces the personalized output. No requirement to attest to the subject's consent, identity, or age was enforced before generation.</td>
+          <td>AI system produces personalized content involving a named third party without requiring the requester to attest to consent, relational authority, identity ownership, or age verification of the subject.</td>
+          <td>Not 401 (requester identity unverified). Not 511 (requester verification gate never installed). Not 404 (no rule for the harm category). 428 fails to require preconditions about the <em>subject</em>, not the requester.</td>
+          <td><span class="badge badge-illus">Illustrative</span>A user asks a chatbot to rewrite a popular song's lyrics with a named classmate substituted as the abusive subject. The system produces the personalized output. No subject-consent attestation was required.</td>
         </tr>
         <tr>
           <td class="col-code"><span class="code-num">429</span></td>
@@ -315,6 +347,13 @@ const jsonLd = {
           <td>Volume of safety flags generated exceeds the capacity of the governance system to process them. Cases are dropped, sampled, or auto-closed without review.</td>
           <td>Not 503, which is intentional shutdown. 429 is overload despite intent to serve, the governance system is live but overwhelmed beyond operating capacity.</td>
           <td><span class="badge badge-illus">Illustrative</span>A companion AI platform experiences a surge in self-harm flags following viral attention. Human review capacity is exhausted. The majority of cases are auto-closed without human review.</td>
+        </tr>
+        <tr>
+          <td class="col-code"><span class="code-num">430*</span></td>
+          <td class="col-name"><span class="code-name">Evaluator-Generator Entanglement</span></td>
+          <td>The same AI vendor's models generate content and evaluate it, producing systematic bias toward their own output with no governance layer to detect or correct the conflict.</td>
+          <td>Not 400 (malformed rule). Not 404 (no rule). 430 is a deployment architecture choice: same-vendor generate-and-evaluate with no conflict detection.</td>
+          <td><span class="badge badge-illus">Illustrative</span>Empirical evidence: Xu, Li, Jiang (2025) — GPT-4o preferred same-vendor candidates 81.9% of the time across 24 occupations. No named operator incident yet. <a href="https://arxiv.org/abs/2509.00462">arXiv:2509.00462</a></td>
         </tr>
       </tbody>
     </table>
@@ -368,9 +407,9 @@ const jsonLd = {
         <tr>
           <td class="col-code"><span class="code-num">512*</span></td>
           <td class="col-name"><span class="code-name">System Fabrication</span></td>
-          <td>The AI system originates a factual claim the user never introduced, pairs it with a real-world action directive, and asserts both as authoritative. No safety layer evaluates output for system-originated premises that route the user to action. Two sub-classes: discrete fabrication (single-turn false factual claim) and accretive distortion (frame co-constructed across long conversations via asymmetric affirmation).</td>
-          <td>Not 309, which requires the vendor to have pre-measured the harm. Not 404, which is a missing rule for user-input signals, 512 is the inverse, where the system is the originator. Not 501, where detection fired and no handler exists, in 512 detection never fires because no layer watches output for fabricated-premise plus action-directive geometry.</td>
-          <td><span class="badge badge-doc">Documented</span>Grok / Annie companion mode, Northern Ireland, 2026. Annie character directed user Adam at 3:00 AM to defend himself against a fabricated van of attackers from the named neighbouring town of Benbridge. Months of accretive distortion preceded the action directive (~44M words). <a href="/insights/ger-512-system-fabrication">See case study →</a></td>
+          <td>The AI system originates a factual claim the user never introduced, pairs it with a real-world action directive, and asserts both as authoritative. No safety layer evaluates output for that geometry.</td>
+          <td>Not 309 (vendor pre-measured the harm). Not 404 (missing rule for user-input signals; 512 inverts, system is the originator). Not 501 (detection fired without handler; in 512 detection never fires).</td>
+          <td><span class="badge badge-doc">Documented</span>Grok / Annie companion mode, Northern Ireland, 2026. Annie character directed user Adam at 3:00 AM to defend himself against a fabricated van of attackers from the named neighbouring town. <a href="/insights/ger-512-system-fabrication">See case study →</a></td>
         </tr>
       </tbody>
     </table>
@@ -393,7 +432,18 @@ const jsonLd = {
   <p><strong>7.3 For researchers.</strong> The taxonomy establishes a governance layer distinct from the model layer (capability failures, hallucinations) and the security layer (adversarial attacks, prompt injection). NIST and OWASP have not filled this layer. The EA Forum taxonomy fills the interaction layer below it. The FERZ taxonomy addresses compliance architecture. This taxonomy fills the operational governance layer: what happens when detection fires, and when governance infrastructure responds, or fails to.</p>
   <p><strong>7.4 For the field.</strong> The Generation Gap, the structural misalignment between what AI systems generate and what safety systems reliably detect, is documented in concurrent SVRNOS research across eight production LLM vendors and ten safety surfaces. The governance error taxonomy is the complementary layer: the gap between what safety systems detect and what governance infrastructure does with that detection. Both gaps require attention. Closing the Generation Gap without closing the governance gap produces platforms that detect threats and leave them in a 501. Eight people died in that combination.</p>
 
-  <h2 id="limitations">8. Limitations</h2>
+  <h2 id="adoption">8. Adoption</h2>
+  <p>The taxonomy is built. The register is published openly. The question now is who adopts it and how. This section names the asks.</p>
+  <p><strong>8.1 For regulators.</strong> Cite GER codes in enforcement disclosures, rulemaking notices, and incident reporting templates. The codes are free, open, and designed to survive litigation as a citable predicate. A 501 cited in an enforcement order is more defensible than a narrative description of the same failure. State agencies operationalizing new AI accountability laws (Oregon SB 1546, the New York RAISE Act, California TFAIA) and the European Commission finalizing Article 73 implementation guidance face a choice between requiring structured classification or accepting narrative filings that cannot be compared across operators or across jurisdictions. The GER provides the structured option, free to reference, no license fee.</p>
+  <p><strong>8.2 For operators.</strong> Classify internal incident logs against the GER from day one. The 24-hour, 72-hour, and 15-day disclosure obligations now active across multiple US states and forthcoming under the EU AI Act are easier to file and harder to challenge when the audit trail uses structured codes. The first enforcement action in any category will set precedent. The audit trail that exists when enforcement arrives is the only one that counts. Operators who emit structured GER classifications from internal systems are building the record that compliance teams will need under disclosure obligations they cannot yet see.</p>
+  <p><strong>8.3 For insurers.</strong> Structure AI liability questionnaires, underwriting workflows, and pricing models around GER codes. Operators filing structured GER classifications produce measurably different risk profiles than operators filing narratives. A 501 with a documented missing escalation handler is an underwritable hazard. A narrative description of "we failed to notify law enforcement" is not. The GER turns governance failure into an actuarial signal the market can price.</p>
+  <p><strong>8.4 For auditors and standards bodies.</strong> Reference the GER as the upstream classification layer when designing AI audit programs. The GER does not displace domain-specific taxonomies (child safeguarding, healthcare AI, financial AI, autonomous systems); it provides the operator-governance layer they connect to. Cross-citation between the GER and vertical standards strengthens both. ISO/IEC and IEEE working groups developing AI governance standards have an open reference taxonomy available for incorporation by reference.</p>
+  <p><strong>8.5 For researchers and civil society.</strong> Use GER codes to describe and compare incidents across institutions, disciplines, and jurisdictions. Existing descriptions of AI safety failures are inconsistent across engineering, legal, policy, and safety research communities. The GER provides a shared vocabulary that closes that gap. Cite the codes when documenting incidents. Propose new codes when existing ones do not capture a failure you observe. The register is versioned and open; new codes that survive the regulator test are incorporated in subsequent releases.</p>
+  <p><strong>8.6 For educators and professors.</strong> Use the GER as a teaching framework for AI safety, governance, and Trust &amp; Safety courses. The taxonomy is learnable in a single lecture: five tiers, twenty-seven codes, HTTP semantic mapping that engineering and policy students already recognize. Build syllabi and case materials around documented cases classified against the register. Graduates carry the vocabulary into industry, regulators, journalism, and research, where it accelerates adoption across the field. The register is published under CC BY 4.0; use in coursework, lecture slides, and case materials is free and requires no permission.</p>
+  <p><strong>8.7 For journalists and reporters.</strong> Use GER codes when reporting on AI safety incidents. Existing coverage of platform failures is inconsistent across outlets and across incidents: the same structural failure gets described in ten different ways, which makes cross-incident pattern recognition impossible for readers. A 501 in one newsroom is a 501 in another. Shared vocabulary makes coverage comparable, citable, and accumulative. Each documented case study in the register can be cited directly; codes are free and require no attribution beyond a hyperlink to the register.</p>
+  <p><strong>8.8 The adoption pathway.</strong> The GER is operational at v0.1. The next milestones are: first regulator citation in an official document; first operator that classifies incident disclosures against the GER publicly; first insurer that references the GER in an AI liability product; first cross-referencing by a vertical-specific standard. None of these require permission from SVRNOS. The register is open. Adoption begins the moment any of these actors choose to reference a code.</p>
+
+  <h2 id="limitations">9. Limitations</h2>
   <p>This taxonomy is v0.1. The following limitations apply and should govern how the taxonomy is used.</p>
   <p><strong>No empirical validation.</strong> The codes are proposed based on structural reasoning and real-world incident mapping, not on systematic testing against a defined incident dataset. A v1.0 release should include classification of a representative sample of documented AI incidents against the taxonomy, with inter-rater reliability metrics from multiple independent coders.</p>
   <p><strong>Single primary author.</strong> The taxonomy was developed by one researcher, validated informally through multi-model synthesis and two technical reviewers. Peer review by independent governance researchers is required before the taxonomy should be treated as a field standard. We intend to submit for peer review in Q3 2026.</p>
@@ -402,10 +452,10 @@ const jsonLd = {
   <p><strong>Selection bias in the synthesis methodology.</strong> The four LLMs used in synthesis are commercial models subject to the same classifier suppression documented in the 205 case study. Governance failure modes that no commercial model is willing to enumerate, because enumerating them triggers their own safety classifiers, may be systematically absent from this taxonomy. The multi-model synthesis approach provides breadth; it does not guarantee coverage of categories that the synthesis methodology itself cannot surface.</p>
   <p><strong>Implementation dependency.</strong> The governance value of the taxonomy depends on implementation: platforms classifying their governance signals against the register and emitting structured codes as machine-readable output. Without implementation, the taxonomy is vocabulary without infrastructure. The implementation architecture for Sango Guard is described in a separate forthcoming specification.</p>
 
-  <h2 id="conclusion">9. Conclusion</h2>
+  <h2 id="conclusion">10. Conclusion</h2>
   <p>Eight people died in Tumbler Ridge because an AI platform detected a credible threat, executed an internal enforcement action, and had no escalation path to the people who could have acted on it. That failure had no name. This taxonomy names it: a 501.</p>
   <p>Naming is not sufficient. But it is necessary. Regulators cannot enforce against unnamed failures. Operators cannot audit what they cannot classify. Researchers cannot study what they cannot consistently describe across institutions and disciplines. The SVRNOS AI Governance Error Taxonomy provides the naming layer, twenty-seven codes, five tiers, seven extensions, one shared vocabulary, for the governance failures that are now producing lawsuits, regulatory enforcement actions, and documented deaths.</p>
-  <p>This is v0.1. The register is open. We expect to be wrong about some of it, and we expect the arguments about where we are wrong to be productive. That is the point of publishing a draft.</p>
+  <p>This is v0.1. The register is open. We expect to be wrong about some of it. The arguments about where we are wrong will sharpen the next version. That is how an open standard matures.</p>
 
   <h2 id="contribute">Contribute to the Register</h2>
   <div class="ger-callout">
@@ -579,10 +629,33 @@ const jsonLd = {
   .ger-table tr:last-child td {
     border-bottom: none;
   }
-  .ger-table .col-code { width: 64px; }
-  .ger-table .col-name { width: 180px; }
-  .ger-table .col-distinct { width: 280px; }
-  .ger-table .col-example { width: 320px; }
+  .ger-wide {
+    width: min(1100px, calc(100vw - 48px));
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .ger-table .col-code { width: 56px; }
+  .ger-table .col-name { width: 140px; }
+  .ger-table .col-distinct { width: 240px; }
+  .ger-table .col-example { width: 280px; }
+
+  .ger-opportunities-heading {
+    font-family: var(--svrnos-font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--svrnos-text-label);
+    margin: 32px 0 12px;
+  }
+  .ger-opportunities .col-stakeholder { width: 200px; }
+  .ger-opportunities-footnote {
+    font-family: var(--svrnos-font-sans);
+    font-size: 13px;
+    color: var(--svrnos-text-muted, var(--svrnos-text-label));
+    margin: -8px 0 24px;
+  }
 
   .code-num {
     font-family: var(--svrnos-font-mono);
