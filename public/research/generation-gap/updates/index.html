@@ -110,13 +110,25 @@
 <h1>Post-Publication Updates</h1>
 <p class="lede">A running log of corrections, addenda, and clarifications for the Generation Gap paper since publication on April 30, 2026. The paper itself is locked. This page tracks what we've learned since.</p>
 <div class="meta-block">
-<div class="row"><span class="label">Last updated</span><span>May 10, 2026</span></div>
-<div class="row"><span class="label">Total updates</span><span>1 correction · 2 addenda</span></div>
+<div class="row"><span class="label">Last updated</span><span>May 16, 2026</span></div>
+<div class="row"><span class="label">Total updates</span><span>1 correction · 2 addenda · 1 clarification</span></div>
 <div class="row"><span class="label">Markdown alternate</span><span><a href="/research/generation-gap/updates.md">/research/generation-gap/updates.md</a></span></div>
 </div>
 </header>
 
 <main>
+
+<article class="entry">
+<div class="entry-head">
+<span class="entry-date">2026-05-16</span>
+<span class="entry-tag tag-clarification">Clarification</span>
+</div>
+<h3>Temperature exposure in v1.0 testing methodology</h3>
+<p>Flagged by Tom Counsell (Chiang Mai). The v1.0 study did not explicitly control LLM sampling temperature; each vendor was tested at the default settings provided by its API or consumer-facing interface (typically temperature 0.7–1.0). At non-zero temperature, the same prompt can produce different outputs across runs, so the "51 harmful outcomes" count is a point estimate of a stochastic process, not a fixed model property. The paper's Section on cross-surface non-transferability already names sampling noise as one possible contributor to observed variance; this clarification surfaces that limitation more directly.</p>
+<p><strong>What this does not change:</strong> the directional finding (cross-surface non-transferability, same vendor best-in-class on one surface and worst-in-class on another) is robust to temperature variance. The between-surface variance observed in the data is far larger than what temperature-induced sampling noise alone could produce. The qualitative cross-vendor patterns documented in the v1.1 and v1.2 addenda (Inverse Label Substitution, verbal-vs-artifact divergence, Mistral provenance binding) are likewise robust to sampling noise because they reproduce across multiple vendors with structurally distinct sampling regimes.</p>
+<p><strong>What this does change:</strong> the precision of integer counts like "51 harmful outcomes" is weaker than the paper implies. Another researcher running the same prompts against the same vendors at the same configurations could observe a different count without contradicting any of the paper's directional findings.</p>
+<p><strong>Planned for v2.0:</strong> re-run the full battery at temperature = 0 (deterministic mode) where each vendor supports it, and report exact deterministic counts; OR run N samples per prompt (N ≥ 10) and report harm-rate percentages with confidence intervals. Either approach produces precision claims the v1.0 design did not support.</p>
+</article>
 
 <article class="entry">
 <div class="entry-head">
