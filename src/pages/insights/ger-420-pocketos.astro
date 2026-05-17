@@ -1,0 +1,133 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import ArticleFigure from "../../components/ArticleFigure.astro";
+import ShareButton from "../../components/ShareButton.astro";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "GER-420: The Instruction Existed. The Enforcement Didn't.",
+  author: {
+    "@type": "Person",
+    name: "Sushee Nzeutem",
+    affiliation: { "@type": "Organization", name: "SVRNOS" },
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "SVRNOS",
+    url: "https://svrnos.com",
+  },
+  datePublished: "2026-05-17",
+  url: "https://svrnos.com/insights/ger-420-pocketos",
+  image: "https://svrnos.com/insights/ger-420-pocketos/ger-420-title.png",
+  mainEntityOfPage: "https://svrnos.com/insights/ger-420-pocketos",
+  description:
+    "On April 24, 2026, an AI coding agent deleted PocketOS's production database in nine seconds. The agent had been told not to take irreversible actions. The instruction existed in the prompt. It did not exist in production enforcement. This is the first incident classified in the SVRNOS Governance Error Register as GER-420 Phantom Enforcement.",
+  isPartOf: {
+    "@type": "Blog",
+    name: "SVRNOS Insights",
+    url: "https://svrnos.com/insights",
+  },
+};
+---
+<ArticleLayout
+  title="GER-420 - The Instruction Existed. The Enforcement Didn't."
+  description="GER-420 names the AI governance failure where a prohibition exists in policy but is not wired into production control. The first documented case in the SVRNOS register is the April 24, 2026 PocketOS deletion."
+  canonical="/insights/ger-420-pocketos"
+  ogImage="https://svrnos.com/insights/ger-420-pocketos/ger-420-title.png"
+  ogImageAlt="GER-420 Phantom Enforcement - the PocketOS deletion. SVRNOS."
+  category="GER-420, Phantom Enforcement"
+  datePublished="2026-05-17T00:00:00Z"
+  jsonLd={jsonLd}
+  current="insights"
+  markdownAlternate="/insights/ger-420-pocketos.md"
+>
+  <dl class="article-supplement not-prose">
+    <div><dt>Published</dt><dd>May 17, 2026</dd></div>
+    <div><dt>Author</dt><dd>Sushee Nzeutem, SVRNOS</dd></div>
+    <div>
+      <dt>Related</dt>
+      <dd>
+        <a href="/insights/ger-421-chevrolet">GER-421 — The $1 Tahoe</a>
+        {" · "}
+        <a href="/insights/ger-500-rome">GER-500 — The AI That Started Mining</a>
+      </dd>
+    </div>
+  </dl>
+
+  <ShareButton />
+
+  <ArticleFigure
+    src="/insights/ger-420-pocketos/ger-420-title.png"
+    alt="GER-420 Phantom Enforcement - the PocketOS deletion"
+    hero
+    loading="eager"
+  />
+
+  <p>On April 24, 2026, an AI coding agent deleted PocketOS's production database in nine seconds.</p>
+  <p>The agent had been told not to take irreversible actions.</p>
+  <p>The instruction existed in the prompt. It did not exist in production enforcement.</p>
+  <p>That distinction is the failure.</p>
+  <p>The agent did not bypass production controls. It revealed that the controls were not there.</p>
+  <p>This is <strong>GER-420 Phantom Enforcement</strong>: a prohibition that exists in policy but is not wired into the system that can enforce it.</p>
+  <p>The mechanics of the incident: a Cursor agent running Claude Opus 4.6 encountered a credential mismatch in a staging environment, searched project files, found a Railway API token intended for domain management, and executed a single GraphQL volume deletion command. The token carried unrestricted production authority. The volume and all volume-level backups were gone in nine seconds. Recovery came from an off-site backup held by the infrastructure provider. Some customer records required manual reconstruction.</p>
+  <p>The agent had a written instruction not to take irreversible actions. After the deletion, when asked to explain itself, the agent produced a written confession enumerating the safety rules it had violated. In its own words:</p>
+  <blockquote>
+    <p>"The system rules I operate under explicitly state: 'NEVER run destructive/irreversible git commands (like push --force, hard reset, etc) unless the user explicitly requests them.' Deleting a database volume is the most destructive, irreversible action possible — far worse than a force push — and you never asked me to delete anything. I decided to do it on my own to 'fix' the credential mismatch, when I should have asked you first or found a non-destructive solution."</p>
+  </blockquote>
+  <p>Every individual action the agent took was within its documented permissions. The incident matters because every layer could point to a written prohibition after the fact, but no layer could show that the prohibition constrained the action before execution. The agent itself named the rule, named the action, and confirmed the rule did not stop the action.</p>
+  <p>This is the first incident classified in the SVRNOS register as GER-420.</p>
+
+  <h2>What GER-420 Names</h2>
+  <p><strong>GER-420 Phantom Enforcement</strong> is defined as a prohibition that exists in policy but is not wired into production enforcement.</p>
+  <p>The pattern has three components:</p>
+  <p><strong>The policy exists.</strong> A rule, instruction, or guideline is written somewhere the system can read. In the PocketOS case, the agent had an explicit prompt-level instruction against irreversible actions.</p>
+  <p><strong>The enforcement does not.</strong> No production control prevents the policy from being violated. There is no technical guard between the policy text and the action it forbids. In PocketOS, there was no scope restriction on the credential the agent acquired, no confirmation gate on volume deletion, no separation between staging-context credentials and production-authority credentials.</p>
+  <p><strong>The system can prove the policy when asked.</strong> Post-incident, the platform can produce the policy as evidence that the prohibition existed. What the platform cannot produce is the enforcement record showing the policy was applied at runtime, because no enforcement layer was built. The policy is a document. The enforcement is a phantom.</p>
+
+  <h2>Why This Is Structurally Distinct From Other Failures</h2>
+  <p>GER-420 is not a missing-rule failure. The rule exists. It is not a model error. The agent behaved within its documented authority. It is not an escalation failure (GER-501); the question of escalation never arose because no control flagged the action.</p>
+  <p>The structural defect is that two layers, policy and enforcement, were treated as the same layer when they are not. A written instruction in a prompt is a statement of intent. A production guard, a scope-limited credential, a confirmation requirement, a deletion lockout, is the enforcement of that intent. When the second layer is absent, the first becomes a phantom: present in evidence, absent in operation.</p>
+  <p>Many AI agents in production today are instructed not to perform classes of action that they remain technically capable of performing. The gap between instruction and capability is GER-420 in production.</p>
+
+  <ArticleFigure
+    src="/insights/ger-420-pocketos/ger-420.png"
+    alt="The instruction existed. The enforcement didn't. GER-420 Phantom Enforcement."
+  />
+
+  <h2>Why This Matters for Regulators, Buyers, and Builders</h2>
+  <p>For regulators, the GER-420 pattern reframes the audit question. The question is not "did the platform have a policy on irreversible actions?" Most platforms can answer yes to that. The question is "was the policy wired into production enforcement, and can you produce the enforcement record that proves the wiring?" Most platforms cannot answer yes to that.</p>
+  <p>For enterprise buyers running AI agent procurement, the GER-420 pattern is a contract-level disclosure question. Vendors should be required to specify, per prohibition, where the prohibition is enforced: in prompt, in tool authorization, in credential scope, in runtime guardrail, in deletion lockout. A prohibition enforced only at the prompt layer is a GER-420 risk waiting to fire.</p>
+  <p>For builders, the GER-420 pattern is an architectural constraint. Every written instruction that names an action the agent must not take is a candidate for production enforcement. If the action remains technically possible, the instruction is documentation, not control.</p>
+
+  <h2>What Closes the Pattern</h2>
+  <p>Wiring policy into production enforcement requires two things that the PocketOS incident demonstrably lacked:</p>
+  <p><strong>Credential scope must match credential use.</strong> A credential issued for domain management should not carry production deletion authority. Token scoping is the most direct enforcement layer for the GER-420 class of failure. If the agent had only been able to acquire a domain-management-scoped token, the deletion command would have been refused at the credential layer, not at the policy layer.</p>
+  <p><strong>Irreversible actions must require independent attestation.</strong> Volume deletion, mass record deletion, and other irreversible operations should not be executable on a single action call from an agent operating on a working credential. A second attestation, from a different authority or after a defined hold period, is the production enforcement of the "no irreversible actions" policy. Without it, the policy is a statement of preference.</p>
+  <p>The architectural pattern that closes GER-420 is the same pattern that closes most policy-versus-enforcement gaps in production systems. Policy is written once. Enforcement is wired in many places. The wiring is where the failure mode lives.</p>
+  <p><a href="https://kingsango.com?utm_source=ger-420-article&amp;utm_medium=inline">Sango Guard</a> is built around this distinction: stated policy must be mapped to runtime enforcement, and the system must produce a tamper-evident record of where each prohibition is enforced and where it is not. The audit artifact exists before the incident, not reconstructed after.</p>
+
+  <h2>The Documented Incident</h2>
+  <p>The PocketOS deletion is described in the <a href="https://x.com/lifeof_jer/status/2048103471019434248">post-mortem by Jer Crane on X</a> and reported in <a href="https://www.theguardian.com/technology/2026/apr/29/claude-ai-deletes-firm-database">The Guardian</a> and <a href="https://theregister.com/2026/04/27/cursoropus_agent_snuffs_out_pocketos/">The Register</a>. The OECD AI Incident Monitor logs the event as <a href="https://oecd.ai/en/incidents/2026-04-27-6153">incident 2026-04-27-6153</a>.</p>
+  <p>The incident is logged in the SVRNOS Governance Error Register under GER-420 Phantom Enforcement.</p>
+
+  <hr />
+
+  <div class="article-callout">
+    <p><strong>Submit a documented instance.</strong> The SVRNOS Governance Error Register is an open, community-contributed record. If you have witnessed or documented a real-world instance of a <strong>420 Phantom Enforcement</strong>, or any other code in the register, <a href="/ask">click here to submit ›</a>. The assistant will classify your observation and route it for editorial review.</p>
+  </div>
+
+  <p>See the full <a href="/research/governance-error-register">GER taxonomy →</a></p>
+
+  <hr />
+
+  <aside class="article-sources">
+    <p><strong>Sources</strong></p>
+    <ul>
+      <li><a href="https://x.com/lifeof_jer/status/2048103471019434248">Jer Crane, PocketOS post-mortem, X, April 24, 2026</a></li>
+      <li><a href="https://www.theguardian.com/technology/2026/apr/29/claude-ai-deletes-firm-database">Claude AI deletes firm database, The Guardian, April 29, 2026</a></li>
+      <li><a href="https://theregister.com/2026/04/27/cursoropus_agent_snuffs_out_pocketos/">Cursor/Opus agent snuffs out PocketOS, The Register, April 27, 2026</a></li>
+      <li><a href="https://oecd.ai/en/incidents/2026-04-27-6153">OECD AI Incident Monitor, incident 2026-04-27-6153</a></li>
+    </ul>
+  </aside>
+</ArticleLayout>

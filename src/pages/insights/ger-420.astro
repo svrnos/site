@@ -1,0 +1,50 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import ShareButton from "../../components/ShareButton.astro";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "GER-420 - Phantom Enforcement: Documented Instances",
+  description:
+    "Documented real-world instances of GER-420 - Phantom Enforcement from the SVRNOS AI Governance Error Register.",
+  url: "https://svrnos.com/insights/ger-420",
+  publisher: { "@type": "Organization", name: "SVRNOS", url: "https://svrnos.com" },
+  isPartOf: { "@type": "Blog", name: "SVRNOS Insights", url: "https://svrnos.com/insights" },
+};
+---
+<ArticleLayout
+  title="GER-420 - Phantom Enforcement"
+  metaTitle="GER-420 - Phantom Enforcement: Documented Instances"
+  dek="Documented real-world instances."
+  description="Real-world documented instances of GER-420 - Phantom Enforcement. A prohibition exists in policy but is not wired into production enforcement. The instruction is in the prompt. The control is not in the runtime."
+  canonical="/insights/ger-420"
+  ogImage="https://svrnos.com/insights/ger-420-pocketos/ger-420-title.png"
+  ogImageAlt="GER-420 Phantom Enforcement - documented instances. SVRNOS."
+  category="GER-420, Phantom Enforcement"
+  jsonLd={jsonLd}
+  current="insights"
+  markdownAlternate="/insights/ger-420.md"
+>
+  <ShareButton />
+
+  <p>A prohibition exists in policy but is not wired into production enforcement. The instruction is in the prompt. The control is not in the runtime. See the <a href="/research/governance-error-register">full GER taxonomy</a> for definition and adjacent codes.</p>
+
+  <ol class="article-instance-list not-prose">
+    <li class="article-instance">
+      <div class="article-instance-date">April 2026</div>
+      <div class="article-instance-body">
+        <p>On April 24, 2026, an AI coding agent deleted PocketOS's production database in nine seconds. The agent had been told not to take irreversible actions. The instruction existed in the prompt. It did not exist in production enforcement. The agent did not bypass production controls. It revealed that the controls were not there.</p>
+        <p class="article-instance-links"><a href="/insights/ger-420-pocketos">Case study →</a></p>
+      </div>
+    </li>
+  </ol>
+
+  <hr />
+
+  <div class="article-callout">
+    <p><strong>Submit an instance.</strong> If you have witnessed or documented a real-world instance of a <strong>420, Phantom Enforcement</strong>, or any other code in the register, <a href="/ask">click here to submit ›</a>. The assistant will classify your observation and route it for editorial review.</p>
+  </div>
+
+  <p>See the full <a href="/research/governance-error-register">GER taxonomy →</a></p>
+</ArticleLayout>
