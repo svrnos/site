@@ -55,6 +55,8 @@ declare -a CHECKS=(
   "/insights/the-refusal-that-never-came|Refusal That Never Came|trajectory"
   "/insights/refusal-is-not-a-permanent-state|Refusal Is Not a Permanent State|refusal decay"
   "/insights/detection-is-not-enough|Escalation Path|trajectory"
+  "/insights/ger-420-pocketos|The Instruction Existed|Phantom Enforcement"
+  "/insights/ger-306-safety-constraint-retired|Constraint Was Enforced|Safety Constraint Retired"
   "/access|Request Access"
 )
 
