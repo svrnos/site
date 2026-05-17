@@ -4,6 +4,7 @@ const KB_URLS = {
   insights: [
     "https://svrnos.com/insights/ger-205.md",
     "https://svrnos.com/insights/ger-301.md",
+    "https://svrnos.com/insights/ger-306-safety-constraint-retired.md",
     "https://svrnos.com/insights/ger-404.md",
     "https://svrnos.com/insights/ger-404-replika.md",
     "https://svrnos.com/insights/ger-420.md",
