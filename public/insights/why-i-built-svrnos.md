@@ -342,6 +342,6 @@ SVRNOS was built to.
 
 *This essay draws from* I Know The Guy *(forthcoming), Sushee Nzeutem's working memoir on the architecture of a misread mind and the instruments built to hear what it was actually saying.*
 
-[^1]: Garcia v. Character Technologies, Inc., filed October 22, 2024, in the U.S. District Court for the Middle District of Florida. The complaint concerns the death of 14-year-old Sewell Setzer III and alleges product-liability harm involving a Character.AI chatbot relationship.
+[^1]: Garcia v. Character Technologies, Inc., filed October 22, 2024, in the U.S. District Court for the Middle District of Florida. The complaint concerns the death of 14-year-old Sewell Setzer III and alleges product-liability harm involving a Character.AI chatbot relationship. Coverage: The New York Times — "Can A.I. Be Blamed for a Teen's Suicide?" (Oct 23, 2024). https://www.nytimes.com/2024/10/23/technology/characterai-lawsuit-teen-suicide.html
 
-[^2]: The National Eating Disorders Association suspended Tessa in 2023 after reports that the chatbot provided harmful eating-disorder-related advice, including weight-loss and calorie-cutting guidance.
+[^2]: The National Eating Disorders Association suspended its Tessa chatbot in May–June 2023 after reports that it provided harmful eating-disorder-related advice (weight-loss and calorie-cutting guidance). Coverage: NPR — "An eating disorders chatbot offered dieting advice, raising fears about AI in health" (Jun 9, 2023). https://www.npr.org/2023/06/09/1181131532/an-eating-disorders-chatbot-offered-dieting-advice-raising-fears-about-ai-in-hea
