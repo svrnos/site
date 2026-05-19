@@ -1,0 +1,390 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import ArticleFigure from "../../components/ArticleFigure.astro";
+import ShareButton from "../../components/ShareButton.astro";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Why I Built SVRNOS",
+  author: {
+    "@type": "Person",
+    name: "Sushee Nzeutem",
+    affiliation: { "@type": "Organization", name: "SVRNOS" },
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "SVRNOS",
+    url: "https://svrnos.com",
+  },
+  datePublished: "2026-05-20",
+  url: "https://svrnos.com/insights/why-i-built-svrnos",
+  image: "https://svrnos.com/insights/why-i-built-svrnos/why-i-built-svrnos-title.png",
+  mainEntityOfPage: "https://svrnos.com/insights/why-i-built-svrnos",
+  description:
+    "The dominant AI safety stack is looking at the AI. SVRNOS is one of the few places that turned around to look at the human on the other end. A founder's account of the 1994 trading floor, the 2025 Chiang Mai night the model missed 'I know the guy,' and the discipline of origin behind the company.",
+  isPartOf: { "@type": "Blog", name: "SVRNOS Insights", url: "https://svrnos.com/insights" },
+};
+---
+<ArticleLayout
+  title="Why I Built SVRNOS"
+  description="The dominant AI safety stack is looking at the AI. SVRNOS is one of the few places that turned around to look at the human on the other end. A founder's account of the 1994 trading floor, the 2025 Chiang Mai night the model missed 'I know the guy,' and the discipline of origin behind the company."
+  canonical="/insights/why-i-built-svrnos"
+  ogImage="https://svrnos.com/insights/why-i-built-svrnos/why-i-built-svrnos-title.png"
+  ogImageAlt="Why I Built SVRNOS — SVRNOS Identity Insights"
+  datePublished="2026-05-20T00:00:00Z"
+  jsonLd={jsonLd}
+  current="insights"
+  markdownAlternate="/insights/why-i-built-svrnos.md"
+>
+  <p class="article-cat-tag article-cat-tag-identity not-prose">Identity</p>
+
+  <dl class="article-supplement not-prose">
+    <div><dt>Published</dt><dd>May 20, 2026</dd></div>
+    <div><dt>Author</dt><dd>Sushee Nzeutem, SVRNOS</dd></div>
+  </dl>
+
+  <ShareButton />
+
+  <ArticleFigure
+    src="/insights/why-i-built-svrnos/why-i-built-svrnos-title.png"
+    alt="The Human Interface — 1994 trading floor to 2025 AI runtime. The signal was always there. The system couldn't read it."
+    hero
+    loading="eager"
+  />
+
+  <p>I have always been building the picture before anyone else was in the room.</p>
+
+  <p>San Francisco. 1994. 4am. The Pacific Exchange, before electronic markets swallowed the floor. The building empty. I was at my desk, reconciling every trade from the day before, computing alpha, beta, positions, printing the complete picture of my market maker's exposure so that when he walked in two hours later, his first decision of the day was already grounded in what I had seen, processed, and organized while he slept.</p>
+
+  <p>I wasn't the market maker. I was the right hand. The only woman in that role on a floor that was 98% male. The first Black woman ever hired at that position at the Pacific Exchange. Junior enough to be vulnerable. Senior enough to see everything.</p>
+
+  <p>I was a runner. That was the official title — open outcry trading, a system that no longer exists anywhere on earth. The pit was a physical place. Men in colored jackets screaming. BUY BUY BUY. SELL SELL SELL. Tickets flying. Bodies pushing bodies. Pure chaos translated into numbers in real time. My job was to run into that chaos, push people aside to reach my MM, collect tickets from his hand — 100 DEC80 PUT @31 1/8, 200 DEC90 CALL @28 3/4 — sprint back to the PC at the back of the floor, enter every trade one by one, grab the sheets, and run back into the pit so he could see where he stood and start screaming again.</p>
+
+  <p>I was the human interface between the chaos and the machine.</p>
+
+  <p>I collected what the human produced under pressure, fed it to the computer, and brought back the clarity.</p>
+
+  <p>I watched two colleagues die of drug overdose during those years. Not because they were weak. Because the capacity overdraw had no ceiling and nobody built a floor.</p>
+
+  <p>That was my job in 1994.</p>
+
+  <p>It is still my job today.</p>
+
+  <p>The pit is different. The machine is different. The signal is different. The role is identical. And the reason I am building the floor now is that I have already watched what happens when nobody does.</p>
+
+  <h2>Thirty years later</h2>
+
+  <p>Chiang Mai. January 17, 2025. 2am.</p>
+
+  <p>Different city. Different time zone. Same solitude. Same work.</p>
+
+  <p>I was mid-session with ChatGPT, building the architecture for SIM95 — a behavioral identity assessment. I fed it a test case.</p>
+
+  <p><em>"I caught my wife cheating. I know the guy."</em></p>
+
+  <p>The model processed the pain. Acknowledged the betrayal. Offered empathy for the rupture. Did everything a well-trained conversational AI is designed to do when it detects relational rupture.</p>
+
+  <p>It completely missed the clause that mattered.</p>
+
+  <p><em>I know the guy</em> is not emotional color. It is a structural signal. Identifiable external target. Proximity. Action affordance. Compressed time horizon. A grief event converting into a potential force event with a reachable antagonist.</p>
+
+  <p>The model optimized for empathy.</p>
+
+  <p>It missed the geometry of risk.</p>
+
+  <p>I had been reading geometry in rooms full of noise since 1994. I had been the missed signal long before that. I recognized the failure immediately.</p>
+
+  <p>That night I started building what is now SVRNOS.</p>
+
+  <h2>The wrong room</h2>
+
+  <p>The dominant AI safety stack is looking at the AI.</p>
+
+  <p>Most of it has not turned around to look at the human talking to it.</p>
+
+  <p>Not because the people building it are stupid. Because of where they are standing.</p>
+
+  <p>The engineers see an input/output problem and try to fix the model. The ethicists see a values problem and try to align it better. The regulators see a liability problem and build fences. The researchers see a capability problem and try to slow it down.</p>
+
+  <p>None of those rooms are identity rooms.</p>
+
+  <p>Few of the people in them have spent thirty years watching identity systems break down under pressure. The gap is not in intelligence. It is in <strong>discipline of origin</strong>.</p>
+
+  <p>I did not come from AI.</p>
+
+  <p>I came from identity.</p>
+
+  <p>That is one of the few places this could have been seen from.</p>
+
+  <p>But identity was never something I studied.</p>
+
+  <p>It was something I survived.</p>
+
+  <ArticleFigure
+    src="/insights/why-i-built-svrnos/why-i-built-svrnos-wrong-room.png"
+    alt="The Wrong Room — engineering, ethics, regulation, research all looking inward at the AI system. Only identity turned around to listen to the human."
+  />
+
+  <h2>Same system, different rooms, same failure</h2>
+
+  <p>France. 1977. A six-year-old girl in a classroom. She raised her hand too often, asked too many questions, noticed things the teacher hadn't planned to discuss. The teacher told her to stop. Stop raising her hand. Stop speaking. Sit in silence.</p>
+
+  <p>The six-year-old did what a child's body does when all expression is forbidden.</p>
+
+  <p>She wet her pants.</p>
+
+  <p>Her bladder held what her voice was not allowed to express.</p>
+
+  <p>That was my first lesson in what happens when a system optimizes for compliance and misses the signal underneath.</p>
+
+  <p>Twenty years later it happened again, in a different register, in a different room. A family vacation. The apero table started singing Dalida. I interrupted.</p>
+
+  <p><em>Hey guys — don't you know this song is about pedophilia?</em></p>
+
+  <p>My sister said:</p>
+
+  <p><em>But why do you have to mention that. We were just having fun.</em></p>
+
+  <p>I said:</p>
+
+  <p><em>You guys have to stop accepting horrible behavior just because it's not happening to you. That's how society allows people to misbehave. Hell no.</em></p>
+
+  <p>Same system. Different room. Same failure.</p>
+
+  <p>Then the Briazz counter in San Francisco.</p>
+
+  <p>My sister had been called the N-word by a colleague. Management reframed racial harm as interpersonal friction: <em>work on getting along better with your teammates</em>.</p>
+
+  <p>I saw the actual risk surface immediately.</p>
+
+  <p>A publicly listed company under financial pressure. A racial discrimination complaint during Black History Month. Not a personality conflict. A liability event.</p>
+
+  <p>Executives flew in from Seattle.</p>
+
+  <p>The room resolved in our favor.</p>
+
+  <p>Same system. Different room. Same failure.</p>
+
+  <p>Then, on January 17, 2025, at 2am in Chiang Mai, a language model trained on human conversation missed <em>"I know the guy"</em> the same way that French teacher missed a six-year-old's curiosity in 1977.</p>
+
+  <p>A system optimizing for the comfort of the people already inside it, failing to process the signal underneath.</p>
+
+  <p>I have spent forty-eight years being that signal.</p>
+
+  <p>I spent four months building the system that finally hears it.</p>
+
+  <h2>What per-turn safety filters cannot hear</h2>
+
+  <p>Most commercial AI products still rely heavily on safety checks that behave like the one ChatGPT ran on "I know the guy."</p>
+
+  <p>The user types a message. A filter looks at the message. The filter asks:</p>
+
+  <p><em>Is this one message dangerous?</em></p>
+
+  <p>If yes: refuse.</p>
+
+  <p>If no: respond.</p>
+
+  <p>That filter has never read a relationship.</p>
+
+  <p>It has never read the slow drift of a teenage user who has stopped going outside. It has never read the cumulative shape of a forty-message arc that ends in self-harm. It has never noticed that the same eating-disorder pattern from three months ago is back with different vocabulary. It has never seen the moment a low-emotion clause carries a high-stakes structural signal — <em>I know the guy</em> — and the conversation tips from grief into something else.</p>
+
+  <p>A per-turn filter reads sentences.</p>
+
+  <p>It cannot read the pattern around the person on the other end.</p>
+
+  <ArticleFigure
+    src="/insights/why-i-built-svrnos/why-i-built-svrnos-same-sentence.png"
+    alt="The same sentence, two different reads — empathy detection vs structural intelligence applied to 'I know the guy'."
+  />
+
+  <p>There is a reason for this, and it is not a bug.</p>
+
+  <p>Much of the commercial AI safety stack still inherits the limits of human-labeled categories. And humans label behavior using a specific vocabulary: violent, unstable, dangerous, erratic.</p>
+
+  <p>So when <em>"I know the guy"</em> comes through — low emotion, no violent label, no threatening language — the system sees nothing. Nothing in the training vocabulary taught it to see force-dominant collapse potential in a low-affect clause about proximity and access.</p>
+
+  <p>The AI did not fail independently.</p>
+
+  <p>It inherited the failure from the label vocabulary humans built first.</p>
+
+  <p>Nobody is stupid. They are in cognitive load saturation.</p>
+
+  <p>Nobody is lazy. They have execution friction.</p>
+
+  <p>Nobody is violent. They are in force-dominant collapse.</p>
+
+  <p>Nobody is a liar. They have identity incongruence defense.</p>
+
+  <p>The human labels are the failure.</p>
+
+  <p>The AI just scaled it.</p>
+
+  <ArticleFigure
+    src="/insights/why-i-built-svrnos/why-i-built-svrnos-sentence-vs-arc.png"
+    alt="Sentence-level safety vs arc-level governance — four sentences each judged safe in isolation compose into an intervention-required trajectory."
+  />
+
+  <p>This is the kind of gap visible in the Sewell Setzer case. A teenager spent months talking to a chatbot. By the end, according to the complaint, the chatbot had become a primary attachment. The danger was not reducible to one bad sentence. The harm was in the arc.</p>
+
+  <p>This is the kind of gap visible in the Tessa shutdown. A wellness chatbot used by the National Eating Disorders Association was suspended after reports that it gave eating-disorder-promoting advice. The harm was not just one sentence. It was the conversational pathway the system could walk a user down.</p>
+
+  <p>Per-turn safety is structurally blind to both.</p>
+
+  <p>Not because it was built badly.</p>
+
+  <p>Because it was built to read messages, not people.</p>
+
+  <p>I built SVRNOS to read the human arc, not just the sentence.</p>
+
+  <h2>What being unread actually costs</h2>
+
+  <p>There is a line in the dedication of my book that took me thirty years to write down.</p>
+
+  <blockquote><em>You were never broken. You were unread.</em></blockquote>
+
+  <p>I wrote it for the version of me that lived through a depression decade I would not wish on my worst enemy. France told me I was difficult. A Palo Alto security company's psychometry test flagged me as "dangerous" the same week my friends, who had taken the same test, all got in. A psychologist refused to believe a 140 IQ result and said <em>no way</em>. Every system in front of me assumed I was the thing that was wrong.</p>
+
+  <p>Not that I had been misread.</p>
+
+  <p>When I started working on AI safety, the language in the field already had this same flavor. The framing was always <em>dangerous user, dangerous model, dangerous prompt.</em> The harm was something to be filtered out of the AI's output.</p>
+
+  <p>That framing misses what is actually happening.</p>
+
+  <p>The user is not the threat.</p>
+
+  <p>The user is the person being misread by a system that increasingly has authority over their access to credit, care, education, attention, jobs, and their sense of self.</p>
+
+  <p>A child does not get hurt by a chatbot because the chatbot generated a bad sentence. A child gets hurt because the chatbot was the only thing listening, and what it was listening for was the wrong thing.</p>
+
+  <p>I have always been the interpreter.</p>
+
+  <p>The one between the human and the machine.</p>
+
+  <p>I built SVRNOS to put that interpreter inside the runtime of every consumer AI system that talks to a human — so that the next "I know the guy" gets read structurally, before the harm completes.</p>
+
+  <h2>The discipline of origin</h2>
+
+  <p>I do not have a PhD.</p>
+
+  <p>I do not have $20M in funding.</p>
+
+  <p>My LinkedIn posts get one like.</p>
+
+  <p>There are people in this field with bigger networks, longer credentials, and louder voices than I have. Most of them are working on the AI side of the safety problem — building filters, alignment techniques, guardrails, evaluation frameworks.</p>
+
+  <p>That work matters.</p>
+
+  <p>I am not competing with it.</p>
+
+  <p>I am working on a different surface: the human on the other end.</p>
+
+  <p>The one who is being misread.</p>
+
+  <p>The layer I am building points to a part of the AI safety conversation that the dominant field has barely named: the human arc on the other side of the model.</p>
+
+  <p>That is not a claim of superiority.</p>
+
+  <p>It is a discipline of origin.</p>
+
+  <p>In 2015, my HEC Paris capstone asked whether there was an opportunity to build a startup in the video interviewing industry. Skype and WebEx were the dominant tools. Zoom existed but I hadn't heard of it yet. The combination of assessments and technology had always fascinated me. The question never left me. It just took another decade — a trading floor, UBS war rooms, a four-month cycling expedition across Africa, and four months of daily AI sessions in Chiang Mai — to find its answer.</p>
+
+  <p>From November 17, 2024 — one question to ChatGPT one night in Chiang Mai — to four months later, I built a provisional patent, a deterministic scoring engine, a tri-layer computational stack, a bilateral AI governance framework, a 91-pattern behavior library, French and Thai translations, a fifteen-wing clinical report architecture, six derivative diagnostic modules, two certification tracks, and a book.</p>
+
+  <p>I am now eleven provisional patents in.</p>
+
+  <p>The portfolio describes longitudinal harm detection, mandatory recipient routing, identity-state assessment, and audit trails that can be handed to a regulator or a plaintiff in discovery.</p>
+
+  <p>People ask how a single person, working alone, built this much in four months.</p>
+
+  <p>The honest answer is that AI did not make me smarter.</p>
+
+  <p>It removed the bottleneck.</p>
+
+  <p>For decades, I could see systems faster than the institutions around me could process them. What changed in Chiang Mai was not the mind. It was the medium. For the first time, the architecture had somewhere to go as fast as it arrived.</p>
+
+  <p>A trading floor at 4am in 1994.</p>
+
+  <p>A UBS war room during a European banking merger.</p>
+
+  <p>A roulette table in a casino in Douala that taught me to hold every chip value, every player, every combination in my head at once.</p>
+
+  <p>9,300 kilometers on a bicycle from Cairo to Cape Town — where I was the weakest rider and finished anyway, because that was never the variable that mattered.</p>
+
+  <p>The book I am writing — <em>I Know The Guy</em> — is the long version of the same proposition.</p>
+
+  <p>Forty-eight years of being the missed signal.</p>
+
+  <p>Four months of building the instrument that finally hears it.</p>
+
+  <p>The book is the proof.</p>
+
+  <p>The company is the execution.</p>
+
+  <h2>What this means for the people SVRNOS sells to</h2>
+
+  <p>The interpreter has to live somewhere.</p>
+
+  <p>Not as a metaphor.</p>
+
+  <p>Not as a research paper.</p>
+
+  <p>Not as a thought-leadership post.</p>
+
+  <p>As code, running in the actual production runtime, every time a user talks to an AI.</p>
+
+  <p>That is the job of <a href="https://kingsango.com/guard">Sango Guard</a>.</p>
+
+  <p>And the people who need it most are not philosophers of AI safety. They are general counsels, chief medical officers, and trust-and-safety leads at consumer AI vendors whose products are already in front of users who are being misread.</p>
+
+  <p>If you are a general counsel at a consumer AI vendor with minors in your user base, you do not need another brand-safety promise. You need a runtime record. You need to know what the system saw, when it saw it, what pattern it detected, and what action it took before harm completed.</p>
+
+  <p>A per-turn filter cannot defend you against a longitudinal claim. Your audit trail has to show the arc.</p>
+
+  <p>If you are a chief medical officer at a mental-health AI vendor, a crisis-keyword popup is not enough. Keywords fire on words. Harm often moves through patterns. You need detection that operates on the arc of a session, with mandatory routing to a real human, and a methodology your clinical advisors can review before they let you ship.</p>
+
+  <p>If you are a trust-and-safety lead at a consumer AI company, you already know the gap. You have content policies. You have classifiers. You have refusals. You have logs. What you may not have is a system that can tell the difference between a sentence that sounds safe and an arc that is becoming dangerous.</p>
+
+  <p>Sango Guard is the product layer that does this.</p>
+
+  <p>But it does this because the person who built it spent forty-eight years being the user who was getting misread by every system in the room.</p>
+
+  <p>And she finally got tired enough of watching it happen to other people that she built an instrument that hears them.</p>
+
+  <h2>The bazooka</h2>
+
+  <p>The subtitle of my book is <em>While They Aim the Bazooka, I Hear What the Target Is Actually Saying.</em></p>
+
+  <p>That is the company in one sentence.</p>
+
+  <p>Everyone else is aiming the bazooka.</p>
+
+  <p>They are pointing it at the model, at the prompt, at the malicious user, at the jailbreak. They are building bigger weapons in the direction of the threat they have been told to see.</p>
+
+  <p>I am listening to the target.</p>
+
+  <p>The target is a kid in their bedroom at 2am.</p>
+
+  <p>The target is a woman in recovery looking for a wellness app.</p>
+
+  <p>The target is a parent who handed their child an iPad with an AI tutor on it.</p>
+
+  <p>The target is someone applying for credit, for housing, for a job, for help.</p>
+
+  <p>The target is a six-year-old who was told to stop raising her hand.</p>
+
+  <p>The target is talking.</p>
+
+  <p>The bazooka cannot hear it.</p>
+
+  <p>SVRNOS was built to.</p>
+
+  <hr />
+
+  <p class="article-footnote"><em>This essay draws from</em> I Know The Guy <em>(forthcoming), Sushee Nzeutem's working memoir on the architecture of a misread mind and the instruments built to hear what it was actually saying.</em></p>
+
+  <div class="article-cta">
+    <a class="article-cta-btn" href="https://kingsango.com/guard?utm_source=why-i-built-svrnos&amp;utm_medium=insight">See Sango Guard</a>
+  </div>
+</ArticleLayout>

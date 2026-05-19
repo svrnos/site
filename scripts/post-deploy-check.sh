@@ -57,6 +57,7 @@ declare -a CHECKS=(
   "/insights/detection-is-not-enough|Escalation Path|trajectory"
   "/insights/ger-420-pocketos|The Instruction Existed|Phantom Enforcement"
   "/insights/ger-306-safety-constraint-retired|Constraint Was Enforced|Safety Constraint Retired"
+  "/insights/why-i-built-svrnos|Why I Built SVRNOS|discipline of origin"
   "/access|Request Access"
 )
 
