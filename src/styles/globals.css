@@ -245,6 +245,11 @@ tr[data-href],
   margin: 44px 0;
   text-align: center;
 }
+/* Scoped with .prose-svrnos parent so this rule wins over the prose
+ * link styling (line ~159) which has specificity 0,1,1. Without this,
+ * the prose rule recolors the CTA anchor to brand-primary — same as
+ * the button background — rendering the label invisible. */
+.prose-svrnos .article-cta-btn,
 .article-cta-btn {
   display: inline-block;
   font-family: var(--svrnos-font-sans);
@@ -257,8 +262,11 @@ tr[data-href],
   text-decoration: none;
   letter-spacing: 0.01em;
 }
+.prose-svrnos .article-cta-btn:hover,
 .article-cta-btn:hover {
   background: var(--svrnos-brand-hover);
+  color: var(--svrnos-text-on-brand);
+  text-decoration: none;
 }
 
 .article-supplement {
