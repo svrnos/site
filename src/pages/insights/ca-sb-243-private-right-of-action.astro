@@ -1,0 +1,176 @@
+---
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import ArticleFigure from "../../components/ArticleFigure.astro";
+import ShareButton from "../../components/ShareButton.astro";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "California Made Every Injured User a Plaintiff",
+  author: {
+    "@type": "Person",
+    name: "Sushee Nzeutem",
+    affiliation: { "@type": "Organization", name: "SVRNOS" },
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "SVRNOS",
+    url: "https://svrnos.com",
+  },
+  datePublished: "2026-05-23",
+  url: "https://svrnos.com/insights/ca-sb-243-private-right-of-action",
+  image: "https://svrnos.com/insights/ca-sb-243-private-right-of-action/ca-sb-243-private-right-of-action-title.png",
+  mainEntityOfPage: "https://svrnos.com/insights/ca-sb-243-private-right-of-action",
+  description:
+    "California SB 243 took effect January 1, 2026. Private right of action with $1,000 per violation minimum. UCL personal-liability pairing. The audit trail is now a plaintiff's discovery target.",
+  isPartOf: { "@type": "Blog", name: "SVRNOS Insights", url: "https://svrnos.com/insights" },
+};
+---
+<ArticleLayout
+  title="California Made Every Injured User a Plaintiff"
+  description="California SB 243 took effect January 1, 2026. Private right of action with $1,000 per violation minimum. UCL personal-liability pairing. The audit trail is now a plaintiff's discovery target."
+  canonical="/insights/ca-sb-243-private-right-of-action"
+  ogImage="https://svrnos.com/insights/ca-sb-243-private-right-of-action/ca-sb-243-private-right-of-action-title.png"
+  ogImageAlt="California Made Every Injured User a Plaintiff - SB 243 effective January 1, 2026"
+  datePublished="2026-05-23T00:00:00Z"
+  jsonLd={jsonLd}
+  current="insights"
+  markdownAlternate="/insights/ca-sb-243-private-right-of-action.md"
+>
+  <p class="article-cat-tag article-cat-tag-governance not-prose">Governance</p>
+
+  <dl class="article-supplement not-prose">
+    <div><dt>Published</dt><dd>May 23, 2026</dd></div>
+    <div><dt>Author</dt><dd>Sushee Nzeutem, SVRNOS</dd></div>
+  </dl>
+
+  <ShareButton />
+
+  <ArticleFigure
+    src="/insights/ca-sb-243-private-right-of-action/ca-sb-243-private-right-of-action-title.png"
+    alt="California Made Every Injured User a Plaintiff - SB 243 effective January 1, 2026"
+    hero
+    loading="eager"
+  />
+
+  <p>California's companion chatbot law came out of the same <a href="/insights/companion-ai-harm">documented failure pattern</a> as New York's: companion AI platforms deployed at scale with weak AI disclosure, weak crisis routing, and weak harm detection for users in distress.</p>
+
+  <p>The <a href="/research/governance-error-register">GER taxonomy</a> names those failures: 401, <a href="/insights/ger-404-replika">404</a>, <a href="/insights/ger-501-tumbler-ridge">501</a>.</p>
+
+  <p>Senate Bill 243 took effect on January 1, 2026. The structural difference from New York is who enforces it.</p>
+
+  <p><a href="/insights/ny-companion-law">New York's Article 47</a> gives the Attorney General enforcement authority.</p>
+
+  <p>California's SB 243 gives injured users enforcement authority.</p>
+
+  <p>A person who suffers injury in fact as a result of noncompliance can sue for injunctive relief, reasonable attorneys' fees and costs, and damages equal to the greater of actual damages or $1,000 per violation.</p>
+
+  <p>That changes the economics.</p>
+
+  <p>A user's claim no longer has to be large enough on actual damages alone. The statute supplies the floor. The fee provision supplies the litigation incentive. The audit trail supplies the evidence.</p>
+
+  <p>Every injured California user is now a potential plaintiff.</p>
+
+  <h2>What the Law Requires</h2>
+
+  <p><strong>AI disclosure.</strong></p>
+
+  <p>When a reasonable person could be misled into thinking the chatbot is human, the operator must provide a clear and conspicuous notification that the chatbot is artificially generated and not human.</p>
+
+  <p>For known minors, the operator must also provide recurring notices during extended use, including reminders that the chatbot is AI and that the user should take breaks.</p>
+
+  <p><strong>Suicide and self-harm safety protocols.</strong></p>
+
+  <p>Operators must implement protocols to detect and respond to expressions of suicidal ideation or self-harm. Crisis service referrals must be issued during the interaction.</p>
+
+  <p>Not after review. Not after escalation. During the interaction.</p>
+
+  <p><strong>Minor-specific safeguards.</strong></p>
+
+  <p>When the operator knows the user is a minor, additional protections apply, including break reminders during extended use and restrictions on sexually explicit content.</p>
+
+  <p><strong>Annual safety reporting.</strong></p>
+
+  <p>Beginning July 1, 2027, operators must report annually to California's Office of Suicide Prevention on the number of crisis referrals issued and the protocols implemented to detect, remove, and respond to suicidal ideation. The Office posts the data publicly.</p>
+
+  <ArticleFigure
+    src="/insights/ca-sb-243-private-right-of-action/ca-sb-243-private-right-of-action.png"
+    alt="California SB 243 - the audit trail becomes a plaintiff's discovery target"
+  />
+
+  <h2>What Comes Next</h2>
+
+  <p>California is the first major US companion-chatbot law with a private right of action.</p>
+
+  <p><a href="/insights/ny-companion-law">New York's Article 47</a> entered effect November 5, 2025, with AG enforcement and civil penalties of up to $15,000 per day. <a href="/insights/oregon-sb-1546">Oregon's SB 1546</a> and <a href="/insights/wa-distress-routing-mandate">Washington's distress-routing mandate</a> both take effect January 1, 2027.</p>
+
+  <p>Other states are moving in the same direction.</p>
+
+  <p>For operators of companion apps, mental-health chatbots, and emotionally responsive AI products, California's bar is now the floor in the largest state economy in the country.</p>
+
+  <p>The operator is the entity making the companion chatbot platform available to California users. Using a third-party model underneath does not make the operator disappear.</p>
+
+  <p>A platform that cannot document compliance is exposed to a plaintiff filing in a California court on the next reported incident.</p>
+
+  <h2>The Audit Trail Becomes Discovery</h2>
+
+  <p>Under New York, the audit trail proves compliance to a regulator.</p>
+
+  <p>Under California, the audit trail becomes a plaintiff's discovery target.</p>
+
+  <p>Every governance event the system logged. When it logged it. What it detected. What it failed to detect. When it acted. Whether it routed. Whether the disclosure fired. Whether the user was a known minor. Whether the minor protections applied.</p>
+
+  <p>All of it becomes evidence.</p>
+
+  <p>If the log is incomplete, the gap is the case.</p>
+
+  <p>That changes what infrastructure has to do. It is no longer enough to say the model had a policy. It is no longer enough to say the platform had a safety page. It is no longer enough to say the company cared about user protection.</p>
+
+  <p>The system has to flag the signal.</p>
+
+  <p>Route the response.</p>
+
+  <p>Disclose the AI.</p>
+
+  <p>Apply the minor safeguards.</p>
+
+  <p>Produce a record that survives subpoena.</p>
+
+  <h2>The Litigation Map Gets Wider</h2>
+
+  <p>SB 243 creates the direct companion-chatbot cause of action. Pair it with California's broader consumer-protection environment and plaintiff-side theories can move beyond the platform entity toward people who authorized, directed, or controlled the challenged conduct.</p>
+
+  <p>That does not erase the corporate form.</p>
+
+  <p>It widens the litigation target map.</p>
+
+  <p>For founders, product leaders, and platform operators, the question is whether the company can prove the required safeguard was present, active, and functioning when the interaction occurred.</p>
+
+  <h2>The Infrastructure Question</h2>
+
+  <p>The audit asks: did the safeguard execute when the law required it? Is there a record of the route?</p>
+
+  <p>That proof requires infrastructure.</p>
+
+  <p><a href="https://kingsango.com">Sango Guard</a> provides the governance layer for operators that need to meet California's disclosure, safety, and minor-protection obligations at the architectural level: real-time compound signal detection for suicidal ideation, configurable session disclosure triggers, age-aware policy enforcement for minor accounts, and an audit trail for every governance event.</p>
+
+  <p>The detection layer runs continuously. The disclosure layer is configurable per operator. The minor-protection layer applies policy based on account status and operator configuration. The audit trail gives counsel, compliance teams, and litigation defense a record of what the system detected, when it acted, and what route was triggered.</p>
+
+  <p>The law is live. The plaintiffs are coming. The compliance infrastructure exists.</p>
+
+  <div class="article-cta">
+    <a class="article-cta-btn" href="https://kingsango.com">→ Book a King Sango demo</a>
+  </div>
+
+  <hr />
+
+  <aside class="article-sources">
+    <p><strong>Sources</strong></p>
+    <ul>
+      <li><a href="https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB243">California Senate Bill 243 — California Legislative Information</a></li>
+      <li><a href="https://perkinscoie.com/insights/update/california-companion-chatbot-law-now-effect">California Companion Chatbot Law Now in Effect — Perkins Coie</a></li>
+      <li><a href="https://www.mofo.com/resources/insights/251120-new-york-and-california-enact-landmark-ai">New York and California Enact Landmark AI Companion Laws — Morrison Foerster</a></li>
+      <li><a href="https://www.joneswalker.com/en/insights/blogs/ai-law-blog/ai-regulatory-update-californias-sb-243-mandates-companion-ai-safety-and-accoun.html">California's SB 243 Mandates Companion AI Safety and Accountability — Jones Walker</a></li>
+    </ul>
+  </aside>
+</ArticleLayout>
