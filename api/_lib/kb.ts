@@ -23,6 +23,8 @@ const KB_URLS = {
     "https://svrnos.com/insights/ccdh-eight-in-ten-chatbots-violent-planning.md",
     "https://svrnos.com/insights/florida-ag-fsu-openai-criminal-probe.md",
     "https://svrnos.com/insights/wa-distress-routing-mandate.md",
+    "https://svrnos.com/insights/ny-companion-law.md",
+    "https://svrnos.com/insights/ca-sb-243-private-right-of-action.md",
     "https://svrnos.com/insights/musk-altman-sim95.md",
     "https://svrnos.com/insights/when-detection-fires-but-nothing-stops.md",
     "https://svrnos.com/insights/eight-models-built-the-tool.md",
