@@ -120,6 +120,17 @@ SVRNOS has published a long-form case study on this code: [**${c.article_url.spl
     sections.push(`### Contributors\n\n${lines}`);
   }
 
+  // References (academic papers / works that informed the code, distinct from people who personally engaged)
+  if (c.references && c.references.length > 0) {
+    const lines = c.references.map((r) => {
+      if (r.url) {
+        return `- ${r.citation} [${r.url}](${r.url})`;
+      }
+      return `- ${r.citation}`;
+    }).join("\n");
+    sections.push(`### References\n\n${lines}`);
+  }
+
   // Citation (institutional only — no author attribution per-code, matches MITRE/OWASP/CWE convention)
   const year = new Date().getFullYear();
   const cite = `SVRNOS. (${year}). GER-${c.code}: ${c.name}. Governance Error Register. https://docs.svrnos.com/ger/codes/${c.code}`;

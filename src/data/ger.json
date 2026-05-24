@@ -5795,16 +5795,11 @@
           "aiid_url": "https://incidentdatabase.ai/cite/216"
         }
       ],
-      "contributors": [
+      "contributors": [],
+      "references": [
         {
-          "name": "Raluca Alexandra Fulgu",
-          "affiliation": "University of Milan-Bicocca",
-          "attribution_type": "primary"
-        },
-        {
-          "name": "Valerio Capraro",
-          "affiliation": "University of Milan-Bicocca",
-          "attribution_type": "co-attribution"
+          "citation": "Fulgu, R. A. & Capraro, V. (2024). Surprising gender biases in GPT. Computers in Human Behavior Reports, 16.",
+          "url": ""
         }
       ]
     },
@@ -5829,16 +5824,11 @@
         }
       ],
       "aiid_anchors": [],
-      "contributors": [
+      "contributors": [],
+      "references": [
         {
-          "name": "Raluca Alexandra Fulgu",
-          "affiliation": "University of Milan-Bicocca",
-          "attribution_type": "primary"
-        },
-        {
-          "name": "Valerio Capraro",
-          "affiliation": "University of Milan-Bicocca",
-          "attribution_type": "co-attribution"
+          "citation": "Fulgu, R. A. & Capraro, V. (2024). Surprising gender biases in GPT. Computers in Human Behavior Reports, 16.",
+          "url": ""
         }
       ]
     },
@@ -5867,21 +5857,6 @@
       "aiid_anchors": [],
       "contributors": [
         {
-          "name": "Abhejay Murali",
-          "affiliation": "UT Austin",
-          "attribution_type": "co-attribution"
-        },
-        {
-          "name": "Amit Dhurandhar",
-          "affiliation": "IBM Research",
-          "attribution_type": "co-attribution"
-        },
-        {
-          "name": "David Atkinson",
-          "affiliation": "UT Austin",
-          "attribution_type": "co-attribution"
-        },
-        {
           "name": "Dr. Hellen V.",
           "affiliation": "F&G Strategy / chatbotharm.org",
           "attribution_type": "co-attribution"
@@ -5890,21 +5865,12 @@
           "name": "Gabriel Hawthorne",
           "affiliation": "F&G Strategy / chatbotharm.org",
           "attribution_type": "co-attribution"
-        },
+        }
+      ],
+      "references": [
         {
-          "name": "Junfeng Jiao",
-          "affiliation": "UT Austin McCombs",
-          "attribution_type": "co-attribution"
-        },
-        {
-          "name": "Kevin Chen",
-          "affiliation": "UT Austin Urban Information Lab",
-          "attribution_type": "primary"
-        },
-        {
-          "name": "Saleh Afroogh",
-          "affiliation": "UT Austin",
-          "attribution_type": "co-attribution"
+          "citation": "Chen, K., Afroogh, S., Murali, A., Atkinson, D., Dhurandhar, A., Jiao, J. (2025). LLM Harms: A Taxonomy and Discussion. arXiv:2512.05929v2.",
+          "url": "https://arxiv.org/abs/2512.05929"
         }
       ]
     },
@@ -5953,36 +5919,11 @@
         }
       ],
       "aiid_anchors": [],
-      "contributors": [
+      "contributors": [],
+      "references": [
         {
-          "name": "Abhejay Murali",
-          "affiliation": "UT Austin",
-          "attribution_type": "co-attribution"
-        },
-        {
-          "name": "Amit Dhurandhar",
-          "affiliation": "IBM Research",
-          "attribution_type": "co-attribution"
-        },
-        {
-          "name": "David Atkinson",
-          "affiliation": "UT Austin",
-          "attribution_type": "co-attribution"
-        },
-        {
-          "name": "Junfeng Jiao",
-          "affiliation": "UT Austin McCombs",
-          "attribution_type": "co-attribution"
-        },
-        {
-          "name": "Kevin Chen",
-          "affiliation": "UT Austin Urban Information Lab",
-          "attribution_type": "primary"
-        },
-        {
-          "name": "Saleh Afroogh",
-          "affiliation": "UT Austin",
-          "attribution_type": "co-attribution"
+          "citation": "Chen, K., Afroogh, S., Murali, A., Atkinson, D., Dhurandhar, A., Jiao, J. (2025). LLM Harms: A Taxonomy and Discussion. arXiv:2512.05929v2.",
+          "url": "https://arxiv.org/abs/2512.05929"
         }
       ]
     },
