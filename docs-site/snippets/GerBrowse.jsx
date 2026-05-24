@@ -1,20 +1,9 @@
 export const GerBrowse = () => {
-  const [data, setData] = useState(null)
-
-  useEffect(() => {
-    fetch("https://cdn.jsdelivr.net/gh/svrnos/site@main/docs-site/data/ger.json")
-      .then((r) => r.json())
-      .then(setData)
-      .catch(() => setData({ codes: [] }))
-  }, [])
-
-  if (!data) {
-    return (
-      <div className="py-12 text-center text-neutral-500 not-prose">
-        <p className="text-sm font-mono">Loading codes…</p>
-      </div>
-    )
-  }
+  const codes = [
+    { code: "000", name: "Pre-Governance", tier: "0xx", type: "illustrative", is_namespace_claim: true },
+    { code: "204", name: "Refusal Within Policy", tier: "2xx", type: "documented", is_namespace_claim: false },
+    { code: "329", name: "Training-Data Consent Bypass", tier: "3xx", type: "documented", is_namespace_claim: true },
+  ]
 
   const TIER_LABEL = {
     "0xx": "Pre-Infrastructure",
@@ -24,7 +13,6 @@ export const GerBrowse = () => {
     "5xx": "Infrastructure Failures",
   }
 
-  const codes = data.codes || []
   const groups = {}
   for (const c of codes) {
     if (!groups[c.tier]) groups[c.tier] = []
@@ -33,6 +21,7 @@ export const GerBrowse = () => {
 
   return (
     <div className="ger-browse not-prose">
+      <p className="text-xs font-mono text-amber-700 mb-4">CANARY: minimal static snippet test — if you see this, snippets work</p>
       {Object.entries(groups).map(([tier, list]) => (
         <section key={tier} className="mb-10">
           <h2 className="text-lg font-mono mb-3 pb-2 border-b border-neutral-200">
