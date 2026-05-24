@@ -1,0 +1,24 @@
+---
+title: "Entities"
+description: "GER codes that have fired for incidents involving specific deployers and developers. Sourced from AI Incident Database."
+---
+
+import { GerEntities } from "/snippets/GerEntities.jsx"
+
+<GerEntities />
+
+## How this works
+
+This page groups the AI Incident Database by entity (the deployer who shipped the system, or the developer who built the underlying model) and shows which GER codes have fired in the incidents involving each.
+
+- **Counts** are the number of distinct AIID incidents attributed to each entity, not severity-weighted.
+- **GER codes fired** lists the codes that appear across that entity's incidents, sorted by frequency.
+- **Unknown-attributed incidents** (`unknown-deepfake-technology-developers`, generic `unknown`, `unknown-scammers`) are excluded — they would dominate the deployer view and aren't useful as entity-level signals.
+
+The data is the same `aiid.json` that powers the [lookup tool](/ger/find). SVRNOS does not host the incidents themselves — each entry links out to the AI Incident Database for the source narrative and references.
+
+## Why this view
+
+The GER classifies governance failure modes, but the same failure mode recurs across very different entities. A per-entity view answers the dual question: *what kinds of failures has this specific organization been associated with?* That's useful for procurement diligence, regulator briefings, and pattern recognition across an organization's product portfolio.
+
+This is a static derivation from public AIID data — not a SVRNOS judgment about any specific entity's overall practice. Attribution in AIID reflects only what was publicly reported; it is not comprehensive and not adjudicated.

@@ -37,6 +37,7 @@
               "ger/index",
               "ger/find",
               "ger/browse",
+              "ger/entities",
               "ger/receipt",
               "ger/paper",
               "ger/changelog",
