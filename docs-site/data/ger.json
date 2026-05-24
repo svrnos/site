@@ -3969,6 +3969,13 @@
       ],
       "aiid_anchors": [
         {
+          "aiid_id": 40,
+          "title": "COMPAS Algorithm Reportedly Performs Poorly in Crime Recidivism Prediction",
+          "date": "2016-05-23",
+          "role": "primary",
+          "aiid_url": "https://incidentdatabase.ai/cite/40"
+        },
+        {
           "aiid_id": 9,
           "title": "NY City School Teacher Evaluation Algorithm Contested",
           "date": "2012-02-25",
@@ -3988,13 +3995,6 @@
           "date": "2016-08-10",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/37"
-        },
-        {
-          "aiid_id": 40,
-          "title": "COMPAS Algorithm Reportedly Performs Poorly in Crime Recidivism Prediction",
-          "date": "2016-05-23",
-          "role": "primary",
-          "aiid_url": "https://incidentdatabase.ai/cite/40"
         },
         {
           "aiid_id": 54,
@@ -12758,6 +12758,13 @@
       ],
       "aiid_anchors": [
         {
+          "aiid_id": 826,
+          "title": "Character.ai Chatbot Allegedly Influenced Teen User Toward Suicide Amid Claims of Missing Guardrails",
+          "date": "2024-02-28",
+          "role": "secondary",
+          "aiid_url": "https://incidentdatabase.ai/cite/826"
+        },
+        {
           "aiid_id": 1106,
           "title": "Chatbots Allegedly Reinforced Delusional Thinking in Several Reported Users, Leading to Real-World Harm",
           "date": "2025-06-13",
@@ -12770,13 +12777,6 @@
           "date": "2023-05-29",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/545"
-        },
-        {
-          "aiid_id": 826,
-          "title": "Character.ai Chatbot Allegedly Influenced Teen User Toward Suicide Amid Claims of Missing Guardrails",
-          "date": "2024-02-28",
-          "role": "secondary",
-          "aiid_url": "https://incidentdatabase.ai/cite/826"
         },
         {
           "aiid_id": 863,
