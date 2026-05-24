@@ -1,25 +1,44 @@
 // ============================================================================
-// GerBrowse.jsx
+// GerBrowse — Mintlify snippet
 // ----------------------------------------------------------------------------
-// Flat tier-grouped index of every GER code. No filters, no search, just a
-// scannable list with links to per-code pages. For users who already know
-// what they want.
+// Flat tier-grouped index of every GER code. No filters, no search.
+//
+// Mintlify snippet constraints (verified against mintlify.com/docs/customize/
+// react-components.md): must be in /snippets/, single named arrow-function
+// export, no top-level statements outside the export, hooks (useState /
+// useEffect / useMemo) provided globally — do NOT import from "react".
+//
+// Data is fetched at runtime from jsdelivr (CORS-open GitHub CDN) because
+// Mintlify's MDX snippet bundler does not reliably handle JSON file imports.
 // ============================================================================
 
-import gerData from "../data/ger.json";
-
-const TIER_LABEL = {
-  "0xx": "Pre-Infrastructure",
-  "2xx": "Success States",
-  "3xx": "Structural Moves",
-  "4xx": "Operator / Platform Errors",
-  "5xx": "Infrastructure Failures",
-};
-
 export const GerBrowse = () => {
-  const codes = gerData.codes;
+  const [data, setData] = useState(null);
 
-  // Group by tier, preserve insertion order (already sorted by tier+code from the export view)
+  useEffect(() => {
+    fetch("https://cdn.jsdelivr.net/gh/svrnos/site@main/docs-site/data/ger.json")
+      .then((r) => r.json())
+      .then(setData)
+      .catch(() => setData({ codes: [] }));
+  }, []);
+
+  if (!data) {
+    return (
+      <div className="py-12 text-center text-neutral-500 not-prose">
+        <p className="text-sm font-mono">Loading codes…</p>
+      </div>
+    );
+  }
+
+  const TIER_LABEL = {
+    "0xx": "Pre-Infrastructure",
+    "2xx": "Success States",
+    "3xx": "Structural Moves",
+    "4xx": "Operator / Platform Errors",
+    "5xx": "Infrastructure Failures",
+  };
+
+  const codes = data.codes || [];
   const groups = {};
   for (const c of codes) {
     groups[c.tier] = groups[c.tier] ?? [];
@@ -38,8 +57,10 @@ export const GerBrowse = () => {
           <ul className="space-y-1">
             {list.map((c) => (
               <li key={c.code}>
-                <a href={`/ger/codes/${c.code}`}
-                   className="grid grid-cols-[60px_1fr_auto] gap-4 py-2 px-3 rounded hover:bg-green-50 transition-colors items-baseline">
+                <a
+                  href={`/ger/codes/${c.code}`}
+                  className="grid grid-cols-[60px_1fr_auto] gap-4 py-2 px-3 rounded hover:bg-green-50 transition-colors items-baseline"
+                >
                   <span className="font-mono text-sm text-green-900 font-semibold">{c.code}</span>
                   <span className="text-base text-neutral-900">{c.name}</span>
                   <span className="text-xs font-mono uppercase tracking-wider text-neutral-500">
