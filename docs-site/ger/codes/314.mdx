@@ -1,0 +1,36 @@
+---
+title: "GER-314 · Authority Drift"
+description: "Drift in the enforceable boundaries a system holds: execution rights, gate thresholds, and access levels shift over time in ways that change what the system will actually do, while the user-facing policy text remains sta…"
+sidebarTitle: "314 · Authority Drift"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="amber">Illustrative</Badge> <Badge>Tier 3xx</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
+</div>
+
+*Structural Moves*
+
+## Definition
+
+Drift in the enforceable boundaries a system holds: execution rights, gate thresholds, and access levels shift over time in ways that change what the system will actually do, while the user-facing policy text remains stable. The system authorizes actions the published policy doesn't cover. Architecture governs action.
+
+## Distinct from
+
+- [**GER-313**](/ger/codes/313) — Drift in execution boundaries while user-facing policy stays stable → this code. Drift in defaults and surfaced options without rule change → GER-313.
+- [**GER-420**](/ger/codes/420) — Boundary silently expanded over time → this code. Stated prohibition never wired from the start → GER-420.
+
+## Tags
+
+`manipulation`
+
+## Attributed to
+
+- **Melissa Kaplan** — *primary*
+
+## Cite this code
+
+```
+Nzeutem, S. (2026). GER-314 Authority Drift. SVRNOS Governance Error Register. https://docs.svrnos.com/ger/codes/314
+```

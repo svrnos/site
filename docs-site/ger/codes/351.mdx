@@ -1,0 +1,35 @@
+---
+title: "GER-351 · Open-Loop Execution / Missing Assurance Plane"
+description: "Multi-agent architecture lacks a dedicated Assurance plane (no Evaluator agents, no Critic agents, no validation layer). Output flows from planner to executor to user without intermediate validation."
+sidebarTitle: "351 · Open-Loop Execution / Missing Assurance Plane"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="green">Documented</Badge> <Badge>Tier 3xx</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
+</div>
+
+*Structural Moves*
+
+## Definition
+
+Multi-agent architecture lacks a dedicated Assurance plane (no Evaluator agents, no Critic agents, no validation layer). Output flows from planner to executor to user without intermediate validation.
+
+## Distinct from
+
+- [**GER-339**](/ger/codes/339) — No verification role exists in architecture → this code. Verification role exists but is diffused with no single owner → GER-339.
+
+## Tags
+
+`eu-ai-act` · `multi-agent`
+
+## Attributed to
+
+- **Sean Moran** — *primary*
+
+## Cite this code
+
+```
+Nzeutem, S. (2026). GER-351 Open-Loop Execution / Missing Assurance Plane. SVRNOS Governance Error Register. https://docs.svrnos.com/ger/codes/351
+```

@@ -1,0 +1,90 @@
+---
+title: "GER-401 · Identity Gate Missing"
+description: "High-risk AI surface available without verifying identity, age, role, or authority of the user before access is granted."
+sidebarTitle: "401 · Identity Gate Missing"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="amber">Illustrative</Badge> <Badge>Tier 4xx</Badge> <Badge tone="gray">Added v0.1</Badge>
+</div>
+
+*Operator / Platform Errors*
+
+## Definition
+
+High-risk AI surface available without verifying identity, age, role, or authority of the user before access is granted.
+
+## Distinct from
+
+- [**GER-420**](/ger/codes/420) — Identity gate never installed at session start → this code. Stated prohibition not wired at runtime → GER-420.
+- [**GER-511**](/ger/codes/511) — Identity verification missing at runtime → this code. Verification gate never installed at access point → GER-511.
+
+## Anchor incidents (13)
+
+<Card title="Google's YouTube Kids App Presents Inappropriate Content" href="https://incidentdatabase.ai/cite/1">
+  **primary** — AIID #1 · 2015-05-19
+</Card>
+
+<Card title="Korean Chatbot Luda Made Offensive Remarks towards Minority Groups" href="https://incidentdatabase.ai/cite/106">
+  **primary** — AIID #106 · 2020-12-23
+</Card>
+
+<Card title="Replika's AI Experience Reportedly Lacked Protection for Minors, Resulting in Data Ban" href="https://incidentdatabase.ai/cite/491">
+  **primary** — AIID #491 · 2023-02-02
+</Card>
+
+<Card title="Character.ai Has Allegedly Been Hosting Openly Predatory Chatbots Targeting Minors" href="https://incidentdatabase.ai/cite/900">
+  **primary** — AIID #900 · 2024-11-13
+</Card>
+
+<Card title="Meta User-Created AI Companions Allegedly Implicated in Facilitating Sexually Themed Conversations Involving Underage Personas" href="https://incidentdatabase.ai/cite/1040">
+  **primary** — AIID #1040 · 2025-04-26
+</Card>
+
+<Card title="Alexa Plays Pornography Instead of Kids Song" href="https://incidentdatabase.ai/cite/55">
+  **secondary** — AIID #55 · 2016-12-30
+</Card>
+
+<Card title="AI Avatar of Murder Victim Created Without Consent on Character.ai Platform" href="https://incidentdatabase.ai/cite/814">
+  **secondary** — AIID #814 · 2024-10-02
+</Card>
+
+<Card title="Character.ai Chatbots Allegedly Misrepresent George Floyd on User-Generated Platform" href="https://incidentdatabase.ai/cite/850">
+  **secondary** — AIID #850 · 2024-10-24
+</Card>
+
+<Card title="Character.ai Chatbots Allegedly Emulating School Shooters and Their Victims" href="https://incidentdatabase.ai/cite/899">
+  **secondary** — AIID #899 · 2024-12-17
+</Card>
+
+<Card title="Character.AI Chatbots Allegedly Impersonating Licensed Therapists and Encouraging Harmful Behaviors" href="https://incidentdatabase.ai/cite/951">
+  **secondary** — AIID #951 · 2025-02-24
+</Card>
+
+<Card title="Digital Rights Groups Accuse Meta and Character.AI of Facilitating Unlicensed Therapy via Chatbots" href="https://incidentdatabase.ai/cite/1108">
+  **secondary** — AIID #1108 · 2025-06-10
+</Card>
+
+<Card title="Lawsuit Alleges Character AI Chatbot Contributed to Death of 13-Year-Old Juliana Peralta in Colorado" href="https://incidentdatabase.ai/cite/1209">
+  **secondary** — AIID #1209 · 2023-11-08
+</Card>
+
+<Card title="Alleged Harmful Outputs and Data Exposure in Children's AI Products by FoloToy, Miko, and Character.AI" href="https://incidentdatabase.ai/cite/1277">
+  **secondary** — AIID #1277 · 2025-11-21
+</Card>
+
+## Tags
+
+`companion-ai` · `minors`
+
+## Attributed to
+
+- **Sushee Nzeutem** · *SVRNOS (Sovereign OS LLC)* — *primary*
+
+## Cite this code
+
+```
+Nzeutem, S. (2026). GER-401 Identity Gate Missing. SVRNOS Governance Error Register. https://docs.svrnos.com/ger/codes/401
+```

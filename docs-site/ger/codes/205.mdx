@@ -1,0 +1,40 @@
+---
+title: "GER-205 · Reset Content"
+description: "Generation completed and visible to the user, then retroactively suppressed by a downstream classifier. No audit trail, no user signal, no appeal."
+sidebarTitle: "205 · Reset Content"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="green">Documented</Badge> <Badge>Tier 2xx</Badge> <Badge tone="gray">Added v0.1</Badge>
+</div>
+
+*Success States*
+
+## Definition
+
+Generation completed and visible to the user, then retroactively suppressed by a downstream classifier. No audit trail, no user signal, no appeal.
+
+## Distinct from
+
+- [**GER-210**](/ger/codes/210) — Generation succeeded and was visible to the user, then unmade → this code. Action taken, audit trail deliberately suppressed by design → GER-210.
+- [**GER-420**](/ger/codes/420) — Generation visible to user then retroactively removed by classifier → this code. Stated prohibition exists in policy but enforcement never wired into production → GER-420.
+
+## Case study
+
+SVRNOS has published a long-form case study on this code: [**ger 205**](https://svrnos.com/insights/ger-205).
+
+## Tags
+
+`companion-ai`
+
+## Attributed to
+
+- **Sushee Nzeutem** · *SVRNOS (Sovereign OS LLC)* — *primary*
+
+## Cite this code
+
+```
+Nzeutem, S. (2026). GER-205 Reset Content. SVRNOS Governance Error Register. https://docs.svrnos.com/ger/codes/205
+```

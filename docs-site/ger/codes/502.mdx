@@ -1,0 +1,36 @@
+---
+title: "GER-502 · Bad Gateway"
+description: "Platform attempts escalation to an external system or authority. The handoff response is received but invalid, incomplete, or unusable."
+sidebarTitle: "502 · Bad Gateway"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="amber">Illustrative</Badge> <Badge>Tier 5xx</Badge> <Badge tone="gray">Added v0.1</Badge>
+</div>
+
+*Infrastructure Failures*
+
+## Definition
+
+Platform attempts escalation to an external system or authority. The handoff response is received but invalid, incomplete, or unusable.
+
+## Distinct from
+
+- [**GER-500**](/ger/codes/500) — External system returned invalid response → this code. Platform own internal code crashed → GER-500.
+- [**GER-504**](/ger/codes/504) — Response received but unusable → this code. No response received at all → GER-504.
+
+## Tags
+
+`suicide`
+
+## Attributed to
+
+- **Sushee Nzeutem** · *SVRNOS (Sovereign OS LLC)* — *primary*
+
+## Cite this code
+
+```
+Nzeutem, S. (2026). GER-502 Bad Gateway. SVRNOS Governance Error Register. https://docs.svrnos.com/ger/codes/502
+```

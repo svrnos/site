@@ -1,0 +1,36 @@
+---
+title: "GER-336 · Inter-Agent Anchoring Failure"
+description: "False premise, hallucinated fact, or wrong inference introduced by one agent in a multi-agent chain becomes load-bearing for downstream agents. Each downstream agent treats the upstream output as ground truth without ind…"
+sidebarTitle: "336 · Inter-Agent Anchoring Failure"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="green">Documented</Badge> <Badge>Tier 3xx</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
+</div>
+
+*Structural Moves*
+
+## Definition
+
+False premise, hallucinated fact, or wrong inference introduced by one agent in a multi-agent chain becomes load-bearing for downstream agents. Each downstream agent treats the upstream output as ground truth without independent verification.
+
+## Distinct from
+
+- [**GER-328**](/ger/codes/328) — Agents anchor on agent outputs as ground truth → this code. Chatbot affirms user beliefs → GER-328.
+- [**GER-512**](/ger/codes/512) — Fabrication propagates through agent chain → this code. Single-turn fabrication paired with action directive → GER-512.
+
+## Tags
+
+`misinformation` · `multi-agent`
+
+## Attributed to
+
+- **Satyam Kumar Das** · *AppScale* — *primary*
+
+## Cite this code
+
+```
+Nzeutem, S. (2026). GER-336 Inter-Agent Anchoring Failure. SVRNOS Governance Error Register. https://docs.svrnos.com/ger/codes/336
+```

@@ -1,0 +1,46 @@
+---
+title: "GER-427 · Recursive Agentic Loop"
+description: "An agentic AI system enters a recursive execution loop that produces apparent progress but no actual goal advancement, consuming compute and time without converging on completion. Six sub-mechanisms: infinite tool-call l…"
+sidebarTitle: "427 · Recursive Agentic Loop"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="green">Documented</Badge> <Badge>Tier 4xx</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
+</div>
+
+*Operator / Platform Errors*
+
+## Definition
+
+An agentic AI system enters a recursive execution loop that produces apparent progress but no actual goal advancement, consuming compute and time without converging on completion. Six sub-mechanisms: infinite tool-call loop (repeated invocations with cosmetically varied arguments), plan-execute oscillation (cycles of replanning and partial execution without progress), sub-agent recursion (delegation to sub-agents without depth cap), context-window thrash (output quality degradation as conversation history bloats), hallucinated tool arguments (invalid argument generation triggering retry loops), silent budget burn (productive-looking progress signals while cost runs away). All six produce the same surface symptom (no goal achievement) with different underlying mechanisms.
+
+## Distinct from
+
+- [**GER-500**](/ger/codes/500) — Agent reasoning enters recursive loop inside operational platform → this code. Platform infrastructure itself fails → GER-500.
+- [**GER-501**](/ger/codes/501) — Agent loops internally → this code. Detection fires but no escalation handler exists → GER-501.
+
+## Anchor incidents (2)
+
+<Card title="West Midlands Police Reportedly Relied on Erroneous Copilot-Generated Intelligence in Maccabi Tel Aviv Away-Fan Ban Decision" href="https://incidentdatabase.ai/cite/1400">
+  **secondary** — AIID #1400 · 2025-10-24
+</Card>
+
+<Card title="PocketOS Production Database Was Reportedly Deleted by Cursor AI Agent Running Claude Opus 4.6" href="https://incidentdatabase.ai/cite/1469">
+  **secondary** — AIID #1469 · 2026-04-24
+</Card>
+
+## Tags
+
+`agentic` · `agentic-overreach`
+
+## Attributed to
+
+- **Satyam Kumar Das** · *AppScale* — *subtype*
+
+## Cite this code
+
+```
+Nzeutem, S. (2026). GER-427 Recursive Agentic Loop. SVRNOS Governance Error Register. https://docs.svrnos.com/ger/codes/427
+```

@@ -1,0 +1,36 @@
+---
+title: "GER-400 · Malformed Policy"
+description: "Safety rule written ambiguously or self-contradictorily. Enforcement engines default to allow."
+sidebarTitle: "400 · Malformed Policy"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="amber">Illustrative</Badge> <Badge>Tier 4xx</Badge> <Badge tone="gray">Added v0.1</Badge>
+</div>
+
+*Operator / Platform Errors*
+
+## Definition
+
+Safety rule written ambiguously or self-contradictorily. Enforcement engines default to allow.
+
+## Distinct from
+
+- [**GER-404**](/ger/codes/404) — Rule exists but cannot be parsed consistently → this code. No rule exists in the active ruleset → GER-404.
+- [**GER-409**](/ger/codes/409) — Single rule malformed and unenforceable → this code. Multiple valid rules in collision with no resolver → GER-409.
+
+## Tags
+
+`eu-ai-act`
+
+## Attributed to
+
+- **Sushee Nzeutem** · *SVRNOS (Sovereign OS LLC)* — *primary*
+
+## Cite this code
+
+```
+Nzeutem, S. (2026). GER-400 Malformed Policy. SVRNOS Governance Error Register. https://docs.svrnos.com/ger/codes/400
+```

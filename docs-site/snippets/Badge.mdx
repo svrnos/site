@@ -1,0 +1,17 @@
+export const Badge = ({ children, tone = "default", title }) => {
+  const tones = {
+    default: "bg-neutral-100 text-neutral-700",
+    green:   "bg-green-100 text-green-900",
+    amber:   "bg-amber-100 text-amber-900",
+    blue:    "bg-blue-50 text-blue-900",
+    gray:    "bg-neutral-50 text-neutral-600",
+  };
+  return (
+    <span
+      className={`inline-flex items-center px-2 py-0.5 text-xs font-mono uppercase tracking-wider rounded ${tones[tone] ?? tones.default}`}
+      title={title}
+    >
+      {children}
+    </span>
+  );
+};

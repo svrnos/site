@@ -1,0 +1,42 @@
+---
+title: "GER-352 · Lost in Translation"
+description: "Divergence between human-readable policy and machine-enforced rules where the system enforces a semantically different version of the documented intent. Both policy and rule exist; they no longer match."
+sidebarTitle: "352 · Lost in Translation"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="green">Documented</Badge> <Badge>Tier 3xx</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
+</div>
+
+*Structural Moves*
+
+## Definition
+
+Divergence between human-readable policy and machine-enforced rules where the system enforces a semantically different version of the documented intent. Both policy and rule exist; they no longer match.
+
+## Distinct from
+
+- [**GER-307**](/ger/codes/307) — Rule invoked but enforces different semantic than written policy → this code. Rule exists but is never invoked at all → GER-307.
+- [**GER-420**](/ger/codes/420) — Rule wired into production but mis-translated → this code. Rule stated in policy but never wired into production → GER-420.
+
+## Anchor incidents (1)
+
+<Card title="Air Canada Chatbot Reportedly Provides Inaccurate Bereavement Fare Information, Leading to Customer Overpayment" href="https://incidentdatabase.ai/cite/639">
+  **primary** — AIID #639 · 2022-11-11
+</Card>
+
+## Tags
+
+`legal`
+
+## Attributed to
+
+- **Martin Guerin** · *SPQR Technologies / Prova Advisory* — *primary*
+
+## Cite this code
+
+```
+Nzeutem, S. (2026). GER-352 Lost in Translation. SVRNOS Governance Error Register. https://docs.svrnos.com/ger/codes/352
+```

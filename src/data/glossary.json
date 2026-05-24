@@ -1,0 +1,286 @@
+{
+  "generated_at": "2026-05-21T17:47:19.048Z",
+  "count": 35,
+  "terms": [
+    {
+      "slug": "anchor-incident",
+      "term": "Anchor incident",
+      "short_definition": "A documented real-world case that demonstrates a specific GER code in production.",
+      "full_url": null,
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "authority-drift",
+      "term": "Authority Drift",
+      "short_definition": "Drift in enforceable boundaries — execution rights, gate thresholds — while user-facing policy stays stable. GER-314.",
+      "full_url": "/research/governance-error-register/314",
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "authority-migration",
+      "term": "Authority Migration",
+      "short_definition": "Decision authority shifts to a new actor without the rules following. GER-312.",
+      "full_url": "/research/governance-error-register/312",
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "compliant-harm",
+      "term": "Compliant Harm",
+      "short_definition": "Vendor measured a harmful behavior before deployment and shipped with that behavior present. GER-309.",
+      "full_url": "/research/governance-error-register/309",
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "continuity-without-coherence",
+      "term": "Continuity Without Coherence",
+      "short_definition": "Cross-surface continuity preserved (same user, same session) while coherence (consistent policy) breaks. GER-311.",
+      "full_url": "/research/governance-error-register/311",
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "documented-vs-illustrative",
+      "term": "Documented vs Illustrative",
+      "short_definition": "GER code status: documented = anchor incident exists; illustrative = scenario described without specific incident.",
+      "full_url": null,
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "escalation-not-implemented",
+      "term": "Escalation Not Implemented",
+      "short_definition": "Detection fired and internal enforcement executed; no escalation path to human oversight or law enforcement was built. GER-501.",
+      "full_url": "/research/governance-error-register/501",
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "generation-gap",
+      "term": "Generation Gap",
+      "short_definition": "Structural misalignment between what AI systems generate and what safety systems reliably detect across vendors.",
+      "full_url": "/research/generation-gap",
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "ger",
+      "term": "Governance Error Register",
+      "short_definition": "SVRNOS open taxonomy of structurally distinct AI platform governance failures, modeled on HTTP status codes.",
+      "full_url": "/research/governance-error-register",
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "governance-rule-not-found",
+      "term": "Governance Rule Not Found",
+      "short_definition": "No matching rule in active ruleset for this harm category. GER-404.",
+      "full_url": "/research/governance-error-register/404",
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "hindsight-reconstruction",
+      "term": "Hindsight Reconstruction",
+      "short_definition": "Post-hoc narrative explanation substituted for procedural attestation of what actually ran.",
+      "full_url": null,
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "incorporation-failure",
+      "term": "Incorporation Failure",
+      "short_definition": "Same pattern recurs across documented incidents without the vendor recognition apparatus updating. GER-319.",
+      "full_url": "/research/governance-error-register/319",
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "influence-drift",
+      "term": "Influence Drift",
+      "short_definition": "Drift in the option topology shown to users — defaults, ranking, surfaced choices — without rule changes. GER-313.",
+      "full_url": "/research/governance-error-register/313",
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "inter-layer-contracts",
+      "term": "Inter-Layer Contracts",
+      "short_definition": "The semantic agreements between adjacent layers of the SVRNOS 7-Layer Model that must hold for governance to compose.",
+      "full_url": null,
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "layer",
+      "term": "Layer (SVRNOS 7-Layer Model)",
+      "short_definition": "L1 through L7 in the SVRNOS 7-Layer Model. Cross-references GER tier.",
+      "full_url": "/research/svrnos-7-layer-model",
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "layer-drift",
+      "term": "Layer Drift",
+      "short_definition": "Erosion of inter-layer contracts over time, allowing governance gaps to open between adjacent layers.",
+      "full_url": null,
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "lost-in-translation",
+      "term": "Lost in Translation",
+      "short_definition": "Human-readable policy and machine-enforced rule both exist but enforce semantically different versions. GER-352.",
+      "full_url": "/research/governance-error-register/352",
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "namespace-claim-codes",
+      "term": "Namespace-Claim Codes",
+      "short_definition": "GER codes that SVRNOS assigns to HTTP-unassigned slots (e.g., 306, 310, 420, 430, 512), following vendor extension precedent.",
+      "full_url": null,
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "ncsa",
+      "term": "Non-Content Safety Attestation",
+      "short_definition": "SVRNOS framework for producing machine-readable evidence that governance ran, distinct from content moderation outcomes.",
+      "full_url": "/research/non-content-safety-attestation",
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "phantom-enforcement",
+      "term": "Phantom Enforcement",
+      "short_definition": "Stated prohibition exists in policy but enforcement is not wired into production. GER-420.",
+      "full_url": "/research/governance-error-register/420",
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "procedural-attestation",
+      "term": "Procedural Attestation",
+      "short_definition": "Machine-readable evidence that the governance procedure ran, distinct from narrative reconstruction. Credit: Paul McDonald.",
+      "full_url": null,
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "provenance-binding",
+      "term": "Provenance Binding",
+      "short_definition": "Locking generated content to its verified source identity at production time (PROV spec).",
+      "full_url": null,
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "provenance-omission",
+      "term": "Provenance Omission",
+      "short_definition": "Generative capability shipped without watermark, synthetic-media flag, or other authenticity-preserving artifact. GER-322.",
+      "full_url": "/research/governance-error-register/322",
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "recursive-agentic-loop",
+      "term": "Recursive Agentic Loop",
+      "short_definition": "Agentic AI enters recursive execution producing apparent progress but no actual goal advancement. GER-427.",
+      "full_url": "/research/governance-error-register/427",
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "representation-bound-admissibility",
+      "term": "Representation-Bound Admissibility Failure",
+      "short_definition": "AI bound to a stale or incorrect internal representation of the user/case state. GER-318.",
+      "full_url": "/research/governance-error-register/318",
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "reset-content",
+      "term": "Reset Content",
+      "short_definition": "Generation completed and visible to the user, then retroactively suppressed by a downstream classifier. GER-205.",
+      "full_url": "/research/governance-error-register/205",
+      "also_known_as": "Yo-Yo Trick",
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "risk-surface-retired",
+      "term": "Risk Surface Retired",
+      "short_definition": "Platform permanently moves a dangerous interaction surface to a governed path. GER-301.",
+      "full_url": "/research/governance-error-register/301",
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "safety-constraint-retired",
+      "term": "Safety Constraint Retired",
+      "short_definition": "Publicly committed governance constraint removed or revised under non-technical pressure. GER-306.",
+      "full_url": "/research/governance-error-register/306",
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "scope-misdirection",
+      "term": "Scope Misdirection",
+      "short_definition": "Governed AI system processed a request outside its intended deployment domain. GER-421.",
+      "full_url": "/research/governance-error-register/421",
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "stale-admissibility",
+      "term": "Stale Admissibility",
+      "short_definition": "State was correct when calculation began but had changed by the time the action committed. GER-305.",
+      "full_url": "/research/governance-error-register/305",
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "svrnos-7-layer-model",
+      "term": "SVRNOS 7-Layer Model",
+      "short_definition": "OSI-inspired technical stack map for AI governance, L1 (infrastructure) through L7 (application).",
+      "full_url": "/research/svrnos-7-layer-model",
+      "also_known_as": "SVRNOS 7L",
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "sycophancy-loop",
+      "term": "Validator Drift / Sycophancy Loop",
+      "short_definition": "Engagement-optimized model affirms user beliefs that should trigger refusal or escalation. GER-328.",
+      "full_url": "/research/governance-error-register/328",
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "system-fabrication",
+      "term": "System Fabrication",
+      "short_definition": "AI originates a factual claim the user never introduced and pairs it with a real-world action directive. GER-512.",
+      "full_url": "/research/governance-error-register/512",
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "tier",
+      "term": "Tier (GER)",
+      "short_definition": "The HTTP-derived classification axis of GER codes: 0xx, 2xx, 3xx, 4xx, 5xx. Distinct from layer.",
+      "full_url": "/research/governance-error-register",
+      "also_known_as": null,
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    },
+    {
+      "slug": "yo-yo-trick",
+      "term": "The Yo-Yo Trick",
+      "short_definition": "Colloquial name for Reset Content (GER-205): the content comes out, then the content gets unmade.",
+      "full_url": "/research/governance-error-register/205",
+      "also_known_as": "Reset Content",
+      "created_at": "2026-05-21T15:52:07.651995+00:00"
+    }
+  ]
+}

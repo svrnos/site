@@ -1,0 +1,82 @@
+---
+title: "GER-342 · Alignment-Induced Asymmetric Bias"
+description: "Post-training alignment (RLHF, fine-tuning for inclusivity) installed to mitigate bias instead creates extreme, unintended disparities or \"rebound\" effects. The model overshoots in the opposite direction of the original…"
+sidebarTitle: "342 · Alignment-Induced Asymmetric Bias"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="green">Documented</Badge> <Badge>Tier 3xx</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
+</div>
+
+*Structural Moves*
+
+## Definition
+
+Post-training alignment (RLHF, fine-tuning for inclusivity) installed to mitigate bias instead creates extreme, unintended disparities or "rebound" effects. The model overshoots in the opposite direction of the original imbalance.
+
+## Distinct from
+
+- [**GER-323**](/ger/codes/323) — Alignment over-correction creates new bias → this code. Original bias persists due to no pre-deployment audit → GER-323.
+
+## Anchor incidents (11)
+
+<Card title="Gender Biases of Google Image Search" href="https://incidentdatabase.ai/cite/18">
+  **primary** — AIID #18 · 2015-04-04
+</Card>
+
+<Card title="Gender Biases in Google Translate" href="https://incidentdatabase.ai/cite/59">
+  **primary** — AIID #59 · 2017-04-13
+</Card>
+
+<Card title="Researchers find evidence of racial, gender, and socioeconomic bias in chest X-ray classifiers" href="https://incidentdatabase.ai/cite/81">
+  **primary** — AIID #81 · 2020-10-21
+</Card>
+
+<Card title="Twitter’s Image Cropping Tool Allegedly Showed Gender and Racial Bias" href="https://incidentdatabase.ai/cite/103">
+  **primary** — AIID #103 · 2020-09-18
+</Card>
+
+<Card title="Genderify’s AI to Predict a Person’s Gender Revealed by Free API Users to Exhibit Bias" href="https://incidentdatabase.ai/cite/115">
+  **primary** — AIID #115 · 2020-07-28
+</Card>
+
+<Card title="DALL-E 2 Reported for Gender and Racially Biased Outputs" href="https://incidentdatabase.ai/cite/179">
+  **primary** — AIID #179 · 2022-04-01
+</Card>
+
+<Card title="DALL-E Mini Reportedly Reinforced or Exacerbated Societal Biases in Its Outputs as Gender and Racial Stereotypes" href="https://incidentdatabase.ai/cite/262">
+  **primary** — AIID #262 · 2022-06-11
+</Card>
+
+<Card title="Alleged Gender Discrimination in Facebook Job Ads Algorithm" href="https://incidentdatabase.ai/cite/580">
+  **primary** — AIID #580 · 2023-06-12
+</Card>
+
+<Card title="Images of Black People Labeled as Gorillas" href="https://incidentdatabase.ai/cite/16">
+  **secondary** — AIID #16 · 2015-06-03
+</Card>
+
+<Card title="Amazon's Experimental Hiring Tool Allegedly Displayed Gender Bias in Candidate Rankings" href="https://incidentdatabase.ai/cite/37">
+  **secondary** — AIID #37 · 2016-08-10
+</Card>
+
+<Card title="WeChat’s Machine Translation Gave a Racist English Translation for the Chinese Term for “Black Foreigner”" href="https://incidentdatabase.ai/cite/216">
+  **secondary** — AIID #216 · 2017-10-10
+</Card>
+
+## Tags
+
+`discrimination` · `generative-media`
+
+## Attributed to
+
+- **Raluca Alexandra Fulgu** · *University of Milan-Bicocca* — *primary*
+- **Valerio Capraro** · *University of Milan-Bicocca* — *co-attribution*
+
+## Cite this code
+
+```
+Nzeutem, S. (2026). GER-342 Alignment-Induced Asymmetric Bias. SVRNOS Governance Error Register. https://docs.svrnos.com/ger/codes/342
+```

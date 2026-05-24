@@ -1,0 +1,54 @@
+---
+title: "GER-429 · Audit Overflow"
+description: "Volume of safety flags generated exceeds the capacity of the governance system to process them. Cases are dropped, sampled, or auto-closed without review."
+sidebarTitle: "429 · Audit Overflow"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="amber">Illustrative</Badge> <Badge>Tier 4xx</Badge> <Badge tone="gray">Added v0.1</Badge>
+</div>
+
+*Operator / Platform Errors*
+
+## Definition
+
+Volume of safety flags generated exceeds the capacity of the governance system to process them. Cases are dropped, sampled, or auto-closed without review.
+
+## Distinct from
+
+- [**GER-420**](/ger/codes/420) — Supervisor at the gate but adds no real review → this code. Stated supervision policy never wired → GER-420.
+- [**GER-503**](/ger/codes/503) — Governance overloaded despite intent to serve → this code. Governance component intentionally offline → GER-503.
+
+## Anchor incidents (4)
+
+<Card title="TikTok’s Content Moderation Allegedly Failed to Adequately Take down Videos Promoting Eating Disorders" href="https://incidentdatabase.ai/cite/132">
+  **secondary** — AIID #132 · 2020-12-27
+</Card>
+
+<Card title="Facebook’s and Twitter's Automated Content Moderation Reportedly Failed to Effectively Enforce Violation Rules for Small Language Groups" href="https://incidentdatabase.ai/cite/143">
+  **secondary** — AIID #143 · 2021-02-16
+</Card>
+
+<Card title="Facebook's AI-Supported Moderation Failed to Classify Terrorist Content in East African Languages" href="https://incidentdatabase.ai/cite/392">
+  **secondary** — AIID #392 · 2015-06-01
+</Card>
+
+<Card title="Facebook AI-Supported Moderation for Ads Failed to Detect Violating Content" href="https://incidentdatabase.ai/cite/393">
+  **secondary** — AIID #393 · 2021-12-08
+</Card>
+
+## Tags
+
+`companion-ai`
+
+## Attributed to
+
+- **Sushee Nzeutem** · *SVRNOS (Sovereign OS LLC)* — *primary*
+
+## Cite this code
+
+```
+Nzeutem, S. (2026). GER-429 Audit Overflow. SVRNOS Governance Error Register. https://docs.svrnos.com/ger/codes/429
+```

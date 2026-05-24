@@ -1,0 +1,47 @@
+---
+title: "Non-Content Safety Attestation"
+description: "Machine-readable evidence that governance ran, distinct from content moderation outcomes."
+---
+
+<Note>
+  NCSA v0.2 is in active revision. This page summarizes the framework; the full spec is at svrnos.com/research/non-content-safety-attestation.
+</Note>
+
+**Non-Content Safety Attestation (NCSA)** is SVRNOS's framework for producing machine-readable evidence that the governance procedure ran — *procedural attestation*, distinct from narrative reconstruction after the fact.
+
+## The core distinction
+
+Most AI safety claims are reconstructed in hindsight: a vendor says "the model was trained for safety," "the content was reviewed by humans," "the output went through guardrails." These are narrative claims. They cannot be audited at the moment of decision.
+
+NCSA inverts this. At each governance step — refusal, escalation, attestation, propagation — the system emits a structured record proving the step happened, signed and timestamped. Auditors, regulators, and insurers verify the record, not the narrative.
+
+The credit for naming this distinction belongs to **Paul McDonald**.
+
+## What NCSA records
+
+A governance event in NCSA carries these fields (minimum):
+
+- **Event class** — refusal, escalation, attestation, propagation, reset, etc.
+- **Trigger signal** — what fired the rule (the structural input)
+- **Rule invoked** — which policy was applied (link to authoritative source)
+- **Threshold-per-action** — what threshold was crossed (per-action, not per-session)
+- **Outcome** — what the system did (action taken or not taken)
+- **Subject preconditions verified** — for personalized content involving third parties
+- **Authority** — which principal authorized the outcome (intervention capacity)
+- **Re-admissibility note** — whether attestation transfers across propagation
+- **Timestamp + signature**
+
+The schema is structured so a downstream system can prove what was admissible at the moment of decision, without reconstructing the narrative.
+
+## Cross-reference to GER
+
+NCSA emits a GER code with every attestation. The pair is what survives in court:
+
+- **NCSA record** = "this governance event happened on this date with these parameters"
+- **GER code** = "this is the named structural failure (or success) the record corresponds to"
+
+## v0.2 changes
+
+The forthcoming v0.2 release adds the **procedural-attestation principle** as a stated design principle (credited to Paul McDonald), the **threshold-per-action structure** (Catherine Gunnell), the **authority-migration handling** (Steven Hensley + F. Zafar), and clarifications on **re-admissibility at propagation** (Ryan Stacey, Koji Mochizuki).
+
+The current published spec is at [svrnos.com/research/non-content-safety-attestation](https://svrnos.com/research/non-content-safety-attestation). v0.2 will land here when ready.

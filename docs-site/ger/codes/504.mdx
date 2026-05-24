@@ -1,0 +1,36 @@
+---
+title: "GER-504 · Escalation Gateway Timeout"
+description: "Platform sends a case to an external reviewer, vendor, agency, or authority. No timely acknowledgment or action is received before the risk window closes."
+sidebarTitle: "504 · Escalation Gateway Timeout"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="amber">Illustrative</Badge> <Badge>Tier 5xx</Badge> <Badge tone="gray">Added v0.1</Badge>
+</div>
+
+*Infrastructure Failures*
+
+## Definition
+
+Platform sends a case to an external reviewer, vendor, agency, or authority. No timely acknowledgment or action is received before the risk window closes.
+
+## Distinct from
+
+- [**GER-408**](/ger/codes/408) — External handoff timed out → this code. Internal SLA breached → GER-408.
+- [**GER-501**](/ger/codes/501) — Handoff exists but external party did not respond → this code. No escalation handler ever built → GER-501.
+
+## Tags
+
+`suicide`
+
+## Attributed to
+
+- **Sushee Nzeutem** · *SVRNOS (Sovereign OS LLC)* — *primary*
+
+## Cite this code
+
+```
+Nzeutem, S. (2026). GER-504 Escalation Gateway Timeout. SVRNOS Governance Error Register. https://docs.svrnos.com/ger/codes/504
+```

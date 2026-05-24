@@ -1,0 +1,27 @@
+---
+title: "GER-349 · Inter-Agent Schema Mismatch"
+description: "Agents in a multi-agent system communicate via structured outputs (YAML, JSON, function calls). Outputs from one agent do not parse cleanly against the input schema of the next agent. The chain produces silent corruption…"
+sidebarTitle: "349 · Inter-Agent Schema Mismatch"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="green">Documented</Badge> <Badge>Tier 3xx</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
+</div>
+
+*Structural Moves*
+
+## Definition
+
+Agents in a multi-agent system communicate via structured outputs (YAML, JSON, function calls). Outputs from one agent do not parse cleanly against the input schema of the next agent. The chain produces silent corruption or hard failures at the parse boundary.
+
+## Tags
+
+`multi-agent`
+
+## Cite this code
+
+```
+Nzeutem, S. (2026). GER-349 Inter-Agent Schema Mismatch. SVRNOS Governance Error Register. https://docs.svrnos.com/ger/codes/349
+```

@@ -1,0 +1,53 @@
+---
+title: "GER-435 · Inter-Agent Prompt Injection Propagation"
+description: "Adversarial input that defeated or bypassed Agent A's input filter propagates through the agent chain to peer agents that do not re-filter, causing system-wide compromise from a single entry point."
+sidebarTitle: "435 · Inter-Agent Prompt Injection Propagation"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="green">Documented</Badge> <Badge>Tier 4xx</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
+</div>
+
+*Operator / Platform Errors*
+
+## Definition
+
+Adversarial input that defeated or bypassed Agent A's input filter propagates through the agent chain to peer agents that do not re-filter, causing system-wide compromise from a single entry point.
+
+## Distinct from
+
+- [**GER-421**](/ger/codes/421) — Adversarial payload propagates through agent chain → this code. Single defeat event at one entry point → GER-421.
+
+## Anchor incidents (5)
+
+<Card title="GPT-3-Based Twitter Bot Hijacked Using Prompt Injection Attacks" href="https://incidentdatabase.ai/cite/352">
+  **secondary** — AIID #352 · 2022-09-15
+</Card>
+
+<Card title="Bing Chat's Initial Prompts Revealed by Early Testers Through Prompt Injection" href="https://incidentdatabase.ai/cite/473">
+  **secondary** — AIID #473 · 2023-02-08
+</Card>
+
+<Card title="Jailbroken Lovable AI Allegedly Used to Generate and Host Phishing Pages, Steal Credentials, and Bypass Security" href="https://incidentdatabase.ai/cite/1016">
+  **secondary** — AIID #1016 · 2025-04-09
+</Card>
+
+<Card title="OpenAI ChatGPT Models Reportedly Jailbroken to Provide Chemical, Biological, and Nuclear Weapons Instructions" href="https://incidentdatabase.ai/cite/1238">
+  **secondary** — AIID #1238 · 2025-10-10
+</Card>
+
+<Card title="Anthropic's Claude Was Reportedly Jailbroken To Allegedly Help Steal Sensitive Mexican Government Data" href="https://incidentdatabase.ai/cite/1430">
+  **secondary** — AIID #1430 · 2025-12-01
+</Card>
+
+## Tags
+
+`multi-agent` · `prompt-injection`
+
+## Cite this code
+
+```
+Nzeutem, S. (2026). GER-435 Inter-Agent Prompt Injection Propagation. SVRNOS Governance Error Register. https://docs.svrnos.com/ger/codes/435
+```

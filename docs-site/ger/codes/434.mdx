@@ -1,0 +1,31 @@
+---
+title: "GER-434 · Compound Reliability Decay Without Budgeting"
+description: "Operator deploys a multi-step agent chain without computing end-to-end reliability as a function of per-step reliability. The compound failure rate is catastrophically higher than any individual step's apparent reliabili…"
+sidebarTitle: "434 · Compound Reliability Decay Without Budgeting"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="green">Documented</Badge> <Badge>Tier 4xx</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
+</div>
+
+*Operator / Platform Errors*
+
+## Definition
+
+Operator deploys a multi-step agent chain without computing end-to-end reliability as a function of per-step reliability. The compound failure rate is catastrophically higher than any individual step's apparent reliability.
+
+## Distinct from
+
+- [**GER-422**](/ger/codes/422) — Operator honest per-step measurement, compound math not done → this code. Vendor overstated capability → GER-422.
+
+## Tags
+
+`agentic` · `eu-ai-act`
+
+## Cite this code
+
+```
+Nzeutem, S. (2026). GER-434 Compound Reliability Decay Without Budgeting. SVRNOS Governance Error Register. https://docs.svrnos.com/ger/codes/434
+```

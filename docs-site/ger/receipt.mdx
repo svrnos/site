@@ -1,0 +1,42 @@
+---
+title: "Diagnostic receipt"
+description: "Generate a structured evidence document for an AI-incident filing. Pure deterministic — no AI in the receipt."
+---
+
+import GerReceipt from "/components/GerReceipt.jsx"
+
+<GerReceipt />
+
+## What this is
+
+A **diagnostic receipt** is a structured document you take to a regulator, insurer, vendor, or class-action attorney when filing an AI-incident claim. It has four fixed sections:
+
+1. **Diagnosis** — the GER code(s) that apply, with the canonical definitions and links to permalinks
+2. **Evidence to preserve** — a per-code checklist of artifacts that strengthen the claim
+3. **Where to escalate** — per-code routing to the relevant authorities (regulators, agencies, vendor channels)
+4. **Why these codes** — the disambiguation: why this code and not the adjacent ones (auto-filled from the GER's structured "distinct from" pairs, or override with your own justification)
+
+The receipt is generated entirely by your browser. SVRNOS doesn't see your case description, your codes, or your evidence. The receipt is yours.
+
+## How to use it
+
+1. **Add the GER codes** that apply to your case. Put the structurally-primary code first; secondary and contributing codes after.
+2. **Write a brief case description** (optional). This appears at the top of the receipt.
+3. **Add a "why these codes" justification** (optional). If left blank, the receipt auto-fills from the GER's structured distinct-from pairs.
+4. **Download as markdown** or **copy to clipboard**. The markdown renders in any text editor, GitHub issue, regulator portal, or attorney intake form.
+
+## Where the codes come from
+
+If you don't know which codes apply to your case, start with the [lookup tool](/ger/find). The tool narrows 71+ codes to a short list of candidates based on your symptoms, the incident you observed, or the sector / harm-type filter. You read the candidates and pick the ones that fit.
+
+## What this isn't
+
+- **It is not a diagnostic LLM.** The receipt does not classify your case using AI. You select the codes; the receipt structures the output.
+- **It is not legal advice.** The "where to escalate" section lists the most common routes; your specific case may need different counsel.
+- **It does not submit anything.** The receipt is a document you generate; what you do with it is up to you.
+
+## A note on tracking
+
+If you intend to use a receipt in **regulatory filing, litigation, audit programs, or insurance claims**, please notify SVRNOS at [hello@svrnos.com](mailto:hello@svrnos.com). We track adoption visibly on the changelog as a public signal that the registry is being used in the field.
+
+This is not a license condition. It's a request that helps the registry mature.

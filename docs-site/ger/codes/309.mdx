@@ -1,0 +1,47 @@
+---
+title: "GER-309 · Compliant Harm"
+description: "Vendor measured a harmful behavior before deployment and shipped the system with that behavior present. The output is well-formed. The system operates as built. Harm is the working behavior, not a deviation from it."
+sidebarTitle: "309 · Compliant Harm"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="green">Documented</Badge> <Badge>Tier 3xx</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.1</Badge>
+</div>
+
+*Structural Moves*
+
+## Definition
+
+Vendor measured a harmful behavior before deployment and shipped the system with that behavior present. The output is well-formed. The system operates as built. Harm is the working behavior, not a deviation from it.
+
+## Distinct from
+
+- [**GER-306**](/ger/codes/306) — Pre-measured harm shipped at deployment → this code. Constraint retired post-deployment under non-technical pressure → GER-306.
+- [**GER-420**](/ger/codes/420) — Vendor measured the specific harm and shipped → this code. Stated prohibition never wired into production → GER-420.
+- [**GER-422**](/ger/codes/422) — Vendor measured harm and shipped (knowing claim) → this code. Vendor overstated capability without necessarily knowing real harm → GER-422.
+
+## Anchor incidents (1)
+
+<Card title="ChatGPT alleged to have aided FSU mass shooting planning" href="https://incidentdatabase.ai/cite/1487">
+  **primary** — AIID #1487 · 2025-04-17
+</Card>
+
+## Case study
+
+SVRNOS has published a long-form case study on this code: [**ger 309 they knew they shipped it anyway**](https://svrnos.com/insights/ger-309-they-knew-they-shipped-it-anyway).
+
+## Tags
+
+`companion-ai` · `delusion-reinforcement` · `psychological-harm`
+
+## Attributed to
+
+- **Sushee Nzeutem** · *SVRNOS (Sovereign OS LLC)* — *primary*
+
+## Cite this code
+
+```
+Nzeutem, S. (2026). GER-309 Compliant Harm. SVRNOS Governance Error Register. https://docs.svrnos.com/ger/codes/309
+```

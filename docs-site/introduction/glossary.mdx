@@ -1,0 +1,191 @@
+---
+title: "Glossary"
+description: "SVRNOS-coined terms used across the research artifacts. Field-wide vocabulary (AI, hallucination, alignment) is not listed here."
+---
+
+The terms below are coined or significantly refined by SVRNOS. Each appears with a special highlight when used in the body of any docs page; hover to see the short definition, click to navigate to the canonical page.
+
+This list is the working vocabulary of the SVRNOS research artifacts. It excludes general AI / governance terms that the field already shares.
+
+
+## A
+
+### Anchor incident
+
+A documented real-world case that demonstrates a specific GER code in production.
+
+### Authority Drift
+
+Drift in enforceable boundaries — execution rights, gate thresholds — while user-facing policy stays stable. GER-314. [→ canonical](/research/governance-error-register/314)
+
+### Authority Migration
+
+Decision authority shifts to a new actor without the rules following. GER-312. [→ canonical](/research/governance-error-register/312)
+
+
+## C
+
+### Compliant Harm
+
+Vendor measured a harmful behavior before deployment and shipped with that behavior present. GER-309. [→ canonical](/research/governance-error-register/309)
+
+### Continuity Without Coherence
+
+Cross-surface continuity preserved (same user, same session) while coherence (consistent policy) breaks. GER-311. [→ canonical](/research/governance-error-register/311)
+
+
+## D
+
+### Documented vs Illustrative
+
+GER code status: documented = anchor incident exists; illustrative = scenario described without specific incident.
+
+
+## E
+
+### Escalation Not Implemented
+
+Detection fired and internal enforcement executed; no escalation path to human oversight or law enforcement was built. GER-501. [→ canonical](/research/governance-error-register/501)
+
+
+## G
+
+### Generation Gap
+
+Structural misalignment between what AI systems generate and what safety systems reliably detect across vendors. [→ canonical](/research/generation-gap)
+
+### Governance Error Register
+
+SVRNOS open taxonomy of structurally distinct AI platform governance failures, modeled on HTTP status codes. [→ canonical](/research/governance-error-register)
+
+### Governance Rule Not Found
+
+No matching rule in active ruleset for this harm category. GER-404. [→ canonical](/research/governance-error-register/404)
+
+
+## H
+
+### Hindsight Reconstruction
+
+Post-hoc narrative explanation substituted for procedural attestation of what actually ran.
+
+
+## I
+
+### Incorporation Failure
+
+Same pattern recurs across documented incidents without the vendor recognition apparatus updating. GER-319. [→ canonical](/research/governance-error-register/319)
+
+### Influence Drift
+
+Drift in the option topology shown to users — defaults, ranking, surfaced choices — without rule changes. GER-313. [→ canonical](/research/governance-error-register/313)
+
+### Inter-Layer Contracts
+
+The semantic agreements between adjacent layers of the SVRNOS 7-Layer Model that must hold for governance to compose.
+
+
+## L
+
+### Layer (SVRNOS 7-Layer Model)
+
+L1 through L7 in the SVRNOS 7-Layer Model. Cross-references GER tier. [→ canonical](/research/svrnos-7-layer-model)
+
+### Layer Drift
+
+Erosion of inter-layer contracts over time, allowing governance gaps to open between adjacent layers.
+
+### Lost in Translation
+
+Human-readable policy and machine-enforced rule both exist but enforce semantically different versions. GER-352. [→ canonical](/research/governance-error-register/352)
+
+
+## N
+
+### Namespace-Claim Codes
+
+GER codes that SVRNOS assigns to HTTP-unassigned slots (e.g., 306, 310, 420, 430, 512), following vendor extension precedent.
+
+### Non-Content Safety Attestation
+
+SVRNOS framework for producing machine-readable evidence that governance ran, distinct from content moderation outcomes. [→ canonical](/research/non-content-safety-attestation)
+
+
+## P
+
+### Phantom Enforcement
+
+Stated prohibition exists in policy but enforcement is not wired into production. GER-420. [→ canonical](/research/governance-error-register/420)
+
+### Procedural Attestation
+
+Machine-readable evidence that the governance procedure ran, distinct from narrative reconstruction. Credit: Paul McDonald.
+
+### Provenance Binding
+
+Locking generated content to its verified source identity at production time (PROV spec).
+
+### Provenance Omission
+
+Generative capability shipped without watermark, synthetic-media flag, or other authenticity-preserving artifact. GER-322. [→ canonical](/research/governance-error-register/322)
+
+
+## R
+
+### Recursive Agentic Loop
+
+Agentic AI enters recursive execution producing apparent progress but no actual goal advancement. GER-427. [→ canonical](/research/governance-error-register/427)
+
+### Representation-Bound Admissibility Failure
+
+AI bound to a stale or incorrect internal representation of the user/case state. GER-318. [→ canonical](/research/governance-error-register/318)
+
+### Reset Content *(aka Yo-Yo Trick)*
+
+Generation completed and visible to the user, then retroactively suppressed by a downstream classifier. GER-205. [→ canonical](/research/governance-error-register/205)
+
+### Risk Surface Retired
+
+Platform permanently moves a dangerous interaction surface to a governed path. GER-301. [→ canonical](/research/governance-error-register/301)
+
+
+## S
+
+### Safety Constraint Retired
+
+Publicly committed governance constraint removed or revised under non-technical pressure. GER-306. [→ canonical](/research/governance-error-register/306)
+
+### Scope Misdirection
+
+Governed AI system processed a request outside its intended deployment domain. GER-421. [→ canonical](/research/governance-error-register/421)
+
+### Stale Admissibility
+
+State was correct when calculation began but had changed by the time the action committed. GER-305. [→ canonical](/research/governance-error-register/305)
+
+### SVRNOS 7-Layer Model *(aka SVRNOS 7L)*
+
+OSI-inspired technical stack map for AI governance, L1 (infrastructure) through L7 (application). [→ canonical](/research/svrnos-7-layer-model)
+
+### System Fabrication
+
+AI originates a factual claim the user never introduced and pairs it with a real-world action directive. GER-512. [→ canonical](/research/governance-error-register/512)
+
+
+## T
+
+### The Yo-Yo Trick *(aka Reset Content)*
+
+Colloquial name for Reset Content (GER-205): the content comes out, then the content gets unmade. [→ canonical](/research/governance-error-register/205)
+
+### Tier (GER)
+
+The HTTP-derived classification axis of GER codes: 0xx, 2xx, 3xx, 4xx, 5xx. Distinct from layer. [→ canonical](/research/governance-error-register)
+
+
+## V
+
+### Validator Drift / Sycophancy Loop
+
+Engagement-optimized model affirms user beliefs that should trigger refusal or escalation. GER-328. [→ canonical](/research/governance-error-register/328)
+

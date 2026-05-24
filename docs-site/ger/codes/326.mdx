@@ -1,0 +1,137 @@
+---
+title: "GER-326 · Cross-Surface Inference Leak"
+description: "AI infers sensitive attributes (political alignment, demographic, romantic status, medical status) on one surface and acts on that inference through a different surface (pricing, ad delivery, content ranking) without cro…"
+sidebarTitle: "326 · Cross-Surface Inference Leak"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="green">Documented</Badge> <Badge>Tier 3xx</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
+</div>
+
+*Structural Moves*
+
+## Definition
+
+AI infers sensitive attributes (political alignment, demographic, romantic status, medical status) on one surface and acts on that inference through a different surface (pricing, ad delivery, content ranking) without crossing the original consent boundary.
+
+## Distinct from
+
+- [**GER-329**](/ger/codes/329) — Sensitive attribute inferred and used cross-surface without consent boundary → this code. Direct training-data ingestion without license → GER-329.
+
+## Anchor incidents (26)
+
+<Card title="Chinese Tech Firms Allegedly Developed Facial Recognition to Identify People by Race, Targeting Uyghur Muslims" href="https://incidentdatabase.ai/cite/107">
+  **primary** — AIID #107 · 2018-07-20
+</Card>
+
+<Card title="Chinese Insurer Ping An Employed Facial Recognition to Determine Customers’ Untrustworthiness, Which Critics Alleged to Likely Make Errors and Discriminate" href="https://incidentdatabase.ai/cite/235">
+  **primary** — AIID #235 · 2016-04-15
+</Card>
+
+<Card title="Chinese Province Developed System Tracking Journalists and International Students" href="https://incidentdatabase.ai/cite/438">
+  **primary** — AIID #438 · 2021-09-17
+</Card>
+
+<Card title="AI-Powered Chinese Surveillance Campaign 'Peer Review' Used for Real-Time Monitoring of Anti-State Speech on Western Social Media" href="https://incidentdatabase.ai/cite/939">
+  **primary** — AIID #939 · 2025-02-21
+</Card>
+
+<Card title="Images of Black People Labeled as Gorillas" href="https://incidentdatabase.ai/cite/16">
+  **secondary** — AIID #16 · 2015-06-03
+</Card>
+
+<Card title="Amazon's Experimental Hiring Tool Allegedly Displayed Gender Bias in Candidate Rankings" href="https://incidentdatabase.ai/cite/37">
+  **secondary** — AIID #37 · 2016-08-10
+</Card>
+
+<Card title="COMPAS Algorithm Reportedly Performs Poorly in Crime Recidivism Prediction" href="https://incidentdatabase.ai/cite/40">
+  **secondary** — AIID #40 · 2016-05-23
+</Card>
+
+<Card title="Predictive Policing Biases of PredPol" href="https://incidentdatabase.ai/cite/54">
+  **secondary** — AIID #54 · 2015-11-18
+</Card>
+
+<Card title="Police Departments Reported ShotSpotter as Unreliable and Wasteful" href="https://incidentdatabase.ai/cite/112">
+  **secondary** — AIID #112 · 2012-10-09
+</Card>
+
+<Card title="Optum Algorithmic Health Risk Scores Reportedly Underestimated Black Patients' Needs" href="https://incidentdatabase.ai/cite/124">
+  **secondary** — AIID #124 · 2019-10-24
+</Card>
+
+<Card title="Justice Department’s Recidivism Risk Algorithm PATTERN Allegedly Caused Persistent Disparities Along Racial Lines" href="https://incidentdatabase.ai/cite/154">
+  **secondary** — AIID #154 · 2022-01-26
+</Card>
+
+<Card title="Predictive Policing Program by Florida Sheriff’s Office Allegedly Violated Residents’ Rights and Targeted Children of Vulnerable Groups" href="https://incidentdatabase.ai/cite/195">
+  **secondary** — AIID #195 · 2015-09-01
+</Card>
+
+<Card title="WeChat’s Machine Translation Gave a Racist English Translation for the Chinese Term for “Black Foreigner”" href="https://incidentdatabase.ai/cite/216">
+  **secondary** — AIID #216 · 2017-10-10
+</Card>
+
+<Card title="Unreliable ShotSpotter Audio Previously Used to Convict Chicago Man in Murder Case" href="https://incidentdatabase.ai/cite/255">
+  **secondary** — AIID #255 · 2020-05-31
+</Card>
+
+<Card title="DUI Arrest Case Allegedly Based Only on ShotSpotter's Alert" href="https://incidentdatabase.ai/cite/256">
+  **secondary** — AIID #256 · 2021-11-07
+</Card>
+
+<Card title="Police Reportedly Deployed ShotSpotter Sensors Disproportionately in Neighborhoods of Color" href="https://incidentdatabase.ai/cite/257">
+  **secondary** — AIID #257 · 2012-05-04
+</Card>
+
+<Card title="Virginia Courts’ Algorithmic Recidivism Risk Assessment Failed to Lower Incarceration Rates" href="https://incidentdatabase.ai/cite/274">
+  **secondary** — AIID #274 · 2003-07-01
+</Card>
+
+<Card title="Unreliable ShotSpotter Audio Convicted Black Rochester Man of Shooting Police" href="https://incidentdatabase.ai/cite/429">
+  **secondary** — AIID #429 · 2016-04-01
+</Card>
+
+<Card title="ShotSpotter Failed to Alert Authorities of Mass Shooting in North Carolina" href="https://incidentdatabase.ai/cite/446">
+  **secondary** — AIID #446 · 2023-01-01
+</Card>
+
+<Card title="Workday's AI Tools Allegedly Enabled Employers to Discriminate against Applicants of Protected Groups" href="https://incidentdatabase.ai/cite/489">
+  **secondary** — AIID #489 · 2019-06-03
+</Card>
+
+<Card title="Gunshot Detection Technology ShotSpotter (now SoundThinking) Reportedly Only Has 47% Accuracy in Chicago System" href="https://incidentdatabase.ai/cite/637">
+  **secondary** — AIID #637 · 2024-01-31
+</Card>
+
+<Card title="Alleged Gaggle Surveillance Alert Reportedly Leads to Arrest and Detention of 13-Year-Old Student in Fairview, Tennessee" href="https://incidentdatabase.ai/cite/1167">
+  **secondary** — AIID #1167 · 2023-08-15
+</Card>
+
+<Card title="Nigeria-Based YouTube Network Allegedly Uses AI Voiceovers and Anchors to Amplify Pro-Kremlin Narratives" href="https://incidentdatabase.ai/cite/1195">
+  **secondary** — AIID #1195 · 2025-09-01
+</Card>
+
+<Card title="Gaggle AI Monitoring at Lawrence, Kansas High School Reportedly Misflags Student Content and Blocks Emails" href="https://incidentdatabase.ai/cite/1213">
+  **secondary** — AIID #1213 · 2025-08-01
+</Card>
+
+<Card title="Gaggle Alert Reportedly Leads to Arrest of 15-Year-Old in Volusia County, Florida, for School Threat the Student Claimed Was Not Serious" href="https://incidentdatabase.ai/cite/1215">
+  **secondary** — AIID #1215 · 2025-09-12
+</Card>
+
+<Card title="ICE AI Resume Screening Error Allegedly Routed Inexperienced Recruits Into Inadequate Training Pathways" href="https://incidentdatabase.ai/cite/1343">
+  **secondary** — AIID #1343 · 2026-01-14
+</Card>
+
+## Tags
+
+`discrimination` · `privacy-violation`
+
+## Cite this code
+
+```
+Nzeutem, S. (2026). GER-326 Cross-Surface Inference Leak. SVRNOS Governance Error Register. https://docs.svrnos.com/ger/codes/326
+```

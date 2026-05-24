@@ -1,0 +1,41 @@
+---
+title: "SVRNOS 7-Layer Model"
+description: "OSI-inspired technical stack map for AI governance. L1 (infrastructure) through L7 (application)."
+---
+
+<Note>
+  The 7-Layer Model paper is in active drafting. This page is a placeholder. Tutorial and full reference will land in early June 2026.
+</Note>
+
+The **SVRNOS 7-Layer Model** is an OSI-inspired technical stack map for AI governance. It names the seven layers at which AI systems are assembled, and the inter-layer contracts that have to hold for governance to compose.
+
+| Layer | Name | What lives here |
+|---|---|---|
+| **L7** | Application | What the AI is being used for in a product |
+| **L6** | Policy | The rules governing what the system should and shouldn't do |
+| **L5** | Session / State | The model's representation of the user, case, history |
+| **L4** | Evidence Transport | Audit logs, attestations, evidence pipelines (NCSA territory) |
+| **L3** | Routing / Boundary | What enters and leaves the system; provenance gates |
+| **L2** | Tool / Component | What capabilities the model can invoke |
+| **L1** | Infrastructure | The physical compute, training pipeline, model weights |
+
+## Why a 7-Layer Model
+
+The AI safety field has organizational frameworks (NIST AI RMF, FERZ Governance Laundering), interaction frameworks (EA Forum), and security frameworks (OWASP, MITRE ATLAS). None map the technical stack cleanly. The 7-Layer Model fills that gap, the same way OSI did for networking — a shared vocabulary across engineering, policy, and audit.
+
+## Cross-reference to GER
+
+Each [GER code](/ger) carries an optional `layer` tag indicating where in the 7-Layer stack that failure structurally lives. For example:
+- GER-501 Escalation Not Implemented → L6 (policy never wired to L4 evidence)
+- GER-322 Provenance Omission → L3 (boundary lacks provenance gate)
+- GER-318 Representation-Bound Admissibility → L5 (session state stale)
+
+This is what makes GER + 7-Layer compose: the registry tells you what failed, the model tells you where.
+
+## Paper
+
+Full paper publishing in early June 2026. Until then, the working draft references:
+
+- Citation pairing with Stelling et al. (arXiv:2512.01166v4) and Generation Gap establishes the empirical/documentary foundation
+- Inter-Layer Contracts framework credited to Wolfgang Roesch
+- DecisionSpace OS lineage-table framing

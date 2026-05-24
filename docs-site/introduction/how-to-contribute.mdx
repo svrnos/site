@@ -1,0 +1,50 @@
+---
+title: "How to contribute"
+description: "Propose a code, refine a definition, or suggest a clarification."
+---
+
+The SVRNOS Governance Error Register is a curated open standard. Contributions are welcome.
+
+## What we accept
+
+- **New code proposals** — a structural failure mode the existing 71 codes don't capture
+- **Code refinements** — a sharper definition, a missing sub-type, a corrected "Distinct From" boundary
+- **Anchor incidents** — a documented case that should be linked to an existing code
+- **Translations** — a non-English rendering of a code's definition
+- **Tag refinements** — a more precise harm/vector/sector tag for a code
+
+## What we don't accept
+
+- **Incident reports.** SVRNOS does not host an incident corpus. We map against the [AI Incident Database](https://incidentdatabase.ai). Report incidents there — we'll inherit the mapping.
+- **Speculative codes** without at least one illustrative scenario from real-world observation.
+
+## How to submit
+
+Email **hello@svrnos.com** or use the [SVRNOS /ask channel](https://svrnos.com/ask).
+
+For new code proposals, include:
+
+1. **Proposed code number** (suggest one in the unassigned HTTP slots; we may renumber)
+2. **Name** — short, distinctive
+3. **One-sentence definition**
+4. **Why this is distinct** from the closest existing codes — name them and explain the boundary
+5. **At least one illustrative or documented case** (AIID ID if it exists)
+6. **The structural property the code captures** — what failed, not what was generated
+
+## Credit
+
+Accepted contributions earn an entry in the [Attributions](/attributions) page. Contributors with formally adopted framings appear in the Zenodo DOI metadata for that GER version.
+
+## The curation process
+
+Sushee Nzeutem (SVRNOS) reviews every submission. Decisions follow these gates:
+
+1. **Structural distinctness** — does this fail in a way no existing code captures?
+2. **Regulator test** — can a regulator read this code name and immediately understand the failure?
+3. **Evidence sufficiency** — is there enough documented or illustrative material to defend the code under scrutiny?
+
+Rejected proposals get a written explanation. Accepted proposals land in the next minor version release.
+
+## Pattern: this is MITRE CVE, not Wikipedia
+
+The GER is curated, not crowd-edited. Public read, controlled write. Same model as MITRE CVE, IANA HTTP status codes, and MITRE ATT&CK. This is deliberate — it's what makes the codes citable in court, in regulation, in insurance underwriting.

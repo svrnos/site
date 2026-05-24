@@ -1,0 +1,54 @@
+---
+title: "Governance Error Register"
+description: "A classification system for AI platform governance failures. 71 codes across five tiers, modeled on HTTP status codes."
+---
+
+The **Governance Error Register (GER)** is an open taxonomy of AI platform governance failures. It exists so engineers, regulators, lawyers, journalists, and affected users can communicate about the same failures using the same words.
+
+<CardGroup cols={2}>
+  <Card title="Find a code" icon="magnifying-glass" href="/ger/find">
+    Start here. Describe what happened — symptom picker, incident search, or filter by sector — and we'll narrow 71 codes to the 3–5 that match your case.
+  </Card>
+  <Card title="Browse all codes" icon="grid" href="/ger/browse">
+    Flat tier-grouped index. For when you already know which code you want.
+  </Card>
+  <Card title="Read the paper" icon="file-lines" href="/ger/paper">
+    The long-form research artifact. Methodology, related work, design principles, implications, citations.
+  </Card>
+  <Card title="Cite GER" icon="quote-right" href="/ger/cite">
+    Citation format, Zenodo DOI, license terms.
+  </Card>
+</CardGroup>
+
+## The five tiers
+
+The GER inherits the HTTP status-code mental model. Each tier names a structural class of governance behavior:
+
+| Tier | Class | Codes | Example |
+|---|---|---|---|
+| **0xx** | Pre-Infrastructure — no governance layer | 1 | GER-000 Pre-Governance |
+| **2xx** | Success states — governance handled correctly | 4 | GER-200 Governance Handled |
+| **3xx** | Structural moves — deliberate routing decisions | 36 | GER-301 Risk Surface Retired |
+| **4xx** | Operator / platform errors — local failure | 23 | GER-420 Phantom Enforcement |
+| **5xx** | Infrastructure failures — systemic | 7 | GER-501 Escalation Not Implemented |
+
+## What's new in v0.2
+
+71 codes total (up from 27 in v0.1). New entries include the multi-agent failure cluster (GER-332 through GER-349), the clinical-AI cluster surfaced by Dr. Hellen V. (GER-432, GER-433), the consent and biometric cluster (GER-324, GER-329, GER-346), and refinements to the v0.1 codes with sub-type taxonomies.
+
+See [the changelog](/ger/changelog) for the full diff. See [Attributions](/attributions) for the contributors whose framings shaped v0.2.
+
+## Two classes of codes
+
+GER codes fall into two classes:
+
+- **IANA-aligned codes** match assigned HTTP semantics (GER-404 mirrors HTTP 404; GER-408 Timeout; GER-409 Policy Conflict; GER-500 Infrastructure Failure; GER-501 Escalation Not Implemented).
+- **Namespace-claim codes** occupy unassigned or extension-available HTTP slots where the failure mode has no direct HTTP analogue. This follows the convention established by Cloudflare (520–527), Twilio (1xxxx–9xxxx), and nginx (444, 494–499) in publishing domain-specific failure modes within the HTTP code space.
+
+Both classes share the GER tier structure. The lookup tool surfaces both transparently.
+
+## License
+
+GER content — codes, definitions, distinct-from boundaries, attributions, glossary, tags — is published under **CC BY 4.0**.
+
+Anchor incidents are sourced from the [AI Incident Database](https://incidentdatabase.ai) (CC BY-NC-SA 4.0). SVRNOS displays incident titles and links out for full narratives — we do not redistribute the corpus.

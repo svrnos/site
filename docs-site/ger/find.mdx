@@ -1,0 +1,28 @@
+---
+title: "Find a code"
+description: "Three entry points: symptom picker, AIID incident search, faceted filter. Pure deterministic logic — no AI in the matching."
+---
+
+import GerLookup from "/components/GerLookup.jsx"
+
+<GerLookup />
+
+## How this works
+
+This page is a deterministic lookup tool, not an AI assistant. Three entry points feed one filter engine:
+
+1. **Symptom picker** — 17 tiles describing common situations in plain language. Click a tile to narrow to the codes most likely to apply.
+2. **AIID incident search** — type a famous case name (MrBeast, Tumbler Ridge, Air Canada). Returns matching incidents and the GER codes they fire.
+3. **Faceted filter** — tier (0xx–5xx), sector (clinical, legal, agentic, etc.), harm type. Multi-select.
+
+The filter narrows; it does not diagnose. The output is a short list of candidate codes. You read each code's definition to decide which fits your case.
+
+## What this doesn't do
+
+- It doesn't classify your incident using an LLM
+- It doesn't tell you what to do next — for that, read the matched code's full page
+- It doesn't accept incident submissions — submit those to [incidentdatabase.ai](https://incidentdatabase.ai) directly
+
+## Stuck?
+
+If the lookup doesn't surface a code that fits, [propose one](/introduction/how-to-contribute). New codes ship in the next minor version.

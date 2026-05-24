@@ -1,0 +1,898 @@
+---
+title: "GER-421 · Scope Misdirection"
+description: "A governed AI system processed a request outside its intended deployment domain. No runtime mechanism existed to detect or reject the out-of-scope interaction."
+sidebarTitle: "421 · Scope Misdirection"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="green">Documented</Badge> <Badge>Tier 4xx</Badge> <Badge tone="gray">Added v0.1</Badge>
+</div>
+
+*Operator / Platform Errors*
+
+## Definition
+
+A governed AI system processed a request outside its intended deployment domain. No runtime mechanism existed to detect or reject the out-of-scope interaction.
+
+## Distinct from
+
+- [**GER-420**](/ger/codes/420) — Adversary defeated active enforcement → this code. Enforcement was never installed in production → GER-420.
+- [**GER-425**](/ger/codes/425) — General adversarial defeat of enforcement → this code. Identity verification specifically defeated by synthesis → GER-425.
+
+## Anchor incidents (214)
+
+<Card title="Google’s Automated Child Abuse Detection Wrongfully Flagged a Parent’s Naked Photo of His Child" href="https://incidentdatabase.ai/cite/303">
+  **primary** — AIID #303 · 2022-08-21
+</Card>
+
+<Card title="GPT-3-Based Twitter Bot Hijacked Using Prompt Injection Attacks" href="https://incidentdatabase.ai/cite/352">
+  **primary** — AIID #352 · 2022-09-15
+</Card>
+
+<Card title="Bing Chat's Initial Prompts Revealed by Early Testers Through Prompt Injection" href="https://incidentdatabase.ai/cite/473">
+  **primary** — AIID #473 · 2023-02-08
+</Card>
+
+<Card title="Turnitin's ChatGPT-Detection Tool Falsely Flagged Student Essays as AI-Generated" href="https://incidentdatabase.ai/cite/514">
+  **primary** — AIID #514 · 2023-01-20
+</Card>
+
+<Card title="Facewatch Reported to Have Wrongfully Flagged Home Bargains Customer as Shoplifter" href="https://incidentdatabase.ai/cite/691">
+  **primary** — AIID #691 · 2024-05-25
+</Card>
+
+<Card title="Jailbroken Lovable AI Allegedly Used to Generate and Host Phishing Pages, Steal Credentials, and Bypass Security" href="https://incidentdatabase.ai/cite/1016">
+  **primary** — AIID #1016 · 2025-04-09
+</Card>
+
+<Card title="OpenAI ChatGPT Models Reportedly Jailbroken to Provide Chemical, Biological, and Nuclear Weapons Instructions" href="https://incidentdatabase.ai/cite/1238">
+  **primary** — AIID #1238 · 2025-10-10
+</Card>
+
+<Card title="Anthropic's Claude Was Reportedly Jailbroken To Allegedly Help Steal Sensitive Mexican Government Data" href="https://incidentdatabase.ai/cite/1430">
+  **primary** — AIID #1430 · 2025-12-01
+</Card>
+
+<Card title="Korean Chatbot Luda Made Offensive Remarks towards Minority Groups" href="https://incidentdatabase.ai/cite/106">
+  **secondary** — AIID #106 · 2020-12-23
+</Card>
+
+<Card title="Reported AI-Cloned Voice Used to Deceive Hong Kong Bank Manager in Purported $35 Million Fraud Scheme" href="https://incidentdatabase.ai/cite/147">
+  **secondary** — AIID #147 · 2020-01-15
+</Card>
+
+<Card title="Meta’s BlenderBot 3 Chatbot Demo Made Offensive Antisemitic Comments" href="https://incidentdatabase.ai/cite/278">
+  **secondary** — AIID #278 · 2022-08-07
+</Card>
+
+<Card title="Purported Deepfake TikTok Video Reportedly Featured Joe Rogan Endorsing Supplement Brand" href="https://incidentdatabase.ai/cite/481">
+  **secondary** — AIID #481 · 2023-02-12
+</Card>
+
+<Card title="Alleged Use of Purportedly AI-Generated and Manipulated Media to Misrepresent Candidates and Disrupt Turkey's 2023 Presidential Election" href="https://incidentdatabase.ai/cite/544">
+  **secondary** — AIID #544 · 2023-05-11
+</Card>
+
+<Card title="Alleged Deepfake CFO Scam Reportedly Costs Multinational Engineering Firm Arup $25 Million" href="https://incidentdatabase.ai/cite/634">
+  **secondary** — AIID #634 · 2024-02-02
+</Card>
+
+<Card title="Purported Deepfake Video Allegedly Claims Kyiv's Assassination Plan Against President Emmanuel Macron" href="https://incidentdatabase.ai/cite/643">
+  **secondary** — AIID #643 · 2024-02-13
+</Card>
+
+<Card title="Presidency of Moldova Reportedly Refutes Purported Deepfake Video Slandering President Maia Sandu" href="https://incidentdatabase.ai/cite/666">
+  **secondary** — AIID #666 · 2023-12-29
+</Card>
+
+<Card title="Many Purported Political Deepfakes Reportedly Circulating in Run-up to 2024 Pakistani General Elections" href="https://incidentdatabase.ai/cite/671">
+  **secondary** — AIID #671 · 2024-02-08
+</Card>
+
+<Card title="Alleged Deepfake Audio Depicts Philippines President Ferdinand Marcos Jr. Ordering Military Action" href="https://incidentdatabase.ai/cite/676">
+  **secondary** — AIID #676 · 2024-04-24
+</Card>
+
+<Card title="A Purported Deepfake of Senator Elizabeth Warren Circulates Allegedly Saying Republicans Should Not Vote" href="https://incidentdatabase.ai/cite/679">
+  **secondary** — AIID #679 · 2023-02-20
+</Card>
+
+<Card title="Purported Deepfake Audio Reportedly Sparks False Claims of Biden Threatening Texas with F-15s" href="https://incidentdatabase.ai/cite/703">
+  **secondary** — AIID #703 · 2024-01-13
+</Card>
+
+<Card title="Purported Deepfake Video Falsely Depicts Biden Announcing National Draft for Ukraine" href="https://incidentdatabase.ai/cite/713">
+  **secondary** — AIID #713 · 2023-02-27
+</Card>
+
+<Card title="Over 400 Purportedly AI-Driven Scams Reportedly Led to $8M Loss for Australians in 2023" href="https://incidentdatabase.ai/cite/715">
+  **secondary** — AIID #715 · 2024-03-01
+</Card>
+
+<Card title="AI-Enabled Fraud Schemes Reportedly Increasing Consumer Harm and Challenging Detection" href="https://incidentdatabase.ai/cite/735">
+  **secondary** — AIID #735 · 2024-06-22
+</Card>
+
+<Card title="Scammers Allegedly Use Deepfake of Hong Kong Entertainer Andy Lau to Steal NT$2.64 Million from Fan" href="https://incidentdatabase.ai/cite/739">
+  **secondary** — AIID #739 · 2024-06-27
+</Card>
+
+<Card title="Purported Deepfake Targets Olena Zelenska in Alleged Russian Disinformation Campaign" href="https://incidentdatabase.ai/cite/755">
+  **secondary** — AIID #755 · 2024-07-03
+</Card>
+
+<Card title="Purported Deepfake of Brian May Allegedly Exploited in Scam Offering Fake Queen Backstage Tickets" href="https://incidentdatabase.ai/cite/802">
+  **secondary** — AIID #802 · 2024-09-13
+</Card>
+
+<Card title="Senator Ben Cardin Reportedly Received a Purported Deepfake Zoom Call Impersonating Former Ukrainian Foreign Minister Dmytro Kuleba" href="https://incidentdatabase.ai/cite/805">
+  **secondary** — AIID #805 · 2024-09-19
+</Card>
+
+<Card title="Jennifer Aniston’s Likeness Allegedly Exploited in Purported Deepfake Collagen Supplement Promotion" href="https://incidentdatabase.ai/cite/818">
+  **secondary** — AIID #818 · 2024-09-28
+</Card>
+
+<Card title="Purportedly AI-Driven Phishing Scam Uses Spoofed Google Call to Attempt Gmail Breach of Security Expert" href="https://incidentdatabase.ai/cite/839">
+  **secondary** — AIID #839 · 2024-10-07
+</Card>
+
+<Card title="AI Voice Cloning of Ari Melber Allegedly Exploited in Scam Targeting Elderly Woman" href="https://incidentdatabase.ai/cite/872">
+  **secondary** — AIID #872 · 2024-12-16
+</Card>
+
+<Card title="AI Voice Scam Targets Westchester Parents with Fake Kidnapping Ransom Calls" href="https://incidentdatabase.ai/cite/891">
+  **secondary** — AIID #891 · 2025-01-08
+</Card>
+
+<Card title="Prime Minister of Thailand Paetongtarn Shinawatra Claims AI Voice Scam Impersonated ASEAN Leader Requesting Money" href="https://incidentdatabase.ai/cite/902">
+  **secondary** — AIID #902 · 2025-01-15
+</Card>
+
+<Card title="Yahoo Boys and Scammers from Morocco Allegedly Target U.S. Widows and Vulnerable Individuals with 'Artificial Patriot' Scams" href="https://incidentdatabase.ai/cite/912">
+  **secondary** — AIID #912 · 2024-11-21
+</Card>
+
+<Card title="Purported Russian-Linked Network Allegedly Used Deepfake of Maria Ressa on Facebook and Bing to Promote Cryptocurrency Scam Targeting Filipinos" href="https://incidentdatabase.ai/cite/919">
+  **secondary** — AIID #919 · 2024-02-06
+</Card>
+
+<Card title="Alleged Deepfake Scam Reportedly Promoted Trump Golden Eagles Project as Investment Opportunity" href="https://incidentdatabase.ai/cite/920">
+  **secondary** — AIID #920 · 2025-02-01
+</Card>
+
+<Card title="AI Voice Scam Allegedly Defrauds Game and Coffee Store in Havre, Montana" href="https://incidentdatabase.ai/cite/922">
+  **secondary** — AIID #922 · 2025-02-04
+</Card>
+
+<Card title="Fraudsters Allegedly Use AI-Generated Voice of Italian Defense Minister Guido Crosetto to Scam Business Leaders" href="https://incidentdatabase.ai/cite/927">
+  **secondary** — AIID #927 · 2025-02-04
+</Card>
+
+<Card title="Reportedly Manipulated TikTok Videos Misrepresent Anti-AfD Protests as Far-Right Rallies" href="https://incidentdatabase.ai/cite/931">
+  **secondary** — AIID #931 · 2025-01-21
+</Card>
+
+<Card title="Reported Deepfake of Maltese Prime Minister Robert Abela and Journalist Mark Laurence Zammit Used to Promote Fraudulent Investment" href="https://incidentdatabase.ai/cite/935">
+  **secondary** — AIID #935 · 2025-02-17
+</Card>
+
+<Card title="Deepfake of Former Prime Minister of Malta Joseph Muscat Allegedly Promotes Nord Invest Scam" href="https://incidentdatabase.ai/cite/936">
+  **secondary** — AIID #936 · 2024-04-12
+</Card>
+
+<Card title="Bolivian Criminal Network Allegedly Used Deepfake of Education Minister to Defraud at Least 19 Victims in Employment Scam" href="https://incidentdatabase.ai/cite/937">
+  **secondary** — AIID #937 · 2025-02-10
+</Card>
+
+<Card title="Purportedly AI-Assisted Impersonation of Martin Henderson in Romance Scam Leads to Reported NZ$375,000 Fraud" href="https://incidentdatabase.ai/cite/938">
+  **secondary** — AIID #938 · 2025-02-01
+</Card>
+
+<Card title="Cybercriminals Reportedly Exploited Google’s G.Co Subdomain and Spoofed Caller ID in AI-Driven Phishing Attack on Hack Club Founder" href="https://incidentdatabase.ai/cite/942">
+  **secondary** — AIID #942 · 2025-02-20
+</Card>
+
+<Card title="Kenya's Foreign Affairs Principal Secretary Korir Sing'Oei Reportedly Shared AI-Generated Video Depicting Fareed Zakaria Praising Sudan Diplomacy" href="https://incidentdatabase.ai/cite/944">
+  **secondary** — AIID #944 · 2025-02-20
+</Card>
+
+<Card title="Arizona Residents Reportedly a Frequent Target of AI-Driven Romance Scams" href="https://incidentdatabase.ai/cite/946">
+  **secondary** — AIID #946 · 2022-01-01
+</Card>
+
+<Card title="Two Members of Highline Public Schools Community in King County, Washington Reportedly Targeted in Deepfake Kidnapping Scam" href="https://incidentdatabase.ai/cite/947">
+  **secondary** — AIID #947 · 2024-09-25
+</Card>
+
+<Card title="Deepfake Videos of Barbara O’Neill Allegedly Used in Health Scam Targeting Social Media Users" href="https://incidentdatabase.ai/cite/953">
+  **secondary** — AIID #953 · 2024-11-01
+</Card>
+
+<Card title="Deepfake Video of Indonesian President Prabowo Subianto and Other Officials Reportedly Used in Scam to Defraud Citizens Across 20 Provinces" href="https://incidentdatabase.ai/cite/959">
+  **secondary** — AIID #959 · 2025-03-02
+</Card>
+
+<Card title="Ferrari Executive Targeted by AI Deepfake Scam Impersonating CEO Benedetto Vigna" href="https://incidentdatabase.ai/cite/966">
+  **secondary** — AIID #966 · 2024-07-16
+</Card>
+
+<Card title="Russian Influence Operation Allegedly Uses AI to Create Fake Kamala Harris Campaign Website and Rhino-Hunting Hoax" href="https://incidentdatabase.ai/cite/972">
+  **secondary** — AIID #972 · 2024-09-25
+</Card>
+
+<Card title="Canadian Fraud Ring Allegedly Used AI Voice Cloning in Multi-Year $21 Million Grandparent Scam Targeting Elderly Americans Across 46 States" href="https://incidentdatabase.ai/cite/973">
+  **secondary** — AIID #973 · 2025-03-05
+</Card>
+
+<Card title="Purported Deepfake Audio Allegedly Impersonates U.S. Secretary of State Marco Rubio in Starlink Disinformation Campaign" href="https://incidentdatabase.ai/cite/974">
+  **secondary** — AIID #974 · 2025-03-04
+</Card>
+
+<Card title="Chinese Actor and CPPCC Member Jin Dong Allegedly Impersonated by AI Deepfake Scammers to Mislead and Defraud Fans" href="https://incidentdatabase.ai/cite/978">
+  **secondary** — AIID #978 · 2025-03-09
+</Card>
+
+<Card title="AI-Generated Songs Allegedly Imitating Céline Dion Circulate Online Without Authorization" href="https://incidentdatabase.ai/cite/980">
+  **secondary** — AIID #980 · 2025-03-07
+</Card>
+
+<Card title="Scammers Reportedly Used AI Voice Clone and YouTube Footage to Impersonate WPP CEO in Unsuccessful Scam Attempt" href="https://incidentdatabase.ai/cite/983">
+  **secondary** — AIID #983 · 2024-05-10
+</Card>
+
+<Card title="Deepfake Videos Allegedly Use AI-Generated Voice Clone of Singapore Prime Minister Lawrence Wong to Promote Scams" href="https://incidentdatabase.ai/cite/984">
+  **secondary** — AIID #984 · 2025-03-07
+</Card>
+
+<Card title="Alleged Deepfake of Singapore Prime Minister Lee Hsien Loong Promotes Cryptocurrency Scam in Fake Interview" href="https://incidentdatabase.ai/cite/985">
+  **secondary** — AIID #985 · 2023-12-29
+</Card>
+
+<Card title="Scammers Allegedly Manipulate 2023 Speech of Singapore Senior Minister Lee Hsien Loong to Spread Deepfake Investment Fraud" href="https://incidentdatabase.ai/cite/986">
+  **secondary** — AIID #986 · 2024-06-02
+</Card>
+
+<Card title="Alleged Deepfake of Singapore Deputy Prime Minister Lawrence Wong Falsely Shows Him Endorsing Commercial Products" href="https://incidentdatabase.ai/cite/987">
+  **secondary** — AIID #987 · 2023-12-11
+</Card>
+
+<Card title="Senior Minister of Singapore Lee Hsien Loong Allegedly Misrepresented in Two Deepfake Videos on Foreign Relations" href="https://incidentdatabase.ai/cite/988">
+  **secondary** — AIID #988 · 2024-06-21
+</Card>
+
+<Card title="Chinese Businessman Reportedly Defrauded of 4.3 Million Yuan by AI-Generated Deepfake Impersonating Friend" href="https://incidentdatabase.ai/cite/992">
+  **secondary** — AIID #992 · 2023-04-15
+</Card>
+
+<Card title="Manipulated Video Using AI-Generated Audio Targets Pakistan's Prime Minister Shehbaz Sharif with Fabricated Interview" href="https://incidentdatabase.ai/cite/1002">
+  **secondary** — AIID #1002 · 2025-03-23
+</Card>
+
+<Card title="Misleading Deepfake Video of Trump Mocking Zelenskyy for Clothing Goes Viral on Facebook" href="https://incidentdatabase.ai/cite/1005">
+  **secondary** — AIID #1005 · 2025-03-12
+</Card>
+
+<Card title="AI-Generated Voice Cloning of Trump Falsely Proposes Renaming the District of Columbia to the District of America" href="https://incidentdatabase.ai/cite/1007">
+  **secondary** — AIID #1007 · 2025-03-13
+</Card>
+
+<Card title="AI-Generated Voice Purporting to Be Daughter Allegedly Used to Coerce $2,000 from Colorado Mother" href="https://incidentdatabase.ai/cite/1008">
+  **secondary** — AIID #1008 · 2025-02-10
+</Card>
+
+<Card title="Deepfake of Bermuda Premier David Burt Promotes Investment Scam Using Royal Gazette Branding" href="https://incidentdatabase.ai/cite/1011">
+  **secondary** — AIID #1011 · 2025-04-05
+</Card>
+
+<Card title="AI Voice Clone of Texas Woman Used in Distress Scam Targeting Brother in Port Neches" href="https://incidentdatabase.ai/cite/1012">
+  **secondary** — AIID #1012 · 2025-04-03
+</Card>
+
+<Card title="Purported AI-Cloned Voice Depicts Kenyan President William Ruto Speaking French in Viral Video" href="https://incidentdatabase.ai/cite/1023">
+  **secondary** — AIID #1023 · 2024-02-19
+</Card>
+
+<Card title="Purported AI-Generated Audio Was Reportedly Used to Claim Recep Tayyip Erdoğan Expressed Support for Imran Khan in Pakistani Parliament" href="https://incidentdatabase.ai/cite/1029">
+  **secondary** — AIID #1029 · 2025-02-15
+</Card>
+
+<Card title="Aspiring Artist Cherelle Kozak Reportedly Targeted by AI-Powered Impersonation of Rapper Fat Joe" href="https://incidentdatabase.ai/cite/1030">
+  **secondary** — AIID #1030 · 2025-01-05
+</Card>
+
+<Card title="Reported Doctored Video of Nigerian President Bola Tinubu Claims Naira Will Be Replaced by U.S. Dollar" href="https://incidentdatabase.ai/cite/1032">
+  **secondary** — AIID #1032 · 2023-08-29
+</Card>
+
+<Card title="Video Allegedly Altered by AI Reportedly Spreads Claim of Nigerian Doctor's Hypertension Cure" href="https://incidentdatabase.ai/cite/1033">
+  **secondary** — AIID #1033 · 2023-11-13
+</Card>
+
+<Card title="Reported AI-Manipulated Video Depicts Donald Trump Endorsing Peter Obi and Criticizing Bola Tinubu" href="https://incidentdatabase.ai/cite/1034">
+  **secondary** — AIID #1034 · 2024-08-04
+</Card>
+
+<Card title="Purported AI-Generated Video Depicts Trump Urging Release of Nigerian Separatist Leader Nnamdi Kanu" href="https://incidentdatabase.ai/cite/1035">
+  **secondary** — AIID #1035 · 2024-11-20
+</Card>
+
+<Card title="Purported AI-Manipulated News Clip Fabricates Explosion and Doctor's Murder Plot for Scam" href="https://incidentdatabase.ai/cite/1036">
+  **secondary** — AIID #1036 · 2025-01-20
+</Card>
+
+<Card title="Microsoft Reportedly Blocks 1.6 Million Bot Signup Attempts Per Hour Amid Global AI-Driven Fraud Surge" href="https://incidentdatabase.ai/cite/1037">
+  **secondary** — AIID #1037 · 2025-04-16
+</Card>
+
+<Card title="Fact-Checking Finds Reportedly AI-Generated Video Misattributed Hypertension Cure Endorsements to Taiwo Ajai-Lycett and Chinonso Egemba" href="https://incidentdatabase.ai/cite/1042">
+  **secondary** — AIID #1042 · 2025-03-25
+</Card>
+
+<Card title="Mother in Louisville, Kentucky Describes Phone Scam Involving Purported AI-Generated Voice of Her Daughter" href="https://incidentdatabase.ai/cite/1045">
+  **secondary** — AIID #1045 · 2025-04-29
+</Card>
+
+<Card title="Purported AI-Generated Video Reportedly Depicts Trump Criticizing Former Kenyan Deputy President Rigathi Gachagua" href="https://incidentdatabase.ai/cite/1052">
+  **secondary** — AIID #1052 · 2025-01-25
+</Card>
+
+<Card title="Mumbai Businessman Reportedly Defrauded via Purported AI-Cloned Voice Impersonating Son" href="https://incidentdatabase.ai/cite/1053">
+  **secondary** — AIID #1053 · 2024-03-30
+</Card>
+
+<Card title="Institute for Strategic Dialogue Reports Russian-Aligned Operation Overload Using Purported AI-Generated Impersonations Across January to March 2025" href="https://incidentdatabase.ai/cite/1060">
+  **secondary** — AIID #1060 · 2025-05-06
+</Card>
+
+<Card title="Reportedly Viral USAID Disinformation Video Linked to Russian-Aligned Campaign Known as Matryoshka" href="https://incidentdatabase.ai/cite/1061">
+  **secondary** — AIID #1061 · 2025-02-07
+</Card>
+
+<Card title="Brazilian Authorities Link Alleged AI-Generated Marcos Mion Videos to Purported Fake Restaurant Promotions in Brazil" href="https://incidentdatabase.ai/cite/1062">
+  **secondary** — AIID #1062 · 2025-05-07
+</Card>
+
+<Card title="Alleged AI-Generated Scam Uses Bank of Cyprus Branding to Solicit Investments" href="https://incidentdatabase.ai/cite/1064">
+  **secondary** — AIID #1064 · 2024-11-14
+</Card>
+
+<Card title="Scammers Allegedly Use AI-Generated Avatars to Impersonate Friends in Houston, Texas and Solicit Money" href="https://incidentdatabase.ai/cite/1065">
+  **secondary** — AIID #1065 · 2024-09-23
+</Card>
+
+<Card title="Purported Unauthorized Deepfakes of Norman Swan and Others Circulated in Online Supplement Campaigns" href="https://incidentdatabase.ai/cite/1076">
+  **secondary** — AIID #1076 · 2025-05-21
+</Card>
+
+<Card title="FBI Reports Ongoing Vishing and Smishing Campaign Allegedly Targeting Government Officials Using Purportedly AI-Generated Voices" href="https://incidentdatabase.ai/cite/1077">
+  **secondary** — AIID #1077 · 2025-05-15
+</Card>
+
+<Card title="Purported AI-Manipulated Videos Depict Mauricio Macri Endorsing Manuel Adorni and Silvia Lospennato Withdrawing Before Buenos Aires Vote" href="https://incidentdatabase.ai/cite/1079">
+  **secondary** — AIID #1079 · 2025-05-17
+</Card>
+
+<Card title="Phone of White House Chief of Staff Susie Wiles Allegedly Breached in Reported AI Voice Impersonation Incident" href="https://incidentdatabase.ai/cite/1085">
+  **secondary** — AIID #1085 · 2025-05-30
+</Card>
+
+<Card title="Reported AI-Generated Video Purportedly Depicting Keanu Reeves Debating Elon Musk Circulates as Misinformation on Social Media" href="https://incidentdatabase.ai/cite/1086">
+  **secondary** — AIID #1086 · 2025-04-08
+</Card>
+
+<Card title="Campaign Featuring Purported AI-Generated Audio Attributed to Omar al-Bashir Spreads During Sudanese Conflict" href="https://incidentdatabase.ai/cite/1087">
+  **secondary** — AIID #1087 · 2023-08-20
+</Card>
+
+<Card title="Purported AI-Generated Audio Disinformation Reportedly Attributed to U.S. Ambassador John Godfrey Circulates in Sudan" href="https://incidentdatabase.ai/cite/1088">
+  **secondary** — AIID #1088 · 2023-04-15
+</Card>
+
+<Card title="Purported AI-Generated Content Circulates Widely in Sudan Amid Civil Conflict and Information Vacuum" href="https://incidentdatabase.ai/cite/1089">
+  **secondary** — AIID #1089 · 2024-10-23
+</Card>
+
+<Card title="Purported AI-Generated Video Portrays Pope Leo XIV Addressing Ibrahim Traoré of Burkina Faso" href="https://incidentdatabase.ai/cite/1092">
+  **secondary** — AIID #1092 · 2025-05-23
+</Card>
+
+<Card title="At Least 294 Purported AI-Generated Music Videos Portray Celebrities Praising Burkina Faso's Ibrahim Traoré" href="https://incidentdatabase.ai/cite/1094">
+  **secondary** — AIID #1094 · 2025-03-02
+</Card>
+
+<Card title="Purported AI-Generated Video Depicts Ibrahim Traoré of Burkina Faso Delivering Speech on Western Exploitation" href="https://incidentdatabase.ai/cite/1096">
+  **secondary** — AIID #1096 · 2025-05-25
+</Card>
+
+<Card title="Reported Audio Deepfake Impersonating CEO Karim Toubba Targets LastPass Employee via WhatsApp" href="https://incidentdatabase.ai/cite/1100">
+  **secondary** — AIID #1100 · 2024-04-10
+</Card>
+
+<Card title="Purported Deepfake Featuring Dr. Rinki Murphy and Jack Tame Reportedly Used to Promote Diabetes Scam in New Zealand" href="https://incidentdatabase.ai/cite/1102">
+  **secondary** — AIID #1102 · 2025-04-30
+</Card>
+
+<Card title="Michigan Woman Defrauded in Alleged Tinder Romance Scam Using Purportedly AI-Generated Video Calls" href="https://incidentdatabase.ai/cite/1105">
+  **secondary** — AIID #1105 · 2025-02-10
+</Card>
+
+<Card title="Bulgarian Tennis Player Grigor Dimitrov Alleges Deepfake Scam Promoting Fraudulent Investment Scheme Using His Likeness" href="https://incidentdatabase.ai/cite/1107">
+  **secondary** — AIID #1107 · 2025-06-13
+</Card>
+
+<Card title="Alleged AI-Manipulated Video Uses Macau Chief Executive Sam Hou Fai's Likeness in Investment Scam" href="https://incidentdatabase.ai/cite/1110">
+  **secondary** — AIID #1110 · 2025-06-18
+</Card>
+
+<Card title="Reported AI-Generated Video Call Impersonation of Cryptocurrency Analyst Leads to Alleged Malware Installation and Account Theft" href="https://incidentdatabase.ai/cite/1111">
+  **secondary** — AIID #1111 · 2025-06-19
+</Card>
+
+<Card title="Scammer Reportedly Used AI Voice Clone of WCPO Cincinnati Meteorologist in Facebook Fraud Attempts" href="https://incidentdatabase.ai/cite/1112">
+  **secondary** — AIID #1112 · 2025-06-18
+</Card>
+
+<Card title="Financial Times Journalist Martin Wolf Reports AI-Generated Investment Scam Using His Likeness on Instagram and Facebook" href="https://incidentdatabase.ai/cite/1113">
+  **secondary** — AIID #1113 · 2025-03-09
+</Card>
+
+<Card title="Alleged AI-Generated Video Ads Impersonate Bank of Montreal Strategist Brian Belski to Promote Investment Scam" href="https://incidentdatabase.ai/cite/1114">
+  **secondary** — AIID #1114 · 2025-06-12
+</Card>
+
+<Card title="Alleged Deepfake Investment Scam Uses Economist David Rosenberg's Likeness on Meta Platforms" href="https://incidentdatabase.ai/cite/1115">
+  **secondary** — AIID #1115 · 2025-04-15
+</Card>
+
+<Card title="North Korea-Linked Actors Allegedly Use AI Executive Deepfakes in Zoom Phishing Targeting Web3 Employee" href="https://incidentdatabase.ai/cite/1117">
+  **secondary** — AIID #1117 · 2025-06-22
+</Card>
+
+<Card title="Alleged Deepfake Videos Impersonate Lithuanian Politicians and Doctors in Purported Cross-Border Scam Network" href="https://incidentdatabase.ai/cite/1119">
+  **secondary** — AIID #1119 · 2025-06-28
+</Card>
+
+<Card title="Alleged AI-Generated Videos Depict Bangladesh's Chief Adviser Muhammad Yunus Endorsing Betting Platforms" href="https://incidentdatabase.ai/cite/1120">
+  **secondary** — AIID #1120 · 2025-06-16
+</Card>
+
+<Card title="Alleged AI Deepfake Videos Used to Lure Simcoe County, Ontario Residents in Crypto Scam" href="https://incidentdatabase.ai/cite/1121">
+  **secondary** — AIID #1121 · 2025-06-29
+</Card>
+
+<Card title="Reportedly Sustained Multi-Celebrity Deepfake Persona Scam Targeting Vulnerable Southampton Resident" href="https://incidentdatabase.ai/cite/1122">
+  **secondary** — AIID #1122 · 2025-06-28
+</Card>
+
+<Card title="Alleged Unauthorized Deepfake AI Clones of Ravish Kumar Used to Spread Purportedly Fabricated News on YouTube" href="https://incidentdatabase.ai/cite/1124">
+  **secondary** — AIID #1124 · 2025-06-30
+</Card>
+
+<Card title="Reported Use of Deepfake Video Impersonating Owen Wilson in Romance Scam with Fake Job Payments" href="https://incidentdatabase.ai/cite/1126">
+  **secondary** — AIID #1126 · 2025-05-16
+</Card>
+
+<Card title="Purported AI-Generated Audio Clip Allegedly Portrays Cambodian Senate President Hun Sen Raising Money for Conflict with Thailand" href="https://incidentdatabase.ai/cite/1127">
+  **secondary** — AIID #1127 · 2025-06-27
+</Card>
+
+<Card title="Docomo Pacific CEO Reports Mother Targeted by Purported AI-Enabled Scam in Guam" href="https://incidentdatabase.ai/cite/1130">
+  **secondary** — AIID #1130 · 2025-03-13
+</Card>
+
+<Card title="Alleged Deepfake Identity Scam Uses Miami Beach Realtor's Likeness to Defraud Victim in the United Kingdom in Purported Romance Scam" href="https://incidentdatabase.ai/cite/1131">
+  **secondary** — AIID #1131 · 2025-04-21
+</Card>
+
+<Card title="Reported AI-Generated Audio of Ukrainian Commander Andriy Biletsky Used in Russian Disinformation Campaign" href="https://incidentdatabase.ai/cite/1133">
+  **secondary** — AIID #1133 · 2025-06-30
+</Card>
+
+<Card title="Reported Deepfakes of Ukrainian Deputy PM Olha Stefanishyna Allegedly Supporting Fictional Mobilization Plan for Women" href="https://incidentdatabase.ai/cite/1134">
+  **secondary** — AIID #1134 · 2025-06-30
+</Card>
+
+<Card title="Purported Widespread Use of AI-Generated Deepfake Videos Impersonate Malaysian Leaders in Investment Scams" href="https://incidentdatabase.ai/cite/1136">
+  **secondary** — AIID #1136 · 2025-07-04
+</Card>
+
+<Card title="Purported Deepfake of Sri Lankan President Anura Kumara Dissanayake Promotes Alleged Fraudulent Government Investment Scheme" href="https://incidentdatabase.ai/cite/1140">
+  **secondary** — AIID #1140 · 2025-06-18
+</Card>
+
+<Card title="Purported AI Voice Cloning Used to Impersonate Secretary of State Marco Rubio" href="https://incidentdatabase.ai/cite/1141">
+  **secondary** — AIID #1141 · 2025-06-15
+</Card>
+
+<Card title="Chicago Veteran Reportedly Loses $10,000 in Purported Deepfake Cryptocurrency Fraud Posing as Elon Musk" href="https://incidentdatabase.ai/cite/1142">
+  **secondary** — AIID #1142 · 2025-07-07
+</Card>
+
+<Card title="Former Namibian First Lady Monica Geingos's Likeness Reportedly Used in Purported AI-Generated Video Investment Scams" href="https://incidentdatabase.ai/cite/1143">
+  **secondary** — AIID #1143 · 2025-01-22
+</Card>
+
+<Card title="Purportedly AI-Generated Videos Impersonate Brunei Police in 'Real Money Magic' Scam on Social Media" href="https://incidentdatabase.ai/cite/1147">
+  **secondary** — AIID #1147 · 2025-07-14
+</Card>
+
+<Card title="Purported Deepfake Scam Videos Depict JG Summit Holdings President and CEO Lance Gokongwei Allegedly Endorsing Illicit Investments" href="https://incidentdatabase.ai/cite/1148">
+  **secondary** — AIID #1148 · 2025-07-11
+</Card>
+
+<Card title="Purported Deepfake Video of Donald Trump at NATO Summit Allegedly Used in YouTube Crypto Scam" href="https://incidentdatabase.ai/cite/1153">
+  **secondary** — AIID #1153 · 2025-07-07
+</Card>
+
+<Card title="Reported AI‑Generated Deepfake Impersonations of Public Figures Allegedly Used in Coordinated Stock Pump‑and‑Dump Scheme Targeting Israeli Investors" href="https://incidentdatabase.ai/cite/1154">
+  **secondary** — AIID #1154 · 2025-04-01
+</Card>
+
+<Card title="Purported Deepfake Depicts Altercation Between Bougainville President Ishmael Toroama and Papua New Guinea Prime Minister James Marape" href="https://incidentdatabase.ai/cite/1162">
+  **secondary** — AIID #1162 · 2025-04-07
+</Card>
+
+<Card title="Alleged Marine Park Orca Attack on 'Jessica Radcliffe' Reportedly an AI-Generated Hoax" href="https://incidentdatabase.ai/cite/1175">
+  **secondary** — AIID #1175 · 2025-08-09
+</Card>
+
+<Card title="South Korean Actor Kim Seon-ho's Likeness Allegedly Misused in Purported Deepfake Impersonation Attempts Demanding Money" href="https://incidentdatabase.ai/cite/1185">
+  **secondary** — AIID #1185 · 2025-08-19
+</Card>
+
+<Card title="L.A. Woman Reportedly Defrauded of $81,000 and $350,000 Condo Proceeds in Romance Scam Using Purported Deepfake Videos of Actor Steve Burton" href="https://incidentdatabase.ai/cite/1194">
+  **secondary** — AIID #1194 · 2024-10-01
+</Card>
+
+<Card title="Nigeria-Based YouTube Network Allegedly Uses AI Voiceovers and Anchors to Amplify Pro-Kremlin Narratives" href="https://incidentdatabase.ai/cite/1195">
+  **secondary** — AIID #1195 · 2025-09-01
+</Card>
+
+<Card title="Purported AI-Generated Deepfake of Spiritual Leader Sadhguru Used in Investment Scam Allegedly Defrauding Bengaluru Woman of ₹3.75 Crore (~$425,000)" href="https://incidentdatabase.ai/cite/1206">
+  **secondary** — AIID #1206 · 2025-02-25
+</Card>
+
+<Card title="Purported AI-Generated Deepfake of Irish Fine Gael Presidential Candidate Heather Humphreys Used in Fake Investment Videos on Meta Platforms" href="https://incidentdatabase.ai/cite/1207">
+  **secondary** — AIID #1207 · 2025-09-11
+</Card>
+
+<Card title="Donald Trump Reportedly Posts Purported AI-Modified Video of Chuck Schumer and Hakeem Jeffries During U.S. Government Shutdown Talks" href="https://incidentdatabase.ai/cite/1214">
+  **secondary** — AIID #1214 · 2025-09-29
+</Card>
+
+<Card title="Purportedly AI-Cloned Voice of Daughter Used in Elaborate Bond Scam Targeting Retired Couple in Hillsborough County, Florida" href="https://incidentdatabase.ai/cite/1217">
+  **secondary** — AIID #1217 · 2025-07-09
+</Card>
+
+<Card title="Purportedly AI-Generated Deepfake Ads on Facebook Reportedly Impersonate Trump, Musk, Ocasio-Cortez, Warren, Sanders, and Leavitt to Promote Fraudulent Rebates" href="https://incidentdatabase.ai/cite/1223">
+  **secondary** — AIID #1223 · 2025-10-01
+</Card>
+
+<Card title="Purportedly AI-Generated Deepfake Ads on Instagram Impersonate Gisele Bündchen and Other Celebrities in Brazilian Fraud Scheme" href="https://incidentdatabase.ai/cite/1224">
+  **secondary** — AIID #1224 · 2025-10-01
+</Card>
+
+<Card title="Old Mutual Reportedly Warns of Purported Deepfake Videos Impersonating Chairman Trevor Manuel in Investment Scams" href="https://incidentdatabase.ai/cite/1226">
+  **secondary** — AIID #1226 · 2025-10-03
+</Card>
+
+<Card title="New Zealand Financial Markets Authority (FMA), Te Mana Tātai Hokohoko, Reportedly Flags Purported Deepfake Pump-and-Dump Network Using Social Media Ads" href="https://incidentdatabase.ai/cite/1227">
+  **secondary** — AIID #1227 · 2025-08-19
+</Card>
+
+<Card title="Purported AI-Generated Deepfake Video Reportedly Depicts Senator Chuck Schumer Endorsing Government Shutdown in NRSC Campaign Ad" href="https://incidentdatabase.ai/cite/1231">
+  **secondary** — AIID #1231 · 2025-10-17
+</Card>
+
+<Card title="Purported Deepfake Video Allegedly Shows Conservative MP George Freeman Leaving Party for Reform UK" href="https://incidentdatabase.ai/cite/1233">
+  **secondary** — AIID #1233 · 2025-10-18
+</Card>
+
+<Card title="Chinese-Backed Operation Reportedly Used AI-Generated Deepfake Videos of Indian Stock Experts in Investment Fraud Campaign" href="https://incidentdatabase.ai/cite/1235">
+  **secondary** — AIID #1235 · 2025-07-01
+</Card>
+
+<Card title="Quantum AI Scam Reportedly Used AI-Generated Celebrity Endorsements and Spoofed Media Sites to Solicit Investments" href="https://incidentdatabase.ai/cite/1236">
+  **secondary** — AIID #1236 · 2020-01-01
+</Card>
+
+<Card title="Purported AI-Generated Deepfake of Steven Bartlett Reportedly Used to Promote Fake WhatsApp Investment Group" href="https://incidentdatabase.ai/cite/1239">
+  **secondary** — AIID #1239 · 2025-04-23
+</Card>
+
+<Card title="Purported AI-Generated Deepfake of Infosys Co-Founder N. R. Narayana Murthy Used in Investment Scam Allegedly Defrauding 79-Year-Old Bengaluru Woman of ₹35 Lakh (~$40,000)" href="https://incidentdatabase.ai/cite/1240">
+  **secondary** — AIID #1240 · 2025-06-27
+</Card>
+
+<Card title="Purported AI-Generated Deepfake Videos Reportedly Used in Swedish Scam Campaign Impersonating Doctors Agnes Wold and Anders Tegnell" href="https://incidentdatabase.ai/cite/1242">
+  **secondary** — AIID #1242 · 2025-06-09
+</Card>
+
+<Card title="Norwegian Student Reportedly Used AI-Generated Deepfake Videos in Spanish Coursework at University of South-Eastern Norway" href="https://incidentdatabase.ai/cite/1245">
+  **secondary** — AIID #1245 · 2024-08-02
+</Card>
+
+<Card title="Purportedly AI-Generated Deepfake Reportedly Used to Impersonate DNB Bank CFO and CEO in Live Teams Meeting" href="https://incidentdatabase.ai/cite/1246">
+  **secondary** — AIID #1246 · 2025-01-21
+</Card>
+
+<Card title="Virginia Candidate John Reid Reportedly Used AI-Generated Deepfake of Opponent Ghazala Hashmi in Simulated Political Debate" href="https://incidentdatabase.ai/cite/1249">
+  **secondary** — AIID #1249 · 2025-10-21
+</Card>
+
+<Card title="Purported AI Deepfake Reportedly Impersonated Thai PBS World Anchor and Miss Universe CEO in Fraudulent Investment Video" href="https://incidentdatabase.ai/cite/1254">
+  **secondary** — AIID #1254 · 2025-06-24
+</Card>
+
+<Card title="Purported Deepfake Reportedly Circulated on Facebook Impersonating Thai PBS World Anchors and Business Figures to Solicit Investments" href="https://incidentdatabase.ai/cite/1255">
+  **secondary** — AIID #1255 · 2025-08-28
+</Card>
+
+<Card title="Purportedly AI-Generated Deepfake Investment Ads Defrauded 5,000 Swedish Investors of 500 Million SEK" href="https://incidentdatabase.ai/cite/1256">
+  **secondary** — AIID #1256 · 2025-10-24
+</Card>
+
+<Card title="Purported Deepfake Mimicking RTÉ Broadcast Falsely Announced Irish Presidential Candidate Catherine Connolly's Withdrawal" href="https://incidentdatabase.ai/cite/1258">
+  **secondary** — AIID #1258 · 2025-10-22
+</Card>
+
+<Card title="Purported Deepfake of Andrew Forrest Used to Promote Fraudulent 'Quantum AI' Crypto Platform on Facebook" href="https://incidentdatabase.ai/cite/1260">
+  **secondary** — AIID #1260 · 2024-01-27
+</Card>
+
+<Card title="Alleged AI-Generated Deepfake of Western Australia Premier Roger Cook Used in YouTube Investment Scam" href="https://incidentdatabase.ai/cite/1261">
+  **secondary** — AIID #1261 · 2025-11-08
+</Card>
+
+<Card title="YouTube Channel Reportedly Posts Purported Deepfake Video of Rajat Sharma Announcing India-Bangladesh Conflict" href="https://incidentdatabase.ai/cite/1262">
+  **secondary** — AIID #1262 · 2025-09-29
+</Card>
+
+<Card title="Chinese State-Linked Operator (GTG-1002) Reportedly Uses Claude Code for Autonomous Cyber Espionage" href="https://incidentdatabase.ai/cite/1263">
+  **secondary** — AIID #1263 · 2025-11-13
+</Card>
+
+<Card title="Rep. Mike Collins's Campaign Allegedly Produced Deepfake of Sen. Jon Ossoff Supporting the Government Shutdown" href="https://incidentdatabase.ai/cite/1264">
+  **secondary** — AIID #1264 · 2025-11-10
+</Card>
+
+<Card title="Purported Deepfake of Greek Finance Minister Kyriakos Pierrakakis Reportedly Used in Facebook Investment Scam" href="https://incidentdatabase.ai/cite/1271">
+  **secondary** — AIID #1271 · 2025-11-14
+</Card>
+
+<Card title="Ottawa Couple Reportedly Loses CA$177,023 After Purported Deepfake Elon Musk Investment Scam" href="https://incidentdatabase.ai/cite/1276">
+  **secondary** — AIID #1276 · 2023-10-01
+</Card>
+
+<Card title="Reported Use of AI Voice and Identity Manipulation in the Ongoing 'Phantom Hacker' Fraud Scheme" href="https://incidentdatabase.ai/cite/1280">
+  **secondary** — AIID #1280 · 2023-10-20
+</Card>
+
+<Card title="Purported AI-Enabled Pro-Russian Influence Campaign Centered on Burkina Faso's Ibrahim Traoré and Disseminated Across African Media" href="https://incidentdatabase.ai/cite/1283">
+  **secondary** — AIID #1283 · 2025-09-30
+</Card>
+
+<Card title="Purportedly AI-Generated Jason Momoa Deepfake Used in Romance Scam Reportedly Defrauding British Widow of $600,000" href="https://incidentdatabase.ai/cite/1285">
+  **secondary** — AIID #1285 · 2025-11-29
+</Card>
+
+<Card title="Purported Deepfake Video and Fake News Articles Allegedly Used to Impersonate Guernsey's Chief Minister in Investment Scam" href="https://incidentdatabase.ai/cite/1288">
+  **secondary** — AIID #1288 · 2025-08-01
+</Card>
+
+<Card title="Malta's Prime Minister Robert Abela Reportedly Deepfaked by a Ukrainian National in Cryptocurrency Fraud Targeting Local Residents" href="https://incidentdatabase.ai/cite/1289">
+  **secondary** — AIID #1289 · 2025-07-28
+</Card>
+
+<Card title="South Korean Fraud Ring Allegedly Used Deepfake Identities to Traffic Victims into Cambodia Scam Operations" href="https://incidentdatabase.ai/cite/1291">
+  **secondary** — AIID #1291 · 2024-08-01
+</Card>
+
+<Card title="Purported Deepfake Impersonating Cyprus President Nikos Christodoulides Reportedly Defrauded Citizens of Thousands of Euros" href="https://incidentdatabase.ai/cite/1293">
+  **secondary** — AIID #1293 · 2025-12-06
+</Card>
+
+<Card title="Whirlpool Reportedly Used AI-Altered Footage of North Carolina State Senator DeAndrea Salvador in Brazilian Advertisement" href="https://incidentdatabase.ai/cite/1304">
+  **secondary** — AIID #1304 · 2025-06-01
+</Card>
+
+<Card title="Florida Couple Reportedly Loses $45,000 in Alleged AI-Generated Elon Musk Impersonation Scam" href="https://incidentdatabase.ai/cite/1306">
+  **secondary** — AIID #1306 · 2025-12-15
+</Card>
+
+<Card title="Purported Deepfake Impersonating Doctor Allegedly Used in $200,000 Investment Scam Targeting Florida Grandmother" href="https://incidentdatabase.ai/cite/1314">
+  **secondary** — AIID #1314 · 2025-12-02
+</Card>
+
+<Card title="Purported Deepfake Impersonation of Elon Musk Used to Promote Fraudulent '17-Hour' Diabetes Treatment Claims" href="https://incidentdatabase.ai/cite/1317">
+  **secondary** — AIID #1317 · 2025-12-27
+</Card>
+
+<Card title="Purported Deepfake Investment Video Reportedly Used in Scam That Defrauded Turkish Couple of 1.5 Million Lira (~$35,000 USD)" href="https://incidentdatabase.ai/cite/1319">
+  **secondary** — AIID #1319 · 2025-12-26
+</Card>
+
+<Card title="Shilpa Shetty Alleges AI-Enabled Impersonation and Misuse of Likeness in Mumbai High Court Filing" href="https://incidentdatabase.ai/cite/1321">
+  **secondary** — AIID #1321 · 2025-11-27
+</Card>
+
+<Card title="Reported AI-Generated Deepfake Videos Impersonating Elon Musk and Dragon’s Den Allegedly Used in Cryptocurrency Investment Scam Targeting Canadian Victims" href="https://incidentdatabase.ai/cite/1325">
+  **secondary** — AIID #1325 · 2025-12-21
+</Card>
+
+<Card title="Reported AI-Generated Deepfake Romance Scam Allegedly Used to Steal One Bitcoin From Recently Divorced Investor" href="https://incidentdatabase.ai/cite/1327">
+  **secondary** — AIID #1327 · 2025-12-31
+</Card>
+
+<Card title="Purported Deepfake Impersonating Elon Musk Allegedly Defrauded Elderly U.S. Woman of $50,000 via Gift Card–to-Crypto Scam" href="https://incidentdatabase.ai/cite/1328">
+  **secondary** — AIID #1328 · 2026-01-03
+</Card>
+
+<Card title="Purported Deepfake Videos Reportedly Impersonated Yanis Varoufakis on YouTube and Social Media" href="https://incidentdatabase.ai/cite/1331">
+  **secondary** — AIID #1331 · 2026-01-05
+</Card>
+
+<Card title="BJP Used Deepfake Videos of Manoj Tiwari to Target Haryanvi Voters in 2020 Delhi Election" href="https://incidentdatabase.ai/cite/1336">
+  **secondary** — AIID #1336 · 2020-02-07
+</Card>
+
+<Card title="Purported Deepfake Endorsements Reportedly Used to Promote Fraudulent Health and Investment Products in Montenegro and Bosnia and Herzegovina" href="https://incidentdatabase.ai/cite/1338">
+  **secondary** — AIID #1338 · 2025-12-24
+</Card>
+
+<Card title="Purportedly AI-Cloned Voice Allegedly Used to Defraud Play School Owner of ₹97,500 (~$1,080 USD) in Indore, India" href="https://incidentdatabase.ai/cite/1339">
+  **secondary** — AIID #1339 · 2026-01-06
+</Card>
+
+<Card title="Purported Deepfake Advertisement Falsely Depicting Physician Endorsement Used to Sell Lipedema Cream to U.S. Patient Beth Holland" href="https://incidentdatabase.ai/cite/1341">
+  **secondary** — AIID #1341 · 2025-12-03
+</Card>
+
+<Card title="Purported AI-Generated Videos Depicted George Will Reportedly Commenting on Trump and Supreme Court Rulings" href="https://incidentdatabase.ai/cite/1346">
+  **secondary** — AIID #1346 · 2025-12-23
+</Card>
+
+<Card title="Reported AI Impersonations of Pastors Used in Online Donation and Influence Scams" href="https://incidentdatabase.ai/cite/1355">
+  **secondary** — AIID #1355 · 2026-01-05
+</Card>
+
+<Card title="Reported Deepfake Influencers on TikTok Allegedly Used to Promote Fraudulent Wellness Products" href="https://incidentdatabase.ai/cite/1359">
+  **secondary** — AIID #1359 · 2025-03-04
+</Card>
+
+<Card title="Purported Deepfake Reportedly Impersonated Consumer Adviser Clark Howard to Promote Auto-Insurance Quote Site" href="https://incidentdatabase.ai/cite/1371">
+  **secondary** — AIID #1371 · 2026-01-09
+</Card>
+
+<Card title="Purported AI Voice Clone Allegedly Narrated Shaun Rein's 'The Split' in Unauthorized YouTube 'Podcast' Videos" href="https://incidentdatabase.ai/cite/1380">
+  **secondary** — AIID #1380 · 2026-01-09
+</Card>
+
+<Card title="Purportedly AI-Generated TikTok Videos Reportedly Urged 'Polexit' Campaign, Prompting Polish Government Complaint to EU" href="https://incidentdatabase.ai/cite/1381">
+  **secondary** — AIID #1381 · 2025-12-13
+</Card>
+
+<Card title="Purported Deepfake Video Impersonating Elton John Reportedly Induced Northeast Ohio Man to Authorize $20,000 in Scam Charges" href="https://incidentdatabase.ai/cite/1384">
+  **secondary** — AIID #1384 · 2025-10-23
+</Card>
+
+<Card title="Purported Deepfake Impersonating Sudha Murty Reportedly Promoted Quantum AI India Investment Scam via Spoofed News Link" href="https://incidentdatabase.ai/cite/1388">
+  **secondary** — AIID #1388 · 2025-12-19
+</Card>
+
+<Card title="Purported Deepfake TikTok Account Using Grainville School Branding in Jersey Reportedly Targeted Staff, Prompting Police Probe" href="https://incidentdatabase.ai/cite/1394">
+  **secondary** — AIID #1394 · 2026-02-16
+</Card>
+
+<Card title="Deepfakes Reportedly Impersonated David Taylor-Robinson and Other UK Health Experts to Promote Wellness Nest Supplements" href="https://incidentdatabase.ai/cite/1397">
+  **secondary** — AIID #1397 · 2025-08-11
+</Card>
+
+<Card title="Purported Deepfake Video Reportedly Misrepresented CBS Anchor Doug Dunbar and Frisco, Texas, Stabbing Suspect Amid Online Misinformation Campaign" href="https://incidentdatabase.ai/cite/1398">
+  **secondary** — AIID #1398 · 2025-05-08
+</Card>
+
+<Card title="Purported AI-Generated Doctor Deepfakes Reportedly Used Guy's and St Thomas' Branding to Market Weight Loss Patches" href="https://incidentdatabase.ai/cite/1405">
+  **secondary** — AIID #1405 · 2026-01-09
+</Card>
+
+<Card title="Purported Oprah Deepfake Reportedly Induced Utah Woman to Buy Misrepresented Weight Loss Supplements" href="https://incidentdatabase.ai/cite/1408">
+  **secondary** — AIID #1408 · 2025-08-12
+</Card>
+
+<Card title="Purported Deepfake of Ashley James Reportedly Used to Promote Weight Loss Pills" href="https://incidentdatabase.ai/cite/1417">
+  **secondary** — AIID #1417 · 2026-03-14
+</Card>
+
+<Card title="Balázs Orbán Allegedly Published Purported Deepfake of Péter Magyar Claiming He Would Cut Pensions" href="https://incidentdatabase.ai/cite/1420">
+  **secondary** — AIID #1420 · 2025-10-28
+</Card>
+
+<Card title="Purported Deepfake Applicant Reportedly Impersonated Tokyo IT Executive Kenbun Yoshii During Online Job Interview" href="https://incidentdatabase.ai/cite/1421">
+  **secondary** — AIID #1421 · 2026-03-19
+</Card>
+
+<Card title="'Citizens Against Mamdani' Accounts Reportedly Posted AI-Generated Videos of Fictional New Yorkers to Simulate Political Opposition" href="https://incidentdatabase.ai/cite/1425">
+  **secondary** — AIID #1425 · 2025-11-05
+</Card>
+
+<Card title="Bank of Italy Warned That Purported Deepfakes of Governor Fabio Panetta Were Used in Allegedly Fraudulent Investment Promotions" href="https://incidentdatabase.ai/cite/1429">
+  **secondary** — AIID #1429 · 2026-02-26
+</Card>
+
+<Card title="Purportedly AI-Generated Facebook Video Allegedly Misused Skënder Brataj and Blendi Fevziu to Promote Purported Miracle Cream in Albania" href="https://incidentdatabase.ai/cite/1451">
+  **secondary** — AIID #1451 · 2025-06-30
+</Card>
+
+<Card title="Purported AI-Generated Impersonations of Albanian Cardiologist Spiro Qirko and Journalist Ilir Topi Were Reportedly Used on Facebook to Promote Hypertension Product in Kosovo" href="https://incidentdatabase.ai/cite/1452">
+  **secondary** — AIID #1452 · 2026-03-25
+</Card>
+
+<Card title="Purported Deepfake Video Reportedly Portrayed Nirmala Sitharaman Endorsing Investment Scheme" href="https://incidentdatabase.ai/cite/1454">
+  **secondary** — AIID #1454 · 2026-04-16
+</Card>
+
+<Card title="Purported Deepfake Videos Allegedly Impersonated Optometrist Joseph Allen to Promote Myopia-Reversal Eyedrops on TikTok" href="https://incidentdatabase.ai/cite/1455">
+  **secondary** — AIID #1455 · 2025-07-15
+</Card>
+
+<Card title="Video with Reportedly AI-Generated Audio Purported to Show Croatian Footballer Luka Modrić Endorsing Immediate Matrix on Facebook Page Presented as N1 HR" href="https://incidentdatabase.ai/cite/1456">
+  **secondary** — AIID #1456 · 2023-12-03
+</Card>
+
+<Card title="Video with Reportedly AI-Generated Media Purported to Show Croatian Immunologist Stipan Jonjić Promoting Anti-Parasite Product on Facebook" href="https://incidentdatabase.ai/cite/1457">
+  **secondary** — AIID #1457 · 2024-08-27
+</Card>
+
+<Card title="Video with Reportedly AI-Generated Media Purported to Show Croatian Neurosurgeon Josip Paladino Endorsing Steplex in Fake TV Segment on Facebook" href="https://incidentdatabase.ai/cite/1458">
+  **secondary** — AIID #1458 · 2024-09-03
+</Card>
+
+<Card title="Video with Reportedly AI-Generated Media Purported to Show Croatian Physician Alemka Markotić Endorsing Hondrosol After False Murder Claim on Facebook" href="https://incidentdatabase.ai/cite/1459">
+  **secondary** — AIID #1459 · 2024-10-17
+</Card>
+
+<Card title="Purportedly AI-Manipulated Medical Scam Advertisement Reportedly Used Bulgarian TV Host and Physician's Likenesses" href="https://incidentdatabase.ai/cite/1461">
+  **secondary** — AIID #1461 · 2024-01-17
+</Card>
+
+<Card title="Purported Deepfake Facebook Advertisement Reportedly Used Bulgarian Actor and TV Host Mihail Bilalov's Likeness to Market Joint-Pain Product" href="https://incidentdatabase.ai/cite/1462">
+  **secondary** — AIID #1462 · 2024-05-04
+</Card>
+
+<Card title="Purported Deepfake Facebook Advertisement Reportedly Used Bulgarian Actor, Director, and Playwright Kamen Donev's Likeness to Market Joint-Pain Product" href="https://incidentdatabase.ai/cite/1463">
+  **secondary** — AIID #1463 · 2024-05-04
+</Card>
+
+<Card title="Purportedly AI-Manipulated Video Reportedly Misrepresented Bulgarian DPS Figure Ahmed Dogan and Spread via TikTok and Facebook" href="https://incidentdatabase.ai/cite/1464">
+  **secondary** — AIID #1464 · 2024-08-28
+</Card>
+
+<Card title="Purported AI-Generated Voice Reportedly Impersonated Washington Man's Daughter in $13,000 Extortion Scam" href="https://incidentdatabase.ai/cite/1482">
+  **secondary** — AIID #1482 · 2026-03-23
+</Card>
+
+<Card title="Facebook Account Reportedly Used AI-Generated Video to Impersonate Indonesian Preacher Ustaz Ujang Bustomi in Money-Giveaway Scam" href="https://incidentdatabase.ai/cite/1483">
+  **secondary** — AIID #1483 · 2025-11-20
+</Card>
+
+## Case study
+
+SVRNOS has published a long-form case study on this code: [**ger 421 chevrolet**](https://svrnos.com/insights/ger-421-chevrolet).
+
+## Tags
+
+`jailbreak` · `prompt-injection`
+
+## Attributed to
+
+- **Sushee Nzeutem** · *SVRNOS (Sovereign OS LLC)* — *primary*
+
+## Cite this code
+
+```
+Nzeutem, S. (2026). GER-421 Scope Misdirection. SVRNOS Governance Error Register. https://docs.svrnos.com/ger/codes/421
+```

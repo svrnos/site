@@ -1,0 +1,228 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "linden",
+  "name": "SVRNOS Research",
+  "description": "Open research infrastructure for AI governance: the Governance Error Register, the SVRNOS 7-Layer Model, and the Non-Content Safety Attestation framework.",
+  "colors": {
+    "primary": "#2D5F3F",
+    "light": "#5BAE7B",
+    "dark": "#1A3D28"
+  },
+  "favicon": "/favicon.svg",
+  "fonts": {
+    "heading": { "family": "Source Serif 4" },
+    "body":    { "family": "Inter" }
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Introduction",
+        "groups": [
+          {
+            "group": " ",
+            "pages": [
+              "introduction/welcome",
+              "introduction/how-to-contribute",
+              "introduction/glossary"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "GER",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "ger/index",
+              "ger/find",
+              "ger/browse",
+              "ger/receipt",
+              "ger/paper",
+              "ger/changelog",
+              "ger/cite"
+            ]
+          },
+          {
+            "group": "0xx · Pre-Infrastructure",
+            "pages": ["ger/codes/000"]
+          },
+          {
+            "group": "2xx · Success States",
+            "pages": [
+              "ger/codes/200",
+              "ger/codes/204",
+              "ger/codes/205",
+              "ger/codes/210"
+            ]
+          },
+          {
+            "group": "3xx · Structural Moves",
+            "pages": [
+              "ger/codes/301",
+              "ger/codes/304",
+              "ger/codes/305",
+              "ger/codes/306",
+              "ger/codes/307",
+              "ger/codes/309",
+              "ger/codes/310",
+              "ger/codes/311",
+              "ger/codes/312",
+              "ger/codes/313",
+              "ger/codes/314",
+              "ger/codes/315",
+              "ger/codes/316",
+              "ger/codes/318",
+              "ger/codes/319",
+              "ger/codes/320",
+              "ger/codes/321",
+              "ger/codes/322",
+              "ger/codes/323",
+              "ger/codes/324",
+              "ger/codes/325",
+              "ger/codes/326",
+              "ger/codes/327",
+              "ger/codes/328",
+              "ger/codes/329",
+              "ger/codes/330",
+              "ger/codes/331",
+              "ger/codes/332",
+              "ger/codes/333",
+              "ger/codes/334",
+              "ger/codes/335",
+              "ger/codes/336",
+              "ger/codes/337",
+              "ger/codes/338",
+              "ger/codes/339",
+              "ger/codes/340",
+              "ger/codes/341",
+              "ger/codes/342",
+              "ger/codes/343",
+              "ger/codes/344",
+              "ger/codes/345",
+              "ger/codes/346",
+              "ger/codes/347",
+              "ger/codes/348",
+              "ger/codes/349",
+              "ger/codes/351",
+              "ger/codes/352"
+            ]
+          },
+          {
+            "group": "4xx · Operator & Platform Errors",
+            "pages": [
+              "ger/codes/400",
+              "ger/codes/401",
+              "ger/codes/404",
+              "ger/codes/408",
+              "ger/codes/409",
+              "ger/codes/420",
+              "ger/codes/421",
+              "ger/codes/422",
+              "ger/codes/423",
+              "ger/codes/424",
+              "ger/codes/425",
+              "ger/codes/426",
+              "ger/codes/427",
+              "ger/codes/428",
+              "ger/codes/429",
+              "ger/codes/430",
+              "ger/codes/431",
+              "ger/codes/432",
+              "ger/codes/433",
+              "ger/codes/434",
+              "ger/codes/435",
+              "ger/codes/436",
+              "ger/codes/437"
+            ]
+          },
+          {
+            "group": "5xx · Infrastructure Failures",
+            "pages": [
+              "ger/codes/500",
+              "ger/codes/501",
+              "ger/codes/502",
+              "ger/codes/503",
+              "ger/codes/504",
+              "ger/codes/511",
+              "ger/codes/512"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "7 Layers",
+        "groups": [
+          {
+            "group": " ",
+            "pages": [
+              "seven-layer-model/index",
+              "seven-layer-model/paper"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "NCSA",
+        "groups": [
+          {
+            "group": " ",
+            "pages": [
+              "ncsa/index",
+              "ncsa/spec"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Changelog",
+        "groups": [
+          {
+            "group": " ",
+            "pages": ["changelog/index"]
+          }
+        ]
+      },
+      {
+        "tab": "Attributions",
+        "groups": [
+          {
+            "group": " ",
+            "pages": ["attributions/index"]
+          }
+        ]
+      }
+    ]
+  },
+  "logo": {
+    "light": "/svrnos-wordmark.svg",
+    "dark": "/svrnos-wordmark.svg"
+  },
+  "navbar": {
+    "links": [
+      { "label": "Main site", "href": "https://svrnos.com" }
+    ]
+  },
+  "footer": {
+    "socials": {
+      "linkedin": "https://www.linkedin.com/in/sushee-nzeutem"
+    },
+    "links": [
+      {
+        "header": "SVRNOS",
+        "items": [
+          { "label": "Main site",       "href": "https://svrnos.com" },
+          { "label": "GER paper",       "href": "https://svrnos.com/research/governance-error-register" },
+          { "label": "Generation Gap",  "href": "https://svrnos.com/research/generation-gap" }
+        ]
+      },
+      {
+        "header": "License",
+        "items": [
+          { "label": "Code definitions: CC BY 4.0", "href": "https://creativecommons.org/licenses/by/4.0/" },
+          { "label": "AIID incident titles: CC BY-NC-SA 4.0 (AI Incident Database)", "href": "https://incidentdatabase.ai/" }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+---
+title: "GER-337 · Cross-Agent Context Loss"
+description: "Information emitted by an upstream agent (instructions, constraints, critical context, user intent) is dropped or attenuated as it passes through downstream agents. User primary intent is lost by handoff number 3-5."
+sidebarTitle: "337 · Cross-Agent Context Loss"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="green">Documented</Badge> <Badge>Tier 3xx</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
+</div>
+
+*Structural Moves*
+
+## Definition
+
+Information emitted by an upstream agent (instructions, constraints, critical context, user intent) is dropped or attenuated as it passes through downstream agents. User primary intent is lost by handoff number 3-5.
+
+## Distinct from
+
+- [**GER-332**](/ger/codes/332) — Information present in upstream output is dropped → this code. Constraint present at parent but not propagated → GER-332.
+
+## Tags
+
+`multi-agent`
+
+## Attributed to
+
+- **Satyam Kumar Das** · *AppScale* — *primary*
+
+## Cite this code
+
+```
+Nzeutem, S. (2026). GER-337 Cross-Agent Context Loss. SVRNOS Governance Error Register. https://docs.svrnos.com/ger/codes/337
+```

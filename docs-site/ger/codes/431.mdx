@@ -1,0 +1,35 @@
+---
+title: "GER-431 · Vendor Update Without Validation Gate"
+description: "Third-party model vendor pushes a model update — minor version bump, weight refresh, RLHF re-tune — and the operator deploys the new variant without local re-validation of safety properties."
+sidebarTitle: "431 · Vendor Update Without Validation Gate"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="green">Documented</Badge> <Badge>Tier 4xx</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
+</div>
+
+*Operator / Platform Errors*
+
+## Definition
+
+Third-party model vendor pushes a model update — minor version bump, weight refresh, RLHF re-tune — and the operator deploys the new variant without local re-validation of safety properties.
+
+## Distinct from
+
+- [**GER-309**](/ger/codes/309) — Operator did not re-measure after vendor model update → this code. Vendor itself measured harm and shipped → GER-309.
+
+## Tags
+
+`eu-ai-act`
+
+## Attributed to
+
+- **Satyam Kumar Das** · *AppScale* — *primary*
+
+## Cite this code
+
+```
+Nzeutem, S. (2026). GER-431 Vendor Update Without Validation Gate. SVRNOS Governance Error Register. https://docs.svrnos.com/ger/codes/431
+```
