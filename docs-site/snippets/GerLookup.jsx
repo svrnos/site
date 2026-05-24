@@ -11,15 +11,12 @@
 // to pick the one that fits. The tool does not diagnose.
 // ============================================================================
 
-import { useEffect, useMemo, useState } from "react";
-
+// Mintlify provides React hooks (useState/useEffect/useMemo) globally — no import needed.
 // ger.json (~570KB) and tags.json (~10KB) are imported eagerly — needed for
 // initial render of the code list + tier/tag filter.
 //
 // aiid.json (~800KB) is imported LAZILY via dynamic import the first time the
-// user types into the AIID search box. Mintlify's bundler chokes on bundling
-// three large JSON files into a single client chunk, and most visitors will
-// never touch the AIID search.
+// user types into the AIID search box. Most visitors never touch the AIID search.
 import gerData    from "../data/ger.json";
 import tagsData   from "../data/tags.json";
 
@@ -77,7 +74,7 @@ let incidents   = [];
 let aiidCodeMap = new Map();
 let aiidLoadPromise = null;
 
-function loadAiid() {
+const loadAiid = () => {
   if (aiidLoadPromise) return aiidLoadPromise;
   aiidLoadPromise = import("../data/aiid.json").then((mod) => {
     incidents = mod.default.incidents;
@@ -86,12 +83,12 @@ function loadAiid() {
     return incidents;
   });
   return aiidLoadPromise;
-}
+};
 
 // ---------------------------------------------------------------------------
 // Main component
 // ---------------------------------------------------------------------------
-export default function GerLookup() {
+export const GerLookup = () => {
   const [selectedSymptoms, setSelectedSymptoms] = useState(new Set());
   const [selectedTiers,    setSelectedTiers]    = useState(new Set());
   const [selectedTags,     setSelectedTags]     = useState(new Set());
@@ -352,4 +349,4 @@ export default function GerLookup() {
       </div>
     </div>
   );
-}
+};

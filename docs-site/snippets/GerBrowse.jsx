@@ -16,7 +16,7 @@ const TIER_LABEL = {
   "5xx": "Infrastructure Failures",
 };
 
-export default function GerBrowse() {
+export const GerBrowse = () => {
   const codes = gerData.codes;
 
   // Group by tier, preserve insertion order (already sorted by tier+code from the export view)
@@ -54,4 +54,4 @@ export default function GerBrowse() {
       ))}
     </div>
   );
-}
+};

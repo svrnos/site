@@ -9,7 +9,7 @@
 // lookup tool). Output: a printable / markdown-exportable document.
 // ============================================================================
 
-import { useMemo, useState } from "react";
+// Mintlify provides React hooks (useState/useMemo) globally — no import needed.
 import gerData from "../data/ger.json";
 
 const codes = gerData.codes;
@@ -131,13 +131,13 @@ const REGULATORY_PER_CODE = {
   ],
 };
 
-function evidenceFor(code)    { return EVIDENCE_PER_CODE[code]   ?? DEFAULT_EVIDENCE;   }
-function regulatoryFor(code)  { return REGULATORY_PER_CODE[code] ?? DEFAULT_REGULATORY; }
+const evidenceFor    = (code) => EVIDENCE_PER_CODE[code]   ?? DEFAULT_EVIDENCE;
+const regulatoryFor  = (code) => REGULATORY_PER_CODE[code] ?? DEFAULT_REGULATORY;
 
 // ---------------------------------------------------------------------------
 // Receipt-as-markdown export (the user's downloadable diagnostic document)
 // ---------------------------------------------------------------------------
-function buildMarkdown(selectedCodes, context, distinctFromNotes) {
+const buildMarkdown = (selectedCodes, context, distinctFromNotes) => {
   const lines = [];
   const today = new Date().toISOString().slice(0, 10);
 
@@ -216,12 +216,12 @@ function buildMarkdown(selectedCodes, context, distinctFromNotes) {
   lines.push("If you intend to use this receipt in regulatory filing, litigation, or insurance claim — please notify SVRNOS at hello@svrnos.com so we can track adoption.");
 
   return lines.join("\n");
-}
+};
 
 // ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
-export default function GerReceipt({ defaultCode = "" }) {
+export const GerReceipt = ({ defaultCode = "" }) => {
   const [selectedCodes, setSelectedCodes] = useState(defaultCode ? [defaultCode] : []);
   const [context, setContext] = useState("");
   const [distinctNotes, setDistinctNotes] = useState("");
@@ -357,4 +357,4 @@ export default function GerReceipt({ defaultCode = "" }) {
       </div>
     </div>
   );
-}
+};
