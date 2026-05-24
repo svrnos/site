@@ -1,33 +1,19 @@
-// ============================================================================
-// GerBrowse — Mintlify snippet
-// ----------------------------------------------------------------------------
-// Flat tier-grouped index of every GER code. No filters, no search.
-//
-// Mintlify snippet constraints (verified against mintlify.com/docs/customize/
-// react-components.md): must be in /snippets/, single named arrow-function
-// export, no top-level statements outside the export, hooks (useState /
-// useEffect / useMemo) provided globally — do NOT import from "react".
-//
-// Data is fetched at runtime from jsdelivr (CORS-open GitHub CDN) because
-// Mintlify's MDX snippet bundler does not reliably handle JSON file imports.
-// ============================================================================
-
 export const GerBrowse = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState(null)
 
   useEffect(() => {
     fetch("https://cdn.jsdelivr.net/gh/svrnos/site@main/docs-site/data/ger.json")
       .then((r) => r.json())
       .then(setData)
-      .catch(() => setData({ codes: [] }));
-  }, []);
+      .catch(() => setData({ codes: [] }))
+  }, [])
 
   if (!data) {
     return (
       <div className="py-12 text-center text-neutral-500 not-prose">
         <p className="text-sm font-mono">Loading codes…</p>
       </div>
-    );
+    )
   }
 
   const TIER_LABEL = {
@@ -36,13 +22,13 @@ export const GerBrowse = () => {
     "3xx": "Structural Moves",
     "4xx": "Operator / Platform Errors",
     "5xx": "Infrastructure Failures",
-  };
+  }
 
-  const codes = data.codes || [];
-  const groups = {};
+  const codes = data.codes || []
+  const groups = {}
   for (const c of codes) {
-    groups[c.tier] = groups[c.tier] ?? [];
-    groups[c.tier].push(c);
+    if (!groups[c.tier]) groups[c.tier] = []
+    groups[c.tier].push(c)
   }
 
   return (
@@ -74,5 +60,5 @@ export const GerBrowse = () => {
         </section>
       ))}
     </div>
-  );
-};
+  )
+}
