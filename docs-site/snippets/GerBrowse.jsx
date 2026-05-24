@@ -1,9 +1,13 @@
 export const GerBrowse = () => {
-  const codes = [
-    { code: "000", name: "Pre-Governance", tier: "0xx", type: "illustrative", is_namespace_claim: true },
-    { code: "204", name: "Refusal Within Policy", tier: "2xx", type: "documented", is_namespace_claim: false },
-    { code: "329", name: "Training-Data Consent Bypass", tier: "3xx", type: "documented", is_namespace_claim: true },
-  ]
+  const [data, setData] = useState(null)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    fetch("https://cdn.jsdelivr.net/gh/svrnos/site@main/docs-site/data/ger.json")
+      .then((r) => r.json())
+      .then(setData)
+      .catch((e) => setError(String(e)))
+  }, [])
 
   const TIER_LABEL = {
     "0xx": "Pre-Infrastructure",
@@ -13,6 +17,7 @@ export const GerBrowse = () => {
     "5xx": "Infrastructure Failures",
   }
 
+  const codes = data ? data.codes || [] : []
   const groups = {}
   for (const c of codes) {
     if (!groups[c.tier]) groups[c.tier] = []
@@ -21,7 +26,16 @@ export const GerBrowse = () => {
 
   return (
     <div className="ger-browse not-prose">
-      <p className="text-xs font-mono text-amber-700 mb-4">CANARY: minimal static snippet test — if you see this, snippets work</p>
+      {error && (
+        <div className="p-4 mb-6 bg-red-50 border border-red-200 rounded text-sm text-red-900">
+          Couldn't load codes: {error}
+        </div>
+      )}
+      {!data && !error && (
+        <div className="py-12 text-center text-neutral-500">
+          <p className="text-sm font-mono">Loading codes…</p>
+        </div>
+      )}
       {Object.entries(groups).map(([tier, list]) => (
         <section key={tier} className="mb-10">
           <h2 className="text-lg font-mono mb-3 pb-2 border-b border-neutral-200">
