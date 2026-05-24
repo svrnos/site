@@ -5300,7 +5300,7 @@
     {
       "code": "329",
       "name": "Training-Data Consent Bypass",
-      "definition": "AI training pipeline ingests copyrighted works, personal data, or non-consented creative content without an upstream consent or license gate.",
+      "definition": "AI training or processing pipeline ingests, retains, or continues processing personal data, copyrighted works, biometric records, or non-consented creative content without an upstream consent, license, withdrawal, or retention gate.",
       "tier": "3xx",
       "layer": null,
       "article_url": null,
