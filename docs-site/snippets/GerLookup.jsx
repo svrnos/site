@@ -139,7 +139,7 @@ export const GerLookup = () => {
           className="w-full px-4 py-3 border border-neutral-300 rounded-md text-base focus:outline-none focus:ring-2 focus:ring-green-700"
         />
         {aiidQuery.length >= 2 && aiidLoading && (
-          <p className="mt-2 text-xs font-mono text-neutral-500">Loading incident database…</p>
+          <p className="mt-2 text-xs font-mono text-neutral-500">Loading AIID reference data…</p>
         )}
         {aiidHits.length > 0 && (
           <ul className="mt-2 border border-neutral-200 rounded-md max-h-80 overflow-y-auto bg-white shadow-sm">

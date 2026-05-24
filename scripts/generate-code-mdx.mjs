@@ -80,9 +80,9 @@ ${c.definition}`);
     sections.push(`## Distinct from\n\n${items}`);
   }
 
-  // Anchor incidents
+  // Documented events
   if (c.aiid_anchors && c.aiid_anchors.length > 0) {
-    sections.push(`## Anchor incidents (${c.aiid_anchors.length})`);
+    sections.push(`## Documented events (${c.aiid_anchors.length})`);
     for (const a of c.aiid_anchors) {
       const dateStr = a.date ? ` · ${a.date}` : "";
       sections.push(`<Card title=${quote(a.title)} href=${quote(a.aiid_url)}>

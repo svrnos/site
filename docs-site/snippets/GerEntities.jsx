@@ -120,7 +120,7 @@ export const GerEntities = () => {
                           ))}
                         </ul>
                       ) : (
-                        <p className="text-xs text-neutral-500 italic">No GER codes mapped to this entity's incidents yet.</p>
+                        <p className="text-xs text-neutral-500 italic">No GER codes mapped to this entity's events yet.</p>
                       )}
                     </div>
                   )}
