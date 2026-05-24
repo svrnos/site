@@ -13,14 +13,17 @@
 
 import { useEffect, useMemo, useState } from "react";
 
-// Data files are imported by the build pipeline. In Mintlify, this works via
-// the `@/` alias to the site root.
+// ger.json (~570KB) and tags.json (~10KB) are imported eagerly — needed for
+// initial render of the code list + tier/tag filter.
+//
+// aiid.json (~800KB) is imported LAZILY via dynamic import the first time the
+// user types into the AIID search box. Mintlify's bundler chokes on bundling
+// three large JSON files into a single client chunk, and most visitors will
+// never touch the AIID search.
 import gerData    from "../data/ger.json";
-import aiidData   from "../data/aiid.json";
 import tagsData   from "../data/tags.json";
 
 const codes     = gerData.codes;
-const incidents = aiidData.incidents;
 const tagDefs   = tagsData.tags;
 
 // ---------------------------------------------------------------------------
@@ -68,10 +71,21 @@ const FILTER_TAGS = [
   "privacy-violation","discrimination","prompt-injection",
 ];
 
-// Build incident → code map for the AIID search results
-const aiidCodeMap = new Map();
-for (const i of incidents) {
-  aiidCodeMap.set(i.aiid_id, i.ger_codes || []);
+// aiid.json is loaded lazily — see useEffect inside GerLookup. These are
+// populated on first AIID search keystroke.
+let incidents   = [];
+let aiidCodeMap = new Map();
+let aiidLoadPromise = null;
+
+function loadAiid() {
+  if (aiidLoadPromise) return aiidLoadPromise;
+  aiidLoadPromise = import("../data/aiid.json").then((mod) => {
+    incidents = mod.default.incidents;
+    aiidCodeMap = new Map();
+    for (const i of incidents) aiidCodeMap.set(i.aiid_id, i.ger_codes || []);
+    return incidents;
+  });
+  return aiidLoadPromise;
 }
 
 // ---------------------------------------------------------------------------
@@ -83,11 +97,19 @@ export default function GerLookup() {
   const [selectedTags,     setSelectedTags]     = useState(new Set());
   const [search,           setSearch]           = useState("");
   const [aiidQuery,        setAiidQuery]        = useState("");
+  const [aiidReady,        setAiidReady]        = useState(false);
+
+  // Lazy-load aiid.json on first AIID search keystroke
+  useEffect(() => {
+    if (aiidQuery.length >= 1 && !aiidReady) {
+      loadAiid().then(() => setAiidReady(true));
+    }
+  }, [aiidQuery, aiidReady]);
 
   // -------- AIID autocomplete -------
   const aiidHits = useMemo(() => {
     const q = aiidQuery.trim().toLowerCase();
-    if (q.length < 2) return [];
+    if (q.length < 2 || !aiidReady) return [];
     const hits = [];
     for (const i of incidents) {
       if (i.title.toLowerCase().includes(q) ||
@@ -98,7 +120,7 @@ export default function GerLookup() {
       }
     }
     return hits;
-  }, [aiidQuery]);
+  }, [aiidQuery, aiidReady]);
 
   // -------- Code filtering -------
   const filtered = useMemo(() => {
@@ -172,6 +194,9 @@ export default function GerLookup() {
           placeholder="Type a case name — MrBeast, Tumbler Ridge, Air Canada…"
           className="w-full px-4 py-3 border border-neutral-300 rounded-md text-base focus:outline-none focus:ring-2 focus:ring-green-700"
         />
+        {aiidQuery.length >= 2 && !aiidReady && (
+          <p className="mt-2 text-xs font-mono text-neutral-500">Loading incident database…</p>
+        )}
         {aiidHits.length > 0 && (
           <ul className="mt-2 border border-neutral-200 rounded-md max-h-80 overflow-y-auto bg-white shadow-sm">
             {aiidHits.map((h) => {
