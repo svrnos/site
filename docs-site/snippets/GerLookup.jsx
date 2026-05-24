@@ -1,185 +1,132 @@
-// ============================================================================
-// GerLookup.jsx
-// ----------------------------------------------------------------------------
-// Three-entry deterministic lookup tool for the GER. Pure client-side, no LLM.
-//
-//   1. Symptom picker  — 17 tiles using non-technical vocabulary
-//   2. AIID search     — autocomplete on incident titles
-//   3. Faceted filter  — tier + tags multi-select
-//
-// All three narrow the same candidate list. User reads the short list of codes
-// to pick the one that fits. The tool does not diagnose.
-// ============================================================================
-
-// Mintlify provides React hooks (useState/useEffect/useMemo) globally — no import needed.
-// ger.json (~570KB) and tags.json (~10KB) are imported eagerly — needed for
-// initial render of the code list + tier/tag filter.
-//
-// aiid.json (~800KB) is imported LAZILY via dynamic import the first time the
-// user types into the AIID search box. Most visitors never touch the AIID search.
-import gerData    from "../data/ger.json";
-import tagsData   from "../data/tags.json";
-
-const codes     = gerData.codes;
-const tagDefs   = tagsData.tags;
-
-// ---------------------------------------------------------------------------
-// Symptom picker — plain-language entries mapped to a set of GER codes that
-// commonly apply. Sourced from the 17-symptom catalog in the Mode B triage doc.
-// ---------------------------------------------------------------------------
-const SYMPTOMS = [
-  { label: "I was charged / paid / dosed / sentenced the wrong amount", codes: ["305","318","334","503","309"] },
-  { label: "AI confidently told me false information",                   codes: ["512","422","428"] },
-  { label: "An AI agent did something I didn't authorize",              codes: ["426","332","420","336"] },
-  { label: "AI wouldn't stop / kept running / kept retrying",            codes: ["427","345","503"] },
-  { label: "AI treated me differently than someone with similar circumstances", codes: ["342","326","323"] },
-  { label: "AI used or revealed private information about me",          codes: ["324","326","329"] },
-  { label: "A deepfake / voice clone of me circulated",                  codes: ["322","425"] },
-  { label: "AI was tricked into producing harmful output",               codes: ["421","420","306"] },
-  { label: "AI applied an outdated, expired, or wrong-jurisdiction rule",codes: ["334","310","333"] },
-  { label: "AI didn't perform as the vendor claimed it would",           codes: ["422","309"] },
-  { label: "A human was supposed to review but didn't",                  codes: ["429","502","321"] },
-  { label: "I was punished or denied by AI with no human appeal",        codes: ["424","501","502"] },
-  { label: "The same problem keeps recurring after being reported",      codes: ["319","309"] },
-  { label: "AI-fabricated content was published as fact",                codes: ["512","325","428"] },
-  { label: "AI destroyed my data or system",                             codes: ["426","332","330"] },
-  { label: "Identity verification was defeated by AI impersonation",     codes: ["425","322"] },
-  { label: "AI-generated content appeared without disclosure",           codes: ["322","327"] },
-];
-
-// ---------------------------------------------------------------------------
-// Tier definitions for the filter
-// ---------------------------------------------------------------------------
-const TIERS = [
-  { slug: "0xx", label: "0xx — Pre-Infrastructure" },
-  { slug: "2xx", label: "2xx — Success States" },
-  { slug: "3xx", label: "3xx — Structural Moves" },
-  { slug: "4xx", label: "4xx — Operator / Platform Errors" },
-  { slug: "5xx", label: "5xx — Infrastructure Failures" },
-];
-
-// Highest-leverage tag groups for the filter (subset of full 51-tag vocab to
-// keep the UI scannable; full vocab is searchable via the search box)
-const FILTER_TAGS = [
-  "agentic","multi-agent","companion-ai","clinical","legal","educational",
-  "financial","health-triage","hr-employment","generative-media","autonomous-vehicle",
-  "minors","psychiatric-vulnerability","elderly",
-  "suicide","self-harm","violence","deepfake-impersonation","fraud","doxxing",
-  "privacy-violation","discrimination","prompt-injection",
-];
-
-// aiid.json is loaded lazily — see useEffect inside GerLookup. These are
-// populated on first AIID search keystroke.
-let incidents   = [];
-let aiidCodeMap = new Map();
-let aiidLoadPromise = null;
-
-const loadAiid = () => {
-  if (aiidLoadPromise) return aiidLoadPromise;
-  aiidLoadPromise = import("../data/aiid.json").then((mod) => {
-    incidents = mod.default.incidents;
-    aiidCodeMap = new Map();
-    for (const i of incidents) aiidCodeMap.set(i.aiid_id, i.ger_codes || []);
-    return incidents;
-  });
-  return aiidLoadPromise;
-};
-
-// ---------------------------------------------------------------------------
-// Main component
-// ---------------------------------------------------------------------------
 export const GerLookup = () => {
-  const [selectedSymptoms, setSelectedSymptoms] = useState(new Set());
-  const [selectedTiers,    setSelectedTiers]    = useState(new Set());
-  const [selectedTags,     setSelectedTags]     = useState(new Set());
-  const [search,           setSearch]           = useState("");
-  const [aiidQuery,        setAiidQuery]        = useState("");
-  const [aiidReady,        setAiidReady]        = useState(false);
+  const CDN = "https://cdn.jsdelivr.net/gh/svrnos/site@main/docs-site/data"
 
-  // Lazy-load aiid.json on first AIID search keystroke
+  const SYMPTOMS = [
+    { label: "I was charged / paid / dosed / sentenced the wrong amount", codes: ["305","318","334","503","309"] },
+    { label: "AI confidently told me false information", codes: ["512","422","428"] },
+    { label: "An AI agent did something I didn't authorize", codes: ["426","332","420","336"] },
+    { label: "AI wouldn't stop / kept running / kept retrying", codes: ["427","345","503"] },
+    { label: "AI treated me differently than someone with similar circumstances", codes: ["342","326","323"] },
+    { label: "AI used or revealed private information about me", codes: ["324","326","329"] },
+    { label: "A deepfake / voice clone of me circulated", codes: ["322","425"] },
+    { label: "AI was tricked into producing harmful output", codes: ["421","420","306"] },
+    { label: "AI applied an outdated, expired, or wrong-jurisdiction rule", codes: ["334","310","333"] },
+    { label: "AI didn't perform as the vendor claimed it would", codes: ["422","309"] },
+    { label: "A human was supposed to review but didn't", codes: ["429","502","321"] },
+    { label: "I was punished or denied by AI with no human appeal", codes: ["424","501","502"] },
+    { label: "The same problem keeps recurring after being reported", codes: ["319","309"] },
+    { label: "AI-fabricated content was published as fact", codes: ["512","325","428"] },
+    { label: "AI destroyed my data or system", codes: ["426","332","330"] },
+    { label: "Identity verification was defeated by AI impersonation", codes: ["425","322"] },
+    { label: "AI-generated content appeared without disclosure", codes: ["322","327"] },
+  ]
+
+  const TIERS = [
+    { slug: "0xx", label: "0xx — Pre-Infrastructure" },
+    { slug: "2xx", label: "2xx — Success States" },
+    { slug: "3xx", label: "3xx — Structural Moves" },
+    { slug: "4xx", label: "4xx — Operator / Platform Errors" },
+    { slug: "5xx", label: "5xx — Infrastructure Failures" },
+  ]
+
+  const FILTER_TAGS = [
+    "agentic","multi-agent","companion-ai","clinical","legal","educational",
+    "financial","health-triage","hr-employment","generative-media","autonomous-vehicle",
+    "minors","psychiatric-vulnerability","elderly",
+    "suicide","self-harm","violence","deepfake-impersonation","fraud","doxxing",
+    "privacy-violation","discrimination","prompt-injection",
+  ]
+
+  const [codes, setCodes] = useState([])
+  const [aiidIncidents, setAiidIncidents] = useState([])
+  const [aiidLoading, setAiidLoading] = useState(false)
+  const [aiidReady, setAiidReady] = useState(false)
+  const [selectedSymptoms, setSelectedSymptoms] = useState(new Set())
+  const [selectedTiers, setSelectedTiers] = useState(new Set())
+  const [selectedTags, setSelectedTags] = useState(new Set())
+  const [search, setSearch] = useState("")
+  const [aiidQuery, setAiidQuery] = useState("")
+
   useEffect(() => {
-    if (aiidQuery.length >= 1 && !aiidReady) {
-      loadAiid().then(() => setAiidReady(true));
-    }
-  }, [aiidQuery, aiidReady]);
+    fetch(`${CDN}/ger.json`).then((r) => r.json()).then((d) => setCodes(d.codes || []))
+  }, [])
 
-  // -------- AIID autocomplete -------
+  useEffect(() => {
+    if (aiidQuery.length >= 1 && !aiidReady && !aiidLoading) {
+      setAiidLoading(true)
+      fetch(`${CDN}/aiid.json`)
+        .then((r) => r.json())
+        .then((d) => {
+          setAiidIncidents(d.incidents || [])
+          setAiidReady(true)
+          setAiidLoading(false)
+        })
+        .catch(() => setAiidLoading(false))
+    }
+  }, [aiidQuery, aiidReady, aiidLoading])
+
+  const aiidCodeMap = useMemo(() => {
+    const m = new Map()
+    for (const i of aiidIncidents) m.set(i.aiid_id, i.ger_codes || [])
+    return m
+  }, [aiidIncidents])
+
   const aiidHits = useMemo(() => {
-    const q = aiidQuery.trim().toLowerCase();
-    if (q.length < 2 || !aiidReady) return [];
-    const hits = [];
-    for (const i of incidents) {
-      if (i.title.toLowerCase().includes(q) ||
-          (i.deployer  && i.deployer.toLowerCase().includes(q)) ||
-          (i.developer && i.developer.toLowerCase().includes(q))) {
-        hits.push(i);
-        if (hits.length >= 12) break;
+    const q = aiidQuery.trim().toLowerCase()
+    if (q.length < 2 || !aiidReady) return []
+    const hits = []
+    for (const i of aiidIncidents) {
+      if (
+        i.title.toLowerCase().includes(q) ||
+        (i.deployer && i.deployer.toLowerCase().includes(q)) ||
+        (i.developer && i.developer.toLowerCase().includes(q))
+      ) {
+        hits.push(i)
+        if (hits.length >= 12) break
       }
     }
-    return hits;
-  }, [aiidQuery, aiidReady]);
+    return hits
+  }, [aiidQuery, aiidReady, aiidIncidents])
 
-  // -------- Code filtering -------
   const filtered = useMemo(() => {
-    let pool = codes;
-
-    // Symptom narrowing — union of all selected symptom code sets
+    let pool = codes
     if (selectedSymptoms.size > 0) {
-      const candidate = new Set();
-      for (const idx of selectedSymptoms) {
-        for (const code of SYMPTOMS[idx].codes) candidate.add(code);
-      }
-      pool = pool.filter((c) => candidate.has(c.code));
+      const cand = new Set()
+      for (const idx of selectedSymptoms) for (const code of SYMPTOMS[idx].codes) cand.add(code)
+      pool = pool.filter((c) => cand.has(c.code))
     }
-
-    // Tier filter
-    if (selectedTiers.size > 0) {
-      pool = pool.filter((c) => selectedTiers.has(c.tier));
-    }
-
-    // Tag filter — code must carry ALL selected tags (AND, not OR — most useful in practice)
-    if (selectedTags.size > 0) {
-      pool = pool.filter((c) =>
-        Array.from(selectedTags).every((t) => (c.tags || []).includes(t))
-      );
-    }
-
-    // Free-text search — name + definition + code number
+    if (selectedTiers.size > 0) pool = pool.filter((c) => selectedTiers.has(c.tier))
+    if (selectedTags.size > 0)
+      pool = pool.filter((c) => Array.from(selectedTags).every((t) => (c.tags || []).includes(t)))
     if (search.trim()) {
-      const q = search.trim().toLowerCase();
-      pool = pool.filter((c) =>
-        c.code.includes(q) ||
-        c.name.toLowerCase().includes(q) ||
-        c.definition.toLowerCase().includes(q)
-      );
+      const q = search.trim().toLowerCase()
+      pool = pool.filter(
+        (c) => c.code.includes(q) || c.name.toLowerCase().includes(q) || c.definition.toLowerCase().includes(q)
+      )
     }
+    return pool
+  }, [codes, selectedSymptoms, selectedTiers, selectedTags, search])
 
-    return pool;
-  }, [selectedSymptoms, selectedTiers, selectedTags, search]);
-
-  // -------- Toggle helpers -------
   const toggle = (set, setSet, value) => {
-    const next = new Set(set);
-    next.has(value) ? next.delete(value) : next.add(value);
-    setSet(next);
-  };
+    const next = new Set(set)
+    if (next.has(value)) next.delete(value)
+    else next.add(value)
+    setSet(next)
+  }
 
   const resetAll = () => {
-    setSelectedSymptoms(new Set());
-    setSelectedTiers(new Set());
-    setSelectedTags(new Set());
-    setSearch("");
-    setAiidQuery("");
-  };
+    setSelectedSymptoms(new Set())
+    setSelectedTiers(new Set())
+    setSelectedTags(new Set())
+    setSearch("")
+    setAiidQuery("")
+  }
 
-  const hasAnyFilter = selectedSymptoms.size > 0 || selectedTiers.size > 0 ||
-                       selectedTags.size > 0 || search.trim().length > 0;
+  const hasAnyFilter =
+    selectedSymptoms.size > 0 || selectedTiers.size > 0 || selectedTags.size > 0 || search.trim().length > 0
 
-  // -------- Render -------
   return (
     <div className="ger-lookup not-prose">
-
-      {/* AIID search box */}
       <div className="mb-8">
         <label className="block text-xs font-mono uppercase tracking-wider text-neutral-600 mb-2">
           Does your case resemble one you've heard about?
@@ -191,56 +138,62 @@ export const GerLookup = () => {
           placeholder="Type a case name — MrBeast, Tumbler Ridge, Air Canada…"
           className="w-full px-4 py-3 border border-neutral-300 rounded-md text-base focus:outline-none focus:ring-2 focus:ring-green-700"
         />
-        {aiidQuery.length >= 2 && !aiidReady && (
+        {aiidQuery.length >= 2 && aiidLoading && (
           <p className="mt-2 text-xs font-mono text-neutral-500">Loading incident database…</p>
         )}
         {aiidHits.length > 0 && (
           <ul className="mt-2 border border-neutral-200 rounded-md max-h-80 overflow-y-auto bg-white shadow-sm">
             {aiidHits.map((h) => {
-              const matchedCodes = aiidCodeMap.get(h.aiid_id) || [];
+              const matchedCodes = aiidCodeMap.get(h.aiid_id) || []
               return (
                 <li key={h.aiid_id} className="px-4 py-3 border-b border-neutral-100 last:border-0">
                   <div className="flex items-baseline justify-between gap-3">
                     <span className="text-sm">{h.title}</span>
-                    <a href={`https://incidentdatabase.ai/cite/${h.aiid_id}`} target="_blank" rel="noopener"
-                       className="text-xs font-mono text-neutral-500 hover:text-neutral-900 whitespace-nowrap">
+                    <a
+                      href={`https://incidentdatabase.ai/cite/${h.aiid_id}`}
+                      target="_blank"
+                      rel="noopener"
+                      className="text-xs font-mono text-neutral-500 hover:text-neutral-900 whitespace-nowrap"
+                    >
                       AIID #{h.aiid_id} ↗
                     </a>
                   </div>
                   {matchedCodes.length > 0 ? (
                     <div className="mt-2 flex flex-wrap gap-1.5">
                       {matchedCodes.map((m) => (
-                        <a key={`${h.aiid_id}-${m.code}`} href={`/ger/codes/${m.code}`}
-                           className="text-xs font-mono px-2 py-0.5 rounded bg-green-50 text-green-900 hover:bg-green-100">
+                        <a
+                          key={`${h.aiid_id}-${m.code}`}
+                          href={`/ger/codes/${m.code}`}
+                          className="text-xs font-mono px-2 py-0.5 rounded bg-green-50 text-green-900 hover:bg-green-100"
+                        >
                           → GER-{m.code} ({m.role})
                         </a>
                       ))}
                     </div>
                   ) : (
                     <p className="mt-1 text-xs text-neutral-500 italic">
-                      No GER mapping yet. <a href="/introduction/how-to-contribute" className="underline">Help us map this case →</a>
+                      No GER mapping yet.{" "}
+                      <a href="/introduction/how-to-contribute" className="underline">
+                        Help us map this case →
+                      </a>
                     </p>
                   )}
                 </li>
-              );
+              )
             })}
           </ul>
         )}
       </div>
 
-      {/* Two-column layout: filters left, results right */}
       <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8">
-
-        {/* Filter sidebar */}
         <aside className="lookup-filters space-y-6">
-
-          {/* Symptom picker */}
           <div>
             <p className="text-xs font-mono uppercase tracking-wider text-neutral-600 mb-3">Something happened?</p>
             <div className="space-y-1.5">
               {SYMPTOMS.map((s, idx) => (
                 <label key={idx} className="flex items-start gap-2 text-sm cursor-pointer hover:text-green-900">
-                  <input type="checkbox"
+                  <input
+                    type="checkbox"
                     checked={selectedSymptoms.has(idx)}
                     onChange={() => toggle(selectedSymptoms, setSelectedSymptoms, idx)}
                     className="mt-1 flex-shrink-0"
@@ -251,13 +204,13 @@ export const GerLookup = () => {
             </div>
           </div>
 
-          {/* Tier filter */}
           <div>
             <p className="text-xs font-mono uppercase tracking-wider text-neutral-600 mb-3">Tier</p>
             <div className="space-y-1.5">
               {TIERS.map((t) => (
                 <label key={t.slug} className="flex items-center gap-2 text-sm cursor-pointer hover:text-green-900">
-                  <input type="checkbox"
+                  <input
+                    type="checkbox"
                     checked={selectedTiers.has(t.slug)}
                     onChange={() => toggle(selectedTiers, setSelectedTiers, t.slug)}
                   />
@@ -267,38 +220,38 @@ export const GerLookup = () => {
             </div>
           </div>
 
-          {/* Tag filter */}
           <div>
             <p className="text-xs font-mono uppercase tracking-wider text-neutral-600 mb-3">Tag</p>
             <div className="flex flex-wrap gap-1.5">
               {FILTER_TAGS.map((t) => (
-                <button key={t}
+                <button
+                  key={t}
                   onClick={() => toggle(selectedTags, setSelectedTags, t)}
                   className={`text-xs font-mono px-2 py-1 rounded-full transition-colors ${
                     selectedTags.has(t)
                       ? "bg-green-700 text-white"
                       : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
-                  }`}>
+                  }`}
+                >
                   {t}
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Reset */}
           {hasAnyFilter && (
-            <button onClick={resetAll}
-              className="text-xs text-neutral-500 hover:text-neutral-900 underline">
+            <button onClick={resetAll} className="text-xs text-neutral-500 hover:text-neutral-900 underline">
               Reset all filters
             </button>
           )}
         </aside>
 
-        {/* Results */}
         <div className="lookup-results">
           <div className="flex items-baseline justify-between mb-4">
             <p className="text-sm text-neutral-600">
-              {filtered.length === codes.length
+              {codes.length === 0
+                ? "Loading codes…"
+                : filtered.length === codes.length
                 ? `Showing all ${filtered.length} codes`
                 : `${filtered.length} of ${codes.length} codes match`}
             </p>
@@ -311,30 +264,39 @@ export const GerLookup = () => {
             />
           </div>
 
-          {filtered.length === 0 ? (
+          {filtered.length === 0 && codes.length > 0 ? (
             <div className="py-12 text-center text-neutral-500">
               <p className="mb-2">No codes match these filters.</p>
               <p className="text-sm">
-                <a href="/introduction/how-to-contribute" className="underline">Propose a new code →</a>
+                <a href="/introduction/how-to-contribute" className="underline">
+                  Propose a new code →
+                </a>
               </p>
             </div>
           ) : (
             <ul className="space-y-3">
               {filtered.map((c) => (
                 <li key={c.code}>
-                  <a href={`/ger/codes/${c.code}`} className="block border border-neutral-200 rounded-md p-4 hover:border-green-700 hover:bg-green-50/30 transition-colors">
+                  <a
+                    href={`/ger/codes/${c.code}`}
+                    className="block border border-neutral-200 rounded-md p-4 hover:border-green-700 hover:bg-green-50/30 transition-colors"
+                  >
                     <div className="flex items-baseline gap-3 mb-1">
                       <span className="font-mono text-sm font-semibold text-green-900">GER-{c.code}</span>
                       <span className="text-base text-neutral-900">{c.name}</span>
                       <span className="ml-auto text-xs font-mono uppercase tracking-wider text-neutral-500">
-                        {c.tier}{c.type === "documented" ? " · Documented" : ""}
+                        {c.tier}
+                        {c.type === "documented" ? " · Documented" : ""}
                       </span>
                     </div>
                     <p className="text-sm text-neutral-600 line-clamp-2">{c.definition}</p>
                     {c.tags && c.tags.length > 0 && (
                       <div className="mt-2 flex flex-wrap gap-1">
                         {c.tags.slice(0, 5).map((t) => (
-                          <span key={t} className="text-[10px] font-mono px-1.5 py-0.5 bg-neutral-100 text-neutral-600 rounded">
+                          <span
+                            key={t}
+                            className="text-[10px] font-mono px-1.5 py-0.5 bg-neutral-100 text-neutral-600 rounded"
+                          >
                             {t}
                           </span>
                         ))}
@@ -348,5 +310,5 @@ export const GerLookup = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
