@@ -11,12 +11,17 @@
     "preview": "astro preview --port 3002",
     "astro": "astro",
     "check": "bash scripts/post-deploy-check.sh",
-    "check:preview": "bash scripts/post-deploy-check.sh --base"
+    "check:preview": "bash scripts/post-deploy-check.sh --base",
+    "export:ger": "node scripts/export-ger.mjs",
+    "generate:code-pages": "node scripts/generate-code-mdx.mjs",
+    "sync:docs-data": "mkdir -p docs-site/data && cp src/data/ger.json src/data/aiid.json src/data/tags.json docs-site/data/",
+    "refresh:docs": "npm run export:ger && npm run generate:code-pages && npm run sync:docs-data"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.40.0",
     "@astrojs/mdx": "^4.0.0",
     "@astrojs/sitemap": "^3.2.0",
+    "@supabase/supabase-js": "^2.106.1",
     "@svrnos/tokens": "file:./svrnos-tokens",
     "@tailwindcss/vite": "^4.0.0",
     "astro": "^5.0.0",

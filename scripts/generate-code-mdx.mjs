@@ -27,7 +27,9 @@ const TIER_LABEL = {
 
 function quote(s) {
   if (s == null) return '""';
-  return JSON.stringify(s);
+  // JSX-attribute-safe: wrap in double quotes, replace inner " with &quot;.
+  // JSON.stringify produces \" which MDX/JSX rejects in attribute values.
+  return `"${String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;")}"`;
 }
 
 function renderCodePage(c) {

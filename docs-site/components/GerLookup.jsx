@@ -15,9 +15,9 @@ import { useEffect, useMemo, useState } from "react";
 
 // Data files are imported by the build pipeline. In Mintlify, this works via
 // the `@/` alias to the site root.
-import gerData    from "../../src/data/ger.json";
-import aiidData   from "../../src/data/aiid.json";
-import tagsData   from "../../src/data/tags.json";
+import gerData    from "../data/ger.json";
+import aiidData   from "../data/aiid.json";
+import tagsData   from "../data/tags.json";
 
 const codes     = gerData.codes;
 const incidents = aiidData.incidents;

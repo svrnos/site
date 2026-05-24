@@ -6,7 +6,7 @@
 // what they want.
 // ============================================================================
 
-import gerData from "../../src/data/ger.json";
+import gerData from "../data/ger.json";
 
 const TIER_LABEL = {
   "0xx": "Pre-Infrastructure",

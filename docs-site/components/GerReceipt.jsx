@@ -10,7 +10,7 @@
 // ============================================================================
 
 import { useMemo, useState } from "react";
-import gerData from "../../src/data/ger.json";
+import gerData from "../data/ger.json";
 
 const codes = gerData.codes;
 const codeMap = new Map(codes.map((c) => [c.code, c]));

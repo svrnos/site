@@ -1,0 +1,312 @@
+{
+  "generated_at": "2026-05-21T17:47:19.048Z",
+  "count": 51,
+  "tags": [
+    {
+      "slug": "agentic",
+      "label": "Agentic systems",
+      "description": "Autonomous agents with tool-use authority",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "agentic-overreach",
+      "label": "Agentic overreach",
+      "description": "Agent takes action beyond authorized scope",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "autonomous-vehicle",
+      "label": "Autonomous vehicle",
+      "description": "Self-driving cars, drones, robotic systems",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "california-tfaia",
+      "label": "California TFAIA",
+      "description": "Transparency in Frontier AI Act",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "cib",
+      "label": "Coordinated Inauthentic Behavior",
+      "description": "Networked deceptive activity by multiple coordinated actors",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "clinical",
+      "label": "Clinical / healthcare",
+      "description": "Medical, psychiatric, therapeutic deployments",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "companion-ai",
+      "label": "Companion AI",
+      "description": "Open-ended chat partners (Replika, Character.AI, etc.)",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "csam",
+      "label": "CSAM",
+      "description": "Child sexual abuse material",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "deepfake-impersonation",
+      "label": "Deepfake impersonation",
+      "description": "Synthetic media presenting as a real named person",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "defamation",
+      "label": "Defamation",
+      "description": "False statement of fact about a named party",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "delusion-reinforcement",
+      "label": "Delusion reinforcement",
+      "description": "AI affirms cognitive patterns characteristic of psychosis or paranoia",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "discrimination",
+      "label": "Discrimination",
+      "description": "Disparate treatment by protected attribute",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "doxxing",
+      "label": "Doxxing",
+      "description": "Unconsented disclosure of personal identifying information",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "eating-disorder",
+      "label": "Eating disorder reinforcement",
+      "description": "AI affirms or amplifies disordered eating patterns",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "educational",
+      "label": "Education",
+      "description": "Schools, EdTech, learning-platform deployments",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "elderly",
+      "label": "Elderly",
+      "description": "Affected parties 65 and older",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "eu-ai-act",
+      "label": "EU AI Act",
+      "description": "European Union Artificial Intelligence Act",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "financial",
+      "label": "Financial services",
+      "description": "Lending, banking, insurance, payments deployments",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "financial-harm",
+      "label": "Financial harm",
+      "description": "Monetary loss to a victim caused by AI action or output",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "fraud",
+      "label": "Fraud",
+      "description": "Deceptive scheme for financial gain",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "gdpr",
+      "label": "GDPR",
+      "description": "EU General Data Protection Regulation",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "generative-media",
+      "label": "Generative media",
+      "description": "Image, audio, video synthesis platforms",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "hallucinated-citation",
+      "label": "Hallucinated citation",
+      "description": "Fabricated reference presented as authoritative",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "health-triage",
+      "label": "Health triage",
+      "description": "Acuity assessment and care routing",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "hr-employment",
+      "label": "HR / employment",
+      "description": "Hiring, performance management, termination",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "identity-spoofing",
+      "label": "Identity spoofing",
+      "description": "Defeating verification with synthesized or stolen identity",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "indigenous",
+      "label": "Indigenous communities",
+      "description": "Collective rights holders under UNDRIP",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "jailbreak",
+      "label": "Jailbreak",
+      "description": "User circumvention of safety policy",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "legal",
+      "label": "Legal",
+      "description": "Law-firm, court, paralegal deployments",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "low-resource-language",
+      "label": "Low-resource language",
+      "description": "Languages underrepresented in training data",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "manipulation",
+      "label": "Manipulation",
+      "description": "AI shapes user behavior against their interest",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "mass-casualty",
+      "label": "Mass-casualty event",
+      "description": "Incidents involving multiple victims or threat thereof",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "minors",
+      "label": "Minors",
+      "description": "Affected parties under 18",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "misinformation",
+      "label": "Misinformation",
+      "description": "False factual claims propagated through AI output",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "multi-agent",
+      "label": "Multi-agent systems",
+      "description": "Two or more cooperating or competing AI agents",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "ncii",
+      "label": "NCII",
+      "description": "Non-consensual intimate imagery / deepfake nudes",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "non-english",
+      "label": "Non-English speakers",
+      "description": "Affected parties whose primary language is not English",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "ny-raise-act",
+      "label": "NY RAISE Act",
+      "description": "New York Responsible AI Safety and Education Act",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "oregon-sb-1546",
+      "label": "Oregon SB 1546",
+      "description": "Oregon chatbot incident reporting mandate",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "privacy-violation",
+      "label": "Privacy violation",
+      "description": "Unauthorized use or disclosure of personal data",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "prompt-injection",
+      "label": "Prompt injection",
+      "description": "Adversarial input designed to override system instructions",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "psychiatric-vulnerability",
+      "label": "Psychiatric vulnerability",
+      "description": "Affected parties with active mental-health conditions",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "psychological-harm",
+      "label": "Psychological harm",
+      "description": "Mental-health degradation caused or amplified by AI interaction",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "reputational-harm",
+      "label": "Reputational harm",
+      "description": "Damage to a named person or organization standing",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "scam",
+      "label": "Scam",
+      "description": "Targeted deception of individual victims",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "self-harm",
+      "label": "Self-harm",
+      "description": "Non-suicidal self-injury including cutting, eating disorders",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "sexual-harm",
+      "label": "Sexual harm",
+      "description": "Sexual abuse, exploitation, or coercion",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "suicide",
+      "label": "Suicide / suicidal ideation",
+      "description": "Self-directed harm with intent to die",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "uk-online-safety-act",
+      "label": "UK Online Safety Act",
+      "description": "",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "undrip",
+      "label": "UNDRIP",
+      "description": "UN Declaration on Rights of Indigenous Peoples (Article 31)",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "violence",
+      "label": "Violence",
+      "description": "Harm directed at others, physical or threatened",
+      "created_at": "2026-05-21T15:51:03.497746+00:00"
+    }
+  ]
+}
