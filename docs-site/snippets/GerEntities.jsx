@@ -84,7 +84,7 @@ export const GerEntities = () => {
       ) : (
         <>
           <p className="text-xs font-mono text-neutral-500 mb-4">
-            {filtered.length} entities · {filtered.reduce((s, e) => s + e.count, 0)} incident attributions
+            {filtered.length} entities · {filtered.reduce((s, e) => s + e.count, 0)} error attributions
             {" "}(unknown-attributed entities excluded)
           </p>
           <ul className="space-y-2">
@@ -99,57 +99,29 @@ export const GerEntities = () => {
                   >
                     <span className="font-mono text-xs text-neutral-400 w-6 text-right">{isOpen ? "▾" : "▸"}</span>
                     <span className="text-base font-medium text-neutral-900 flex-1">{formatEntity(e.name)}</span>
-                    <span className="text-sm font-mono text-neutral-600">{e.count} incidents</span>
+                    <span className="text-sm font-mono text-neutral-600">{e.count} errors</span>
                     <span className="text-xs font-mono text-neutral-500">{sortedCodes.length} GER codes</span>
                   </button>
                   {isOpen && (
-                    <div className="border-t border-neutral-200 bg-neutral-50/50 p-4 space-y-4">
-                      {sortedCodes.length > 0 && (
-                        <div>
-                          <p className="text-xs font-mono uppercase tracking-wider text-neutral-600 mb-2">
-                            GER codes fired (sorted by frequency)
-                          </p>
-                          <ul className="flex flex-wrap gap-1.5">
-                            {sortedCodes.map(([code, n]) => (
-                              <li key={code}>
-                                <a
-                                  href={`/ger/codes/${code}`}
-                                  className="inline-flex items-baseline gap-1 text-xs font-mono px-2 py-1 rounded bg-green-50 text-green-900 hover:bg-green-100"
-                                >
-                                  <span className="font-semibold">GER-{code}</span>
-                                  <span className="text-green-700/70">{codeNames[code] || ""}</span>
-                                  <span className="text-green-700/50 ml-1">×{n}</span>
-                                </a>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                      <div>
-                        <p className="text-xs font-mono uppercase tracking-wider text-neutral-600 mb-2">
-                          Incidents ({e.incidents.length})
-                        </p>
-                        <ul className="space-y-1.5">
-                          {e.incidents.slice(0, 25).map((i) => (
-                            <li key={i.aiid_id} className="text-sm">
+                    <div className="border-t border-neutral-200 bg-neutral-50/50 p-4">
+                      {sortedCodes.length > 0 ? (
+                        <ul className="flex flex-wrap gap-1.5">
+                          {sortedCodes.map(([code, n]) => (
+                            <li key={code}>
                               <a
-                                href={`https://incidentdatabase.ai/cite/${i.aiid_id}`}
-                                target="_blank"
-                                rel="noopener"
-                                className="hover:underline"
+                                href={`/ger/codes/${code}`}
+                                className="inline-flex items-baseline gap-1 text-xs font-mono px-2 py-1 rounded bg-green-50 text-green-900 hover:bg-green-100"
                               >
-                                <span className="font-mono text-xs text-neutral-500 mr-2">AIID #{i.aiid_id}</span>
-                                {i.title}
+                                <span className="font-semibold">GER-{code}</span>
+                                <span className="text-green-700/70">{codeNames[code] || ""}</span>
+                                <span className="text-green-700/50 ml-1">×{n}</span>
                               </a>
                             </li>
                           ))}
-                          {e.incidents.length > 25 && (
-                            <li className="text-xs text-neutral-500 italic">
-                              + {e.incidents.length - 25} more incidents (see AIID directly)
-                            </li>
-                          )}
                         </ul>
-                      </div>
+                      ) : (
+                        <p className="text-xs text-neutral-500 italic">No GER codes mapped to this entity's incidents yet.</p>
+                      )}
                     </div>
                   )}
                 </li>
