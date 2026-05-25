@@ -12431,7 +12431,7 @@
     },
     {
       "code": "428",
-      "name": "Subject Preconditions Not Required",
+      "name": "Missing Required Subject Precondition",
       "definition": "AI system produces personalized content involving a named third party without requiring the requester to attest to consent, relational authority, identity ownership, or age verification of the subject.",
       "tier": "4xx",
       "layer": null,
