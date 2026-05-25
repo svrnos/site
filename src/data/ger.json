@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-05-21T17:47:19.048Z",
   "source": "svrnos-docs.ger_codes_export",
-  "count": 82,
+  "count": 83,
   "codes": [
     {
       "code": "000",
@@ -6459,6 +6459,44 @@
       ],
       "distinct_from": [],
       "aiid_anchors": [],
+      "contributors": [
+        {
+          "name": "Sushee Nzeutem",
+          "affiliation": "SVRNOS (Sovereign OS LLC)",
+          "attribution_type": "primary"
+        }
+      ]
+    },
+    {
+      "code": "417",
+      "name": "Grapevine Rule",
+      "definition": "A governance rule communicated through informal channels (verbal, chat, email, meeting decisions, hallway conversations) never makes the transition to platform-recognized policy or production enforcement. The rule is recoverable from communication records but does not appear in any authoritative ruleset. Three structural properties: (1) the rule was stated through an informal channel, (2) the rule is recoverable from phone logs, email archives, chat history, or meeting minutes, (3) the rule never reached the authoritative ruleset (no ticket, no policy doc update, no code change, no formal compliance entry).",
+      "tier": "4xx",
+      "layer": null,
+      "article_url": null,
+      "type": "illustrative",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [],
+      "distinct_from": [
+        {
+          "contrasted_with": "404",
+          "this_condition": "Rule recoverable from communication records but not in active ruleset",
+          "other_condition": "No rule exists anywhere in the system"
+        },
+        {
+          "contrasted_with": "420",
+          "this_condition": "Rule never reached the platform's formal policy layer at all",
+          "other_condition": "Rule exists in formal platform policy (prompt, written policy doc, configuration) but not wired into production"
+        },
+        {
+          "contrasted_with": "400",
+          "this_condition": "Rule well-formed when communicated, just never codified",
+          "other_condition": "Rule ambiguous or self-contradicting"
+        }
+      ],
+      "aiid_anchors": [],
+      "references": [],
       "contributors": [
         {
           "name": "Sushee Nzeutem",
