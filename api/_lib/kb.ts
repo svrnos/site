@@ -9,6 +9,8 @@ const KB_URLS = {
     "https://svrnos.com/insights/ger-404-replika.md",
     "https://svrnos.com/insights/ger-420.md",
     "https://svrnos.com/insights/ger-420-pocketos.md",
+    "https://svrnos.com/insights/ger-421-chevrolet.md",
+    "https://svrnos.com/insights/ger-500-rome.md",
     "https://svrnos.com/insights/ger-501.md",
     "https://svrnos.com/insights/ger-501-tumbler-ridge.md",
     "https://svrnos.com/insights/ger-503-eu-csam.md",

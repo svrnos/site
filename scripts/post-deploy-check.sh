@@ -58,6 +58,14 @@ declare -a CHECKS=(
   "/insights/ger-420-pocketos|The Instruction Existed|Phantom Enforcement"
   "/insights/ger-306-safety-constraint-retired|Constraint Was Enforced|Safety Constraint Retired"
   "/insights/why-i-built-svrnos|Why I Built SVRNOS|discipline of origin"
+  "/insights/algorithmic-compliance-companion-harm|When the Chatbot Becomes the Harm"
+  "/insights/ccdh-eight-in-ten-chatbots-violent-planning|Guardrails Exist"
+  "/insights/ger-404-replika|GER-404|Replika"
+  "/insights/ger-421-chevrolet|GER-421|Tahoe"
+  "/insights/ger-500-rome|GER-500|Mining"
+  "/insights/ger-503-eu-csam|GER-503|Pulled Its Own Plug"
+  "/insights/musk-altman-sim95|Musk-Altman Lawsuit"
+  "/insights/wa-distress-routing-mandate|Washington|Distress Routing"
   "/access|Request Access"
 )
 
