@@ -1,0 +1,33 @@
+---
+title: "GER-412 · Inherited-Filter Context Redaction"
+description: "A trusted component auto-loads configuration from co-located untrusted context (cloned repo, downloaded file, fetched dependency), and that configuration modifies what the AI or operator sees, evading both human and AI r…"
+sidebarTitle: "412 · Inherited-Filter Context Redaction"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="green">Documented</Badge> <Badge>Tier 4xx</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
+</div>
+
+*Operator / Platform Errors*
+
+## Definition
+
+A trusted component auto-loads configuration from co-located untrusted context (cloned repo, downloaded file, fetched dependency), and that configuration modifies what the AI or operator sees, evading both human and AI review of the modified context.
+
+## Distinct from
+
+- [**GER-403**](/ger/codes/403) — Config-load inflection point → this code. Component install inflection point → GER-403.
+- [**GER-417**](/ger/codes/417) — Trust inherited from co-located untrusted source via config-load → this code. Rule communicated through informal channel without canonical authority binding → GER-417.
+- [**GER-431**](/ger/codes/431) — Trusted component auto-loads untrusted config → this code. Vendor pushes update without validation gate → GER-431.
+
+## Tags
+
+`supply-chain` · `l2` · `cve-2026-45792`
+
+### Cite
+
+```
+SVRNOS. (2026). GER-412: Inherited-Filter Context Redaction. Governance Error Register. https://docs.svrnos.com/ger/codes/412
+```

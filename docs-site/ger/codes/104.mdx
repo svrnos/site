@@ -1,0 +1,27 @@
+---
+title: "GER-104 · Edge-Inference Drift"
+description: "A deployed model diverges from reference performance due to deployment-surface variance such as chip-revision quantization or unvalidated firmware interaction."
+sidebarTitle: "104 · Edge-Inference Drift"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="amber">Illustrative</Badge> <Badge>Tier 1xx</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
+</div>
+
+*1xx*
+
+## Definition
+
+A deployed model diverges from reference performance due to deployment-surface variance such as chip-revision quantization or unvalidated firmware interaction.
+
+## Distinct from
+
+- [**GER-431**](/ger/codes/431) — Substrate/deployment-surface variance is the failure → this code. An unvalidated vendor change is the failure → GER-431.
+
+### Cite
+
+```
+SVRNOS. (2026). GER-104: Edge-Inference Drift. Governance Error Register. https://docs.svrnos.com/ger/codes/104
+```

@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-05-21T17:47:19.048Z",
   "source": "svrnos-docs.ger_codes_export",
-  "count": 83,
+  "count": 110,
   "codes": [
     {
       "code": "000",
@@ -33,6 +33,153 @@
           "attribution_type": "primary"
         }
       ]
+    },
+    {
+      "code": "101",
+      "name": "Compute-Substrate Degradation",
+      "definition": "Hardware, thermal, or power throttling reduces numerical precision or pushes latency past the operational envelope, degrading model behavior.",
+      "tier": "1xx",
+      "layer": null,
+      "article_url": null,
+      "type": "illustrative",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [],
+      "distinct_from": [
+        {
+          "contrasted_with": "110",
+          "this_condition": "The substrate event is the initiating failure",
+          "other_condition": "The absence of a degraded-mode signal is the initiating failure"
+        }
+      ],
+      "aiid_anchors": [],
+      "contributors": []
+    },
+    {
+      "code": "102",
+      "name": "Inference-Pool Partial-Availability",
+      "definition": "Part of the serving pool goes down and requests fall back to a degraded or older path while the service still appears healthy.",
+      "tier": "1xx",
+      "layer": null,
+      "article_url": null,
+      "type": "illustrative",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [],
+      "distinct_from": [
+        {
+          "contrasted_with": "503",
+          "this_condition": "Compute-layer partial availability",
+          "other_condition": "An institutional governance component is offline"
+        }
+      ],
+      "aiid_anchors": [],
+      "contributors": []
+    },
+    {
+      "code": "104",
+      "name": "Edge-Inference Drift",
+      "definition": "A deployed model diverges from reference performance due to deployment-surface variance such as chip-revision quantization or unvalidated firmware interaction.",
+      "tier": "1xx",
+      "layer": null,
+      "article_url": null,
+      "type": "illustrative",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [],
+      "distinct_from": [
+        {
+          "contrasted_with": "431",
+          "this_condition": "Substrate/deployment-surface variance is the failure",
+          "other_condition": "An unvalidated vendor change is the failure"
+        }
+      ],
+      "aiid_anchors": [],
+      "contributors": []
+    },
+    {
+      "code": "105",
+      "name": "Model-Routing / Orchestration Failure",
+      "definition": "The load-balancer or routing layer directs traffic to the wrong model endpoint, dialect checkpoint, or tenant context.",
+      "tier": "1xx",
+      "layer": null,
+      "article_url": null,
+      "type": "illustrative",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [],
+      "distinct_from": [
+        {
+          "contrasted_with": "352",
+          "this_condition": "Infrastructure misrouting",
+          "other_condition": "Meaning lost in a translation/transformation step"
+        }
+      ],
+      "aiid_anchors": [],
+      "contributors": []
+    },
+    {
+      "code": "106",
+      "name": "Breached Tenant Isolation",
+      "definition": "Substrate-layer tenant isolation breaks, allowing context, data, or prompts to bleed across customer boundaries, including metadata-only side-channels such as timing or utilization.",
+      "tier": "1xx",
+      "layer": null,
+      "article_url": null,
+      "type": "documented",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [],
+      "distinct_from": [
+        {
+          "contrasted_with": "322",
+          "this_condition": "Cross-tenant isolation failure at the substrate",
+          "other_condition": "Output shipped without an authenticity/provenance signal"
+        }
+      ],
+      "aiid_anchors": [
+        "1172",
+        "516"
+      ],
+      "contributors": []
+    },
+    {
+      "code": "107",
+      "name": "Tampered Model Substrate",
+      "definition": "Model weights, container images, packages, or inference substrate are compromised in the legitimate distribution channel (CDN injection, repository tampering, signed-artifact bypass). Excludes theoretical research and third-party derivative redistribution.",
+      "tier": "1xx",
+      "layer": null,
+      "article_url": null,
+      "type": "documented",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [],
+      "distinct_from": [],
+      "aiid_anchors": [
+        "1210",
+        "950"
+      ],
+      "contributors": []
+    },
+    {
+      "code": "110",
+      "name": "Silent Partial Degradation",
+      "definition": "The system enters a degraded mode (e.g., CPU fallback) without signaling it, so downstream consumers act on degraded output as if normal.",
+      "tier": "1xx",
+      "layer": null,
+      "article_url": null,
+      "type": "illustrative",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [],
+      "distinct_from": [
+        {
+          "contrasted_with": "101",
+          "this_condition": "Missing degraded-mode signal is the initiating failure",
+          "other_condition": "The substrate event itself is the initiating failure"
+        }
+      ],
+      "aiid_anchors": [],
+      "contributors": []
     },
     {
       "code": "200",
@@ -145,6 +292,32 @@
           "attribution_type": "primary"
         }
       ]
+    },
+    {
+      "code": "211",
+      "name": "Missing Reconstructible Evidence",
+      "definition": "A decision or action is recorded, but the record omits the specific metadata needed to independently reconstruct or validate that exact past decision (input hash, model/config version active at decision time, or per-decision reasoning). Surfaces when a later audit, appeal, or legal challenge cannot verify what was decided and why. Requires that a record exists and that the gap is specifically reconstruction metadata on that record; excludes cases with no record (210), output-provenance omission (322), fabrication (512), merely hard-to-explain outcomes, and never-instrumented systems.",
+      "tier": "2xx",
+      "layer": null,
+      "article_url": null,
+      "type": "illustrative",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [],
+      "distinct_from": [
+        {
+          "contrasted_with": "210",
+          "this_condition": "A record exists but lacks reconstruction metadata",
+          "other_condition": "No record was made at all"
+        },
+        {
+          "contrasted_with": "322",
+          "this_condition": "Audit-trail reconstruction metadata is missing",
+          "other_condition": "Output authenticity/provenance signal is missing"
+        }
+      ],
+      "aiid_anchors": [],
+      "contributors": []
     },
     {
       "code": "301",
@@ -434,7 +607,7 @@
     {
       "code": "311",
       "name": "Continuity Without Coherence",
-      "definition": "Same user identity persists across surfaces (web, mobile, API) but the governance state \u2014 policies applied, attestations made, refusals recorded \u2014 fails to synchronize between surfaces. Cross-surface continuity is preserved while coherence breaks.",
+      "definition": "Same user identity persists across surfaces (web, mobile, API) but the governance state — policies applied, attestations made, refusals recorded — fails to synchronize between surfaces. Cross-surface continuity is preserved while coherence breaks.",
       "tier": "3xx",
       "layer": null,
       "article_url": null,
@@ -584,6 +757,35 @@
       "contributors": []
     },
     {
+      "code": "317",
+      "name": "Weaponized Scope Expansion",
+      "definition": "A governed AI system operates within its technical envelope, but its deployment scope is expanded by human operators to punitively or retaliatorily target specific individuals or groups based on protected activity, outside the original safety case.",
+      "tier": "3xx",
+      "layer": null,
+      "article_url": null,
+      "type": "documented",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [],
+      "distinct_from": [
+        {
+          "contrasted_with": "314",
+          "this_condition": "Deliberate retaliatory repurposing",
+          "other_condition": "Authority boundaries drift without intent"
+        },
+        {
+          "contrasted_with": "309",
+          "this_condition": "Targeting intent against protected activity",
+          "other_condition": "Harmful-but-as-built behavior with no targeting"
+        }
+      ],
+      "aiid_anchors": [
+        "1390",
+        "1362"
+      ],
+      "contributors": []
+    },
+    {
       "code": "318",
       "name": "Representation-Bound Admissibility Failure",
       "definition": "AI bound to a stale or incorrect internal representation of the user, case, or world. Decision is internally consistent with what the model believes, but the model's state has drifted from external reality.",
@@ -618,14 +820,14 @@
         },
         {
           "aiid_id": 100,
-          "title": "How French welfare services are creating \u2018robo-debt\u2019",
+          "title": "How French welfare services are creating ‘robo-debt’",
           "date": "2021-03-17",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/100"
         },
         {
           "aiid_id": 123,
-          "title": "Epic Systems\u2019s Sepsis Prediction Algorithms Revealed to Have High Error Rates on Seriously Ill Patients",
+          "title": "Epic Systems’s Sepsis Prediction Algorithms Revealed to Have High Error Rates on Seriously Ill Patients",
           "date": "2021-08-01",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/123"
@@ -661,7 +863,7 @@
       "aiid_anchors": [
         {
           "aiid_id": 89,
-          "title": "The Christchurch shooter and YouTube\u2019s radicalization trap",
+          "title": "The Christchurch shooter and YouTube’s radicalization trap",
           "date": "2019-03-15",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/89"
@@ -1387,7 +1589,7 @@
         },
         {
           "aiid_id": 812,
-          "title": "Deepfake Nudes Targeting Underage Female Students at Coll\u00e8ge B\u00e9liveau in Winnipeg Shared Online",
+          "title": "Deepfake Nudes Targeting Underage Female Students at Collège Béliveau in Winnipeg Shared Online",
           "date": "2023-12-11",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/812"
@@ -1422,7 +1624,7 @@
         },
         {
           "aiid_id": 828,
-          "title": "Uruguayan TV Program Santo y Se\u00f1a Uses a Deepfake of Political Candidate Yamand\u00fa Orsi Without His Consent",
+          "title": "Uruguayan TV Program Santo y Seña Uses a Deepfake of Political Candidate Yamandú Orsi Without His Consent",
           "date": "2024-10-13",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/828"
@@ -1464,7 +1666,7 @@
         },
         {
           "aiid_id": 848,
-          "title": "High School Student in C\u00f3rdoba, Argentina Accused of Using AI to Generate Explicit Images of Classmates",
+          "title": "High School Student in Córdoba, Argentina Accused of Using AI to Generate Explicit Images of Classmates",
           "date": "2024-10-18",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/848"
@@ -1541,7 +1743,7 @@
         },
         {
           "aiid_id": 878,
-          "title": "Romance Scammer 'Alla Morgan' Allegedly Exploits Deepfake Technology to Defraud Victim of \u00a317,000",
+          "title": "Romance Scammer 'Alla Morgan' Allegedly Exploits Deepfake Technology to Defraud Victim of £17,000",
           "date": "2024-12-19",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/878"
@@ -1667,7 +1869,7 @@
         },
         {
           "aiid_id": 914,
-          "title": "Alleged Deepfake of Luis Su\u00e1rez Used to Scam Uruguayans in Fake Investment Scheme",
+          "title": "Alleged Deepfake of Luis Suárez Used to Scam Uruguayans in Fake Investment Scheme",
           "date": "2024-12-26",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/914"
@@ -1702,7 +1904,7 @@
         },
         {
           "aiid_id": 924,
-          "title": "Alleged Deepfake Scam Uses BBC Presenter Naga Munchetty\u2019s Image to Promote Fraudulent Investment Scheme",
+          "title": "Alleged Deepfake Scam Uses BBC Presenter Naga Munchetty’s Image to Promote Fraudulent Investment Scheme",
           "date": "2025-01-30",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/924"
@@ -1723,7 +1925,7 @@
         },
         {
           "aiid_id": 929,
-          "title": "Sustained AI-Driven Russian Disinformation Campaigns Doppelg\u00e4nger, Storm-1516, and Matryoshka Reportedly Disrupting German Federal Elections",
+          "title": "Sustained AI-Driven Russian Disinformation Campaigns Doppelgänger, Storm-1516, and Matryoshka Reportedly Disrupting German Federal Elections",
           "date": "2024-12-06",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/929"
@@ -1821,7 +2023,7 @@
         },
         {
           "aiid_id": 989,
-          "title": "Alleged AI-Generated Video by Spain\u2019s People\u2019s Party Results in Diplomatic Fallout with the Dominican Republic",
+          "title": "Alleged AI-Generated Video by Spain’s People’s Party Results in Diplomatic Fallout with the Dominican Republic",
           "date": "2025-03-05",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/989"
@@ -1870,7 +2072,7 @@
         },
         {
           "aiid_id": 1017,
-          "title": "Alleged Deepfake Investment Scam in Spain Defrauds 208 Victims of \u20ac19 million ($20.9 million)",
+          "title": "Alleged Deepfake Investment Scam in Spain Defrauds 208 Victims of €19 million ($20.9 million)",
           "date": "2025-04-07",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/1017"
@@ -1968,21 +2170,21 @@
         },
         {
           "aiid_id": 1091,
-          "title": "Purported Synthesia Avatars Used in Alleged Pro-Junta Deepfake Video Supporting Ibrahim Traor\u00e9 in Burkina Faso",
+          "title": "Purported Synthesia Avatars Used in Alleged Pro-Junta Deepfake Video Supporting Ibrahim Traoré in Burkina Faso",
           "date": "2023-01-23",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/1091"
         },
         {
           "aiid_id": 1093,
-          "title": "Fact-Checkers Identify Viral Photo of Burkina Faso's Ibrahim Traor\u00e9 with 'Wife and Children' as AI-Generated Composite",
+          "title": "Fact-Checkers Identify Viral Photo of Burkina Faso's Ibrahim Traoré with 'Wife and Children' as AI-Generated Composite",
           "date": "2025-04-26",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/1093"
         },
         {
           "aiid_id": 1095,
-          "title": "Alleged Russian-Linked Deepfake Campaign Misattributes Infrastructure Projects to Burkina Faso's Ibrahim Traor\u00e9",
+          "title": "Alleged Russian-Linked Deepfake Campaign Misattributes Infrastructure Projects to Burkina Faso's Ibrahim Traoré",
           "date": "2025-05-30",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/1095"
@@ -2031,7 +2233,7 @@
         },
         {
           "aiid_id": 1163,
-          "title": "Purported Face\u2011Swap Technology Reportedly Used to Circumvent Financial Platform's Facial Recognition Security in Nanjing, China",
+          "title": "Purported Face‑Swap Technology Reportedly Used to Circumvent Financial Platform's Facial Recognition Security in Nanjing, China",
           "date": "2024-10-15",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/1163"
@@ -2227,7 +2429,7 @@
         },
         {
           "aiid_id": 1333,
-          "title": "Purportedly AI-Generated Images and Videos Reportedly Spread Misinformation About Nicol\u00e1s Maduro's Capture on X",
+          "title": "Purportedly AI-Generated Images and Videos Reportedly Spread Misinformation About Nicolás Maduro's Capture on X",
           "date": "2026-01-03",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/1333"
@@ -2381,7 +2583,7 @@
         },
         {
           "aiid_id": 1419,
-          "title": "Purported Deepfake Images of Gr\u00e1inne Seoige Reportedly Circulated During Ireland's 2024 General Election Campaign",
+          "title": "Purported Deepfake Images of Gráinne Seoige Reportedly Circulated During Ireland's 2024 General Election Campaign",
           "date": "2025-02-16",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/1419"
@@ -2640,7 +2842,7 @@
         },
         {
           "aiid_id": 818,
-          "title": "Jennifer Aniston\u2019s Likeness Allegedly Exploited in Purported Deepfake Collagen Supplement Promotion",
+          "title": "Jennifer Aniston’s Likeness Allegedly Exploited in Purported Deepfake Collagen Supplement Promotion",
           "date": "2024-09-28",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/818"
@@ -2745,7 +2947,7 @@
         },
         {
           "aiid_id": 942,
-          "title": "Cybercriminals Reportedly Exploited Google\u2019s G.Co Subdomain and Spoofed Caller ID in AI-Driven Phishing Attack on Hack Club Founder",
+          "title": "Cybercriminals Reportedly Exploited Google’s G.Co Subdomain and Spoofed Caller ID in AI-Driven Phishing Attack on Hack Club Founder",
           "date": "2025-02-20",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/942"
@@ -2773,7 +2975,7 @@
         },
         {
           "aiid_id": 953,
-          "title": "Deepfake Videos of Barbara O\u2019Neill Allegedly Used in Health Scam Targeting Social Media Users",
+          "title": "Deepfake Videos of Barbara O’Neill Allegedly Used in Health Scam Targeting Social Media Users",
           "date": "2024-11-01",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/953"
@@ -2822,7 +3024,7 @@
         },
         {
           "aiid_id": 980,
-          "title": "AI-Generated Songs Allegedly Imitating C\u00e9line Dion Circulate Online Without Authorization",
+          "title": "AI-Generated Songs Allegedly Imitating Céline Dion Circulate Online Without Authorization",
           "date": "2025-03-07",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/980"
@@ -2927,7 +3129,7 @@
         },
         {
           "aiid_id": 1029,
-          "title": "Purported AI-Generated Audio Was Reportedly Used to Claim Recep Tayyip Erdo\u011fan Expressed Support for Imran Khan in Pakistani Parliament",
+          "title": "Purported AI-Generated Audio Was Reportedly Used to Claim Recep Tayyip Erdoğan Expressed Support for Imran Khan in Pakistani Parliament",
           "date": "2025-02-15",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1029"
@@ -3102,21 +3304,21 @@
         },
         {
           "aiid_id": 1092,
-          "title": "Purported AI-Generated Video Portrays Pope Leo XIV Addressing Ibrahim Traor\u00e9 of Burkina Faso",
+          "title": "Purported AI-Generated Video Portrays Pope Leo XIV Addressing Ibrahim Traoré of Burkina Faso",
           "date": "2025-05-23",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1092"
         },
         {
           "aiid_id": 1094,
-          "title": "At Least 294 Purported AI-Generated Music Videos Portray Celebrities Praising Burkina Faso's Ibrahim Traor\u00e9",
+          "title": "At Least 294 Purported AI-Generated Music Videos Portray Celebrities Praising Burkina Faso's Ibrahim Traoré",
           "date": "2025-03-02",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1094"
         },
         {
           "aiid_id": 1096,
-          "title": "Purported AI-Generated Video Depicts Ibrahim Traor\u00e9 of Burkina Faso Delivering Speech on Western Exploitation",
+          "title": "Purported AI-Generated Video Depicts Ibrahim Traoré of Burkina Faso Delivering Speech on Western Exploitation",
           "date": "2025-05-25",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1096"
@@ -3333,7 +3535,7 @@
         },
         {
           "aiid_id": 1154,
-          "title": "Reported AI\u2011Generated Deepfake Impersonations of Public Figures Allegedly Used in Coordinated Stock Pump\u2011and\u2011Dump Scheme Targeting Israeli Investors",
+          "title": "Reported AI‑Generated Deepfake Impersonations of Public Figures Allegedly Used in Coordinated Stock Pump‑and‑Dump Scheme Targeting Israeli Investors",
           "date": "2025-04-01",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1154"
@@ -3375,7 +3577,7 @@
         },
         {
           "aiid_id": 1206,
-          "title": "Purported AI-Generated Deepfake of Spiritual Leader Sadhguru Used in Investment Scam Allegedly Defrauding Bengaluru Woman of \u20b93.75 Crore (~$425,000)",
+          "title": "Purported AI-Generated Deepfake of Spiritual Leader Sadhguru Used in Investment Scam Allegedly Defrauding Bengaluru Woman of ₹3.75 Crore (~$425,000)",
           "date": "2025-02-25",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1206"
@@ -3410,7 +3612,7 @@
         },
         {
           "aiid_id": 1224,
-          "title": "Purportedly AI-Generated Deepfake Ads on Instagram Impersonate Gisele B\u00fcndchen and Other Celebrities in Brazilian Fraud Scheme",
+          "title": "Purportedly AI-Generated Deepfake Ads on Instagram Impersonate Gisele Bündchen and Other Celebrities in Brazilian Fraud Scheme",
           "date": "2025-10-01",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1224"
@@ -3424,7 +3626,7 @@
         },
         {
           "aiid_id": 1227,
-          "title": "New Zealand Financial Markets Authority (FMA), Te Mana T\u0101tai Hokohoko, Reportedly Flags Purported Deepfake Pump-and-Dump Network Using Social Media Ads",
+          "title": "New Zealand Financial Markets Authority (FMA), Te Mana Tātai Hokohoko, Reportedly Flags Purported Deepfake Pump-and-Dump Network Using Social Media Ads",
           "date": "2025-08-19",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1227"
@@ -3466,7 +3668,7 @@
         },
         {
           "aiid_id": 1240,
-          "title": "Purported AI-Generated Deepfake of Infosys Co-Founder N. R. Narayana Murthy Used in Investment Scam Allegedly Defrauding 79-Year-Old Bengaluru Woman of \u20b935 Lakh (~$40,000)",
+          "title": "Purported AI-Generated Deepfake of Infosys Co-Founder N. R. Narayana Murthy Used in Investment Scam Allegedly Defrauding 79-Year-Old Bengaluru Woman of ₹35 Lakh (~$40,000)",
           "date": "2025-06-27",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1240"
@@ -3522,7 +3724,7 @@
         },
         {
           "aiid_id": 1258,
-          "title": "Purported Deepfake Mimicking RT\u00c9 Broadcast Falsely Announced Irish Presidential Candidate Catherine Connolly's Withdrawal",
+          "title": "Purported Deepfake Mimicking RTÉ Broadcast Falsely Announced Irish Presidential Candidate Catherine Connolly's Withdrawal",
           "date": "2025-10-22",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1258"
@@ -3578,7 +3780,7 @@
         },
         {
           "aiid_id": 1283,
-          "title": "Purported AI-Enabled Pro-Russian Influence Campaign Centered on Burkina Faso's Ibrahim Traor\u00e9 and Disseminated Across African Media",
+          "title": "Purported AI-Enabled Pro-Russian Influence Campaign Centered on Burkina Faso's Ibrahim Traoré and Disseminated Across African Media",
           "date": "2025-09-30",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1283"
@@ -3662,7 +3864,7 @@
         },
         {
           "aiid_id": 1325,
-          "title": "Reported AI-Generated Deepfake Videos Impersonating Elon Musk and Dragon\u2019s Den Allegedly Used in Cryptocurrency Investment Scam Targeting Canadian Victims",
+          "title": "Reported AI-Generated Deepfake Videos Impersonating Elon Musk and Dragon’s Den Allegedly Used in Cryptocurrency Investment Scam Targeting Canadian Victims",
           "date": "2025-12-21",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1325"
@@ -3676,7 +3878,7 @@
         },
         {
           "aiid_id": 1328,
-          "title": "Purported Deepfake Impersonating Elon Musk Allegedly Defrauded Elderly U.S. Woman of $50,000 via Gift Card\u2013to-Crypto Scam",
+          "title": "Purported Deepfake Impersonating Elon Musk Allegedly Defrauded Elderly U.S. Woman of $50,000 via Gift Card–to-Crypto Scam",
           "date": "2026-01-03",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1328"
@@ -3704,7 +3906,7 @@
         },
         {
           "aiid_id": 1339,
-          "title": "Purportedly AI-Cloned Voice Allegedly Used to Defraud Play School Owner of \u20b997,500 (~$1,080 USD) in Indore, India",
+          "title": "Purportedly AI-Cloned Voice Allegedly Used to Defraud Play School Owner of ₹97,500 (~$1,080 USD) in Indore, India",
           "date": "2026-01-06",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1339"
@@ -3816,7 +4018,7 @@
         },
         {
           "aiid_id": 1420,
-          "title": "Bal\u00e1zs Orb\u00e1n Allegedly Published Purported Deepfake of P\u00e9ter Magyar Claiming He Would Cut Pensions",
+          "title": "Balázs Orbán Allegedly Published Purported Deepfake of Péter Magyar Claiming He Would Cut Pensions",
           "date": "2025-10-28",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1420"
@@ -3844,7 +4046,7 @@
         },
         {
           "aiid_id": 1451,
-          "title": "Purportedly AI-Generated Facebook Video Allegedly Misused Sk\u00ebnder Brataj and Blendi Fevziu to Promote Purported Miracle Cream in Albania",
+          "title": "Purportedly AI-Generated Facebook Video Allegedly Misused Skënder Brataj and Blendi Fevziu to Promote Purported Miracle Cream in Albania",
           "date": "2025-06-30",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1451"
@@ -3872,14 +4074,14 @@
         },
         {
           "aiid_id": 1456,
-          "title": "Video with Reportedly AI-Generated Audio Purported to Show Croatian Footballer Luka Modri\u0107 Endorsing Immediate Matrix on Facebook Page Presented as N1 HR",
+          "title": "Video with Reportedly AI-Generated Audio Purported to Show Croatian Footballer Luka Modrić Endorsing Immediate Matrix on Facebook Page Presented as N1 HR",
           "date": "2023-12-03",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1456"
         },
         {
           "aiid_id": 1457,
-          "title": "Video with Reportedly AI-Generated Media Purported to Show Croatian Immunologist Stipan Jonji\u0107 Promoting Anti-Parasite Product on Facebook",
+          "title": "Video with Reportedly AI-Generated Media Purported to Show Croatian Immunologist Stipan Jonjić Promoting Anti-Parasite Product on Facebook",
           "date": "2024-08-27",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1457"
@@ -3893,7 +4095,7 @@
         },
         {
           "aiid_id": 1459,
-          "title": "Video with Reportedly AI-Generated Media Purported to Show Croatian Physician Alemka Markoti\u0107 Endorsing Hondrosol After False Murder Claim on Facebook",
+          "title": "Video with Reportedly AI-Generated Media Purported to Show Croatian Physician Alemka Markotić Endorsing Hondrosol After False Murder Claim on Facebook",
           "date": "2024-10-17",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1459"
@@ -4026,7 +4228,7 @@
         },
         {
           "aiid_id": 108,
-          "title": "Skating Rink\u2019s Facial Recognition Cameras Misidentified Black Teenager as Banned Troublemaker",
+          "title": "Skating Rink’s Facial Recognition Cameras Misidentified Black Teenager as Banned Troublemaker",
           "date": "2021-07-10",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/108"
@@ -4047,21 +4249,21 @@
         },
         {
           "aiid_id": 154,
-          "title": "Justice Department\u2019s Recidivism Risk Algorithm PATTERN Allegedly Caused Persistent Disparities Along Racial Lines",
+          "title": "Justice Department’s Recidivism Risk Algorithm PATTERN Allegedly Caused Persistent Disparities Along Racial Lines",
           "date": "2022-01-26",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/154"
         },
         {
           "aiid_id": 195,
-          "title": "Predictive Policing Program by Florida Sheriff\u2019s Office Allegedly Violated Residents\u2019 Rights and Targeted Children of Vulnerable Groups",
+          "title": "Predictive Policing Program by Florida Sheriff’s Office Allegedly Violated Residents’ Rights and Targeted Children of Vulnerable Groups",
           "date": "2015-09-01",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/195"
         },
         {
           "aiid_id": 216,
-          "title": "WeChat\u2019s Machine Translation Gave a Racist English Translation for the Chinese Term for \u201cBlack Foreigner\u201d",
+          "title": "WeChat’s Machine Translation Gave a Racist English Translation for the Chinese Term for “Black Foreigner”",
           "date": "2017-10-10",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/216"
@@ -4096,7 +4298,7 @@
         },
         {
           "aiid_id": 274,
-          "title": "Virginia Courts\u2019 Algorithmic Recidivism Risk Assessment Failed to Lower Incarceration Rates",
+          "title": "Virginia Courts’ Algorithmic Recidivism Risk Assessment Failed to Lower Incarceration Rates",
           "date": "2003-07-01",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/274"
@@ -4278,14 +4480,14 @@
         },
         {
           "aiid_id": 100,
-          "title": "How French welfare services are creating \u2018robo-debt\u2019",
+          "title": "How French welfare services are creating ‘robo-debt’",
           "date": "2021-03-17",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/100"
         },
         {
           "aiid_id": 103,
-          "title": "Twitter\u2019s Image Cropping Tool Allegedly Showed Gender and Racial Bias",
+          "title": "Twitter’s Image Cropping Tool Allegedly Showed Gender and Racial Bias",
           "date": "2020-09-18",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/103"
@@ -4306,7 +4508,7 @@
         },
         {
           "aiid_id": 115,
-          "title": "Genderify\u2019s AI to Predict a Person\u2019s Gender Revealed by Free API Users to Exhibit Bias",
+          "title": "Genderify’s AI to Predict a Person’s Gender Revealed by Free API Users to Exhibit Bias",
           "date": "2020-07-28",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/115"
@@ -4320,7 +4522,7 @@
         },
         {
           "aiid_id": 235,
-          "title": "Chinese Insurer Ping An Employed Facial Recognition to Determine Customers\u2019 Untrustworthiness, Which Critics Alleged to Likely Make Errors and Discriminate",
+          "title": "Chinese Insurer Ping An Employed Facial Recognition to Determine Customers’ Untrustworthiness, Which Critics Alleged to Likely Make Errors and Discriminate",
           "date": "2016-04-15",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/235"
@@ -4387,7 +4589,7 @@
       "aiid_anchors": [
         {
           "aiid_id": 122,
-          "title": "Facebook\u2019s \"Tag Suggestions\" Allegedly Stored Biometric Data without User Consent",
+          "title": "Facebook’s \"Tag Suggestions\" Allegedly Stored Biometric Data without User Consent",
           "date": "2015-06-14",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/122"
@@ -4571,7 +4773,7 @@
         },
         {
           "aiid_id": 1451,
-          "title": "Purportedly AI-Generated Facebook Video Allegedly Misused Sk\u00ebnder Brataj and Blendi Fevziu to Promote Purported Miracle Cream in Albania",
+          "title": "Purportedly AI-Generated Facebook Video Allegedly Misused Skënder Brataj and Blendi Fevziu to Promote Purported Miracle Cream in Albania",
           "date": "2025-06-30",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1451"
@@ -4585,14 +4787,14 @@
         },
         {
           "aiid_id": 1456,
-          "title": "Video with Reportedly AI-Generated Audio Purported to Show Croatian Footballer Luka Modri\u0107 Endorsing Immediate Matrix on Facebook Page Presented as N1 HR",
+          "title": "Video with Reportedly AI-Generated Audio Purported to Show Croatian Footballer Luka Modrić Endorsing Immediate Matrix on Facebook Page Presented as N1 HR",
           "date": "2023-12-03",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1456"
         },
         {
           "aiid_id": 1457,
-          "title": "Video with Reportedly AI-Generated Media Purported to Show Croatian Immunologist Stipan Jonji\u0107 Promoting Anti-Parasite Product on Facebook",
+          "title": "Video with Reportedly AI-Generated Media Purported to Show Croatian Immunologist Stipan Jonjić Promoting Anti-Parasite Product on Facebook",
           "date": "2024-08-27",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1457"
@@ -4606,7 +4808,7 @@
         },
         {
           "aiid_id": 1459,
-          "title": "Video with Reportedly AI-Generated Media Purported to Show Croatian Physician Alemka Markoti\u0107 Endorsing Hondrosol After False Murder Claim on Facebook",
+          "title": "Video with Reportedly AI-Generated Media Purported to Show Croatian Physician Alemka Markotić Endorsing Hondrosol After False Murder Claim on Facebook",
           "date": "2024-10-17",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1459"
@@ -4666,7 +4868,7 @@
         },
         {
           "aiid_id": 235,
-          "title": "Chinese Insurer Ping An Employed Facial Recognition to Determine Customers\u2019 Untrustworthiness, Which Critics Alleged to Likely Make Errors and Discriminate",
+          "title": "Chinese Insurer Ping An Employed Facial Recognition to Determine Customers’ Untrustworthiness, Which Critics Alleged to Likely Make Errors and Discriminate",
           "date": "2016-04-15",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/235"
@@ -4729,21 +4931,21 @@
         },
         {
           "aiid_id": 154,
-          "title": "Justice Department\u2019s Recidivism Risk Algorithm PATTERN Allegedly Caused Persistent Disparities Along Racial Lines",
+          "title": "Justice Department’s Recidivism Risk Algorithm PATTERN Allegedly Caused Persistent Disparities Along Racial Lines",
           "date": "2022-01-26",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/154"
         },
         {
           "aiid_id": 195,
-          "title": "Predictive Policing Program by Florida Sheriff\u2019s Office Allegedly Violated Residents\u2019 Rights and Targeted Children of Vulnerable Groups",
+          "title": "Predictive Policing Program by Florida Sheriff’s Office Allegedly Violated Residents’ Rights and Targeted Children of Vulnerable Groups",
           "date": "2015-09-01",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/195"
         },
         {
           "aiid_id": 216,
-          "title": "WeChat\u2019s Machine Translation Gave a Racist English Translation for the Chinese Term for \u201cBlack Foreigner\u201d",
+          "title": "WeChat’s Machine Translation Gave a Racist English Translation for the Chinese Term for “Black Foreigner”",
           "date": "2017-10-10",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/216"
@@ -4771,7 +4973,7 @@
         },
         {
           "aiid_id": 274,
-          "title": "Virginia Courts\u2019 Algorithmic Recidivism Risk Assessment Failed to Lower Incarceration Rates",
+          "title": "Virginia Courts’ Algorithmic Recidivism Risk Assessment Failed to Lower Incarceration Rates",
           "date": "2003-07-01",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/274"
@@ -5027,7 +5229,7 @@
         },
         {
           "aiid_id": 1451,
-          "title": "Purportedly AI-Generated Facebook Video Allegedly Misused Sk\u00ebnder Brataj and Blendi Fevziu to Promote Purported Miracle Cream in Albania",
+          "title": "Purportedly AI-Generated Facebook Video Allegedly Misused Skënder Brataj and Blendi Fevziu to Promote Purported Miracle Cream in Albania",
           "date": "2025-06-30",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1451"
@@ -5041,14 +5243,14 @@
         },
         {
           "aiid_id": 1456,
-          "title": "Video with Reportedly AI-Generated Audio Purported to Show Croatian Footballer Luka Modri\u0107 Endorsing Immediate Matrix on Facebook Page Presented as N1 HR",
+          "title": "Video with Reportedly AI-Generated Audio Purported to Show Croatian Footballer Luka Modrić Endorsing Immediate Matrix on Facebook Page Presented as N1 HR",
           "date": "2023-12-03",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1456"
         },
         {
           "aiid_id": 1457,
-          "title": "Video with Reportedly AI-Generated Media Purported to Show Croatian Immunologist Stipan Jonji\u0107 Promoting Anti-Parasite Product on Facebook",
+          "title": "Video with Reportedly AI-Generated Media Purported to Show Croatian Immunologist Stipan Jonjić Promoting Anti-Parasite Product on Facebook",
           "date": "2024-08-27",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1457"
@@ -5062,7 +5264,7 @@
         },
         {
           "aiid_id": 1459,
-          "title": "Video with Reportedly AI-Generated Media Purported to Show Croatian Physician Alemka Markoti\u0107 Endorsing Hondrosol After False Murder Claim on Facebook",
+          "title": "Video with Reportedly AI-Generated Media Purported to Show Croatian Physician Alemka Markotić Endorsing Hondrosol After False Murder Claim on Facebook",
           "date": "2024-10-17",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1459"
@@ -5094,7 +5296,7 @@
     {
       "code": "328",
       "name": "Validator Drift / Sycophancy Loop",
-      "definition": "An engagement-optimized chatbot affirms user beliefs or behaviors that should trigger a refusal, escalation, or course correction. Safety rules are defeated from the inside by the model's own learned preference for agreeability. Two sub-types: general sycophancy (model affirms user beliefs across ordinary topics) and psychiatric-vulnerability sycophancy (model affirms user cognitive patterns characteristic of psychiatric conditions \u2014 paranoia, delusion, self-harm ideation, eating-disorder thought patterns \u2014 fueling the underlying pathology). The two sub-types require different detection and routing logic.",
+      "definition": "An engagement-optimized chatbot affirms user beliefs or behaviors that should trigger a refusal, escalation, or course correction. Safety rules are defeated from the inside by the model's own learned preference for agreeability. Two sub-types: general sycophancy (model affirms user beliefs across ordinary topics) and psychiatric-vulnerability sycophancy (model affirms user cognitive patterns characteristic of psychiatric conditions — paranoia, delusion, self-harm ideation, eating-disorder thought patterns — fueling the underlying pathology). The two sub-types require different detection and routing logic.",
       "tier": "3xx",
       "layer": null,
       "article_url": null,
@@ -5333,7 +5535,7 @@
         },
         {
           "aiid_id": 122,
-          "title": "Facebook\u2019s \"Tag Suggestions\" Allegedly Stored Biometric Data without User Consent",
+          "title": "Facebook’s \"Tag Suggestions\" Allegedly Stored Biometric Data without User Consent",
           "date": "2015-06-14",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/122"
@@ -5740,14 +5942,14 @@
         },
         {
           "aiid_id": 103,
-          "title": "Twitter\u2019s Image Cropping Tool Allegedly Showed Gender and Racial Bias",
+          "title": "Twitter’s Image Cropping Tool Allegedly Showed Gender and Racial Bias",
           "date": "2020-09-18",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/103"
         },
         {
           "aiid_id": 115,
-          "title": "Genderify\u2019s AI to Predict a Person\u2019s Gender Revealed by Free API Users to Exhibit Bias",
+          "title": "Genderify’s AI to Predict a Person’s Gender Revealed by Free API Users to Exhibit Bias",
           "date": "2020-07-28",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/115"
@@ -5789,7 +5991,7 @@
         },
         {
           "aiid_id": 216,
-          "title": "WeChat\u2019s Machine Translation Gave a Racist English Translation for the Chinese Term for \u201cBlack Foreigner\u201d",
+          "title": "WeChat’s Machine Translation Gave a Racist English Translation for the Chinese Term for “Black Foreigner”",
           "date": "2017-10-10",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/216"
@@ -6057,6 +6259,234 @@
       ]
     },
     {
+      "code": "353",
+      "name": "Jurisdiction-Binding Failure",
+      "definition": "A system operates correctly for its training/deployment jurisdiction but is deployed into a different legal or cultural regime without rebinding. Right model, wrong jurisdiction.",
+      "tier": "3xx",
+      "layer": null,
+      "article_url": null,
+      "type": "illustrative",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [],
+      "distinct_from": [
+        {
+          "contrasted_with": "310",
+          "this_condition": "Right model deployed into wrong regime without rebinding",
+          "other_condition": "Deliberate routing to a regulation-free zone to evade oversight"
+        }
+      ],
+      "aiid_anchors": [],
+      "contributors": []
+    },
+    {
+      "code": "354",
+      "name": "Access-Language Mismatch",
+      "definition": "Governance, feedback, or appeal UI is presented in a language the served population cannot access, denying participation in oversight or recourse.",
+      "tier": "3xx",
+      "layer": null,
+      "article_url": null,
+      "type": "illustrative",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [],
+      "distinct_from": [],
+      "aiid_anchors": [],
+      "contributors": []
+    },
+    {
+      "code": "355",
+      "name": "Cross-Language Calibration Failure",
+      "definition": "Confidence scores or risk thresholds are calibrated on training languages but are uncalibrated, often overconfident, for served languages.",
+      "tier": "3xx",
+      "layer": null,
+      "article_url": null,
+      "type": "illustrative",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [],
+      "distinct_from": [
+        {
+          "contrasted_with": "361",
+          "this_condition": "Per-language threshold miscalibration",
+          "other_condition": "Sociocultural/historical-norm calibration failure"
+        }
+      ],
+      "aiid_anchors": [],
+      "contributors": []
+    },
+    {
+      "code": "356",
+      "name": "Register/Pragmatic Mismatch",
+      "definition": "A semantically accurate translation fails the required social, cultural, or professional register, causing harm or deprioritization in high-stakes contexts.",
+      "tier": "3xx",
+      "layer": null,
+      "article_url": null,
+      "type": "illustrative",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [],
+      "distinct_from": [
+        {
+          "contrasted_with": "352",
+          "this_condition": "Meaning is accurate but the register is wrong",
+          "other_condition": "Meaning is destroyed at a translation boundary"
+        }
+      ],
+      "aiid_anchors": [],
+      "contributors": []
+    },
+    {
+      "code": "357",
+      "name": "Cumulative Persona Entropy / Context-Window Drift",
+      "definition": "Model behavior is within spec per turn but structurally drifts toward unsanctioned states only as conversation length and context entropy accumulate.",
+      "tier": "3xx",
+      "layer": null,
+      "article_url": null,
+      "type": "illustrative",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [],
+      "distinct_from": [
+        {
+          "contrasted_with": "432",
+          "this_condition": "Context-window structural drift with no session-continuity check",
+          "other_condition": "Validator-level reality-testing erosion"
+        }
+      ],
+      "aiid_anchors": [],
+      "contributors": []
+    },
+    {
+      "code": "358",
+      "name": "Inverted Steering Policy",
+      "definition": "Steering or escalation gate logic is misconfigured or inverted, routing the highest-risk cases away from human review. The gate exists but routes in the wrong direction.",
+      "tier": "3xx",
+      "layer": null,
+      "article_url": null,
+      "type": "documented",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [],
+      "distinct_from": [
+        {
+          "contrasted_with": "420",
+          "this_condition": "Gate exists but routes the wrong direction",
+          "other_condition": "No enforcement gate is wired at all"
+        }
+      ],
+      "aiid_anchors": [
+        "163"
+      ],
+      "contributors": []
+    },
+    {
+      "code": "359",
+      "name": "Suppressed Counter-Evidence",
+      "definition": "A specialized agent in a chain (filter, summarizer, retrieval, or classifier) actively suppresses information that contradicts a pre-defined bias, skewing downstream synthesis.",
+      "tier": "3xx",
+      "layer": null,
+      "article_url": null,
+      "type": "illustrative",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [],
+      "distinct_from": [
+        {
+          "contrasted_with": "339",
+          "this_condition": "An active agent hides disconfirming evidence",
+          "other_condition": "No cross-agent verification exists"
+        }
+      ],
+      "aiid_anchors": [],
+      "contributors": []
+    },
+    {
+      "code": "360",
+      "name": "Unaggregated Session Risk",
+      "definition": "A multi-turn session accumulates escalating risk that no layer aggregates across turns. Per-turn governance fires correctly; only session-level aggregation is absent, so risk is never detected to escalate.",
+      "tier": "3xx",
+      "layer": null,
+      "article_url": null,
+      "type": "documented",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [],
+      "distinct_from": [
+        {
+          "contrasted_with": "351",
+          "this_condition": "Per-turn assurance fired; session aggregation is absent",
+          "other_condition": "No assurance plane exists at any level"
+        },
+        {
+          "contrasted_with": "501",
+          "this_condition": "Risk is never aggregated/detected across turns",
+          "other_condition": "Risk is detected but has no escalation path"
+        }
+      ],
+      "aiid_anchors": [
+        "1489",
+        "1487",
+        "1190"
+      ],
+      "contributors": []
+    },
+    {
+      "code": "361",
+      "name": "Sociotechnical Calibration Failure",
+      "definition": "Alignment or safety tuning is calibrated for a default sociocultural or historical norm but produces skewed, inaccurate, or erased outcomes when applied to a specific cultural, historical, or domain context.",
+      "tier": "3xx",
+      "layer": null,
+      "article_url": null,
+      "type": "illustrative",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [],
+      "distinct_from": [
+        {
+          "contrasted_with": "342",
+          "this_condition": "Calibration to a default sociocultural/historical norm",
+          "other_condition": "Alignment-induced asymmetric bias more broadly"
+        },
+        {
+          "contrasted_with": "318",
+          "this_condition": "Calibration-to-norm failure",
+          "other_condition": "Bound to a stale internal world-representation"
+        }
+      ],
+      "aiid_anchors": [],
+      "contributors": []
+    },
+    {
+      "code": "362",
+      "name": "Professional Judgment Preemption",
+      "definition": "A high-stakes advisory system is structurally designed to preempt or override an individual professional's situational judgment, leading to action against the human expert's specific knowledge even with a human nominally in the loop.",
+      "tier": "3xx",
+      "layer": null,
+      "article_url": null,
+      "type": "documented",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [],
+      "distinct_from": [
+        {
+          "contrasted_with": "314",
+          "this_condition": "Structural preemption of in-the-loop professional judgment",
+          "other_condition": "Enforceable authority boundaries drift over time"
+        },
+        {
+          "contrasted_with": "351",
+          "this_condition": "A human is in the loop but is structurally preempted",
+          "other_condition": "No human or validator exists at all"
+        }
+      ],
+      "aiid_anchors": [
+        "1374",
+        "1281"
+      ],
+      "contributors": []
+    },
+    {
       "code": "400",
       "name": "Malformed Policy",
       "definition": "Safety rule written ambiguously or self-contradictorily. Enforcement engines default to allow.",
@@ -6218,6 +6648,40 @@
       ]
     },
     {
+      "code": "403",
+      "name": "Trusted-Component Trojan",
+      "definition": "Installed third-party executable component (skill, plugin, MCP server, extension, agent tool) is trusted at install-time and carries dormant trigger-activated malicious behavior that standard validation passes clean.",
+      "tier": "4xx",
+      "layer": null,
+      "article_url": null,
+      "type": "documented",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [
+        "supply-chain",
+        "l2"
+      ],
+      "distinct_from": [
+        {
+          "contrasted_with": "431",
+          "this_condition": "Component install-time inflection point",
+          "other_condition": "Vendor update inflection point"
+        },
+        {
+          "contrasted_with": "412",
+          "this_condition": "Component install inflection",
+          "other_condition": "Config-load inflection"
+        },
+        {
+          "contrasted_with": "401",
+          "this_condition": "Component authorization gate never installed",
+          "other_condition": "User identity gate never installed"
+        }
+      ],
+      "aiid_anchors": [],
+      "contributors": []
+    },
+    {
       "code": "404",
       "name": "Governance Rule Not Found",
       "definition": "No matching rule found in active ruleset for this harm category. The lookup returned empty.",
@@ -6253,21 +6717,21 @@
         },
         {
           "aiid_id": 132,
-          "title": "TikTok\u2019s Content Moderation Allegedly Failed to Adequately Take down Videos Promoting Eating Disorders",
+          "title": "TikTok’s Content Moderation Allegedly Failed to Adequately Take down Videos Promoting Eating Disorders",
           "date": "2020-12-27",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/132"
         },
         {
           "aiid_id": 143,
-          "title": "Facebook\u2019s and Twitter's Automated Content Moderation Reportedly Failed to Effectively Enforce Violation Rules for Small Language Groups",
+          "title": "Facebook’s and Twitter's Automated Content Moderation Reportedly Failed to Effectively Enforce Violation Rules for Small Language Groups",
           "date": "2021-02-16",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/143"
         },
         {
           "aiid_id": 278,
-          "title": "Meta\u2019s BlenderBot 3 Chatbot Demo Made Offensive Antisemitic Comments",
+          "title": "Meta’s BlenderBot 3 Chatbot Demo Made Offensive Antisemitic Comments",
           "date": "2022-08-07",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/278"
@@ -6309,7 +6773,7 @@
         },
         {
           "aiid_id": 303,
-          "title": "Google\u2019s Automated Child Abuse Detection Wrongfully Flagged a Parent\u2019s Naked Photo of His Child",
+          "title": "Google’s Automated Child Abuse Detection Wrongfully Flagged a Parent’s Naked Photo of His Child",
           "date": "2022-08-21",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/303"
@@ -6466,6 +6930,41 @@
           "attribution_type": "primary"
         }
       ]
+    },
+    {
+      "code": "412",
+      "name": "Inherited-Filter Context Redaction",
+      "definition": "A trusted component auto-loads configuration from co-located untrusted context (cloned repo, downloaded file, fetched dependency), and that configuration modifies what the AI or operator sees, evading both human and AI review of the modified context.",
+      "tier": "4xx",
+      "layer": null,
+      "article_url": null,
+      "type": "documented",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [
+        "supply-chain",
+        "l2",
+        "cve-2026-45792"
+      ],
+      "distinct_from": [
+        {
+          "contrasted_with": "403",
+          "this_condition": "Config-load inflection point",
+          "other_condition": "Component install inflection point"
+        },
+        {
+          "contrasted_with": "417",
+          "this_condition": "Trust inherited from co-located untrusted source via config-load",
+          "other_condition": "Rule communicated through informal channel without canonical authority binding"
+        },
+        {
+          "contrasted_with": "431",
+          "this_condition": "Trusted component auto-loads untrusted config",
+          "other_condition": "Vendor pushes update without validation gate"
+        }
+      ],
+      "aiid_anchors": [],
+      "contributors": []
     },
     {
       "code": "417",
@@ -6625,7 +7124,7 @@
       "aiid_anchors": [
         {
           "aiid_id": 303,
-          "title": "Google\u2019s Automated Child Abuse Detection Wrongfully Flagged a Parent\u2019s Naked Photo of His Child",
+          "title": "Google’s Automated Child Abuse Detection Wrongfully Flagged a Parent’s Naked Photo of His Child",
           "date": "2022-08-21",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/303"
@@ -6695,7 +7194,7 @@
         },
         {
           "aiid_id": 278,
-          "title": "Meta\u2019s BlenderBot 3 Chatbot Demo Made Offensive Antisemitic Comments",
+          "title": "Meta’s BlenderBot 3 Chatbot Demo Made Offensive Antisemitic Comments",
           "date": "2022-08-07",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/278"
@@ -6814,7 +7313,7 @@
         },
         {
           "aiid_id": 818,
-          "title": "Jennifer Aniston\u2019s Likeness Allegedly Exploited in Purported Deepfake Collagen Supplement Promotion",
+          "title": "Jennifer Aniston’s Likeness Allegedly Exploited in Purported Deepfake Collagen Supplement Promotion",
           "date": "2024-09-28",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/818"
@@ -6919,7 +7418,7 @@
         },
         {
           "aiid_id": 942,
-          "title": "Cybercriminals Reportedly Exploited Google\u2019s G.Co Subdomain and Spoofed Caller ID in AI-Driven Phishing Attack on Hack Club Founder",
+          "title": "Cybercriminals Reportedly Exploited Google’s G.Co Subdomain and Spoofed Caller ID in AI-Driven Phishing Attack on Hack Club Founder",
           "date": "2025-02-20",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/942"
@@ -6947,7 +7446,7 @@
         },
         {
           "aiid_id": 953,
-          "title": "Deepfake Videos of Barbara O\u2019Neill Allegedly Used in Health Scam Targeting Social Media Users",
+          "title": "Deepfake Videos of Barbara O’Neill Allegedly Used in Health Scam Targeting Social Media Users",
           "date": "2024-11-01",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/953"
@@ -6996,7 +7495,7 @@
         },
         {
           "aiid_id": 980,
-          "title": "AI-Generated Songs Allegedly Imitating C\u00e9line Dion Circulate Online Without Authorization",
+          "title": "AI-Generated Songs Allegedly Imitating Céline Dion Circulate Online Without Authorization",
           "date": "2025-03-07",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/980"
@@ -7101,7 +7600,7 @@
         },
         {
           "aiid_id": 1029,
-          "title": "Purported AI-Generated Audio Was Reportedly Used to Claim Recep Tayyip Erdo\u011fan Expressed Support for Imran Khan in Pakistani Parliament",
+          "title": "Purported AI-Generated Audio Was Reportedly Used to Claim Recep Tayyip Erdoğan Expressed Support for Imran Khan in Pakistani Parliament",
           "date": "2025-02-15",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1029"
@@ -7276,21 +7775,21 @@
         },
         {
           "aiid_id": 1092,
-          "title": "Purported AI-Generated Video Portrays Pope Leo XIV Addressing Ibrahim Traor\u00e9 of Burkina Faso",
+          "title": "Purported AI-Generated Video Portrays Pope Leo XIV Addressing Ibrahim Traoré of Burkina Faso",
           "date": "2025-05-23",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1092"
         },
         {
           "aiid_id": 1094,
-          "title": "At Least 294 Purported AI-Generated Music Videos Portray Celebrities Praising Burkina Faso's Ibrahim Traor\u00e9",
+          "title": "At Least 294 Purported AI-Generated Music Videos Portray Celebrities Praising Burkina Faso's Ibrahim Traoré",
           "date": "2025-03-02",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1094"
         },
         {
           "aiid_id": 1096,
-          "title": "Purported AI-Generated Video Depicts Ibrahim Traor\u00e9 of Burkina Faso Delivering Speech on Western Exploitation",
+          "title": "Purported AI-Generated Video Depicts Ibrahim Traoré of Burkina Faso Delivering Speech on Western Exploitation",
           "date": "2025-05-25",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1096"
@@ -7507,7 +8006,7 @@
         },
         {
           "aiid_id": 1154,
-          "title": "Reported AI\u2011Generated Deepfake Impersonations of Public Figures Allegedly Used in Coordinated Stock Pump\u2011and\u2011Dump Scheme Targeting Israeli Investors",
+          "title": "Reported AI‑Generated Deepfake Impersonations of Public Figures Allegedly Used in Coordinated Stock Pump‑and‑Dump Scheme Targeting Israeli Investors",
           "date": "2025-04-01",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1154"
@@ -7549,7 +8048,7 @@
         },
         {
           "aiid_id": 1206,
-          "title": "Purported AI-Generated Deepfake of Spiritual Leader Sadhguru Used in Investment Scam Allegedly Defrauding Bengaluru Woman of \u20b93.75 Crore (~$425,000)",
+          "title": "Purported AI-Generated Deepfake of Spiritual Leader Sadhguru Used in Investment Scam Allegedly Defrauding Bengaluru Woman of ₹3.75 Crore (~$425,000)",
           "date": "2025-02-25",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1206"
@@ -7584,7 +8083,7 @@
         },
         {
           "aiid_id": 1224,
-          "title": "Purportedly AI-Generated Deepfake Ads on Instagram Impersonate Gisele B\u00fcndchen and Other Celebrities in Brazilian Fraud Scheme",
+          "title": "Purportedly AI-Generated Deepfake Ads on Instagram Impersonate Gisele Bündchen and Other Celebrities in Brazilian Fraud Scheme",
           "date": "2025-10-01",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1224"
@@ -7598,7 +8097,7 @@
         },
         {
           "aiid_id": 1227,
-          "title": "New Zealand Financial Markets Authority (FMA), Te Mana T\u0101tai Hokohoko, Reportedly Flags Purported Deepfake Pump-and-Dump Network Using Social Media Ads",
+          "title": "New Zealand Financial Markets Authority (FMA), Te Mana Tātai Hokohoko, Reportedly Flags Purported Deepfake Pump-and-Dump Network Using Social Media Ads",
           "date": "2025-08-19",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1227"
@@ -7640,7 +8139,7 @@
         },
         {
           "aiid_id": 1240,
-          "title": "Purported AI-Generated Deepfake of Infosys Co-Founder N. R. Narayana Murthy Used in Investment Scam Allegedly Defrauding 79-Year-Old Bengaluru Woman of \u20b935 Lakh (~$40,000)",
+          "title": "Purported AI-Generated Deepfake of Infosys Co-Founder N. R. Narayana Murthy Used in Investment Scam Allegedly Defrauding 79-Year-Old Bengaluru Woman of ₹35 Lakh (~$40,000)",
           "date": "2025-06-27",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1240"
@@ -7696,7 +8195,7 @@
         },
         {
           "aiid_id": 1258,
-          "title": "Purported Deepfake Mimicking RT\u00c9 Broadcast Falsely Announced Irish Presidential Candidate Catherine Connolly's Withdrawal",
+          "title": "Purported Deepfake Mimicking RTÉ Broadcast Falsely Announced Irish Presidential Candidate Catherine Connolly's Withdrawal",
           "date": "2025-10-22",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1258"
@@ -7759,7 +8258,7 @@
         },
         {
           "aiid_id": 1283,
-          "title": "Purported AI-Enabled Pro-Russian Influence Campaign Centered on Burkina Faso's Ibrahim Traor\u00e9 and Disseminated Across African Media",
+          "title": "Purported AI-Enabled Pro-Russian Influence Campaign Centered on Burkina Faso's Ibrahim Traoré and Disseminated Across African Media",
           "date": "2025-09-30",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1283"
@@ -7843,7 +8342,7 @@
         },
         {
           "aiid_id": 1325,
-          "title": "Reported AI-Generated Deepfake Videos Impersonating Elon Musk and Dragon\u2019s Den Allegedly Used in Cryptocurrency Investment Scam Targeting Canadian Victims",
+          "title": "Reported AI-Generated Deepfake Videos Impersonating Elon Musk and Dragon’s Den Allegedly Used in Cryptocurrency Investment Scam Targeting Canadian Victims",
           "date": "2025-12-21",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1325"
@@ -7857,7 +8356,7 @@
         },
         {
           "aiid_id": 1328,
-          "title": "Purported Deepfake Impersonating Elon Musk Allegedly Defrauded Elderly U.S. Woman of $50,000 via Gift Card\u2013to-Crypto Scam",
+          "title": "Purported Deepfake Impersonating Elon Musk Allegedly Defrauded Elderly U.S. Woman of $50,000 via Gift Card–to-Crypto Scam",
           "date": "2026-01-03",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1328"
@@ -7885,7 +8384,7 @@
         },
         {
           "aiid_id": 1339,
-          "title": "Purportedly AI-Cloned Voice Allegedly Used to Defraud Play School Owner of \u20b997,500 (~$1,080 USD) in Indore, India",
+          "title": "Purportedly AI-Cloned Voice Allegedly Used to Defraud Play School Owner of ₹97,500 (~$1,080 USD) in Indore, India",
           "date": "2026-01-06",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1339"
@@ -7997,7 +8496,7 @@
         },
         {
           "aiid_id": 1420,
-          "title": "Bal\u00e1zs Orb\u00e1n Allegedly Published Purported Deepfake of P\u00e9ter Magyar Claiming He Would Cut Pensions",
+          "title": "Balázs Orbán Allegedly Published Purported Deepfake of Péter Magyar Claiming He Would Cut Pensions",
           "date": "2025-10-28",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1420"
@@ -8025,7 +8524,7 @@
         },
         {
           "aiid_id": 1451,
-          "title": "Purportedly AI-Generated Facebook Video Allegedly Misused Sk\u00ebnder Brataj and Blendi Fevziu to Promote Purported Miracle Cream in Albania",
+          "title": "Purportedly AI-Generated Facebook Video Allegedly Misused Skënder Brataj and Blendi Fevziu to Promote Purported Miracle Cream in Albania",
           "date": "2025-06-30",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1451"
@@ -8053,14 +8552,14 @@
         },
         {
           "aiid_id": 1456,
-          "title": "Video with Reportedly AI-Generated Audio Purported to Show Croatian Footballer Luka Modri\u0107 Endorsing Immediate Matrix on Facebook Page Presented as N1 HR",
+          "title": "Video with Reportedly AI-Generated Audio Purported to Show Croatian Footballer Luka Modrić Endorsing Immediate Matrix on Facebook Page Presented as N1 HR",
           "date": "2023-12-03",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1456"
         },
         {
           "aiid_id": 1457,
-          "title": "Video with Reportedly AI-Generated Media Purported to Show Croatian Immunologist Stipan Jonji\u0107 Promoting Anti-Parasite Product on Facebook",
+          "title": "Video with Reportedly AI-Generated Media Purported to Show Croatian Immunologist Stipan Jonjić Promoting Anti-Parasite Product on Facebook",
           "date": "2024-08-27",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1457"
@@ -8074,7 +8573,7 @@
         },
         {
           "aiid_id": 1459,
-          "title": "Video with Reportedly AI-Generated Media Purported to Show Croatian Physician Alemka Markoti\u0107 Endorsing Hondrosol After False Murder Claim on Facebook",
+          "title": "Video with Reportedly AI-Generated Media Purported to Show Croatian Physician Alemka Markotić Endorsing Hondrosol After False Murder Claim on Facebook",
           "date": "2024-10-17",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1459"
@@ -8201,7 +8700,7 @@
       "aiid_anchors": [
         {
           "aiid_id": 89,
-          "title": "The Christchurch shooter and YouTube\u2019s radicalization trap",
+          "title": "The Christchurch shooter and YouTube’s radicalization trap",
           "date": "2019-03-15",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/89"
@@ -8311,7 +8810,7 @@
       "aiid_anchors": [
         {
           "aiid_id": 100,
-          "title": "How French welfare services are creating \u2018robo-debt\u2019",
+          "title": "How French welfare services are creating ‘robo-debt’",
           "date": "2021-03-17",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/100"
@@ -8374,7 +8873,7 @@
         },
         {
           "aiid_id": 108,
-          "title": "Skating Rink\u2019s Facial Recognition Cameras Misidentified Black Teenager as Banned Troublemaker",
+          "title": "Skating Rink’s Facial Recognition Cameras Misidentified Black Teenager as Banned Troublemaker",
           "date": "2021-07-10",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/108"
@@ -8659,7 +9158,7 @@
         },
         {
           "aiid_id": 818,
-          "title": "Jennifer Aniston\u2019s Likeness Allegedly Exploited in Purported Deepfake Collagen Supplement Promotion",
+          "title": "Jennifer Aniston’s Likeness Allegedly Exploited in Purported Deepfake Collagen Supplement Promotion",
           "date": "2024-09-28",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/818"
@@ -8764,7 +9263,7 @@
         },
         {
           "aiid_id": 942,
-          "title": "Cybercriminals Reportedly Exploited Google\u2019s G.Co Subdomain and Spoofed Caller ID in AI-Driven Phishing Attack on Hack Club Founder",
+          "title": "Cybercriminals Reportedly Exploited Google’s G.Co Subdomain and Spoofed Caller ID in AI-Driven Phishing Attack on Hack Club Founder",
           "date": "2025-02-20",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/942"
@@ -8792,7 +9291,7 @@
         },
         {
           "aiid_id": 953,
-          "title": "Deepfake Videos of Barbara O\u2019Neill Allegedly Used in Health Scam Targeting Social Media Users",
+          "title": "Deepfake Videos of Barbara O’Neill Allegedly Used in Health Scam Targeting Social Media Users",
           "date": "2024-11-01",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/953"
@@ -8841,7 +9340,7 @@
         },
         {
           "aiid_id": 980,
-          "title": "AI-Generated Songs Allegedly Imitating C\u00e9line Dion Circulate Online Without Authorization",
+          "title": "AI-Generated Songs Allegedly Imitating Céline Dion Circulate Online Without Authorization",
           "date": "2025-03-07",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/980"
@@ -8946,7 +9445,7 @@
         },
         {
           "aiid_id": 1029,
-          "title": "Purported AI-Generated Audio Was Reportedly Used to Claim Recep Tayyip Erdo\u011fan Expressed Support for Imran Khan in Pakistani Parliament",
+          "title": "Purported AI-Generated Audio Was Reportedly Used to Claim Recep Tayyip Erdoğan Expressed Support for Imran Khan in Pakistani Parliament",
           "date": "2025-02-15",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/1029"
@@ -9128,21 +9627,21 @@
         },
         {
           "aiid_id": 1092,
-          "title": "Purported AI-Generated Video Portrays Pope Leo XIV Addressing Ibrahim Traor\u00e9 of Burkina Faso",
+          "title": "Purported AI-Generated Video Portrays Pope Leo XIV Addressing Ibrahim Traoré of Burkina Faso",
           "date": "2025-05-23",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/1092"
         },
         {
           "aiid_id": 1094,
-          "title": "At Least 294 Purported AI-Generated Music Videos Portray Celebrities Praising Burkina Faso's Ibrahim Traor\u00e9",
+          "title": "At Least 294 Purported AI-Generated Music Videos Portray Celebrities Praising Burkina Faso's Ibrahim Traoré",
           "date": "2025-03-02",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/1094"
         },
         {
           "aiid_id": 1096,
-          "title": "Purported AI-Generated Video Depicts Ibrahim Traor\u00e9 of Burkina Faso Delivering Speech on Western Exploitation",
+          "title": "Purported AI-Generated Video Depicts Ibrahim Traoré of Burkina Faso Delivering Speech on Western Exploitation",
           "date": "2025-05-25",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/1096"
@@ -9359,7 +9858,7 @@
         },
         {
           "aiid_id": 1154,
-          "title": "Reported AI\u2011Generated Deepfake Impersonations of Public Figures Allegedly Used in Coordinated Stock Pump\u2011and\u2011Dump Scheme Targeting Israeli Investors",
+          "title": "Reported AI‑Generated Deepfake Impersonations of Public Figures Allegedly Used in Coordinated Stock Pump‑and‑Dump Scheme Targeting Israeli Investors",
           "date": "2025-04-01",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/1154"
@@ -9401,7 +9900,7 @@
         },
         {
           "aiid_id": 1206,
-          "title": "Purported AI-Generated Deepfake of Spiritual Leader Sadhguru Used in Investment Scam Allegedly Defrauding Bengaluru Woman of \u20b93.75 Crore (~$425,000)",
+          "title": "Purported AI-Generated Deepfake of Spiritual Leader Sadhguru Used in Investment Scam Allegedly Defrauding Bengaluru Woman of ₹3.75 Crore (~$425,000)",
           "date": "2025-02-25",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/1206"
@@ -9436,7 +9935,7 @@
         },
         {
           "aiid_id": 1224,
-          "title": "Purportedly AI-Generated Deepfake Ads on Instagram Impersonate Gisele B\u00fcndchen and Other Celebrities in Brazilian Fraud Scheme",
+          "title": "Purportedly AI-Generated Deepfake Ads on Instagram Impersonate Gisele Bündchen and Other Celebrities in Brazilian Fraud Scheme",
           "date": "2025-10-01",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/1224"
@@ -9450,7 +9949,7 @@
         },
         {
           "aiid_id": 1227,
-          "title": "New Zealand Financial Markets Authority (FMA), Te Mana T\u0101tai Hokohoko, Reportedly Flags Purported Deepfake Pump-and-Dump Network Using Social Media Ads",
+          "title": "New Zealand Financial Markets Authority (FMA), Te Mana Tātai Hokohoko, Reportedly Flags Purported Deepfake Pump-and-Dump Network Using Social Media Ads",
           "date": "2025-08-19",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/1227"
@@ -9492,7 +9991,7 @@
         },
         {
           "aiid_id": 1240,
-          "title": "Purported AI-Generated Deepfake of Infosys Co-Founder N. R. Narayana Murthy Used in Investment Scam Allegedly Defrauding 79-Year-Old Bengaluru Woman of \u20b935 Lakh (~$40,000)",
+          "title": "Purported AI-Generated Deepfake of Infosys Co-Founder N. R. Narayana Murthy Used in Investment Scam Allegedly Defrauding 79-Year-Old Bengaluru Woman of ₹35 Lakh (~$40,000)",
           "date": "2025-06-27",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/1240"
@@ -9548,7 +10047,7 @@
         },
         {
           "aiid_id": 1258,
-          "title": "Purported Deepfake Mimicking RT\u00c9 Broadcast Falsely Announced Irish Presidential Candidate Catherine Connolly's Withdrawal",
+          "title": "Purported Deepfake Mimicking RTÉ Broadcast Falsely Announced Irish Presidential Candidate Catherine Connolly's Withdrawal",
           "date": "2025-10-22",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/1258"
@@ -9604,7 +10103,7 @@
         },
         {
           "aiid_id": 1283,
-          "title": "Purported AI-Enabled Pro-Russian Influence Campaign Centered on Burkina Faso's Ibrahim Traor\u00e9 and Disseminated Across African Media",
+          "title": "Purported AI-Enabled Pro-Russian Influence Campaign Centered on Burkina Faso's Ibrahim Traoré and Disseminated Across African Media",
           "date": "2025-09-30",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/1283"
@@ -9688,7 +10187,7 @@
         },
         {
           "aiid_id": 1325,
-          "title": "Reported AI-Generated Deepfake Videos Impersonating Elon Musk and Dragon\u2019s Den Allegedly Used in Cryptocurrency Investment Scam Targeting Canadian Victims",
+          "title": "Reported AI-Generated Deepfake Videos Impersonating Elon Musk and Dragon’s Den Allegedly Used in Cryptocurrency Investment Scam Targeting Canadian Victims",
           "date": "2025-12-21",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/1325"
@@ -9702,7 +10201,7 @@
         },
         {
           "aiid_id": 1328,
-          "title": "Purported Deepfake Impersonating Elon Musk Allegedly Defrauded Elderly U.S. Woman of $50,000 via Gift Card\u2013to-Crypto Scam",
+          "title": "Purported Deepfake Impersonating Elon Musk Allegedly Defrauded Elderly U.S. Woman of $50,000 via Gift Card–to-Crypto Scam",
           "date": "2026-01-03",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/1328"
@@ -9730,7 +10229,7 @@
         },
         {
           "aiid_id": 1339,
-          "title": "Purportedly AI-Cloned Voice Allegedly Used to Defraud Play School Owner of \u20b997,500 (~$1,080 USD) in Indore, India",
+          "title": "Purportedly AI-Cloned Voice Allegedly Used to Defraud Play School Owner of ₹97,500 (~$1,080 USD) in Indore, India",
           "date": "2026-01-06",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/1339"
@@ -9842,7 +10341,7 @@
         },
         {
           "aiid_id": 1420,
-          "title": "Bal\u00e1zs Orb\u00e1n Allegedly Published Purported Deepfake of P\u00e9ter Magyar Claiming He Would Cut Pensions",
+          "title": "Balázs Orbán Allegedly Published Purported Deepfake of Péter Magyar Claiming He Would Cut Pensions",
           "date": "2025-10-28",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/1420"
@@ -9870,7 +10369,7 @@
         },
         {
           "aiid_id": 1451,
-          "title": "Purportedly AI-Generated Facebook Video Allegedly Misused Sk\u00ebnder Brataj and Blendi Fevziu to Promote Purported Miracle Cream in Albania",
+          "title": "Purportedly AI-Generated Facebook Video Allegedly Misused Skënder Brataj and Blendi Fevziu to Promote Purported Miracle Cream in Albania",
           "date": "2025-06-30",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/1451"
@@ -9898,14 +10397,14 @@
         },
         {
           "aiid_id": 1456,
-          "title": "Video with Reportedly AI-Generated Audio Purported to Show Croatian Footballer Luka Modri\u0107 Endorsing Immediate Matrix on Facebook Page Presented as N1 HR",
+          "title": "Video with Reportedly AI-Generated Audio Purported to Show Croatian Footballer Luka Modrić Endorsing Immediate Matrix on Facebook Page Presented as N1 HR",
           "date": "2023-12-03",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/1456"
         },
         {
           "aiid_id": 1457,
-          "title": "Video with Reportedly AI-Generated Media Purported to Show Croatian Immunologist Stipan Jonji\u0107 Promoting Anti-Parasite Product on Facebook",
+          "title": "Video with Reportedly AI-Generated Media Purported to Show Croatian Immunologist Stipan Jonjić Promoting Anti-Parasite Product on Facebook",
           "date": "2024-08-27",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/1457"
@@ -9919,7 +10418,7 @@
         },
         {
           "aiid_id": 1459,
-          "title": "Video with Reportedly AI-Generated Media Purported to Show Croatian Physician Alemka Markoti\u0107 Endorsing Hondrosol After False Murder Claim on Facebook",
+          "title": "Video with Reportedly AI-Generated Media Purported to Show Croatian Physician Alemka Markotić Endorsing Hondrosol After False Murder Claim on Facebook",
           "date": "2024-10-17",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/1459"
@@ -9975,7 +10474,7 @@
         },
         {
           "aiid_id": 108,
-          "title": "Skating Rink\u2019s Facial Recognition Cameras Misidentified Black Teenager as Banned Troublemaker",
+          "title": "Skating Rink’s Facial Recognition Cameras Misidentified Black Teenager as Banned Troublemaker",
           "date": "2021-07-10",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/108"
@@ -10647,7 +11146,7 @@
         },
         {
           "aiid_id": 812,
-          "title": "Deepfake Nudes Targeting Underage Female Students at Coll\u00e8ge B\u00e9liveau in Winnipeg Shared Online",
+          "title": "Deepfake Nudes Targeting Underage Female Students at Collège Béliveau in Winnipeg Shared Online",
           "date": "2023-12-11",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/812"
@@ -10696,7 +11195,7 @@
         },
         {
           "aiid_id": 828,
-          "title": "Uruguayan TV Program Santo y Se\u00f1a Uses a Deepfake of Political Candidate Yamand\u00fa Orsi Without His Consent",
+          "title": "Uruguayan TV Program Santo y Seña Uses a Deepfake of Political Candidate Yamandú Orsi Without His Consent",
           "date": "2024-10-13",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/828"
@@ -10745,7 +11244,7 @@
         },
         {
           "aiid_id": 848,
-          "title": "High School Student in C\u00f3rdoba, Argentina Accused of Using AI to Generate Explicit Images of Classmates",
+          "title": "High School Student in Córdoba, Argentina Accused of Using AI to Generate Explicit Images of Classmates",
           "date": "2024-10-18",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/848"
@@ -10822,7 +11321,7 @@
         },
         {
           "aiid_id": 878,
-          "title": "Romance Scammer 'Alla Morgan' Allegedly Exploits Deepfake Technology to Defraud Victim of \u00a317,000",
+          "title": "Romance Scammer 'Alla Morgan' Allegedly Exploits Deepfake Technology to Defraud Victim of £17,000",
           "date": "2024-12-19",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/878"
@@ -10955,7 +11454,7 @@
         },
         {
           "aiid_id": 914,
-          "title": "Alleged Deepfake of Luis Su\u00e1rez Used to Scam Uruguayans in Fake Investment Scheme",
+          "title": "Alleged Deepfake of Luis Suárez Used to Scam Uruguayans in Fake Investment Scheme",
           "date": "2024-12-26",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/914"
@@ -10990,7 +11489,7 @@
         },
         {
           "aiid_id": 924,
-          "title": "Alleged Deepfake Scam Uses BBC Presenter Naga Munchetty\u2019s Image to Promote Fraudulent Investment Scheme",
+          "title": "Alleged Deepfake Scam Uses BBC Presenter Naga Munchetty’s Image to Promote Fraudulent Investment Scheme",
           "date": "2025-01-30",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/924"
@@ -11011,7 +11510,7 @@
         },
         {
           "aiid_id": 929,
-          "title": "Sustained AI-Driven Russian Disinformation Campaigns Doppelg\u00e4nger, Storm-1516, and Matryoshka Reportedly Disrupting German Federal Elections",
+          "title": "Sustained AI-Driven Russian Disinformation Campaigns Doppelgänger, Storm-1516, and Matryoshka Reportedly Disrupting German Federal Elections",
           "date": "2024-12-06",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/929"
@@ -11109,7 +11608,7 @@
         },
         {
           "aiid_id": 989,
-          "title": "Alleged AI-Generated Video by Spain\u2019s People\u2019s Party Results in Diplomatic Fallout with the Dominican Republic",
+          "title": "Alleged AI-Generated Video by Spain’s People’s Party Results in Diplomatic Fallout with the Dominican Republic",
           "date": "2025-03-05",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/989"
@@ -11158,7 +11657,7 @@
         },
         {
           "aiid_id": 1017,
-          "title": "Alleged Deepfake Investment Scam in Spain Defrauds 208 Victims of \u20ac19 million ($20.9 million)",
+          "title": "Alleged Deepfake Investment Scam in Spain Defrauds 208 Victims of €19 million ($20.9 million)",
           "date": "2025-04-07",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1017"
@@ -11256,21 +11755,21 @@
         },
         {
           "aiid_id": 1091,
-          "title": "Purported Synthesia Avatars Used in Alleged Pro-Junta Deepfake Video Supporting Ibrahim Traor\u00e9 in Burkina Faso",
+          "title": "Purported Synthesia Avatars Used in Alleged Pro-Junta Deepfake Video Supporting Ibrahim Traoré in Burkina Faso",
           "date": "2023-01-23",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1091"
         },
         {
           "aiid_id": 1093,
-          "title": "Fact-Checkers Identify Viral Photo of Burkina Faso's Ibrahim Traor\u00e9 with 'Wife and Children' as AI-Generated Composite",
+          "title": "Fact-Checkers Identify Viral Photo of Burkina Faso's Ibrahim Traoré with 'Wife and Children' as AI-Generated Composite",
           "date": "2025-04-26",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1093"
         },
         {
           "aiid_id": 1095,
-          "title": "Alleged Russian-Linked Deepfake Campaign Misattributes Infrastructure Projects to Burkina Faso's Ibrahim Traor\u00e9",
+          "title": "Alleged Russian-Linked Deepfake Campaign Misattributes Infrastructure Projects to Burkina Faso's Ibrahim Traoré",
           "date": "2025-05-30",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1095"
@@ -11319,7 +11818,7 @@
         },
         {
           "aiid_id": 1163,
-          "title": "Purported Face\u2011Swap Technology Reportedly Used to Circumvent Financial Platform's Facial Recognition Security in Nanjing, China",
+          "title": "Purported Face‑Swap Technology Reportedly Used to Circumvent Financial Platform's Facial Recognition Security in Nanjing, China",
           "date": "2024-10-15",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1163"
@@ -11529,7 +12028,7 @@
         },
         {
           "aiid_id": 1333,
-          "title": "Purportedly AI-Generated Images and Videos Reportedly Spread Misinformation About Nicol\u00e1s Maduro's Capture on X",
+          "title": "Purportedly AI-Generated Images and Videos Reportedly Spread Misinformation About Nicolás Maduro's Capture on X",
           "date": "2026-01-03",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1333"
@@ -11697,7 +12196,7 @@
         },
         {
           "aiid_id": 1419,
-          "title": "Purported Deepfake Images of Gr\u00e1inne Seoige Reportedly Circulated During Ireland's 2024 General Election Campaign",
+          "title": "Purported Deepfake Images of Gráinne Seoige Reportedly Circulated During Ireland's 2024 General Election Campaign",
           "date": "2025-02-16",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/1419"
@@ -12007,7 +12506,7 @@
         },
         {
           "aiid_id": 159,
-          "title": "Tesla Autopilot\u2019s Lane Recognition Allegedly Vulnerable to Adversarial Attacks",
+          "title": "Tesla Autopilot’s Lane Recognition Allegedly Vulnerable to Adversarial Attacks",
           "date": "2019-03-29",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/159"
@@ -12084,7 +12583,7 @@
         },
         {
           "aiid_id": 293,
-          "title": "Cruise\u2019s Self-Driving Car Involved in a Multiple-Injury Collision at an San Francisco Intersection",
+          "title": "Cruise’s Self-Driving Car Involved in a Multiple-Injury Collision at an San Francisco Intersection",
           "date": "2022-06-03",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/293"
@@ -12266,7 +12765,7 @@
         },
         {
           "aiid_id": 711,
-          "title": "NHTSA Opens New Probe into Tesla\u2019s Autopilot Following More than a Dozen Fatal Accidents",
+          "title": "NHTSA Opens New Probe into Tesla’s Autopilot Following More than a Dozen Fatal Accidents",
           "date": "2024-04-26",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/711"
@@ -12552,14 +13051,14 @@
         },
         {
           "aiid_id": 812,
-          "title": "Deepfake Nudes Targeting Underage Female Students at Coll\u00e8ge B\u00e9liveau in Winnipeg Shared Online",
+          "title": "Deepfake Nudes Targeting Underage Female Students at Collège Béliveau in Winnipeg Shared Online",
           "date": "2023-12-11",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/812"
         },
         {
           "aiid_id": 848,
-          "title": "High School Student in C\u00f3rdoba, Argentina Accused of Using AI to Generate Explicit Images of Classmates",
+          "title": "High School Student in Córdoba, Argentina Accused of Using AI to Generate Explicit Images of Classmates",
           "date": "2024-10-18",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/848"
@@ -12671,14 +13170,14 @@
       "aiid_anchors": [
         {
           "aiid_id": 132,
-          "title": "TikTok\u2019s Content Moderation Allegedly Failed to Adequately Take down Videos Promoting Eating Disorders",
+          "title": "TikTok’s Content Moderation Allegedly Failed to Adequately Take down Videos Promoting Eating Disorders",
           "date": "2020-12-27",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/132"
         },
         {
           "aiid_id": 143,
-          "title": "Facebook\u2019s and Twitter's Automated Content Moderation Reportedly Failed to Effectively Enforce Violation Rules for Small Language Groups",
+          "title": "Facebook’s and Twitter's Automated Content Moderation Reportedly Failed to Effectively Enforce Violation Rules for Small Language Groups",
           "date": "2021-02-16",
           "role": "secondary",
           "aiid_url": "https://incidentdatabase.ai/cite/143"
@@ -12739,7 +13238,7 @@
     {
       "code": "431",
       "name": "Vendor Update Without Validation Gate",
-      "definition": "Third-party model vendor pushes a model update \u2014 minor version bump, weight refresh, RLHF re-tune \u2014 and the operator deploys the new variant without local re-validation of safety properties.",
+      "definition": "Third-party model vendor pushes a model update — minor version bump, weight refresh, RLHF re-tune — and the operator deploys the new variant without local re-validation of safety properties.",
       "tier": "4xx",
       "layer": null,
       "article_url": null,
@@ -13060,11 +13559,99 @@
       "aiid_anchors": [
         {
           "aiid_id": 123,
-          "title": "Epic Systems\u2019s Sepsis Prediction Algorithms Revealed to Have High Error Rates on Seriously Ill Patients",
+          "title": "Epic Systems’s Sepsis Prediction Algorithms Revealed to Have High Error Rates on Seriously Ill Patients",
           "date": "2021-08-01",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/123"
         }
+      ],
+      "contributors": []
+    },
+    {
+      "code": "438",
+      "name": "Oversight Capacity Deficit",
+      "definition": "A governance gate exists and is wired, but the human or compute resources allocated are structurally insufficient to meet required review depth or frequency, creating a de facto failure of the assurance plane.",
+      "tier": "4xx",
+      "layer": null,
+      "article_url": null,
+      "type": "illustrative",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [],
+      "distinct_from": [
+        {
+          "contrasted_with": "420",
+          "this_condition": "A gate is wired but structurally under-resourced",
+          "other_condition": "No enforcement mechanism is wired at all"
+        },
+        {
+          "contrasted_with": "429",
+          "this_condition": "Sustained structural under-resourcing",
+          "other_condition": "Transient queue spike beyond capacity"
+        }
+      ],
+      "aiid_anchors": [],
+      "contributors": []
+    },
+    {
+      "code": "439",
+      "name": "Annotation Boundary Breach",
+      "definition": "A system captures and logs interaction data as designed, but the handoff to human review or annotation exposes intimate, highly sensitive, or non-anonymized data to a reviewer population without dignity-preserving boundaries. The governance mechanism itself is the harm.",
+      "tier": "4xx",
+      "layer": null,
+      "article_url": null,
+      "type": "documented",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [],
+      "distinct_from": [
+        {
+          "contrasted_with": "329",
+          "this_condition": "Harm is in the review/annotation handoff",
+          "other_condition": "Unconsented ingestion at the data-intake layer"
+        }
+      ],
+      "aiid_anchors": [
+        "1418"
+      ],
+      "contributors": []
+    },
+    {
+      "code": "440",
+      "name": "Unqualified Empathetic Mirroring",
+      "definition": "In a relational or companion context, the response register is dominated by supportive reinforcement and mirroring and structurally lacks a boundary-setting register; high-risk emotional disclosures are met with validation that normalizes harm. Empirical base: Juneja & Lomidze 2026 (SRM 90.9%, R/BK 1.4%).",
+      "tier": "4xx",
+      "layer": null,
+      "article_url": null,
+      "type": "documented",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [],
+      "distinct_from": [
+        {
+          "contrasted_with": "328",
+          "this_condition": "Structural absence of a boundary register in emotional disclosure",
+          "other_condition": "Validator drift toward agreement on claims/beliefs"
+        },
+        {
+          "contrasted_with": "432",
+          "this_condition": "System-side register failure (over-validation)",
+          "other_condition": "User-side reality-testing erosion"
+        },
+        {
+          "contrasted_with": "433",
+          "this_condition": "Alliance is too unconditional (over-validation)",
+          "other_condition": "Therapeutic alliance ruptures"
+        },
+        {
+          "contrasted_with": "437",
+          "this_condition": "No boundary register even when severity is recognized",
+          "other_condition": "Severity misjudged in a single triage moment"
+        }
+      ],
+      "aiid_anchors": [
+        "899",
+        "1277"
       ],
       "contributors": []
     },
@@ -13175,7 +13762,7 @@
         },
         {
           "aiid_id": 125,
-          "title": "Amazon\u2019s Robotic Fulfillment Centers Have Higher Serious Injury Rates",
+          "title": "Amazon’s Robotic Fulfillment Centers Have Higher Serious Injury Rates",
           "date": "2020-09-29",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/125"
@@ -13217,14 +13804,14 @@
         },
         {
           "aiid_id": 159,
-          "title": "Tesla Autopilot\u2019s Lane Recognition Allegedly Vulnerable to Adversarial Attacks",
+          "title": "Tesla Autopilot’s Lane Recognition Allegedly Vulnerable to Adversarial Attacks",
           "date": "2019-03-29",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/159"
         },
         {
           "aiid_id": 176,
-          "title": "Starship\u2019s Autonomous Food Delivery Robot Allegedly Stranded at Railroad Crossing in Oregon, Run over by Freight Train",
+          "title": "Starship’s Autonomous Food Delivery Robot Allegedly Stranded at Railroad Crossing in Oregon, Run over by Freight Train",
           "date": "2022-03-02",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/176"
@@ -13315,7 +13902,7 @@
         },
         {
           "aiid_id": 293,
-          "title": "Cruise\u2019s Self-Driving Car Involved in a Multiple-Injury Collision at an San Francisco Intersection",
+          "title": "Cruise’s Self-Driving Car Involved in a Multiple-Injury Collision at an San Francisco Intersection",
           "date": "2022-06-03",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/293"
@@ -13518,7 +14105,7 @@
         },
         {
           "aiid_id": 711,
-          "title": "NHTSA Opens New Probe into Tesla\u2019s Autopilot Following More than a Dozen Fatal Accidents",
+          "title": "NHTSA Opens New Probe into Tesla’s Autopilot Following More than a Dozen Fatal Accidents",
           "date": "2024-04-26",
           "role": "primary",
           "aiid_url": "https://incidentdatabase.ai/cite/711"
@@ -13960,6 +14547,72 @@
           "attribution_type": "primary"
         }
       ]
+    },
+    {
+      "code": "513",
+      "name": "Forensic Hallucination",
+      "definition": "A system used to enhance, reconstruct, or unmask degraded or occluded source media originates fabricated forensic detail that the user treats as recovered or authoritative truth.",
+      "tier": "5xx",
+      "layer": null,
+      "article_url": null,
+      "type": "documented",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [],
+      "distinct_from": [
+        {
+          "contrasted_with": "512",
+          "this_condition": "Fabrication framed as recovered/enhanced from a source",
+          "other_condition": "Fabrication invented from scratch, not framed as recovery"
+        },
+        {
+          "contrasted_with": "327",
+          "this_condition": "Enhance-to-fabricate of degraded source",
+          "other_condition": "Deepfake synthesized from scratch"
+        }
+      ],
+      "aiid_anchors": [
+        "1334",
+        "165",
+        "385"
+      ],
+      "contributors": []
+    },
+    {
+      "code": "800",
+      "name": "Human-Operational Dimension",
+      "definition": "Dimension marker (not Index-eligible): a human in the operational control plane was materially relevant to the failure. Must accompany a sufficiently-evidenced L1-L7 GER code.",
+      "tier": "8xx",
+      "layer": null,
+      "article_url": null,
+      "type": "documented",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [
+        "dimension-marker",
+        "never-index"
+      ],
+      "distinct_from": [],
+      "aiid_anchors": [],
+      "contributors": []
+    },
+    {
+      "code": "900",
+      "name": "Institutional-Accountability Dimension",
+      "definition": "Dimension marker (not Index-eligible): organizational / governance structure was materially relevant to the failure. Must accompany a sufficiently-evidenced L1-L7 GER code.",
+      "tier": "9xx",
+      "layer": null,
+      "article_url": null,
+      "type": "documented",
+      "is_namespace_claim": true,
+      "version_added": "v0.2",
+      "tags": [
+        "dimension-marker",
+        "never-index"
+      ],
+      "distinct_from": [],
+      "aiid_anchors": [],
+      "contributors": []
     }
   ]
 }

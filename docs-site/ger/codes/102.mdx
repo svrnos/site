@@ -1,0 +1,27 @@
+---
+title: "GER-102 · Inference-Pool Partial-Availability"
+description: "Part of the serving pool goes down and requests fall back to a degraded or older path while the service still appears healthy."
+sidebarTitle: "102 · Inference-Pool Partial-Availability"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="amber">Illustrative</Badge> <Badge>Tier 1xx</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
+</div>
+
+*1xx*
+
+## Definition
+
+Part of the serving pool goes down and requests fall back to a degraded or older path while the service still appears healthy.
+
+## Distinct from
+
+- [**GER-503**](/ger/codes/503) — Compute-layer partial availability → this code. An institutional governance component is offline → GER-503.
+
+### Cite
+
+```
+SVRNOS. (2026). GER-102: Inference-Pool Partial-Availability. Governance Error Register. https://docs.svrnos.com/ger/codes/102
+```

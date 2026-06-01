@@ -1,0 +1,28 @@
+---
+title: "GER-211 · Missing Reconstructible Evidence"
+description: "A decision or action is recorded, but the record omits the specific metadata needed to independently reconstruct or validate that exact past decision (input hash, model/config version active at decision time, or per-deci…"
+sidebarTitle: "211 · Missing Reconstructible Evidence"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="amber">Illustrative</Badge> <Badge>Tier 2xx</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
+</div>
+
+*Success States*
+
+## Definition
+
+A decision or action is recorded, but the record omits the specific metadata needed to independently reconstruct or validate that exact past decision (input hash, model/config version active at decision time, or per-decision reasoning). Surfaces when a later audit, appeal, or legal challenge cannot verify what was decided and why. Requires that a record exists and that the gap is specifically reconstruction metadata on that record; excludes cases with no record (210), output-provenance omission (322), fabrication (512), merely hard-to-explain outcomes, and never-instrumented systems.
+
+## Distinct from
+
+- [**GER-210**](/ger/codes/210) — A record exists but lacks reconstruction metadata → this code. No record was made at all → GER-210.
+- [**GER-322**](/ger/codes/322) — Audit-trail reconstruction metadata is missing → this code. Output authenticity/provenance signal is missing → GER-322.
+
+### Cite
+
+```
+SVRNOS. (2026). GER-211: Missing Reconstructible Evidence. Governance Error Register. https://docs.svrnos.com/ger/codes/211
+```

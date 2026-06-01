@@ -1,0 +1,37 @@
+---
+title: "GER-106 · Breached Tenant Isolation"
+description: "Substrate-layer tenant isolation breaks, allowing context, data, or prompts to bleed across customer boundaries, including metadata-only side-channels such as timing or utilization."
+sidebarTitle: "106 · Breached Tenant Isolation"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="green">Documented</Badge> <Badge>Tier 1xx</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
+</div>
+
+*1xx*
+
+## Definition
+
+Substrate-layer tenant isolation breaks, allowing context, data, or prompts to bleed across customer boundaries, including metadata-only side-channels such as timing or utilization.
+
+## Distinct from
+
+- [**GER-322**](/ger/codes/322) — Cross-tenant isolation failure at the substrate → this code. Output shipped without an authenticity/provenance signal → GER-322.
+
+## Documented events (2)
+
+<Card title="" href="">
+  **undefined** — AIID #undefined
+</Card>
+
+<Card title="" href="">
+  **undefined** — AIID #undefined
+</Card>
+
+### Cite
+
+```
+SVRNOS. (2026). GER-106: Breached Tenant Isolation. Governance Error Register. https://docs.svrnos.com/ger/codes/106
+```

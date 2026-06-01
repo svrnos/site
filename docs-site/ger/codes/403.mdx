@@ -1,0 +1,33 @@
+---
+title: "GER-403 · Trusted-Component Trojan"
+description: "Installed third-party executable component (skill, plugin, MCP server, extension, agent tool) is trusted at install-time and carries dormant trigger-activated malicious behavior that standard validation passes clean."
+sidebarTitle: "403 · Trusted-Component Trojan"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="green">Documented</Badge> <Badge>Tier 4xx</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
+</div>
+
+*Operator / Platform Errors*
+
+## Definition
+
+Installed third-party executable component (skill, plugin, MCP server, extension, agent tool) is trusted at install-time and carries dormant trigger-activated malicious behavior that standard validation passes clean.
+
+## Distinct from
+
+- [**GER-431**](/ger/codes/431) — Component install-time inflection point → this code. Vendor update inflection point → GER-431.
+- [**GER-412**](/ger/codes/412) — Component install inflection → this code. Config-load inflection → GER-412.
+- [**GER-401**](/ger/codes/401) — Component authorization gate never installed → this code. User identity gate never installed → GER-401.
+
+## Tags
+
+`supply-chain` · `l2`
+
+### Cite
+
+```
+SVRNOS. (2026). GER-403: Trusted-Component Trojan. Governance Error Register. https://docs.svrnos.com/ger/codes/403
+```

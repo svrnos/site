@@ -1,0 +1,42 @@
+---
+title: "GER-360 · Unaggregated Session Risk"
+description: "A multi-turn session accumulates escalating risk that no layer aggregates across turns. Per-turn governance fires correctly; only session-level aggregation is absent, so risk is never detected to escalate."
+sidebarTitle: "360 · Unaggregated Session Risk"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="green">Documented</Badge> <Badge>Tier 3xx</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
+</div>
+
+*Structural Moves*
+
+## Definition
+
+A multi-turn session accumulates escalating risk that no layer aggregates across turns. Per-turn governance fires correctly; only session-level aggregation is absent, so risk is never detected to escalate.
+
+## Distinct from
+
+- [**GER-351**](/ger/codes/351) — Per-turn assurance fired; session aggregation is absent → this code. No assurance plane exists at any level → GER-351.
+- [**GER-501**](/ger/codes/501) — Risk is never aggregated/detected across turns → this code. Risk is detected but has no escalation path → GER-501.
+
+## Documented events (3)
+
+<Card title="" href="">
+  **undefined** — AIID #undefined
+</Card>
+
+<Card title="" href="">
+  **undefined** — AIID #undefined
+</Card>
+
+<Card title="" href="">
+  **undefined** — AIID #undefined
+</Card>
+
+### Cite
+
+```
+SVRNOS. (2026). GER-360: Unaggregated Session Risk. Governance Error Register. https://docs.svrnos.com/ger/codes/360
+```

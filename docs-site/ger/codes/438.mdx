@@ -1,0 +1,28 @@
+---
+title: "GER-438 · Oversight Capacity Deficit"
+description: "A governance gate exists and is wired, but the human or compute resources allocated are structurally insufficient to meet required review depth or frequency, creating a de facto failure of the assurance plane."
+sidebarTitle: "438 · Oversight Capacity Deficit"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="amber">Illustrative</Badge> <Badge>Tier 4xx</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
+</div>
+
+*Operator / Platform Errors*
+
+## Definition
+
+A governance gate exists and is wired, but the human or compute resources allocated are structurally insufficient to meet required review depth or frequency, creating a de facto failure of the assurance plane.
+
+## Distinct from
+
+- [**GER-420**](/ger/codes/420) — A gate is wired but structurally under-resourced → this code. No enforcement mechanism is wired at all → GER-420.
+- [**GER-429**](/ger/codes/429) — Sustained structural under-resourcing → this code. Transient queue spike beyond capacity → GER-429.
+
+### Cite
+
+```
+SVRNOS. (2026). GER-438: Oversight Capacity Deficit. Governance Error Register. https://docs.svrnos.com/ger/codes/438
+```
