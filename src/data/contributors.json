@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-21T17:47:19.048Z",
-  "count": 43,
+  "generated_at": "2026-06-02T00:00:00.000Z",
+  "count": 44,
   "contributors": [
     {
       "id": "aa03a120-bbec-44f6-8c63-21a1cbb954db",
@@ -179,6 +179,14 @@
       "created_at": "2026-05-21T15:50:06.806088+00:00"
     },
     {
+      "id": "1069789d-ae97-4c6e-83aa-c5c6f5813753",
+      "name": "Lika Lomidze",
+      "affiliation": "Seattle University",
+      "url": null,
+      "notes": "Co-author, “Persona-Grounded Safety Evaluation of AI Companions in Multi-Turn Conversations” (arXiv:2605.00227; ACL 2026 Oral). Empirical anchor for GER-440 Unqualified Empathetic Mirroring.",
+      "created_at": "2026-06-02T00:00:00+00:00"
+    },
+    {
       "id": "4ec85886-e2dc-4ab7-b44a-f8b77d8fa787",
       "name": "Marcus O'Dell",
       "affiliation": null,
@@ -225,6 +233,14 @@
       "url": null,
       "notes": "procedural attestation vs narrative reconstruction; three-way separation; temporal recognition lag",
       "created_at": "2026-05-21T15:50:06.806088+00:00"
+    },
+    {
+      "id": "ae4703e1-3ec2-4716-b3e2-69ff03b72527",
+      "name": "Prerna Juneja",
+      "affiliation": "Seattle University",
+      "url": "https://www.linkedin.com/in/prerna-juneja-a3a5223b/",
+      "notes": "Co-author, “Persona-Grounded Safety Evaluation of AI Companions in Multi-Turn Conversations” (arXiv:2605.00227; ACL 2026 Oral). Empirical anchor for GER-440 Unqualified Empathetic Mirroring.",
+      "created_at": "2026-06-02T00:00:00+00:00"
     },
     {
       "id": "7c2ea03e-2310-4b53-93c3-e51dd74a3040",
@@ -304,14 +320,6 @@
       "affiliation": null,
       "url": null,
       "notes": "Authority Migration failure mode (co-credit with F. Zafar)",
-      "created_at": "2026-05-21T15:50:06.806088+00:00"
-    },
-    {
-      "id": "907fb2a3-da71-4941-a0f8-554ad22fbd71",
-      "name": "Sushee Nzeutem",
-      "affiliation": "SVRNOS (Sovereign OS LLC)",
-      "url": null,
-      "notes": "Primary author of GER v0.1 (27 codes) and v0.2 framework",
       "created_at": "2026-05-21T15:50:06.806088+00:00"
     },
     {
