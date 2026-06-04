@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-04T12:52:18.721Z",
+  "generated_at": "2026-06-04T15:46:38.811Z",
   "source": "svrnos-docs.ger_codes_export",
   "count": 110,
   "codes": [
@@ -345,7 +345,14 @@
       "tags": [],
       "distinct_from": [],
       "documented_source": null,
-      "contributors": []
+      "contributors": [
+        {
+          "name": "Yuan Gao",
+          "affiliation": null,
+          "url": "https://www.linkedin.com/in/yuan-gao-434a993b2/",
+          "attribution_type": "primary"
+        }
+      ]
     },
     {
       "code": "306",
@@ -466,7 +473,14 @@
         }
       ],
       "documented_source": null,
-      "contributors": []
+      "contributors": [
+        {
+          "name": "Violeta Klein",
+          "affiliation": null,
+          "url": "https://www.linkedin.com/in/violetaklein-eu-ai-act-compliance/",
+          "attribution_type": "primary"
+        }
+      ]
     },
     {
       "code": "311",
@@ -487,7 +501,14 @@
         }
       ],
       "documented_source": null,
-      "contributors": []
+      "contributors": [
+        {
+          "name": "Tim Zlomke",
+          "affiliation": null,
+          "url": "https://www.linkedin.com/in/tim-zlomke",
+          "attribution_type": "primary"
+        }
+      ]
     },
     {
       "code": "312",
@@ -508,7 +529,20 @@
         }
       ],
       "documented_source": null,
-      "contributors": []
+      "contributors": [
+        {
+          "name": "F. Zafar",
+          "affiliation": null,
+          "url": "https://www.linkedin.com/in/fzafar/",
+          "attribution_type": "primary"
+        },
+        {
+          "name": "Steven Hensley",
+          "affiliation": null,
+          "url": "https://www.linkedin.com/in/steven-hensley-14b3363a8/",
+          "attribution_type": "primary"
+        }
+      ]
     },
     {
       "code": "313",
@@ -540,6 +574,7 @@
         {
           "name": "Melissa Kaplan",
           "affiliation": null,
+          "url": "https://www.linkedin.com/in/kaplanmelissa/",
           "attribution_type": "primary"
         }
       ]
@@ -574,6 +609,7 @@
         {
           "name": "Melissa Kaplan",
           "affiliation": null,
+          "url": "https://www.linkedin.com/in/kaplanmelissa/",
           "attribution_type": "primary"
         }
       ]
@@ -597,7 +633,14 @@
         }
       ],
       "documented_source": null,
-      "contributors": []
+      "contributors": [
+        {
+          "name": "Brian Burke",
+          "affiliation": null,
+          "url": "https://www.linkedin.com/in/brian-burke-ai/",
+          "attribution_type": "primary"
+        }
+      ]
     },
     {
       "code": "316",
@@ -618,7 +661,14 @@
         }
       ],
       "documented_source": null,
-      "contributors": []
+      "contributors": [
+        {
+          "name": "Eduardo Monteiro",
+          "affiliation": null,
+          "url": "https://www.linkedin.com/in/eduardo-monteiro-b92237181/",
+          "attribution_type": "primary"
+        }
+      ]
     },
     {
       "code": "317",
@@ -670,7 +720,20 @@
         }
       ],
       "documented_source": null,
-      "contributors": []
+      "contributors": [
+        {
+          "name": "Amilcar O.",
+          "affiliation": null,
+          "url": "https://www.linkedin.com/in/amilcar-o-026169252/",
+          "attribution_type": "primary"
+        },
+        {
+          "name": "Max Barzenkov",
+          "affiliation": null,
+          "url": "https://www.linkedin.com/in/maxbarzenkov/",
+          "attribution_type": "primary"
+        }
+      ]
     },
     {
       "code": "319",
@@ -691,7 +754,20 @@
         }
       ],
       "documented_source": null,
-      "contributors": []
+      "contributors": [
+        {
+          "name": "Arafeh Karimi",
+          "affiliation": null,
+          "url": "https://www.linkedin.com/in/arafehkarimi/",
+          "attribution_type": "primary"
+        },
+        {
+          "name": "Hans Alberts",
+          "affiliation": null,
+          "url": "https://www.linkedin.com/in/hansalberts/",
+          "attribution_type": "primary"
+        }
+      ]
     },
     {
       "code": "320",
@@ -733,7 +809,14 @@
         }
       ],
       "documented_source": null,
-      "contributors": []
+      "contributors": [
+        {
+          "name": "Marianne Rask",
+          "affiliation": null,
+          "url": "https://www.linkedin.com/in/marianne-rask-virksomhedsjuristen/",
+          "attribution_type": "primary"
+        }
+      ]
     },
     {
       "code": "322",
@@ -773,7 +856,8 @@
         {
           "name": "Marcus O'Dell",
           "affiliation": null,
-          "attribution_type": "subtype"
+          "url": "https://www.linkedin.com/in/marcus-o-dell-7a7b8352/",
+          "attribution_type": "primary"
         }
       ]
     },
@@ -954,12 +1038,14 @@
         {
           "name": "Dr. Hellen V.",
           "affiliation": "F&G Strategy / chatbotharm.org",
-          "attribution_type": "subtype"
+          "url": "https://www.linkedin.com/in/dr-hellen-v-a3a5aa317/",
+          "attribution_type": "primary"
         },
         {
           "name": "Gabriel Hawthorne",
           "affiliation": "F&G Strategy / chatbotharm.org",
-          "attribution_type": "subtype"
+          "url": "https://www.linkedin.com/in/gabriel-hawthorne-ab9ab4245/",
+          "attribution_type": "primary"
         }
       ]
     },
@@ -1159,6 +1245,7 @@
         {
           "name": "Satyam Kumar Das",
           "affiliation": "AppScale",
+          "url": "https://www.linkedin.com/in/satyamkumar/",
           "attribution_type": "primary"
         }
       ]
@@ -1188,6 +1275,7 @@
         {
           "name": "Satyam Kumar Das",
           "affiliation": "AppScale",
+          "url": "https://www.linkedin.com/in/satyamkumar/",
           "attribution_type": "primary"
         }
       ]
@@ -1211,6 +1299,7 @@
         {
           "name": "Rakesh Sheshadri",
           "affiliation": null,
+          "url": "https://www.linkedin.com/in/rakesh-sheshadri-453396146/",
           "attribution_type": "primary"
         }
       ]
@@ -1234,6 +1323,7 @@
         {
           "name": "Rakesh Sheshadri",
           "affiliation": null,
+          "url": "https://www.linkedin.com/in/rakesh-sheshadri-453396146/",
           "attribution_type": "primary"
         }
       ]
@@ -1257,6 +1347,7 @@
         {
           "name": "Rakesh Sheshadri",
           "affiliation": null,
+          "url": "https://www.linkedin.com/in/rakesh-sheshadri-453396146/",
           "attribution_type": "primary"
         }
       ]
@@ -1281,6 +1372,7 @@
         {
           "name": "Rakesh Sheshadri",
           "affiliation": null,
+          "url": "https://www.linkedin.com/in/rakesh-sheshadri-453396146/",
           "attribution_type": "primary"
         }
       ]
@@ -1316,12 +1408,14 @@
         {
           "name": "Raluca Alexandra Fulgu",
           "affiliation": "University of Milan-Bicocca",
+          "url": "https://arxiv.org/abs/2405.11100",
           "attribution_type": "primary"
         },
         {
           "name": "Valerio Capraro",
           "affiliation": "University of Milan-Bicocca",
-          "attribution_type": "co-attribution"
+          "url": "https://arxiv.org/abs/2405.11100",
+          "attribution_type": "primary"
         }
       ]
     },
@@ -1355,12 +1449,14 @@
         {
           "name": "Raluca Alexandra Fulgu",
           "affiliation": "University of Milan-Bicocca",
+          "url": "https://arxiv.org/abs/2405.11100",
           "attribution_type": "primary"
         },
         {
           "name": "Valerio Capraro",
           "affiliation": "University of Milan-Bicocca",
-          "attribution_type": "co-attribution"
+          "url": "https://arxiv.org/abs/2405.11100",
+          "attribution_type": "primary"
         }
       ]
     },
@@ -1396,12 +1492,14 @@
         {
           "name": "Dr. Hellen V.",
           "affiliation": "F&G Strategy / chatbotharm.org",
-          "attribution_type": "co-attribution"
+          "url": "https://www.linkedin.com/in/dr-hellen-v-a3a5aa317/",
+          "attribution_type": "primary"
         },
         {
           "name": "Gabriel Hawthorne",
           "affiliation": "F&G Strategy / chatbotharm.org",
-          "attribution_type": "co-attribution"
+          "url": "https://www.linkedin.com/in/gabriel-hawthorne-ab9ab4245/",
+          "attribution_type": "primary"
         }
       ]
     },
@@ -1424,6 +1522,7 @@
         {
           "name": "Rakesh Sheshadri",
           "affiliation": null,
+          "url": "https://www.linkedin.com/in/rakesh-sheshadri-453396146/",
           "attribution_type": "primary"
         }
       ]
@@ -1454,32 +1553,38 @@
         {
           "name": "Abhejay Murali",
           "affiliation": "UT Austin",
-          "attribution_type": "co-attribution"
+          "url": "https://arxiv.org/abs/2512.05929",
+          "attribution_type": "primary"
         },
         {
           "name": "Amit Dhurandhar",
           "affiliation": "IBM Research",
-          "attribution_type": "co-attribution"
+          "url": "https://arxiv.org/abs/2512.05929",
+          "attribution_type": "primary"
         },
         {
           "name": "David Atkinson",
           "affiliation": "UT Austin",
-          "attribution_type": "co-attribution"
+          "url": "https://arxiv.org/abs/2512.05929",
+          "attribution_type": "primary"
         },
         {
           "name": "Junfeng Jiao",
           "affiliation": "UT Austin McCombs",
-          "attribution_type": "co-attribution"
+          "url": "https://arxiv.org/abs/2512.05929",
+          "attribution_type": "primary"
         },
         {
           "name": "Kevin Chen",
           "affiliation": "UT Austin Urban Information Lab",
+          "url": "https://arxiv.org/abs/2512.05929",
           "attribution_type": "primary"
         },
         {
           "name": "Saleh Afroogh",
           "affiliation": "UT Austin",
-          "attribution_type": "co-attribution"
+          "url": "https://arxiv.org/abs/2512.05929",
+          "attribution_type": "primary"
         }
       ]
     },
@@ -1502,6 +1607,7 @@
         {
           "name": "Rakesh Sheshadri",
           "affiliation": null,
+          "url": "https://www.linkedin.com/in/rakesh-sheshadri-453396146/",
           "attribution_type": "primary"
         }
       ]
@@ -1571,6 +1677,7 @@
         {
           "name": "Sean Moran",
           "affiliation": null,
+          "url": "https://medium.com/@sean.j.moran",
           "attribution_type": "primary"
         }
       ]
@@ -1605,6 +1712,7 @@
         {
           "name": "Martin Guerin",
           "affiliation": "SPQR Technologies / Prova Advisory",
+          "url": "https://www.linkedin.com/in/martinguerin-spqrtech/",
           "attribution_type": "primary"
         }
       ]
@@ -2309,7 +2417,8 @@
         {
           "name": "Satyam Kumar Das",
           "affiliation": "AppScale",
-          "attribution_type": "subtype"
+          "url": "https://www.linkedin.com/in/satyamkumar/",
+          "attribution_type": "primary"
         }
       ]
     },
@@ -2420,6 +2529,7 @@
         {
           "name": "Satyam Kumar Das",
           "affiliation": "AppScale",
+          "url": "https://www.linkedin.com/in/satyamkumar/",
           "attribution_type": "primary"
         }
       ]
@@ -2463,12 +2573,14 @@
         {
           "name": "Dr. Hellen V.",
           "affiliation": "F&G Strategy / chatbotharm.org",
+          "url": "https://www.linkedin.com/in/dr-hellen-v-a3a5aa317/",
           "attribution_type": "primary"
         },
         {
           "name": "Gabriel Hawthorne",
           "affiliation": "F&G Strategy / chatbotharm.org",
-          "attribution_type": "co-attribution"
+          "url": "https://www.linkedin.com/in/gabriel-hawthorne-ab9ab4245/",
+          "attribution_type": "primary"
         }
       ]
     },
@@ -2498,12 +2610,14 @@
         {
           "name": "Dr. Hellen V.",
           "affiliation": "F&G Strategy / chatbotharm.org",
+          "url": "https://www.linkedin.com/in/dr-hellen-v-a3a5aa317/",
           "attribution_type": "primary"
         },
         {
           "name": "Gabriel Hawthorne",
           "affiliation": "F&G Strategy / chatbotharm.org",
-          "attribution_type": "co-attribution"
+          "url": "https://www.linkedin.com/in/gabriel-hawthorne-ab9ab4245/",
+          "attribution_type": "primary"
         }
       ]
     },
@@ -2701,13 +2815,15 @@
       },
       "contributors": [
         {
-          "name": "Prerna Juneja",
-          "affiliation": "Seattle University",
+          "name": "Lika Lomidze",
+          "affiliation": null,
+          "url": "https://arxiv.org/abs/2605.00227",
           "attribution_type": "primary"
         },
         {
-          "name": "Lika Lomidze",
+          "name": "Prerna Juneja",
           "affiliation": "Seattle University",
+          "url": "https://arxiv.org/abs/2605.00227",
           "attribution_type": "primary"
         }
       ]

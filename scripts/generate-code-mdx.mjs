@@ -119,9 +119,9 @@ SVRNOS has published a long-form case study on this code: [**${c.article_url.spl
   });
   if (externalContribs.length > 0) {
     const lines = externalContribs.map((co) => {
+      const nameStr = co.url ? `[${co.name}](${co.url})` : co.name;
       const affil = co.affiliation ? `, ${co.affiliation}` : "";
-      const type = co.attribution_type ? ` — ${co.attribution_type}` : "";
-      return `${co.name}${affil}${type}`;
+      return `${nameStr}${affil}`;
     }).join("; ");
     sections.push(`### Contributors\n\n${lines}`);
   }

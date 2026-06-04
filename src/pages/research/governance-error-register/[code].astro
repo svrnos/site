@@ -19,6 +19,7 @@ interface DocumentedSource {
 interface Contributor {
   name: string;
   affiliation: string | null;
+  url: string | null;
   attribution_type: string;
 }
 
@@ -199,11 +200,12 @@ const jsonLd = {
         <ul class="space-y-2">
           {code.contributors.map((c) => (
             <li class="text-sm text-secondary">
-              <span class="text-heading">{c.name}</span>
+              {c.url ? (
+                <a href={c.url} target="_blank" rel="noopener" class="text-heading hover:underline">{c.name}</a>
+              ) : (
+                <span class="text-heading">{c.name}</span>
+              )}
               {c.affiliation && <span class="text-label-alt"> · {c.affiliation}</span>}
-              <span class="ml-2 font-mono text-[10px] uppercase tracking-wider text-label-alt">
-                {c.attribution_type}
-              </span>
             </li>
           ))}
         </ul>
