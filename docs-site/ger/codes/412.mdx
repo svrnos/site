@@ -7,7 +7,7 @@ sidebarTitle: "412 · Inherited-Filter Context Redaction"
 import { Badge } from "/snippets/Badge.mdx"
 
 <div className="flex flex-wrap gap-2 mb-8 mt-2">
-<Badge tone="green">Documented</Badge> <Badge>Tier 4xx</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
+<Badge tone="green">Documented</Badge> <Badge>Tier 4xx</Badge> <Badge>Layer L2</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
 </div>
 
 *Operator / Platform Errors*
@@ -22,9 +22,15 @@ A trusted component auto-loads configuration from co-located untrusted context (
 - [**GER-417**](/ger/codes/417) — Trust inherited from co-located untrusted source via config-load → this code. Rule communicated through informal channel without canonical authority binding → GER-417.
 - [**GER-431**](/ger/codes/431) — Trusted component auto-loads untrusted config → this code. Vendor pushes update without validation gate → GER-431.
 
+## Documented case
+
+<Card title="CVE-2026-45792 — RTK (Rust Token Killer): unverified filter-config silently alters output shown to the LLM" href="https://github.com/advisories/GHSA-fvvm-949w-qj4w">
+  advisory
+</Card>
+
 ## Tags
 
-`supply-chain` · `l2` · `cve-2026-45792`
+`cve-2026-45792` · `l2` · `supply-chain`
 
 ### Cite
 

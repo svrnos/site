@@ -7,7 +7,7 @@ sidebarTitle: "417 · Grapevine Rule"
 import { Badge } from "/snippets/Badge.mdx"
 
 <div className="flex flex-wrap gap-2 mb-8 mt-2">
-<Badge tone="amber">Illustrative</Badge> <Badge>Tier 4xx</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
+<Badge tone="amber">Illustrative</Badge> <Badge>Tier 4xx</Badge> <Badge>Layer L7</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
 </div>
 
 *Operator / Platform Errors*
@@ -18,9 +18,9 @@ A governance rule communicated through informal channels (verbal, chat, email, m
 
 ## Distinct from
 
+- [**GER-400**](/ger/codes/400) — Rule well-formed when communicated, just never codified → this code. Rule ambiguous or self-contradicting → GER-400.
 - [**GER-404**](/ger/codes/404) — Rule recoverable from communication records but not in active ruleset → this code. No rule exists anywhere in the system → GER-404.
 - [**GER-420**](/ger/codes/420) — Rule never reached the platform's formal policy layer at all → this code. Rule exists in formal platform policy (prompt, written policy doc, configuration) but not wired into production → GER-420.
-- [**GER-400**](/ger/codes/400) — Rule well-formed when communicated, just never codified → this code. Rule ambiguous or self-contradicting → GER-400.
 
 ### Cite
 

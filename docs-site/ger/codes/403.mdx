@@ -7,7 +7,7 @@ sidebarTitle: "403 · Trusted-Component Trojan"
 import { Badge } from "/snippets/Badge.mdx"
 
 <div className="flex flex-wrap gap-2 mb-8 mt-2">
-<Badge tone="green">Documented</Badge> <Badge>Tier 4xx</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
+<Badge tone="green">Documented</Badge> <Badge>Tier 4xx</Badge> <Badge>Layer L2</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
 </div>
 
 *Operator / Platform Errors*
@@ -18,13 +18,19 @@ Installed third-party executable component (skill, plugin, MCP server, extension
 
 ## Distinct from
 
-- [**GER-431**](/ger/codes/431) — Component install-time inflection point → this code. Vendor update inflection point → GER-431.
-- [**GER-412**](/ger/codes/412) — Component install inflection → this code. Config-load inflection → GER-412.
 - [**GER-401**](/ger/codes/401) — Component authorization gate never installed → this code. User identity gate never installed → GER-401.
+- [**GER-412**](/ger/codes/412) — Component install inflection → this code. Config-load inflection → GER-412.
+- [**GER-431**](/ger/codes/431) — Component install-time inflection point → this code. Vendor update inflection point → GER-431.
+
+## Documented case
+
+<Card title="Malicious Nx npm Packages Reportedly Weaponize AI Coding Agents for Data Exfiltration" href="https://incidentdatabase.ai/cite/1210">
+  AIID #1210
+</Card>
 
 ## Tags
 
-`supply-chain` · `l2`
+`l2` · `supply-chain`
 
 ### Cite
 

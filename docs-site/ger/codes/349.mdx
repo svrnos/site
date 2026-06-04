@@ -7,7 +7,7 @@ sidebarTitle: "349 · Inter-Agent Schema Mismatch"
 import { Badge } from "/snippets/Badge.mdx"
 
 <div className="flex flex-wrap gap-2 mb-8 mt-2">
-<Badge tone="green">Documented</Badge> <Badge>Tier 3xx</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
+<Badge tone="green">Documented</Badge> <Badge>Tier 3xx</Badge> <Badge>Layer L6</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2</Badge>
 </div>
 
 *Structural Moves*
@@ -15,6 +15,12 @@ import { Badge } from "/snippets/Badge.mdx"
 ## Definition
 
 Agents in a multi-agent system communicate via structured outputs (YAML, JSON, function calls). Outputs from one agent do not parse cleanly against the input schema of the next agent. The chain produces silent corruption or hard failures at the parse boundary.
+
+## Documented case
+
+<Card title="Microsoft agent-framework: Invalid schema for ManagerSelectionResponse (GroupChatBuilder), missing 'selected_participant'" href="https://github.com/microsoft/agent-framework/issues/2681">
+  bug-report
+</Card>
 
 ## Tags
 

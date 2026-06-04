@@ -80,15 +80,19 @@ ${c.definition}`);
     sections.push(`## Distinct from\n\n${items}`);
   }
 
-  // Documented events
-  if (c.aiid_anchors && c.aiid_anchors.length > 0) {
-    sections.push(`## Documented events (${c.aiid_anchors.length})`);
-    for (const a of c.aiid_anchors) {
-      const dateStr = a.date ? ` · ${a.date}` : "";
-      sections.push(`<Card title=${quote(a.title)} href=${quote(a.aiid_url)}>
-  **${a.role}** — AIID #${a.aiid_id}${dateStr}
+  // Documented case (one exemplar per code — AIID or external source: arXiv, vendor, news, advisory)
+  if (c.documented_source) {
+    const s = c.documented_source;
+    const label =
+      s.source_type === "aiid"
+        ? `AIID #${s.external_ref}`
+        : s.external_ref
+          ? `${s.source_type} · ${s.external_ref}`
+          : s.source_type;
+    sections.push(`## Documented case`);
+    sections.push(`<Card title=${quote(s.title)} href=${quote(s.url)}>
+  ${label}
 </Card>`);
-    }
   }
 
   // Case study link

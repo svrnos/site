@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-21T17:47:19.048Z",
-  "count": 51,
+  "generated_at": "2026-06-04T12:52:18.721Z",
+  "count": 56,
   "tags": [
     {
       "slug": "agentic",
@@ -51,6 +51,12 @@
       "created_at": "2026-05-21T15:51:03.497746+00:00"
     },
     {
+      "slug": "cve-2026-45792",
+      "label": "Cve 2026 45792",
+      "description": null,
+      "created_at": "2026-06-04T12:44:56.769193+00:00"
+    },
+    {
       "slug": "deepfake-impersonation",
       "label": "Deepfake impersonation",
       "description": "Synthetic media presenting as a real named person",
@@ -67,6 +73,12 @@
       "label": "Delusion reinforcement",
       "description": "AI affirms cognitive patterns characteristic of psychosis or paranoia",
       "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "dimension-marker",
+      "label": "Dimension Marker",
+      "description": null,
+      "created_at": "2026-06-04T12:44:56.769193+00:00"
     },
     {
       "slug": "discrimination",
@@ -171,6 +183,12 @@
       "created_at": "2026-05-21T15:51:03.497746+00:00"
     },
     {
+      "slug": "l2",
+      "label": "L2",
+      "description": null,
+      "created_at": "2026-06-04T12:44:56.769193+00:00"
+    },
+    {
       "slug": "legal",
       "label": "Legal",
       "description": "Law-firm, court, paralegal deployments",
@@ -217,6 +235,12 @@
       "label": "NCII",
       "description": "Non-consensual intimate imagery / deepfake nudes",
       "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "never-index",
+      "label": "Never Index",
+      "description": null,
+      "created_at": "2026-06-04T12:44:56.769193+00:00"
     },
     {
       "slug": "non-english",
@@ -289,6 +313,12 @@
       "label": "Suicide / suicidal ideation",
       "description": "Self-directed harm with intent to die",
       "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "supply-chain",
+      "label": "Supply Chain",
+      "description": null,
+      "created_at": "2026-06-04T12:44:56.769193+00:00"
     },
     {
       "slug": "uk-online-safety-act",
