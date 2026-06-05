@@ -31,7 +31,7 @@ export const GerLookup = () => {
 
   const FILTER_TAGS = [
     "agentic","multi-agent","companion-ai","clinical","legal","educational",
-    "financial","health-triage","hr-employment","generative-media","autonomous-vehicle",
+    "financial","health-triage","hr-employment","generative-media","c2pa","autonomous-vehicle",
     "minors","psychiatric-vulnerability","elderly",
     "suicide","self-harm","violence","deepfake-impersonation","fraud","doxxing",
     "privacy-violation","discrimination","prompt-injection",

@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-04T15:46:38.811Z",
-  "count": 56,
+  "generated_at": "2026-06-05T01:02:24.272Z",
+  "count": 57,
   "tags": [
     {
       "slug": "agentic",
@@ -19,6 +19,12 @@
       "label": "Autonomous vehicle",
       "description": "Self-driving cars, drones, robotic systems",
       "created_at": "2026-05-21T15:51:03.497746+00:00"
+    },
+    {
+      "slug": "c2pa",
+      "label": "C2PA / Content Provenance",
+      "description": "Content provenance and authenticity (C2PA / Content Credentials): provenance signals, verifiers, and trust-model failure modes.",
+      "created_at": "2026-06-05T01:01:21.608989+00:00"
     },
     {
       "slug": "california-tfaia",

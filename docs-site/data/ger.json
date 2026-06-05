@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-04T15:46:38.811Z",
+  "generated_at": "2026-06-05T01:02:24.272Z",
   "source": "svrnos-docs.ger_codes_export",
   "count": 110,
   "codes": [
@@ -427,6 +427,7 @@
       "is_namespace_claim": true,
       "version_added": "v0.1",
       "tags": [
+        "c2pa",
         "companion-ai",
         "delusion-reinforcement",
         "psychological-harm"
@@ -680,7 +681,9 @@
       "type": "documented",
       "is_namespace_claim": true,
       "version_added": "v0.2",
-      "tags": [],
+      "tags": [
+        "c2pa"
+      ],
       "distinct_from": [
         {
           "contrasted_with": "309",
@@ -829,6 +832,7 @@
       "is_namespace_claim": true,
       "version_added": "v0.2",
       "tags": [
+        "c2pa",
         "deepfake-impersonation",
         "fraud",
         "generative-media",
@@ -956,6 +960,7 @@
       "is_namespace_claim": true,
       "version_added": "v0.2",
       "tags": [
+        "c2pa",
         "discrimination",
         "privacy-violation"
       ],
@@ -1190,6 +1195,7 @@
       "is_namespace_claim": true,
       "version_added": "v0.2",
       "tags": [
+        "c2pa",
         "eu-ai-act"
       ],
       "distinct_from": [],
@@ -1693,6 +1699,7 @@
       "is_namespace_claim": true,
       "version_added": "v0.2",
       "tags": [
+        "c2pa",
         "legal"
       ],
       "distinct_from": [
@@ -2251,6 +2258,7 @@
       "is_namespace_claim": true,
       "version_added": "v0.2",
       "tags": [
+        "c2pa",
         "fraud",
         "misinformation"
       ],
@@ -2333,6 +2341,7 @@
       "is_namespace_claim": true,
       "version_added": "v0.2",
       "tags": [
+        "c2pa",
         "deepfake-impersonation",
         "fraud",
         "identity-spoofing"
@@ -2995,6 +3004,7 @@
       "is_namespace_claim": true,
       "version_added": "v0.1",
       "tags": [
+        "c2pa",
         "companion-ai",
         "delusion-reinforcement",
         "psychological-harm",
