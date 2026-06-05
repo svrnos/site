@@ -1,0 +1,152 @@
+---
+// Insights index, generated from the `insights` content collection.
+// Cards are produced from frontmatter (reverse-chronological); the chrome
+// (styles, nav, tabs, footer) reproduces the prior static index verbatim.
+import { getCollection } from "astro:content";
+
+const all = await getCollection("insights", (e) => !e.data.draft);
+const en = all
+  .filter((e) => e.data.lang === "en")
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const frTranslated = new Set(
+  all.filter((e) => e.data.lang === "fr").map((e) => e.data.translationOf),
+);
+const catLabel: Record<string, string> = { governance: "Governance", identity: "Identity" };
+const fmt = (d: Date) =>
+  d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Insights - SVRNOS</title>
+<meta content="Analysis, case studies, and technical commentary on AI governance, safety infrastructure, and the regulatory landscape." name="description"/>
+<meta content="Insights - SVRNOS" property="og:title"/>
+<meta content="Analysis, case studies, and technical commentary on AI governance, safety infrastructure, and the regulatory landscape." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://svrnos.com/insights" property="og:url"/>
+<link rel="canonical" href="https://svrnos.com/insights"/>
+<link rel="alternate" hreflang="en" href="https://svrnos.com/insights"/>
+<link rel="alternate" hreflang="x-default" href="https://svrnos.com/insights"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --paper: #fbfaf6; --ink: #14140f; --ink-soft: #3a3a32; --ink-mute: #6b6b60;
+    --rule: #e6e3d8; --rule-soft: #efece2; --accent: #1f4d3a; --accent-soft: #d8e4dd;
+    --font-serif: 'Instrument Serif', 'Charter', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --col-text: 720px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-sans); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-soft); }
+  a:hover { border-bottom-color: var(--accent); }
+  .topnav { position: sticky; top: 0; z-index: 50; background: rgba(251,250,246,.92); backdrop-filter: saturate(180%) blur(12px); border-bottom: 1px solid var(--rule-soft); }
+  .topnav-inner { max-width: 1180px; margin: 0 auto; padding: 14px 32px; display: flex; align-items: center; justify-content: space-between; font-family: var(--font-sans); font-size: 14px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--ink); border: none; }
+  .brand-mark { width: 22px; height: 22px; background: var(--accent); border-radius: 4px; position: relative; }
+  .brand-mark::after { content: ''; position: absolute; inset: 4px; background: var(--paper); clip-path: polygon(0 0, 100% 0, 100% 50%, 50% 100%, 0 50%); }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: var(--ink-soft); border: none; font-weight: 500; }
+  .nav-links a:hover { color: var(--accent); }
+  .hero { max-width: var(--col-text); margin: 0 auto; padding: 80px 32px 32px; }
+  .hero-meta { font-family: var(--font-sans); font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-mute); margin-bottom: 24px; }
+  .hero h1 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(38px, 5.5vw, 56px); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 24px; font-variation-settings: "opsz" 144; }
+  .hero p.lede { font-family: var(--font-serif); font-size: 20px; line-height: 1.55; color: var(--ink-soft); font-style: italic; margin: 0 0 40px; font-weight: 300; }
+  main { max-width: var(--col-text); margin: 0 auto; padding: 0 32px 80px; }
+  .articles { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+  .article { padding: 32px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 100px 1fr; gap: 28px; align-items: start; }
+  .article-meta { font-family: var(--font-sans); font-size: 12px; color: var(--ink-mute); text-transform: uppercase; letter-spacing: 0.08em; line-height: 1.5; padding-top: 6px; }
+  .article-tag { display: block; margin-top: 6px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; background: var(--accent-soft); color: var(--accent); padding: 2px 6px; border-radius: 2px; width: fit-content; }
+  .article-cat { display: block; margin-top: 5px; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; padding: 2px 6px; border-radius: 2px; width: fit-content; text-transform: uppercase; }
+  .cat-governance { background: #fef3e2; color: #92400e; }
+  .cat-identity { background: #eef2ff; color: #3730a3; }
+  .tab-bar { display: flex; gap: 4px; margin-bottom: 24px; border-bottom: 1px solid var(--rule); padding-bottom: 0; }
+  .tab { font-family: var(--font-sans); font-size: 13px; font-weight: 500; color: var(--ink-mute); background: none; border: none; border-bottom: 2px solid transparent; padding: 8px 14px 10px; cursor: pointer; transition: color 0.15s; margin-bottom: -1px; }
+  .tab:hover { color: var(--ink-soft); }
+  .tab.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
+  .article-body h2 { font-family: var(--font-serif); font-weight: 500; font-size: 24px; line-height: 1.2; letter-spacing: -0.012em; margin: 0 0 8px; font-variation-settings: "opsz" 60; }
+  .article-body h2 a { color: var(--ink); border: none; }
+  .article-body h2 a:hover { color: var(--accent); }
+  .article-body .summary { margin: 0; font-size: 16px; color: var(--ink-soft); line-height: 1.6; }
+  .article-body .lang-alt { margin: 8px 0 0; font-size: 13px; line-height: 1.4; }
+  .article-body .lang-alt a { color: var(--ink-mute); border-bottom-color: transparent; }
+  .article-body .lang-alt a:hover { color: var(--accent); border-bottom-color: var(--accent-soft); }
+  footer.site-footer { max-width: var(--col-text); margin: 0 auto; padding: 32px; border-top: 1px solid var(--rule); font-family: var(--font-sans); font-size: 13px; color: var(--ink-mute); }
+  footer.site-footer a { color: var(--ink-mute); border-bottom-color: var(--rule); }
+  footer.site-footer a:hover { color: var(--accent); }
+  @media (max-width: 600px) { .article { grid-template-columns: 1fr; gap: 8px; } .article-meta { padding-top: 0; } }
+</style>
+<script defer src="/_vercel/insights/script.js"></script>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="stylesheet" href="/css/chrome.css"/>
+<script defer src="/js/chrome.js"></script>
+</head>
+<body>
+<nav class="topnav">
+<div class="topnav-inner">
+<a class="brand" href="/"><span class="brand-mark"></span><span>SVRNOS</span></a>
+<div class="nav-links">
+<a href="/#thesis">Thesis</a>
+<a href="/research">Research</a>
+<a href="/insights">Insights</a>
+<a href="/patents">Patents</a>
+<a href="/products">Products</a>
+<a href="/#contact">Contact</a>
+</div>
+</div>
+</nav>
+
+<header class="hero">
+<p class="hero-meta">SVRNOS · Insights</p>
+<h1>Insights</h1>
+<p class="lede">Analysis, case studies, and technical commentary on AI governance, safety infrastructure, and the regulatory landscape.</p>
+</header>
+
+<main>
+<div class="tab-bar">
+<button class="tab active" data-filter="all">All</button>
+<button class="tab" data-filter="governance">SVRNOS Governance Insights</button>
+<button class="tab" data-filter="identity">SVRNOS Identity Insights</button>
+</div>
+
+<ol class="articles">
+{en.map((e) => (
+  <li class="article" data-category={e.data.indexCategory}>
+    <div class="article-meta">
+      {fmt(e.data.date)}
+      {e.data.gerCode && <span class="article-tag">{e.data.gerCode}</span>}
+      <span class={`article-cat cat-${e.data.indexCategory}`}>{catLabel[e.data.indexCategory]}</span>
+    </div>
+    <div class="article-body">
+      <h2><a href={`/insights/${e.id}`}>{e.data.title}</a></h2>
+      <p class="summary">{e.data.description}</p>
+      {frTranslated.has(e.id) && (
+        <p class="lang-alt"><a href={`/fr/insights/${e.id}`} hreflang="fr" lang="fr">🇫🇷 Lire en français →</a></p>
+      )}
+    </div>
+  </li>
+))}
+</ol>
+</main>
+
+<footer class="site-footer">
+<p>© 2026 SVRNOS. <a href="/research">Research</a> · <a href="https://kingsango.com?utm_source=insights-index&utm_medium=footer">King Sango</a> · <a href="https://sim95.com?utm_source=insights-index&utm_medium=footer">SIM95</a> · <a href="/ask">contact</a></p>
+</footer>
+<script is:inline>
+document.querySelectorAll('.tab').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+    btn.classList.add('active');
+    var filter = btn.dataset.filter;
+    document.querySelectorAll('.article').forEach(function(a) {
+      a.style.display = (filter === 'all' || a.dataset.category === filter) ? '' : 'none';
+    });
+  });
+});
+</script>
+</body>
+</html>

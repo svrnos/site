@@ -1,24 +1,25 @@
 # svrnos-site — repo conventions
 
-## Page-update sync rule
+## Insights are a single content collection (author once, everything generates)
 
-When editing any published page on svrnos.com, **also update the corresponding markdown alternate and `public/llms.txt`** in the same commit. The site has three parallel surfaces that must stay aligned:
+Every insight article is ONE markdown file: `src/content/insights/<slug>.md` (French: `<slug>.fr.md`, with `lang: fr` + `translationOf:`). Frontmatter holds all structure (the meta block, supplement, sources, CTA, hero, JSON-LD inputs — see the schema in `src/content.config.ts`); the body is pure markdown prose + inline `![alt](/insights/<slug>/img.png)` images.
 
-1. **Page source** — either an HTML file at `public/<path>/index.html` or an Astro component at `src/pages/<path>.astro`. Most insights and research pages use `.astro`; the GER and a few legacy pages use raw HTML in `public/`. What visitors see.
-2. **Markdown alternate** at `public/<path>.md` — what AI assistants and the svrnos.com/ask bot fetch.
-3. **`public/llms.txt`** — index that points crawlers to (1) and (2); update if the page is new, retitled, or its scope changed.
+To publish a new insight:
+1. Create `src/content/insights/<slug>.md` (copy the frontmatter shape from any existing one).
+2. Drop images in `public/insights/<slug>/` and strip metadata (`exiftool -all= -overwrite_original`).
+3. Commit. That's it.
 
-A change to any one surface without the others creates drift between what visitors read and what bots quote. The /ask bot caches the markdown alternates with a 30-min TTL, so HTML-only edits silently misalign the bot's answers until the next deploy + cache flush.
+The build then generates, from that one file: the page (`/insights/<slug>` via `src/pages/insights/[slug].astro` → `src/components/InsightArticle.astro`), the markdown alternate (`/insights/<slug>.md` via the `[slug].md.ts` endpoint), the index card (`src/pages/insights/index.astro`), the `llms.txt` bullet (`src/pages/llms.txt.ts`), and the /ask bot pickup (kb.ts derives URLs from llms.txt). **There is no hand-maintained `public/insights/*.md`, `public/insights/index.html`, or insights section of `public/llms.txt` anymore — those are deleted.**
 
-**Practical checklist for a content edit:**
+**Change once, propagates everywhere:** the meta block / supplement / share / sources layout lives only in `src/components/InsightArticle.astro`; fonts in `BaseLayout.astro`; typography in `src/styles/globals.css` and `svrnos-tokens/`. Edit the renderer to add/remove a meta-block row for ALL articles.
 
-- [ ] Update the HTML
-- [ ] Update the matching `.md` alternate (same content, plain markdown)
-- [ ] If the page is new, retitled, or its scope shifted: update `public/llms.txt`
-- [ ] Update any counts/totals on the page (e.g. GER code counts, paper findings counts) in **all three** surfaces
-- [ ] Commit all three together so the deploy ships them atomically
+`astro check` / the build validates every article's frontmatter against the schema, so a malformed article fails loudly instead of drifting.
 
-**Common pitfall:** the GER (`research/governance-error-register/`) has both a root-tracked HTML copy and the `public/` copy. The `public/` copy is the served canonical (Astro serves from `public/`); the root copy is legacy and not deployed. Edit `public/`, not the root.
+### Still hand-maintained (the old sync rule applies to these)
+
+Research pages (`/research/*`) and any raw-HTML pages in `public/` still have parallel `.md` alternates + `llms.txt` entries that must be updated together. The `llms.txt` research/products/about sections are a static template inside `src/pages/llms.txt.ts` (edit there, not a `public/` file).
+
+**Common pitfall:** the GER (`research/governance-error-register/`) has both a root-tracked HTML copy and the `public/` copy. The `public/` copy is the served canonical. Edit `public/`, not the root.
 
 ## Post-deploy canary
 
@@ -34,4 +35,4 @@ To check a Vercel preview deploy: `npm run check:preview https://<preview-url>`.
 
 ## Bot knowledge bundle
 
-The /ask bot's knowledge base is composed in `api/_lib/kb.ts`. It fetches `llms.txt`, the GER, all `insights/*.md`, and any `products` URLs. New canonical pages should be added to `kb.ts` so the bot picks them up; if you add a new insight or research piece, also add it to `llms.txt`.
+The /ask bot's knowledge base is composed in `api/_lib/kb.ts`. It fetches `llms.txt`, the GER, every markdown alternate referenced in `llms.txt` (parsed automatically), and the `products` URLs. Because `llms.txt` is now generated from the insights collection, **adding an insight requires no kb.ts edit** — it flows collection → llms.txt → bot. Only add a URL to kb.ts for content that is NOT linked from llms.txt.

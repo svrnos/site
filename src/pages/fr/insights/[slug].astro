@@ -1,0 +1,23 @@
+---
+// French insight articles, same renderer as English. Driven by `lang: fr`
+// entries in the insights collection (filename <slug>.fr.md).
+import { getCollection } from "astro:content";
+import InsightArticle from "../../../components/InsightArticle.astro";
+import { urlSlug, canonicalUrl } from "../../../lib/insights.ts";
+
+export async function getStaticPaths() {
+  const all = await getCollection("insights", (e) => !e.data.draft && e.data.lang === "fr");
+  return all.map((entry) => {
+    const slug = entry.data.translationOf ?? urlSlug(entry.id);
+    const alternates = [
+      { hreflang: "en", href: canonicalUrl(slug, "en") },
+      { hreflang: "fr", href: canonicalUrl(slug, "fr") },
+      { hreflang: "x-default", href: canonicalUrl(slug, "en") },
+    ];
+    return { params: { slug }, props: { entry, alternates } };
+  });
+}
+
+const { entry, alternates } = Astro.props;
+---
+<InsightArticle entry={entry} alternates={alternates} />

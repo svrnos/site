@@ -46,7 +46,7 @@ FAILED_URLS=()
 # must-contain: optional additional string check (e.g., a key term, a section heading)
 declare -a CHECKS=(
   "/|Sovereign|SVRNOS"
-  "/insights|<h1>Insights"
+  "/insights|>Insights</h1>"
   "/research|<h1>"
   "/research/generation-gap|The Generation Gap"
   "/insights/dont-build-us-news-for-ai-safety|US News for AI Safety|deployment gate"

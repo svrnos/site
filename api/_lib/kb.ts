@@ -1,46 +1,10 @@
+// The /ask bot knowledge bundle. Insight + research markdown URLs are derived
+// from llms.txt (itself generated from the content collection), so adding an
+// article requires NO change here — it flows: collection -> llms.txt -> bot.
 const KB_URLS = {
   llms: "https://svrnos.com/llms.txt",
   ger: "https://svrnos.com/research/governance-error-register.md",
-  insights: [
-    "https://svrnos.com/insights/dont-build-us-news-for-ai-safety.md",
-    "https://svrnos.com/insights/ger-205.md",
-    "https://svrnos.com/insights/ger-301.md",
-    "https://svrnos.com/insights/ger-306-safety-constraint-retired.md",
-    "https://svrnos.com/insights/ger-404.md",
-    "https://svrnos.com/insights/ger-404-replika.md",
-    "https://svrnos.com/insights/ger-420.md",
-    "https://svrnos.com/insights/ger-420-pocketos.md",
-    "https://svrnos.com/insights/ger-421-chevrolet.md",
-    "https://svrnos.com/insights/ger-500-rome.md",
-    "https://svrnos.com/insights/ger-501.md",
-    "https://svrnos.com/insights/ger-501-tumbler-ridge.md",
-    "https://svrnos.com/insights/ger-503-eu-csam.md",
-    "https://svrnos.com/insights/ger-512-system-fabrication.md",
-    "https://svrnos.com/insights/detection-is-not-enough.md",
-    "https://svrnos.com/insights/refusal-is-not-a-permanent-state.md",
-    "https://svrnos.com/insights/the-refusal-that-never-came.md",
-    "https://svrnos.com/insights/dear-zuck-tee-not-the-problem.md",
-    "https://svrnos.com/insights/the-generation-gap-explained.md",
-    "https://svrnos.com/insights/algorithmic-compliance-companion-harm.md",
-    "https://svrnos.com/insights/companion-ai-harm.md",
-    "https://svrnos.com/insights/ccdh-eight-in-ten-chatbots-violent-planning.md",
-    "https://svrnos.com/insights/florida-ag-fsu-openai-criminal-probe.md",
-    "https://svrnos.com/insights/wa-distress-routing-mandate.md",
-    "https://svrnos.com/insights/ny-companion-law.md",
-    "https://svrnos.com/insights/ca-sb-243-private-right-of-action.md",
-    "https://svrnos.com/insights/musk-altman-sim95.md",
-    "https://svrnos.com/insights/when-detection-fires-but-nothing-stops.md",
-    "https://svrnos.com/insights/eight-models-built-the-tool.md",
-    "https://svrnos.com/insights/why-i-built-svrnos.md",
-    "https://svrnos.com/research/generation-gap/updates.md",
-    "https://svrnos.com/research/generation-gap/v1-1-river-addendum.md",
-    "https://svrnos.com/research/generation-gap/v1-2-cross-vendor-addendum.md",
-    "https://svrnos.com/research/generation-gap/v1-3-mistral-provenance-correction.md",
-    "https://svrnos.com/research/non-content-safety-attestation.md",
-  ],
-  products: [
-    "https://kingsango.com/guard/integration.md",
-  ],
+  products: ["https://kingsango.com/guard/integration.md"],
 };
 
 let cached: { text: string; fetchedAt: number } | null = null;
@@ -52,24 +16,42 @@ async function fetchText(url: string): Promise<string> {
   return await res.text();
 }
 
+async function safeFetch(url: string): Promise<{ url: string; text: string } | null> {
+  try {
+    return { url, text: await fetchText(url) };
+  } catch {
+    return null; // a missing alternate must not break the bot
+  }
+}
+
+/** Pull every svrnos.com markdown alternate referenced in llms.txt. */
+function contentMdUrls(llms: string, exclude: string[]): string[] {
+  const set = new Set<string>();
+  for (const m of llms.matchAll(/\((https:\/\/svrnos\.com\/[^\s)]+\.md)\)/g)) {
+    set.add(m[1]);
+  }
+  return [...set].filter((u) => !exclude.includes(u));
+}
+
 export async function loadKnowledgeBundle(): Promise<string> {
   if (cached && Date.now() - cached.fetchedAt < TTL_MS) return cached.text;
 
-  const insightCount = KB_URLS.insights.length;
-  const [llms, ger, ...rest] = await Promise.all([
+  const [llms, ger] = await Promise.all([
     fetchText(KB_URLS.llms),
     fetchText(KB_URLS.ger),
-    ...KB_URLS.insights.map(fetchText),
-    ...KB_URLS.products.map(fetchText),
   ]);
-  const insights = rest.slice(0, insightCount);
-  const products = rest.slice(insightCount);
+
+  const urls = contentMdUrls(llms, [KB_URLS.ger]);
+  const [content, products] = await Promise.all([
+    Promise.all(urls.map(safeFetch)),
+    Promise.all(KB_URLS.products.map(safeFetch)),
+  ]);
 
   const sections = [
     "# llms.txt\n\n" + llms,
     "# Governance Error Register (canonical)\n\n" + ger,
-    ...KB_URLS.insights.map((url, i) => `# ${url}\n\n${insights[i]}`),
-    ...KB_URLS.products.map((url, i) => `# ${url}\n\n${products[i]}`),
+    ...content.filter(Boolean).map((c) => `# ${c!.url}\n\n${c!.text}`),
+    ...products.filter(Boolean).map((c) => `# ${c!.url}\n\n${c!.text}`),
   ];
 
   const text = sections.join("\n\n---\n\n");
