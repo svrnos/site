@@ -2,6 +2,7 @@ const KB_URLS = {
   llms: "https://svrnos.com/llms.txt",
   ger: "https://svrnos.com/research/governance-error-register.md",
   insights: [
+    "https://svrnos.com/insights/dont-build-us-news-for-ai-safety.md",
     "https://svrnos.com/insights/ger-205.md",
     "https://svrnos.com/insights/ger-301.md",
     "https://svrnos.com/insights/ger-306-safety-constraint-retired.md",

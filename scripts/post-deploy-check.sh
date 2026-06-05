@@ -49,6 +49,7 @@ declare -a CHECKS=(
   "/insights|<h1>Insights"
   "/research|<h1>"
   "/research/generation-gap|The Generation Gap"
+  "/insights/dont-build-us-news-for-ai-safety|US News for AI Safety|deployment gate"
   "/research/governance-error-register|Governance Error Register|27 codes"
   "/research/non-content-safety-attestation|Non-Content Safety Attestation|DSSE"
   "/insights/dear-zuck-tee-not-the-problem|Dear Zuck|verifiable governance"
