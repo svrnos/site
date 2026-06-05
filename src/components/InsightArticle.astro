@@ -1,0 +1,126 @@
+---
+// ============================================================================
+// src/components/InsightArticle.astro — THE single insight renderer.
+// Every insight article flows through this one component. Edit the meta block,
+// supplement, sources, CTA, or JSON-LD here and it changes for ALL articles.
+// Fed entirely by frontmatter from the `insights` content collection.
+// ============================================================================
+import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
+import ArticleLayout from "../layouts/ArticleLayout.astro";
+import ArticleFigure from "./ArticleFigure.astro";
+import ShareButton from "./ShareButton.astro";
+import {
+  buildJsonLd,
+  isoDate,
+  mdInline,
+  mdSpan,
+  urlSlug,
+  insightPath,
+  absUrl,
+} from "../lib/insights.ts";
+
+interface Props {
+  entry: CollectionEntry<"insights">;
+  alternates?: { hreflang: string; href: string }[];
+}
+
+const { entry, alternates } = Astro.props;
+const d = entry.data;
+const slug = urlSlug(entry.id);
+const path = insightPath(slug, d.lang);
+const { Content } = await render(entry);
+
+const ogSrc = d.ogImage ?? d.hero?.src;
+const ogImage = ogSrc ? absUrl(ogSrc) : undefined;
+const jsonLd = buildJsonLd(d as any, slug);
+// Inline markdown images are wrapped in <figure class="article-figure"> by the
+// rehypeArticleFigure plugin (astro.config.mjs); no per-image component needed.
+---
+<ArticleLayout
+  title={d.title}
+  metaTitle={d.metaTitle}
+  dek={d.dek}
+  description={d.description}
+  category={d.categoryBreadcrumb}
+  datePublished={isoDate(d.date)}
+  readTimeMin={d.readTimeMin}
+  canonical={path}
+  ogImage={ogImage}
+  ogImageAlt={d.ogImageAlt ?? d.title}
+  author={d.author}
+  jsonLd={jsonLd}
+  citation={d.citation}
+  lang={d.lang}
+  dateLocale={d.lang === "fr" ? "fr-FR" : "en-US"}
+  readTimeLabel={d.lang === "fr" ? "min de lecture" : "min read"}
+  current="insights"
+  alternates={alternates}
+  markdownAlternate={`${path}.md`}
+>
+  {d.showSupplement && (
+    <dl class="article-supplement not-prose">
+      <div><dt>Author</dt><dd>{d.author}</dd></div>
+      {d.taxonomy && (
+        <div><dt>Taxonomy</dt><dd><a href={d.taxonomy.href}>{d.taxonomy.label}</a></dd></div>
+      )}
+      {d.companion && (
+        <div><dt>Companion</dt><dd><a href={d.companion.href}>{d.companion.label}</a></dd></div>
+      )}
+      {d.companionSpec && (
+        <div><dt>Companion spec</dt><dd><a href={d.companionSpec.href}>{d.companionSpec.label}</a></dd></div>
+      )}
+      {d.related.length > 0 && (
+        <div>
+          <dt>Related</dt>
+          <dd>{d.related.map((r, i) => (<Fragment>{i > 0 ? " · " : ""}<a href={r.href}>{r.label}</a></Fragment>))}</dd>
+        </div>
+      )}
+    </dl>
+  )}
+
+  {d.showShare && <ShareButton />}
+
+  {d.hero && <ArticleFigure src={d.hero.src} alt={d.hero.alt} hero loading="eager" />}
+
+  <Content />
+
+  {d.instances && (
+    <ol class="article-instance-list not-prose">
+      {d.instances.map((it) => (
+        <li class="article-instance">
+          <div class="article-instance-date">{it.date}</div>
+          <div class="article-instance-body">
+            <Fragment set:html={mdInline(it.body)} />
+            {it.caseStudy && (
+              <p class="article-instance-links"><a href={it.caseStudy.href}>{it.caseStudy.label}</a></p>
+            )}
+          </div>
+        </li>
+      ))}
+    </ol>
+  )}
+
+  {d.callout && (
+    <Fragment>
+      <hr />
+      <div class="article-callout" set:html={mdInline(d.callout)} />
+    </Fragment>
+  )}
+
+  {d.cta.length > 0 && (
+    <div class="article-cta">
+      {d.cta.map((c) => <a class="article-cta-btn" href={c.href}>{c.label}</a>)}
+    </div>
+  )}
+
+  {d.sources.length > 0 && (
+    <Fragment>
+      <hr />
+      <aside class="article-sources">
+        <p><strong>Sources</strong></p>
+        <ul>{d.sources.map((s) => <li set:html={mdSpan(s)} />)}</ul>
+      </aside>
+    </Fragment>
+  )}
+</ArticleLayout>

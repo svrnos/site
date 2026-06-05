@@ -391,3 +391,39 @@ tr[data-href],
     padding-top: 0;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Article figures (hero via ArticleFigure component; inline via rehype wrap).
+   Global so component-rendered and markdown-rendered images share styling.
+   --------------------------------------------------------------------------- */
+.article-figure {
+  position: relative;
+  margin: 32px 0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.article-figure-hero {
+  margin-top: 0;
+}
+.article-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.article-figure::after {
+  content: "SVRNOS.COM";
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-family: var(--svrnos-font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: rgba(251, 250, 246, 0.82);
+  background: rgba(20, 20, 15, 0.45);
+  padding: 4px 9px;
+  border-radius: 3px;
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}

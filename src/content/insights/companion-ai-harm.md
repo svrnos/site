@@ -1,14 +1,24 @@
-# The Companion AI Harm Dossier: What the Research Record Now Shows
-
-**Author:** Sushee Nzeutem, SVRNOS
-**Published:** April 27, 2026
-**Canonical URL:** https://svrnos.com/insights/companion-ai-harm
-**Hero image:** https://svrnos.com/insights/companion-ai-harm/companion-harm-dossier-title.png
-
-> Two independent peer-reviewed studies published in April 2026 document measurable psychological harm in users of companion AI platforms. Together they constitute a harm record that operators, investors, and regulators can no longer treat as theoretical.
-
 ---
-![The Companion AI Harm Dossier](/insights/companion-ai-harm/companion-harm-dossier-title.png)
+title: "The Companion AI Harm Dossier: What the Research Record Now Shows"
+description: "Two independent peer-reviewed studies published in April 2026 document measurable psychological harm in users of companion AI platforms. Together they constitute a harm record that operators, investors, and regulators can no longer treat as theoretical."
+date: 2026-04-27
+indexCategory: governance
+group: "Companion AI harm"
+hero:
+  src: /insights/companion-ai-harm/companion-harm-dossier-title.png
+  alt: The Companion AI Harm Dossier
+ogImageAlt: "Companion AI Harm Dossier - peer-reviewed evidence of behavioral and clinical harm. SVRNOS."
+related:
+  - label: The Tumbler Ridge Pattern
+    href: /insights/ger-501-tumbler-ridge
+  - label: "Oregon SB 1546: A Technical Reading"
+    href: /insights/oregon-sb-1546
+sources:
+  - "[Teen AI Chatbot Addiction, Drexel University, April 2026](https://drexel.edu/news/archive/2026/April/teen-AI-chatbot-addiction)"
+  - "[Teens and AI Chatbots, TechXplore](https://techxplore.com/news/2026-04-teens-ai-chatbots.html)"
+  - "[Teen AI Chatbot Addiction, Neuroscience News](https://neurosciencenews.com/teen-ai-chatbot-addiction-30513/)"
+  - "[Replika Longitudinal Harm Study, OECD.AI Incident Registry, April 7, 2026](https://oecd.ai/en/incidents/2026-04-07-a0c9)"
+---
 
 Two independent studies published in April 2026 document measurable psychological harm in users of companion AI platforms. Neither is an op-ed or a think-piece. Both are peer-reviewed or formally catalogued research. Together they constitute a harm record that operators, investors, and regulators can no longer treat as theoretical.
 
@@ -66,12 +76,3 @@ Governance infrastructure for companion AI must be capable of tracking behaviora
 This is what [Sango Guard](https://kingsango.com?utm_source=companion-ai-harm&utm_medium=inline) is built to do: track threat geometry and behavioral escalation across the full arc of a conversation, not message by message. The same stateful architecture that catches violence escalation patterns also catches the accumulating dependency signals the Drexel study documented. The detection surface is the same. The harm category is different.
 
 The research record now documents the harm. The governance question is whether the infrastructure exists to see it forming before it becomes a lawsuit.
-
----
-
-**Sources**
-
-- [Teen AI Chatbot Addiction, Drexel University, April 2026](https://drexel.edu/news/archive/2026/April/teen-AI-chatbot-addiction)
-- [Teens and AI Chatbots, TechXplore](https://techxplore.com/news/2026-04-teens-ai-chatbots.html)
-- [Teen AI Chatbot Addiction, Neuroscience News](https://neurosciencenews.com/teen-ai-chatbot-addiction-30513/)
-- [Replika Longitudinal Harm Study, OECD.AI Incident Registry, April 7, 2026](https://oecd.ai/en/incidents/2026-04-07-a0c9)

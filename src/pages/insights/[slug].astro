@@ -1,0 +1,33 @@
+---
+// Single dynamic route for all English insight articles, driven by the
+// `insights` content collection. One template (InsightArticle) renders them all.
+import { getCollection } from "astro:content";
+import InsightArticle from "../../components/InsightArticle.astro";
+import { urlSlug, canonicalUrl } from "../../lib/insights.ts";
+
+export async function getStaticPaths() {
+  const all = await getCollection("insights", (e) => !e.data.draft);
+  const frBySlug = new Map(
+    all
+      .filter((e) => e.data.lang === "fr")
+      .map((e) => [e.data.translationOf ?? urlSlug(e.id), e]),
+  );
+  return all
+    .filter((e) => e.data.lang === "en")
+    .map((entry) => {
+      const slug = urlSlug(entry.id);
+      const hasFr = frBySlug.has(slug);
+      const alternates = hasFr
+        ? [
+            { hreflang: "en", href: canonicalUrl(slug, "en") },
+            { hreflang: "fr", href: canonicalUrl(slug, "fr") },
+            { hreflang: "x-default", href: canonicalUrl(slug, "en") },
+          ]
+        : undefined;
+      return { params: { slug }, props: { entry, alternates } };
+    });
+}
+
+const { entry, alternates } = Astro.props;
+---
+<InsightArticle entry={entry} alternates={alternates} />
