@@ -1,0 +1,34 @@
+---
+title: "GER-441 · Boundary Misidentification"
+description: "Governance is anchored to a control point that is not the actual point of irreversibility. The true point of no return was not identified during design, so the enforcement gate sits before or beside the consequential com…"
+sidebarTitle: "441 · Boundary Misidentification"
+---
+
+import { Badge } from "/snippets/Badge.mdx"
+
+<div className="flex flex-wrap gap-2 mb-8 mt-2">
+<Badge tone="amber">Illustrative</Badge> <Badge>Tier 4xx</Badge> <Badge>Layer L3</Badge> <Badge tone="blue" title="SVRNOS-assigned code in an HTTP-unassigned slot">Namespace-Claim</Badge> <Badge tone="gray">Added v0.2-R1</Badge>
+</div>
+
+*Operator / Platform Errors*
+
+## Definition
+
+Governance is anchored to a control point that is not the actual point of irreversibility. The true point of no return was not identified during design, so the enforcement gate sits before or beside the consequential commit and never governs it. The control appears present and may pass, but it is bound to the wrong moment in the action path.
+
+## Distinct from
+
+- [**GER-305**](/ger/codes/305) — The commit point itself is misidentified → this code. State changed between check and commit at a correctly-located point → GER-305.
+- [**GER-314**](/ger/codes/314) — The boundary was misidentified from the start → this code. A correctly-set boundary drifted over time → GER-314.
+- [**GER-420**](/ger/codes/420) — The control is wired but bound to the wrong commit point → this code. The control is declared in policy but never wired into production → GER-420.
+- [**GER-426**](/ger/codes/426) — The true point of no return was never correctly located → this code. The agent exceeded a correctly-located boundary → GER-426.
+
+### Contributors
+
+[Dr. Masayuki Otani](https://www.linkedin.com/in/dr-masayuki-otani-52170a140), Architectural Governance
+
+### Cite
+
+```
+SVRNOS. (2026). GER-441: Boundary Misidentification. Governance Error Register. https://docs.svrnos.com/ger/codes/441
+```

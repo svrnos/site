@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-05T01:02:24.272Z",
+  "generated_at": "2026-06-06T00:54:31.565Z",
   "source": "svrnos-docs.ger_codes_export",
-  "count": 110,
+  "count": 111,
   "codes": [
     {
       "code": "000",
@@ -2833,6 +2833,49 @@
           "name": "Prerna Juneja",
           "affiliation": "Seattle University",
           "url": "https://arxiv.org/abs/2605.00227",
+          "attribution_type": "primary"
+        }
+      ]
+    },
+    {
+      "code": "441",
+      "name": "Boundary Misidentification",
+      "definition": "Governance is anchored to a control point that is not the actual point of irreversibility. The true point of no return was not identified during design, so the enforcement gate sits before or beside the consequential commit and never governs it. The control appears present and may pass, but it is bound to the wrong moment in the action path.",
+      "tier": "4xx",
+      "layer": "L3",
+      "article_url": null,
+      "type": "illustrative",
+      "is_namespace_claim": true,
+      "version_added": "v0.2-R1",
+      "tags": [],
+      "distinct_from": [
+        {
+          "contrasted_with": "305",
+          "this_condition": "The commit point itself is misidentified",
+          "other_condition": "State changed between check and commit at a correctly-located point"
+        },
+        {
+          "contrasted_with": "314",
+          "this_condition": "The boundary was misidentified from the start",
+          "other_condition": "A correctly-set boundary drifted over time"
+        },
+        {
+          "contrasted_with": "420",
+          "this_condition": "The control is wired but bound to the wrong commit point",
+          "other_condition": "The control is declared in policy but never wired into production"
+        },
+        {
+          "contrasted_with": "426",
+          "this_condition": "The true point of no return was never correctly located",
+          "other_condition": "The agent exceeded a correctly-located boundary"
+        }
+      ],
+      "documented_source": null,
+      "contributors": [
+        {
+          "name": "Dr. Masayuki Otani",
+          "affiliation": "Architectural Governance",
+          "url": "https://www.linkedin.com/in/dr-masayuki-otani-52170a140",
           "attribution_type": "primary"
         }
       ]
