@@ -293,6 +293,217 @@ tr[data-href],
   flex: 1;
 }
 
+/* ============================================================================
+ * Research paper shell — used by every paper via ResearchPaper.astro.
+ * Meta block, hero figure, sticky left rail with scroll-spy.
+ * Surface-neutral: GER, NCSA, Generation Gap, 7-Layer Model all share it.
+ * ============================================================================ */
+
+/* Frontmatter wrapper — keeps the meta block at reading-column width above the
+ * 2-col grid. Hero figure inside has its own max-width and centers itself. */
+.paper-frontmatter {
+  max-width: 68ch;
+  margin: 0 auto;
+}
+
+.paper-meta {
+  font-family: var(--svrnos-font-sans);
+  font-size: var(--article-supplement-size);
+  line-height: var(--article-supplement-line);
+  color: var(--svrnos-text-body-secondary);
+  border-top: 1px solid var(--svrnos-border-default);
+  border-bottom: 1px solid var(--svrnos-border-default);
+  padding: 16px 0;
+  margin: 0 0 32px;
+}
+.paper-meta div {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+.paper-meta div + div {
+  margin-top: 6px;
+}
+.paper-meta dt {
+  font-weight: 600;
+  color: var(--svrnos-text-heading);
+  min-width: 80px;
+}
+.paper-meta dd {
+  margin: 0;
+  flex: 1;
+}
+
+.paper-hero {
+  margin: 0 auto 48px;
+  max-width: 460px;
+  border-radius: var(--svrnos-radius-card);
+  overflow: hidden;
+  border: 1px solid var(--svrnos-border-default);
+}
+.paper-hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Two-column layout: sticky left rail + body content.
+ * Mobile collapses to single column with rail hidden (see media query below). */
+.paper-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.paper-rail {
+  position: sticky;
+  top: 24px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  font-family: var(--svrnos-font-sans);
+  font-size: 13px;
+  line-height: 1.5;
+  padding: 4px 0;
+}
+.paper-rail-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--svrnos-text-label-alt, var(--svrnos-text-label));
+  margin: 0 0 12px;
+}
+.paper-rail-list,
+.paper-rail-sublist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.paper-rail-list > li {
+  margin: 0 0 8px;
+}
+.paper-rail-sublist {
+  margin: 6px 0 12px;
+  padding-left: 12px;
+  border-left: 1px solid var(--svrnos-border-default);
+}
+.paper-rail-sublist > li {
+  margin: 0 0 4px;
+}
+.paper-rail a {
+  display: block;
+  padding: 4px 0 4px 10px;
+  color: var(--svrnos-text-body-secondary);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: color 120ms ease, border-color 120ms ease;
+}
+.paper-rail a:hover {
+  color: var(--svrnos-text-heading);
+}
+.paper-rail a.is-parent-active {
+  color: var(--svrnos-text-heading);
+}
+.paper-rail a.is-active {
+  color: var(--svrnos-text-heading);
+  font-weight: 600;
+  border-left-color: var(--svrnos-brand-primary);
+}
+
+/* Shared paper-body tables. Used by 7L, NCSA, GG, future research papers.
+ * GER keeps its own .ger-table for now (effectively identical styling). */
+.paper-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--svrnos-font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 24px;
+}
+.paper-table thead th {
+  font-weight: 600;
+  text-align: left;
+  color: var(--svrnos-text-label);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 10px 12px;
+  border-bottom: 2px solid var(--svrnos-border-default);
+  background: var(--svrnos-bg-muted);
+}
+.paper-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--svrnos-border-soft);
+  vertical-align: top;
+}
+.paper-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* References list — flat numbered/unnumbered list with comfortable line-height. */
+.paper-references {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* In-paper figures. Centered, full body-column width, with caption underneath. */
+.paper-figure {
+  margin: 40px 0;
+  max-width: 100%;
+}
+.paper-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--svrnos-radius-card);
+}
+.paper-figure figcaption {
+  font-family: var(--svrnos-font-sans);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--svrnos-text-label-alt, var(--svrnos-text-label));
+  margin-top: 12px;
+  text-align: center;
+}
+
+/* Body column. prose-svrnos is applied here for article styling, but we
+ * override its 68ch cap (the column itself is wider) and instead constrain
+ * the reading flow on prose elements directly. Block-level callouts
+ * (.ger-wide, tables, figures) get the full column width. */
+.paper-body.prose-svrnos {
+  max-width: none;
+  min-width: 0; /* allow grid item to shrink so wide tables don't overflow */
+}
+.paper-body > p,
+.paper-body > h2,
+.paper-body > h3,
+.paper-body > h4,
+.paper-body > ol,
+.paper-body > ul,
+.paper-body > blockquote {
+  max-width: 68ch;
+}
+/* Anchor jumps land below the sticky top nav (~64px) plus breathing room. */
+.paper-body :where(h2, h3, h4)[id] {
+  scroll-margin-top: 96px;
+}
+/* Wide breakouts (tables, figure rows) fill the column instead of escaping
+ * viewport-wide — viewport escape collided with the left rail. */
+.paper-body .ger-wide,
+.paper-body .paper-wide {
+  max-width: 100%;
+  margin-inline: 0;
+}
+
+@media (max-width: 899px) {
+  .paper-layout {
+    display: block;
+  }
+  .paper-rail {
+    display: none;
+  }
+}
+
 .article-definition {
   background: var(--svrnos-bg-card);
   border: 1px solid var(--svrnos-border-default);

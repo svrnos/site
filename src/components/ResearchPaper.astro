@@ -1,0 +1,188 @@
+---
+// ============================================================================
+// src/components/ResearchPaper.astro — Shared layout for SVRNOS research papers.
+// Used by GER, NCSA, Generation Gap, 7-Layer Model, and future papers.
+// Provides: paper meta block (Author/Version/Cite as/DOI), optional hero figure,
+// sticky left-rail navigation with scroll-spy, responsive mobile collapse.
+//
+// Each paper page is a thin wrapper:
+//   <ResearchPaper title="..." dek="..." meta={{...}} hero={{...}} sections={[...]}>
+//     ...body content with <h2 id="...">section</h2> + paragraphs...
+//   </ResearchPaper>
+//
+// The body slot stays plain HTML so papers retain custom tables, figures, and
+// inline layouts. The component is the SHELL; the page supplies the content.
+// ============================================================================
+import ArticleLayout from "../layouts/ArticleLayout.astro";
+import ShareButton from "./ShareButton.astro";
+
+interface SubSection {
+  id: string;
+  label: string;
+}
+
+interface SectionLink {
+  id: string;
+  label: string;
+  children?: SubSection[];
+}
+
+interface PaperMeta {
+  author: string;       // e.g. "Sushee Nzeutem, SVRNOS"
+  version: string;      // e.g. "v0.2 · June 2026 (v0.1 published April 27, 2026)"
+  citeAs: string;       // citation HTML (em/strong allowed)
+  doi?: string;         // optional DOI URL; renders as a DOI row when set
+}
+
+interface Hero {
+  src: string;
+  alt: string;
+}
+
+interface Alternate {
+  hreflang: string;
+  href: string;
+}
+
+interface ScholarCitation {
+  title: string;
+  author: string;
+  publicationDate: string;
+  onlineDate?: string;
+  publisher?: string;
+  abstract?: string;
+  keywords?: string;
+}
+
+interface Props {
+  // --- Forwarded to ArticleLayout ---
+  title: string;
+  metaTitle?: string;
+  dek?: string;
+  description?: string;
+  category?: string;
+  datePublished?: string;
+  readTimeMin?: number;
+  canonical?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+  author?: string;
+  jsonLd?: Record<string, unknown>;
+  current?: string;          // default "research"
+  lang?: string;
+  alternates?: Alternate[];
+  dateLocale?: string;
+  readTimeLabel?: string;
+  markdownAlternate?: string;
+  citation?: ScholarCitation;
+
+  // --- Paper-specific ---
+  meta: PaperMeta;
+  hero?: Hero;
+  sections: SectionLink[];
+  /** Show the share button below the meta block. Defaults to true. */
+  showShare?: boolean;
+}
+
+const {
+  meta,
+  hero,
+  sections,
+  current = "research",
+  showShare = true,
+  ...layoutProps
+} = Astro.props;
+---
+<ArticleLayout {...layoutProps} current={current} bareSlot={true} showFooter={false}>
+  <Fragment slot="head">
+    <slot name="head" />
+  </Fragment>
+
+  <div class="paper-frontmatter">
+    <dl class="paper-meta">
+      <div><dt>Author</dt><dd>{meta.author}</dd></div>
+      <div><dt>Version</dt><dd>{meta.version}</dd></div>
+      <div><dt>Cite as</dt><dd set:html={meta.citeAs}></dd></div>
+      {meta.doi && (
+        <div><dt>DOI</dt><dd><a href={meta.doi}>{meta.doi}</a></dd></div>
+      )}
+    </dl>
+
+    {showShare && <ShareButton />}
+
+    {hero && (
+      <figure class="paper-hero">
+        <img src={hero.src} alt={hero.alt} loading="lazy" />
+      </figure>
+    )}
+  </div>
+
+  <div class="paper-layout">
+    <aside class="paper-rail" aria-label="Paper contents">
+      <p class="paper-rail-title">Contents</p>
+      <ol class="paper-rail-list">
+        {sections.map((s) => (
+          <li>
+            <a href={`#${s.id}`} data-rail-link={s.id}>{s.label}</a>
+            {s.children && s.children.length > 0 && (
+              <ol class="paper-rail-sublist">
+                {s.children.map((c) => (
+                  <li><a href={`#${c.id}`} data-rail-link={c.id}>{c.label}</a></li>
+                ))}
+              </ol>
+            )}
+          </li>
+        ))}
+      </ol>
+    </aside>
+
+    <div class="paper-body prose-svrnos">
+      <slot />
+    </div>
+  </div>
+</ArticleLayout>
+
+<script>
+  // Scroll-spy for the paper rail. Highlights the section currently in view
+  // and its parent (when a subsection is active).
+  (() => {
+    const links = document.querySelectorAll<HTMLAnchorElement>('[data-rail-link]');
+    if (!links.length) return;
+
+    const linkById = new Map<string, HTMLAnchorElement>();
+    links.forEach((a) => linkById.set(a.dataset.railLink!, a));
+
+    const targets = Array.from(linkById.keys())
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => !!el);
+    if (!targets.length) return;
+
+    const clearActive = () => {
+      links.forEach((a) => a.classList.remove('is-active', 'is-parent-active'));
+    };
+
+    const setActive = (id: string) => {
+      clearActive();
+      const a = linkById.get(id);
+      if (!a) return;
+      a.classList.add('is-active');
+      // Also dim-highlight the parent section link if this is a subsection.
+      const sublist = a.closest('.paper-rail-sublist');
+      if (sublist) {
+        const parentLi = sublist.closest('li');
+        const parentLink = parentLi?.querySelector(':scope > a[data-rail-link]');
+        parentLink?.classList.add('is-parent-active');
+      }
+    };
+
+    // Pick the topmost heading currently in the upper-band of the viewport.
+    const obs = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((e) => e.isIntersecting)
+        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+      if (visible[0]) setActive(visible[0].target.id);
+    }, { rootMargin: '-80px 0px -70% 0px', threshold: 0 });
+
+    targets.forEach((t) => obs.observe(t));
+  })();
+</script>

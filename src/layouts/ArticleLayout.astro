@@ -37,6 +37,18 @@ interface Props {
   readTimeLabel?: string;
   markdownAlternate?: string;
   citation?: ScholarCitation;
+  /**
+   * When true, the slot is rendered directly inside the <article> container
+   * without the .prose-svrnos max-width wrapper. Use for layouts that need to
+   * span the full article width (e.g. research papers with a left rail).
+   */
+  bareSlot?: boolean;
+  /**
+   * Show the marketing footer. Defaults to true (insights, products, home).
+   * Research papers pass false: a published artifact reads cleaner without the
+   * SVRNOS product nav at the bottom.
+   */
+  showFooter?: boolean;
 }
 
 const {
@@ -59,6 +71,8 @@ const {
   readTimeLabel = "min read",
   markdownAlternate,
   citation,
+  bareSlot = false,
+  showFooter = true,
 } = Astro.props;
 ---
 <BaseLayout
@@ -75,6 +89,7 @@ const {
   articlePublishedTime={datePublished}
   articleAuthor={author}
   citation={citation}
+  showFooter={showFooter}
 >
   {jsonLd && (
     <Fragment slot="head">
@@ -120,8 +135,12 @@ const {
       </div>
     </header>
 
-    <div class="prose-svrnos mx-auto">
+    {bareSlot ? (
       <slot />
-    </div>
+    ) : (
+      <div class="prose-svrnos mx-auto">
+        <slot />
+      </div>
+    )}
   </article>
 </BaseLayout>

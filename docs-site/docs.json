@@ -49,12 +49,25 @@
             "pages": ["ger/codes/000"]
           },
           {
+            "group": "1xx · Compute Substrate",
+            "pages": [
+              "ger/codes/101",
+              "ger/codes/102",
+              "ger/codes/104",
+              "ger/codes/105",
+              "ger/codes/106",
+              "ger/codes/107",
+              "ger/codes/110"
+            ]
+          },
+          {
             "group": "2xx · Success States",
             "pages": [
               "ger/codes/200",
               "ger/codes/204",
               "ger/codes/205",
-              "ger/codes/210"
+              "ger/codes/210",
+              "ger/codes/211"
             ]
           },
           {
@@ -73,6 +86,7 @@
               "ger/codes/314",
               "ger/codes/315",
               "ger/codes/316",
+              "ger/codes/317",
               "ger/codes/318",
               "ger/codes/319",
               "ger/codes/320",
@@ -106,7 +120,17 @@
               "ger/codes/348",
               "ger/codes/349",
               "ger/codes/351",
-              "ger/codes/352"
+              "ger/codes/352",
+              "ger/codes/353",
+              "ger/codes/354",
+              "ger/codes/355",
+              "ger/codes/356",
+              "ger/codes/357",
+              "ger/codes/358",
+              "ger/codes/359",
+              "ger/codes/360",
+              "ger/codes/361",
+              "ger/codes/362"
             ]
           },
           {
@@ -114,9 +138,12 @@
             "pages": [
               "ger/codes/400",
               "ger/codes/401",
+              "ger/codes/403",
               "ger/codes/404",
               "ger/codes/408",
               "ger/codes/409",
+              "ger/codes/412",
+              "ger/codes/417",
               "ger/codes/420",
               "ger/codes/421",
               "ger/codes/422",
@@ -134,7 +161,11 @@
               "ger/codes/434",
               "ger/codes/435",
               "ger/codes/436",
-              "ger/codes/437"
+              "ger/codes/437",
+              "ger/codes/438",
+              "ger/codes/439",
+              "ger/codes/440",
+              "ger/codes/441"
             ]
           },
           {
@@ -146,7 +177,15 @@
               "ger/codes/503",
               "ger/codes/504",
               "ger/codes/511",
-              "ger/codes/512"
+              "ger/codes/512",
+              "ger/codes/513"
+            ]
+          },
+          {
+            "group": "Dimension Markers",
+            "pages": [
+              "ger/codes/800",
+              "ger/codes/900"
             ]
           }
         ]

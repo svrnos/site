@@ -19,3 +19,6 @@ node_modules/
 *.bak
 *.pdf.bak*
 generation-gap_v2_7.html
+
+# Local working drafts (revision notes, Overleaf exports, GPT prompts, etc.)
+docs/
