@@ -5,6 +5,7 @@ const paperMeta = {
   author: "Sushee Nzeutem, SVRNOS",
   version: "v0.1 · June 2026",
   citeAs: 'Nzeutem, S. (2026). <em>The SVRNOS 7-Layer Model of AI Governance.</em> Sovereign OS LLC. svrnos.com/research/svrnos-7-layer-model',
+  doi: "https://doi.org/10.5281/zenodo.20600670",
 };
 
 const hero = {
@@ -34,7 +35,9 @@ const sections = [
   { id: "l5-l6-ordering",        label: "6. Why L6 sits above L5" },
   { id: "inter-layer-contracts", label: "7. Inter-Layer Contracts and Drift" },
   { id: "role-mapping",          label: "8. The role-mapping problem" },
-  { id: "regulatory-lineage",    label: "9. Regulatory lineage" },
+  { id: "regulatory-lineage",    label: "9. Regulatory lineage", children: [
+    { id: "security-axis",       label: "Relationship to security-axis layered models" },
+  ]},
   { id: "for-buyers",            label: "10. What this changes for buyers" },
   { id: "implementation-map",    label: "11. Implementation map" },
   { id: "what-preserves",        label: "12. What the architecture preserves" },
@@ -105,13 +108,14 @@ const jsonLd = {
   description="A reference architecture that separates AI governance into seven independently failing layers, inspired by the OSI reference model. Companion to the SVRNOS Governance Error Register (GER)."
   canonical="/research/svrnos-7-layer-model"
   ogImage="https://svrnos.com/research/svrnos-7-layer-model/g7l-social.png"
-  category="v0.1 · June 2026"
-  datePublished="2026-06-07T00:00:00Z"
+  datePublished="2026-06-08T00:00:00Z"
   jsonLd={jsonLd}
   markdownAlternate="/research/svrnos-7-layer-model.md"
   meta={paperMeta}
   hero={hero}
   sections={sections}
+  pdfUrl="https://zenodo.org/records/20600671/files/SVRNOS-7-Layer-Model-v0.1.pdf?download=1"
+  pdfFilename="SVRNOS-7-Layer-Model-v0.1.pdf"
 >
   <Fragment slot="head">
     <meta name="dc.date.created" content="2026-06-07" />
@@ -214,7 +218,7 @@ const jsonLd = {
   <p>Tool-use and source-trust are the same governance problem from two angles. A tool the agent calls is a connection to an external entity that must be authorized. A document the agent reads is also a connection to an external entity that must be trust-verified. Both fail when the system cannot reliably distinguish a trusted connection from an untrusted one.</p>
   <p>Modern AI systems can chat, act, and ingest. Once an AI can touch tools and ingest sources, the governance question changes from &ldquo;what did the model say?&rdquo; to &ldquo;what was the model allowed to do, and what was it entitled to trust?&rdquo;</p>
   <p><strong>Who works here.</strong> IT side: identity and access engineers, API platform owners, DevOps and SRE. AI governance side: agent platform engineers, MCP / tool integrators, AI security architects, agent risk leads.</p>
-  <p><strong>What they buy.</strong> Tool-use control planes, MCP gateways, agent sandboxes, permission frameworks, OAuth scopes for agents, kill-switch tooling, approval-workflow systems.</p>
+  <p><strong>What they buy.</strong> Tool-use control planes, MCP gateways, agent sandboxes, permission frameworks, OAuth scopes for agents, kill-switch tooling, approval-workflow systems. Emerging proposals such as the WEF &ldquo;agent card&rdquo; (WEF, 2025) &mdash; a pre-onboarding capability disclosure attached to an agent before deployment &mdash; are candidate L2 governance artifacts; an agent card is structurally a provenance-and-trust statement at the moment the agent is admitted to a deployment.</p>
   <p><strong>Buying question:</strong> <em>For every tool this agent can call, can you produce the authorization decision, the principal it acted on behalf of, and a rollback path if it does the wrong thing?</em></p>
   <p><strong>Documented failures</strong></p>
   <ul class="g7l-failures-list">
@@ -287,6 +291,7 @@ const jsonLd = {
   <p>In AI governance, this is the application enforcement layer. The system has interpreted the risk. Now the deployed product must do something about it. Refuse. Warn. Block. Disclose. Add friction. Route to a human. Suppress an output. Escalate to an external authority. Reduce the surface. Reshape the response. Or, when the rule says proceed, allow with the right disclosures.</p>
   <p>The same model can carry different risks depending on the surface and require different enforcement responses. A chatbot is not an agent. An API is not a browser-control system. A coding assistant is not a companion bot. A customer-service chatbot is not a medical triage system. A demo environment is not production. Enforcement appropriate on one surface is wrong on another.</p>
   <p>The useful question is: <strong>is Vendor X enforcing the right governance action on this deployment surface, for this use case, with these tools, under these conditions?</strong></p>
+  <p>Autonomy level itself becomes an L7 attribute: enforcement appropriate at Feng et&nbsp;al.&rsquo;s L1 (Narrow Autonomy) is wrong at L4 (Full Autonomy), and the deployed product must apply different enforcement profiles per autonomy tier (Feng, McDonald, &amp; Zhang, 2025).</p>
   <p><strong>Who works here.</strong> IT side: product engineers, customer-experience teams, application security. AI governance side: AI product managers, surface-specific safety leads (companion AI, hiring AI, healthcare AI, child-facing AI), trust and safety operations, regulators investigating consumer-facing AI harms.</p>
   <p><strong>What they buy.</strong> Use-case-specific evaluation suites, surface-aware red teams, deployment monitoring, vertical safety vendors, incident response for AI products.</p>
   <p><strong>Buying question:</strong> <em>On the specific surface where we deploy this AI, with our actual users, our actual prompts, and our actual tools, what is the harm profile, and who is liable when it goes wrong?</em></p>
@@ -378,11 +383,33 @@ const jsonLd = {
         <tr><td>AIGN OS 3.0 (Upmann, 2026)</td><td>Independent</td><td>Organizational / management methodology: 8-layer governance roles, workflows, evidence requirements</td><td>The technical stack AIGN OS governs</td></tr>
         <tr><td>DecisionSpace OS (Roesch, 2026)</td><td>Independent</td><td>Organizational decision-formation methodology: Formation / Process / Execution + Organizational Memory + Magic Triangle</td><td>The technical stack decisions are made about</td></tr>
         <tr><td>OECD <em>Governing with Artificial Intelligence</em> (2025)</td><td>International (OECD, 48 countries + EU)</td><td>Framework for Trustworthy AI in Government: Enablers · Guardrails · Engagement · Responsiveness, organizational governance functions</td><td>The technical decomposition underneath the OECD organizational framework, mapping governance failures to specific architectural layers</td></tr>
+        <tr><td>Singapore IMDA <em>Model AI Governance Framework for Agentic AI</em> (2026)</td><td>National (Singapore, voluntary)</td><td>Four-dimension governance framework: Risk-Based Approach &middot; Human Accountability &middot; Technical &amp; Organizational Safeguards &middot; End-User Responsibility</td><td>The technical-layer decomposition underneath the four dimensions; locates where each dimension&rsquo;s controls operate</td></tr>
+        <tr><td>Kraprayoon et&nbsp;al., <em>AI Agent Governance: A Field Guide</em> (IAPS, 2025)</td><td>Independent / policy research</td><td>Governance-mechanism taxonomy: intervention timing &times; responsibility level (preventive / reactive / corrective / restorative across organizational / system / operational / emergency)</td><td>The technical layers at which each governance mechanism applies</td></tr>
+        <tr><td>WEF / Capgemini, <em>AI Agents in Action: Foundations for Evaluation and Governance</em> (2025)</td><td>Multi-stakeholder international</td><td>Four-pillar framework + four-axis functional classification (Role &middot; Autonomy &middot; Predictability &middot; Context) + &ldquo;agent card&rdquo; pre-onboarding disclosure concept</td><td>The technical-layer decomposition complementing the agent-functional-profile axis; where governance fires for a given profile</td></tr>
+        <tr><td>Kasirzadeh &amp; Gabriel, <em>Characterising AI Agents for Alignment and Governance</em> (2025)</td><td>Independent academic</td><td>Four-dimension agent characterization (Autonomy &middot; Efficacy &middot; Goal complexity &middot; Generality) composed into agentic profiles</td><td>Where governance failures occur regardless of agent profile; the orthogonal architectural axis to the characterization axis</td></tr>
+        <tr><td>Feng et&nbsp;al., <em>Levels of Autonomy for AI Agents</em> (2025)</td><td>Independent academic</td><td>Six-level SAE-style autonomy ladder (L0 No Autonomy &rarr; L5 Super-Autonomy) along four dimensions (Human Control &middot; Domain Scope &middot; Constraint Level &middot; Oversight Requirements)</td><td>A per-layer autonomy attribute; autonomy level shapes enforcement at L7 in particular</td></tr>
       </tbody>
     </table>
   </div>
 
-  <p><strong>Composition principle.</strong> Each of these frameworks operates at a different level: governance principles and trustworthy-AI characteristics (NIST), management-system processes (ISO 42001), conformity assessment for AI products (EU AI Act), organizational and decision-formation methodology (AIGN OS, DecisionSpace OS), and institutional functions for governments (OECD). None of them is primarily designed to provide a deployment-layer technical map of <em>where</em> AI governance controls operate inside the system being governed. The SVRNOS 7-Layer Model fills that slot and composes with each. A conformity assessor working under the EU AI Act, a process owner working under ISO 42001, a risk lead working under NIST AI RMF, and a Supreme Audit Institution implementing the OECD framework can each use the same 7-layer technical map without conflict. The OECD&rsquo;s own findings (OECD, 2026) document that public audit institutions explicitly identify the absence of audit standards for AI-generated evidence as a key gap; the 7-Layer Model decomposes that gap into specific layers where evidence must be reconstructable (L4), risk must be interpreted (L6), and enforcement must fire (L7).</p>
+  <p><strong>Composition principle.</strong> Each of these frameworks operates at a different level: governance principles and trustworthy-AI characteristics (NIST), management-system processes (ISO 42001), conformity assessment for AI products (EU AI Act), organizational and decision-formation methodology (AIGN OS, DecisionSpace OS), and institutional functions for governments (OECD). None of them is primarily designed to provide a deployment-layer technical map of <em>where</em> AI governance controls operate inside the system being governed. The SVRNOS 7-Layer Model fills that slot and composes with each. A conformity assessor working under the EU AI Act, a process owner working under ISO 42001, a risk lead working under NIST AI RMF, and a Supreme Audit Institution implementing the OECD framework can each use the same 7-layer technical map without conflict. The OECD&rsquo;s own findings (OECD, 2026) document that public audit institutions explicitly identify the absence of audit standards for AI-generated evidence as a key gap; the 7-Layer Model decomposes that gap into specific layers where evidence must be reconstructable (L4), risk must be interpreted (L6), and enforcement must fire (L7). The same composition holds for the Singapore IMDA framework, the IAPS field guide, the WEF foundations paper, and the agent-characterization and autonomy-level literatures: each operates at a different axis (national regulatory pillar, governance-mechanism timing, multi-stakeholder functional profile, agent property characterization, autonomy maturity ladder), and the SVRNOS 7-Layer Model provides the technical-layer decomposition underneath that the others can locate their controls within.</p>
+
+  <h3 id="security-axis">Relationship to security-axis layered models</h3>
+  <p>A reader familiar with OWASP&rsquo;s Multi-Agentic System Threat Modeling Guide v1.0 (MAESTRO) will notice that MAESTRO also publishes a seven-layer OSI-inspired decomposition of agentic AI. The two models are not in conflict; they are orthogonal axes on the same structural pattern. The distinction matters because conflating them muddles both maps.</p>
+  <div class="ger-wide not-prose">
+    <table class="paper-table">
+      <thead><tr><th>Axis</th><th>SVRNOS 7-Layer Model</th><th>OWASP MAESTRO</th></tr></thead>
+      <tbody>
+        <tr><td>Question answered</td><td>Where did governance fire or fail to fire?</td><td>Where can an attacker operate against the agent?</td></tr>
+        <tr><td>Primary audience</td><td>Governance leads, regulators, auditors, procurement</td><td>Security teams, threat modelers, red teams</td></tr>
+        <tr><td>Failure mode characterized</td><td>Structural governance failure</td><td>Threat / attack</td></tr>
+        <tr><td>Layer ordering</td><td>OSI-direct ordering, governance-axis layer names (L1 Compute Substrate &rarr; L7 Application Enforcement)</td><td>Foundation Model first, Agent Ecosystem last (different ordering convention)</td></tr>
+        <tr><td>Cross-cutting concept</td><td>Inter-layer contracts and drift (Section 7)</td><td>Four agentic factors (Non-Determinism, Autonomy, Identity Management, A2A Communication)</td></tr>
+        <tr><td>Composes with the other</td><td>A single incident can carry a MAESTRO threat-modeling output AND a 7L layer assignment</td><td>Same</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>In practice, a security team uses MAESTRO to model where an attacker could intervene; a governance team uses the SVRNOS 7-Layer Model to locate where governance was supposed to fire and did not. The two maps name different concerns on the same structural shape, and a complete agentic-AI assurance program needs both. GER classifications (Nzeutem, 2026, companion paper) sit on the governance-failure axis and can be cited alongside a MAESTRO threat-modeling output for the same incident.</p>
 
   <h2 id="for-buyers">10. What this changes for buyers</h2>
   <p>Enterprises do not buy &ldquo;IT security&rdquo; as one product. They buy endpoint security, network firewalls, web application firewalls, identity management, cloud security, SIEM, DLP, vulnerability management, incident response, and audit tooling. Each product occupies a slot.</p>
@@ -468,10 +495,11 @@ const jsonLd = {
   <h2 id="acknowledgments">Acknowledgments</h2>
   <p>The SVRNOS 7-Layer Model builds on published research and reference frameworks in AI governance, security, and computer networking, all credited in the References. It is positioned within an existing standards lineage (OSI, ISO 38500, ISO 42001, NIST AI RMF, EU AI Act, OECD Trustworthy AI, AIGN OS, DecisionSpace OS) detailed in <a href="#regulatory-lineage">Section 9</a>. Beyond the literature and the standards landscape, the model was shaped through public LinkedIn exchanges, comment threads, and direct correspondence. The following contributors are acknowledged for specific framings, sections, or table entries that appear in this paper.</p>
   <ul class="g7l-failures-list">
-    <li><strong>Martin Guerin, Prova Governance · ETS</strong>: Translation Loss as an L6 failure mode in Section 5 Layer 6. Framing: &ldquo;a human-readable rule becomes a machine-enforced one and meaning can get lost.&rdquo;</li>
-    <li><strong>Wolfgang (&ldquo;Wolf&rdquo;) Roesch, Board Advisor &amp; Transformation Leader</strong>: Section 7 Inter-Layer Contracts and Drift; DecisionSpace OS in the regulatory-lineage table (Section 9). Framing: &ldquo;breakdown in the contracts and assumptions between layers under drift&rdquo; and &ldquo;coherence-layer spanning layers that evolve at different speeds.&rdquo;</li>
-    <li><strong>Patrick Upmann, Board-Level AI Governance Advisor &amp; Interim Manager</strong>: &ldquo;The hidden work of translation between governance teams&rdquo; subsection in Section 10. Framing: &ldquo;translation is becoming hidden work&rdquo; and the observation that maturity at the governance layer is about building shared language for decisions at scale, not only controls. AIGN OS named in the regulatory-lineage table (Section 9).</li>
-    <li><strong>Tim Zlomke, Managing Partner Neurovia Dynamics, Founder Moral Clarity AI</strong>: Section 12 What the layered architecture preserves. Framing: the constraint-continuity / admissibility / accountability triad as the operational shift from content moderation toward runtime governance.</li>
+    <li><strong><a href="https://www.linkedin.com/in/martinguerin-spqrtech/" target="_blank" rel="noopener">Martin Guerin</a>, Prova Governance · ETS</strong>: Translation Loss as an L6 failure mode in Section 5 Layer 6. Framing: &ldquo;a human-readable rule becomes a machine-enforced one and meaning can get lost.&rdquo;</li>
+    <li><strong><a href="https://www.linkedin.com/in/wolfgangroesch/" target="_blank" rel="noopener">Wolfgang (&ldquo;Wolf&rdquo;) Roesch</a>, Board Advisor &amp; Transformation Leader</strong>: Section 7 Inter-Layer Contracts and Drift; DecisionSpace OS in the regulatory-lineage table (Section 9). Framing: &ldquo;breakdown in the contracts and assumptions between layers under drift&rdquo; and &ldquo;coherence-layer spanning layers that evolve at different speeds.&rdquo;</li>
+    <li><strong><a href="https://www.linkedin.com/in/upmann/" target="_blank" rel="noopener">Patrick Upmann</a>, Board-Level AI Governance Advisor &amp; Interim Manager</strong>: &ldquo;The hidden work of translation between governance teams&rdquo; subsection in Section 10. Framing: &ldquo;translation is becoming hidden work&rdquo; and the observation that maturity at the governance layer is about building shared language for decisions at scale, not only controls. AIGN OS named in the regulatory-lineage table (Section 9).</li>
+    <li><strong><a href="https://www.linkedin.com/in/tim-zlomke" target="_blank" rel="noopener">Tim Zlomke</a>, Managing Partner Neurovia Dynamics, Founder Moral Clarity AI</strong>: Section 12 What the layered architecture preserves. Framing: the constraint-continuity / admissibility / accountability triad as the operational shift from content moderation toward runtime governance.</li>
+    <li><strong><a href="https://www.linkedin.com/in/oliverpatel/" target="_blank" rel="noopener">Oliver Patel</a>, Enterprise AI Governance Substack</strong>: <em>The Ultimate Agentic AI Governance Resources</em> curated list (2026). Section 9 regulatory-lineage table additions (IMDA Singapore, IAPS, WEF / Capgemini, Kasirzadeh &amp; Gabriel, Feng et&nbsp;al.); §9 <em>Relationship to security-axis layered models</em> (OWASP MAESTRO comparison). His curation surfaced the agentic-AI governance sources that prompted the comparison work in this revision.</li>
   </ul>
 
   <h2 id="references">References</h2>
@@ -508,6 +536,12 @@ const jsonLd = {
     <li>Upmann, P. (2026). <em>AIGN OS 3.0.</em> Zenodo. Translation work between governance teams. Personal communication, May 2026.</li>
     <li>Wiz Research. (2025, January). <em>Wiz Research Uncovers Exposed DeepSeek Database Leak.</em> <a href="https://www.wiz.io/blog/wiz-research-uncovers-exposed-deepseek-database-leak">wiz.io</a></li>
     <li>Zlomke, T. (2026). Constraint continuity, admissibility, and accountability as runtime-governance properties. Personal communication, May 2026.</li>
+    <li>Feng, K.&nbsp;J.&nbsp;K., McDonald, D.&nbsp;W., &amp; Zhang, A.&nbsp;X. (2025). <em>Levels of Autonomy for AI Agents.</em> arXiv:2506.12469. <a href="https://arxiv.org/pdf/2506.12469">arxiv.org/pdf/2506.12469</a></li>
+    <li>IMDA Singapore. (2026). <em>Model AI Governance Framework for Agentic AI (v1.0).</em> Infocomm Media Development Authority of Singapore. <a href="https://www.imda.gov.sg/-/media/imda/files/about/emerging-tech-and-research/artificial-intelligence/mgf-for-agentic-ai.pdf">imda.gov.sg</a></li>
+    <li>Kasirzadeh, A., &amp; Gabriel, I. (2025). <em>Characterising AI Agents for Alignment and Governance.</em> arXiv:2504.21848. <a href="https://arxiv.org/abs/2504.21848">arxiv.org/abs/2504.21848</a></li>
+    <li>Kraprayoon, J. (2025). <em>AI Agent Governance: A Field Guide.</em> Institute for AI Policy and Strategy (IAPS). <a href="https://www.iaps.ai/research/ai-agent-governance">iaps.ai/research/ai-agent-governance</a></li>
+    <li>OWASP Foundation. (2025, April 23). <em>Multi-Agentic System Threat Modeling Guide v1.0 (MAESTRO).</em> <a href="https://genai.owasp.org/resource/multi-agentic-system-threat-modeling-guide-v1-0/">genai.owasp.org</a></li>
+    <li>World Economic Forum, with Capgemini. (2025). <em>AI Agents in Action: Foundations for Evaluation and Governance.</em> <a href="https://www.weforum.org/publications/ai-agents-in-action-foundations-for-evaluation-and-governance/">weforum.org</a></li>
   </ul>
 </ResearchPaper>
 

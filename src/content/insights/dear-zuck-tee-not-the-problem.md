@@ -10,7 +10,7 @@ hero:
   alt: "Dear Zuck, the TEE Is Not the Problem. What Runs Inside It Is. — An open letter to Mark. Incognito Chat ships privacy. It does not ship governance. Privacy protects the conversation. Governance protects the user. Attestation proves what happened. Compliance requires more than privacy."
 ogImageAlt: "Dear Zuck, the TEE Is Not the Problem. What Runs Inside It Is. — An open letter to Mark on Meta's Incognito Chat launch. Privacy protects the conversation. Governance protects the user. Attestation proves what happened. Compliance requires more than privacy."
 companionSpec:
-  label: "Non-Content Safety Attestation v0.1"
+  label: "Non-Content Safety Attestation v0.2"
   href: /research/non-content-safety-attestation
 related:
   - label: "The Escalation Path Has to Survive the Institution Around It"
@@ -83,7 +83,7 @@ The direction is consistent. Regulators are moving from policy review to system 
 
 Private AI is the right direction. The mistake is calling privacy a safety story.
 
-The fix is in the enclave. Run governance code inside the TEE alongside the model. Generate signed, non-content attestations of what the system detected and how it routed. Publish the attestation format so insurers, regulators, and operators can verify compliance without reading transcripts. That is a coherent product. It is the position that does the work the marketing already implies your TEE does. A [v0.1 format specification](/research/non-content-safety-attestation) is published alongside this letter as a starting point, open for public comment.
+The fix is in the enclave. Run governance code inside the TEE alongside the model. Generate signed, non-content attestations of what the system detected and how it routed. Publish the attestation format so insurers, regulators, and operators can verify compliance without reading transcripts. That is a coherent product. It is the position that does the work the marketing already implies your TEE does. A [v0.2 format specification](/research/non-content-safety-attestation) is published alongside this letter as a starting point, open for public comment.
 
 This is the layer [Sango Guard](https://kingsango.com/guard) is built for. The governance layer runs inside the enclave. Signed, non-content attestations leave the enclave. The user's privacy is preserved. The safety floor becomes verifiable.
 

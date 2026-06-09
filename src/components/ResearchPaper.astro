@@ -82,6 +82,11 @@ interface Props {
   sections: SectionLink[];
   /** Show the share button below the meta block. Defaults to true. */
   showShare?: boolean;
+  /** Optional URL to a downloadable PDF (typically the Zenodo file URL). When
+      set, a Download PDF button renders next to Share. */
+  pdfUrl?: string;
+  /** Optional download filename hint for the Download button. */
+  pdfFilename?: string;
 }
 
 const {
@@ -90,6 +95,8 @@ const {
   sections,
   current = "research",
   showShare = true,
+  pdfUrl,
+  pdfFilename,
   ...layoutProps
 } = Astro.props;
 ---
@@ -97,6 +104,12 @@ const {
   <Fragment slot="head">
     <slot name="head" />
   </Fragment>
+
+  {showShare && (
+    <Fragment slot="headerActions">
+      <ShareButton pdfUrl={pdfUrl} pdfFilename={pdfFilename} inline={true} />
+    </Fragment>
+  )}
 
   <div class="paper-frontmatter">
     <dl class="paper-meta">
@@ -107,14 +120,6 @@ const {
         <div><dt>DOI</dt><dd><a href={meta.doi}>{meta.doi}</a></dd></div>
       )}
     </dl>
-
-    {showShare && <ShareButton />}
-
-    {hero && (
-      <figure class="paper-hero">
-        <img src={hero.src} alt={hero.alt} loading="lazy" />
-      </figure>
-    )}
   </div>
 
   <div class="paper-layout">
@@ -137,6 +142,11 @@ const {
     </aside>
 
     <div class="paper-body prose-svrnos">
+      {hero && (
+        <figure class="paper-hero">
+          <img src={hero.src} alt={hero.alt} loading="lazy" />
+        </figure>
+      )}
       <slot />
     </div>
   </div>

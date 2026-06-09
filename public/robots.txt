@@ -7,79 +7,107 @@ User-agent: *
 Allow: /
 Disallow: /access
 Disallow: /briefing
+Disallow: /research/non-content-safety-attestation-01
+Disallow: /research/governance-error-register-01
 
 # OpenAI (ChatGPT, Atlas, search.chatgpt.com)
 User-agent: GPTBot
 Allow: /
 Disallow: /access
 Disallow: /briefing
+Disallow: /research/non-content-safety-attestation-01
+Disallow: /research/governance-error-register-01
 
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /access
 Disallow: /briefing
+Disallow: /research/non-content-safety-attestation-01
+Disallow: /research/governance-error-register-01
 
 # Anthropic (Claude, claude.ai)
 User-agent: ClaudeBot
 Allow: /
 Disallow: /access
 Disallow: /briefing
+Disallow: /research/non-content-safety-attestation-01
+Disallow: /research/governance-error-register-01
 
 User-agent: anthropic-ai
 Allow: /
 Disallow: /access
 Disallow: /briefing
+Disallow: /research/non-content-safety-attestation-01
+Disallow: /research/governance-error-register-01
 
 User-agent: Claude-Web
 Allow: /
 Disallow: /access
 Disallow: /briefing
+Disallow: /research/non-content-safety-attestation-01
+Disallow: /research/governance-error-register-01
 
 # Google AI (Gemini, AI Overviews)
 User-agent: Google-Extended
 Allow: /
 Disallow: /access
 Disallow: /briefing
+Disallow: /research/non-content-safety-attestation-01
+Disallow: /research/governance-error-register-01
 
 # Perplexity
 User-agent: PerplexityBot
 Allow: /
 Disallow: /access
 Disallow: /briefing
+Disallow: /research/non-content-safety-attestation-01
+Disallow: /research/governance-error-register-01
 
 # Common Crawl (feeds many open-source models)
 User-agent: CCBot
 Allow: /
 Disallow: /access
 Disallow: /briefing
+Disallow: /research/non-content-safety-attestation-01
+Disallow: /research/governance-error-register-01
 
 # Meta (Llama, Meta AI)
 User-agent: Meta-ExternalAgent
 Allow: /
 Disallow: /access
 Disallow: /briefing
+Disallow: /research/non-content-safety-attestation-01
+Disallow: /research/governance-error-register-01
 
 User-agent: FacebookBot
 Allow: /
 Disallow: /access
 Disallow: /briefing
+Disallow: /research/non-content-safety-attestation-01
+Disallow: /research/governance-error-register-01
 
 # Apple (Apple Intelligence)
 User-agent: Applebot-Extended
 Allow: /
 Disallow: /access
 Disallow: /briefing
+Disallow: /research/non-content-safety-attestation-01
+Disallow: /research/governance-error-register-01
 
 # Mistral
 User-agent: MistralAI-User
 Allow: /
 Disallow: /access
 Disallow: /briefing
+Disallow: /research/non-content-safety-attestation-01
+Disallow: /research/governance-error-register-01
 
 # Cohere
 User-agent: cohere-ai
 Allow: /
 Disallow: /access
 Disallow: /briefing
+Disallow: /research/non-content-safety-attestation-01
+Disallow: /research/governance-error-register-01
 
 Sitemap: https://svrnos.com/sitemap.xml

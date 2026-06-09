@@ -333,6 +333,21 @@ tr[data-href],
   margin: 0;
   flex: 1;
 }
+.paper-meta a {
+  color: var(--svrnos-brand-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--svrnos-border-default);
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.15s ease;
+}
+.paper-meta a:hover {
+  text-decoration-color: var(--svrnos-brand-primary);
+}
+.paper-meta a:focus-visible {
+  outline: 2px solid var(--svrnos-brand-ring, rgba(47, 93, 80, 0.25));
+  outline-offset: 2px;
+  border-radius: 2px;
+}
 
 .paper-hero {
   margin: 0 auto 48px;

@@ -49,6 +49,8 @@ interface Props {
    * SVRNOS product nav at the bottom.
    */
   showFooter?: boolean;
+  /** Forwarded to BaseLayout — emits `noindex, nofollow` when true. */
+  noindex?: boolean;
 }
 
 const {
@@ -73,6 +75,7 @@ const {
   citation,
   bareSlot = false,
   showFooter = true,
+  noindex = false,
 } = Astro.props;
 ---
 <BaseLayout
@@ -90,6 +93,7 @@ const {
   articleAuthor={author}
   citation={citation}
   showFooter={showFooter}
+  noindex={noindex}
 >
   {jsonLd && (
     <Fragment slot="head">
@@ -132,6 +136,9 @@ const {
           </time>
         )}
         {readTimeMin && <span>{readTimeMin} {readTimeLabel}</span>}
+        <div class="ml-auto">
+          <slot name="headerActions" />
+        </div>
       </div>
     </header>
 

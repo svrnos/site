@@ -32,5 +32,19 @@
       "destination": "/insights/ger-301",
       "permanent": true
     }
+  ],
+  "headers": [
+    {
+      "source": "/research/non-content-safety-attestation-01(.md)?",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    },
+    {
+      "source": "/research/governance-error-register-01(.md)?",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    }
   ]
 }

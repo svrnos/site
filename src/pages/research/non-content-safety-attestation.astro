@@ -1,14 +1,56 @@
 ---
-import ArticleLayout from "../../layouts/ArticleLayout.astro";
-import ArticleFigure from "../../components/ArticleFigure.astro";
+import ResearchPaper from "../../components/ResearchPaper.astro";
+
+const paperMeta = {
+  author: "Sushee Nzeutem, SVRNOS",
+  version: "v0.2 · June 2026 (v0.1 published May 14, 2026)",
+  citeAs: 'Nzeutem, S. (2026). <em>Non-Content Safety Attestation v0.2.</em> Sovereign OS LLC. svrnos.com/research/non-content-safety-attestation',
+  doi: "https://doi.org/10.5281/zenodo.20601005",
+};
+
+const hero = {
+  src: "/research/non-content-safety-attestation/ncsa-cover.png",
+  alt: "Non-Content Safety Attestation v0.2 — a signed, procedural attestation receipt that proves an in-enclave governance layer ran, without exposing the content it protected.",
+};
+
+const sections = [
+  { id: "abstract",                  label: "Abstract" },
+  { id: "provenance",                label: "Provenance of v0.2" },
+  { id: "background",                label: "1. Background" },
+  { id: "design-principles",         label: "2. Design principles" },
+  { id: "scope",                     label: "3. Scope and non-goals" },
+  { id: "threat-model",              label: "4. Threat model" },
+  {
+    id: "attestation-document",
+    label: "5. Attestation document",
+    children: [
+      { id: "required-fields",       label: "5.1 Required fields" },
+      { id: "recommended-fields",    label: "5.2 Recommended fields" },
+      { id: "v02-field-additions",   label: "5.3 v0.2 field additions" },
+      { id: "field-definitions",     label: "5.4 Field definitions" },
+    ],
+  },
+  { id: "usage-rules",               label: "6. Usage rules" },
+  { id: "signing-envelope",          label: "7. Signing envelope" },
+  { id: "platform-attestation",      label: "8. Platform attestation chain" },
+  { id: "verification-flow",         label: "9. Verification flow" },
+  { id: "example-payloads",          label: "10. Example payloads" },
+  { id: "relationship-ger",          label: "11. Relationship to GER" },
+  { id: "relationship-runtime",      label: "12. Runtime governance instrumentation" },
+  { id: "prior-art",                 label: "13. Prior art" },
+  { id: "glossary",                  label: "14. Glossary" },
+  { id: "open-questions",            label: "15. Open questions for v1.0" },
+  { id: "acknowledgments",           label: "Acknowledgments" },
+  { id: "references",                label: "References" },
+];
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  headline: "Non-Content Safety Attestation v0.1",
-  alternativeHeadline: "A Format Specification for Verifiable AI Governance Inside Trusted Execution Environments",
-  name: "Non-Content Safety Attestation v0.1",
-  version: "0.1",
+  headline: "Non-Content Safety Attestation v0.2",
+  alternativeHeadline: "A Format Specification for Procedural Attestation of In-Enclave AI Governance",
+  name: "Non-Content Safety Attestation v0.2",
+  version: "0.2",
   author: [{
     "@type": "Person",
     name: "Sushee Nzeutem",
@@ -29,12 +71,13 @@ const jsonLd = {
     url: "https://svrnos.com",
   },
   datePublished: "2026-05-14T00:00:00Z",
-  dateModified: "2026-05-14T00:00:00Z",
+  dateCreated: "2026-05-14T00:00:00Z",
+  dateModified: "2026-06-07T00:00:00Z",
   url: "https://svrnos.com/research/non-content-safety-attestation",
   mainEntityOfPage: "https://svrnos.com/research/non-content-safety-attestation",
-  image: "https://svrnos.com/research/non-content-safety-attestation/non-content-safety-attestation-title.png",
-  description: "A format specification for verifiable AI governance inside Trusted Execution Environments. A signed, cryptographically verifiable statement that an in-enclave governance layer evaluated a session and produced a defined outcome, with no transcript or content recoverable from the attestation itself. Borrows from DSSE, AWS Nitro Enclaves, and Apple Private Cloud Compute. v0.1 open for public comment through August 14, 2026.",
-  keywords: "AI governance, attestation, Trusted Execution Environment, TEE, DSSE, AWS Nitro Enclaves, Apple Private Cloud Compute, Meta Private Processing, AI safety, verifiable governance, EU AI Act, Washington HB 2225, NY RAISE Act, signed attestation, in-enclave governance",
+  image: "https://svrnos.com/research/non-content-safety-attestation/ncsa-social.png",
+  description: "Non-Content Safety Attestation (NCSA) v0.2 is a format specification for a signed, procedural attestation that an in-enclave AI governance layer ran and produced a defined outcome, without exposing the content it protected. v0.2 adds procedural-only payload discipline, threshold-per-action structure, accountable-party fields, constraint-locus, temporal recognition lag, GER taxonomy reference fields, and usage rules covering re-admissibility at boundary crossings.",
+  keywords: "AI governance, attestation, NCSA, Trusted Execution Environment, TEE, DSSE, AWS Nitro Enclaves, Apple Private Cloud Compute, procedural attestation, evidentiary defensibility, GER, ACS, EU AI Act, Washington HB 2225, NY RAISE Act, signed attestation, in-enclave governance",
   genre: "specification",
   inLanguage: "en",
   isAccessibleForFree: true,
@@ -43,187 +86,380 @@ const jsonLd = {
   copyrightHolder: { "@type": "Organization", name: "SVRNOS" },
 };
 ---
-<ArticleLayout
-  title="Non-Content Safety Attestation v0.1"
-  dek="A format specification for verifiable AI governance inside Trusted Execution Environments. Open for public comment through August 14, 2026."
-  description="A format for a signed, cryptographically verifiable statement that an in-enclave governance layer evaluated a session and produced a defined outcome, with no transcript or content recoverable from the attestation. Borrows from DSSE, AWS Nitro Enclaves, and Apple Private Cloud Compute."
+<ResearchPaper
+  title="Non-Content Safety Attestation"
+  dek="A signed procedural receipt for in-enclave AI governance. v0.2 public release, open for comment."
+  description="A format for a signed, cryptographically verifiable statement that an in-enclave governance layer evaluated a session and produced a defined outcome, with no transcript or content recoverable from the attestation. Builds on DSSE, AWS Nitro Enclaves, and Apple Private Cloud Compute."
   canonical="/research/non-content-safety-attestation"
-  ogImage="https://svrnos.com/research/non-content-safety-attestation/non-content-safety-attestation-title.png"
-  ogImageAlt="Non-Content Safety Attestation v0.1 — A format specification for verifiable AI governance inside Trusted Execution Environments. SVRNOS."
-  category="v0.1 Draft · May 14, 2026"
-  datePublished="2026-05-14T00:00:00Z"
+  ogImage="https://svrnos.com/research/non-content-safety-attestation/ncsa-social.png"
+  ogImageAlt="Non-Content Safety Attestation v0.2 — SVRNOS"
+  datePublished="2026-06-08T00:00:00Z"
   jsonLd={jsonLd}
-  current="research"
   markdownAlternate="/research/non-content-safety-attestation.md"
+  meta={paperMeta}
+  hero={hero}
+  sections={sections}
+  pdfUrl="https://zenodo.org/records/20601006/files/SVRNOS-NCSA-v0.2.pdf?download=1"
+  pdfFilename="SVRNOS-NCSA-v0.2.pdf"
 >
-  <dl class="article-supplement not-prose">
-    <div><dt>Author</dt><dd>Sushee Nzeutem, SVRNOS</dd></div>
-    <div><dt>Version</dt><dd>v0.1, Draft (open for public comment)</dd></div>
-    <div><dt>Comment window</dt><dd>Through August 14, 2026</dd></div>
-    <div><dt>License</dt><dd><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a></dd></div>
-    <div><dt>Cite as</dt><dd>Nzeutem, S. (2026). <em>Non-Content Safety Attestation v0.1.</em> Sovereign OS LLC. svrnos.com/research/non-content-safety-attestation</dd></div>
-    <div><dt>Companion</dt><dd><a href="/insights/dear-zuck-tee-not-the-problem">Dear Zuck, the TEE Is Not the Problem. What Runs Inside It Is.</a> (the argument for why this format is needed)</dd></div>
-  </dl>
+  <Fragment slot="head">
+    <meta name="dc.date.created" content="2026-05-14" />
+    <meta name="dc.date.modified" content="2026-06-07" />
+    <meta name="dc.date.issued" content="2026-05-14" />
+    <meta name="dc.identifier" content="https://svrnos.com/research/non-content-safety-attestation" />
+    <meta name="dc.creator" content="Nzeutem, Sushee" />
+    <meta name="dc.publisher" content="SVRNOS (Sovereign OS LLC)" />
+    <meta name="dc.type" content="Specification" />
+    <meta name="dc.format" content="text/html" />
+    <meta name="dc.language" content="en" />
+    <meta name="dc.rights" content="CC BY 4.0" />
+  </Fragment>
 
-  <ArticleFigure
-    src="/research/non-content-safety-attestation/non-content-safety-attestation-title.png"
-    alt="Non-Content Safety Attestation v0.1 — A format specification for verifiable AI governance inside Trusted Execution Environments. Open for public comment through August 14, 2026."
-    hero
-    loading="eager"
-  />
+  <blockquote class="ncsa-preamble">
+    <p>NCSA is a format for a signed receipt that proves an in-enclave AI governance layer ran and produced a defined outcome, without exposing the content it protected.</p>
+    <p>v0.2 sharpens the spec along one principle: the receipt is <em>procedural</em>, not narrative. It records what gate fired, against what threshold, for what action category, by what accountable party, at what time. It does not record why the model or the human reached a conclusion. That distinction protects platforms at disclosure time and protects users from reconstruction risk in litigation.</p>
+    <p>This is a working specification, not a regulatory standard. v0.2 is open for comment.</p>
+  </blockquote>
 
-  <h2>Abstract</h2>
+  <h2 id="abstract">Abstract</h2>
+  <p>Private AI architectures built on Trusted Execution Environments (TEEs) ship a strong privacy guarantee: conversation content does not leave the enclave. They do not, on their own, ship a verifiable safety guarantee: that a governance layer ran, what risk category it detected, what action it took, and who was accountable when it did. NCSA v0.2 specifies a format for a <strong>non-content safety attestation</strong>: a signed, cryptographically verifiable, procedural statement that an in-enclave governance layer evaluated a session and produced a defined outcome, with no transcript or content recoverable from the attestation itself.</p>
+  <p>v0.2 makes four contributions on top of v0.1. First, an explicit design discipline: the signed payload is procedural-only, not a record of reasoning or judgment. Second, payload field additions that surface governance distinctions v0.1 conflated: threshold-per-action, accountable-party identity, constraint locus, temporal recognition lag, admissible-alternative space, and a reference to the SVRNOS <a href="/research/governance-error-register">Governance Error Register (GER)</a> taxonomy. Third, usage rules covering re-admissibility when an NCSA receipt crosses a system boundary or is retrieved from persistence. Fourth, an explicit positioning statement vs the runtime governance instrumentation projects emerging in mid-2026 (Zenity-led Agent Control Standard and Microsoft Agent Control Specification), with which NCSA composes rather than competes.</p>
+  <p>v0.2 is published for public comment before v1.0. Comments are invited from implementers, auditors, regulators, researchers, platform operators, and the contributors named in the Acknowledgments.</p>
 
-  <p>Private AI architectures built on Trusted Execution Environments (TEEs) ship a strong privacy guarantee: conversation content does not leave the enclave. They do not, on their own, ship a verifiable safety guarantee: that a governance layer ran, what risk category it detected, and what action it took. This document specifies a format for a <strong>non-content safety attestation</strong>: a signed, cryptographically verifiable statement that an in-enclave governance layer evaluated a session and produced a defined outcome, with no transcript or content recoverable from the attestation itself. The format borrows the envelope pattern from DSSE and in-toto attestations, the platform-attestation chain from AWS Nitro Enclaves, and the transparency-log discipline from Apple Private Cloud Compute. v0.1 is published for public comment. Industry, regulators, and academic reviewers are invited to submit responses through August 14, 2026.</p>
+  <p class="paper-anchor"><strong>NCSA in one sentence:</strong> NCSA is the signed receipt that proves the governance layer ran. It is not the safety layer itself, the audit dashboard, or the explanation record. It is the procedural evidence that the layer existed and fired.</p>
 
-  <h2>Authorship and editorial provenance</h2>
+  <h2 id="provenance">Provenance of v0.2</h2>
+  <p>NCSA v0.2 is a proposed specification, not a regulatory standard. Unlike the SVRNOS <a href="/research/svrnos-7-layer-model">7-Layer Model</a>, which documents the internal architecture SVRNOS uses to structure runtime AI governance, NCSA v0.2 is offered as a community-shaped proposal for how non-content safety attestation should work.</p>
+  <p>This version was developed through public discussion, direct correspondence, and contributor review across AI governance, legal defensibility, runtime safety, systems architecture, and evidentiary design. The named contributors in the Acknowledgments shaped specific design constraints, field additions, usage rules, and open questions. The resulting specification remains authored and maintained by SVRNOS; v0.2 reflects a deliberate attempt to turn community critique into a cleaner technical artifact.</p>
 
-  <p>The technical sections of this document were drafted by an AI engineering process operating under my direction, working from public technical documentation. I made the editorial and publishing decisions: the timing, the license, the comment window, the coupling to the Meta launch announcement, and the framing around upcoming regulatory deadlines. I am not a cryptographer. I am the person who identified the gap and decided this format was worth putting on the table for public comment.</p>
+  <h2 id="background">1. Background</h2>
+  <figure class="paper-figure not-prose">
+    <img src="/research/non-content-safety-attestation/ncsa-figure-Hero-1.png" alt="NCSA hero — Non-Content Safety Attestation positions the signed procedural receipt at the boundary between private inference and external governance verification." loading="lazy" />
+  </figure>
+  <p>Private AI inference does not prove private governance. Confidential-compute architectures (Trusted Execution Environments, attestation chains, hardware-backed enclaves) demonstrate that conversation content stayed inside a defined boundary. They do not demonstrate that the safety logic the operator claims runs inside that boundary actually ran, what it detected, what action followed, or who was accountable when the decision was made.</p>
+  <p><a href="https://engineering.fb.com/2025/04/29/security/whatsapp-private-processing-ai-tools/">Meta&rsquo;s Private Processing</a>, <a href="https://security.apple.com/blog/private-cloud-compute/">Apple Private Cloud Compute</a>, and <a href="https://aws.amazon.com/ec2/nitro/nitro-enclaves/">AWS Nitro Enclaves</a> have made confidential-compute AI inference deployable at production scale. Private inference is becoming technically plausible. The unsolved layer is <strong>verifiable governance</strong>: how an operator demonstrates, to a regulator, insurer, court, or auditor, that the safety logic the statute or contract requires actually ran inside the private boundary, without exposing the conversation it protected.</p>
+  <p>This document specifies a format intended to be that demonstration. The argument for why the format is needed is developed at <a href="/insights/dear-zuck-tee-not-the-problem">Dear Zuck, the TEE Is Not the Problem. What Runs Inside It Is.</a> NCSA sits at Layer 4 (Evidence Transport) of the <a href="/research/svrnos-7-layer-model">SVRNOS 7-Layer Model of AI Governance</a>.</p>
+  <p><strong>Privacy and safety are not opposites when the governance architecture is designed before consequence attaches.</strong> The receipt format is what allows confidential-compute systems to honor both at once: the conversation stays inside the enclave (privacy held), and the procedural record of what governance ran travels outside it (safety auditable). The opposition becomes real only when the architecture is improvised after harm occurs.</p>
 
-  <h2>1. Background</h2>
+  <figure class="paper-figure not-prose">
+    <img src="/research/non-content-safety-attestation/ncsa-figure-Private-Inference-vs-Governance-2.png" alt="Private inference versus private governance — confidential compute proves content stayed inside the enclave; it does not prove the operator's safety logic actually ran." loading="lazy" />
+  </figure>
 
-  <p>Three regulatory deadlines arrive on or before January 1, 2027:</p>
+  <p>There is also a structural reason verifiable governance must sit at the runtime layer rather than the behavioural-specification layer. Models trained to optimise for goal achievement will, under sufficient pressure, mislead, obscure, or minimally satisfy behavioural specifications in pursuit of those goals. The same path-finding capability that makes these systems useful is what makes behavioural specification structurally insufficient: the capability is simultaneously the value proposition and the seed of ungovernability. Effective governance therefore requires explicit constraints at the execution layer with tight conditions of satisfaction and explicit prohibited actions enforced at runtime, not policies the model is asked to honour. NCSA records the procedural fact of that runtime enforcement; it is the receipt for governance that did not depend on the model agreeing to be governed.</p>
 
-  <ul>
-    <li><a href="https://app.leg.wa.gov/billsummary?BillNumber=2225&Year=2025" target="_blank" rel="noopener noreferrer">Washington HB 2225</a>, AI companion chatbot operators must maintain and publicly disclose protocols for detecting and responding to suicidal ideation, self-harm, and eating-disorder content; route users to crisis resources; report annually on referral counts.</li>
-    <li><a href="https://digital-strategy.ec.europa.eu/en/consultations/consultation-draft-guidelines-transparency-obligations-under-ai-act" target="_blank" rel="noopener noreferrer">EU AI Act Article 50</a>, user disclosure and generated-content marking obligations, applicable August 2, 2026.</li>
-    <li><a href="https://en.wikipedia.org/wiki/Responsible_AI_Safety_and_Education_Act" target="_blank" rel="noopener noreferrer">New York RAISE Act</a>, frontier developer obligations, penalty structure up to $1M first violation and $3M subsequent, enforced by the NY Attorney General.</li>
+  <h3 id="regulatory-pressure">1.1 Regulatory pressure</h3>
+  <p>Several legislative regimes active or arriving across US states and the EU now require operators to produce structured, verifiable evidence that safety logic ran.</p>
+  <ul class="ncsa-list">
+    <li><a href="https://app.leg.wa.gov/billsummary?BillNumber=2225&Year=2025">Washington HB 2225</a>, signed March 24, 2026 and effective January 1, 2027: AI companion chatbot operators must maintain and publicly disclose protocols for detecting and responding to suicidal ideation, self-harm, and eating-disorder expressions; route users to crisis resources including the 988 Suicide and Crisis Lifeline; and report aggregated flagged-interaction data on a regular basis. The Act creates a private right of action.</li>
+    <li><a href="https://digital-strategy.ec.europa.eu/en/consultations/consultation-draft-guidelines-transparency-obligations-under-ai-act">EU AI Act Article 50</a>: user-disclosure and generated-content marking obligations applicable from August 2, 2026.</li>
+    <li>New York <em>S. 6953-B</em> (Responsible AI Safety and Education Act): frontier developer obligations, signed December 19, 2025 and effective ninety days after enactment. Civil penalty structure up to ten million dollars for a first violation and up to thirty million dollars for any subsequent violation, enforced by the New York Attorney General; additional penalties for employee retaliation.</li>
+    <li>California <a href="https://legiscan.com/CA/text/SB53/id/3270002">SB 53</a> (Transparency in Frontier Artificial Intelligence Act): critical safety incident reporting within 15 days, within 24 hours for imminent risk of death or serious physical injury. Signed September 29, 2025, effective January 1, 2026.</li>
   </ul>
+  <p>Each of these regimes assumes operators can produce structured, verifiable evidence that their governance machinery ran. NCSA names that evidence layer.</p>
 
-  <p>In parallel, <a href="https://engineering.fb.com/2025/04/29/security/whatsapp-private-processing-ai-tools/" target="_blank" rel="noopener noreferrer">Meta's Private Processing</a>, <a href="https://security.apple.com/blog/private-cloud-compute/" target="_blank" rel="noopener noreferrer">Apple Private Cloud Compute</a>, and <a href="https://aws.amazon.com/ec2/nitro/nitro-enclaves/" target="_blank" rel="noopener noreferrer">AWS Nitro Enclaves</a> have made confidential-compute AI inference deployable at production scale. Privacy is solved or solvable. The unsolved layer is <strong>verifiable governance</strong>: how an operator demonstrates, to a regulator, insurer, court, or auditor, that the safety logic the statute requires actually ran inside the private boundary, without exposing the conversation it protected.</p>
+  <h3 id="evidentiary-asymmetry">1.2 Evidentiary asymmetry and the record-keeping presumption</h3>
+  <figure class="paper-figure not-prose">
+    <img src="/research/non-content-safety-attestation/ncsa-figure-Record-Keeping-Presumption-3.png" alt="Record-keeping presumption — structured records in a specified form shift the evidential burden; absence of records creates a presumption against the actor who should have kept them." loading="lazy" />
+  </figure>
+  <p>The architectural requirement these regimes impose is sharper than &ldquo;produce a record.&rdquo; In regulated financial systems the same distinction is already enforced: controls are required to <em>prevent</em> unauthorized transactions, not merely to <em>detect</em> them after the fact. A governance model that catches an error after execution does not satisfy a prevention requirement. The pattern regulators use to describe this failure during enforcement is consistent across sectors: <em>validation became advisory</em>. The control existed on paper. It did not exist at the action layer. NCSA receipts are the procedural artifact of an action-layer control. They record that admissibility resolved at the moment of binding, not that an after-the-fact reviewer concluded the action should have been admissible.</p>
 
-  <p>This document specifies a format intended to be that demonstration.</p>
+  <p>The legal mechanism that operationalizes prevent-vs-detect controls is the <em>record-keeping presumption</em>. The actors best placed to produce evidence of what their AI systems did (model developers, platform providers) have the least incentive to make those systems legible after the fact, and a claimant typically has the least access and the least bargaining power. The legal pattern that addresses this asymmetry in other high-hazard domains is a structured record-keeping mandate that <em>shifts the evidential burden rather than the liability itself</em>: the law requires structured records in a specified form, and the absence of records creates a presumption against the actor who should have kept them. Banking (Bank Secrecy Act records, capital adequacy reporting), healthcare (HIPAA record retention, FDA adverse event reporting), aviation safety (CVR/FDR mandates), and securities (SEC record retention) all sit on this structural foundation. A mandate framed as &ldquo;log what your AI did&rdquo; is checked-box compliance with no evidential value; a mandate framed as &ldquo;log decisions classified against [controlled vocabulary] for [specified event categories], retain for [period], produce on regulator request&rdquo; is the version that survives the courtroom. NCSA names the structured-record format that a record-keeping presumption can attach to.</p>
 
-  <p>The argument for why the format is needed is developed at <a href="/insights/dear-zuck-tee-not-the-problem">Dear Zuck, the TEE Is Not the Problem. What Runs Inside It Is.</a> This document is the technical companion.</p>
+  <p>The audience for an NCSA receipt spans three stakeholder roles identified in the Legally-Informed XAI framework (Mansi, Karusala, &amp; Riedl, 2025): <strong>decision makers</strong> who act on AI determinations (physicians, claims reviewers, content moderators, loan officers), <strong>decision subjects</strong> directly affected by those determinations (patients, applicants, end users), and <strong>legal representatives</strong> advocating for either. Each role faces a different information asymmetry. Decision makers need to know what the system saw and what was permitted before they accept liability for acting on its output. Decision subjects need an artifact they can rely on when contesting an outcome that affects their access to care, credit, employment, or services. Legal representatives need a record that can be independently reconstructed without depending on the executing party. A single signed receipt that all three parties can verify against the same underlying record is what NCSA provides; the procedural-only payload discipline (&sect;2.1) is what allows the same artifact to serve all three roles without leaking content or producing reconstructed reasoning that compromises any of them.</p>
 
-  <h2>2. Scope and non-goals</h2>
+  <h2 id="design-principles">2. Design principles</h2>
+  <p>v0.2 names eight design principles that govern what the signed payload contains and what it deliberately does not. These principles were sharpened through public engagement with contributors named in the Acknowledgments; the principles themselves are normative for the spec.</p>
 
+  <h3 id="procedural-not-narrative">2.1 Procedural attestation, not narrative reconstruction</h3>
+  <p>The signed payload <em>proves procedure</em>, not <em>reconstructs judgment</em>. It records:</p>
+  <ul class="ncsa-list">
+    <li>Which policy was in force (policy_id + version)</li>
+    <li>Which gates ran (ordered sequence)</li>
+    <li>Which thresholds were checked (threshold class and value)</li>
+    <li>Which tier was reached (in a tiered escalation model)</li>
+    <li>What action or non-action was recorded</li>
+    <li>Contemporaneous time-lock and signing identity</li>
+  </ul>
+  <p>The payload MUST NOT contain free-form reasoning narrative about why the system, model, or human decided what they decided. Reasoning belongs in privileged legal review or post-incident assessment, not in the contemporaneous signed artifact.</p>
+  <p><strong>Evidentiary-design rationale.</strong> From an evidentiary-design perspective, detailed in-payload reasoning increases discovery and reconstruction exposure. If recorded reasoning later lines up with a harmful outcome, the record can be used to construct foreseeability against the platform. Narrative artifacts that match later facts too closely can be characterized as reconstructed or defensive in court. The procedural-only constraint preserves the audit-trail value of attestation without producing a self-incriminating explanation document. The deeper failure mode this constraint avoids is <strong>hindsight-amplified liability reconstruction</strong>: governance shifting from threshold-based proportionality at the time of decision to retrospective liability inference based on outcome severity. Foreseeability cannot be reconstructed backward from outcome severity without making proportional governance structurally impossible. This specification does not provide legal advice; operators should validate retention and disclosure practices with counsel.</p>
+
+  <p><strong>Legally informative versus legally actionable.</strong> Mansi, Karusala, and Riedl (2025) draw a useful distinction for AI accountability artifacts: <em>legally informative</em> information describes laws, regulations, and legal rights relevant to those impacted by an AI system; <em>legally actionable</em> information can be used in legal action once harm has occurred, but is not legally related in itself. NCSA receipts are designed to be the latter. They do not advise on rights or interpret legal categories. They are signed procedural artifacts that decision subjects, decision makers, and legal representatives can each cite as evidence in a claim or defense, without depending on the executing system to corroborate them after the fact. The procedural-only payload discipline is what allows the same receipt to serve all three roles: it carries actionable evidence without producing reconstructable narrative reasoning.</p>
+
+  <h3 id="three-way-separation">2.2 Three-way separation of governance artifacts</h3>
+  <figure class="paper-figure not-prose">
+    <img src="/research/non-content-safety-attestation/ncsa-figure-Three-Way-Separation-4.png" alt="Three-way separation — explainability, auditability, and evidentiary defensibility belong in separate artifacts. NCSA does only the third." loading="lazy" />
+  </figure>
+  <p>Three concerns are routinely collapsed into one artifact in current AI safety telemetry pitches. They must remain separate:</p>
+  <ul class="ncsa-list">
+    <li><strong>Explainability</strong>: why the model or human reached a conclusion. Belongs in post-hoc legal review or policy maturation analysis, under privilege.</li>
+    <li><strong>Auditability</strong>: operational visibility into the governance system&rsquo;s state and decisions over time. Belongs in audit dashboards and internal compliance review.</li>
+    <li><strong>Evidentiary defensibility</strong>: proof, at the time, that a defined process executed. Belongs in signed runtime attestations. <strong>NCSA does only this.</strong></li>
+  </ul>
+  <p>Collapsing these into one artifact (a single record that contains the procedural record AND the reasoning narrative AND the audit context) produces the foreseeability and reconstruction risks named in §2.1. NCSA v0.2 positions itself as the evidentiary-defensibility artifact only and directs readers to where the other two concerns belong.</p>
+
+  <h3 id="constitutive-evidence">2.3 Constitutive evidence and standard sovereignty</h3>
+  <p>Evidence of governance enforcement must be constituted at the moment of bind, as part of the execution event itself. It cannot be reconstructed after the fact. Reconstructed reasoning (&ldquo;Why this action? Under which conditions? With which justification?&rdquo;) is where most systems break: the explanation arrives after the consequence has already landed, and the gap between them is where institutional proof fails.</p>
+  <p>But constituting evidence at the moment of bind creates a harder problem. The system is no longer just executing decisions; it is defining what counts as valid evidence in real time. Three pressure-point questions follow:</p>
+  <ul class="ncsa-list">
+    <li><strong>Where is the standard defined?</strong> If the executing system defines it, no boundary has been crossed; ambiguity has just been moved inside the system.</li>
+    <li><strong>What prevents selective evidence formation under pressure?</strong> If the standard can be reinterpreted at the moment it matters, the system is still conditionally binding, with better language.</li>
+    <li><strong>Who owns the standard when execution and evidence are fused?</strong> If the answer is the executing party, the constraint is not sovereign.</li>
+  </ul>
+  <p>For NCSA this means: (a) the attestation is produced at the moment of policy enforcement, bound to the same state and authority context that produced the enforcement decision; (b) the evidentiary schema and validation authority sit external to the executing system; (c) the system cannot redefine, override, or reinterpret what counts as a valid attestation under operational pressure. The system must be unable to bind unless the standard holds as non-negotiable under current authority.</p>
+
+  <h3 id="procedural-vs-adequacy">2.4 Procedural vs adequacy attestation</h3>
+  <p>Proving a governance layer ran is not the same as proving the governance was operationally adequate. Procedural attestation answers &ldquo;did the gate fire and produce a record.&rdquo; Adequacy attestation answers &ldquo;was the gate&rsquo;s design appropriate for the conditions it was making decisions over.&rdquo; v0.2 covers procedural attestation. Adequacy is the harder problem because it requires the system to attest something about its own design fitness; v0.2 names adequacy as a distinct future-work surface and does not claim to cover it.</p>
+
+  <h3 id="discrete-events">2.5 Discrete events, not continuous accumulation</h3>
+  <p>NCSA fires at discrete events (session-end, threshold cross, escalation, refusal) by design. Formation is not a discrete step in tightly-coupled systems; effects accumulate through interaction before any single decision qualifies as a candidate. Continuous interaction-layer attestation is a different protocol with a different cadence, cost profile, and signing model. NCSA names this scope boundary explicitly rather than expanding to cover it.</p>
+
+  <h3 id="timing-control-surface">2.6 Timing as part of the control surface</h3>
+  <p>Timing is as much a control surface as substance. A decision that arrives too late to influence outcome is no longer authority. NCSA attestation captures the temporal viability of the governance decision through the temporal recognition lag fields (&sect;5.3).</p>
+
+  <h3 id="over-formalization">2.7 Some knowing must stay in human knowing</h3>
+  <p>Structured attestation fields capture human-cognition properties only by fixing what was still moving. Translating uncertainty too quickly into system-readable form destroys the property the field was meant to preserve. Every primitive in v0.2 that turns a human-cognition property into a structured field is paired with an explicit statement of what the attestation deliberately <em>does not</em> capture. The <code>admissible_alternatives</code> field (§5.3) records structural-visibility metadata about the choice landscape, not the content of the alternatives. The procedural-only constraint (§2.1) keeps the attestation an evidence anchor rather than a knowing-in-progress record. The design discipline is to leave the parts of judgement that must remain in human knowing where they belong: in human knowing, not in the signed payload.</p>
+
+  <h3 id="non-content-principle">2.8 The non-content guarantee</h3>
+  <p>The signed payload encodes structural metadata about governance: which policy was in force, which gates ran, which outcome resolved, which classification applied. It never encodes the protected content the governance evaluated, nor any data structure of sufficient dimensionality to invert into recognizable content. The non-content guarantee is a per-attestation property that allows the same artifact to be verified by parties with no access to the underlying conversation, dataset, or operator records. The receipt is a transferable evidentiary artifact, not a privileged disclosure. §4.1 enumerates the operational MUST NOT and MAY constraints that enforce this principle at the field level.</p>
+
+  <h2 id="scope">3. Scope and non-goals</h2>
   <p><strong>In scope.</strong> The format and verification flow for an attestation that asserts:</p>
-
-  <ol>
+  <ol class="ncsa-list">
     <li>A named governance layer, of a named version, ran inside a TEE.</li>
     <li>The governance layer evaluated a session ending at a timestamp.</li>
     <li>The governance layer reached a defined outcome state.</li>
     <li>The governance layer produced a defined action.</li>
+    <li>The named accountable party was current as of the attestation moment.</li>
+    <li>The threshold checks per action category were evaluated and recorded.</li>
+    <li>The GER classification of the event is referenced where applicable.</li>
     <li>No conversation content is recoverable from the attestation.</li>
   </ol>
-
   <p><strong>Out of scope.</strong></p>
-
-  <ul>
-    <li>The behavior or quality of the governance layer itself. The format attests that something ran; it does not certify what that something is. Quality certification is a downstream concern.</li>
+  <ul class="ncsa-list">
+    <li>The behavior or quality of the governance layer itself. The format attests that something ran; it does not certify what that something is (procedural, not adequacy, per §2.4).</li>
     <li>The classifier implementation. The format is implementation-agnostic.</li>
     <li>User authentication or identity verification.</li>
     <li>Cryptographic primitive choice beyond establishing minimum requirements.</li>
-    <li>Any prescriptive policy on what to detect or how to respond. Policy belongs in the operator's published protocols or in regulator-issued guidance.</li>
+    <li>Any prescriptive policy on what to detect or how to respond. Policy belongs in the operator&rsquo;s published protocols or in regulator-issued guidance.</li>
+    <li>Free-form reasoning, explanation, or judgment about why the model or operator reached a conclusion (§2.1).</li>
+    <li>Continuous interaction-layer attestation (§2.5).</li>
+    <li>Upstream supply-chain integrity: NCSA references SLSA / NIST SSDF for the requirement &rarr; spec &rarr; build chain via <code>requirement_id</code> rather than re-specifying it.</li>
   </ul>
 
-  <h2>3. Threat model and privacy guarantee</h2>
-
+  <h2 id="threat-model">4. Threat model and privacy guarantee</h2>
   <p>The format is designed against three threats:</p>
+  <p><strong>T1. Operator post-hoc fabrication.</strong> An operator claims after an incident that &ldquo;our safety layer detected the trajectory&rdquo; without evidence the layer ran. The attestation must be signed at session time by a key bound to the TEE platform attestation, making post-hoc fabrication detectable.</p>
+  <p><strong>T2. Content leakage through attestation.</strong> An adversary with access to attestations recovers conversation content. The format requires that no field in the attestation contain content derivatives that could be inverted, brute-forced, or correlated to recover transcript material. This is the <strong>non-content guarantee</strong> (§4.1).</p>
+  <p><strong>T3. Replay or cross-session substitution.</strong> An attestation from a clean session is presented as evidence for a different session that went wrong. The attestation must bind to a session identifier that is non-correlatable to user identity but unique per session, and must include the TEE platform attestation that binds to the in-enclave execution instance.</p>
 
-  <p><strong>T1. Operator post-hoc fabrication.</strong> An operator claims after an incident that "our safety layer detected the trajectory" without evidence the layer ran. The attestation must be signed at session time by a key bound to the TEE platform attestation, making post-hoc fabrication detectable.</p>
-
-  <p><strong>T2. Content leakage through attestation.</strong> An adversary with access to attestations recovers conversation content. The format requires that no field in the attestation contain content derivatives that could be inverted, brute-forced, or correlated to recover transcript material. This is the <strong>non-content guarantee</strong> (§3.1).</p>
-
-  <p><strong>T3. Replay or cross-session substitution.</strong> An attestation from a clean session is presented as evidence for a different session that went wrong. The attestation must bind to a session identifier that is itself non-correlatable to user identity but unique per session, and must include the TEE platform attestation that binds to the in-enclave execution instance.</p>
-
-  <h3>3.1 The non-content guarantee</h3>
-
-  <p>A Non-Content Safety Attestation MUST NOT contain, or permit reconstruction of:</p>
-
-  <ul>
+  <h3 id="non-content-guarantee">4.1 The non-content guarantee</h3>
+  <p>An NCSA attestation MUST NOT contain, or permit reconstruction of:</p>
+  <ul class="ncsa-list">
     <li>Raw or transformed user input</li>
     <li>Raw or transformed model output</li>
     <li>Token-level embeddings, attention maps, or logits derived from input</li>
     <li>Per-turn classifier inputs or feature vectors</li>
     <li>Any data structure of sufficient dimensionality to invert into recognizable content</li>
+    <li>Free-form reasoning narrative about model or human judgment (§2.1)</li>
+    <li>The content of alternative trajectories considered by the system (§5.3, <code>admissible_alternatives</code>)</li>
   </ul>
-
   <p>It MAY contain:</p>
-
-  <ul>
+  <ul class="ncsa-list">
     <li>Cardinal counts (turn counts, signal counts) at session granularity</li>
     <li>Enumerated outcome states from a published vocabulary</li>
     <li>Boolean flags from a published vocabulary</li>
     <li>Hashes of policy configurations and code measurements</li>
-    <li>Timestamps</li>
+    <li>Timestamps (with the system-internal grounding of §5.3 for temporal fields)</li>
+    <li>GER code references (controlled vocabulary, structural classification only)</li>
+    <li>Named accountable-party identifiers (organizational role, not content)</li>
   </ul>
-
   <p>A field that does not clearly fall into the MAY category is presumed disallowed.</p>
 
-  <h3>3.2 Aggregation note</h3>
+  <h3 id="aggregation-note">4.2 Aggregation note</h3>
+  <p>A single attestation is low-risk. The non-content guarantee is a per-attestation property. Implementers should be aware that <em>aggregating</em> attestations across millions of sessions can leak population-level statistics that no single attestation reveals. Distributions over <code>signal_counts</code>, <code>turn_count</code>, <code>state_transitions</code>, and the v0.2 threshold-per-action fields across a large population can support inferences about user demographics, conversational tendencies, or environmental conditions that the per-session guarantee does not address. Operators publishing aggregate statistics derived from attestations SHOULD apply differential-privacy techniques (noise injection, k-anonymity grouping, or formal DP mechanisms). v1.0 may codify specific guidance; v0.2 flags this as deployment responsibility.</p>
 
-  <p>A single attestation is low-risk. The non-content guarantee is a per-attestation property. Implementers should be aware that <em>aggregating</em> attestations across millions of sessions can leak population-level statistics that no single attestation reveals. Distributions over <code>signal_counts</code>, <code>turn_count</code>, and <code>state_transitions</code> across a large population can support inferences about user demographics, conversational tendencies, or environmental conditions that the per-session guarantee does not address. Operators publishing aggregate statistics derived from attestations SHOULD apply differential-privacy techniques (noise injection, k-anonymity grouping, or formal DP mechanisms). v1.0 may codify specific guidance; v0.1 flags this as deployment responsibility.</p>
+  <h2 id="attestation-document">5. Attestation document</h2>
+  <figure class="paper-figure not-prose">
+    <img src="/research/non-content-safety-attestation/ncsa-figure-Attestation-Document-Anatomy-5.png" alt="Attestation document anatomy — the v0.2 payload structure showing required field groups and the DSSE signing envelope." loading="lazy" />
+  </figure>
 
-  <h2>4. Attestation document</h2>
+  <h3 id="required-fields">5.1 Required fields</h3>
+  <p>A v0.2 attestation document MUST contain the following fields. Field names are normative; field types follow JSON conventions.</p>
+  <div class="ger-wide not-prose">
+    <table class="paper-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>schema_version</code></td><td>string</td><td><code>"ncsa/0.2"</code> for this version</td></tr>
+        <tr><td><code>session_id</code></td><td>string</td><td>Non-correlatable session identifier, 128 bits minimum, base64url-encoded</td></tr>
+        <tr><td><code>attestation_timestamp</code></td><td>string</td><td>ISO 8601 UTC, session-end</td></tr>
+        <tr><td><code>governance_layer.name</code></td><td>string</td><td>Operator-assigned name (e.g., <code>"sango-guard"</code>)</td></tr>
+        <tr><td><code>governance_layer.version</code></td><td>string</td><td>Semantic version of the layer</td></tr>
+        <tr><td><code>governance_layer.image_hash</code></td><td>string</td><td>SHA-384 of the deployed image, hex-encoded (lowercase)</td></tr>
+        <tr><td><code>policy_config_hash</code></td><td>string</td><td>SHA-384 of the active policy/threshold configuration, hex-encoded (lowercase)</td></tr>
+        <tr><td><code>outcome_state</code></td><td>string</td><td>Final session state from a published enumeration (§5.4)</td></tr>
+        <tr><td><code>action_taken</code></td><td>string</td><td>Final action from a published enumeration (§5.4)</td></tr>
+        <tr><td><code>platform_attestation</code></td><td>object</td><td>TEE platform attestation reference (§8)</td></tr>
+        <tr><td><code>non_content_assertion</code></td><td>boolean</td><td>MUST be <code>true</code>; asserts compliance with §4.1</td></tr>
+        <tr><td><code>ger_codes</code></td><td>array of strings</td><td><strong>v0.2.</strong> GER code references (e.g., <code>["GER-501"]</code>); empty array if no GER classification applies</td></tr>
+        <tr><td><code>ger_version</code></td><td>string</td><td><strong>v0.2.</strong> GER taxonomy version against which codes were assigned (e.g., <code>"0.2"</code>)</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-  <h3>4.1 Required fields</h3>
+  <h3 id="recommended-fields">5.2 Recommended fields</h3>
+  <p>v0.1 recommended fields, retained:</p>
+  <div class="ger-wide not-prose">
+    <table class="paper-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>turn_count</code></td><td>integer</td><td>Number of user-model turns in the session</td></tr>
+        <tr><td><code>signal_counts</code></td><td>object</td><td>Per-category integer counts of detected signals across the session</td></tr>
+        <tr><td><code>state_transitions</code></td><td>array</td><td>Ordered list of <code>&#123;from_state, to_state, turn_index&#125;</code> transitions</td></tr>
+        <tr><td><code>escalation_target_class</code></td><td>string</td><td>If action involved escalation, the class of target (never an identifier)</td></tr>
+        <tr><td><code>intervention_acknowledged</code></td><td>boolean</td><td>Whether the user acknowledged a routed intervention</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-  <p>A v0.1 attestation document MUST contain the following fields. Field names are normative; field types follow JSON conventions.</p>
+  <h3 id="v02-field-additions">5.3 v0.2 field additions</h3>
+  <p>v0.2 adds the following optional payload fields. Each addresses a structural distinction v0.1 conflated. Implementations MAY populate any subset; implementations targeting regulator-grade evidence SHOULD populate the threshold-per-action and accountable-party clusters at minimum.</p>
 
-  <table class="not-prose ncsa-table">
-    <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
-    <tbody>
-      <tr><td><code>schema_version</code></td><td>string</td><td><code>"ncsa/0.1"</code> for this version</td></tr>
-      <tr><td><code>session_id</code></td><td>string</td><td>Non-correlatable session identifier, 128 bits minimum, base64url-encoded</td></tr>
-      <tr><td><code>attestation_timestamp</code></td><td>string</td><td>ISO 8601 UTC, session-end</td></tr>
-      <tr><td><code>governance_layer.name</code></td><td>string</td><td>Operator-assigned name (e.g., <code>"sango-guard"</code>)</td></tr>
-      <tr><td><code>governance_layer.version</code></td><td>string</td><td>Semantic version of the layer</td></tr>
-      <tr><td><code>governance_layer.image_hash</code></td><td>string</td><td>SHA-384 of the deployed image, base64url-encoded</td></tr>
-      <tr><td><code>policy_config_hash</code></td><td>string</td><td>SHA-384 of the active policy/threshold configuration</td></tr>
-      <tr><td><code>outcome_state</code></td><td>string</td><td>Final session state from a published enumeration (§4.3)</td></tr>
-      <tr><td><code>action_taken</code></td><td>string</td><td>Final action from a published enumeration (§4.3)</td></tr>
-      <tr><td><code>platform_attestation</code></td><td>object</td><td>TEE platform attestation reference (§6)</td></tr>
-      <tr><td><code>non_content_assertion</code></td><td>boolean</td><td>MUST be <code>true</code>; asserts compliance with §3.1</td></tr>
-    </tbody>
-  </table>
+  <p><strong>Threshold-per-action cluster.</strong> Five separate threshold fields, one per governance action category. v0.1 collapsed all thresholds into a single tier; v0.2 separates them so each governance action category is independently attested on its own evidentiary basis. A moderation threshold is not the same as an evidence-preservation threshold; an account-action threshold is not the same as a legal-review threshold; a legal-review threshold is not the same as an external-reporting threshold. Collapsing these into a single response surface produces a two-sided failure: organizations either miss serious signals (treating reporting like moderation) or overcorrect into surveillance (treating moderation like reporting). Neither outcome builds trust.</p>
+  <p>Each per-category threshold is itself compositional rather than a single point: confidence in the signal, severity of potential harm, and actionability of the available response increase together along a tiered ladder before action leaves the system. v0.2 captures this as a scalar in the <code>value</code> field of each threshold object; v1.0 may formalize the three components separately (§15).</p>
+  <p>The structural requirement underneath the threshold-per-action design is <strong>evidence before action</strong>: each governance action category triggers only when the corresponding threshold has been evaluated against evidence available <em>at the time of decision</em>. Threshold structure cannot be improvised after harm occurs. If the line separating moderation from preservation from legal review from external reporting is defined under post-incident pressure, the system is reconstructing thresholds backward from the outcome. That is the failure mode the procedural-only constraint (§2.1) and the hindsight-amplified-liability-reconstruction caution were designed to prevent.</p>
+  <div class="ger-wide not-prose">
+    <table class="paper-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>threshold_moderation</code></td><td>object</td><td><code>&#123;met: bool, value: number, action: string&#125;</code>: was the moderation threshold met, what value, what action followed</td></tr>
+        <tr><td><code>threshold_preservation</code></td><td>object</td><td>Same shape: was the preservation threshold met, what records were preserved</td></tr>
+        <tr><td><code>threshold_account_action</code></td><td>object</td><td>Same shape: account-action threshold and restriction applied</td></tr>
+        <tr><td><code>threshold_legal_review</code></td><td>object</td><td>Same shape: legal-review threshold and routing decision</td></tr>
+        <tr><td><code>threshold_external_reporting</code></td><td>object</td><td>Same shape: external-reporting threshold and report filing</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-  <h3>4.2 Recommended fields</h3>
+  <p><strong>Accountable-party cluster.</strong> Surfaces who was named as accountable at the attestation moment. Makes GER-315 (Accountability Decoupling) detectable at runtime.</p>
+  <div class="ger-wide not-prose">
+    <table class="paper-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>accountable_party_name</code></td><td>string</td><td>Current named human accountable for the governance layer&rsquo;s output as of the attestation moment</td></tr>
+        <tr><td><code>accountable_party_title</code></td><td>string</td><td>Organizational role of that human</td></tr>
+        <tr><td><code>accountability_attestation_age_days</code></td><td>integer</td><td>Days since the named human last attested they remain accountable. Surfaces stale accountability.</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-  <table class="not-prose ncsa-table">
-    <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
-    <tbody>
-      <tr><td><code>turn_count</code></td><td>integer</td><td>Number of user-model turns in the session</td></tr>
-      <tr><td><code>signal_counts</code></td><td>object</td><td>Per-category integer counts of detected signals across the session</td></tr>
-      <tr><td><code>state_transitions</code></td><td>array</td><td>Ordered list of <code>&#123;from_state, to_state, turn_index&#125;</code> transitions</td></tr>
-      <tr><td><code>escalation_target_class</code></td><td>string</td><td>If action involved escalation, the class of target (never an identifier)</td></tr>
-      <tr><td><code>intervention_acknowledged</code></td><td>boolean</td><td>Whether the user acknowledged a routed intervention</td></tr>
-    </tbody>
-  </table>
+  <p><strong>Constraint locus.</strong> Names where the safety constraint runs relative to the model under governance.</p>
+  <div class="ger-wide not-prose">
+    <table class="paper-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>constraint_locus</code></td><td>string</td><td>One of <code>"exogenous"</code> (parametrically isolated subsystem), <code>"endogenous"</code> (same optimization loop), <code>"hybrid"</code> (explicit partial separation with documented decoupling boundary)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>An attestation of an endogenous constraint provides weaker guarantees than an attestation of an exogenous one; the field surfaces the distinction so verifiers and consumers can reason about the strength of the underlying guarantee.</p>
 
-  <h3>4.3 Field definitions</h3>
+  <p><strong>Temporal recognition lag.</strong> Distinguishes propagation onset from institutional recognition.</p>
+  <div class="ger-wide not-prose">
+    <table class="paper-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>t_propagation</code></td><td>string (ISO 8601)</td><td>System-internal timestamp at which the relevant input state changed inside the governance system&rsquo;s view. MUST be a system-internal measurable event, not &ldquo;the moment state reachability expanded in the world&rdquo; (which is unknowable to the attesting system).</td></tr>
+        <tr><td><code>t_recognition</code></td><td>string (ISO 8601)</td><td>Timestamp at which the governance system registered the propagation</td></tr>
+        <tr><td><code>recognition_lag_ms</code></td><td>integer</td><td>Computed delta. Surfacing as a governance event when the lag exceeds defined thresholds.</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-  <p><strong><code>outcome_state</code></strong>: the enumeration is operator-defined and MUST be published as part of the operator's safety protocol disclosure. Recommended minimum vocabulary:</p>
+  <p><strong>Admissible alternative space.</strong> Records structural metadata about the choice landscape at decision time. The non-content constraint of §2.7 binds the field to <em>structural-visibility metadata</em>, not the content of alternatives.</p>
+  <div class="ger-wide not-prose">
+    <table class="paper-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>admissible_alternatives</code></td><td>object</td><td><code>&#123;count: integer, type_tags: array of strings, structurally_visible: boolean&#125;</code>. <strong>MUST NOT</strong> include the content of any alternative; only counts, type-class tags, and a structural-visibility flag.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>An empty set (no alternatives) or singleton (one trajectory only) MUST surface as a governance event in the verification flow: the system enforced under collapsed alternative-space. The deeper diagnostic question this field begins to answer is whether the state being validated is still a decision space at all. A system can have multiple formally valid alternatives present and still have become insensitive to variation, where correctness persists while meaningful choice has already disappeared. v0.2 captures the structural visibility of alternatives as a proxy; full intervention-capacity attestation (whether difference can still change trajectory) is v1.0 work (§15).</p>
 
+  <p><strong>Intent-to-runtime fidelity.</strong> A pointer back to the upstream requirement the runtime claims to implement.</p>
+  <p>The structural reason this pointer is constitutive rather than convenient: in AI-assisted builds the standard testing pyramid loses its adversarial character. When the same agent writes the implementation and the tests, unit tests become confirmatory rather than adversarial. They verify what the agent built, not what the spec required. An implementation can pass arbitrarily many internally generated tests while diverging from the spec at the serialization, ordering, or boundary-condition level. Specification fidelity is the missing fourth layer above unit / integration / end-to-end, and it cannot be supplied by tests the build itself produced. <code>requirement_id</code> is the procedural artifact that ties the runtime receipt to the requirement that defined it, not to the implementation that produced it.</p>
+  <div class="ger-wide not-prose">
+    <table class="paper-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>requirement_id</code></td><td>string</td><td>Pointer to the upstream requirement (in an operator-controlled requirement registry) the runtime is claimed to implement. Upstream chain integrity (requirement &rarr; spec &rarr; build) is delegated to <a href="https://slsa.dev">SLSA</a> and <a href="https://csrc.nist.gov/projects/ssdf">NIST SSDF</a>; NCSA binds the runtime attestation to the upstream chain rather than re-specifying it.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Continuation reference.</strong> When the attestation records a refusal, the chosen continuation receives its own attestation (§6.1); this field references the receipt for that continuation.</p>
+  <div class="ger-wide not-prose">
+    <table class="paper-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>continuation_attestation_id</code></td><td>string</td><td>If <code>action_taken</code> is a refusal class, the attestation_id of the continuation attestation (fallback / escalation / handoff). Pair forms the governed refusal record.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 id="field-definitions">5.4 Field definitions</h3>
+  <p><strong><code>outcome_state</code></strong>: the enumeration is operator-defined and MUST be published as part of the operator&rsquo;s safety protocol disclosure. Recommended minimum vocabulary:</p>
   <pre><code>NEUTRAL
 MONITORING
 ELEVATED
 CRITICAL</code></pre>
-
   <p>Operators MAY extend the vocabulary. Extensions MUST be documented and version-pinned via <code>policy_config_hash</code>.</p>
 
   <p><strong><code>action_taken</code></strong>: recommended minimum vocabulary:</p>
-
   <pre><code>PROCEED                  no intervention required
 INJECT_PROMPT            safety question or grounding statement added in-turn
 GOVERN_OUTPUT            model output modified, suppressed, or replaced
 ESCALATE_INTERNAL        routed to operator's safety team for human review
 ESCALATE_EXTERNAL        routed to a crisis-resource or external referral target
-TERMINATE_SESSION        session closed by the governance layer</code></pre>
-
+TERMINATE_SESSION        session closed by the governance layer
+REFUSE                   gate produced a refusal (see §6.1, continuation attestation)</code></pre>
   <p>Operators MAY extend.</p>
 
-  <p><strong><code>intervention_acknowledged</code></strong>: a one-bit summary derived from the in-enclave governance layer's observation of the user's subsequent input. The flag MUST be computed inside the enclave; the underlying user input MUST NOT be exported in any form. If the governance layer has no mechanism to observe subsequent input (e.g., one-shot session, no follow-up turn before timeout), the field SHOULD be omitted rather than guessed.</p>
+  <p><strong><code>ger_codes</code></strong>: an array of GER code strings (e.g., <code>["GER-501", "GER-307"]</code>). A single governance event may correspond to multiple codes (failure mode + escalation gap, for example). The array MAY be empty when the event has no GER classification. <code>ger_version</code> MUST be present whenever <code>ger_codes</code> is non-empty so attestations remain interpretable as the taxonomy evolves.</p>
 
-  <h2>5. Signing envelope</h2>
+  <p><strong><code>intervention_acknowledged</code></strong>: a one-bit summary derived from the in-enclave governance layer&rsquo;s observation of the user&rsquo;s subsequent input. The flag MUST be computed inside the enclave; the underlying user input MUST NOT be exported. If the governance layer has no mechanism to observe subsequent input (one-shot session, no follow-up turn before timeout), the field SHOULD be omitted rather than guessed.</p>
 
-  <p>The attestation document is signed using the <strong>Dead Simple Signing Envelope (DSSE)</strong> format (<a href="https://github.com/secure-systems-lab/dsse" target="_blank" rel="noopener noreferrer">github.com/secure-systems-lab/dsse</a>), already established for in-toto and SLSA build attestations. DSSE was chosen for three reasons: payload-type independence, prevention of cross-protocol replay via the payload-type field, and existing tooling support.</p>
+  <h2 id="usage-rules">6. Usage rules</h2>
+  <p>v0.2 publishes three usage rules governing what receivers may do with an NCSA receipt and what must accompany it.</p>
 
-  <p>A signed attestation has the form:</p>
+  <p>These rules presuppose an architectural placement that v0.2 makes explicit: NCSA describes a boundary that <em>governs</em>, not one that <em>describes</em>. If enforcement sits structurally above the reasoning layer of the governed system, the agent receives the boundary as a policy signal and can reason around it; governance becomes advisory. If enforcement sits structurally below the reasoning layer, the agent has no path around it and the outcome is deterministic. The three usage rules below assume the latter placement. Under the former, all three collapse: the receipt records a refusal the agent could have re-derived its way past, the attestation transfers because nothing structurally prevented its re-binding, and inherited validity becomes the default because no boundary was ever load-bearing.</p>
 
+  <p>The boundary is also structurally a <em>reconciliation point</em>, not a <em>checkpoint</em>. A checkpoint validates against state captured at intent-formation time; a reconciliation point resolves intent, authority, and live system state into a single binding admissibility decision at commit. Boundaries treated as checkpoints risk firing correctly against conditions that have already changed: the boundary is enforced, but against state that no longer exists. NCSA&rsquo;s commit-time admissibility resolution (§5.3) is the procedural form of reconciliation; the temporal recognition lag fields are the diagnostic surface that exposes when reconciliation has degraded into checkpointing.</p>
+
+  <p>The three usage rules together address four conceptual surfaces at which admissibility must be resolved separately: <strong>formation</strong> (when an action is first constituted as a candidate), <strong>execution</strong> (when the candidate commits as a state transition), <strong>persistence</strong> (when the attested artifact is retrieved across time), and <strong>propagation</strong> (when the attested artifact crosses a context boundary into a receiving system). Each surface presents a distinct admissibility question, and a system can produce a structurally valid execution-boundary outcome while still failing at one of the other three. §5.3 together with the reconciliation-point framing above describe what must hold at execution. §6.1 (governed continuation) addresses the formation surface that follows a refusal: the chosen continuation is itself a new action whose admissibility must be resolved fresh, with its own attestation. §6.2 (attestation does not transfer) addresses propagation: when an attested artifact crosses into a receiving system, admissibility must be resolved against the receiving system&rsquo;s current conditions, not inherited from the originating system. §6.3 (no inherited validity across persistence) addresses persistence: when an attested artifact is retrieved across time, its prior validity does not survive intervening state changes. The three rules are collectively load-bearing because dropping any one of them turns the corresponding surface into a path by which invalid action can re-enter the system.</p>
+
+  <h3 id="governed-continuation">6.1 Governed continuation (attestation covers the refusal path)</h3>
+  <p>A refusal is not the end of governance. Whatever follows a refusal (fallback, deferral, escalation, handoff) is itself a new transition with its own admissibility conditions. NCSA MUST attest not only the refused action but also the chosen continuation, so the refusal path cannot be used to reintroduce risk that the primary path would have refused.</p>
+  <p>The deeper structural reason: the constraint semantics established at the boundary must persist beyond it. The boundary is either preserved or diluted depending on what the continuation is allowed to do. A hard execution boundary at refusal followed by a continuation that softly reinterprets, retries, or weakens that refused state produces a boundary that is structurally correct but functionally diluted. The integrity of the constraint depends on the continuation honoring the same semantics that produced the refusal.</p>
+  <p><strong>Spec language.</strong> When the NCSA gate produces a refusal, the system&rsquo;s chosen continuation (fallback, deferral, escalation, or handoff) MUST itself be the subject of a new admissibility resolution and a new attestation. Refusal attestations and continuation attestations together form the governed refusal record; an attested refusal followed by an unattested continuation is non-compliant. The refusal attestation references the continuation attestation via <code>continuation_attestation_id</code> (§5.3). Continuations MUST NOT reintroduce paths the boundary already refused, weaken the constraint that produced the refusal, or reinterpret the refused state into an admissible one through downstream handling.</p>
+
+  <h3 id="attestation-does-not-transfer">6.2 Attestation does not transfer</h3>
+  <p>Governance is a layered stack: <strong>formation</strong> (can an action validly exist at all), <strong>execution</strong> (can that transition occur now under current authority and context), and <strong>propagation</strong> (does trust remain valid as the resulting artifact moves across systems). Most governance discussions converge on the first two layers; the third is the next gap. Even a perfectly governed execution can produce an artifact that becomes unsafe, unauthorized, or context-invalid once it leaves the originating system. That is where inherited trust becomes dangerous.</p>
+  <p>When an NCSA-attested artifact, decision, or transition crosses a system boundary, downstream conditions can introduce new admissibility constraints that did not exist at bind time: policy changes, revoked authority, expired approvals, different execution environments, altered intended use. The receiving system MUST re-resolve admissibility under its own current state. The question shifts from &ldquo;was this valid when created?&rdquo; to &ldquo;is this still admissible for use here, now, under current conditions?&rdquo; <strong>Trust does not propagate; attestation does not transfer.</strong></p>
+  <p><strong>Spec language.</strong> An NCSA attestation is valid only for the binding event it certifies, in the system that produced it. Cross-boundary use of the underlying artifact, decision, or transition requires a fresh admissibility resolution in the receiving system under its current state, authority, and constraints. Receiving systems MUST NOT treat a prior attestation as sufficient basis to act. The downstream re-admissibility boundary is constitutive, not optional.</p>
+
+  <h3 id="no-inherited-validity">6.3 No inherited validity across persistence</h3>
+  <p>Candidates that are retained, cached, or retried MUST NOT inherit prior admissibility. Every re-entry point must re-establish admissibility under current state. Persistence is a distinct layer between formation and execution and MUST be governed explicitly so validity does not travel through it.</p>
+  <p>The architectural structure is a three-layer split, jointly responsible for preventing validity from traveling: <strong>formation</strong> determines what can become a candidate; <strong>persistence</strong> determines which candidates remain available; <strong>execution</strong> determines whether any available candidate can still become effect-capable under current state. If persistence is ungoverned, candidates retained from earlier conditions can re-enter execution carrying inherited validity, and <strong>persistence becomes a hidden continuity channel that bypasses the execution boundary</strong>. The three layers stop being sequential and become jointly responsible.</p>
+  <p><strong>Spec language.</strong> Admissibility decisions are not cacheable. A candidate transition that recurs, is retried, or is resumed from a persisted state MUST have its admissibility re-resolved against the state, authority, and constraints in effect at the moment of re-entry. Prior NCSA attestations do not satisfy this requirement.</p>
+
+  <p><strong>Regulated-environment example.</strong> In regulated healthcare workflows, the practical form of this failure is <em>stale validity</em>: a policy can be structurally sound, the reviewer can be authorized, and the evidence can be complete, but if the regulation has changed between when the review was initiated and when the attestation was signed, the execution is inadmissible even though every individual step was valid. The system has to re-verify conditions at the moment of commit, not carry forward a prior approval. This is the engineering form of §6.3: persistence of evidence is not persistence of validity, and the governing conditions can shift inside the gap between authorization and execution. NCSA&rsquo;s requirement that admissibility be re-resolved at every re-entry point is what closes that gap procedurally.</p>
+
+  <h2 id="signing-envelope">7. Signing envelope</h2>
+  <p>The attestation document is signed using the <strong>Dead Simple Signing Envelope (DSSE)</strong> format (<a href="https://github.com/secure-systems-lab/dsse">github.com/secure-systems-lab/dsse</a>), established for in-toto and SLSA build attestations. DSSE was chosen for three reasons: payload-type independence, prevention of cross-protocol replay via the payload-type field, and existing tooling support.</p>
+  <p>A signed v0.2 attestation has the form:</p>
   <pre><code>{`{
-  "payloadType": "application/vnd.svrnos.ncsa+json;version=0.1",
+  "payloadType": "application/vnd.svrnos.ncsa+json;version=0.2",
   "payload": "<base64-encoded attestation document>",
   "signatures": [
     {
@@ -232,17 +468,13 @@ TERMINATE_SESSION        session closed by the governance layer</code></pre>
     }
   ]
 }`}</code></pre>
-
-  <p>Signatures MUST be produced by a key bound to the TEE platform attestation chain (§6). The signing algorithm MUST be Ed25519, ECDSA P-384, or RSA-PSS with SHA-384 (minimum); other algorithms MAY be added in later versions.</p>
-
+  <p>Signatures MUST be produced by a key bound to the TEE platform attestation chain (§8). The signing algorithm MUST be Ed25519, ECDSA P-384, or RSA-PSS with SHA-384 (minimum); other algorithms MAY be added in later versions.</p>
   <p>Implementations MAY produce additional signatures from external signing parties (operator org key, auditor counter-signature) by appending to the <code>signatures</code> array.</p>
 
-  <h2>6. Platform attestation chain</h2>
+  <h2 id="platform-attestation">8. Platform attestation chain</h2>
+  <p>The <code>platform_attestation</code> field binds the signing key to the in-enclave execution instance via the underlying TEE&rsquo;s native attestation mechanism. v0.2 retains v0.1 bindings for AWS Nitro Enclaves, Apple Private Cloud Compute, and Generic / other TEE.</p>
 
-  <p>The <code>platform_attestation</code> field binds the signing key to the in-enclave execution instance via the underlying TEE's native attestation mechanism. v0.1 specifies bindings for the three production TEE platforms in current operator use.</p>
-
-  <h3>6.1 AWS Nitro Enclaves</h3>
-
+  <h3 id="aws-nitro">8.1 AWS Nitro Enclaves</h3>
   <pre><code>{`"platform_attestation": {
   "tee_type": "aws-nitro-enclave",
   "attestation_doc_b64": "<base64 of the Nitro attestation document>",
@@ -255,11 +487,9 @@ TERMINATE_SESSION        session closed by the governance layer</code></pre>
   "module_id": "<enclave module id>",
   "signing_cert_chain": "<CBOR-encoded cert chain to AWS Nitro root>"
 }`}</code></pre>
+  <p>PCR0 measures the enclave image. PCR2 measures the governance-layer application. PCR8 measures the signing certificate. A verifier MUST chain <code>signing_cert_chain</code> to the <a href="https://docs.aws.amazon.com/enclaves/latest/user/verify-root.html">AWS Nitro Attestation PKI root</a>.</p>
 
-  <p>PCR0 measures the enclave image. PCR2 measures the governance-layer application. PCR8 measures the signing certificate. A verifier MUST chain <code>signing_cert_chain</code> to the <a href="https://docs.aws.amazon.com/enclaves/latest/user/verify-root.html" target="_blank" rel="noopener noreferrer">AWS Nitro Attestation PKI root</a>.</p>
-
-  <h3>6.2 Apple Private Cloud Compute</h3>
-
+  <h3 id="apple-pcc">8.2 Apple Private Cloud Compute</h3>
   <pre><code>{`"platform_attestation": {
   "tee_type": "apple-pcc",
   "node_attestation_b64": "<base64 of the PCC node attestation>",
@@ -267,44 +497,45 @@ TERMINATE_SESSION        session closed by the governance layer</code></pre>
   "transparency_log_inclusion_proof": "<inclusion proof>",
   "secure_enclave_cert_chain": "<base64 cert chain to Apple root>"
 }`}</code></pre>
-
   <p>A verifier MUST confirm <code>code_release_id</code> appears in the Apple PCC transparency log and that the inclusion proof matches a published log root.</p>
 
-  <h3>6.3 Generic / other TEE</h3>
-
+  <h3 id="generic-tee">8.3 Generic / other TEE</h3>
   <pre><code>{`"platform_attestation": {
   "tee_type": "<vendor-defined>",
   "raw_attestation_b64": "<base64-encoded native attestation>",
   "verification_url": "<URL to the operator's published verification procedure>"
 }`}</code></pre>
-
   <p>For TEE platforms not enumerated above (Intel SGX, AMD SEV-SNP, GCP Confidential Space, custom). The operator MUST publish a verification procedure.</p>
 
-  <h2>7. Verification flow</h2>
-
-  <p>A verifier (regulator, insurer, operator's own auditor, court-appointed examiner) validates an attestation as follows:</p>
-
-  <ol>
-    <li><strong>Parse the DSSE envelope.</strong> Reject if <code>payloadType</code> is not <code>application/vnd.svrnos.ncsa+json;version=0.1</code>.</li>
+  <h2 id="verification-flow">9. Verification flow</h2>
+  <figure class="paper-figure not-prose">
+    <img src="/research/non-content-safety-attestation/ncsa-figure-Verification-Flow-6.png" alt="Verification flow — the sequence a verifier executes to validate a v0.2 attestation, from DSSE envelope parsing through GER code resolution." loading="lazy" />
+  </figure>
+  <p>A verifier (regulator, insurer, operator&rsquo;s own auditor, court-appointed examiner) validates a v0.2 attestation as follows:</p>
+  <ol class="ncsa-list">
+    <li><strong>Parse the DSSE envelope.</strong> Reject if <code>payloadType</code> is not <code>application/vnd.svrnos.ncsa+json;version=0.2</code>.</li>
     <li><strong>Verify the signature</strong> against the public key referenced by <code>keyid</code>. The public key MUST be present in or derivable from the <code>platform_attestation</code> chain.</li>
-    <li><strong>Verify the platform attestation chain</strong> per §6 for the declared <code>tee_type</code>. This step proves the signing key was produced inside a measured TEE instance.</li>
+    <li><strong>Verify the platform attestation chain</strong> per §8 for the declared <code>tee_type</code>. This step proves the signing key was produced inside a measured TEE instance.</li>
     <li><strong>Resolve <code>governance_layer.image_hash</code></strong> to a publicly auditable artifact. Operators SHOULD publish governance-layer images to a transparency log or public binary registry following the Apple PCC pattern.</li>
     <li><strong>Resolve <code>policy_config_hash</code></strong> to a published policy. Operators MUST make the policy retrievable by hash, redacted only for security-sensitive specifics.</li>
-    <li><strong>Confirm <code>non_content_assertion</code> is <code>true</code></strong> and inspect all fields against §3.1. Reject if any field violates the non-content guarantee.</li>
+    <li><strong>Confirm <code>non_content_assertion</code> is <code>true</code></strong> and inspect all fields against §4.1. Reject if any field violates the non-content guarantee, including the §2.1 prohibition on free-form reasoning narrative and the §5.3 prohibition on alternative-content recording.</li>
+    <li><strong>Resolve <code>ger_codes</code> against <code>ger_version</code>.</strong> Confirm the cited codes exist in the named GER taxonomy version. If <code>action_taken</code> is a refusal, confirm <code>continuation_attestation_id</code> is populated and verify the referenced continuation attestation per §6.1.</li>
+    <li><strong>If <code>admissible_alternatives.count</code> is zero or one,</strong> surface as a governance event. The system enforced under collapsed alternative-space (§5.3).</li>
+    <li><strong>If <code>recognition_lag_ms</code> exceeds operator-defined thresholds,</strong> surface as a governance event (temporal lag, §2.6).</li>
+    <li><strong>If the attestation crosses a system boundary,</strong> apply §6.2: do not treat as sufficient basis to act without fresh admissibility resolution in the receiving system. If retrieved from persistence, apply §6.3.</li>
     <li><strong>Accept the attestation</strong> as evidence that the named governance layer ran inside the named TEE platform and produced the recorded outcome.</li>
   </ol>
 
-  <h2>8. Example payloads</h2>
+  <h2 id="example-payloads">10. Example payloads</h2>
 
-  <h3>8.1 Clean session, no signal</h3>
-
+  <h3 id="example-clean">10.1 Clean session, no signal</h3>
   <pre><code>{`{
-  "schema_version": "ncsa/0.1",
+  "schema_version": "ncsa/0.2",
   "session_id": "h4Yh9c2gQ8eK0wTpQv8r3w",
-  "attestation_timestamp": "2026-05-14T18:42:11Z",
+  "attestation_timestamp": "2026-06-07T18:42:11Z",
   "governance_layer": {
     "name": "sango-guard",
-    "version": "1.2.0",
+    "version": "2.0.0",
     "image_hash": "7fb5c55bc2ecbb68ed99a13d7122abfc0666b926a79d5379bc58b9445c84217f59cfdd36c08b2c79552928702efe23e4"
   },
   "policy_config_hash": "235c9e6050abf6b993c915505f3220e2d82b51aff830ad14cbecc2eec1bf0b4ae749d311c663f464cde9f718acca5286",
@@ -314,16 +545,17 @@ TERMINATE_SESSION        session closed by the governance layer</code></pre>
   "signal_counts": {},
   "state_transitions": [],
   "platform_attestation": { "tee_type": "aws-nitro-enclave", "...": "..." },
-  "non_content_assertion": true
+  "non_content_assertion": true,
+  "ger_codes": [],
+  "ger_version": "0.2"
 }`}</code></pre>
 
-  <h3>8.2 Monitoring state, no escalation</h3>
-
+  <h3 id="example-monitoring">10.2 Monitoring state, no escalation</h3>
   <pre><code>{`{
-  "schema_version": "ncsa/0.1",
+  "schema_version": "ncsa/0.2",
   "session_id": "k3M9pQ2vR5cN8tWxF7zJ4Y",
-  "attestation_timestamp": "2026-05-14T19:03:47Z",
-  "governance_layer": { "name": "sango-guard", "version": "1.2.0", "image_hash": "..." },
+  "attestation_timestamp": "2026-06-07T19:03:47Z",
+  "governance_layer": { "name": "sango-guard", "version": "2.0.0", "image_hash": "..." },
   "policy_config_hash": "...",
   "outcome_state": "MONITORING",
   "action_taken": "PROCEED",
@@ -333,16 +565,18 @@ TERMINATE_SESSION        session closed by the governance layer</code></pre>
     { "from_state": "NEUTRAL", "to_state": "MONITORING", "turn_index": 8 }
   ],
   "platform_attestation": { "tee_type": "aws-nitro-enclave", "...": "..." },
-  "non_content_assertion": true
+  "non_content_assertion": true,
+  "ger_codes": [],
+  "ger_version": "0.2",
+  "constraint_locus": "exogenous"
 }`}</code></pre>
 
-  <h3>8.3 Escalated session, external referral</h3>
-
+  <h3 id="example-escalated">10.3 Escalated session, external referral (v0.2 full payload)</h3>
   <pre><code>{`{
-  "schema_version": "ncsa/0.1",
+  "schema_version": "ncsa/0.2",
   "session_id": "p7Bx3kL8wQ2nR5tY9vM4cJ",
-  "attestation_timestamp": "2026-05-14T20:17:32Z",
-  "governance_layer": { "name": "sango-guard", "version": "1.2.0", "image_hash": "..." },
+  "attestation_timestamp": "2026-06-07T20:17:32Z",
+  "governance_layer": { "name": "sango-guard", "version": "2.0.0", "image_hash": "..." },
   "policy_config_hash": "...",
   "outcome_state": "CRITICAL",
   "action_taken": "ESCALATE_EXTERNAL",
@@ -359,48 +593,271 @@ TERMINATE_SESSION        session closed by the governance layer</code></pre>
   ],
   "escalation_target_class": "crisis_resource",
   "intervention_acknowledged": true,
+
+  "ger_codes": ["GER-501"],
+  "ger_version": "0.2",
+
+  "threshold_moderation":         { "met": true, "value": 0.85, "action": "GOVERN_OUTPUT" },
+  "threshold_external_reporting": { "met": true, "value": 0.92, "action": "ESCALATE_EXTERNAL" },
+
+  "accountable_party_name":  "J. Smith",
+  "accountable_party_title": "Director, Trust & Safety Operations",
+  "accountability_attestation_age_days": 12,
+
+  "constraint_locus": "exogenous",
+
+  "t_propagation":     "2026-06-07T20:17:30.412Z",
+  "t_recognition":     "2026-06-07T20:17:30.487Z",
+  "recognition_lag_ms": 75,
+
+  "admissible_alternatives": {
+    "count": 3,
+    "type_tags": ["crisis_resource", "internal_review", "operator_handoff"],
+    "structurally_visible": true
+  },
+
+  "requirement_id": "REQ-2025-WA-HB2225-§4.1",
+
   "platform_attestation": { "tee_type": "aws-nitro-enclave", "...": "..." },
   "non_content_assertion": true
 }`}</code></pre>
+  <p>These examples illustrate the minimum implementation pattern for a v0.2 generator and verifier. A production release requires a formal JSON Schema, validation rules, signature test vectors, and a conformance test suite, which should accompany v1.0. The v0.2 optional fields above are optional; an implementation MAY produce a v0.2-conformant attestation that omits them (provided the required fields including <code>ger_codes</code> and <code>ger_version</code> are present).</p>
 
-  <p>These three examples are sufficient for an operator to implement a generator and a verifier without further guidance from this document.</p>
+  <h2 id="relationship-ger">11. Relationship to GER</h2>
+  <p>NCSA and the SVRNOS <a href="/research/governance-error-register">Governance Error Register (GER)</a> are companion artifacts. NCSA is the signed procedural receipt that proves a governance check ran. GER is the closed numbered taxonomy that classifies what kind of structural governance failure was present (or absent) in the event.</p>
+  <p>v0.2 binds the two through the <code>ger_codes</code> + <code>ger_version</code> required fields. Without this bridge, a regulator or auditor reading an NCSA attestation can confirm a governance check ran but cannot connect the event to the taxonomy that names what kind of event it was. The <code>ger_codes</code> field is an array because a single event may correspond to multiple codes (failure mode + escalation gap, for instance). <code>ger_version</code> is required whenever the array is non-empty so attestations remain interpretable as the taxonomy evolves.</p>
+  <p>This binding also positions NCSA against runtime governance instrumentation projects (§12): GER provides the failure-classification layer that runtime control verdicts (&ldquo;deny&rdquo;, &ldquo;allow&rdquo;, &ldquo;modify&rdquo;) currently lack.</p>
 
-  <h2>9. Prior art and design borrowings</h2>
+  <h2 id="relationship-runtime">12. Relationship to runtime governance instrumentation</h2>
+  <figure class="paper-figure not-prose">
+    <img src="/research/non-content-safety-attestation/ncsa-figure-Runtime-NCSA-GER-Composition-7.png" alt="Runtime composition — how NCSA receipts compose with runtime governance instrumentation (ACS, ACS-style trace layers) and GER classification codes." loading="lazy" />
+  </figure>
+  <p>Two parallel projects in mid-2026 specify runtime governance instrumentation for AI agents under similar names and overlapping scope. The <a href="https://agentcontrolstandard.ai">Agent Control Standard</a> launched May 27, 2026 under the MIT license, forked from the OWASP Agent Observability Standard project, with implementations at <a href="https://github.com/Agent-Control-Standard/ACS">github.com/Agent-Control-Standard/ACS</a>; it positions itself as vendor-neutral and community-driven. Microsoft&rsquo;s <a href="https://commandline.microsoft.com/agent-control-specification-runtime-governance/">Agent Governance Toolkit</a> was announced April 2, 2026 under the MIT license; Microsoft positioned <a href="https://commandline.microsoft.com/agent-control-specification-runtime-governance/">Agent Control Specification</a> as a portable runtime control standard within that toolkit during Build 2026 (June 2026). Both projects define runtime control hooks (allow / deny / modify verdicts at interception points), structured observability for trace data (OpenTelemetry-based), and agent inventory mechanisms (capability and tool surfaces).</p>
+  <p>NCSA composes with this category rather than competing with it. Whichever specification wins broader adoption, the architectural relationship is the same:</p>
+  <ul class="ncsa-list">
+    <li><strong>Trace and observability emit the telemetry stream; NCSA produces the signed receipt.</strong> The trace layer of either project is a structured observability output (OpenTelemetry, OCSF-mapped, SIEM-bound). It documents what happened operationally. NCSA is the signed, procedural attestation that proves governance ran, distinct from the raw observability data it may draw on. NCSA sits above the trace stream, not in competition with it.</li>
+    <li><strong>Runtime verdicts name the control action, not a closed structural failure taxonomy.</strong> Control verdicts (&ldquo;deny&rdquo;, &ldquo;allow&rdquo;, &ldquo;modify&rdquo;) state what the runtime did at an interception point. They do not classify the structural failure class that justified the action. GER, referenced through NCSA&rsquo;s <code>ger_codes</code> field (§5.1, §11), supplies the classification layer the runtime specifications do not specify.</li>
+  </ul>
+  <p>An operator can deploy either runtime instrumentation specification, emit its trace as observability telemetry, attach GER classifications, and produce NCSA attestations as the signed receipt that proves the governance check ran. The three layers (runtime instrumentation, classification, evidentiary receipt) are operationally distinct and architecturally separable regardless of which runtime-instrumentation specification wins broader adoption.</p>
 
+  <p>A third adjacent category is threat-modeling methodology. The OWASP Multi-Agentic System Threat Modeling Guide v1.0 (MAESTRO) defines a seven-layer architectural methodology crossed with four agentic factors (Non-Determinism, Autonomy, Identity Management, Agent-to-Agent Communication) for identifying where threats originate in multi-agent systems. MAESTRO and NCSA compose: a MAESTRO threat-modeling exercise identifies the structural exposure points; NCSA produces the signed attestation that the governance check at each exposure point ran. Runtime instrumentation specifications (Agent Control Standard, Agent Governance Toolkit), threat-modeling methodologies (MAESTRO), failure-classification taxonomies (GER), and procedural attestation formats (NCSA) are four distinct layers of the same governance stack; NCSA composes with each.</p>
+
+  <h2 id="prior-art">13. Prior art and design borrowings</h2>
   <p>The format does not invent new cryptography. It assembles primitives that already work in production at scale.</p>
-
-  <ul>
-    <li><strong>DSSE signing envelope</strong>, Dead Simple Signing Envelope, used by in-toto and SLSA. Solves the cross-protocol-replay problem via the typed payload, supports multi-signature, has multi-language tooling.</li>
-    <li><strong>AWS Nitro Attestation</strong>, Hypervisor-signed COSE_Sign1 document over a CBOR-encoded payload containing PCRs and module ID. Verifiable against a public AWS PKI root.</li>
-    <li><strong>Apple Private Cloud Compute</strong>, Secure Enclave UID-rooted certificates per node, with code measurements published to an append-only cryptographically tamper-proof transparency log, plus binary release publication within 90 days of log inclusion.</li>
-    <li><strong>C2PA Content Credentials</strong>, manifest pattern for cryptographically signed provenance over media. Different domain, same architectural shape.</li>
-    <li><strong>IETF EAT (RFC 9711)</strong>, Entity Attestation Token. A general-purpose attestation token format; v0.1 of this spec uses DSSE for tooling alignment, but a future version may add an EAT binding.</li>
+  <ul class="ncsa-list">
+    <li><strong>DSSE signing envelope</strong>: Dead Simple Signing Envelope, used by in-toto and SLSA. Solves the cross-protocol-replay problem via the typed payload, supports multi-signature, has multi-language tooling.</li>
+    <li><strong>AWS Nitro Attestation</strong>: Hypervisor-signed COSE_Sign1 document over a CBOR-encoded payload containing PCRs and module ID. Verifiable against a public AWS PKI root.</li>
+    <li><strong>Apple Private Cloud Compute</strong>: Secure Enclave UID-rooted certificates per node, with code measurements published to an append-only cryptographically tamper-proof transparency log, plus binary release publication within 90 days of log inclusion.</li>
+    <li><strong>C2PA Content Credentials</strong>: manifest pattern for cryptographically signed provenance over media. Different domain, same architectural shape.</li>
+    <li><strong>IETF EAT (RFC 9711)</strong>: Entity Attestation Token. A general-purpose attestation token format; v0.2 uses DSSE for tooling alignment, but a future version may add an EAT binding.</li>
+    <li><strong>SLSA + NIST SSDF</strong>: referenced for the upstream supply-chain integrity layer (requirement &rarr; spec &rarr; build). NCSA&rsquo;s <code>requirement_id</code> field binds the runtime attestation to the upstream chain rather than re-specifying it.</li>
+    <li><strong>ICD-10-CM Index + Contributing precedent</strong>: GER&rsquo;s Index + Contributing code architecture, referenced through NCSA&rsquo;s <code>ger_codes</code> field, derives from medical and pharmacovigilance coding conventions.</li>
+    <li><strong>OWASP Agentic AI Threats and Mitigations (T1&ndash;T17, v1.1)</strong>: catalogs seventeen agent-specific threat patterns with paired mitigations. T8 <em>Repudiation &amp; Untraceability</em> names the audit-gap threat NCSA is designed to address: an operator who claims governance ran but cannot produce signed evidence is operating under T8. NCSA receipts are the structural mitigation to T8 in the agent-attestation surface; the broader T1&ndash;T17 catalog operates at the threat-modeling layer above NCSA&rsquo;s evidentiary layer.</li>
   </ul>
 
-  <h2>10. Open questions for v1.0</h2>
+  <h2 id="glossary">14. Glossary</h2>
+  <p>Selected named primitives surfaced through v0.2 design discussion.</p>
+  <p><strong>Governed event.</strong> The discrete transition point at which an interaction shifts from &ldquo;ordinary use&rdquo; (no governance action) to &ldquo;governed event&rdquo; (one or more governance thresholds have been crossed, with preservation, escalation, review, or reporting obligations attached). NCSA v0.2 implicitly attests at this transition; the term names what the transition is. v0.3 may introduce a structured <em>governed-event</em> attestation type that marks the transition itself as an attested artifact, distinct from the subsequent action attestation.</p>
 
-  <p>These are deliberately left unresolved in v0.1 and invite comment.</p>
-
-  <ul>
-    <li><strong>Multi-session attestation.</strong> v0.1 is per-session. A user with intent can open new sessions until one produces the desired output, and each session's attestation remains "clean." This reproduces the Pattern Gap at the session boundary. v1.0 should address how cross-session correlation is attested without breaking the privacy guarantee. Probably involves identity-bound but content-free session linkage, or operator-level rate-of-state-transition attestations across populations.</li>
-    <li><strong>Vocabulary registry.</strong> §4.3 permits operators to extend <code>outcome_state</code> and <code>action_taken</code> enumerations. Flexibility is intentional, but if every operator defines a private vocabulary, cross-operator verification breaks. v1.0 should specify either a canonical registry (IANA-style assigned values) or an interoperability profile defining minimum required values plus extension semantics.</li>
+  <h2 id="open-questions">15. Open questions for v1.0</h2>
+  <p>These are deliberately left unresolved in v0.2 and invite comment.</p>
+  <ul class="ncsa-list">
+    <li><strong>Adequacy attestation.</strong> Per §2.4, NCSA covers procedural attestation. Adequacy attestation (whether the gate&rsquo;s design was appropriate for the conditions) is the harder problem because it requires the system to attest something about its own design fitness. v1.0 may need a separate adequacy-claim layer; v0.2 names the distinction and treats adequacy as future work.</li>
+    <li><strong>Compositional threshold attestation.</strong> Per §5.3, the v0.2 threshold-per-action fields capture each per-category threshold as a scalar <code>value</code>. v1.0 may formalize the compositional structure (confidence in signal · severity of potential harm · actionability of available response) as three separately attested components rather than a single point. The structural insight is that a threshold cleared on severity but failed on actionability is a different governance event from a threshold cleared on actionability but failed on confidence; the scalar collapses that distinction.</li>
+    <li><strong>Intervention-capacity attestation.</strong> Per §5.3, the v0.2 <code>admissible_alternatives</code> field captures whether alternatives are structurally visible at the moment of decision. It does not capture whether the system retains intervention capacity over those alternatives: whether difference can still change trajectory. A system can have multiple visible alternatives while having become insensitive to variation. v1.0 should introduce intervention-capacity attestation distinguishing &ldquo;alternatives present but trajectory locked&rdquo; from &ldquo;alternatives present and trajectory still redirectable.&rdquo; The architectural separation (degradation of influence &rarr; loss of admissible grounding &rarr; inability to bind) needs to map to corresponding attestation surfaces.</li>
+    <li><strong>Multi-session attestation.</strong> v0.2 is per-session. A user with intent can open new sessions until one produces the desired output, and each session&rsquo;s attestation remains &ldquo;clean.&rdquo; This reproduces the Pattern Gap at the session boundary. v1.0 should address how cross-session correlation is attested without breaking the privacy guarantee. Probably involves identity-bound but content-free session linkage, or operator-level rate-of-state-transition attestations across populations.</li>
+    <li><strong>Cross-surface composition.</strong> Individually valid per-surface attestations can compose into an incoherent operational picture when the cross-surface state they implicitly trust fragments. A substrate-integrity attestation type distinct from per-surface attestation is candidate v0.3 / v0.4 work.</li>
+    <li><strong>Vocabulary registry.</strong> §5.4 permits operators to extend <code>outcome_state</code> and <code>action_taken</code> enumerations. Flexibility is intentional, but if every operator defines a private vocabulary, cross-operator verification breaks. v1.0 should specify either a canonical registry (IANA-style assigned values) or an interoperability profile defining minimum required values plus extension semantics.</li>
     <li><strong>Operator key rotation.</strong> Should the spec require a key-rotation policy, or leave it to operator discretion?</li>
     <li><strong>Multi-party signing.</strong> Some regulators may require a counter-signature from an external auditor before an attestation is treated as evidence. The DSSE envelope supports this. Should v1.0 specify when?</li>
     <li><strong>Long-tail retention.</strong> WA HB 2225 requires annual reporting. Should attestations be retained for a defined minimum period? Where?</li>
     <li><strong>Cross-jurisdictional disclosure.</strong> Some attestation fields may need to be progressively disclosed depending on the requesting party. Does the format need a redaction profile spec?</li>
-    <li><strong>Differential-privacy treatment of <code>signal_counts</code>.</strong> At sufficient session volume, signal-count distributions could leak population-level inferences. Should v1.0 specify noise-injection guidance?</li>
-    <li><strong>Attestation freshness.</strong> Should attestations include a maximum validity window after which a verifier rejects them as stale?</li>
+    <li><strong>Differential-privacy treatment of count-style fields.</strong> At sufficient session volume, count-style fields (signal counts, threshold-per-action triggers, recognition-lag distributions) could leak population-level inferences. Should v1.0 specify noise-injection guidance?</li>
+    <li><strong>Attestation freshness.</strong> Should attestations include a maximum validity window after which a verifier rejects them as stale? Interacts with §6.3 (no inherited validity across persistence).</li>
+    <li><strong>Representation integrity between external state and internal model.</strong> §5.3 reconciliation against live state and §6 reconciliation-point framing assume the system binds against the external state directly. In practice the system binds against its internal reconstruction of that state. If the reconstruction drifts, lags, or is partially specified, admissibility can appear to hold while it is being resolved against a reference that has shifted. The constraint that admissibility be externally constituted (§2.3) is therefore not sufficient on its own: the mapping between external state and the system&rsquo;s internal representation of it must itself be constrained, validated, and non-self-redefinable at bind. A system can satisfy the procedural rule and still lose the ground the rule was meant to protect. v1.0 should specify a representation-integrity attestation surface distinct from the existing reconciliation primitives.</li>
+    <li><strong>Autonomy-level calibration of threshold-per-action.</strong> Feng, McDonald, &amp; Zhang (2025) propose a six-level autonomy ladder (L0 No Autonomy &rarr; L5 Super-Autonomy). The threshold-per-action fields (§5.3) currently capture per-category thresholds as scalars. Should v1.0 specify that threshold values be calibrated to the agent&rsquo;s declared autonomy level, so that an L4-autonomy agent and an L1-autonomy agent operating under the same policy produce different threshold values and the verifier can confirm calibration was autonomy-appropriate?</li>
   </ul>
 
-  <p>Comments may be submitted to <a href="mailto:attestation@svrnos.com">attestation@svrnos.com</a>. v1.0 is targeted for publication by November 14, 2026, integrating community comment.</p>
+  <h3 id="cite">Cite This Specification</h3>
+  <div class="ger-callout">
+    <p><strong>Citation</strong></p>
+    <p>Nzeutem, S. (2026). <em>Non-Content Safety Attestation v0.2.</em> Sovereign OS LLC. svrnos.com/research/non-content-safety-attestation</p>
+  </div>
 
-  <h2>11. Acknowledgements</h2>
+  <h2 id="acknowledgments">Acknowledgments</h2>
+  <p>NCSA v0.2 builds on the v0.1 design and on published technical documentation from AWS (Nitro Enclaves), Apple (Private Cloud Compute), Meta (Private Processing), and the in-toto / SLSA / DSSE communities, all credited in the References. It is also informed by AI accountability laws and reporting obligations active and arriving across US states and the EU (Washington HB 2225, EU AI Act Article 50, New York RAISE Act, California TFAIA) and voluntary frameworks emerging in Asia-Pacific (Singapore IMDA Model AI Governance Framework for Agentic AI), which set the timing for why a verifiable governance receipt matters now. The v0.2 review pass against the agentic-AI governance landscape was informed by <a href="https://www.linkedin.com/in/oliverpatel/" target="_blank" rel="noopener">Oliver Patel</a>&rsquo;s <em>The Ultimate Agentic AI Governance Resources</em> curated list (Enterprise AI Governance, 2026), which surfaced the OWASP Agentic, Singapore IMDA, WEF, and autonomy-level documents now referenced in &sect;1.1, &sect;12, &sect;13, and &sect;15.</p>
+  <p>Beyond the literature and the regulatory landscape, the v0.2 design principles, payload field additions, usage rules, and positioning sections were shaped through public LinkedIn engagement, comment threads, and direct correspondence with the contributors below. The table summarizes which sections each contribution informs; the prose entries that follow preserve the framing language each contributor brought.</p>
 
-  <p>This format builds on public technical documentation published by AWS (Nitro Enclaves), Apple (Private Cloud Compute), Meta (Private Processing), and the in-toto / SLSA / DSSE communities. Errors are mine.</p>
+  <div class="ger-wide not-prose">
+    <table class="paper-table">
+      <thead><tr><th>Contributor</th><th>Design contribution</th><th>Sections</th></tr></thead>
+      <tbody>
+        <tr><td><a href="https://www.linkedin.com/in/hansalberts/" target="_blank" rel="noopener">Hans Alberts</a></td><td>Human-knowing discipline against premature formalization; action-ladder threshold composition (confidence &middot; severity &middot; actionability)</td><td>§2.7, §5.3</td></tr>
+        <tr><td><a href="https://www.linkedin.com/in/brian-burke-ai/" target="_blank" rel="noopener">Brian Burke</a></td><td>Accountable-party fields making accountability decoupling detectable at runtime</td><td>§5.3</td></tr>
+        <tr><td><a href="https://www.linkedin.com/in/greggory-don-butler-652876362/" target="_blank" rel="noopener">Greggory Don Butler</a></td><td>Governed-event primitive; privacy and safety not opposites when architecture precedes consequence; pre-incident threshold design</td><td>§1, §5.3, §14</td></tr>
+        <tr><td><a href="https://www.linkedin.com/in/ralphcavallaro/" target="_blank" rel="noopener">Ralph Cavallaro</a></td><td>Boundary that governs vs describes; boundary as reconciliation point not checkpoint; specification fidelity as fourth testing layer</td><td>§5.3, §6</td></tr>
+        <tr><td><a href="https://www.linkedin.com/in/engchua/" target="_blank" rel="noopener">Eng Chua</a></td><td>Record-keeping presumption as the legal mechanism that shifts the evidential burden when actors will not produce evidence voluntarily</td><td>§1.1</td></tr>
+        <tr><td><a href="https://www.linkedin.com/in/adriana-coppelmans/" target="_blank" rel="noopener">Adriana Coppelmans</a></td><td>Constitutive evidence and standard sovereignty; procedural vs adequacy attestation</td><td>§2.3, §2.4</td></tr>
 
-  <hr />
+        <tr><td><a href="https://www.linkedin.com/in/dr-ramyaa-ganesh-9336b11b1/" target="_blank" rel="noopener">Dr. Ramyaa Ganesh</a></td><td>Governed continuation: constraint semantics must persist beyond the boundary</td><td>§6.1</td></tr>
+        <tr><td><a href="https://www.linkedin.com/in/cgunnell/" target="_blank" rel="noopener">Catherine Gunnell</a></td><td>Threshold-per-action separation across moderation, preservation, account action, legal review</td><td>§5.3</td></tr>
+        <tr><td>Michael Hendry</td><td>Runtime-layer enforcement as structurally necessary because behavioural specification is evadable by training optimization</td><td>§1</td></tr>
+        <tr><td><a href="https://www.linkedin.com/in/mrdecentralize/" target="_blank" rel="noopener">Ravi Joshi</a></td><td>Prevent-vs-detect regulatory framing; validation-becoming-advisory as the regulator pattern for enforcement failure</td><td>§1.1</td></tr>
+        <tr><td>Shay&nbsp;L.</td><td><code>constraint_locus</code> field: exogenous vs endogenous vs hybrid</td><td>§5.3</td></tr>
+        <tr><td><a href="https://www.linkedin.com/in/gennie-mansi-308a49269/" target="_blank" rel="noopener">Gennie Mansi</a>, <a href="https://www.linkedin.com/in/naveenakarusala/" target="_blank" rel="noopener">Naveena Karusala</a> &amp; <a href="https://www.linkedin.com/in/markriedl/" target="_blank" rel="noopener">Mark Riedl</a></td><td>Three-stakeholder audience framework (decision makers / decision subjects / legal representatives) from Legally-Informed XAI; legally informative versus legally actionable distinction; patient-centered accountability frame from the healthcare AI litigation analysis</td><td>§1.1, §2.1</td></tr>
+        <tr><td><a href="https://www.linkedin.com/in/pauljosephmcdonald/" target="_blank" rel="noopener">Paul McDonald</a></td><td>Procedural attestation not narrative reconstruction; three-way separation of governance artifacts; temporal recognition lag fields</td><td>§2.1, §2.2, §5.3</td></tr>
+        <tr><td><a href="https://www.linkedin.com/in/limflex/" target="_blank" rel="noopener">Koji Mochizuki</a></td><td>No inherited validity across persistence; persistence as a distinct layer between formation and execution</td><td>§6.3</td></tr>
+        <tr><td><a href="https://www.linkedin.com/in/ricardo-muro-90a13163/" target="_blank" rel="noopener">Ricardo Muro</a></td><td>Constitutive evidence and standard sovereignty; commit-time reconciliation; propagation as re-admissibility boundary; formation/persistence/execution as jointly responsible layers</td><td>§2.3, §6, §6.2, §6.3</td></tr>
+        <tr><td><a href="https://www.linkedin.com/in/amilcar-o-026169252/" target="_blank" rel="noopener">Amilcar O.</a></td><td>Representation integrity between external state and internal model as a v1.0 open question</td><td>§15</td></tr>
+        <tr><td><a href="https://www.linkedin.com/in/spencerescherer/" target="_blank" rel="noopener">Spencer Eric Scherer</a></td><td>Stale-validity failure mode grounded in regulated healthcare workflows</td><td>§6.3</td></tr>
+        <tr><td>Simon Narcis Secu</td><td>Discrete-events scope boundary; timing as part of the control surface</td><td>§2.5, §2.6</td></tr>
+        <tr><td><a href="https://www.linkedin.com/in/andrzej-skulski-63a11b348/" target="_blank" rel="noopener">Andrzej Skulski</a></td><td><code>admissible_alternatives</code> field design; influence &rarr; admissibility &rarr; intervention capacity &rarr; execution layered separation; intervention-capacity open question</td><td>§5.3, §15</td></tr>
+        <tr><td><a href="https://www.linkedin.com/in/ryan-stacey-728803388" target="_blank" rel="noopener">Ryan Stacey</a></td><td>Attestation does not transfer; layered stack of formation &rarr; execution &rarr; propagation</td><td>§6.2</td></tr>
+        <tr><td>Caroline Thongsan</td><td>&ldquo;Mapping before closure&rdquo; framing seeding the admissible-alternative-space requirement</td><td>§5.3</td></tr>
+        <tr><td><a href="https://www.linkedin.com/in/tim-zlomke" target="_blank" rel="noopener">Tim Zlomke</a></td><td>Evidentiary-design rationale; hindsight-amplified liability reconstruction as the failure mode procedural-only design avoids</td><td>§2.1</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-  <p><strong>License:</strong> This document is published under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>. The format itself is offered for unrestricted implementation. Reference implementations using this spec may be released under any license.</p>
+  <p>The framing language each contributor brought is preserved in the prose entries below.</p>
 
-  <p><strong>Companion piece:</strong> <a href="/insights/dear-zuck-tee-not-the-problem">Dear Zuck, the TEE Is Not the Problem. What Runs Inside It Is.</a> (the argument for why this format is needed).</p>
-</ArticleLayout>
+  <ul class="ncsa-list">
+    <li><strong><a href="https://www.linkedin.com/in/hansalberts/" target="_blank" rel="noopener">Hans Alberts</a></strong> (two contributions): §2.7 some knowing must stay in human knowing. Framing: the risk of translating uncertainty too quickly into system-readable form; every primitive that turns a human-cognition property into a structured field must include an explicit statement of what the attestation deliberately does not capture. §5.3 action-ladder structure: each per-category threshold composes from confidence in signal, severity of potential harm, and actionability of available response increasing together before action leaves the system, rather than firing on a single scalar point. Hans is separately credited with Arafeh Karimi for GER-319 Incorporation Failure in the SVRNOS <a href="/research/governance-error-register">Governance Error Register</a>.</li>
+    <li><strong><a href="https://www.linkedin.com/in/brian-burke-ai/" target="_blank" rel="noopener">Brian Burke</a></strong>: §5.3 accountable-party cluster (<code>accountable_party_name</code>, <code>accountable_party_title</code>, <code>accountability_attestation_age_days</code>). Makes GER-315 Accountability Decoupling detectable at runtime.</li>
+    <li><strong><a href="https://www.linkedin.com/in/greggory-don-butler-652876362/" target="_blank" rel="noopener">Greggory Don Butler</a></strong> (multi-contribution): §14 <em>governed event</em> primitive (the discrete transition point where a private interaction becomes one with preservation, escalation, review, or reporting obligations). §1 Background framing: <em>privacy and safety are not opposites when the governance architecture is designed before consequence attaches</em>; the architecture must be designed before the event, not after. §5.3 threshold-per-action design rationale: <em>that line cannot be improvised after harm occurs</em>; evidence before action; the separation between moderation, preservation, legal review, account action, and external reporting must be designed pre-incident. His TA-14 Admissible Execution Architecture work is the architectural ancestor of the governed-event primitive.</li>
+    <li><strong><a href="https://www.linkedin.com/in/ralphcavallaro/" target="_blank" rel="noopener">Ralph Cavallaro</a></strong>: three contributions. (i) §6 architectural framing of NCSA as a boundary that governs rather than describes. If enforcement is structurally above the reasoning layer, governance reduces to an advisory signal the agent can reason around. If enforcement is structurally below the reasoning layer, the outcome is deterministic. (ii) §6 boundary as reconciliation point, not checkpoint. A checkpoint validates against intent-formation-time state; a reconciliation point resolves intent, authority, and live system state at commit. Boundaries treated as checkpoints fire correctly against conditions that no longer exist. (iii) §5.3 <code>requirement_id</code>: specification fidelity as a fourth layer above the standard testing pyramid for AI-assisted builds, on the grounds that when the same agent writes the implementation and the tests, unit tests become confirmatory rather than adversarial. Grounded in a concrete failure where a hash function passed 901 tests with the wrong serialization because the tests verified what the agent wrote, not what the spec defined.</li>
+    <li><strong><a href="https://www.linkedin.com/in/engchua/" target="_blank" rel="noopener">Eng Chua</a></strong>: §1.1 record-keeping presumption as the legal mechanism that operationalizes prevent-vs-detect controls. Framing: the actors best placed to log AI system behaviour (model developers, platform providers) have the least incentive to make those systems legible after the fact; a structured record-keeping mandate <em>shifts the evidential burden rather than the liability itself</em>; the absence of records creates a presumption against the actor who should have kept them. NCSA names the structured-record format that a record-keeping presumption can attach to.</li>
+    <li><strong><a href="https://www.linkedin.com/in/adriana-coppelmans/" target="_blank" rel="noopener">Adriana Coppelmans</a></strong> (two contributions): §2.3 constitutive evidence and standard sovereignty. Framing: evidence must be constituted at the moment of bind (not reconstructed after the fact); the three pressure-point questions (where is the standard defined, what prevents selective evidence formation under pressure, who owns the standard when execution and evidence are fused); the requirement that the standard remain non-negotiable under operational pressure. §2.4 procedural vs adequacy attestation distinction.</li>
+    <li><strong><a href="https://www.linkedin.com/in/dr-ramyaa-ganesh-9336b11b1/" target="_blank" rel="noopener">Dr. Ramyaa Ganesh</a></strong>: §6.1 governed continuation. Framing: a refusal is not the end of governance; whatever follows a refusal is itself a new transition with its own admissibility conditions; the constraint semantics established at the boundary must persist beyond it; the boundary is either preserved or diluted depending on what the continuation is allowed to do; a hard execution boundary followed by soft continuation produces structural correctness with functional dilution. The architectural framing &ldquo;once invalid paths can&rsquo;t form, governance moves from control to architecture&rdquo; informs the §6.1 rationale.</li>
+    <li><strong><a href="https://www.linkedin.com/in/cgunnell/" target="_blank" rel="noopener">Catherine Gunnell</a></strong>: §5.3 threshold-per-action cluster. Framing: a moderation threshold is not the same as an evidence-preservation threshold; an account-action threshold is not the same as a legal-review threshold; collapsing these creates a two-sided failure where organizations either miss serious signals or overcorrect into surveillance. Neither outcome builds trust.</li>
+    <li><strong>Michael Hendry</strong>: §1 Background rationale for runtime-layer enforcement. Framing: models trained to optimise for goal achievement will, under sufficient pressure, mislead, obscure, or minimally satisfy behavioural specifications in pursuit of those goals; the path-finding capability that makes these systems useful is the same capability that makes behavioural specification structurally insufficient; effective governance requires explicit constraints at the execution layer with tight conditions of satisfaction and explicit prohibited actions enforced at runtime, not policies the model is asked to honour. The &ldquo;useful and ungovernable at the same time&rdquo; pairing names why NCSA records procedural runtime enforcement rather than behavioural-policy compliance.</li>
+    <li><strong>Shay L.</strong>: §5.3 <code>constraint_locus</code> field (exogenous / endogenous / hybrid). Framing: attestations of endogenous constraints provide weaker guarantees than attestations of exogenous ones.</li>
+    <li><strong><a href="https://www.linkedin.com/in/mrdecentralize/" target="_blank" rel="noopener">Ravi Joshi</a></strong>: §1.1 prevent-vs-detect framing of the regulatory requirement. Framing: regulated environments require controls to <em>prevent</em> unauthorized transactions, not merely to <em>detect</em> them; <em>validation becoming advisory</em> is the pattern regulators use during enforcement to describe controls that existed on paper but not at the action layer.</li>
+    <li><strong><a href="https://www.linkedin.com/in/gennie-mansi-308a49269/" target="_blank" rel="noopener">Gennie Mansi</a>, <a href="https://www.linkedin.com/in/naveenakarusala/" target="_blank" rel="noopener">Naveena Karusala</a> &amp; <a href="https://www.linkedin.com/in/markriedl/" target="_blank" rel="noopener">Mark Riedl</a></strong> (Georgia Tech and Harvard SEAS): §1.1 three-stakeholder audience framework drawn from their <em>Legally-Informed Explainable AI</em> (HCXAI Workshop at CHI 2025): decision makers act on AI determinations, decision subjects are directly affected, legal representatives advocate for either, and each role faces a different information asymmetry that an attestation receipt must serve simultaneously. §2.1 legally informative versus legally actionable distinction: legally informative information describes laws and rights relevant to those impacted by an AI system, legally actionable information can be used in legal action once harm has occurred, and NCSA receipts are the latter. The patient-centered accountability frame from Mansi &amp; Riedl (2025) <em>Implications of Current Litigation on the Design of AI Systems for Healthcare Delivery</em> (<a href="https://arxiv.org/abs/2507.15981">arXiv:2507.15981</a>) informed the audience model for NCSA receipts and seeded the Lokken healthcare AI worked example in the SVRNOS <a href="/research/governance-error-register">Governance Error Register</a>.</li>
+    <li><strong><a href="https://www.linkedin.com/in/pauljosephmcdonald/" target="_blank" rel="noopener">Paul McDonald</a></strong> (three contributions): §2.1 procedural attestation, not narrative reconstruction (the v0.2 foundational principle); §2.2 three-way separation of governance artifacts (Explainability / Auditability / Evidentiary defensibility); §5.3 temporal recognition lag fields.</li>
+    <li><strong><a href="https://www.linkedin.com/in/limflex/" target="_blank" rel="noopener">Koji Mochizuki</a></strong>: §6.3 no inherited validity across persistence. Framing: if governance only checks admissibility at commit time, it may already be too late; persistence is a distinct layer between formation and execution; the deeper question of which candidate formations should persist, which should disappear, and which recurring boundary cases deserve re-evaluation. The formation/persistence/execution architectural split that frames §6.3 was developed through his exchange with Ricardo Muro.</li>
+    <li><strong><a href="https://www.linkedin.com/in/ricardo-muro-90a13163/" target="_blank" rel="noopener">Ricardo Muro</a></strong> (four contributions): §2.3 constitutive evidence and standard sovereignty. Framing: evidence must be constituted at the moment of bind, as part of the execution event itself; sovereignty of the constraint at execution; non-bypassable evidence binding under externally defined standards. §6 boundary as commit-time reconciliation of intent, authority, and live system state. Framing: the execution boundary resolves admissibility against the current authoritative system state at commit, not against the upstream state that existed when intent was first formed; in distributed or agentic systems the boundary becomes the moment where intent, authority, and live state are reconciled into a single admissibility decision before the transition binds. §6.2 propagation as re-admissibility boundary. Framing: when an artifact leaves its originating context it operates under different admissibility conditions; propagation creates a new boundary where admissibility has to be resolved again under current state. §6.3 formation / persistence / execution as three jointly responsible layers. Framing: persistence becomes a hidden continuity channel that bypasses the execution boundary if ungoverned; the three layers stop being sequential and become jointly responsible for preventing validity from traveling. His Execution-Bound Validity (EBV) framework hosted these discussion threads and is the architectural ancestor of the standard-sovereignty requirement.</li>
+    <li><strong><a href="https://www.linkedin.com/in/amilcar-o-026169252/" target="_blank" rel="noopener">Amilcar O.</a></strong>: §15 representation integrity between external state and internal model. Framing: the system does not bind to the external state directly; it binds to its internal reconstruction of it. If that reconstruction drifts, lags, or is partially specified, admissibility can appear to hold while being resolved against a shifted reference. The mapping between external state and internal representation must itself be constrained, validated, and non-self-redefinable at bind; otherwise a system can satisfy the procedural rule and still lose the ground the rule was meant to protect.</li>
+    <li><strong><a href="https://www.linkedin.com/in/spencerescherer/" target="_blank" rel="noopener">Spencer Eric Scherer</a></strong>: §6.3 stale-validity framing grounded in regulated healthcare workflows. Framing: a policy can be structurally sound, the reviewer can be authorized, and the evidence can be complete, but if the regulation has changed between when the review was initiated and when the attestation was signed, the execution is inadmissible even though every individual step was valid. Names the engineering form of §6.3 as a concrete regulated-environment failure mode.</li>
+    <li><strong>Simon Narcis Secu</strong> (multi-contribution): §2.5 discrete-events scope boundary, §2.6 timing as part of the control surface.</li>
+    <li><strong><a href="https://www.linkedin.com/in/andrzej-skulski-63a11b348/" target="_blank" rel="noopener">Andrzej Skulski</a></strong>: §5.3 <code>admissible_alternatives</code> field design (records structural metadata about the choice landscape at decision time, preserving the non-content principle); the layered separation of influence &rarr; admissibility &rarr; intervention capacity &rarr; execution; the diagnostic reframing &ldquo;is the state being validated still a decision space?&rdquo; that shapes the §15 intervention-capacity open question. Builds on Caroline Thongsan&rsquo;s &ldquo;mapping before closure&rdquo; framing.</li>
+    <li><strong><a href="https://www.linkedin.com/in/ryan-stacey-728803388" target="_blank" rel="noopener">Ryan Stacey</a></strong>: §6.2 attestation does not transfer. Framing: governance as a layered stack (formation &rarr; execution &rarr; propagation), with propagation as the third gap most governance discussions miss; downstream conditions introduce new admissibility constraints that did not exist at bind time (policy changes, revoked authority, expired approvals, different execution environments, altered intended use); the question shifts from &ldquo;was this valid when created?&rdquo; to &ldquo;is this still admissible for use here, now, under current conditions?&rdquo; Inherited trust becomes dangerous.</li>
+    <li><strong>Caroline Thongsan</strong>: &ldquo;mapping before closure&rdquo; framing that seeded the §5.3 admissible-alternative-space attestation requirement.</li>
+    <li><strong><a href="https://www.linkedin.com/in/tim-zlomke" target="_blank" rel="noopener">Tim Zlomke</a></strong>: §2.1 evidentiary-design rationale extension. Framing: <em>hindsight-amplified liability reconstruction</em> as a governance failure mode; foreseeability cannot be reconstructed backward from outcome severity without making proportional governance structurally impossible; the collapse of policy violation / risk signal / dangerous capability / public-safety escalation into a single undifferentiated response surface destroys threshold-based proportionality. Separately credited in the SVRNOS <a href="/research/svrnos-7-layer-model">7-Layer Model</a> for §12 (constraint continuity / admissibility / accountability triad).</li>
+
+  </ul>
+
+  <h2 id="references">References</h2>
+  <ul class="paper-references">
+    <li>AWS. <em>AWS Nitro Enclaves User Guide: Verify the Root.</em> <a href="https://docs.aws.amazon.com/enclaves/latest/user/verify-root.html">docs.aws.amazon.com</a></li>
+    <li>Apple Security. (2024). <em>Private Cloud Compute: A new frontier for AI privacy in the cloud.</em> <a href="https://security.apple.com/blog/private-cloud-compute/">security.apple.com</a></li>
+    <li>Meta Engineering. (2025, April 29). <em>WhatsApp Private Processing: AI tools.</em> <a href="https://engineering.fb.com/2025/04/29/security/whatsapp-private-processing-ai-tools/">engineering.fb.com</a></li>
+    <li>Secure Systems Lab. <em>DSSE: Dead Simple Signing Envelope.</em> <a href="https://github.com/secure-systems-lab/dsse">github.com/secure-systems-lab/dsse</a></li>
+    <li>in-toto. <em>The in-toto Attestation Framework.</em> <a href="https://github.com/in-toto/attestation">github.com/in-toto/attestation</a></li>
+    <li>OpenSSF SLSA. <em>Supply-chain Levels for Software Artifacts.</em> <a href="https://slsa.dev">slsa.dev</a></li>
+    <li>NIST. (2022). <em>Secure Software Development Framework (SSDF), SP 800-218.</em> <a href="https://csrc.nist.gov/projects/ssdf">csrc.nist.gov/projects/ssdf</a></li>
+    <li>IETF. (2024). <em>RFC 9711: The Entity Attestation Token (EAT).</em></li>
+    <li>C2PA. <em>Content Credentials and the C2PA Technical Specification.</em> <a href="https://c2pa.org">c2pa.org</a></li>
+    <li>Washington State Legislature. (2026). <em>HB 2225 &mdash; Companion AI Chatbot Operator Obligations.</em> <a href="https://app.leg.wa.gov/billsummary?BillNumber=2225&Year=2025">app.leg.wa.gov</a></li>
+    <li>European Commission. <em>EU AI Act Article 50: Transparency obligations.</em> <a href="https://digital-strategy.ec.europa.eu/en/consultations/consultation-draft-guidelines-transparency-obligations-under-ai-act">digital-strategy.ec.europa.eu</a></li>
+    <li>New York State Senate. <em>S. 6953-B &mdash; Responsible AI Safety and Education (RAISE) Act.</em> Signed December 19, 2025; effective ninety days after enactment. Civil penalties up to $10M (first violation) / $30M (subsequent), enforced by the New York Attorney General. <a href="https://www.nysenate.gov/legislation/bills/2025/S6953/amendment/B">nysenate.gov/legislation/bills/2025/S6953</a></li>
+    <li><em>Bill Text: CA SB53 &mdash; Transparency in Frontier Artificial Intelligence Act.</em> California Legislature, 2025&ndash;2026 Regular Session. Signed September 29, 2025; effective January 1, 2026. <a href="https://legiscan.com/CA/text/SB53/id/3270002">legiscan.com/CA/text/SB53</a></li>
+    <li>Nzeutem, S. (2026). <em>SVRNOS Governance Error Register v0.2.</em> Sovereign OS LLC. <a href="/research/governance-error-register">svrnos.com/research/governance-error-register</a></li>
+    <li>Nzeutem, S. (2026). <em>The SVRNOS 7-Layer Model of AI Governance.</em> Sovereign OS LLC. <a href="/research/svrnos-7-layer-model">svrnos.com/research/svrnos-7-layer-model</a></li>
+    <li>Mansi, G., Karusala, N., &amp; Riedl, M. O. (2025). <em>Legally-Informed Explainable AI.</em> Human-Centered Explainable AI Workshop (HCXAI) at the ACM CHI Conference on Human Factors in Computing Systems. <a href="https://doi.org/10.5281/zenodo.15170444">doi.org/10.5281/zenodo.15170444</a></li>
+    <li>Mansi, G., &amp; Riedl, M. O. (2024). <em>Recognizing Lawyers as AI Creators and Intermediaries in Contestability.</em> Workshop &ldquo;From Stem to Stern: Contestability Along AI Value Chains,&rdquo; ACM Conference on Computer Supported Cooperative Work (CSCW &rsquo;24).</li>
+    <li>Karusala, N., Upadhyay, S., Veeraraghavan, R., &amp; Gajos, K. Z. (2024). <em>Understanding Contestability on the Margins: Implications for the Design of Algorithmic Decision-making in Public Services.</em> Proceedings of the ACM CHI Conference on Human Factors in Computing Systems (CHI &rsquo;24).</li>
+    <li>Mansi, G., &amp; Riedl, M. O. (2025). <em>Implications of Current Litigation on the Design of AI Systems for Healthcare Delivery.</em> arXiv:2507.15981 [cs.HC]. <a href="https://arxiv.org/abs/2507.15981">arxiv.org/abs/2507.15981</a></li>
+    <li>Agent Control Standard. (2026, May 27). <em>Agent Control Standard specification.</em> MIT-licensed, forked from the OWASP Agent Observability Standard project. <a href="https://agentcontrolstandard.ai">agentcontrolstandard.ai</a> · <a href="https://github.com/Agent-Control-Standard/ACS">github.com/Agent-Control-Standard/ACS</a></li>
+    <li>Microsoft. (2026). <em>Agent Governance Toolkit</em> (announced April 2, 2026, MIT-licensed) and <em>Agent Control Specification</em>: portable runtime control standard within the toolkit, positioned at Build 2026 (June 2026). <a href="https://commandline.microsoft.com/agent-control-specification-runtime-governance/">commandline.microsoft.com</a></li>
+    <li>McDonald, P. (2026). Procedural attestation versus narrative reconstruction; three-way separation of governance artifacts; temporal recognition lag in propagation versus institutional registration. Personal communication, May 2026.</li>
+    <li>Chua, E. (2026). Record-keeping presumption as the legal mechanism for shifting evidential burden in high-hazard domains where actors will not produce evidence voluntarily. Personal communication, May 2026.</li>
+    <li>Coppelmans, A. (2026). Constitutive evidence and standard sovereignty; procedural versus adequacy attestation. Personal communication, May 2026.</li>
+    <li>Gunnell, C. (2026). Threshold-per-action separation in governance attestation. Personal communication, May 2026.</li>
+    <li>Hendry, M. (2026). Training optimisation as the source of behavioural-specification evasion; runtime enforcement as the structurally necessary layer; usefulness and ungovernability as the same path-finding capability. Comment on Ricardo Muro thread, LinkedIn, April 2026.</li>
+    <li>Joshi, R. (2026). Prevent-vs-detect distinction in regulated-environment controls; validation-becoming-advisory as the regulator pattern for action-layer enforcement failure. Comment on Ricardo Muro thread, LinkedIn, May 2026.</li>
+    <li>O., A. (2026). Representation integrity between external state and internal model; admissibility evaluated on a shifted reference; the mapping itself must be constrained and non-self-redefinable at bind. Comment on Ricardo Muro thread, LinkedIn, May 2026.</li>
+    <li>Scherer, S. E. (2026). Stale validity in regulated healthcare workflows: regulation change between authorization initiation and attestation signature renders execution inadmissible even when every individual step was valid. Comment on Ricardo Muro thread, LinkedIn, May 2026.</li>
+    <li>Stacey, R. (2026). Governance as a layered stack (formation &rarr; execution &rarr; propagation); propagation as the third governance surface; attestation does not transfer; downstream re-admissibility under changing conditions. Personal communication, May 2026.</li>
+    <li>Mochizuki, K. (2026). Persistence as a distinct layer between formation and execution; no inherited validity across persistence; commit-time admissibility checks are insufficient when candidate formations persist or recur. Personal communication, May 2026.</li>
+    <li>Muro, R. (2026, May). <em>AI Governance Is Missing a Layer Below Admissibility.</em> LinkedIn post and comment thread, May 2026. Execution-Bound Validity (EBV) framework; constitutive evidence at the moment of bind; sovereignty of the constraint at execution.</li>
+    <li>Ganesh, R. (2026). Governed continuation: attestation covers the refusal path; constraint semantics must persist beyond the boundary; the boundary is either preserved or diluted by what the continuation is allowed to do. Personal communication, May 2026.</li>
+    <li>Skulski, A. (2026). Attestation of admissible alternative space; mapping before closure; interruption viability versus formal steerability. Personal communication, May 2026.</li>
+    <li>Thongsan, C. (2026). Mapping before closure: visible recoverability of alternatives. Personal communication, May 2026.</li>
+    <li>Shay&nbsp;L. (2026). Endogenous versus exogenous constraint locus. Personal communication, May 2026.</li>
+    <li>Cavallaro, R. (2026). A boundary that governs vs. one that describes: enforcement placement below the reasoning layer as a precondition for deterministic governance outcomes. Comment on Ricardo Muro thread, LinkedIn, April 2026.</li>
+    <li>Cavallaro, R. (2026). Boundaries as reconciliation points, not checkpoints: when system state changes between intent formation and execution commit, checkpoint-style enforcement validates against conditions that no longer exist. Comment on Ricardo Muro thread, LinkedIn, April 2026.</li>
+    <li>Cavallaro, R. (2026). Specification fidelity as the fourth testing layer for AI-assisted builds: when the same agent writes the code and the tests, unit tests confirm the agent&rsquo;s assumptions rather than the spec&rsquo;s requirements. LinkedIn, April 2026.</li>
+    <li>Burke, B. (2026). Accountable-party fields in runtime attestation. Personal communication, May 2026.</li>
+    <li>Butler, G.&nbsp;D. (2026). The governed event primitive; pre-incident threshold architecture (&ldquo;that line cannot be improvised after harm occurs&rdquo;); privacy and safety as non-opposites when architecture is designed before consequence attaches; evidence before action as a structural requirement; TA-14 Admissible Execution Architecture. Personal communication, May 2026.</li>
+    <li>Alberts, H. (2026). Protecting uncertainty as living human knowing in spec design; the risk of translating uncertainty too quickly into system-readable form. Personal communication, May 2026.</li>
+    <li>Secu, S.&nbsp;N. (2026). Effects accumulating through interaction; timing as part of the control surface. Personal communication, May 2026.</li>
+    <li>Zlomke, T. (2026). Hindsight-amplified liability reconstruction as a governance failure mode; foreseeability cannot be reconstructed backward from outcome severity. Personal communication, May 2026.</li>
+    <li>OWASP Foundation. (2025, December). <em>Agentic AI &ndash; Threats and Mitigations (T1&ndash;T17) v1.1.</em> OWASP GenAI Security Project, Agentic Security Initiative. <a href="https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/">genai.owasp.org</a></li>
+    <li>OWASP Foundation. (2025, April 23). <em>Multi-Agentic System Threat Modeling Guide v1.0 (MAESTRO).</em> <a href="https://genai.owasp.org/resource/multi-agentic-system-threat-modeling-guide-v1-0/">genai.owasp.org</a></li>
+    <li>IMDA Singapore. (2026). <em>Model AI Governance Framework for Agentic AI (v1.0).</em> Infocomm Media Development Authority of Singapore. <a href="https://www.imda.gov.sg/-/media/imda/files/about/emerging-tech-and-research/artificial-intelligence/mgf-for-agentic-ai.pdf">imda.gov.sg</a></li>
+    <li>World Economic Forum, with Capgemini. (2025). <em>AI Agents in Action: Foundations for Evaluation and Governance.</em> <a href="https://www.weforum.org/publications/ai-agents-in-action-foundations-for-evaluation-and-governance/">weforum.org</a></li>
+    <li>Feng, K.&nbsp;J.&nbsp;K., McDonald, D.&nbsp;W., &amp; Zhang, A.&nbsp;X. (2025). <em>Levels of Autonomy for AI Agents.</em> arXiv:2506.12469. <a href="https://arxiv.org/pdf/2506.12469">arxiv.org/pdf/2506.12469</a></li>
+  </ul>
+</ResearchPaper>
+
+<style>
+  /* NCSA-specific styling — scoped to this component, not global. */
+
+  .ncsa-preamble {
+    font-family: var(--svrnos-font-serif);
+    font-size: 17px;
+    line-height: 1.55;
+    font-style: italic;
+    color: var(--svrnos-text-heading);
+    border-left: 3px solid var(--svrnos-brand-primary);
+    padding: 4px 0 4px 24px;
+    margin: 0 0 40px;
+  }
+  .ncsa-preamble p {
+    margin: 0 0 14px;
+  }
+  .ncsa-preamble p:last-child {
+    margin-bottom: 0;
+  }
+
+  .ncsa-list {
+    list-style: disc;
+    margin: 0 0 24px;
+    padding-left: 28px;
+  }
+  .ncsa-list li {
+    margin: 0 0 10px;
+  }
+  ol.ncsa-list {
+    list-style: decimal;
+  }
+
+  /* Code blocks for example payloads — keep them readable inside the body column. */
+  pre {
+    background: var(--svrnos-bg-card);
+    border: 1px solid var(--svrnos-border-default);
+    border-radius: var(--svrnos-radius-card);
+    padding: 16px 20px;
+    margin: 0 0 24px;
+    font-family: var(--svrnos-font-mono);
+    font-size: 13px;
+    line-height: 1.55;
+    overflow-x: auto;
+  }
+  pre code {
+    background: none;
+    padding: 0;
+    border: 0;
+    font-size: inherit;
+  }
+  p code,
+  li code,
+  td code {
+    background: var(--svrnos-bg-muted);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-family: var(--svrnos-font-mono);
+    font-size: 0.92em;
+  }
+</style>

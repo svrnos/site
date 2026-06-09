@@ -34,6 +34,14 @@ interface Props {
   articlePublishedTime?: string;
   articleAuthor?: string;
   citation?: ScholarCitation;
+  /**
+   * When true, emit `<meta name="robots" content="noindex, nofollow">`.
+   * Use for archived versions of published artifacts (e.g. v0.1 of a paper
+   * whose canonical URL now serves v0.2). The page stays reachable for
+   * citation continuity but is excluded from search-engine indexes and
+   * LLM-crawler ingestion. Pair with a `robots.txt` Disallow entry.
+   */
+  noindex?: boolean;
 }
 
 const {
@@ -52,6 +60,7 @@ const {
   articlePublishedTime,
   articleAuthor,
   citation,
+  noindex = false,
 } = Astro.props;
 
 const markdownAlternateURL = markdownAlternate
@@ -74,6 +83,7 @@ const resolvedAlternates = alternates?.map((a) => ({
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonicalURL} />
     {resolvedAlternates?.map((a) => (
       <link rel="alternate" hreflang={a.hreflang} href={a.href} />

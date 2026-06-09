@@ -218,26 +218,38 @@
 <ol class="papers">
 <li class="paper">
 <div class="paper-meta">
-May 2026
-<span class="status">Draft v0.1</span>
+June 2026
+<span class="status">Published v0.1</span>
 </div>
 <div class="paper-body">
-<h2><a href="/research/non-content-safety-attestation">Non-Content Safety Attestation v0.1</a></h2>
-<p class="subtitle">A Format Specification for Verifiable AI Governance Inside Trusted Execution Environments</p>
-<p class="summary">A signed, cryptographically verifiable statement that an in-enclave governance layer evaluated a session and produced a defined outcome, with no transcript or content recoverable from the attestation. Borrows DSSE signing envelope, AWS Nitro PCR pattern, and Apple Private Cloud Compute transparency log discipline. v0.1 open for public comment through August 14, 2026.</p>
-<p class="links"><a href="/research/non-content-safety-attestation">Read the spec</a> · Companion: <a href="/insights/dear-zuck-tee-not-the-problem">Dear Zuck, the TEE Is Not the Problem</a></p>
+<h2><a href="/research/svrnos-7-layer-model">The SVRNOS 7-Layer Model of AI Governance</a></h2>
+<p class="subtitle">A Technical-Layer Decomposition of Where AI Governance Fires Inside a Deployed System</p>
+<p class="summary">Seven layers modeled on OSI: L1 Compute Substrate · L2 Component &amp; Provenance · L3 Routing &amp; Boundary · L4 Evidence Transport · L5 Session &amp; State · L6 Risk Interpretation · L7 Application Enforcement. Documented failure modes per layer, inter-layer contract drift analysis, a 2D role-mapping matrix, and a regulatory-lineage table positioning the model alongside ISO 38500, ISO 42001, NIST AI RMF, EU AI Act, OECD, AIGN OS, DecisionSpace OS, Singapore IMDA MGF for Agentic AI, IAPS, WEF/Capgemini, Kasirzadeh &amp; Gabriel, and Feng et al. Composes with OWASP MAESTRO on the security axis.</p>
+<p class="links"><a href="/research/svrnos-7-layer-model">Read the paper</a> · <a href="https://doi.org/10.5281/zenodo.20600670">DOI: 10.5281/zenodo.20600670</a></p>
 </div>
 </li>
 <li class="paper">
 <div class="paper-meta">
-April 2026
-<span class="status">Published</span>
+June 2026
+<span class="status">Published v0.2</span>
 </div>
 <div class="paper-body">
-<h2><a href="/research/governance-error-register">SVRNOS Governance Error Register</a></h2>
+<h2><a href="/research/non-content-safety-attestation">Non-Content Safety Attestation v0.2</a></h2>
+<p class="subtitle">A Format Specification for Verifiable AI Governance Inside Trusted Execution Environments</p>
+<p class="summary">A signed, cryptographically verifiable statement that an in-enclave governance layer evaluated a session and produced a defined outcome, with no transcript or content recoverable from the attestation. v0.2 adds eight design principles, threshold-per-action fields, the constitutive-evidence and reconciliation-point framing, GER cross-reference fields, and composability with runtime governance instrumentation (Agent Control Standard, Agent Governance Toolkit, OWASP MAESTRO). Borrows DSSE signing envelope, AWS Nitro PCR pattern, and Apple PCC transparency log discipline.</p>
+<p class="links"><a href="/research/non-content-safety-attestation">Read the spec</a> · <a href="https://doi.org/10.5281/zenodo.20601005">DOI: 10.5281/zenodo.20601005</a> · Companion: <a href="/insights/dear-zuck-tee-not-the-problem">Dear Zuck, the TEE Is Not the Problem</a></p>
+</div>
+</li>
+<li class="paper">
+<div class="paper-meta">
+June 2026
+<span class="status">Published v0.2</span>
+</div>
+<div class="paper-body">
+<h2><a href="/research/governance-error-register">SVRNOS Governance Error Register v0.2</a></h2>
 <p class="subtitle">A Classification System for AI Platform Governance Failures</p>
-<p class="summary">Twenty-one structurally distinct failure modes and success states, modeled on HTTP status codes. Three codes extend beyond standard HTTP. The register is open, documented real-world instances welcome. v0.1 working draft.</p>
-<p class="links"><a href="/research/governance-error-register">Read the register</a> · Also at: <a href="/research/governance-error-taxonomy">/research/governance-error-taxonomy</a> · <a href="/ger">/ger</a></p>
+<p class="summary">One hundred ten structurally distinct codes (108 L1&ndash;L7 + 2 Dimension Markers) modeled on HTTP status codes. v0.2 adds a published annotation protocol (the TRACE Method: Triage · Reconstruct · Assign · Corroborate · Enforce), a 7-Layer Model assignment for every code, and the Index + Contributing structure adapted from clinical coding precedent. The register is open; documented real-world instances welcome.</p>
+<p class="links"><a href="/research/governance-error-register">Read the register</a> · <a href="https://doi.org/10.5281/zenodo.20601192">DOI: 10.5281/zenodo.20601192</a> · <a href="https://docs.svrnos.com/ger">Full code register (docs.svrnos.com/ger)</a></p>
 </div>
 </li>
 <li class="paper">
