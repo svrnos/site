@@ -1,8 +1,11 @@
 ---
 // Share button widget — preserves the existing pattern from bespoke insight pages.
 // Uses the Web Share API when available (mobile, modern browsers), falls back to
-// copying the canonical URL to clipboard. Tries to attach the og:image as a file
-// when the platform supports image sharing.
+// copying the canonical URL to clipboard. Shares URL + title + description only;
+// receiving platforms (LinkedIn, X, iMessage, Slack, etc.) auto-render the
+// preview image from the page's og:image meta tag. Attaching the image as a
+// file in addition causes platforms that already auto-preview URLs to render
+// the same image twice (one as file attachment, one as link card).
 //
 // Optional `pdfUrl` prop renders a Download PDF button next to Share, used on
 // research papers that have a canonical PDF on Zenodo (or elsewhere).
@@ -160,27 +163,11 @@ const { pdfUrl, pdfFilename, pdfLabel = "Download PDF", inline = false } = Astro
       document.querySelector(`meta[property="${p}"]`)?.getAttribute("content") ||
       document.querySelector(`meta[name="${p}"]`)?.getAttribute("content") ||
       "";
-    const baseShareData: ShareData = {
+    const shareData: ShareData = {
       title: m("og:title") || document.title,
       text: m("og:description") || "",
       url: window.location.href,
     };
-    let shareData = baseShareData;
-    try {
-      const imgUrl = m("og:image");
-      if (imgUrl) {
-        const res = await fetch(imgUrl);
-        if (res.ok) {
-          const blob = await res.blob();
-          const file = new File([blob], "share.png", { type: blob.type });
-          if (navigator.canShare && navigator.canShare({ files: [file] })) {
-            shareData = { ...baseShareData, files: [file] };
-          }
-        }
-      }
-    } catch (e) {
-      /* fall through */
-    }
     if (navigator.share) {
       try {
         await navigator.share(shareData);
