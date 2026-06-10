@@ -52,6 +52,7 @@ declare -a CHECKS=(
   "/insights/dont-build-us-news-for-ai-safety|US News for AI Safety|deployment gate"
   "/research/governance-error-register|Governance Error Register|TRACE Method"
   "/research/svrnos-7-layer-model|7-Layer Model|Compute Substrate"
+  "/research/svrnos-7-layer-model/updates|Post-Publication Updates|AIGN OS"
   "/research/non-content-safety-attestation|Non-Content Safety Attestation|DSSE"
   "/insights/dear-zuck-tee-not-the-problem|Dear Zuck|verifiable governance"
   "/insights/the-refusal-that-never-came|Refusal That Never Came|trajectory"

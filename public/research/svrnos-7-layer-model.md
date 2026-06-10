@@ -343,7 +343,8 @@ The SVRNOS 7-Layer Model sits within an existing standards lineage. Three layers
 | ISO 42001 (2023) | International | AI management system: process / management requirements | The technical stack the management system manages |
 | NIST AI RMF (2023) | US | Trustworthy characteristics: values, principles, functions | Where each characteristic lives in the technical stack |
 | EU AI Act (Regulation (EU) 2024/1689) | EU | Product conformity assessment for AI | A technical map conformity assessors can use when tracing where controls operate |
-| AIGN OS 3.0 (Upmann, 2026) | Independent | Organizational / management methodology: 8-layer governance roles, workflows, evidence requirements | The technical stack AIGN OS governs |
+| AIGN OS (Upmann, 2025), DOI [10.2139/ssrn.5382603](https://doi.org/10.2139/ssrn.5382603) | Independent | Foundational systemic AI governance architecture: seven-layer governance operating system connecting legal, ethical, data, architectural, and trust dimensions across the AI lifecycle | The technical deployment-layer stack AIGN OS governs at the organizational layer |
+| AIGN OS 4.0 (Upmann, 2026) | Independent | Enterprise AI governance operating architecture: eight-layer extension for classification, regulatory pathway determination, evidence continuity, post-market governance, and trust certification | The technical deployment-layer stack AIGN OS governs at the organizational layer |
 | DecisionSpace OS (Roesch, 2026) | Independent | Organizational decision-formation methodology: Formation / Process / Execution + Organizational Memory + Magic Triangle | The technical stack decisions are made about |
 | OECD *Governing with Artificial Intelligence* (2025) | International (OECD, 48 countries + EU) | Framework for Trustworthy AI in Government: Enablers · Guardrails · Engagement · Responsiveness, organizational governance functions | The technical decomposition underneath the OECD organizational framework, mapping governance failures to specific architectural layers |
 | Singapore IMDA *Model AI Governance Framework for Agentic AI* (2026) | National (Singapore, voluntary) | Four-dimension governance framework: Risk-Based Approach · Human Accountability · Technical & Organizational Safeguards · End-User Responsibility | The technical-layer decomposition underneath the four dimensions; locates where each dimension’s controls operate |
@@ -549,7 +550,8 @@ The SVRNOS 7-Layer Model builds on published research and reference frameworks i
 
 - Roesch, W. (2026). *DecisionSpace OS.* Inter-layer contracts and coherence-layer framing. Personal communication, May 2026.
 
-- Upmann, P. (2026). *AIGN OS 3.0.* Zenodo. Translation work between governance teams. Personal communication, May 2026.
+- Upmann, P. (2025). *AIGN OS – The Operating System for Responsible AI Governance.* SSRN. [doi.org/10.2139/ssrn.5382603](https://doi.org/10.2139/ssrn.5382603)
+- Upmann, P. (2026). *AIGN OS 4.0: Enterprise AI Governance Operating Architecture.* Eight-layer extension. Personal communication, May 2026.
 
 - Wiz Research. (2025, January). *Wiz Research Uncovers Exposed DeepSeek Database Leak.* [wiz.io](https://www.wiz.io/blog/wiz-research-uncovers-exposed-deepseek-database-leak)
 
