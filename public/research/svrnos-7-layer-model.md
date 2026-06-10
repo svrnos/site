@@ -335,7 +335,7 @@ The SVRNOS 7-Layer Model sits within an existing standards lineage. Three layers
 
 **Structural ancestry.** The OSI reference model (ISO/IEC 7498-1, 1984) is the direct structural ancestor. The 7-Layer Model borrows the layered-decomposition pattern, not the specific networking semantics.
 
-**Adjacent governance frameworks.** Six frameworks address AI governance at adjacent layers; the SVRNOS 7-Layer Model composes with, rather than competes with, each.
+**Adjacent governance frameworks and reference lineages.** The frameworks and research summarized below address AI governance at adjacent layers; the SVRNOS 7-Layer Model composes with, rather than competes with, each.
 
 | Framework | Jurisdiction / scope | What it specifies | What the 7-Layer Model adds |
 |:---|:---|:---|:---|
