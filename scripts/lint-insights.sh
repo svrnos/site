@@ -20,6 +20,14 @@ for f in src/content/insights/*.md; do
       FAIL=$((FAIL+1))
     fi
   done
+
+  # breadcrumb convention: the crumb is the code crumb ("GER-XXX, Label").
+  # Non-classified pieces omit the field entirely.
+  crumb=$(grep -m1 '^categoryBreadcrumb:' "$f" | sed 's/^categoryBreadcrumb:[[:space:]]*"\{0,1\}//; s/"\{0,1\}[[:space:]]*$//')
+  if [ -n "$crumb" ] && ! echo "$crumb" | grep -qE '^GER-[0-9]+'; then
+    echo "✗ $f: categoryBreadcrumb \"$crumb\" — must start with a GER code (\"GER-XXX, Label\") or be omitted."
+    FAIL=$((FAIL+1))
+  fi
 done
 
 if [ $FAIL -gt 0 ]; then
