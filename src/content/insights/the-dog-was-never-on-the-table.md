@@ -5,7 +5,7 @@ description: "Scammers generated a photo of a missing beagle on an operating tab
 date: 2026-06-14
 indexCategory: governance
 gerCode: "GER-322"
-categoryBreadcrumb: "AI Incident 1478 through TRACE"
+categoryBreadcrumb: "GER-322, Provenance Omission (candidate, Index withheld)"
 group: "Governance Error Register"
 hero:
   src: /insights/the-dog-was-never-on-the-table/hero-evidence-exhibit-1478.png

@@ -4,7 +4,6 @@ dek: "Florida filed the first state-led suit against OpenAI, naming Sam Altman p
 description: "Florida filed the first state-led suit against OpenAI: ten counts, Sam Altman named personally, penalties the AG says could reach billions. Underneath all ten counts sits one question, what did the internal record show before the ship decision. The register holds two different codes for the two answers discovery can return."
 date: 2026-06-14
 indexCategory: governance
-categoryBreadcrumb: "Florida v. OpenAI civil suit"
 group: "Governance Error Register"
 hero:
   src: /insights/florida-v-openai-civil-suit/hero-ten-counts-one-audit-trail.png

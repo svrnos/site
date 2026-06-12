@@ -4,7 +4,6 @@ dek: "Anthropic's proposed frontier-AI regime requires Critical Safety Incidents
 description: "Anthropic's framework asks governments to require AI incident reports within 15 days, and never specifies the vocabulary the reports are written in. Every mature safety discipline solved this with two pieces of machinery: a codebook, so reports aggregate, and a log, so execution claims stop depending on trust. Both now exist for AI governance, open and CC BY 4.0."
 date: 2026-06-13
 indexCategory: governance
-categoryBreadcrumb: "Incident reporting doctrine"
 group: "Governance Error Register"
 hero:
   src: /insights/the-codebook-and-the-log/hero-different-reports-same-failure.png
