@@ -18,6 +18,10 @@ related:
     href: /insights/ger-501-tumbler-ridge
   - label: "GER-420 - The Instruction Existed. The Enforcement Didn't."
     href: /insights/ger-420-pocketos
+sources:
+  - "[AI Incident Database, Incident 1478](https://incidentdatabase.ai/cite/1478)"
+  - "AARP, The Perfect Scam podcast: Scammers Use AI to Make Lost Pet Scams More Believable (Bob Sullivan, with Bill Cosens and Dr. Sean McGregor); quotes are from the episode transcript"
+  - "[Governance Error Register v0.2](/research/governance-error-register)"
 callout: "**The method is open.** The [TRACE protocol](/research/governance-error-register) turns a public AI incident into a citable classification, including the cases where the honest output is no classification at all. 110 codes, CC BY 4.0."
 ---
 
@@ -97,8 +101,3 @@ Content credentials and the [receipts this register's companion specification](/
 
 Archer is home. The tail is working its way back to full helicopter. The next family's photo arrives in 30 seconds too, and whether they have to depend on Klingon text and a forgotten date is an infrastructure decision the industry is making right now.
 
-## Sources
-
-- [AI Incident Database, Incident 1478](https://incidentdatabase.ai/cite/1478)
-- AARP, "The Perfect Scam" podcast: "Scammers Use AI to Make Lost Pet Scams More Believable" (Bob Sullivan, with Bill Cosens and Sean McGregor; quotes are from the episode transcript)
-- [Governance Error Register v0.2](/research/governance-error-register)

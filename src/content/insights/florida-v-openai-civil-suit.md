@@ -17,6 +17,11 @@ related:
     href: /insights/florida-ag-fsu-openai-criminal-probe
   - label: "Governance Error Register v0.2"
     href: /research/governance-error-register
+sources:
+  - "[The filed complaint, 83 pages (PDF)](https://www.myfloridalegal.com/sites/default/files/openai-filed-stamped-complaint.pdf) — paragraph citations are to this document"
+  - "[Florida AG press release, June 1, 2026](https://www.myfloridalegal.com/newsrelease/attorney-general-james-uthmeier-files-first-nation-state-led-lawsuit-against-openai-ceo)"
+  - "[NPR coverage with OpenAI's response](https://www.npr.org/2026/06/01/nx-s1-5843132/openai-florida-lawsuit-safety-chatgpt)"
+  - "[Florida's Voice on penalties and venue](https://flvoicenews.com/florida-sues-openai-and-ceo-sam-altman-alleging-chatgpt-endangered-children-misled-users/)"
 callout: "**The vocabulary is open.** The [Governance Error Register](/research/governance-error-register) names 110 structural failure classes, CC BY 4.0. Classification follows reconstruction: the code is earned from the record, never asserted ahead of it."
 ---
 
@@ -72,9 +77,3 @@ Obligations vary by state. The structural questions repeat. That is the whole ca
 
 Discovery will tell. The register is ready for either answer.
 
-## Sources
-
-- [The filed complaint, 83 pages (PDF)](https://www.myfloridalegal.com/sites/default/files/openai-filed-stamped-complaint.pdf) (primary; paragraph citations above are to this document)
-- [Florida AG press release, June 1, 2026](https://www.myfloridalegal.com/newsrelease/attorney-general-james-uthmeier-files-first-nation-state-led-lawsuit-against-openai-ceo)
-- [NPR coverage with OpenAI's response](https://www.npr.org/2026/06/01/nx-s1-5843132/openai-florida-lawsuit-safety-chatgpt)
-- [Florida's Voice on penalties and venue](https://flvoicenews.com/florida-sues-openai-and-ceo-sam-altman-alleging-chatgpt-endangered-children-misled-users/)
