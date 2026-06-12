@@ -7,6 +7,10 @@ indexCategory: governance
 gerCode: "GER-322"
 categoryBreadcrumb: "AI Incident 1478 through TRACE"
 group: "Governance Error Register"
+hero:
+  src: /insights/the-dog-was-never-on-the-table/hero-evidence-exhibit-1478.png
+  alt: "An evidence-review desk. A printed photograph tagged EXHIBIT 1478 shows a beagle on a veterinary operating table; a magnifying glass enlarges an equipment label reading Post-operation 12/12/2022. Beside it, an evidence provenance checklist (source: text message to victim) and handwritten anomaly notes: no clinic ID visible, monitor data screen blurred, gloves look oversized. Headline: The dog was never on the table. A real pet. A fake surgery. No traceable maker."
+ogImageAlt: "A fake veterinary surgery photo examined as evidence, magnifier on the impossible date. The dog was never on the table."
 related:
   - label: "Governance Error Register v0.2"
     href: /research/governance-error-register
@@ -43,6 +47,8 @@ Hold that detail, but hold it precisely. The date did not prove where Archer was
 
 Archer, for the record, came home on his own five days later, thin, limping, and half-wagging. He had simply been lost. The phone call was never about him.
 
+![Four-step forensic board: payment (Zelle, Venmo, Cash App, unusual high-risk methods), address (veterinary facility that was City Hall, fake location checked against reality), image (wrong fur, malformed text, suspicious photo details), contradictory record (Post-operation 12/12/2022, decisive contradiction). Center: the image did not prove where Archer was. Bottom: independent reality did.](/insights/the-dog-was-never-on-the-table/family-forensics-board.png)
+
 ## Now run it through the register
 
 The [Governance Error Register](/research/governance-error-register) classifies governance failures: the structural facts about an AI system's governance that let a harm take its shape. Criminal conduct belongs to the police blotter; the register asks what the machinery around the AI permitted. The TRACE protocol (Triage, Reconstruct, Assign, Corroborate, Enforce) walks an incident from story to citable code in five steps. Here is the walk, in public.
@@ -66,6 +72,8 @@ The [Governance Error Register](/research/governance-error-register) classifies 
 > **Evidence that would complete the assignment:** the original file, the generation tool, the export and delivery path, any embedded manifest, and the operator commitments that applied.
 
 The absent provenance trail hides the point in the chain where accountability should attach. Both the refusal and its reasons are the method working.
+
+![Incident 1478 classification card. Candidate code: GER-322, Provenance Omission. Layer: L4, Evidence Transport. Governed operator: not identifiable. Index classification: withheld, with a WITHHELD stamp. Why attribution cannot complete: provenance absent at generation, removed during editing, lost through screenshot or export, stripped during delivery. Footer: the candidate fits, the record does not complete attribution.](/insights/the-dog-was-never-on-the-table/trace-result-card.png)
 
 One honesty note about the method itself: "candidate codes" is the protocol's own vocabulary for the Assign step, but the published protocol always resolves candidates into an Index. A walk that ends in candidacy, the record above, is a state the discipline reaches and the current version does not yet formally name. Aviation keeps an "undetermined" finding on its books for the same reason. Registers are allowed to learn from their hardest cases; that is what cases are for.
 
