@@ -268,5 +268,23 @@
         ]
       }
     ]
-  }
+  },
+  "redirects": [
+    {
+      "source": "/seven-layer-model",
+      "destination": "https://svrnos.com/research/svrnos-7-layer-model"
+    },
+    {
+      "source": "/seven-layer-model/:slug*",
+      "destination": "https://svrnos.com/research/svrnos-7-layer-model"
+    },
+    {
+      "source": "/ncsa",
+      "destination": "https://svrnos.com/research/non-content-safety-attestation"
+    },
+    {
+      "source": "/ncsa/:slug*",
+      "destination": "https://svrnos.com/research/non-content-safety-attestation"
+    }
+  ]
 }
