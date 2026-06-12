@@ -70,6 +70,8 @@ declare -a CHECKS=(
   "/insights/musk-altman-sim95|Musk-Altman Lawsuit"
   "/insights/wa-distress-routing-mandate|Washington|Distress Routing"
   "/insights/the-codebook-and-the-log|Dear Anthropic|ICD-10"
+  "/insights/the-dog-was-never-on-the-table|Dog Was Never on the Table|Provenance Omission"
+  "/insights/florida-v-openai-civil-suit|Ten Counts|Preparedness Framework"
   "/access|Request Access"
 )
 
