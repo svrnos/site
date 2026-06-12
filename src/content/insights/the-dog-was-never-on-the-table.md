@@ -12,12 +12,12 @@ hero:
   alt: "An evidence-review desk. A printed photograph tagged EXHIBIT 1478 shows a beagle on a veterinary operating table; a magnifying glass enlarges an equipment label reading Post-operation 12/12/2022. Beside it, an evidence provenance checklist (source: text message to victim) and handwritten anomaly notes: no clinic ID visible, monitor data screen blurred, gloves look oversized. Headline: The dog was never on the table. A real pet. A fake surgery. No traceable maker."
 ogImageAlt: "A fake veterinary surgery photo examined as evidence, magnifier on the impossible date. The dog was never on the table."
 related:
-  - label: "Governance Error Register v0.2"
-    href: /research/governance-error-register
-  - label: "Dear Anthropic, AI Incident Reports Need a Codebook and a Log"
-    href: /insights/the-codebook-and-the-log
-  - label: "Non-Content Safety Attestation v0.2"
-    href: /research/non-content-safety-attestation
+  - label: "Florida v. OpenAI: Ten Counts, Two Possible Failures"
+    href: /insights/florida-v-openai-civil-suit
+  - label: "GER-501 - The Tumbler Ridge Pattern"
+    href: /insights/ger-501-tumbler-ridge
+  - label: "GER-420 - The Instruction Existed. The Enforcement Didn't."
+    href: /insights/ger-420-pocketos
 callout: "**The method is open.** The [TRACE protocol](/research/governance-error-register) turns a public AI incident into a citable classification, including the cases where the honest output is no classification at all. 110 codes, CC BY 4.0."
 ---
 
