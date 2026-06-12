@@ -2,7 +2,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "linden",
   "name": "SVRNOS Research",
-  "description": "Open research infrastructure for AI governance: the Governance Error Register, the SVRNOS 7-Layer Model, and the Non-Content Safety Attestation framework.",
+  "description": "Open research infrastructure for AI governance: the canonical per-code register of the SVRNOS Governance Error Register. The papers live at svrnos.com.",
   "colors": {
     "primary": "#2D5F3F",
     "light": "#5BAE7B",
@@ -10,8 +10,12 @@
   },
   "favicon": "/favicon.svg",
   "fonts": {
-    "heading": { "family": "Source Serif 4" },
-    "body":    { "family": "Inter" }
+    "heading": {
+      "family": "Source Serif 4"
+    },
+    "body": {
+      "family": "Inter"
+    }
   },
   "navigation": {
     "tabs": [
@@ -46,7 +50,9 @@
           },
           {
             "group": "0xx · Pre-Infrastructure",
-            "pages": ["ger/codes/000"]
+            "pages": [
+              "ger/codes/000"
+            ]
           },
           {
             "group": "1xx · Compute Substrate",
@@ -191,35 +197,13 @@
         ]
       },
       {
-        "tab": "7 Layers",
-        "groups": [
-          {
-            "group": " ",
-            "pages": [
-              "seven-layer-model/index",
-              "seven-layer-model/paper"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "NCSA",
-        "groups": [
-          {
-            "group": " ",
-            "pages": [
-              "ncsa/index",
-              "ncsa/spec"
-            ]
-          }
-        ]
-      },
-      {
         "tab": "Changelog",
         "groups": [
           {
             "group": " ",
-            "pages": ["changelog/index"]
+            "pages": [
+              "changelog/index"
+            ]
           }
         ]
       },
@@ -228,7 +212,9 @@
         "groups": [
           {
             "group": " ",
-            "pages": ["attributions/index"]
+            "pages": [
+              "attributions/index"
+            ]
           }
         ]
       }
@@ -240,7 +226,10 @@
   },
   "navbar": {
     "links": [
-      { "label": "Main site", "href": "https://svrnos.com" }
+      {
+        "label": "Main site",
+        "href": "https://svrnos.com"
+      }
     ]
   },
   "footer": {
@@ -251,16 +240,31 @@
       {
         "header": "SVRNOS",
         "items": [
-          { "label": "Main site",       "href": "https://svrnos.com" },
-          { "label": "GER paper",       "href": "https://svrnos.com/research/governance-error-register" },
-          { "label": "Generation Gap",  "href": "https://svrnos.com/research/generation-gap" }
+          {
+            "label": "Main site",
+            "href": "https://svrnos.com"
+          },
+          {
+            "label": "GER paper",
+            "href": "https://svrnos.com/research/governance-error-register"
+          },
+          {
+            "label": "Generation Gap",
+            "href": "https://svrnos.com/research/generation-gap"
+          }
         ]
       },
       {
         "header": "License",
         "items": [
-          { "label": "Code definitions: CC BY 4.0", "href": "https://creativecommons.org/licenses/by/4.0/" },
-          { "label": "AIID incident titles: CC BY-NC-SA 4.0 (AI Incident Database)", "href": "https://incidentdatabase.ai/" }
+          {
+            "label": "Code definitions: CC BY 4.0",
+            "href": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          {
+            "label": "AIID incident titles: CC BY-NC-SA 4.0 (AI Incident Database)",
+            "href": "https://incidentdatabase.ai/"
+          }
         ]
       }
     ]
