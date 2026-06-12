@@ -31,19 +31,30 @@
       "source": "/insights/governance-error-301",
       "destination": "/insights/ger-301",
       "permanent": true
+    },
+    {
+      "source": "/research/governance-error-register/:code(\\d+)",
+      "destination": "https://docs.svrnos.com/ger/codes/:code",
+      "permanent": true
     }
   ],
   "headers": [
     {
       "source": "/research/non-content-safety-attestation-01(.md)?",
       "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
       ]
     },
     {
       "source": "/research/governance-error-register-01(.md)?",
       "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
       ]
     }
   ]
