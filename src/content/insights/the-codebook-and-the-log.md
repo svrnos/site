@@ -18,9 +18,11 @@ related:
   - label: "The SVRNOS 7-Layer Model of AI Governance"
     href: /research/svrnos-7-layer-model
 callout: "**Both pieces of machinery are published.** The [Governance Error Register](/research/governance-error-register) is the codebook: 110 failure codes, CC BY 4.0. The [NCSA receipt](/research/non-content-safety-attestation) is the log: signed, procedural, content-free. No permission needed to use either."
+sources:
+  - "Anthropic, *Advanced AI Framework*, June 2026. [Full document (PDF)](https://www-cdn.anthropic.com/files/4zrzovbb/website/0a58d567024a8b448ff15158ebc3625328dfcc1f.pdf) · [Anthropic policy hub](https://www.anthropic.com/policy)"
 ---
 
-In June 2026, Anthropic published its Advanced AI Framework: a request to governments to regulate frontier AI developers, including Anthropic itself. The document asks for safety frameworks, system cards, risk reports every six months, independent evaluators, and the provision this letter is about: Critical Safety Incidents must be reported to a government agency within 15 days.
+In June 2026, Anthropic published its [Advanced AI Framework](https://www-cdn.anthropic.com/files/4zrzovbb/website/0a58d567024a8b448ff15158ebc3625328dfcc1f.pdf): a request to governments to regulate frontier AI developers, including Anthropic itself. The document asks for safety frameworks, system cards, risk reports every six months, independent evaluators, and the provision this letter is about: Critical Safety Incidents must be reported to a government agency within 15 days.
 
 A frontier lab asking to be regulated is notable. The provision itself is good, and it has company: California's SB 53 already requires frontier developers to report critical safety incidents within 15 days, Oregon's SB 1546 created mandatory incident reporting for chatbot operators, and New York's RAISE Act sets a 72-hour clock starting January 2027. Now ask one question about all of them: written in what vocabulary?
 
