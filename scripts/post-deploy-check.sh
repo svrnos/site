@@ -69,6 +69,7 @@ declare -a CHECKS=(
   "/insights/ger-503-eu-csam|GER-503|Pulled Its Own Plug"
   "/insights/musk-altman-sim95|Musk-Altman Lawsuit"
   "/insights/wa-distress-routing-mandate|Washington|Distress Routing"
+  "/insights/the-codebook-and-the-log|Dear Anthropic|ICD-10"
   "/access|Request Access"
 )
 
