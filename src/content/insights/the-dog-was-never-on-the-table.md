@@ -1,7 +1,7 @@
 ---
 title: "The Dog Was Never on the Table"
 dek: "A missing beagle, a fabricated surgery photo, and the AI incident the register refused to classify without guessing."
-description: "AI Incident Database entry 1478: scammers found a lost-dog post, produced a photo of the missing beagle on an operating table, and demanded $2,746 for emergency surgery. The dog was never on any table. This piece runs the incident through TRACE in public: the reconstruction from the family's own forensics, the candidate codes considered and excluded, and the verdict the register's discipline requires. GER-322, Provenance Omission, is the candidate code: the image reached the family with no authenticity artifact they could inspect. And the classification is withheld on two independent grounds: the public record can name neither the operator nor where the provenance was lost: never created, stripped in editing, or removed in delivery. Classification discipline, demonstrated on the case where it is hardest to resist a tidy answer."
+description: "Scammers generated a photo of a missing beagle on an operating table and demanded $2,746 for surgery that never existed. The register has the exact candidate code and withholds it: the record cannot name an operator, because the image carried no provenance. The refusal is the method working."
 date: 2026-06-14
 indexCategory: governance
 gerCode: "GER-322"

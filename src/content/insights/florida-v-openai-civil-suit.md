@@ -1,7 +1,7 @@
 ---
 title: "Florida v. OpenAI: Ten Counts, Two Possible Failures"
 dek: "Florida filed the first state-led suit against OpenAI, naming Sam Altman personally. The complaint runs ten counts. Discovery will ask one question, and the register has two different codes waiting for the answer."
-description: "On June 1, 2026, Florida Attorney General James Uthmeier filed an 83-page civil complaint against five OpenAI entities and Sam Altman personally: ten counts, penalties Uthmeier says could reach billions, and the first use of public nuisance doctrine against a chatbot. The counts are Florida's legal vehicles. The structural question underneath them is singular: what did OpenAI's internal record show before the ship decision, and when. The Governance Error Register keeps apart the two answers discovery can return, measured-and-shipped versus never-measured, because they are different failures with different remedies. Florida's ten counts are not designed to preserve that operational distinction. The register is."
+description: "Florida filed the first state-led suit against OpenAI: ten counts, Sam Altman named personally, penalties the AG says could reach billions. Underneath all ten counts sits one question, what did the internal record show before the ship decision. The register holds two different codes for the two answers discovery can return."
 date: 2026-06-14
 indexCategory: governance
 categoryBreadcrumb: "Florida v. OpenAI civil suit"
