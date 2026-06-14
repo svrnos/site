@@ -51,6 +51,7 @@ declare -a CHECKS=(
   "/research/generation-gap|The Generation Gap"
   "/insights/dont-build-us-news-for-ai-safety|US News for AI Safety|deployment gate"
   "/insights/everyone-blamed-the-ai|Everyone Blamed the AI|stopped checking"
+  "/insights/the-ai-exhibit-gap|Exhibit Gap|incident record can"
   "/research/governance-error-register|Governance Error Register|TRACE Method"
   "/research/svrnos-7-layer-model|7-Layer Model|Compute Substrate"
   "/research/svrnos-7-layer-model/updates|Post-Publication Updates|AIGN OS"
