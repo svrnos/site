@@ -36,6 +36,11 @@
       "source": "/research/governance-error-register/:code(\\d+)",
       "destination": "https://docs.svrnos.com/ger/codes/:code",
       "permanent": true
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap-index.xml",
+      "permanent": true
     }
   ],
   "headers": [

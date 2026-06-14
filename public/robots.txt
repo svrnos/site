@@ -110,4 +110,4 @@ Disallow: /briefing
 Disallow: /research/non-content-safety-attestation-01
 Disallow: /research/governance-error-register-01
 
-Sitemap: https://svrnos.com/sitemap.xml
+Sitemap: https://svrnos.com/sitemap-index.xml
