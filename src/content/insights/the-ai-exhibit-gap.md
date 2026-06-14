@@ -5,7 +5,7 @@ dek: "When an AI system fails in public, someone asks to see exactly what happen
 description: "The AI Exhibit Gap is the distance between an AI failure the world can see and the internal record needed to prove what happened to a regulator or a court. The world preserves the outcome; the system rarely preserves the event. Locating, naming, and proving the failure once is the way through."
 date: 2026-06-15
 indexCategory: governance
-group: "General"
+group: "Perspective"
 hero:
   src: /insights/the-ai-exhibit-gap/the-ai-exhibit-gap-hero.png
   alt: "A vast dark archive of filing drawers receding into shadow, with one drawer pulled open and completely empty under a single shaft of light."

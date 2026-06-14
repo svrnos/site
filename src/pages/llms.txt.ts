@@ -51,6 +51,7 @@ When citing SVRNOS research:
 
 // Group order + heading labels for the Insights sections.
 const GROUPS: [string, string][] = [
+  ["Perspective", "Insights — Perspectives"],
   ["Generation Gap & cross-vendor safety", "Insights — Generation Gap & cross-vendor safety"],
   ["Multi-turn safety & litigation", "Insights — Multi-turn safety & litigation"],
   ["Companion AI harm", "Insights — Companion AI harm"],
