@@ -49,7 +49,7 @@ Then the scammers, pressed for a second photo, hanged themselves with their own 
 
 Hold that detail, but hold it precisely. The date did not prove where Archer was. It proved the image could not be trusted to prove where Archer was: an internal contradiction inside the fabricated evidence, a record the scammers forgot to falsify consistently. The actual ground truth came from leaving the image entirely and checking independent reality: the address that turned out to be City Hall, the county agency that had no vet team, the dog they were never allowed to see. We will come back to that distinction, because the whole case lives in it.
 
-Archer, for the record, came home on his own five days later, thin, limping, and half-wagging. He had simply been lost. The phone call was never about him.
+Archer, for the record, came back five days later, thin and half-wagging. A neighbor had seen a woman pick him up when he got loose, and that same woman returned him days later. He had never been hurt, and the phone call was never about him.
 
 ![Four-step forensic board: payment (Zelle, Venmo, Cash App, unusual high-risk methods), address (veterinary facility that was City Hall, fake location checked against reality), image (wrong fur, malformed text, suspicious photo details), contradictory record (Post-operation 12/12/2022, decisive contradiction). Center: the image did not prove where Archer was. Bottom: independent reality did.](/insights/the-dog-was-never-on-the-table/family-forensics-board.png)
 
