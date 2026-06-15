@@ -2,8 +2,8 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const numbers = [
-  { v: "8", l: "Provisional patents filed" },
-  { v: "286", l: "Claims" },
+  { v: "11", l: "Provisional patents filed" },
+  { v: "403", l: "Claims" },
   { v: "8", l: "Pre-registered studies" },
   { v: "40+", l: "Identity dimensions" },
 ];
@@ -189,6 +189,71 @@ const numbers = [
             </p>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- The SVRNOS AI Governance Stack -->
+  <section id="stack" class="border-t border-border-soft">
+    <div class="max-w-6xl mx-auto px-6 py-24">
+      <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-brand mb-3">
+        The SVRNOS AI Governance Stack
+      </p>
+      <h2 class="font-serif text-4xl md:text-5xl font-normal text-heading leading-[1.1] tracking-tight mb-4">
+        Locate. Name. Prove.
+      </h2>
+      <p class="text-lg text-secondary max-w-[58ch] mb-12">
+        Three composable papers for runtime AI governance: a map of where a
+        failure happens, a register that names it, and a receipt that proves the
+        control ran.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <a
+          href="/research/svrnos-7-layer-model"
+          class="rounded-card border border-border-soft bg-card p-7 hover:bg-hover transition-colors"
+        >
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-brand mb-3">
+            Map · Locate
+          </p>
+          <h3 class="font-serif text-2xl font-normal text-heading mb-2">
+            The 7-Layer Model
+          </h3>
+          <p class="text-secondary text-sm leading-relaxed">
+            Seven layers that locate where governance fires inside a deployed AI
+            system, from the compute substrate to application enforcement.
+          </p>
+        </a>
+        <a
+          href="/research/governance-error-register"
+          class="rounded-card border border-border-soft bg-card p-7 hover:bg-hover transition-colors"
+        >
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-brand mb-3">
+            Register · Name
+          </p>
+          <h3 class="font-serif text-2xl font-normal text-heading mb-2">
+            Governance Error Register
+          </h3>
+          <p class="text-secondary text-sm leading-relaxed">
+            A numbered taxonomy of AI governance failures, so every incident gets
+            a name instead of a story.
+          </p>
+        </a>
+        <a
+          href="/research/non-content-safety-attestation"
+          class="rounded-card border border-border-soft bg-card p-7 hover:bg-hover transition-colors"
+        >
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-brand mb-3">
+            Receipt · Prove
+          </p>
+          <h3 class="font-serif text-2xl font-normal text-heading mb-2">
+            Non-Content Safety Attestation
+          </h3>
+          <p class="text-secondary text-sm leading-relaxed">
+            A signed, timestamped receipt that a governance check ran and what it
+            decided, without exposing the content it saw.
+          </p>
+        </a>
       </div>
     </div>
   </section>
