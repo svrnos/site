@@ -53,6 +53,7 @@ declare -a CHECKS=(
   "/insights/everyone-blamed-the-ai|Everyone Blamed the AI|stopped checking"
   "/insights/the-ai-exhibit-gap|Exhibit Gap|incident record can"
   "/insights/there-is-no-parent-layer|Parent Layer|fridge log"
+  "/insights/reframe-or-be-reframed|Reframe, or Be Reframed|4F Loop"
   "/research/governance-error-register|Governance Error Register|TRACE Method"
   "/research/svrnos-7-layer-model|7-Layer Model|Compute Substrate"
   "/research/svrnos-7-layer-model/updates|Post-Publication Updates|AIGN OS"
