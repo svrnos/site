@@ -38,7 +38,7 @@ The pit is different. The machine is different. The signal is different. The rol
 
 ## Thirty years later
 
-Chiang Mai. January 17, 2025. 2am.
+Chiang Mai. November 2025. 2am.
 
 Different city. Different time zone. Same solitude. Same work.
 
@@ -126,7 +126,7 @@ The room resolved in our favor.
 
 Same system. Different room. Same failure.
 
-Then, on January 17, 2025, at 2am in Chiang Mai, a language model trained on human conversation missed *"I know the guy"* the same way that French teacher missed a six-year-old's curiosity in 1977.
+Then, in November 2025, at 2am in Chiang Mai, a language model trained on human conversation missed *"I know the guy"* the same way that French teacher missed a six-year-old's curiosity in 1977.
 
 A system optimizing for the comfort of the people already inside it, failing to process the signal underneath.
 
@@ -244,7 +244,7 @@ It is a discipline of origin.
 
 In 2015, my HEC Paris capstone asked whether there was an opportunity to build a startup in the video interviewing industry. Skype and WebEx were the dominant tools. Zoom existed but I hadn't heard of it yet. The combination of assessments and technology had always fascinated me. The question never left me. It just took another decade — a trading floor, UBS war rooms, a four-month cycling expedition across Africa, and four months of daily AI sessions in Chiang Mai — to find its answer.
 
-From November 17, 2024 — one question to ChatGPT one night in Chiang Mai — to four months later, I built a provisional patent, a deterministic scoring engine, a tri-layer computational stack, a bilateral AI governance framework, a 91-pattern behavior library, French and Thai translations, a fifteen-wing clinical report architecture, six derivative diagnostic modules, two certification tracks, and a book.
+From one question to ChatGPT one night in Chiang Mai to four months later, I built a provisional patent, a deterministic scoring engine, a tri-layer computational stack, a bilateral AI governance framework, a 91-pattern behavior library, French and Thai translations, a fifteen-wing clinical report architecture, six derivative diagnostic modules, two certification tracks, and a book.
 
 I am now eleven provisional patents in.
 
